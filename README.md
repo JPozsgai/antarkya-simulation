@@ -22,10 +22,10 @@ This is an **exploratory implementation, not an empirically validated forecast**
 Serve this directory with any static HTTP server; Web Workers need an HTTP(S) origin. No installation, external runtime, API key or backend is required for the application. With Node.js:
 
 ```sh
-node --test model.test.js worker.test.js
+node --test model.test.js worker.test.js run-seeds.test.js
 ```
 
-Browser runs execute in a worker, keeping controls responsive. Pace changes rendering/scheduling, not model randomness. Hiding the page pauses the run. Save/load preserves the initial society and completed results; live checkpoint/resume is not supported.
+Browser runs execute in a worker, keeping controls responsive. Each new Run/Run again uses a fresh event seed by default while preserving the initialized society. For exact reproduction, enable **Reuse event seed (exact replay)** in Comparisons and reproducibility. Pause/continue and Step preserve the active event seed. The visible seed is recorded in JSON/CSV exports. Repetition batches show individual conduct and policy-outcome results in a collapsible table. Pace changes rendering/scheduling, not model randomness. Hiding the page pauses the run. Save/load preserves the initial society and completed results; live checkpoint/resume is not supported.
 
 GitHub Pages deploys the root of `main`; `.nojekyll` is retained. Asset URLs include the model version to reduce stale-cache mixing. Repository history and `/v1/` preserve the previous implementation.
 
