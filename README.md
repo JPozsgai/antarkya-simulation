@@ -1,34 +1,36 @@
-# Antarkya simulation
+# Antarkya v2
 
-A dependency-free agent-based corruption simulation built for Android browsers. Open `index.html` through GitHub Pages or any static web server. No account, server-side computation, API key or package installation is required to run the model.
+A working, dependency-free browser simulation of 1,000 people, organizations, corruption and anti-corruption reform. Run it at **https://jpozsgai.github.io/antarkya-simulation/**. The earlier v1 remains at `/v1/`.
 
-Based on Joseph Pozsgai-Alvarez's `script_explanation.docx`. This is a reconstruction of the description, including its pending sections, rather than a recovery of the original Python script. See [MODEL.md](MODEL.md) for assumptions and equations. The interface also explains them under **How to read this model**.
+Choose one of ten countries, select any combination of twelve reforms, set initial resource mobilization and duration, then Run. The engine computes a reform branch and a no-new-reform baseline from exactly the same starting society. Repetitions reuse that society and vary subsequent random events. The map shows the first reform run; assessment compares computed results.
 
-## Use
+This is an **exploratory implementation, not an empirically validated forecast**. Country sources support macro descriptors and simplified institutional functions. Numeric political/cultural estimates, role/membership distributions, resource allocations, costs and behavioral coefficients remain explicit provisional assumptions. See [MODEL.md](MODEL.md), [country evidence](docs/COUNTRY-EVIDENCE.md), and the [agreed decision register](docs/AGREED-RULES.md).
 
-Choose **Run simulation**, **Pause**, or **Step**. Expand **Edit simulation settings**, change the conditions and choose **Apply settings & reset** for a new run. Use the same settings and seed to reproduce a run. Shape identifies agent type; red/green indicates the balance of corrupt/honest decisions. Tap an agent for details. Lines represent repeated corrupt ties. Support bars show expected approval; actual election results appear in the event log. Leaving the browser tab pauses the simulation.
+## Features
 
-Export **Agents CSV**, **History CSV**, or **Full JSON**. The JSON includes the full settings, agent state, memories, network links, complete event log and time series. JSON is an analytical export, not a resumable checkpoint. CSV files contain the seed and model version; keep the full JSON for all settings needed to reproduce a run.
+- Nine overlapping social/economic/political × self/group/public motive weights, with TPB and subjective random-utility decisions for all roles.
+- Distinct organizational membership, affinity/support, informal trust and funding relationships; stable homes and geographically constrained contacts.
+- Persistent accounts and conserved transfers, setup delays, shared staff capacity, service/case backlogs, changing implementation rates and selective organizational responses.
+- Journalism/social sharing, imperfect claims, corrections, reporting, screening, investigation and separate decision routes.
+- Country-specific simplified institutional topology; competitive political review versus China's personnel-appointment route. These approximate procedures, not complete national electoral/legal systems.
+- Role colors, integrity shapes with sustained recovery criteria, prominent networks, influential-actor inspection and a live event tracker.
+- Four assessment levels with measure-specific outcomes, joint impact, baseline comparisons and optional repeated runs.
+- On-device scenario/result saving, verified JSON import/export and CSV history/agent/event exports.
 
-## Publish on GitHub Pages
+## Run and test
 
-1. In the repository, open **Settings → Pages**.
-2. Under **Build and deployment**, select **Deploy from a branch**.
-3. Select **main** and **/(root)**, then **Save**.
-4. GitHub will display the published URL when deployment succeeds.
+Serve this directory with any static HTTP server; Web Workers need an HTTP(S) origin. No installation, external runtime, API key or backend is required for the application. With Node.js:
 
-GitHub Free supports Pages from public repositories. A private personal repository requires an eligible paid plan, such as GitHub Pro. A Pages site may be public even when its source repository is private. Choose visibility deliberately in GitHub; this project does not change repository visibility.
+```sh
+node --test model.test.js worker.test.js
+```
 
-## Local verification
+Browser runs execute in a worker, keeping controls responsive. Pace changes rendering/scheduling, not model randomness. Hiding the page pauses the run. Save/load preserves the initial society and completed results; live checkpoint/resume is not supported.
 
-With Node.js installed, run `node --test model.test.js`. To serve locally, use any static server (for example, `python3 -m http.server 8000`) and open its URL. The simulation itself has no dependencies.
+GitHub Pages deploys the root of `main`; `.nojekyll` is retained. Asset URLs include the model version to reduce stale-cache mixing. Repository history and `/v1/` preserve the previous implementation.
 
 ## Files
 
-- `model.js`: seeded simulation engine, shared by browser and Node tests.
-- `app.js`: browser controls, canvas displays, downloads.
-- `index.html` and `style.css`: mobile-responsive interface.
-- `model.test.js`: deterministic runs, elections, campaign timing and state invariants.
-- `MODEL.md`: explicit source decisions and reconstruction assumptions.
+`model.js` implements the simulation; `config.js` contains visible engineering priors and simplified country organizations; `profiles.js` contains sourced descriptors and evidence metadata. `worker.js` runs paired/repeated simulations. `app.js`, `index.html` and `style.css` provide the one-page interface. Source documents and the numerical design proposal are in `docs/`; where a proposal differs from the operational code, `MODEL.md` explains the implementation boundary.
 
-This is an exploratory model. Parameters have not been empirically calibrated. “Corrupt state” is a behavioral score classification, not a direct measurement of corruption tolerance.
+Scenario files stay on the visitor's device unless exported. Complete a run to obtain the full tracked log; the live feed and interim event CSV show the most recent 200 updates. A browser may clear local storage, so retain a JSON backup for important scenarios.
