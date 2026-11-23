@@ -129,7 +129,7 @@ Political support uses accessible information and affinity under the configured 
 
 ## 8. Integrity records, analytical display and major events
 
-Keep the last 24 meaningful integrity opportunities per person, including completed corrupt participation, completed integrity choices and unresolved/failed intentions. Lifetime history is also retained. Role-at-action is recorded for cumulative distribution counts. Current-class cards aggregate the recent histories of the people currently in that class; changing roles does not erase their prior conduct.
+Keep the last 24 meaningful integrity opportunities per person, including completed corrupt participation, completed integrity choices and unresolved/failed intentions. Lifetime history is also retained. The uncertain inherited conduct prior affects initial status/lifetime history but supplies no fabricated pre-run opportunity denominator; recent class rates are unassessable at startup. Role-at-action is recorded for cumulative distribution counts. Current-class cards aggregate the recent histories of the people currently in that class; changing roles does not erase their prior conduct.
 
 Circle is default expected integrity; one qualifying act makes a triangle. Recover only after six months without new qualifying corruption and at least three meaningful completed integrity choices. Idle time and routine purchases cannot recover integrity or replace recent opportunities.
 
