@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>State definitions and writes — adaptation.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="state-definitions-and-writes-adaptation-js">State definitions and writes — adaptation.js</h1>
+<p><a href="../STATE.html">Inventory guide</a>. Whole-function source is authoritative for types, branches, bounds and update semantics.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Field / target</th>
+<th>Operation / expression</th>
+<th>Owner / mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/adaptation.js.html#L24">adaptation.js:24</a></td>
+<td><code>labels.attitude</code></td>
+<td>object definition · <code>'Evaluation of corrupt conduct'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L25">adaptation.js:25</a></td>
+<td><code>labels.norm</code></td>
+<td>object definition · <code>'Perceived reference expectations'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L26">adaptation.js:26</a></td>
+<td><code>labels.control</code></td>
+<td>object definition · <code>'Lawful/reporting capability'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L27">adaptation.js:27</a></td>
+<td><code>labels.corruptControl</code></td>
+<td>object definition · <code>'Feasibility of improper conduct'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L28">adaptation.js:28</a></td>
+<td><code>labels.risk</code></td>
+<td>object definition · <code>'Expected accountability cost'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L29">adaptation.js:29</a></td>
+<td><code>labels.knowledge</code></td>
+<td>object definition · <code>'Usable knowledge'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L30">adaptation.js:30</a></td>
+<td><code>labels.reportSafety</code></td>
+<td>object definition · <code>'Expected reporting safety'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L43">adaptation.js:43</a></td>
+<td><code>map.aca</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L44">adaptation.js:44</a></td>
+<td><code>map.aca.elements</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L44">adaptation.js:44</a></td>
+<td><code>map.aca.elements.risk</code></td>
+<td>object definition · <code>0.25</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L44">adaptation.js:44</a></td>
+<td><code>map.aca.elements.control</code></td>
+<td>object definition · <code>0.15</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L45">adaptation.js:45</a></td>
+<td><code>map.aca.contexts</code></td>
+<td>object definition · <code>integrity</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L46">adaptation.js:46</a></td>
+<td><code>map.aca.elementContexts</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L46">adaptation.js:46</a></td>
+<td><code>map.aca.elementContexts.control</code></td>
+<td>object definition · <code>['case', 'report']</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L47">adaptation.js:47</a></td>
+<td><code>map.aca.halfLife</code></td>
+<td>object definition · <code>10</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L48">adaptation.js:48</a></td>
+<td><code>map.aca.channel</code></td>
+<td>object definition · <code>'Communicated screening/inquiry and actual staff training'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L49">adaptation.js:49</a></td>
+<td><code>map.aca.structural</code></td>
+<td>object definition · <code>'Mandate, inquiry capacity, referrals and shared case work'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L53">adaptation.js:53</a></td>
+<td><code>map.merit</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L54">adaptation.js:54</a></td>
+<td><code>map.merit.elements</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L54">adaptation.js:54</a></td>
+<td><code>map.merit.elements.norm</code></td>
+<td>object definition · <code>0.12</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L54">adaptation.js:54</a></td>
+<td><code>map.merit.elements.control</code></td>
+<td>object definition · <code>0.15</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L55">adaptation.js:55</a></td>
+<td><code>map.merit.contexts</code></td>
+<td>object definition · <code>['recruit']</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L56">adaptation.js:56</a></td>
+<td><code>map.merit.halfLife</code></td>
+<td>object definition · <code>12</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L57">adaptation.js:57</a></td>
+<td><code>map.merit.channel</code></td>
+<td>object definition · <code>'Experienced appointment/review procedure'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L58">adaptation.js:58</a></td>
+<td><code>map.merit.structural</code></td>
+<td>object definition · <code>'Actual selection and the competence of appointed staff'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L62">adaptation.js:62</a></td>
+<td><code>map.rotation</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L63">adaptation.js:63</a></td>
+<td><code>map.rotation.elements</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L63">adaptation.js:63</a></td>
+<td><code>map.rotation.elements.norm</code></td>
+<td>object definition · <code>0.1</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L64">adaptation.js:64</a></td>
+<td><code>map.rotation.contexts</code></td>
+<td>object definition · <code>['integrity', 'case']</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L65">adaptation.js:65</a></td>
+<td><code>map.rotation.halfLife</code></td>
+<td>object definition · <code>8</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L66">adaptation.js:66</a></td>
+<td><code>map.rotation.channel</code></td>
+<td>object definition · <code>'Actual transfer and new workplace induction'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L67">adaptation.js:67</a></td>
+<td><code>map.rotation.structural</code></td>
+<td>object definition · <code>'Changed staff locations and access; existing ties survive'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L71">adaptation.js:71</a></td>
+<td><code>map.protection</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L72">adaptation.js:72</a></td>
+<td><code>map.protection.elements</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L72">adaptation.js:72</a></td>
+<td><code>map.protection.elements.control</code></td>
+<td>object definition · <code>0.25</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L72">adaptation.js:72</a></td>
+<td><code>map.protection.elements.reportSafety</code></td>
+<td>object definition · <code>0.35</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L73">adaptation.js:73</a></td>
+<td><code>map.protection.contexts</code></td>
+<td>object definition · <code>['report', 'refuse']</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L74">adaptation.js:74</a></td>
+<td><code>map.protection.halfLife</code></td>
+<td>object definition · <code>8</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L75">adaptation.js:75</a></td>
+<td><code>map.protection.channel</code></td>
+<td>object definition · <code>'Personally experienced protection or failure'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L76">adaptation.js:76</a></td>
+<td><code>map.protection.structural</code></td>
+<td>object definition · <code>'Timely protection, staff work and actual victim costs'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L80">adaptation.js:80</a></td>
+<td><code>map.declarations</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L81">adaptation.js:81</a></td>
+<td><code>map.declarations.elements</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L81">adaptation.js:81</a></td>
+<td><code>map.declarations.elements.risk</code></td>
+<td>object definition · <code>0.15</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L82">adaptation.js:82</a></td>
+<td><code>map.declarations.contexts</code></td>
+<td>object definition · <code>integrity</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L83">adaptation.js:83</a></td>
+<td><code>map.declarations.halfLife</code></td>
+<td>object definition · <code>10</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L84">adaptation.js:84</a></td>
+<td><code>map.declarations.channel</code></td>
+<td>object definition · <code>'Personally communicated verification'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L85">adaptation.js:85</a></td>
+<td><code>map.declarations.structural</code></td>
+<td>object definition · <code>'Covered personal records used in real scrutiny'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L89">adaptation.js:89</a></td>
+<td><code>map.conflicts</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L90">adaptation.js:90</a></td>
+<td><code>map.conflicts.elements</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L90">adaptation.js:90</a></td>
+<td><code>map.conflicts.elements.norm</code></td>
+<td>object definition · <code>0.1</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L90">adaptation.js:90</a></td>
+<td><code>map.conflicts.elements.corruptControl</code></td>
+<td>object definition · <code>0.25</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L91">adaptation.js:91</a></td>
+<td><code>map.conflicts.contexts</code></td>
+<td>object definition · <code>['integrity', 'recruit', 'implementation']</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L92">adaptation.js:92</a></td>
+<td><code>map.conflicts.halfLife</code></td>
+<td>object definition · <code>10</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L93">adaptation.js:93</a></td>
+<td><code>map.conflicts.channel</code></td>
+<td>object definition · <code>'Experienced conflict review or blocked exchange'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L94">adaptation.js:94</a></td>
+<td><code>map.conflicts.structural</code></td>
+<td>object definition · <code>'Records, applicable review and actual prevention'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L98">adaptation.js:98</a></td>
+<td><code>map.oversight</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L99">adaptation.js:99</a></td>
+<td><code>map.oversight.elements</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L99">adaptation.js:99</a></td>
+<td><code>map.oversight.elements.risk</code></td>
+<td>object definition · <code>0.3</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L100">adaptation.js:100</a></td>
+<td><code>map.oversight.contexts</code></td>
+<td>object definition · <code>integrity</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L101">adaptation.js:101</a></td>
+<td><code>map.oversight.halfLife</code></td>
+<td>object definition · <code>8</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L102">adaptation.js:102</a></td>
+<td><code>map.oversight.channel</code></td>
+<td>object definition · <code>'Communicated audit/inquiry; never hidden audit truth'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L103">adaptation.js:103</a></td>
+<td><code>map.oversight.structural</code></td>
+<td>object definition · <code>'Finite scrutiny, evidence quality and corrective work'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L107">adaptation.js:107</a></td>
+<td><code>map.pay</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L108">adaptation.js:108</a></td>
+<td><code>map.pay.elements</code></td>
+<td>object definition · <code>Object(0 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L109">adaptation.js:109</a></td>
+<td><code>map.pay.contexts</code></td>
+<td>object definition · <code>[]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L110">adaptation.js:110</a></td>
+<td><code>map.pay.halfLife</code></td>
+<td>object definition · <code>12</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L111">adaptation.js:111</a></td>
+<td><code>map.pay.channel</code></td>
+<td>object definition · <code>'Actual pay receipts inform experienced financial security'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L112">adaptation.js:112</a></td>
+<td><code>map.pay.structural</code></td>
+<td>object definition · <code>'Conserved supplements and actual income/cost valuations; no honesty bonus'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L116">adaptation.js:116</a></td>
+<td><code>map.penalties</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L117">adaptation.js:117</a></td>
+<td><code>map.penalties.elements</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L117">adaptation.js:117</a></td>
+<td><code>map.penalties.elements.risk</code></td>
+<td>object definition · <code>0.4</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L118">adaptation.js:118</a></td>
+<td><code>map.penalties.contexts</code></td>
+<td>object definition · <code>integrity</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L119">adaptation.js:119</a></td>
+<td><code>map.penalties.halfLife</code></td>
+<td>object definition · <code>8</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L120">adaptation.js:120</a></td>
+<td><code>map.penalties.channel</code></td>
+<td>object definition · <code>'Observed actual liability and collection'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L121">adaptation.js:121</a></td>
+<td><code>map.penalties.structural</code></td>
+<td>object definition · <code>'Lawful liability, collectible resources and collection capacity'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L125">adaptation.js:125</a></td>
+<td><code>map.disclosure</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L126">adaptation.js:126</a></td>
+<td><code>map.disclosure.elements</code></td>
+<td>object definition · <code>Object(0 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L127">adaptation.js:127</a></td>
+<td><code>map.disclosure.contexts</code></td>
+<td>object definition · <code>[]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L128">adaptation.js:128</a></td>
+<td><code>map.disclosure.halfLife</code></td>
+<td>object definition · <code>8</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L129">adaptation.js:129</a></td>
+<td><code>map.disclosure.channel</code></td>
+<td>object definition · <code>'Accessed publications enter ordinary credibility-weighted belief learning'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L130">adaptation.js:130</a></td>
+<td><code>map.disclosure.structural</code></td>
+<td>object definition · <code>'Real record visibility; no generic persuasion bonus'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L134">adaptation.js:134</a></td>
+<td><code>map.complaints</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L135">adaptation.js:135</a></td>
+<td><code>map.complaints.elements</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L135">adaptation.js:135</a></td>
+<td><code>map.complaints.elements.control</code></td>
+<td>object definition · <code>0.3</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L135">adaptation.js:135</a></td>
+<td><code>map.complaints.elements.knowledge</code></td>
+<td>object definition · <code>0.2</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L136">adaptation.js:136</a></td>
+<td><code>map.complaints.contexts</code></td>
+<td>object definition · <code>['report']</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L137">adaptation.js:137</a></td>
+<td><code>map.complaints.halfLife</code></td>
+<td>object definition · <code>8</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L138">adaptation.js:138</a></td>
+<td><code>map.complaints.channel</code></td>
+<td>object definition · <code>'Encountered reporting instructions and actual intake'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L139">adaptation.js:139</a></td>
+<td><code>map.complaints.structural</code></td>
+<td>object definition · <code>'Channel access, monetary cost and competent recipient'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L143">adaptation.js:143</a></td>
+<td><code>map.education</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td><code>map.education.elements</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td><code>map.education.elements.attitude</code></td>
+<td>object definition · <code>0.3</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td><code>map.education.elements.norm</code></td>
+<td>object definition · <code>0.2</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td><code>map.education.elements.control</code></td>
+<td>object definition · <code>0.25</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td><code>map.education.elements.knowledge</code></td>
+<td>object definition · <code>0.35</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L145">adaptation.js:145</a></td>
+<td><code>map.education.contexts</code></td>
+<td>object definition · <code>integrity</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L146">adaptation.js:146</a></td>
+<td><code>map.education.halfLife</code></td>
+<td>object definition · <code>6</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L147">adaptation.js:147</a></td>
+<td><code>map.education.channel</code></td>
+<td>object definition · <code>'Delivered teaching/messages with a known source'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L148">adaptation.js:148</a></td>
+<td><code>map.education.structural</code></td>
+<td>object definition · <code>'Funded setup, staff time, content delivery and coverage'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L150">adaptation.js:150</a></td>
+<td><code>map.experience</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L151">adaptation.js:151</a></td>
+<td><code>map.experience.elements</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L151">adaptation.js:151</a></td>
+<td><code>map.experience.elements.risk</code></td>
+<td>object definition · <code>0.2</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L151">adaptation.js:151</a></td>
+<td><code>map.experience.elements.reportSafety</code></td>
+<td>object definition · <code>0.15</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L152">adaptation.js:152</a></td>
+<td><code>map.experience.contexts</code></td>
+<td>object definition · <code>integrity</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L153">adaptation.js:153</a></td>
+<td><code>map.experience.halfLife</code></td>
+<td>object definition · <code>6</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L154">adaptation.js:154</a></td>
+<td><code>map.experience.channel</code></td>
+<td>object definition · <code>'Policy-independent personally accessed experience'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L155">adaptation.js:155</a></td>
+<td><code>map.experience.structural</code></td>
+<td>object definition · <code>'Ordinary accountability and life experience'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L159">adaptation.js:159</a></td>
+<td><code>bounds.attitude</code></td>
+<td>object definition · <code>0.45</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L160">adaptation.js:160</a></td>
+<td><code>bounds.norm</code></td>
+<td>object definition · <code>0.45</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L161">adaptation.js:161</a></td>
+<td><code>bounds.control</code></td>
+<td>object definition · <code>0.5</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L162">adaptation.js:162</a></td>
+<td><code>bounds.corruptControl</code></td>
+<td>object definition · <code>0.5</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L163">adaptation.js:163</a></td>
+<td><code>bounds.risk</code></td>
+<td>object definition · <code>0.6</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L164">adaptation.js:164</a></td>
+<td><code>bounds.knowledge</code></td>
+<td>object definition · <code>0.6</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L165">adaptation.js:165</a></td>
+<td><code>bounds.reportSafety</code></td>
+<td>object definition · <code>0.6</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L177">adaptation.js:177</a></td>
+<td><code>base.openness</code></td>
+<td>object definition · <code>0.2 + 0.6 * random('openness')</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L178">adaptation.js:178</a></td>
+<td><code>base.retention</code></td>
+<td>object definition · <code>0.2 + 0.6 * random('retention')</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L179">adaptation.js:179</a></td>
+<td><code>base.learning</code></td>
+<td>object definition · <code>0.2 + 0.6 * random('learning')</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L181">adaptation.js:181</a></td>
+<td><code>a.psychology</code></td>
+<td>= · <code>Object(16 entries); child fields listed separately</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L182">adaptation.js:182</a></td>
+<td><code>initialize.version</code></td>
+<td>object definition · <code>1</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L183">adaptation.js:183</a></td>
+<td><code>initialize.baseTraits</code></td>
+<td>object definition · <code>base</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L184">adaptation.js:184</a></td>
+<td><code>initialize.traits</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L185">adaptation.js:185</a></td>
+<td><code>initialize.initialMotives</code></td>
+<td>object definition · <code>[...a.motives]</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L186">adaptation.js:186</a></td>
+<td><code>initialize.initialSkill</code></td>
+<td>object definition · <code>a.skill</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L187">adaptation.js:187</a></td>
+<td><code>initialize.baseKnowledge</code></td>
+<td>object definition · <code>a.knowledge</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L188">adaptation.js:188</a></td>
+<td><code>initialize.baseRisk</code></td>
+<td>object definition · <code>a.riskBelief</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L189">adaptation.js:189</a></td>
+<td><code>initialize.riskPrior</code></td>
+<td>object definition · <code>a.riskBelief</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L190">adaptation.js:190</a></td>
+<td><code>initialize.accountabilityEvents</code></td>
+<td>object definition · <code>[]</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L191">adaptation.js:191</a></td>
+<td><code>initialize.baseSafety</code></td>
+<td>object definition · <code>0.2 + 0.6 * random('reporting-safety')</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L192">adaptation.js:192</a></td>
+<td><code>initialize.expectedIncome</code></td>
+<td>object definition · <code>a.income</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L193">adaptation.js:193</a></td>
+<td><code>initialize.salience</code></td>
+<td>object definition · <code>Array(9).fill(0)</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L194">adaptation.js:194</a></td>
+<td><code>initialize.memories</code></td>
+<td>object definition · <code>Object(0 entries); child fields listed separately</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L195">adaptation.js:195</a></td>
+<td><code>initialize.feedback</code></td>
+<td>object definition · <code>0</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L196">adaptation.js:196</a></td>
+<td><code>initialize.lastAdvance</code></td>
+<td>object definition · <code>0</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L197">adaptation.js:197</a></td>
+<td><code>initialize.lastExposure</code></td>
+<td>object definition · <code>null</code></td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L231">adaptation.js:231</a></td>
+<td><code>receptiveness.uptake</code></td>
+<td>object definition · <code>uptake</code></td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L231">adaptation.js:231</a></td>
+<td><code>receptiveness.strength</code></td>
+<td>object definition · <code>strength</code></td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L231">adaptation.js:231</a></td>
+<td><code>receptiveness.alignment</code></td>
+<td>object definition · <code>alignment</code></td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L240">adaptation.js:240</a></td>
+<td><code>p.feedback</code></td>
+<td>= · <code>clamp(p.feedback + 0.1 * (c - p.feedback))</code></td>
+<td>feedback · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L244">adaptation.js:244</a></td>
+<td><code>p.salience[i]</code></td>
+<td>= · <code>clamp(p.salience[i] + 0.08 * c * (clamp(value) - p.salience[i]))</code></td>
+<td>feedback · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L257">adaptation.js:257</a></td>
+<td><code>observe.delivered</code></td>
+<td>object definition · <code>false</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L257">adaptation.js:257</a></td>
+<td><code>observe.changed</code></td>
+<td>object definition · <code>false</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L259">adaptation.js:259</a></td>
+<td><code>p.memories[policy]</code></td>
+<td>= · <code>Object(2 entries); child fields listed separately</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L259">adaptation.js:259</a></td>
+<td><code>observe.events</code></td>
+<td>object definition · <code>[]</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L259">adaptation.js:259</a></td>
+<td><code>observe.components</code></td>
+<td>object definition · <code>Object(0 entries); child fields listed separately</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L261">adaptation.js:261</a></td>
+<td><code>observe.delivered</code></td>
+<td>object definition · <code>true</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L261">adaptation.js:261</a></td>
+<td><code>observe.duplicate</code></td>
+<td>object definition · <code>true</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L261">adaptation.js:261</a></td>
+<td><code>observe.changed</code></td>
+<td>object definition · <code>false</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L265">adaptation.js:265</a></td>
+<td><code>trace.policy</code></td>
+<td>object definition · <code>policy</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L266">adaptation.js:266</a></td>
+<td><code>trace.event</code></td>
+<td>object definition · <code>event</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L267">adaptation.js:267</a></td>
+<td><code>trace.month</code></td>
+<td>object definition · <code>month</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L268">adaptation.js:268</a></td>
+<td><code>trace.source</code></td>
+<td>object definition · <code>options.source ?? null</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L269">adaptation.js:269</a></td>
+<td><code>trace.quality</code></td>
+<td>object definition · <code>quality</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L270">adaptation.js:270</a></td>
+<td><code>trace.credibility</code></td>
+<td>object definition · <code>credibility</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L271">adaptation.js:271</a></td>
+<td><code>trace.components</code></td>
+<td>object definition · <code>Object(0 entries); child fields listed separately</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L280">adaptation.js:280</a></td>
+<td><code>memory.components[element]</code></td>
+<td>= · <code>Object(5 entries); child fields listed separately</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L281">adaptation.js:281</a></td>
+<td><code>observe.level</code></td>
+<td>object definition · <code>0</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L282">adaptation.js:282</a></td>
+<td><code>observe.peak</code></td>
+<td>object definition · <code>0</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L283">adaptation.js:283</a></td>
+<td><code>observe.count</code></td>
+<td>object definition · <code>0</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L284">adaptation.js:284</a></td>
+<td><code>observe.accepted</code></td>
+<td>object definition · <code>0</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L285">adaptation.js:285</a></td>
+<td><code>observe.target</code></td>
+<td>object definition · <code>element === 'reportSafety' ? 1 : 0</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L288">adaptation.js:288</a></td>
+<td><code>state.count</code></td>
+<td>++ · <code>++</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L293">adaptation.js:293</a></td>
+<td><code>state.accepted</code></td>
+<td>++ · <code>++</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L300">adaptation.js:300</a></td>
+<td><code>state.level</code></td>
+<td>= · <code>next</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L301">adaptation.js:301</a></td>
+<td><code>state.peak</code></td>
+<td>= · <code>Math.max(state.peak, next)</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L304">adaptation.js:304</a></td>
+<td><code>state.target</code></td>
+<td>= · <code>state.accepted === 1 ? target : state.target + maintenance * intensity * (target - state.target)</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L310">adaptation.js:310</a></td>
+<td><code>trace.components[element]</code></td>
+<td>= · <code>Object(8 entries); child fields listed separately</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L311">adaptation.js:311</a></td>
+<td><code>observe.accepted</code></td>
+<td>object definition · <code>accepted</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L312">adaptation.js:312</a></td>
+<td><code>observe.probability</code></td>
+<td>object definition · <code>receptive.uptake</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L313">adaptation.js:313</a></td>
+<td><code>observe.strength</code></td>
+<td>object definition · <code>receptive.strength</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L314">adaptation.js:314</a></td>
+<td><code>observe.cap</code></td>
+<td>object definition · <code>cap</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L315">adaptation.js:315</a></td>
+<td><code>observe.gain</code></td>
+<td>object definition · <code>gain</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L316">adaptation.js:316</a></td>
+<td><code>observe.restoration</code></td>
+<td>object definition · <code>restoration</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L317">adaptation.js:317</a></td>
+<td><code>observe.level</code></td>
+<td>object definition · <code>state.level</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L318">adaptation.js:318</a></td>
+<td><code>observe.target</code></td>
+<td>object definition · <code>state.target</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L321">adaptation.js:321</a></td>
+<td><code>p.lastExposure</code></td>
+<td>= · <code>trace</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td><code>observe.2</code></td>
+<td>object definition · <code>0.7</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td><code>observe.5</code></td>
+<td>object definition · <code>0.5</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td><code>observe.8</code></td>
+<td>object definition · <code>0.4</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td><code>observe.3</code></td>
+<td>object definition · <code>0.5</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L325">adaptation.js:325</a></td>
+<td><code>observe.delivered</code></td>
+<td>object definition · <code>true</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L325">adaptation.js:325</a></td>
+<td><code>observe.changed</code></td>
+<td>object definition · <code>changed</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L325">adaptation.js:325</a></td>
+<td><code>observe.trace</code></td>
+<td>object definition · <code>trace</code></td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L347">adaptation.js:347</a></td>
+<td><code>out[element]</code></td>
+<td>+= · <code>c.level</code></td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L358">adaptation.js:358</a></td>
+<td><code>out[k]</code></td>
+<td>= · <code>Math.min(bounds[k], out[k])</code></td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L359">adaptation.js:359</a></td>
+<td><code>out.riskTarget</code></td>
+<td>= · <code>riskWeight ? riskTarget / riskWeight : a.psychology.baseRisk</code></td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L360">adaptation.js:360</a></td>
+<td><code>out.safetyTarget</code></td>
+<td>= · <code>safetyWeight ? safetyTarget / safetyWeight : 0.5</code></td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L371">adaptation.js:371</a></td>
+<td><code>a.knowledge</code></td>
+<td>= · <code>clamp(p.baseKnowledge + e.knowledge * (1 - p.baseKnowledge))</code></td>
+<td>refresh · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L372">adaptation.js:372</a></td>
+<td><code>a.riskBelief</code></td>
+<td>= · <code>clamp(p.baseRisk + e.risk * (e.riskTarget - p.baseRisk))</code></td>
+<td>refresh · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L407">adaptation.js:407</a></td>
+<td><code>p.baseRisk</code></td>
+<td>= · <code>clamp( p.baseRisk + rate * (target - p.baseRisk), Math.max(0.03, p.riskPrior - 0.15), Math.min(0.95, p.riskPrior + 0.35), )</code></td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L423">adaptation.js:423</a></td>
+<td><code>p.baseRisk</code></td>
+<td>+= · <code>0.005 * (p.riskPrior - p.baseRisk)</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L427">adaptation.js:427</a></td>
+<td><code>state.level</code></td>
+<td>*= · <code>Math.exp(-Math.LN2 / halfLife)</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L433">adaptation.js:433</a></td>
+<td><code>p.traits.openness</code></td>
+<td>= · <code>clamp( p.traits.openness + 0.01 * (openness - p.traits.openness), Math.max(0, p.baseTraits.openness - 0.15), Math.min(1, p.baseTraits.openness + 0.15), )</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L439">adaptation.js:439</a></td>
+<td><code>p.traits.learning</code></td>
+<td>= · <code>clamp(p.traits.learning + 0.005 * (learning - p.traits.learning))</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L441">adaptation.js:441</a></td>
+<td><code>p.traits.retention</code></td>
+<td>= · <code>clamp(p.traits.retention + 0.005 * (retention - p.traits.retention))</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L444">adaptation.js:444</a></td>
+<td><code>a.motives</code></td>
+<td>= · <code>a.motives.map((v, i) =&gt; v + 0.002 * (target[i] / total - v))</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L446">adaptation.js:446</a></td>
+<td><code>a.motives</code></td>
+<td>= · <code>a.motives.map((v) =&gt; v / normal)</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L447">adaptation.js:447</a></td>
+<td><code>p.salience</code></td>
+<td>= · <code>p.salience.map((v) =&gt; v * 0.99)</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L448">adaptation.js:448</a></td>
+<td><code>p.feedback</code></td>
+<td>*= · <code>0.98</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L450">adaptation.js:450</a></td>
+<td><code>p.lastAdvance</code></td>
+<td>= · <code>month</code></td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L460">adaptation.js:460</a></td>
+<td><code>a.skill</code></td>
+<td>+= · <code>Math.min( Math.max(0, Math.min(1, p.initialSkill + 0.2) - a.skill), 0.003 * time * Math.max(0, 1 - a.skill), )</code></td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L464">adaptation.js:464</a></td>
+<td><code>work.3</code></td>
+<td>object definition · <code>0.25</code></td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L464">adaptation.js:464</a></td>
+<td><code>work.4</code></td>
+<td>object definition · <code>0.15</code></td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L473">adaptation.js:473</a></td>
+<td><code>p.expectedIncome</code></td>
+<td>+= · <code>(0.05 + 0.25 * p.traits.learning) * (observed - p.expectedIncome)</code></td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
+<td><code>incomeExperience.3</code></td>
+<td>object definition · <code>clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost))</code></td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L505">adaptation.js:505</a></td>
+<td><code>before.attitude</code></td>
+<td>object definition · <code>attitude</code></td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L505">adaptation.js:505</a></td>
+<td><code>before.norm</code></td>
+<td>object definition · <code>norm</code></td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L505">adaptation.js:505</a></td>
+<td><code>before.control</code></td>
+<td>object definition · <code>control</code></td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L515">adaptation.js:515</a></td>
+<td><code>decision.attitude</code></td>
+<td>object definition · <code>attitude</code></td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L515">adaptation.js:515</a></td>
+<td><code>decision.norm</code></td>
+<td>object definition · <code>norm</code></td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L515">adaptation.js:515</a></td>
+<td><code>decision.control</code></td>
+<td>object definition · <code>clamp(control)</code></td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L515">adaptation.js:515</a></td>
+<td><code>decision.before</code></td>
+<td>object definition · <code>before</code></td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L515">adaptation.js:515</a></td>
+<td><code>decision.influence</code></td>
+<td>object definition · <code>e</code></td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L523">adaptation.js:523</a></td>
+<td><code>summary.traits</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L524">adaptation.js:524</a></td>
+<td><code>summary.expectedIncome</code></td>
+<td>object definition · <code>a.psychology.expectedIncome</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L525">adaptation.js:525</a></td>
+<td><code>summary.reportingSafety</code></td>
+<td>object definition · <code>safety(a)</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L526">adaptation.js:526</a></td>
+<td><code>summary.baseMotives</code></td>
+<td>object definition · <code>[...a.psychology.initialMotives]</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L527">adaptation.js:527</a></td>
+<td><code>summary.influence</code></td>
+<td>object definition · <code>influence(a)</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L528">adaptation.js:528</a></td>
+<td><code>summary.lastExposure</code></td>
+<td>object definition · <code>a.psychology.lastExposure</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L529">adaptation.js:529</a></td>
+<td><code>summary.exposures</code></td>
+<td>object definition · <code>Object.fromEntries( Object.entries(a.psychology.memories).map(([k, m]) =&gt; [ k, Object.fromEntries( Object.entries(m.components).map(([e, s]) =&gt; [ e, { level: s.level, pe…</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L535">adaptation.js:535</a></td>
+<td><code>summary.exposures.level</code></td>
+<td>object definition · <code>s.level</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L535">adaptation.js:535</a></td>
+<td><code>summary.exposures.peak</code></td>
+<td>object definition · <code>s.peak</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L535">adaptation.js:535</a></td>
+<td><code>summary.exposures.count</code></td>
+<td>object definition · <code>s.count</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L535">adaptation.js:535</a></td>
+<td><code>summary.exposures.accepted</code></td>
+<td>object definition · <code>s.accepted</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L678">adaptation.js:678</a></td>
+<td><code>api.map</code></td>
+<td>object definition · <code>map</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L679">adaptation.js:679</a></td>
+<td><code>api.elements</code></td>
+<td>object definition · <code>elements</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L680">adaptation.js:680</a></td>
+<td><code>api.labels</code></td>
+<td>object definition · <code>labels</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L681">adaptation.js:681</a></td>
+<td><code>api.bounds</code></td>
+<td>object definition · <code>bounds</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L682">adaptation.js:682</a></td>
+<td><code>api.novelty</code></td>
+<td>object definition · <code>novelty</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L683">adaptation.js:683</a></td>
+<td><code>api.noveltyFloor</code></td>
+<td>object definition · <code>noveltyFloor</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L684">adaptation.js:684</a></td>
+<td><code>api.maintenance</code></td>
+<td>object definition · <code>maintenance</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L685">adaptation.js:685</a></td>
+<td><code>api.initialize</code></td>
+<td>object definition · <code>initialize</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L686">adaptation.js:686</a></td>
+<td><code>api.receptiveness</code></td>
+<td>object definition · <code>receptiveness</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L687">adaptation.js:687</a></td>
+<td><code>api.feedback</code></td>
+<td>object definition · <code>feedback</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L688">adaptation.js:688</a></td>
+<td><code>api.observe</code></td>
+<td>object definition · <code>observe</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L689">adaptation.js:689</a></td>
+<td><code>api.influence</code></td>
+<td>object definition · <code>influence</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L690">adaptation.js:690</a></td>
+<td><code>api.refresh</code></td>
+<td>object definition · <code>refresh</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L691">adaptation.js:691</a></td>
+<td><code>api.knowledge</code></td>
+<td>object definition · <code>knowledge</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L692">adaptation.js:692</a></td>
+<td><code>api.safety</code></td>
+<td>object definition · <code>safety</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L693">adaptation.js:693</a></td>
+<td><code>api.accountability</code></td>
+<td>object definition · <code>accountability</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L694">adaptation.js:694</a></td>
+<td><code>api.advance</code></td>
+<td>object definition · <code>advance</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L695">adaptation.js:695</a></td>
+<td><code>api.work</code></td>
+<td>object definition · <code>work</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L696">adaptation.js:696</a></td>
+<td><code>api.incomeExperience</code></td>
+<td>object definition · <code>incomeExperience</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L697">adaptation.js:697</a></td>
+<td><code>api.messageRate</code></td>
+<td>object definition · <code>messageRate</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L698">adaptation.js:698</a></td>
+<td><code>api.context</code></td>
+<td>object definition · <code>context</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L699">adaptation.js:699</a></td>
+<td><code>api.decision</code></td>
+<td>object definition · <code>decision</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L700">adaptation.js:700</a></td>
+<td><code>api.summary</code></td>
+<td>object definition · <code>summary</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L701">adaptation.js:701</a></td>
+<td><code>api.valid</code></td>
+<td>object definition · <code>valid</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L702">adaptation.js:702</a></td>
+<td><code>api.validSummary</code></td>
+<td>object definition · <code>validSummary</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L704">adaptation.js:704</a></td>
+<td><code>module.exports</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L705">adaptation.js:705</a></td>
+<td><code>root.AntarkyaAdaptation</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

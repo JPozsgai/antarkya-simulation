@@ -29,13 +29,13 @@
     "docs/audit/NARRATIVE-EXAMPLE.md": "ad4593451295be0e5154fc0a392b6756e40ab1a3fa84a262f8b25295bd0f446b",
     "docs/audit/DEVELOPERS.md": "39b11a0481d2e41c7416d34ac766252ab7a20f2ded1c5a417cdc8e52f83dfe36",
     "docs/audit/MEASUREMENT.md": "81fa65cf58b547c8d1047796809a4632623d5bcf7b38d4f48beb10f38ad966cf",
-    "docs/audit/VERIFICATION.md": "f512f0dae5078944c018cc8bfe6a694e2818ad7d95c5c1ad06f2e94c66049fc5",
+    "docs/audit/VERIFICATION.md": "cbd66ad4898c5e6121f4a23ff78e0e9ca661999cdb59c8e6a4f3ef5801944fe9",
     "docs/audit/registry.json": "5531414f91cf58acc420d1b817ad679c443743ddbb97209917c30c2a8700fce7",
     "docs/audit/developer-notes.json": "a096a6b044b42b2e4a4ec1b1c825c56b6ac01f6eb9d48f62b1aeac1253088c45",
     "docs/audit/semantic-baseline.json": "43da3995890e55e1ed37d2cbeeea3039a095929f367daa6c66cf40a789f8b932",
     "docs/audit/frontend-baseline.json": "a9c1d8b5a99eaa74f03ca97ef1e34829005224c14c4757916a951bf33e3f79fa",
     "docs/audit/audit.css": "b032c801b1f939f1d8a19edecfd0f83d0a521eedbf6c5c1a288b152d077bca48",
-    "docs/audit/test-results.txt": "49ce67d3f9da9fbc84fca05f07e6ecea01185e6f7e008d75f2dbc1f8dca1e318"
+    "docs/audit/test-results.txt": "414adc07d4304eae3baf418a5e6c0df9cf604da8ee294dcada33332f78c7974c"
   },
   "sourceSHA256": {
     "model.js": "03ba8fea58d7c3a1f8e8f89cd648144a35d46670aafa940ec00017bebc2967b9",
@@ -114,8 +114,8 @@
     "docs/audit/DEVELOPERS.html": "0780217bb4f5da09c25533c5e9fe565118a6998d9389c61f704d36801592c61e",
     "docs/audit/MEASUREMENT.md": "81fa65cf58b547c8d1047796809a4632623d5bcf7b38d4f48beb10f38ad966cf",
     "docs/audit/MEASUREMENT.html": "4a936ccd33f4118e3883636f48ea17262695794aa0ba5e773a4df790aa357c8f",
-    "docs/audit/VERIFICATION.md": "f512f0dae5078944c018cc8bfe6a694e2818ad7d95c5c1ad06f2e94c66049fc5",
-    "docs/audit/VERIFICATION.html": "b72cd7923d87ffff1604c774d6e96269aef031cae3bff622fcecc4967f3c84c7",
+    "docs/audit/VERIFICATION.md": "cbd66ad4898c5e6121f4a23ff78e0e9ca661999cdb59c8e6a4f3ef5801944fe9",
+    "docs/audit/VERIFICATION.html": "49fa301bac17e90e215258e69e3d6eda1cb00a60d1820e8ce4e15cac138ecbc6",
     "docs/audit/NARRATIVE.md": "baebc268af7e93c20534a5fecd7f219b8951646ee68a29d229e678632a3a6ef8",
     "docs/audit/NARRATIVE.html": "40129cedd67afbb27310db6d1227e52fc0caccccf16e76935c64b04c324953ec",
     "docs/audit/TECHNICAL.md": "f2f7be122026cf521eeb2c5d26447ecd45eece0d51e8e6867b36f99c2bcada79",
