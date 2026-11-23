@@ -345,3 +345,8 @@ The user's decisions in this conversation are authoritative; later corrections s
 
 No chapter is represented as prescribing the twelve proposed simulation indicators verbatim. Evidence, estimates, and new modeling assumptions remain distinguishable.
 
+
+
+## Starting-state correction · 23 November 2026
+
+The user requested correction and publication of the unrealistic starting state. v2.3 retains fixed paired starting societies but reconstructs a pre-policy year with the same numerical rules before adopting any selected reform. It carries prior actions, expectations, learning, ties, balances and ongoing work into month 0. The common inherited 8% flag is removed. Country political proxies and selected existing-instrument observations are sourced; mappings and missing cultural measures remain clearly identified estimates/assumptions. The complete numerical implementation and its evidence limits are in [INITIALIZATION.md](INITIALIZATION.md). This correction does not establish observed national corruption prevalence.

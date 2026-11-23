@@ -1,3 +1,27 @@
+# Antarkya v2.3 validation
+
+23 November 2026 · country starting-state correction
+
+```sh
+node --test --test-concurrency=1 initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
+```
+
+The release suite contains 81 checks. Local verification passed the 80 other checks in the complete run, then passed the all-country extreme-condition check after its fixture was adjusted to recognize compacted pre-policy traces. That rerun executes all twenty country/extreme combinations. The seven dedicated initialization checks were also rerun after final cleanup. GitHub Actions executes the complete final suite before publication. Test files run sequentially to limit concurrent memory pressure from reconstructed snapshots.
+
+The new checks establish that every pre-policy month has active eligible actors; country proxy values and overrides reach the engine; the initial map derives from actual modeled histories; inherited records, experiences and resources persist; future seeds/reforms cannot redraw the past; edited imported starts are rejected; ongoing cases advance across adoption; historical/future IDs remain unique; and money and shared staff time remain conserved. Existing checks retain all-country/all-tool runs, a maximum 240-month Peru/ACA run, evolving personal profiles and five paired worker repetitions.
+
+Pre-policy traces retain realized consequences but discard alternatives no longer used by any decision. Future decision traces must still contain finite alternatives. The cached starting state is independent of the future-event stream. The full counterfactual branch remains exactly paired when no new reform is selected.
+
+No new browser or Android execution test was available for this release. Node executes the shared browser engine and the actual worker scripts, and the entrypoint check verifies script versions and UI element hooks. Those checks do not establish mobile timing or rendered layout. The compressed starting snapshot was about 8.4 MiB in a local Peru check; construction took about 1.5 seconds in the available Node environment. These are engineering observations, not Android performance claims.
+
+Evidence-informed initialization does not validate national corruption prevalence, cultural scores, mapping coefficients, jurisdiction completeness or forecast accuracy. [INITIALIZATION.md](INITIALIZATION.md) lists observations, estimated mappings and remaining gaps. Version 2.3 deliberately requires a new starting-state format.
+
+---
+
+## Historical v2.2 verification record
+
+The following was recorded for the earlier release and is retained as provenance; its publication-status wording does not describe the current release.
+
 # Antarkya v2.2 validation record
 
 23 November 2026 · draft review branch; live site unchanged

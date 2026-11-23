@@ -1,7 +1,7 @@
 name: Model checks
 on:
   push:
-    branches: [main, codex/causal-audit-v2.1]
+    branches: [main, codex/causal-audit-v2.1, codex/country-start-v2.3]
 permissions:
   contents: read
 jobs:
@@ -13,9 +13,9 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --version
-          for file in model.js config.js profiles.js adaptation.js worker.js run-seeds.js visualization.js app.js; do
+          for file in model.js config.js profiles.js baseline.js adaptation.js worker.js run-seeds.js visualization.js app.js; do
             node --check "$file"
           done
       - name: Regression, causal, display and stress checks
-        run: node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
+        run: node --test --test-concurrency=1 initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
 

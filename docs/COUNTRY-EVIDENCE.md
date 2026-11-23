@@ -178,3 +178,9 @@ Each numeric parameter must carry a status: sourced observation, estimated mappi
 World Bank API metadata report last update 11 November 2026. Raw downloaded observations are preserved in the review bundle. Indicators: `NY.GDP.PCAP.PP.CD`, `GOV_WGI_GE_SC`, `GOV_WGI_RL_SC`, `GOV_WGI_RQ_SC`, observation year 2025. The old `*.EST` series are not used. The JSON stores the full numeric precision.
 
 Source-defined sample denominators, dates and jurisdictions must be preserved. OECD institutional-criteria fulfillment is not agent behavior; audit irregularities are not convictions. Old legal sources support only their dated claims. The bounded architecture survey is not a consolidated national legal inventory.
+
+
+
+## 23 November 2026 starting-state update
+
+The original bounded institutional review and its missing values are retained as provenance. The executable v2.3 overlay in `baseline.js` now adds sourced Freedom House political proxies and narrow OECD instrument observations, with explicit estimated numerical mappings. [INITIALIZATION.md](INITIALIZATION.md) provides the input table, source dates, equations and remaining calibration gaps. Cultural measures remain unmeasured. A pre-policy reconstruction supplies coherent behavioral history; it is not empirical validation.
