@@ -85,8 +85,8 @@
  }
  function outcomeMeta(id){return id==='merit'?{method:'Observed appointments in the trailing 12 months',unit:'%',lowerBetter:false}:id==='protection'?{method:'Observed reporting threats in the trailing 12 months',unit:'%',lowerBetter:false}:id==='penalties'?{method:'Actual collection per matured extortion violation; 12-month cohort ending six months earlier',unit:'RU',lowerBetter:false}:null;}
  function eventsFor(report,id,level,month,window=12){if(!report)return[];const from=window?Math.max(0,month-window):0;
-  return report.events.filter(e=>e.month>=0&&e.month<=month&&!e.id.startsWith('INIT-')&&(e.policies[id]||level==='impact'&&e.salient)).map(e=>{
-   const direct=e.policies[id]==='direct',important=e.status==='Formal suspension'||e.status==='Operating'||e.kind==='politics'||e.salient;
+  return report.events.filter(e=>e.month>=0&&e.month<=month&&!e.id.startsWith('INIT-')&&(level==='impact'?e.salient||Object.values(e.policies).includes('direct'):e.policies[id])).map(e=>{
+   const direct=level==='impact'?Object.values(e.policies).includes('direct'):e.policies[id]==='direct',important=e.status==='Formal suspension'||e.status==='Operating'||e.kind==='politics'||e.salient;
    return{...e,relation:direct?'direct policy record':'connected development',score:(direct?4:0)+(e.material?8:0)+(important?3:0)+(e.month>=from?2:0)+e.month/Math.max(1,month)};
   }).sort((a,b)=>b.score-a.score||b.month-a.month||b.update-a.update).filter((e,i,a)=>a.findIndex(x=>x.id===e.id&&x.status===e.status)===i).slice(0,8);
  }

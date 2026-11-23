@@ -40,7 +40,7 @@ test('generic activity does not get credited as a staff rotation',()=>{
 });
 test('read-only event references are relevant, dated and distinguish material changes',()=>{
  const report={events:[{id:'P-education',update:1,month:0,title:'Adopted',status:'Adopted',actors:[],policies:{education:'direct'}},{id:'P-education',update:2,month:3,title:'Setup completed',status:'Operating',actors:[],material:true,policies:{education:'direct'}},{id:'P-pay',update:1,month:4,title:'Pay',status:'Operating',actors:[],policies:{pay:'direct'}},{id:'P-education',update:3,month:9,title:'Future review',status:'Review',actors:[],policies:{education:'direct'}},{id:'E-election',update:1,month:5,title:'Election',salient:true,actors:[],policies:{}}]};
- assert.deepEqual(Q.eventsFor(report,'education','outcome',6).map(x=>x.month),[3,0]);assert.ok(Q.eventsFor(report,'education','impact',6).some(x=>x.id==='E-election'));assert.ok(!Q.eventsFor(report,'education','output',6).some(x=>x.id==='P-pay'));
+ assert.deepEqual(Q.eventsFor(report,'education','outcome',6).map(x=>x.month),[3,0]);assert.ok(Q.eventsFor(report,'education','impact',6).some(x=>x.id==='E-election'));assert.deepEqual(Q.eventsFor(report,'education','impact',6).map(e=>e.id),Q.eventsFor(report,'pay','impact',6).map(e=>e.id));assert.ok(!Q.eventsFor(report,'education','output',6).some(x=>x.id==='P-pay'));
 });
 test('interpretations handle delivery, lag, missing evidence and direction without claiming causation',()=>{
  assert.equal(Q.interpret('output',{value:0,baseline:0}),Q.templates.noOutput);assert.equal(Q.interpret('output',{value:3,baseline:1}),Q.templates.outputMore);
