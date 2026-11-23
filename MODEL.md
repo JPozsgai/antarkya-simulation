@@ -1,6 +1,6 @@
-# Antarkya v2.3 — operational model
+# Antarkya v2.4 — operational model
 
-23 November 2026 · engine and rules 2.3.0
+23 November 2026 · engine and rules 2.4.0
 
 This is an exploratory 1,000-person corruption and anti-corruption model. It combines sourced country descriptors and simplified institutional architecture with explicit provisional behavioral, resource and coverage assumptions. Engineering verification does not establish a calibrated national forecast.
 
@@ -38,6 +38,10 @@ Configured country architecture changes screening, specialist/general referral, 
 
 Editors and journalists belong to existing organizational categories. Recent actual funding dependence and editorial independence affect publication choices. Information travels through geographically constrained exposure and weighted directional ties. Claims, proof, corrections, dismissal and model truth remain separate.
 
+## Corrected dynamics
+
+[The v2.4 dynamics specification](docs/DYNAMICS.md) governs genuine-opportunity counting, bounded service feedback, correlated income/needs, persistent assessed liability, communicated accountability learning and reference approval. It also defines the network layout and remaining parameter uncertainty. Population remains 1,000.
+
 ## Readouts and interface
 
 The analytical plot uses class-reference quadrants, role colors and conduct shapes. Recent repeated corrupt participation fixes distance from the integrity center. Affinity/cooperation changes direction and relative grouping without changing membership or geographical encounters. No baseline distribution is overlaid.
@@ -54,7 +58,7 @@ The initial society includes a twelve-month reconstructed pre-policy year execut
 
 The regression, causal, visualization and stress suites are described in [docs/VALIDATION.md](docs/VALIDATION.md). They test engineering consistency and specific causal pathways. They do not establish empirical effect sizes, comprehensive country-law fidelity, robust sensitivity results or Android-browser performance.
 
-Rules version 2.3.0 deliberately rejects older saved initial-state formats; those trajectories cannot be relabeled as results of the new rules. Recreate a scenario from its settings.
+Rules version 2.4.0 deliberately rejects older saved initial-state formats; those trajectories cannot be relabeled as results of the new rules. Recreate a scenario from its settings.
 
 Conceptual basis: Ajzen (2020), doi: [10.1002/hbe2.195](https://doi.org/10.1002/hbe2.195); [McFadden on economic choices](https://eml.berkeley.edu/wp/mcfadden0300.pdf); Villeneuve, Mugellini and Heide, doi: [10.1007/s10610-019-09410-w](https://doi.org/10.1007/s10610-019-09410-w); the supplied reform-mobilization draft; and the assessment chapter, doi: [10.4337/9781035337712.00043](https://doi.org/10.4337/9781035337712.00043). These sources motivate mechanisms and assessment structure, not the engineering coefficients.
 

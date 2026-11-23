@@ -1,6 +1,8 @@
-# Antarkya v2.3 — executable numerical specification
+# Antarkya v2.4 — executable numerical specification
 
-23 November 2026 · rules version 2.3.0 · exploratory implementation
+23 November 2026 · rules version 2.4.0 · exploratory implementation
+
+**Current dynamics corrections:** [DYNAMICS.md](DYNAMICS.md) supplies the executable v2.4 corrections to opportunity counting, reference reactions, service feedback/work units, finances and liability, accountability beliefs and layout. Its equations supersede the earlier rules in these areas.
 
 **Current starting-state rules:** [INITIALIZATION.md](INITIALIZATION.md) specifies the sourced political proxies, bounded country/instrument mappings and twelve-month pre-policy reconstruction. These replace the empty-history start and common inherited corrupt flag. All constructed histories and mapping coefficients remain estimates; missing cultural data stay explicit.
 
@@ -32,8 +34,8 @@ Every intentional option supplies **nine explicit action-specific consequences**
 
 For option a:
 
-- Need multiplier: `q = clamp((recurring cost + .2)/(expected lawful receipts + .15 cash), .5, 2)`, denominator floor .2.
-- Multiply only economic/self consequence by q. For a corrupt option, subtract `subjective expected financial risk` from that consequence, once.
+- Need multiplier: `q = clamp((recurring cost + .2)/(.90 × expected lawful receipts + .15 cash), .5, 2)`, denominator floor .2, plus .50 × experienced unmet-needs pressure.
+- Multiply economic/self consequence by q, now including the bounded experienced unmet-needs term. For a corrupt option, subtract perceived accountability cost once from each modeled private consequence: R economic/self, .30 R social/self, and (.60 if an officeholder, .15 otherwise) R political/self. Motive weights evaluate these distinct costs; no generic TPB bonus is added.
 - Attitude: `A = sum(weight[k] × subjective consequence[k]) - perceived effort`.
 - Reference expectation N is the explicitly supplied expectation or, for ordinary integrity choices, the actor's honest/corrupt role expectation.
 - Residual perceived capability C is separately represented in [0,1].
@@ -139,11 +141,11 @@ Keep the last 24 meaningful integrity opportunities per person, including comple
 
 Circle is default expected integrity; one qualifying act makes a triangle. Recover only after six months without new qualifying corruption and at least three meaningful completed integrity choices. Idle time and routine purchases cannot recover integrity or replace recent opportunities.
 
-The analytical map has four soft class-reference quadrants. Role color identifies current class; crossing a quadrant does not change membership. Radius is `.30 + .65 × recent corrupt participations/recent meaningful opportunities` when participation is positive. Otherwise a stable jitter fills the central integrity zone, radius .04–.27. Angle combines four-category affinity and weighted cooperation using two bounded passes. Neither angle, plotted proximity nor radius affects geographical contacts or agent knowledge. No baseline distribution is overlaid.
+The analytical map has four soft class-reference quadrants. Role color identifies current class; crossing a quadrant does not change membership. Agents with no recent qualifying participation occupy a network-spaced inner disc up to radius .48; their relative positions there are not different integrity scores. Positive participation uses radius `.54 + .41 × sqrt(rate)`. Cooperative network attraction and local collision handling change layout within those constraints. Coercive links never act as affinity. Class filtering is display-only; see [DYNAMICS.md](DYNAMICS.md).
 
 Lines distinguish cooperation, corrupt cooperation, coercion, support to an organization's representative, membership and funding. Selection highlights relevant ties; only influential actors receive full inspection traces. Four compact class cards show recent participation denominators and paired baseline differences. Pending cases remain in process details.
 
-The open-by-default feed starts with major developments. It reports actual authority changes, substantial six-month fiscal/service/pay changes, expectation consolidation/erosion, disclosures reaching 100 distinct people and consequential repeated coordinated abuse. A potential capture scheme needs at least three connected participants across classes, repeated willing corrupt ties and at least three recent qualifying abuses of public decisions. Network density alone is insufficient. These reporting thresholds do not themselves cause behavior or prove an allegation. The full process log remains available.
+The open-by-default feed starts with major developments. It reports actual authority changes, substantial six-month fiscal/service/pay changes, expectation consolidation/erosion, non-routine disclosures meeting the evidence, reach, public-role and timing criteria in DYNAMICS.md and consequential repeated coordinated abuse. A potential capture scheme needs at least three connected participants across classes, repeated willing corrupt ties and at least three recent qualifying abuses of public decisions. Network density alone is insufficient. These reporting thresholds do not themselves cause behavior or prove an allegation. The full process log remains available.
 
 ## 9. Assessment and comparisons
 
@@ -165,7 +167,7 @@ node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visuali
 
 The causal suite holds unrelated initialization traits and keyed random draws fixed while changing a specific mechanism. Stability tests cover ten countries/all tools, extreme conditions, conserved money/shared time, 240-month Peru/ACA, repeatability, diagnostics, coercion, recovery, imports and worker lifecycle. Projection tests check behavioral radius invariance under affinity changes and confirm display independence.
 
-Rules version 2.3.0 intentionally rejects older saved initial-state formats; silent reuse would mix different numerical rules. Recreate a scenario from its settings rather than treating an older result as a v2.3 trajectory.
+Rules version 2.4.0 intentionally rejects older saved initial-state formats; silent reuse would mix different numerical rules. Recreate a scenario from its settings rather than treating an older result as a v2.4 trajectory.
 
 Remaining limits: real country membership/role distributions, political/cultural calibration, detailed jurisdiction/law, national allocation/cost data, empirical policy/outcome validation, broad sensitivity analysis and actual Android performance/browser QA. These gaps are not resolved by engineering tests. Conceptual references remain the supplied Ajzen, Mugellini/co-authors, assessment chapter and reform-mobilization draft; none establishes these numerical coefficients.
 

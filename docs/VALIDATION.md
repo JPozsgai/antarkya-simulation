@@ -1,3 +1,25 @@
+# Antarkya v2.4 verification
+
+23 November 2026 · population retained at 1,000
+
+```sh
+node --test --test-concurrency=1 dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
+```
+
+The release suite contains 94 checks. The retained all-country/all-tool, actual worker, fixed-snapshot/replay, maximum 240-month, extreme-condition, money, shared-time and individual-policy-learning checks are accompanied by thirteen targeted dynamics tests. These specifically test genuine recovery choices, failed intentions, bounded person/month feedback under multiple waiting requests, unique service contacts and correct waiting accumulation, heterogeneous income/needs and real shortfall transfers, outstanding liability and capped collection, deduplicated and bounded accountability learning, changed choices under identical random draws, approval versus disapproval by references, readable display bands without changing physical geography, coercive links excluded from affinity attraction, a single cost-learning pathway per communicated decision, and net-pay adequacy rather than gross-pay adequacy.
+
+A complete 92-check local run passed before the final communicated-decision deduplication test was added; focused checks cover that final pathway. GitHub Actions runs all 94 tests on the final review head before publication. Broad runs and the targeted identical-draw utility test distinguish intended numerical mechanisms from merely keeping variables finite. No test requires a policy to improve every run or imposes a target national corruption percentage.
+
+The desktop browser completed a paired 120-month education run with the revised display and exposed class filtering and experienced-condition controls. The final public build is checked following deployment. This is not an Android timing, memory or device benchmark. Eight additional ten-year diagnostic trajectories used two event streams and baseline, ACA, education and all-policy configurations while the corrections were being developed; they are engineering investigations, not effect estimates or calibration evidence.
+
+The numerical changes and all new coefficients are documented in [DYNAMICS.md](DYNAMICS.md). They correct implementation and internal scale inconsistencies, but do not establish national prevalence, effect sizes, full jurisdiction fidelity or forecast accuracy. Population scaling is outside this release. Version 2.4 requires a new reconstructed starting snapshot.
+
+---
+
+## Historical v2.3 verification record
+
+The following is retained as a record of earlier releases, not the current release status.
+
 # Antarkya v2.3 validation
 
 23 November 2026 · country starting-state correction

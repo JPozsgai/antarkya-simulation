@@ -3,7 +3,7 @@
 (function(root){
   const clamp=(x,l=0,h=1)=>Math.max(l,Math.min(h,x));
   const elements=['attitude','norm','control','corruptControl','risk','knowledge','reportSafety'];
-  const labels={attitude:'Evaluation of corrupt conduct',norm:'Perceived reference expectations',control:'Lawful/reporting capability',corruptControl:'Feasibility of improper conduct',risk:'Expected financial risk',knowledge:'Usable knowledge',reportSafety:'Expected reporting safety'};
+  const labels={attitude:'Evaluation of corrupt conduct',norm:'Perceived reference expectations',control:'Lawful/reporting capability',corruptControl:'Feasibility of improper conduct',risk:'Expected accountability cost',knowledge:'Usable knowledge',reportSafety:'Expected reporting safety'};
   const integrity=['integrity','report','refuse','recruit','implementation','case','retaliation'];
   const map={
     aca:{elements:{risk:.25,control:.15},contexts:integrity,elementContexts:{control:['case','report']},halfLife:10,channel:'Communicated screening/inquiry and actual staff training',structural:'Mandate, inquiry capacity, referrals and shared case work'},
@@ -25,7 +25,7 @@
   const novelty=.7,noveltyFloor=.05,maintenance=.35;
   function initialize(a,random){
     const base={openness:.2+.6*random('openness'),retention:.2+.6*random('retention'),learning:.2+.6*random('learning')};
-    a.psychology={version:1,baseTraits:base,traits:{...base},initialMotives:[...a.motives],initialSkill:a.skill,baseKnowledge:a.knowledge,baseRisk:a.riskBelief,baseSafety:.2+.6*random('reporting-safety'),expectedIncome:a.income,salience:Array(9).fill(0),memories:{},feedback:0,lastAdvance:0,lastExposure:null};
+    a.psychology={version:1,baseTraits:base,traits:{...base},initialMotives:[...a.motives],initialSkill:a.skill,baseKnowledge:a.knowledge,baseRisk:a.riskBelief,riskPrior:a.riskBelief,accountabilityEvents:[],baseSafety:.2+.6*random('reporting-safety'),expectedIncome:a.income,salience:Array(9).fill(0),memories:{},feedback:0,lastAdvance:0,lastExposure:null};
     return a.psychology;
   }
   function recentParticipation(a){const h=a.meaningful||[];return h.length?h.filter(x=>x.corrupt).length/h.length:0;}
@@ -81,9 +81,17 @@
   }
   function knowledge(a,context){const p=a.psychology,e=influence(a,context);return clamp(p.baseKnowledge+e.knowledge*(1-p.baseKnowledge));}
   function safety(a){const p=a.psychology,e=influence(a,'report');return clamp(p.baseSafety+e.reportSafety*(e.safetyTarget-p.baseSafety));}
+  function accountability(a,event,month,signal,personal=false,credibility=1){
+    const p=a.psychology,key=(personal?'self:':'public:')+event;
+    if(p.accountabilityEvents.includes(key))return false;
+    p.accountabilityEvents.push(key);if(p.accountabilityEvents.length>64)p.accountabilityEvents.shift();
+    const span=personal?.35:.15,target=clamp(p.riskPrior+span*clamp(signal),.03,.95),rate=(personal?.12+.12*p.traits.learning:.015+.025*p.traits.learning)*clamp(credibility);
+    p.baseRisk=clamp(p.baseRisk+rate*(target-p.baseRisk),Math.max(.03,p.riskPrior-.15),Math.min(.95,p.riskPrior+.35));refresh(a);return true;
+  }
   function advance(a,month){
     const p=a.psychology;if(month<=p.lastAdvance)return;
     for(let m=p.lastAdvance;m<month;m++){
+      p.baseRisk+=.005*(p.riskPrior-p.baseRisk);
       for(const [policy,memory]of Object.entries(p.memories)){const halfLife=map[policy].halfLife*(.5+p.traits.retention);for(const state of Object.values(memory.components))state.level*=Math.exp(-Math.LN2/halfLife);}
       const trust=a.experience?.trust??.5,openness=clamp(p.baseTraits.openness+.12*(2*trust-1)-.08*recentParticipation(a));
       p.traits.openness=clamp(p.traits.openness+.01*(openness-p.traits.openness),Math.max(0,p.baseTraits.openness-.15),Math.min(1,p.baseTraits.openness+.15));
@@ -95,7 +103,7 @@
     }p.lastAdvance=month;refresh(a);
   }
   function work(a,time){if(time<=0)return;const p=a.psychology;a.skill+=Math.min(Math.max(0,Math.min(1,p.initialSkill+.20)-a.skill),.003*time*Math.max(0,1-a.skill));feedback(a,{3:.25,4:.15},.6);}
-  function incomeExperience(a,received){const p=a.psychology,observed=Math.max(0,received);p.expectedIncome+=(.05+.25*p.traits.learning)*(observed-p.expectedIncome);feedback(a,{3:clamp((a.cost-observed)/Math.max(.1,a.cost))},.8);}
+  function incomeExperience(a,received){const p=a.psychology,observed=Math.max(0,received);p.expectedIncome+=(.05+.25*p.traits.learning)*(observed-p.expectedIncome);feedback(a,{3:clamp((a.cost-.9*observed)/Math.max(.1,a.cost))},.8);}
   function messageRate(a,credibility){return clamp(credibility)*(.25+.5*a.psychology.traits.openness+.25*a.psychology.traits.learning);}
   function context(name,integrityChoice=false){if(name==='Report observed conduct')return 'report';if(name==='Respond to extortion')return 'refuse';if(name==='Recruitment / promotion')return 'recruit';if(name.startsWith('Implement '))return 'implementation';if(name.startsWith('Case '))return 'case';if(name==='Response to reporting')return 'retaliation';return integrityChoice?'integrity':'other';}
   function decision(a,ctx,option,attitude,norm,control){
@@ -105,7 +113,7 @@
     return {attitude,norm,control:clamp(control),before,influence:e};
   }
   function summary(a){return {traits:{...a.psychology.traits},expectedIncome:a.psychology.expectedIncome,reportingSafety:safety(a),baseMotives:[...a.psychology.initialMotives],influence:influence(a),lastExposure:a.psychology.lastExposure,exposures:Object.fromEntries(Object.entries(a.psychology.memories).map(([k,m])=>[k,Object.fromEntries(Object.entries(m.components).map(([e,s])=>[e,{level:s.level,peak:s.peak,count:s.count,accepted:s.accepted}]))]))};}
-  function valid(a){const p=a.psychology;if(!p||p.version!==1||p.initialMotives?.length!==9||p.salience?.length!==9||!p.initialMotives.every(x=>Number.isFinite(x)&&x>0)||Math.abs(p.initialMotives.reduce((x,y)=>x+y,0)-1)>1e-6||!p.salience.every(x=>Number.isFinite(x)&&x>=0&&x<=1)||!Number.isFinite(p.baseRisk)||p.baseRisk<0||p.baseRisk>1||!Number.isFinite(p.baseKnowledge)||p.baseKnowledge<0||p.baseKnowledge>1||!Number.isFinite(p.initialSkill)||p.initialSkill<0||p.initialSkill>1||!Number.isInteger(p.lastAdvance)||p.lastAdvance< -12)return false;
+  function valid(a){const p=a.psychology;if(!p||p.version!==1||p.initialMotives?.length!==9||p.salience?.length!==9||!p.initialMotives.every(x=>Number.isFinite(x)&&x>0)||Math.abs(p.initialMotives.reduce((x,y)=>x+y,0)-1)>1e-6||!p.salience.every(x=>Number.isFinite(x)&&x>=0&&x<=1)||!Number.isFinite(p.riskPrior)||p.riskPrior<0||p.riskPrior>1||!Array.isArray(p.accountabilityEvents)||p.accountabilityEvents.length>64||!Number.isFinite(p.baseRisk)||p.baseRisk<0||p.baseRisk>1||!Number.isFinite(p.baseKnowledge)||p.baseKnowledge<0||p.baseKnowledge>1||!Number.isFinite(p.initialSkill)||p.initialSkill<0||p.initialSkill>1||!Number.isInteger(p.lastAdvance)||p.lastAdvance< -12)return false;
     if(!Number.isFinite(p.expectedIncome)||p.expectedIncome<0||!Number.isFinite(p.feedback)||p.feedback<0||p.feedback>1||!Number.isFinite(p.baseSafety)||p.baseSafety<0||p.baseSafety>1)return false;
     for(const t of [p.traits,p.baseTraits])if(!t||!['openness','retention','learning'].every(k=>Number.isFinite(t[k])&&t[k]>=0&&t[k]<=1))return false;
     if(!p.memories||Array.isArray(p.memories))return false;for(const [policy,m]of Object.entries(p.memories)){if(!map[policy]||!Array.isArray(m.events)||m.events.length>32)return false;for(const [e,s]of Object.entries(m.components)){const max=map[policy].elements[e];if(!max||![s.level,s.peak,s.target].every(Number.isFinite)||s.level<0||s.level>s.peak+1e-9||s.peak>max+1e-9||s.target<0||s.target>1||!Number.isInteger(s.count)||!Number.isInteger(s.accepted)||s.accepted<0||s.accepted>s.count)return false;}}
@@ -118,6 +126,6 @@
     const last=p.lastExposure;if(last!==null&&(!last||!Object.hasOwn(map,last.policy)||typeof last.event!=='string'||last.event.length>500||!Number.isInteger(last.month)||last.month< -12||!unit(last.quality)||!unit(last.credibility)))return false;
     return true;
   }
-  const api={map,elements,labels,bounds,novelty,noveltyFloor,maintenance,initialize,receptiveness,feedback,observe,influence,refresh,knowledge,safety,advance,work,incomeExperience,messageRate,context,decision,summary,valid,validSummary};
+  const api={map,elements,labels,bounds,novelty,noveltyFloor,maintenance,initialize,receptiveness,feedback,observe,influence,refresh,knowledge,safety,accountability,advance,work,incomeExperience,messageRate,context,decision,summary,valid,validSummary};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AntarkyaAdaptation=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
