@@ -58,16 +58,16 @@ export async function build({write=true}={}){
   }
   catalog[file]=us.map(u=>({name:u.name,line:u.line,endLine:u.endLine,parent:u.parent,refs:u.refs,note:notes[file+':'+u.name]||null}));
   // The viewer includes the entire current file, including developer comments, not an excerpt.
-  const sourceName=file.replaceAll('/','__')+'.html',lookup=new Map();
+  const sourceName=file.replaceAll('/','__').replace(/^\./,'')+'.html',lookup=new Map();
   for(const u of us){if(!lookup.has(u.line))lookup.set(u.line,[]);lookup.get(u.line).push(...u.refs);}
   const lines=src.split('\n').map((line,i)=>{
    const refs=[...new Set(lookup.get(i+1)||[])];return `<span class="source-line" id="L${i+1}"><a class="ln" href="#L${i+1}" aria-label="Line ${i+1}">${i+1}</a><span class="code">${escape(line)}</span>${refs.length?`<span class="line-refs">${refs.map(r=>`<a href="../TECHNICAL.html#${anchor(r)}">${r}</a>`).join(' ')}</span>`:''}</span>`;
   }).join('');
-  put('source/'+sourceName,shell(file,`<h1>${escape(file)}</h1><p>Full annotated source · SHA-256 <code>${sha(src)}</code>. <a href="../../../${escape(file)}">Executable / raw file</a></p><p>Line numbers apply to this documentation edition. Stable mechanism IDs link to rules; the manifest identifies this source snapshot.</p><pre class="source"><code>${lines}</code></pre>`,'../'));
+  put('source/'+sourceName,shell(file,`<h1>${escape(file)}</h1><p>Full annotated source · SHA-256 <code>${sha(src)}</code>. <a href="${file.startsWith('.')?'https://github.com/JPozsgai/antarkya-simulation/blob/main/'+escape(file):'../../../'+escape(file)}">Executable / raw file</a></p><p>Line numbers apply to this documentation edition. Stable mechanism IDs link to rules; the manifest identifies this source snapshot.</p><pre class="source"><code>${lines}</code></pre>`,'../'));
  }
- const loc=s=>symbols.get(s),sourceLink=(s)=>{const x=loc(s);return x?`[\`${s}\`](source/${x.file.replaceAll('/','__')}.html#L${x.line})`:`\`${s}\` (see module data / inline handler)`;};
+ const loc=s=>symbols.get(s),sourceLink=(s)=>{const x=loc(s);return x?`[\`${s}\`](source/${x.file.replaceAll('/','__').replace(/^\./,'')}.html#L${x.line})`:`\`${s}\` (see module data / inline handler)`;};
  const refLink=id=>`[${id}](TECHNICAL.html#${anchor(id)})`;
- const sourceCell=(file,line)=>`[${file}:${line}](source/${file.replaceAll('/','__')}.html#L${line})`;
+ const sourceCell=(file,line)=>`[${file}:${line}](source/${file.replaceAll('/','__').replace(/^\./,'')}.html#L${line})`;
  const toc='<details><summary>Browse all 57 mechanisms</summary>\n\n'+registry.entries.map(e=>`- [${e.id} — ${e.title}](#${anchor(e.id)})`).join('\n')+'\n\n</details>';
  page('index',read(root+'OVERVIEW.md'));
  page('DEVELOPERS',read(root+'DEVELOPERS.md'));page('MEASUREMENT',read(root+'MEASUREMENT.md')); page('VERIFICATION',read(root+'VERIFICATION.md')); 
@@ -80,7 +80,7 @@ export async function build({write=true}={}){
  }
  page('NARRATIVE',narrative+read(root+'NARRATIVE-EXAMPLE.md'));page('TECHNICAL',technical);
  let sourceIndex='# Full annotated code and developer notes\n\nAll active runtime modules, the interface, tests and audit tooling are reproduced below. The JavaScript is formatted for inspection, with mechanism codes and developer notes in the actual files. These comments and formatting preserve the pinned runtime syntax-tree fingerprints. Anonymous callbacks belong to their nearest named unit; data definitions and writes are separately inventoried. Archived v1 is excluded.\n\n';
- sourceIndex+=table(['File','Purpose / source','SHA-256'],files.filter(f=>catalog[f]).map(f=>[f,`[Full file](source/${f.replaceAll('/','__')}.html)`,sourceHashes[f]]));
+ sourceIndex+=table(['File','Purpose / source','SHA-256'],files.filter(f=>catalog[f]).map(f=>[f,`[Full file](source/${f.replaceAll('/','__').replace(/^\./,'')}.html)`,sourceHashes[f]]));
  for(const [file,us]of Object.entries(catalog)){if(!us.length)continue;sourceIndex+=`\n## ${file}\n\n`+table(['Unit / line','Mechanism references','Developer note'],us.map(u=>[sourceCell(file,u.line)+' · '+u.name,u.refs.map(refLink).join(', '),u.note||`Owned by ${u.parent||'module'}; consult the linked technical rule and full function body.`]));}
  page('SOURCE-INDEX',sourceIndex);
  let cross='# Design-to-implementation crosswalk\n\nA mapped decision can be only partly implemented. Read the limits column and [gap register](GAPS.html) before interpreting coverage as conformance. Original decisions and implementation checkpoints are preserved in the [decision register](../AGREED-RULES.md). Later explicit user decisions control where older proposals differ.\n\n';

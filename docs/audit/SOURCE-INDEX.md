@@ -27,9 +27,9 @@ All active runtime modules, the interface, tests and audit tooling are reproduce
 | index.html | [Full file](source/index.html.html) | c78b1eb949a7fc208010876bcb1dcd6a465037e1f1b9e724fc53d121b6fd9f0c |
 | style.css | [Full file](source/style.css.html) | 48253651f5fbf2ab0e951e696c31d2d0a8457eba91393713c2d005dd8312154a |
 | scripts/audit-lib.mjs | [Full file](source/scripts__audit-lib.mjs.html) | 30ed055672b85bc56f33d317e53013d9c3d8489ca3ec8b23d5d17fae7e2cb99a |
-| scripts/build-audit.mjs | [Full file](source/scripts__build-audit.mjs.html) | 7a5b11fc42118d665f8794d16c100bffc4ffc4be9ae7d151e89f8e92a58242d0 |
+| scripts/build-audit.mjs | [Full file](source/scripts__build-audit.mjs.html) | 90f29146bfc9840a7e77aa35469fb774fc27b19a04ffb7dd18d84dfd6d6ea4be |
 | scripts/check-audit.mjs | [Full file](source/scripts__check-audit.mjs.html) | 6eeac4ed317d9e8e99b3c6724962861b23faabf20084cb501483ac70de6742cd |
-| .github/workflows/model-checks.yml | [Full file](source/.github__workflows__model-checks.yml.html) | c826b9d9129da51c002d2586f8a15ea78e8b1fd96263a543f078e1208dfd486b |
+| .github/workflows/model-checks.yml | [Full file](source/github__workflows__model-checks.yml.html) | c826b9d9129da51c002d2586f8a15ea78e8b1fd96263a543f078e1208dfd486b |
 | package.json | [Full file](source/package.json.html) | 0978d90eda1b43066a6898371ff66ec66c83dac068c4106340db82ac09c9f11a |
 | package-lock.json | [Full file](source/package-lock.json.html) | abfd2db3acbd654855495e4d7de70a8bd6702aa60ff4e4bf4efa6ad113f75695 |
 

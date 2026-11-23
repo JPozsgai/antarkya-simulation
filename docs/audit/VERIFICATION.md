@@ -18,7 +18,7 @@ Documentation edition 1.0, 23 November 2026. Audited behavioral base: `9ceb5ae38
 
 The initial full-suite attempt exposed an entrypoint check that searched the first literal occurrence of `model.js`: a new explanatory HTML comment preceded the real script tag. The comment was clarified to refer to the engine without that filename, and the final complete run passed all 111 tests. Formatting also required whitespace-tolerant extraction patterns in the reporting test harness and duration-input assertion; the exercised conditions and assertions remain the same. These are test/annotation maintenance, not behavioral repairs.
 
-The [repository workflow](../../.github/workflows/model-checks.yml) repeats generation/reference/semantic checks, syntax checks and the complete regression suite on the documentation branch and `main`. [GitHub Actions](https://github.com/JPozsgai/antarkya-simulation/actions) supplies independent publication-time execution records. A workflow still running is not a pass; consult its actual completion status and commit.
+The [repository workflow](https://github.com/JPozsgai/antarkya-simulation/blob/main/.github/workflows/model-checks.yml) repeats generation/reference/semantic checks, syntax checks and the complete regression suite on the documentation branch and `main`. [GitHub Actions](https://github.com/JPozsgai/antarkya-simulation/actions/runs/45140067889) supplies independent publication-time execution records. A workflow still running is not a pass; consult its actual completion status and commit.
 
 ## Reproduction
 
