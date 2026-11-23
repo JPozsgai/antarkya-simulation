@@ -14,6 +14,10 @@ The v2.4 correction removes one-option integrity credits and repeated waiting-fe
 
 The impact panel now defaults to the past 12 modeled months, with a since-adoption option. It calculates each rate from actual interval counts and shows reform minus baseline on an explicitly labeled zero-centered chart. Rates and differences retain three decimals; still smaller nonzero differences use scientific notation rather than signed zero. A compact setup/delivery status distinguishes finished setup from current operation. Full-run exports and repetition summaries retain their original cumulative estimand. Behavioral rules, initial societies, random streams and the 1,000-person population remain version 2.4.0. See [the impact diagnostic](docs/IMPACT-DISPLAY.md).
 
+## Policy-specific assessment (display 2.4.2)
+
+Output, outcome and package impact appear together, with policy-specific before/current/final conditions, an aligned month marker and event-linked interpretations. Activity windows are matched and general workloads are expandable context. Monitoring is separate from behavior, and older completed saves remain readable with an explicit missing-monitoring notice. [Definitions, event selection and verification](docs/POLICY-REPORTING.md).
+
 ## Features
 
 - Nine overlapping social/economic/political × self/group/public motive weights, with TPB and subjective random-utility decisions for all roles.
@@ -30,7 +34,7 @@ The impact panel now defaults to the past 12 modeled months, with a since-adopti
 Serve this directory with any static HTTP server; Web Workers need an HTTP(S) origin. No installation, external runtime, API key or backend is required for the application. With Node.js:
 
 ```sh
-node --test --test-concurrency=1 dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
+node --test --test-concurrency=1 reporting.test.js dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
 ```
 
 The initial reconstruction is cached for the active setup. Browser runs then execute in a worker, keeping controls responsive. Each new Run/Run again uses a fresh event seed by default while preserving the initialized society. For exact reproduction, enable **Reuse event seed (exact replay)** in Comparisons and reproducibility. Pause/continue and Step preserve the active event seed. The visible seed is recorded in JSON/CSV exports. Repetition batches show individual conduct and policy-outcome results in a collapsible table. Pace changes rendering/scheduling, not model randomness. Hiding the page pauses the run. Save/load preserves the initial society and completed results; live checkpoint/resume is not supported.
