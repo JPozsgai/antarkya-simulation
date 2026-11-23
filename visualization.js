@@ -24,6 +24,28 @@
    return view.agents.map((a,id)=>{const p=points[id],source=anchors[id];return{id:a.id,...p,radius:Math.hypot(p.x,p.y),angle:Math.atan2(p.y,p.x),rate:source.rate,integrityRadius:source.integrityRadius,band:source.rate>0?'participation':'integrity'};});
  }
  function importantEvents(events,filter='major'){return events.filter(e=>filter==='major'?e.salient||e.kind==='macro'||e.kind==='politics':filter==='all'||e.kind===filter);}
- const api={directions,core,projection,importantEvents};
+ // Counts are cumulative in engine history. Subtract matching month boundaries
+ // before dividing, so a rolling rate is weighted by actual encounters.
+ function impactWindow(history,month,window=0){
+   const end=history.find(x=>x.month===month),startMonth=window?Math.max(0,month-window):0,start=history.find(x=>x.month===startMonth);
+   if(!end||!start)return null;
+   const opportunities=(end.encounterOpportunities||0)-(start.encounterOpportunities||0),corrupt=(end.encounterCorruptActs||0)-(start.encounterCorruptActs||0);
+   if(!Number.isFinite(opportunities)||!Number.isFinite(corrupt)||opportunities<0||corrupt<0||corrupt>opportunities)return null;
+   return{month,fromMonth:startMonth,months:month-startMonth,opportunities,corrupt,rate:opportunities?100*corrupt/opportunities:null};
+ }
+ function impactSeries(reform,baseline,window=0){
+   const months=new Set(baseline.map(x=>x.month));
+   return reform.filter(x=>x.month>0&&months.has(x.month)).map(x=>{
+     const r=impactWindow(reform,x.month,window),b=impactWindow(baseline,x.month,window);
+     return{month:x.month,reform:r,baseline:b,difference:r&&b&&r.rate!==null&&b.rate!==null?r.rate-b.rate:null};
+   });
+ }
+ function impactDifference(value){
+   if(value===null||!Number.isFinite(value))return '—';
+   if(value===0)return '0.000';
+   // Never present a real nonzero effect as signed zero.
+   return(value>0?'+':'')+(Math.abs(value)<.0005?value.toExponential(1):value.toFixed(3));
+ }
+ const api={directions,core,projection,importantEvents,impactWindow,impactSeries,impactDifference};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AntarkyaVisualization=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

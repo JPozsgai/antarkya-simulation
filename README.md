@@ -10,6 +10,10 @@ The starting map now reflects a reconstructed pre-policy year, including actual 
 
 The v2.4 correction removes one-option integrity credits and repeated waiting-feedback amplification, relates living needs to earnings, retains unpaid assessed liability and connects communicated adjudication to perceived costs. The map has a larger integrity disc, collision-aware network spacing, class filtering and a compact conditions panel. See [corrected dynamics and equations](docs/DYNAMICS.md). Population remains fixed at 1,000.
 
+## Impact display correction (2.4.1)
+
+The impact panel now defaults to the past 12 modeled months, with a since-adoption option. It calculates each rate from actual interval counts and shows reform minus baseline on an explicitly labeled zero-centered chart. Rates and differences retain three decimals; still smaller nonzero differences use scientific notation rather than signed zero. A compact setup/delivery status distinguishes finished setup from current operation. Full-run exports and repetition summaries retain their original cumulative estimand. Behavioral rules, initial societies, random streams and the 1,000-person population remain version 2.4.0. See [the impact diagnostic](docs/IMPACT-DISPLAY.md).
+
 ## Features
 
 - Nine overlapping social/economic/political × self/group/public motive weights, with TPB and subjective random-utility decisions for all roles.
