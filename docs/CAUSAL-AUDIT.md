@@ -1,4 +1,4 @@
-# Antarkya v2.1 causal audit register
+# Antarkya v2.2 causal audit register
 
 23 November 2026 · implementation prepared for review
 
@@ -33,3 +33,13 @@ The requirement is a traceable chain: condition → perceptions/opportunities/co
 Code-only fields used for evidence provenance, tracking, viewer summaries or saved state intentionally do not drive agent behavior. In particular, evidence tags, plot coordinates, event-reporting thresholds, integrity icons and assessment scores do not acquire artificial feedback channels.
 
 Country scope values and resource priors remain provisional. The audit implements functional causality; it does not manufacture missing empirical national calibration. See [the executable numerical specification](NUMERICAL-PROPOSAL.md), [action matrices](ACTION-CONSEQUENCES.md) and [validation boundary](VALIDATION.md).
+
+
+
+## Policy influence and profile adaptation extension
+
+The current [executable policy influence specification](POLICY-INFLUENCE.md) adds explicit pathways for all twelve policies and a serialized per-person numerical adaptation state. It replaces fixed motivational weights and uniform education increments with source/history/motive-sensitive receptiveness, separate uptake and strength draws, component-specific bounds, diminishing returns, reinforcement, wear-off, slow trait/motive learning, performed-work skill and financial expectations learned from actual receipts.
+
+The extension also corrects three concrete inconsistencies found during implementation: education adoption no longer creates a knowledge-score improvement before learning; hidden true protection capacity no longer supplies a reporter's subjective fear; and a connection-based staffing proposal blocked by merit enforcement is not recorded as a completed patronage act. Policy-specific risk evidence uses one learning path and education no longer pushes every learner toward a common 30% risk target.
+
+`adaptation.test.js` covers these mechanisms with targeted interventions and bounded long-run exposure checks, in addition to the retained regression, causal, visualization, worker and stability tests. Profile state is visible through the inspector and exported for all 1,000 agents after completion. No file is described as a calibrated empirical personality profile.

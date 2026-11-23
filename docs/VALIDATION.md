@@ -1,36 +1,25 @@
-# Antarkya v2.1 validation record
+# Antarkya v2.2 validation record
 
-23 November 2026 · review branch
+23 November 2026 · draft review branch; live site unchanged
 
-## Executable checks
+## Automated execution
 
 ```sh
-node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js stress.test.js
+node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
 ```
 
-There are 46 checks: 20 existing regression/lifecycle/replay checks, 19 focused causal checks, five analytical-display/entrypoint checks and two extended stability checks.
+**74 native Node checks passed locally**: the retained 46 regression/causal/visualization/worker/stability checks plus 28 checks for policy mapping and individual adaptation. The repository workflow runs the same files and syntax checks on the review commit. GitHub's commit/PR checks report the remote result.
 
-**Native Node verification: 46/46 checks passed**, together with JavaScript syntax checks, in [GitHub Actions run 45087321379](https://github.com/JPozsgai/antarkya-simulation/actions/runs/45087321379), for executable code commit `0f8f4138156c6fbc9f348a5ac88f20bfbfe61174`. The subsequent review-note/label update does not change numerical behavior. The earlier 45-check revision also passed [run 45087027326](https://github.com/JPozsgai/antarkya-simulation/actions/runs/45087027326).
+The current run includes all ten countries/all twelve reforms, low/high extreme conditions, money/shared-time invariants, a 240-month Peru/ACA simulation, exact replay, fixed initialization traits under controlled comparisons, identity-preserving transitions, coercion/refusal and sustained integrity recovery. Knowledge evaluation is read-only and independent of formal education adoption.
 
-The complete pre-final 44-check suite also passed in the available JavaScript runtime using a compatibility harness for Node test/assert/fs/vm interfaces. Native Node verification above is the primary execution result; no browser or Android performance claim follows from it.
+The new adaptation tests cover all twelve targeted mappings; per-agent numerical traits; no selection-only or uninstalled-program learning; trust/motive/history-sensitive receptiveness; distinct acceptance/magnitude draws; shared diminishing caps; overlapping ceilings; decay without history reset; reinforcement and late learning after initial resistance; gradual response to contradictory evidence; evolving motives/traits; performed-work skill and receipt-based financial expectations; real choice consequences; context-specific reporting knowledge; and replay. Continuous reinforcement is also checked over 1,200 isolated monthly updates, beyond the application's 240-month maximum.
 
-## What the checks establish
+Protection perception is explicitly checked against accidental reads of hidden true response capacity. A staffing proposal prevented by merit enforcement is checked against being misclassified as completed patronage. The inspector and completed JSON expose numerical profiles; UI inspection cannot change learning or event draws.
 
-- Ten-country initial structure: 1,000 identities, all four classes, positive normalized motives, support distinct from memberships.
-- Identical initial state across matched branches/repetitions; fresh default event streams and exact intentional replay.
-- Conserved resources and finite shared staff time with all twelve tools; no instantaneous full implementation.
-- Actual coercion/refusal classification, sustained recovery and identity-preserving staff transitions.
-- Separate civil, criminal, administrative, specialist and country referral paths.
-- Controlled consequences of skill, directional trust/affinity, legal scope, declarations, penalty collection, financial security, editorial independence and experienced stakeholder reactions.
-- Policy priority independent of menu/storage order.
-- Unassessable startup rates, bounded recent opportunity rates, no inactivity-driven history erasure and read-only analytical projection.
-- No capture classification based solely on network density.
-- A 240-month Peru/ACA run and all ten countries under low/high extreme political, cultural, administrative and allocation conditions.
+## Browser checks and limits
 
-Tests intervene on a specified mechanism with common starting characteristics and keyed draws; they do not infer causality solely from a different output under a regenerated society.
+A desktop browser completed a paired Peru/education scenario and displayed an actual agent's exposure/acceptance/retention history. The updated initial education outcome was verified identical between baseline and reform before delivery. The final browser build completed a 60-month Peru/education pair: expected retained knowledge was 47.8% in the baseline and 48.3% under the reform, after starting equal. An inspected agent showed four education exposures with two attitude updates accepted and partial retained effects. A completed scenario was saved and reloaded for review without starting a new run. Subsequent changes only validate/escape imported profile summaries; a dedicated numerical-summary test covers that boundary. This is desktop browser QA, not an actual Android timing or memory benchmark.
 
-## Limits
+Numerical influence ranges, trait priors, alignment functions, decay rates and learning coefficients remain explicit provisional assumptions. Tests establish the intended numerical pathways and engineering bounds; they do not validate empirical effect sizes, full national legal fidelity or substantive forecast accuracy. Country calibration and systematic sensitivity analysis remain research work.
 
-A real browser inspection and actual Android timing/memory benchmark remain pending. Syntax/entrypoint/projection tests verify code paths, not responsive layout or touch interaction. Detailed legal/calibration data, empirical country validation and systematic parameter sensitivity are separate research work. Tests can expose inconsistency and unintended dependencies; they cannot prove every possible scenario bug-free.
-
-Rules 2.1.0 use a deliberately different saved-state version from 2.0.0, preventing silent mixing of rules and histories.
+Rules 2.2.0 deliberately reject older initial states; unchanged random characteristic streams are distinct from the versioned state identity. Main and the live Pages deployment remain unchanged until publication is separately requested.

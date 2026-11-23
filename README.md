@@ -1,4 +1,4 @@
-# Antarkya v2.1
+# Antarkya v2.2
 
 A working, dependency-free browser simulation of 1,000 people, organizations, corruption and anti-corruption reform. Run it at **https://jpozsgai.github.io/antarkya-simulation/**. The earlier v1 remains at `/v1/`.
 
@@ -22,7 +22,7 @@ This is an **exploratory implementation, not an empirically validated forecast**
 Serve this directory with any static HTTP server; Web Workers need an HTTP(S) origin. No installation, external runtime, API key or backend is required for the application. With Node.js:
 
 ```sh
-node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js stress.test.js
+node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
 ```
 
 Browser runs execute in a worker, keeping controls responsive. Each new Run/Run again uses a fresh event seed by default while preserving the initialized society. For exact reproduction, enable **Reuse event seed (exact replay)** in Comparisons and reproducibility. Pause/continue and Step preserve the active event seed. The visible seed is recorded in JSON/CSV exports. Repetition batches show individual conduct and policy-outcome results in a collapsible table. Pace changes rendering/scheduling, not model randomness. Hiding the page pauses the run. Save/load preserves the initial society and completed results; live checkpoint/resume is not supported.
@@ -35,6 +35,11 @@ GitHub Pages deploys the root of `main`; `.nojekyll` is retained. Asset URLs inc
 
 Scenario files stay on the visitor's device unless exported. Complete a run to obtain the full tracked log; the live feed and interim event CSV show the most recent 200 updates. A browser may clear local storage, so retain a JSON backup for important scenarios.
 
-## v2.1 audit repairs
+## v2.2 audit repairs
 
-The numerical rules now connect action-specific nine-dimensional consequences, directional trust and affinity, actual staff competence, legal coverage, verification/collection capability, actor workload priorities and experienced-service/stakeholder feedback. See [the causal audit register](docs/CAUSAL-AUDIT.md) and [validation record](docs/VALIDATION.md). No additional macroeconomic variables were added. Rules 2.1.0 intentionally reject older saved initial states; recreate those scenarios from their settings.
+The numerical rules now connect action-specific nine-dimensional consequences, directional trust and affinity, actual staff competence, legal coverage, verification/collection capability, actor workload priorities and experienced-service/stakeholder feedback. See [the causal audit register](docs/CAUSAL-AUDIT.md) and [validation record](docs/VALIDATION.md). No additional macroeconomic variables were added. Rules 2.2.0 intentionally reject older saved initial states; recreate those scenarios from their settings.
+
+
+## Individual adaptation and policy mapping
+
+All twelve reforms have explicit institutional and behavioral pathways in [the policy influence rules](docs/POLICY-INFLUENCE.md). `adaptation.js` implements individual receptiveness, separate uptake/magnitude draws, policy/element-specific ceilings, shared diminishing returns, reinforcement and wear-off. Actual histories slowly change motives, learning/retention/openness, work skill and financial expectations. The inspection panel and full JSON profiles expose these numerical states. All coefficients remain provisional modeling priors.

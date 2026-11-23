@@ -11,9 +11,10 @@ test('major event filter excludes routine case traffic without discarding the fu
  const events=[{kind:'case',title:'Case update'},{kind:'macro',title:'Institution changes'},{kind:'politics',title:'Election'}];assert.equal(V.importantEvents(events).length,2);assert.equal(V.importantEvents(events,'all').length,3);assert.equal(V.importantEvents(events,'case').length,1);assert.equal(events.length,3);
 });
 test('entrypoint loads consistent versions and all UI hooks including arbitrary whole-month duration',()=>{
- const html=fs.readFileSync('index.html','utf8'),app=fs.readFileSync('app.js','utf8'),ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));for(const m of app.matchAll(/\$\('([^']+)'\)/g))if(!m[1].endsWith('-'))assert.ok(ids.has(m[1]),'Missing UI element '+m[1]);assert.match(html,/<input type="number" id="duration" min="6" max="240"/);assert.match(html,/value="major" selected/);assert.ok(!ids.has('casesStat'));for(const file of ['profiles','config','model','run-seeds','visualization','app'])assert.ok(html.includes(file+'.js?v=2.1.0'));assert.ok(app.includes("worker.js?v=2.1.0"));assert.ok(html.indexOf('visualization.js')<html.indexOf('app.js'));
+ const html=fs.readFileSync('index.html','utf8'),app=fs.readFileSync('app.js','utf8'),ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));for(const m of app.matchAll(/\$\('([^']+)'\)/g))if(!m[1].endsWith('-'))assert.ok(ids.has(m[1]),'Missing UI element '+m[1]);assert.match(html,/<input type="number" id="duration" min="6" max="240"/);assert.match(html,/value="major" selected/);assert.ok(!ids.has('casesStat'));for(const file of ['profiles','config','adaptation','model','run-seeds','visualization','app'])assert.ok(html.includes(file+'.js?v=2.2.0'));assert.ok(app.includes("worker.js?v=2.2.0"));assert.ok(html.indexOf('visualization.js')<html.indexOf('app.js'));
 });
 
 test('startup class rates remain unassessable when only uncertain inherited history exists',()=>{
  const s=fixture();assert.ok(s.agents.some(a=>a.corruptActions>0));for(const x of s.classActivity()){assert.equal(x.opportunities,0);assert.equal(x.rate,null);}assert.ok(V.projection(s.view()).every(p=>p.radius<=.27));
 });
+

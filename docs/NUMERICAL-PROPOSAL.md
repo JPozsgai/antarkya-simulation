@@ -1,8 +1,10 @@
-# Antarkya v2.1 — executable numerical specification
+# Antarkya v2.2 — executable numerical specification
 
-23 November 2026 · rules version 2.1.0 · exploratory implementation
+23 November 2026 · rules version 2.2.0 · exploratory implementation
 
-This is the numerical rule set implemented by `model.js`, `config.js`, `worker.js` and `visualization.js`. It replaces the earlier numerical proposal, preserved in [the v0.1 archive](NUMERICAL-PROPOSAL-v0.1.md). The agreed decisions remain in [AGREED-RULES.md](AGREED-RULES.md). A coefficient below is an explicit scenario/engineering assumption unless the country evidence identifies a sourced observation. Executable coverage is not empirical validation.
+**Current adaptation rules:** [POLICY-INFLUENCE.md](POLICY-INFLUENCE.md) specifies the full executable policy–element mapping, individual receptiveness, evolving motives/traits, bounded accumulation, reinforcement and wear-off. Its learning equations replace the earlier fixed-motive and education-risk update assumptions. All new coefficients remain explicit provisional priors.
+
+This is the numerical rule set implemented by `model.js`, `adaptation.js`, `config.js`, `worker.js` and `visualization.js`. It replaces the earlier numerical proposal, preserved in [the v0.1 archive](NUMERICAL-PROPOSAL-v0.1.md). The agreed decisions remain in [AGREED-RULES.md](AGREED-RULES.md). A coefficient below is an explicit scenario/engineering assumption unless the country evidence identifies a sourced observation. Executable coverage is not empirical validation.
 
 ## 1. State and initialization
 
@@ -12,7 +14,7 @@ Every organization starts with at least one person of its principal class. Other
 
 Money is held by people, organizations, treasury, reform allocations and an outside account. Every financial flow uses a conserved transfer. RU are normalized resource units; PM are staff person-months. National GDP and background national indices stay fixed. No inflation, growth, recession or other additional economic variable is introduced.
 
-The initial identity hashes country, conditions and the society seed. Random initial characteristics use a separate stream keyed by country and society seed, excluding parameter values. Each person's Dirichlet draw has its own keyed stream. Changing an override can therefore change its intended mapping without shifting everyone else's home, income, support and skill draws. The same complete initial state is cloned for baseline/reform and every repetition.
+The initial identity hashes the rules version, country, conditions and the society seed; parameter-independent characteristic streams remain separate. Random initial characteristics use a separate stream keyed by country and society seed, excluding parameter values. Each person's Dirichlet draw has its own keyed stream. Changing an override can therefore change its intended mapping without shifting everyone else's home, income, support and skill draws. The same complete initial state is cloned for baseline/reform and every repetition.
 
 Event draws use `(event seed, replicate, month, process, stable context/actor IDs)`. Fresh runs generate fresh event seeds unless exact replay is explicitly selected. A seed fixes the draws, not a pre-scripted sequence of actions: agents respond to the evolving state, and a repeated seed reproduces those responses when the entire scenario is identical.
 
@@ -22,12 +24,14 @@ Motive order is social/self, social/group, social/public; economic/self, economi
 
 Draw weights from a Dirichlet distribution with concentration 6. Interest means by initial class are Citizen [.40,.35,.25], Business [.25,.50,.25], Official [.35,.35,.30], Politician [.25,.30,.45]. Beneficiary group share is `.30 + .002(kinship - 50)`; public share is `.30 + .002(public/private separation - 50)`; self is the remainder. These weak priors do not assign integrity to a class. Motives persist when employment or office changes.
 
+Motive attachments now evolve slowly through bounded experience-weighted updates around the initial profile; they are preserved across role changes. Source credibility, receptiveness, actual exposure, diminishing returns and retention are numerically stored for each person.
+
 Every intentional option supplies **nine explicit action-specific consequences**, through separate three-element social, economic and political arrays. They are not fixed multiples of a generic self/group/public benefit. [ACTION-CONSEQUENCES.md](ACTION-CONSEQUENCES.md) lists the action matrices and dynamic terms generated from the code.
 
 For option a:
 
-- Need multiplier: `q = clamp((recurring cost + .2)/(lawful income + .15 cash), .5, 2)`, denominator floor .2.
-- Multiply only economic/self consequence by q. For a corrupt option, subtract `subjective risk belief × (1 + usable knowledge)` from that consequence, once.
+- Need multiplier: `q = clamp((recurring cost + .2)/(expected lawful receipts + .15 cash), .5, 2)`, denominator floor .2.
+- Multiply only economic/self consequence by q. For a corrupt option, subtract `subjective expected financial risk` from that consequence, once.
 - Attitude: `A = sum(weight[k] × subjective consequence[k]) - perceived effort`.
 - Reference expectation N is the explicitly supplied expectation or, for ordinary integrity choices, the actor's honest/corrupt role expectation.
 - Residual perceived capability C is separately represented in [0,1].
@@ -108,7 +112,7 @@ A proven financial obligation uses modeled liability 2 RU at baseline or 3 after
 
 | Tool | Executed causal pathway |
 | --- | --- |
-| Anti-corruption body | Setup, mandate coverage and acquired organizational/case capacity affect screening, routing and inquiry. |
+| Anti-corruption body | Setup, mandate coverage and acquired organizational/case capacity affect screening, routing and inquiry; encountered procedures can also produce bounded risk/control learning. |
 | Merit | Review/record capability changes actual appointment selection; hired staff skill changes productive capacity. |
 | Rotation | Eligible transfers change work location/staffing while pre-existing networks can persist. |
 | Protection | Credible responses require legal/capability coverage and shared case time; failed protection leaves victim costs. |
@@ -119,7 +123,7 @@ A proven financial obligation uses modeled liability 2 RU at baseline or 3 after
 | Penalties | Real capability and coverage change actual collection after a decision. |
 | Disclosure | Legal/operational access changes visibility available to actual scrutiny/publication. |
 | Complaints | Access, knowledge, cost and protection expectations affect attempted and viable reports. |
-| Education | Operationally delivered learning changes usable knowledge and subjective risk estimates. |
+| Education | Delivered episodes probabilistically change targeted attitude, norm, control and usable knowledge through the individual adaptation profile; no universal risk target. |
 
 After service completion or an experienced waiting month, an affected person updates perceived access/control, trust in delivery, support for the agency and a smaller share of support for the governing party. This does not invent a belief that an unobserved official is corrupt. Honest action may therefore remain attractive through service reliability, while poor delivery creates friction that influences later choices.
 
@@ -141,7 +145,7 @@ The open-by-default feed starts with major developments. It reports actual autho
 
 ## 9. Assessment and comparisons
 
-Inputs, deployment outputs, measure-specific institutional outcomes and joint impact remain separate. Fixed capability diagnostics now use applicable function, coverage, skill/records and workload. Pay/appointments/collection/network continuity retain their actual-observation definitions and minimum denominators. They are read-only; reporting scores do not feed back as automatic behavioral bonuses.
+Inputs, deployment outputs, measure-specific institutional outcomes and joint impact remain separate. Fixed capability diagnostics now use applicable function, coverage, skill/records and workload. Education instead reports the exact mean retained individual knowledge over all 1,000 people as an expected capability diagnostic; it is independent of formal adoption. Pay/appointments/collection/network continuity retain their actual-observation definitions and minimum denominators. They are read-only; reporting scores do not feed back as automatic behavioral bonuses.
 
 The common impact denominator is eligible service, permit, tax, contract, pressure and campaign encounters. Whole-system consequences separately retain diversion, victimization, waiting, retaliation, obstruction and patronage. Class participation rates use person-opportunities, so bilateral participation cannot push a rate over 100%.
 
@@ -149,16 +153,17 @@ Baseline/reform branches and replicate starting societies are identical. Package
 
 ## 10. Execution, tests and remaining limits
 
-Monthly order is accounts/capacity; actor funding priority/disbursement; staff reservations and local implementation priorities; encounters; services; audits/cases; information/funding; membership/staffing; political/resource reviews; integrity recovery; major-event derivation and read-only history.
+Monthly order starts with memory wear-off and slow profile adaptation, then accounts/capacity; actor funding priority/disbursement; staff reservations and local implementation priorities; financial-expectation learning from actual receipts; encounters; services; audits/cases; information/funding; membership/staffing; political/resource reviews; integrity recovery; major-event derivation and read-only history.
 
 Run all executable checks with:
 
 ```sh
-node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js stress.test.js
+node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
 ```
 
 The causal suite holds unrelated initialization traits and keyed random draws fixed while changing a specific mechanism. Stability tests cover ten countries/all tools, extreme conditions, conserved money/shared time, 240-month Peru/ACA, repeatability, diagnostics, coercion, recovery, imports and worker lifecycle. Projection tests check behavioral radius invariance under affinity changes and confirm display independence.
 
-Rules version 2.1.0 intentionally rejects older saved initial-state formats; silent reuse would mix different numerical rules. Recreate a scenario from its settings rather than treating an older result as a v2.1 trajectory.
+Rules version 2.2.0 intentionally rejects older saved initial-state formats; silent reuse would mix different numerical rules. Recreate a scenario from its settings rather than treating an older result as a v2.2 trajectory.
 
 Remaining limits: real country membership/role distributions, political/cultural calibration, detailed jurisdiction/law, national allocation/cost data, empirical policy/outcome validation, broad sensitivity analysis and actual Android performance/browser QA. These gaps are not resolved by engineering tests. Conceptual references remain the supplied Ajzen, Mugellini/co-authors, assessment chapter and reform-mobilization draft; none establishes these numerical coefficients.
+
