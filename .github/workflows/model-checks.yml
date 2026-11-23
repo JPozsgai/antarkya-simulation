@@ -1,0 +1,21 @@
+name: Model checks
+on:
+  push:
+    branches: [main, codex/causal-audit-v2.1]
+permissions:
+  contents: read
+jobs:
+  numerical-rules:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Check JavaScript syntax
+        run: |
+          node --version
+          for file in model.js config.js profiles.js adaptation.js worker.js run-seeds.js visualization.js app.js; do
+            node --check "$file"
+          done
+      - name: Regression, causal, display and stress checks
+        run: node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
+

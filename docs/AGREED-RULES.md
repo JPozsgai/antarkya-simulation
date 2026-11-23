@@ -4,6 +4,24 @@ Discussion checkpoint: 22 November 2026, revised after the agreement on stable g
 
 **Status convention.** “Agreed” records decisions explicitly accepted or stated by the user. “Consequence” explains how those decisions fit together and remains reviewable. “Open” identifies an unresolved model choice. Supporting suggestions from earlier replies are not treated as separately approved numerical rules. No numerical coefficient, country value, or policy effect is empirically calibrated by this document.
 
+## Accepted amendments — 23 November 2026
+
+These later user instructions resolve the corresponding earlier open questions and govern the current draft. Exact numerical coefficients remain modeling assumptions, separately documented for review in [POLICY-INFLUENCE.md](POLICY-INFLUENCE.md).
+
+**Agreed AM01 — The full decision framework remains.** Decisions combine TPB with subjective utility maximization and the nine social/economic/political × self/group/public interests, role expectations, experience and practical constraints. Policy mapping must not narrow the model to TPB alone.
+
+**Agreed AM02 — Policy- and element-specific probabilistic influence.** Each intervention targets only decision elements for which it has a relevant mechanism. Influence magnitude is drawn within a bounded range and interacts with the individual. Maxima differ by policy and element; 0–30% was an education-attitude example, not a universal policy-effect coefficient.
+
+**Agreed AM03 — Numerical individual receptiveness.** The probability and strength of an agent's response depend on actual stored characteristics, interests, beliefs and history. Profiles and updates must be constructed and used by the code, rather than supplied as narrative descriptions.
+
+**Agreed AM04 — Characteristics evolve.** Individual characteristics can change through history and environment. Intervention effects can wear off without reinforcement. Repeated interventions can continue to matter while their additional influence decreases.
+
+**Agreed AM05 — Bound repeated direct influence.** Repeated delivery must not mechanically produce near-complete conversion by the end of a simulation. Diminishing influence, retention/decay, reinforcement and agent differences must be represented together. Exact ceiling and decay functions remain provisional numerical specifications, not empirically established effects.
+
+**Consequence AM06 — Institutional and cognitive pathways remain distinct.** Real pay, legal powers, procedures, records, constraints and outcomes operate alongside changes in perceptions. The same consequence is not assigned multiple generic attitude/risk bonuses. A policy without a justified direct influence on an element receives no such direct bonus.
+
+**Implementation checkpoint AM07.** The v2.2 review draft implements these mechanisms in `adaptation.js`, through encountered-event hooks in `model.js`, with inspection/export of numerical profiles and controlled tests. The draft is not yet a published or empirically calibrated national policy model. Publication remains separate from preparing the review version.
+
 ## 1. Purpose, scale, and time
 
 **Agreed R01 — Purpose.** Simulate how corruption and corruption control develop through individual conduct, organizational relationships, institutionalized role expectations, and collective feedback. Country selection and anti-corruption reform selection are central to the intended user interaction.
@@ -47,7 +65,7 @@ Discussion checkpoint: 22 November 2026, revised after the agreement on stable g
 
 **Consequence R10 — Motives do not classify conduct.** Economic interests cannot automatically mean corruption, and public-oriented interests cannot automatically establish integrity. Tangible/intangible gains, the recipient of gains, the agent's motivation, and whether conduct constitutes corruption are different properties.
 
-**Open.** Attachment distributions and correlations; whether weights must sum to a fixed total; stability or evolution of attachments; how an agent identifies the relevant group when several affiliations exist. Country-wide economic resources must remain distinct from an individual's valuation of economic consequences.
+**Open.** Attachment distributions and correlations; numerical normalization and update coefficients for evolving attachments (see the later amendments); how an agent identifies the relevant group when several affiliations exist. Country-wide economic resources must remain distinct from an individual's valuation of economic consequences.
 
 ## 4. Decision making: TPB and subjective utility
 
@@ -326,3 +344,4 @@ The user's decisions in this conversation are authoritative; later corrections s
 - Ferraz and Finan (2008), DOI 10.1162/qjec.2008.123.2.703; Enikolopov, Petrova, and Sonin (2018), DOI 10.1257/app.20160089; Vosoughi, Roy, and Aral (2018), DOI 10.1126/science.aap9559: consulted for information dissemination, accountability, and misinformation. Their findings are not universal model coefficients.
 
 No chapter is represented as prescribing the twelve proposed simulation indicators verbatim. Evidence, estimates, and new modeling assumptions remain distinguishable.
+
