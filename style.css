@@ -9,3 +9,22 @@
 
 
 .mapcontrols{flex-wrap:wrap}.mapfilters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:14px}.mapfilters select{max-width:190px}.pressuregrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.pressure{font-size:14px;display:grid;grid-template-columns:1fr auto;gap:4px}.pressurebars{grid-column:1/-1;display:flex;flex-direction:column;gap:3px;background:#edf1ed;min-height:15px}.pressurebars i{display:block;background:#256c54;height:6px}.pressurebars .baselinebar{background:#99a69b}.pressure small{grid-column:1/-1;color:#53645e}@media(max-width:440px){.pressuregrid{grid-template-columns:1fr}.mapcontrols{width:100%}.mapcontrols select{min-width:0;flex:1}#map{height:420px}}
+
+/* Policy-specific assessment: three headlines, aligned desktop charts, one readable mobile chart. */
+.assessment-controls{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin:1rem 0;font-size:1rem}
+.assessment-controls select{max-width:100%;min-width:0}.assessment-controls label{font-weight:600}
+.assessment-timeline{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}.assessment-timeline input{flex:1;min-width:120px}
+.assessment-headlines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:1rem 0 0}
+.assessment-headline{display:flex;flex-direction:column;align-items:flex-start;gap:.4rem;min-width:0;background:#f3f6f3;border:1px solid #c4d4c8;border-radius:.8rem;padding:1rem;text-align:left}
+.assessment-headline.selected{border:2px solid #256c54;background:#e9f2eb}.assessment-headline span{font-size:1rem;font-weight:700}
+.assessment-headline strong{font:normal 1.8rem Georgia,serif;overflow-wrap:anywhere;max-width:100%;line-height:1.15}
+.assessment-headline small{font-size:.875rem;color:#53645e;line-height:1.3}
+.assessment-panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:.65rem 0 1rem}
+.assessment-stage{min-width:0;padding:1rem;border:1px solid #d2ddd3;border-radius:.8rem;background:#fff}
+.assessment-stage h3{font:600 1.1rem/1.4 system-ui;margin:0 0 .5rem}.assessment-stage svg{width:100%;height:auto;display:block}
+.report-meaning{font-size:1rem;line-height:1.6;margin:.8rem 0}.eventref{display:inline;padding:.15rem .35rem;margin:.15rem 0;border:1px solid #b8cbbb;border-radius:.35rem;background:#edf4ef;color:#215940;font-size:.875rem;text-align:left;line-height:1.6;overflow-wrap:anywhere}
+.report-more summary{font-size:.875rem}.report-more>div{padding:.4rem 0}.report-event-detail{border-left:3px solid #256c54}
+.report-table-wrap{overflow-x:auto}.report-table-wrap table{min-width:530px}.report-table-wrap th{font-weight:600}
+.assessment-mobile-hint{display:none}
+@media(max-width:850px){.assessment-panels{display:block}.assessment-stage:not(.selected){display:none}.assessment-mobile-hint{display:block}.assessment-headline{padding:.8rem .6rem}.assessment-headline strong{font-size:1.5rem}.assessment-controls select{width:100%}.assessment-controls{gap:.4rem}.assessment-timeline button{font-size:.875rem}}
+@media(max-width:440px){.assessment-headlines{gap:.4rem}.assessment-headline span{font-size:.9375rem}.assessment-headline strong{font-size:1.3rem}.assessment-stage{padding:.8rem}}
