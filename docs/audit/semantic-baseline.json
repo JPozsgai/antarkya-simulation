@@ -1,0 +1,16 @@
+{
+  "baseCommit": "9ceb5ae38510f10d2211366406d150500a364a95",
+  "method": "Babel AST through Prettier 3.6.2; positions/comments/raw spellings excluded; static property keys normalized",
+  "runtime": {
+    "model.js": "f76733f76d50f9dd05334e9314754c376828465064bd3d5f8a26ed0459516549",
+    "adaptation.js": "6a0120c5733a4f4614aeb468d6432e5906120b795c5f794a1835cba2bb56f1f1",
+    "reporting.js": "4b7a98d5886603c1f548c4ce68874d4eb2292674798f8646df0c97877b49c2de",
+    "config.js": "98d03ab2315d4997ba5cb9daa71342dcf1501a40e8bc11a9e2ecc6c6752316b4",
+    "baseline.js": "5f5b0c598e85bd3a2518501eb9ac67f2c381f91abafe6629c41b4af99e946d15",
+    "profiles.js": "156f8519e99a2d1f4a1e923a803f62da4964446e692bc968c43cc3d29ee2c208",
+    "run-seeds.js": "448536767442b62d6e70ca17e821b39efb3970bbbd1836127f233299a163275c",
+    "visualization.js": "0d79c7a58d34b9bc38a23ba751470a86d71188198b1e041c3d1047f103377472",
+    "worker.js": "5e13ff4543e15d65bf7802948d06233827002edec19228977986818fac3de10d",
+    "app.js": "6f9ddbadf14abeab5e8cb43e416a82f2aee6cb80f9a5df8a877c46c7b4fb1c3a"
+  }
+}

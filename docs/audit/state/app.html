@@ -1,0 +1,1636 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>State definitions and writes — app.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="state-definitions-and-writes-app-js">State definitions and writes — app.js</h1>
+<p><a href="../STATE.html">Inventory guide</a>. Whole-function source is authoritative for types, branches, bounds and update semantics.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Field / target</th>
+<th>Operation / expression</th>
+<th>Owner / mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/app.js.html#L25">app.js:25</a></td>
+<td><code>esc.&amp;</code></td>
+<td>object definition · <code>'&amp;amp;'</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L25">app.js:25</a></td>
+<td><code>esc.&lt;</code></td>
+<td>object definition · <code>'&amp;lt;'</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L25">app.js:25</a></td>
+<td><code>esc.&gt;</code></td>
+<td>object definition · <code>'&amp;gt;'</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L25">app.js:25</a></td>
+<td><code>esc.&quot;</code></td>
+<td>object definition · <code>'&amp;quot;'</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L25">app.js:25</a></td>
+<td><code>esc.'</code></td>
+<td>object definition · <code>'&amp;#39;'</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L34">app.js:34</a></td>
+<td><code>number.maximumFractionDigits</code></td>
+<td>object definition · <code>d</code></td>
+<td>number · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L34">app.js:34</a></td>
+<td><code>number.minimumFractionDigits</code></td>
+<td>object definition · <code>d</code></td>
+<td>number · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L49">app.js:49</a></td>
+<td><code>pan.x</code></td>
+<td>object definition · <code>0</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L49">app.js:49</a></td>
+<td><code>pan.y</code></td>
+<td>object definition · <code>0</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L59">app.js:59</a></td>
+<td><code>$('status').textContent</code></td>
+<td>= · <code>message</code></td>
+<td>status · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L77">app.js:77</a></td>
+<td><code>overrides[el.dataset.override]</code></td>
+<td>= · <code>Number(el.value)</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L79">app.js:79</a></td>
+<td><code>getConfig.country</code></td>
+<td>object definition · <code>$('country').value</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L80">app.js:80</a></td>
+<td><code>getConfig.duration</code></td>
+<td>object definition · <code>Number($('duration').value)</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L81">app.js:81</a></td>
+<td><code>getConfig.repetitions</code></td>
+<td>object definition · <code>Number($('repetitions').value)</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L82">app.js:82</a></td>
+<td><code>getConfig.eventSeed</code></td>
+<td>object definition · <code>$('eventSeed').value</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L83">app.js:83</a></td>
+<td><code>getConfig.initialSeed</code></td>
+<td>object definition · <code>draftInitialSeed</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L84">app.js:84</a></td>
+<td><code>getConfig.overrides</code></td>
+<td>object definition · <code>overrides</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L85">app.js:85</a></td>
+<td><code>getConfig.policies</code></td>
+<td>object definition · <code>D.policies .filter((p) =&gt; $('p-' + p.id).checked) .map((p) =&gt; ({ id: p.id, mobilization: Number($('rate-' + p.id).value) / 100 }))</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L87">app.js:87</a></td>
+<td><code>getConfig.policies.id</code></td>
+<td>object definition · <code>p.id</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L87">app.js:87</a></td>
+<td><code>getConfig.policies.mobilization</code></td>
+<td>object definition · <code>Number($('rate-' + p.id).value) / 100</code></td>
+<td>getConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L107">app.js:107</a></td>
+<td><code>$('eventSeed').readOnly</code></td>
+<td>= · <code>!$('reuseEventSeed').checked</code></td>
+<td>summaryText · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L108">app.js:108</a></td>
+<td><code>$('policyCount').textContent</code></td>
+<td>= · <code>c.policies.length + ' selected'</code></td>
+<td>summaryText · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L109">app.js:109</a></td>
+<td><code>$('setupSummary').textContent</code></td>
+<td>= · <code>`${profile().name} · ${c.policies.length} reform${c.policies.length === 1 ? '' : 's'} · ${c.duration} months · ` + (c.policies.length ? c.policies .map( (p) =&gt; D.policies.find((q) =…</code></td>
+<td>summaryText · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L123">app.js:123</a></td>
+<td><code>$('composition').textContent</code></td>
+<td>= · <code>'Provisional scaled composition: ' + counts.map((n, i) =&gt; n + ' ' + A.TYPES[i].toLowerCase()).join(', ') + '. These are model counts, not national population percentages.'</code></td>
+<td>summaryText · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L151">app.js:151</a></td>
+<td><code>$('policies').innerHTML</code></td>
+<td>= · <code>families .map( (f) =&gt; `&lt;details&gt;&lt;summary&gt;${esc(f)}&lt;/summary&gt;&lt;div&gt;${D.policies .filter((p) =&gt; p.family === f) .map( (p) =&gt; `&lt;div class=&quot;policy&quot;&gt;&lt;label&gt;&lt;input ty…</code></td>
+<td>buildPolicies · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L165">app.js:165</a></td>
+<td><code>$('range-' + p.id).hidden</code></td>
+<td>= · <code>!$('p-' + p.id).checked</code></td>
+<td>buildPolicies · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L171">app.js:171</a></td>
+<td><code>$('slide-' + p.id).value</code></td>
+<td>= · <code>value</code></td>
+<td>buildPolicies · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L172">app.js:172</a></td>
+<td><code>$('rate-' + p.id).value</code></td>
+<td>= · <code>value</code></td>
+<td>buildPolicies · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L183">app.js:183</a></td>
+<td><code>base.country</code></td>
+<td>object definition · <code>p.iso3</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L190">app.js:190</a></td>
+<td><code>$('macroFields').innerHTML</code></td>
+<td>= · <code>fields .map( ([key, label]) =&gt; `&lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;o-${key}&quot;&gt;${esc(label)}&lt;/label&gt;&lt;input type=&quot;number&quot; id=&quot;o-${key}&quot; data-override=&quot;${key}&quot; min=&quot;${A.NUMERIC[key][0]}&quot; max=&quot;${A.NUMERIC[key][1]}&quot; step=&quot;0…</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L205">app.js:205</a></td>
+<td><code>$('otherFields').innerHTML</code></td>
+<td>= · <code>other .map( ([key, label]) =&gt; `&lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;o-${key}&quot;&gt;${esc(label)}&lt;/label&gt;&lt;input type=&quot;number&quot; id=&quot;o-${key}&quot; data-override=&quot;${key}&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;0.01&quot; value=&quot;${Number(base[key].toFixe…</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L211">app.js:211</a></td>
+<td><code>$('countryFacts').innerHTML</code></td>
+<td>= · <code>'&lt;h3&gt;Inherited architecture&lt;/h3&gt;&lt;ul&gt;' + p.architecture.map((x) =&gt; '&lt;li&gt;' + esc(x) + '&lt;/li&gt;').join('') + '&lt;/ul&gt;&lt;p class=&quot;small&quot;&gt;&lt;b&gt;Procedural constraint:&lt;/b&gt; ' + esc(p.political.institutional_constraint) + '&lt;/p&gt;&lt;p …</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L219">app.js:219</a></td>
+<td><code>$('countrySources').innerHTML</code></td>
+<td>= · <code>A.Baseline.sources(p.iso3) .map( (x) =&gt; `&lt;li&gt;&lt;a href=&quot;${esc(x.url)}&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;${esc(x.title)}&lt;/a&gt;&lt;/li&gt;`, ) .join('') + p.sources .map( (id) =&gt; …</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L233">app.js:233</a></td>
+<td><code>$('toolBaseline').innerHTML</code></td>
+<td>= · <code>'&lt;p class=&quot;small&quot;&gt;A verified instrument is not necessarily fully operational. An unscoped instrument is not absent.&lt;/p&gt;&lt;ul class=&quot;small&quot;&gt;' + D.policies .map( (q) =&gt; '&lt;li&gt;' + esc(q.label) + …</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L243">app.js:243</a></td>
+<td><code>countryFields.existing_relevant_instrument</code></td>
+<td>object definition · <code>'relevant existing instrument documented'</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L244">app.js:244</a></td>
+<td><code>countryFields.existing_with_documented_scope_gap</code></td>
+<td>object definition · <code>'existing instrument; documented scope gap'</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L245">app.js:245</a></td>
+<td><code>countryFields.not_scoped_not_absent</code></td>
+<td>object definition · <code>'not fully scoped in this evidence pass'</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L253">app.js:253</a></td>
+<td><code>el.dataset.defaultValue</code></td>
+<td>= · <code>el.value</code></td>
+<td>countryFields · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L263">app.js:263</a></td>
+<td><code>$('country').value</code></td>
+<td>= · <code>c.country</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L264">app.js:264</a></td>
+<td><code>$('duration').value</code></td>
+<td>= · <code>String(c.duration)</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L265">app.js:265</a></td>
+<td><code>$('repetitions').value</code></td>
+<td>= · <code>String(c.repetitions)</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L266">app.js:266</a></td>
+<td><code>$('eventSeed').value</code></td>
+<td>= · <code>c.eventSeed</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L268">app.js:268</a></td>
+<td><code>$('o-' + k).value</code></td>
+<td>= · <code>v</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L271">app.js:271</a></td>
+<td><code>$('p-' + p.id).checked</code></td>
+<td>= · <code>!!found</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L272">app.js:272</a></td>
+<td><code>$('range-' + p.id).hidden</code></td>
+<td>= · <code>!found</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L274">app.js:274</a></td>
+<td><code>$('rate-' + p.id).value</code></td>
+<td>= · <code>found.mobilization * 100</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L275">app.js:275</a></td>
+<td><code>$('slide-' + p.id).value</code></td>
+<td>= · <code>found.mobilization * 100</code></td>
+<td>applyConfig · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L285">app.js:285</a></td>
+<td><code>signature.country</code></td>
+<td>object definition · <code>c.country</code></td>
+<td>signature · <a href="../TECHNICAL.html#ak-ini-01">AK-INI-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L285">app.js:285</a></td>
+<td><code>signature.env</code></td>
+<td>object definition · <code>A.conditions(c)</code></td>
+<td>signature · <a href="../TECHNICAL.html#ak-ini-01">AK-INI-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L285">app.js:285</a></td>
+<td><code>signature.initialSeed</code></td>
+<td>object definition · <code>c.initialSeed</code></td>
+<td>signature · <a href="../TECHNICAL.html#ak-ini-01">AK-INI-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L305">app.js:305</a></td>
+<td><code>baseSummary.reporting</code></td>
+<td>object definition · <code>b.reporting()</code></td>
+<td>baseSummary · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L306">app.js:306</a></td>
+<td><code>baseSummary.metrics</code></td>
+<td>object definition · <code>b.metrics()</code></td>
+<td>baseSummary · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L307">app.js:307</a></td>
+<td><code>baseSummary.assessment</code></td>
+<td>object definition · <code>b.assessment()</code></td>
+<td>baseSummary · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L308">app.js:308</a></td>
+<td><code>baseSummary.history</code></td>
+<td>object definition · <code>b.state.history</code></td>
+<td>baseSummary · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L309">app.js:309</a></td>
+<td><code>baseSummary.classActivity</code></td>
+<td>object definition · <code>b.classActivity()</code></td>
+<td>baseSummary · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L322">app.js:322</a></td>
+<td><code>preview.reform</code></td>
+<td>object definition · <code>r.view()</code></td>
+<td>preview · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L323">app.js:323</a></td>
+<td><code>preview.baseline</code></td>
+<td>object definition · <code>baseSummary(b)</code></td>
+<td>preview · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L324">app.js:324</a></td>
+<td><code>preview.comparison</code></td>
+<td>object definition · <code>A.comparison(r.view(), baseSummary(b))</code></td>
+<td>preview · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L325">app.js:325</a></td>
+<td><code>preview.replicate</code></td>
+<td>object definition · <code>1</code></td>
+<td>preview · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L326">app.js:326</a></td>
+<td><code>preview.repetitions</code></td>
+<td>object definition · <code>c.repetitions</code></td>
+<td>preview · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L339">app.js:339</a></td>
+<td><code>$('run').textContent</code></td>
+<td>= · <code>'Run'</code></td>
+<td>stopWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L347">app.js:347</a></td>
+<td><code>$('eventSeed').value</code></td>
+<td>= · <code>c.eventSeed</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L353">app.js:353</a></td>
+<td><code>$('reportEventDetail').hidden</code></td>
+<td>= · <code>true</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L358">app.js:358</a></td>
+<td><code>worker.onmessage</code></td>
+<td>= · <code>(e) =&gt; { const m = e.data; if (m.type === 'error') { running = false; $('run').textContent = 'Run'; status('Simulation stopped: ' + m.message, true); return; } if (m.type === 'compl…</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L362">app.js:362</a></td>
+<td><code>$('run').textContent</code></td>
+<td>= · <code>'Run'</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L370">app.js:370</a></td>
+<td><code>$('run').textContent</code></td>
+<td>= · <code>'Run again'</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L379">app.js:379</a></td>
+<td><code>$('run').textContent</code></td>
+<td>= · <code>running ? 'Pause' : 'Run'</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L383">app.js:383</a></td>
+<td><code>worker.onerror</code></td>
+<td>= · <code>(e) =&gt; { running = false; $('run').textContent = 'Run'; status( 'The simulation could not load or continue. Reload the page; if it persists, export your setup and report the error. ' + (e.message &amp;#124;&amp;#124; ''…</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L385">app.js:385</a></td>
+<td><code>$('run').textContent</code></td>
+<td>= · <code>'Run'</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L392">app.js:392</a></td>
+<td><code>initializeWorker.type</code></td>
+<td>object definition · <code>'init'</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L392">app.js:392</a></td>
+<td><code>initializeWorker.config</code></td>
+<td>object definition · <code>c</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L392">app.js:392</a></td>
+<td><code>initializeWorker.initial</code></td>
+<td>object definition · <code>initial</code></td>
+<td>initializeWorker · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L401">app.js:401</a></td>
+<td><code>start.type</code></td>
+<td>object definition · <code>'pause'</code></td>
+<td>start · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L407">app.js:407</a></td>
+<td><code>start.type</code></td>
+<td>object definition · <code>'run'</code></td>
+<td>start · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L407">app.js:407</a></td>
+<td><code>start.delay</code></td>
+<td>object definition · <code>Number($('pace').value)</code></td>
+<td>start · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L409">app.js:409</a></td>
+<td><code>$('run').textContent</code></td>
+<td>= · <code>'Pause'</code></td>
+<td>start · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L417">app.js:417</a></td>
+<td><code>start.behavior</code></td>
+<td>object definition · <code>'auto'</code></td>
+<td>start · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L417">app.js:417</a></td>
+<td><code>start.block</code></td>
+<td>object definition · <code>'start'</code></td>
+<td>start · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L449">app.js:449</a></td>
+<td><code>labels.attitude</code></td>
+<td>object definition · <code>'Attitude'</code></td>
+<td>learningPanel · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L450">app.js:450</a></td>
+<td><code>labels.norm</code></td>
+<td>object definition · <code>'Perceived norm'</code></td>
+<td>learningPanel · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L451">app.js:451</a></td>
+<td><code>labels.control</code></td>
+<td>object definition · <code>'Lawful/reporting control'</code></td>
+<td>learningPanel · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L452">app.js:452</a></td>
+<td><code>labels.corruptControl</code></td>
+<td>object definition · <code>'Improper-action control'</code></td>
+<td>learningPanel · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L453">app.js:453</a></td>
+<td><code>labels.risk</code></td>
+<td>object definition · <code>'Accountability-cost learning'</code></td>
+<td>learningPanel · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L454">app.js:454</a></td>
+<td><code>labels.knowledge</code></td>
+<td>object definition · <code>'Knowledge'</code></td>
+<td>learningPanel · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L455">app.js:455</a></td>
+<td><code>labels.reportSafety</code></td>
+<td>object definition · <code>'Reporting safety'</code></td>
+<td>learningPanel · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L512">app.js:512</a></td>
+<td><code>$('inspector').innerHTML</code></td>
+<td>= · <code>`&lt;h3&gt;${esc(actor.type)} #${actor.id}&lt;/h3&gt;&lt;p&gt;${esc(org?.name)} · ${actor.state === 'corrupt' ? 'Triangle: qualifying conduct recorded' : 'Circle: expected integrity / recovery criteria satisfied'}&lt;/p&gt;&lt;p&gt;&lt;b&gt;Why highlighted:&lt;/b&gt; ${esc(salie…</code></td>
+<td>inspector · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L544">app.js:544</a></td>
+<td><code>$('feedCount').textContent</code></td>
+<td>= · <code>events.length</code></td>
+<td>renderFeed · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L545">app.js:545</a></td>
+<td><code>$('feed').innerHTML</code></td>
+<td>= · <code>events.length ? events .map( (e) =&gt; `&lt;button class=&quot;event&quot; data-event=&quot;${esc(e.id + '.' + e.update)}&quot; aria-pressed=&quot;${selectedEvent === e.id + '.' + e.update}&quot;&gt;&lt;span class=&quot;eventmeta&quot;&gt;&lt;span&gt;${esc…</code></td>
+<td>renderFeed · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L559">app.js:559</a></td>
+<td><code>$('inspector').innerHTML</code></td>
+<td>= · <code>'&lt;h3&gt;' + esc(e.id) + ' · ' + esc(e.status &amp;#124;&amp;#124; e.kind) + '&lt;/h3&gt;&lt;p&gt;' + esc(e.title) + '&lt;/p&gt;&lt;p class=&quot;small&quot;&gt;Month ' + e.month + ' · highlighted actors ' + …</code></td>
+<td>renderFeed · <a href="../TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L592">app.js:592</a></td>
+<td><code>canvas.width</code></td>
+<td>= · <code>Math.round(w * dpr)</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L593">app.js:593</a></td>
+<td><code>canvas.height</code></td>
+<td>= · <code>Math.round(h * dpr)</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L595">app.js:595</a></td>
+<td><code>ctx.fillStyle</code></td>
+<td>= · <code>'#f6f8f5'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L599">app.js:599</a></td>
+<td><code>ctx.fillStyle</code></td>
+<td>= · <code>'#e8f1eb'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L604">app.js:604</a></td>
+<td><code>ctx.strokeStyle</code></td>
+<td>= · <code>'#d7e1da'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L605">app.js:605</a></td>
+<td><code>ctx.lineWidth</code></td>
+<td>= · <code>1</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L614">app.js:614</a></td>
+<td><code>ctx.strokeStyle</code></td>
+<td>= · <code>'#c9d7cf'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L618">app.js:618</a></td>
+<td><code>anchors.x</code></td>
+<td>object definition · <code>cx + size * 0.88 * zoom * Math.cos(angle)</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L619">app.js:619</a></td>
+<td><code>anchors.y</code></td>
+<td>object definition · <code>cy + size * 0.88 * zoom * Math.sin(angle)</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L621">app.js:621</a></td>
+<td><code>ctx.font</code></td>
+<td>= · <code>'14px system-ui'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L622">app.js:622</a></td>
+<td><code>ctx.textAlign</code></td>
+<td>= · <code>'center'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L624">app.js:624</a></td>
+<td><code>ctx.fillStyle</code></td>
+<td>= · <code>colors[i]</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L628">app.js:628</a></td>
+<td><code>drawMap.x</code></td>
+<td>object definition · <code>cx + p.x * size * zoom</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L628">app.js:628</a></td>
+<td><code>drawMap.y</code></td>
+<td>object definition · <code>cy + p.y * size * zoom</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L651">app.js:651</a></td>
+<td><code>drawMap.a</code></td>
+<td>object definition · <code>a.id</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L652">app.js:652</a></td>
+<td><code>drawMap.b</code></td>
+<td>object definition · <code>r.organizations[t.org].leader</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L653">app.js:653</a></td>
+<td><code>drawMap.strength</code></td>
+<td>object definition · <code>t.affinity</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L654">app.js:654</a></td>
+<td><code>drawMap.lastKind</code></td>
+<td>object definition · <code>'support'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L655">app.js:655</a></td>
+<td><code>drawMap.born</code></td>
+<td>object definition · <code>-1</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L664">app.js:664</a></td>
+<td><code>drawMap.a</code></td>
+<td>object definition · <code>a.id</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L665">app.js:665</a></td>
+<td><code>drawMap.b</code></td>
+<td>object definition · <code>r.organizations[org].leader</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L666">app.js:666</a></td>
+<td><code>drawMap.strength</code></td>
+<td>object definition · <code>0.5</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L667">app.js:667</a></td>
+<td><code>drawMap.lastKind</code></td>
+<td>object definition · <code>'membership'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L668">app.js:668</a></td>
+<td><code>drawMap.born</code></td>
+<td>object definition · <code>-1</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L676">app.js:676</a></td>
+<td><code>drawMap.a</code></td>
+<td>object definition · <code>r.organizations[f.from].leader</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L677">app.js:677</a></td>
+<td><code>drawMap.b</code></td>
+<td>object definition · <code>r.organizations[f.to].leader</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L678">app.js:678</a></td>
+<td><code>drawMap.strength</code></td>
+<td>object definition · <code>Math.min(1, f.total / 5)</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L679">app.js:679</a></td>
+<td><code>drawMap.lastKind</code></td>
+<td>object definition · <code>'funding'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L680">app.js:680</a></td>
+<td><code>drawMap.born</code></td>
+<td>object definition · <code>f.last</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L704">app.js:704</a></td>
+<td><code>ctx.globalAlpha</code></td>
+<td>= · <code>high ? 0.8 : 0.09</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L705">app.js:705</a></td>
+<td><code>ctx.strokeStyle</code></td>
+<td>= · <code>color</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L706">app.js:706</a></td>
+<td><code>ctx.fillStyle</code></td>
+<td>= · <code>color</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L707">app.js:707</a></td>
+<td><code>ctx.lineWidth</code></td>
+<td>= · <code>high ? 1.3 + l.strength : 0.5 + l.strength</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L726">app.js:726</a></td>
+<td><code>ctx.globalAlpha</code></td>
+<td>= · <code>1</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L732">app.js:732</a></td>
+<td><code>ctx.fillStyle</code></td>
+<td>= · <code>colors[a.role]</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L743">app.js:743</a></td>
+<td><code>ctx.strokeStyle</code></td>
+<td>= · <code>selected.includes(a.id) ? '#102f28' : '#fff'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L744">app.js:744</a></td>
+<td><code>ctx.lineWidth</code></td>
+<td>= · <code>selected.includes(a.id) ? 2 : 1</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L749">app.js:749</a></td>
+<td><code>ctx.font</code></td>
+<td>= · <code>'13px system-ui'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L750">app.js:750</a></td>
+<td><code>ctx.textAlign</code></td>
+<td>= · <code>'left'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L751">app.js:751</a></td>
+<td><code>ctx.fillStyle</code></td>
+<td>= · <code>'#53645e'</code></td>
+<td>drawMap · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L919">app.js:919</a></td>
+<td><code>$('reportEventDetail').hidden</code></td>
+<td>= · <code>false</code></td>
+<td>showReportEvent · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L920">app.js:920</a></td>
+<td><code>$('reportEventDetail').innerHTML</code></td>
+<td>= · <code>'&lt;h3&gt;' + esc(event.title) + '&lt;/h3&gt;&lt;p class=&quot;small&quot;&gt;Month ' + event.month + ' · ' + esc(event.id) + ' · update ' + event.update + ' · ' + esc(event.status &amp;#124;&amp;#124; event.kind) + '&lt;/p&gt;&lt;…</code></td>
+<td>showReportEvent · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L953">app.js:953</a></td>
+<td><code>showReportEvent.behavior</code></td>
+<td>object definition · <code>'auto'</code></td>
+<td>showReportEvent · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L953">app.js:953</a></td>
+<td><code>showReportEvent.block</code></td>
+<td>object definition · <code>'nearest'</code></td>
+<td>showReportEvent · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L967">app.js:967</a></td>
+<td><code>select.innerHTML</code></td>
+<td>= · <code>chosen .map( (p) =&gt; '&lt;option value=&quot;' + esc(p.id) + '&quot;&gt;' + esc(D.policies.find((q) =&gt; q.id === p.id).label) + '&lt;/option&gt;', ) .join('')</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L977">app.js:977</a></td>
+<td><code>select.value</code></td>
+<td>= · <code>assessmentPolicy &amp;#124;&amp;#124; ''</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L978">app.js:978</a></td>
+<td><code>select.disabled</code></td>
+<td>= · <code>!chosen.length</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L982">app.js:982</a></td>
+<td><code>$('assessmentMonth').max</code></td>
+<td>= · <code>String(r.month)</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L983">app.js:983</a></td>
+<td><code>$('assessmentMonth').value</code></td>
+<td>= · <code>String(month)</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L984">app.js:984</a></td>
+<td><code>$('assessmentMonth').disabled</code></td>
+<td>= · <code>!r.month</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L985">app.js:985</a></td>
+<td><code>$('assessmentPhase').textContent</code></td>
+<td>= · <code>(final ? 'Run complete · Final conditions' : month === r.month ? 'Current conditions' : 'Reviewing conditions') + ' · month ' + month + (completed &amp;&amp; month !== r.month ? ' · completed…</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L996">app.js:996</a></td>
+<td><code>$('assessment').innerHTML</code></td>
+<td>= · <code>'&lt;p&gt;No additional reform selected. Select a reform to inspect its delivery and policy-specific conditions; package impact remains available below.&lt;/p&gt;'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L998">app.js:998</a></td>
+<td><code>$('reportEventDetail').hidden</code></td>
+<td>= · <code>true</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1006">app.js:1006</a></td>
+<td><code>$('reportEventDetail').hidden</code></td>
+<td>= · <code>true</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1007">app.js:1007</a></td>
+<td><code>$('assessment').innerHTML</code></td>
+<td>= · <code>'&lt;p class=&quot;notice&quot;&gt;Policy-specific starting conditions and delivery histories were not recorded in this saved result. Run the scenario again to create the new assessment. Existing results remain available in the package details below.&lt;/p&gt;'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1029">app.js:1029</a></td>
+<td><code>outSeries.month</code></td>
+<td>object definition · <code>p.month</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1030">app.js:1030</a></td>
+<td><code>outSeries.reform</code></td>
+<td>object definition · <code>Q.windowValue(rp, id, p.month, 12)?.value ?? null</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1031">app.js:1031</a></td>
+<td><code>outSeries.baseline</code></td>
+<td>object definition · <code>Q.windowValue(bp, id, p.month, 12)?.value ?? null</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1034">app.js:1034</a></td>
+<td><code>outcomeSeries.month</code></td>
+<td>object definition · <code>p.month</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1035">app.js:1035</a></td>
+<td><code>outcomeSeries.reform</code></td>
+<td>object definition · <code>p.tools[id].outcome</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1036">app.js:1036</a></td>
+<td><code>outcomeSeries.baseline</code></td>
+<td>object definition · <code>bp.history.find((q) =&gt; q.month === p.month)?.tools[id].outcome ?? null</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1039">app.js:1039</a></td>
+<td><code>impactSeries.month</code></td>
+<td>object definition · <code>p.month</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1040">app.js:1040</a></td>
+<td><code>impactSeries.reform</code></td>
+<td>object definition · <code>p.difference</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1041">app.js:1041</a></td>
+<td><code>impactSeries.baseline</code></td>
+<td>object definition · <code>p.difference === null ? null : 0</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1045">app.js:1045</a></td>
+<td><code>levels.id</code></td>
+<td>object definition · <code>'output'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1046">app.js:1046</a></td>
+<td><code>levels.title</code></td>
+<td>object definition · <code>'Output'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1047">app.js:1047</a></td>
+<td><code>levels.label</code></td>
+<td>object definition · <code>def.output</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1048">app.js:1048</a></td>
+<td><code>levels.value</code></td>
+<td>object definition · <code>output?.value ?? null</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1049">app.js:1049</a></td>
+<td><code>levels.baseline</code></td>
+<td>object definition · <code>baseOutput?.value ?? null</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1050">app.js:1050</a></td>
+<td><code>levels.unit</code></td>
+<td>object definition · <code>def.unit</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1051">app.js:1051</a></td>
+<td><code>levels.period</code></td>
+<td>object definition · <code>'Actual activity · trailing 12 months'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1052">app.js:1052</a></td>
+<td><code>levels.series</code></td>
+<td>object definition · <code>outSeries</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1055">app.js:1055</a></td>
+<td><code>levels.id</code></td>
+<td>object definition · <code>'outcome'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1056">app.js:1056</a></td>
+<td><code>levels.title</code></td>
+<td>object definition · <code>'Outcome'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1057">app.js:1057</a></td>
+<td><code>levels.label</code></td>
+<td>object definition · <code>D.policies.find((p) =&gt; p.id === id).outcome</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1058">app.js:1058</a></td>
+<td><code>levels.value</code></td>
+<td>object definition · <code>tool.outcome</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1059">app.js:1059</a></td>
+<td><code>levels.baseline</code></td>
+<td>object definition · <code>baseTool.outcome</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1060">app.js:1060</a></td>
+<td><code>levels.unit</code></td>
+<td>object definition · <code>outcomeUnit</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1061">app.js:1061</a></td>
+<td><code>levels.period</code></td>
+<td>object definition · <code>meta.method</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1062">app.js:1062</a></td>
+<td><code>levels.series</code></td>
+<td>object definition · <code>outcomeSeries</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1065">app.js:1065</a></td>
+<td><code>levels.id</code></td>
+<td>object definition · <code>'impact'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1066">app.js:1066</a></td>
+<td><code>levels.title</code></td>
+<td>object definition · <code>'Impact'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1067">app.js:1067</a></td>
+<td><code>levels.label</code></td>
+<td>object definition · <code>config.policies.length &gt; 1 ? 'Combined reform package' : 'Reform scenario'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1068">app.js:1068</a></td>
+<td><code>levels.value</code></td>
+<td>object definition · <code>ip?.reform?.rate ?? null</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1069">app.js:1069</a></td>
+<td><code>levels.baseline</code></td>
+<td>object definition · <code>ip?.baseline?.rate ?? null</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1070">app.js:1070</a></td>
+<td><code>levels.unit</code></td>
+<td>object definition · <code>'%'</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1071">app.js:1071</a></td>
+<td><code>levels.period</code></td>
+<td>object definition · <code>'Reform minus baseline, in percentage points · ' + (Number($('impactWindow').value) ? 'past 12 post-adoption months' : 'since adoption')</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1074">app.js:1074</a></td>
+<td><code>levels.series</code></td>
+<td>object definition · <code>impactSeries</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1117">app.js:1117</a></td>
+<td><code>interpret.value</code></td>
+<td>object definition · <code>p.value</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1118">app.js:1118</a></td>
+<td><code>interpret.baseline</code></td>
+<td>object definition · <code>p.baseline</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1119">app.js:1119</a></td>
+<td><code>interpret.lowerBetter</code></td>
+<td>object definition · <code>p.id === 'impact' &amp;#124;&amp;#124; !!meta.lowerBetter</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1120">app.js:1120</a></td>
+<td><code>interpret.outputDelta</code></td>
+<td>object definition · <code>(output?.value ?? 0) - (baseOutput?.value ?? 0)</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1121">app.js:1121</a></td>
+<td><code>interpret.impactDelta</code></td>
+<td>object definition · <code>ip?.difference ?? null</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1122">app.js:1122</a></td>
+<td><code>interpret.estimated</code></td>
+<td>object definition · <code>estimated</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1188">app.js:1188</a></td>
+<td><code>all[k]</code></td>
+<td>= · <code>(all[k] &amp;#124;&amp;#124; 0) + 1</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1252">app.js:1252</a></td>
+<td><code>$('assessment').innerHTML</code></td>
+<td>= · <code>html</code></td>
+<td>renderPolicyAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1276">app.js:1276</a></td>
+<td><code>$('impactPeriod').textContent</code></td>
+<td>= · <code>impact.window ? 'Recent results · ' + (rw?.months ?? 0) + ' modeled months' + (rw?.months ? ' · months ' + (rw.fromMonth + 1) + '–' + rw.month : '') : 'Since reform adoption · months 1–' + r.month</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1282">app.js:1282</a></td>
+<td><code>$('baseImpact').textContent</code></td>
+<td>= · <code>number(bw?.rate, 3)</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1283">app.js:1283</a></td>
+<td><code>$('reformImpact').textContent</code></td>
+<td>= · <code>number(rw?.rate, 3)</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1284">app.js:1284</a></td>
+<td><code>$('impactDifference').textContent</code></td>
+<td>= · <code>V.impactDifference(difference) + (difference === null ? '' : ' percentage points')</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1286">app.js:1286</a></td>
+<td><code>$('impactExplanation').textContent</code></td>
+<td>= · <code>difference === null ? 'Advance the model to create comparable relevant encounters.' : `In this assessment period, reform: ${rw.corrupt} completed corrupt encounters / ${rw.opportunities} relevant encounters; baseline: ${b…</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1303">app.js:1303</a></td>
+<td><code>$('implementationStatus').textContent</code></td>
+<td>= · <code>flows.length ? `Implementation: ${installed} of ${allocations.length} policy-recipient setups completed; ${delivering} delivered reform work in month ${r.month}. Completed setup does not guarantee continued delivery or changed cond…</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1306">app.js:1306</a></td>
+<td><code>$('impactDetails').innerHTML</code></td>
+<td>= · <code>'&lt;table class=&quot;compact-table&quot;&gt;&lt;tr&gt;&lt;th&gt;Whole-system consequence · since adoption&lt;/th&gt;&lt;th&gt;Baseline&lt;/th&gt;&lt;th&gt;Reform&lt;/th&gt;&lt;/tr&gt;' + [ ['All qualifying acts', b.metrics.corruptActs, r.metrics.corruptActs], ['Coerced payment…</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1330">app.js:1330</a></td>
+<td><code>$('distribution').innerHTML</code></td>
+<td>= · <code>'&lt;p class=&quot;small&quot;&gt;Completed simulation participation counts by role at the time of the act; two-party acts can involve two people. Victim payment burdens and waiting are separate.&lt;/p&gt;&lt;table class=&quot;compact-table&quot;&gt;&lt;tr&gt;&lt;th&gt;Role&lt;/th&gt;&lt;th&gt;Act …</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1348">app.js:1348</a></td>
+<td><code>$('repeatResults').textContent</code></td>
+<td>= · <code>stats &amp;&amp; completed.replications.length &gt; 1 ? `Across ${completed.replications.length} repetitions of the same starting society (since adoption): mean paired difference ${V.impactDifference(stats.meanDifference)} points; simulatio…</code></td>
+<td>renderAssessment · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1361">app.js:1361</a></td>
+<td><code>$('replicationDetails').hidden</code></td>
+<td>= · <code>rows.length &lt; 2</code></td>
+<td>renderReplications · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1363">app.js:1363</a></td>
+<td><code>$('replicationTable').innerHTML</code></td>
+<td>= · <code>''</code></td>
+<td>renderReplications · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1406">app.js:1406</a></td>
+<td><code>$('replicationTable').innerHTML</code></td>
+<td>= · <code>html</code></td>
+<td>renderReplications · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1415">app.js:1415</a></td>
+<td><code>selectedImpact.window</code></td>
+<td>object definition · <code>window</code></td>
+<td>selectedImpact · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1415">app.js:1415</a></td>
+<td><code>selectedImpact.series</code></td>
+<td>object definition · <code>series</code></td>
+<td>selectedImpact · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1415">app.js:1415</a></td>
+<td><code>selectedImpact.point</code></td>
+<td>object definition · <code>series.at(-1)</code></td>
+<td>selectedImpact · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1424">app.js:1424</a></td>
+<td><code>drawImpact.series</code></td>
+<td>object definition · <code>series</code></td>
+<td>drawImpact · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1424">app.js:1424</a></td>
+<td><code>drawImpact.window</code></td>
+<td>object definition · <code>window</code></td>
+<td>drawImpact · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1444">app.js:1444</a></td>
+<td><code>$('impactChart').innerHTML</code></td>
+<td>= · <code>`&lt;svg viewBox=&quot;0 0 ${width} 210&quot; role=&quot;img&quot; aria-label=&quot;${mode} reform minus baseline corrupt-encounter rate, in percentage points. Negative values mean fewer corrupt encounters per opportunity.&quot;&gt;&lt;title&gt;Paired difference over time (${mod…</code></td>
+<td>drawImpact · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1455">app.js:1455</a></td>
+<td><code>$('progressFill').style.width</code></td>
+<td>= · <code>(r.month / duration) * 100 + '%'</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1459">app.js:1459</a></td>
+<td><code>$('progressLabel').textContent</code></td>
+<td>= · <code>(completed ? 'Complete' : running ? 'Running' : r.month ? 'Paused' : 'Ready') + ` · month ${r.month} / ${duration}` + (activeConfig ? ' · ' + D.profiles.find((p) =&gt; p.iso3 === activeConfig.country).name : '')</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1463">app.js:1463</a></td>
+<td><code>$('repeatStatus').textContent</code></td>
+<td>= · <code>completed &amp;&amp; activeConfig?.repetitions &gt; 1 ? 'All ' + activeConfig.repetitions + ' repetitions complete · map and cards show repetition 1' : current.repetitions &gt; 1 ? `Repetition ${current.re…</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1475">app.js:1475</a></td>
+<td><code>$('runIdentity').textContent</code></td>
+<td>= · <code>'Starting society ' + initial.initialKey + ' · Event seed ' + (activeConfig?.eventSeed &amp;#124;&amp;#124; getConfig().eventSeed)</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1480">app.js:1480</a></td>
+<td><code>$('snapshotNote').textContent</code></td>
+<td>= · <code>'Initial society ' + initial.initialKey + ' · model ' + A.VERSION + ' · reconstructed pre-policy year'</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1486">app.js:1486</a></td>
+<td><code>$('initialConditions').textContent</code></td>
+<td>= · <code>'Starting estimate: ' + initial.initialization.metrics.corruptState + ' agents with recorded qualifying conduct; ' + initial.initialization.metrics.encounterOpportunities + ' modeled encounters during the reconstr…</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1492">app.js:1492</a></td>
+<td><code>$('corruptStat').textContent</code></td>
+<td>= · <code>number(r.metrics.corruptState / 10) + '%'</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1493">app.js:1493</a></td>
+<td><code>$('actsStat').textContent</code></td>
+<td>= · <code>number(r.metrics.corruptActs, 0)</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1494">app.js:1494</a></td>
+<td><code>$('encounterStat').textContent</code></td>
+<td>= · <code>number(current.comparison.reformRate)</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1495">app.js:1495</a></td>
+<td><code>$('classActivity').innerHTML</code></td>
+<td>= · <code>(r.classActivity &amp;#124;&amp;#124; []) .map((x, i) =&gt; { const baseline = current.baseline.classActivity?.[i]?.rate, delta = x.rate === null &amp;#124;&amp;#124; baseline === null &amp;#124;&amp;#124; baseline === undefined ? null …</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1521">app.js:1521</a></td>
+<td><code>$('actors').innerHTML</code></td>
+<td>= · <code>r.influential .map((x) =&gt; `&lt;button data-actor=&quot;${x.id}&quot;&gt;${esc(r.agents[x.id].type)} #${x.id}&lt;/button&gt;`) .join('')</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1526">app.js:1526</a></td>
+<td><code>$('systemStats').innerHTML</code></td>
+<td>= · <code>'&lt;p class=&quot;small&quot;&gt;Inherited system workload: ' + initial.cases.filter((c) =&gt; c.status !== 'closed').length + ' pending cases and ' + initial.services.length + ' pending services at reform adoption. These totals pr…</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1567">app.js:1567</a></td>
+<td><code>$('decisionPressures').innerHTML</code></td>
+<td>= · <code>pressures .map( ([label, key]) =&gt; '&lt;div class=&quot;pressure&quot;&gt;&lt;span&gt;' + label + '&lt;/span&gt;&lt;b&gt;' + number(r.metrics[key] * 100) + (key === 'meanRisk' ? ' / 100' : '%') + '&lt;…</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1602">app.js:1602</a></td>
+<td><code>request.onupgradeneeded</code></td>
+<td>= · <code>() =&gt; request.result.createObjectStore('scenarios', { keyPath: 'name' })</code></td>
+<td>openDB · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1603">app.js:1603</a></td>
+<td><code>openDB.keyPath</code></td>
+<td>object definition · <code>'name'</code></td>
+<td>openDB · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1604">app.js:1604</a></td>
+<td><code>request.onsuccess</code></td>
+<td>= · <code>() =&gt; resolve(request.result)</code></td>
+<td>openDB · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1605">app.js:1605</a></td>
+<td><code>request.onerror</code></td>
+<td>= · <code>() =&gt; reject(request.error)</code></td>
+<td>openDB · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1606">app.js:1606</a></td>
+<td><code>request.onblocked</code></td>
+<td>= · <code>() =&gt; reject(Error('Storage is blocked by another tab.'))</code></td>
+<td>openDB · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1627">app.js:1627</a></td>
+<td><code>request.onsuccess</code></td>
+<td>= · <code>() =&gt; { result = request.result; }</code></td>
+<td>storeAction · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1630">app.js:1630</a></td>
+<td><code>tx.oncomplete</code></td>
+<td>= · <code>() =&gt; resolve(result)</code></td>
+<td>storeAction · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1631">app.js:1631</a></td>
+<td><code>tx.onerror</code></td>
+<td>= · <code>() =&gt; reject(tx.error)</code></td>
+<td>storeAction · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1632">app.js:1632</a></td>
+<td><code>tx.onabort</code></td>
+<td>= · <code>() =&gt; reject(tx.error &amp;#124;&amp;#124; Error('Storage transaction failed.'))</code></td>
+<td>storeAction · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1644">app.js:1644</a></td>
+<td><code>storeAction.value</code></td>
+<td>object definition · <code>value</code></td>
+<td>storeAction · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1645">app.js:1645</a></td>
+<td><code>storeAction.enumerable</code></td>
+<td>object definition · <code>true</code></td>
+<td>storeAction · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1646">app.js:1646</a></td>
+<td><code>storeAction.writable</code></td>
+<td>object definition · <code>true</code></td>
+<td>storeAction · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1647">app.js:1647</a></td>
+<td><code>storeAction.configurable</code></td>
+<td>object definition · <code>true</code></td>
+<td>storeAction · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1663">app.js:1663</a></td>
+<td><code>$('savedNames').innerHTML</code></td>
+<td>= · <code>'&lt;option value=&quot;&quot;&gt;Choose a scenario&lt;/option&gt;' + names .map((name) =&gt; '&lt;option value=&quot;' + esc(name) + '&quot;&gt;' + esc(name) + '&lt;/option&gt;') .join('')</code></td>
+<td>refreshSaves · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1680">app.js:1680</a></td>
+<td><code>payload.schema</code></td>
+<td>object definition · <code>'antarkya.scenario.v2'</code></td>
+<td>payload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1681">app.js:1681</a></td>
+<td><code>payload.modelVersion</code></td>
+<td>object definition · <code>A.VERSION</code></td>
+<td>payload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1682">app.js:1682</a></td>
+<td><code>payload.profileVersion</code></td>
+<td>object definition · <code>D.schema</code></td>
+<td>payload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1683">app.js:1683</a></td>
+<td><code>payload.createdAt</code></td>
+<td>object definition · <code>new Date().toISOString()</code></td>
+<td>payload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1684">app.js:1684</a></td>
+<td><code>payload.config</code></td>
+<td>object definition · <code>c</code></td>
+<td>payload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1685">app.js:1685</a></td>
+<td><code>payload.initial</code></td>
+<td>object definition · <code>A.createInitial(c)</code></td>
+<td>payload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1686">app.js:1686</a></td>
+<td><code>payload.results</code></td>
+<td>object definition · <code>same ? completed : null</code></td>
+<td>payload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1796">app.js:1796</a></td>
+<td><code>$('reportEventDetail').hidden</code></td>
+<td>= · <code>true</code></td>
+<td>loadPayload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1809">app.js:1809</a></td>
+<td><code>$('run').textContent</code></td>
+<td>= · <code>'Run again'</code></td>
+<td>loadPayload · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1822">app.js:1822</a></td>
+<td><code>blob.type</code></td>
+<td>object definition · <code>type</code></td>
+<td>download · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1825">app.js:1825</a></td>
+<td><code>link.href</code></td>
+<td>= · <code>url</code></td>
+<td>download · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1826">app.js:1826</a></td>
+<td><code>link.download</code></td>
+<td>= · <code>name</code></td>
+<td>download · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1861">app.js:1861</a></td>
+<td><code>el.hidden</code></td>
+<td>= · <code>false</code></td>
+<td>showStorage · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1862">app.js:1862</a></td>
+<td><code>el.open</code></td>
+<td>= · <code>true</code></td>
+<td>showStorage · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1864">app.js:1864</a></td>
+<td><code>showStorage.behavior</code></td>
+<td>object definition · <code>'auto'</code></td>
+<td>showStorage · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1864">app.js:1864</a></td>
+<td><code>showStorage.block</code></td>
+<td>object definition · <code>'nearest'</code></td>
+<td>showStorage · <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1866">app.js:1866</a></td>
+<td><code>$('country').innerHTML</code></td>
+<td>= · <code>D.profiles .map((p) =&gt; '&lt;option value=&quot;' + p.iso3 + '&quot;&gt;' + esc(p.name) + '&lt;/option&gt;') .join('')</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1869">app.js:1869</a></td>
+<td><code>$('country').value</code></td>
+<td>= · <code>'PER'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1896">app.js:1896</a></td>
+<td><code>module data.type</code></td>
+<td>object definition · <code>'step'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1903">app.js:1903</a></td>
+<td><code>module data.type</code></td>
+<td>object definition · <code>'pace'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1903">app.js:1903</a></td>
+<td><code>module data.delay</code></td>
+<td>object definition · <code>Number($('pace').value)</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1914">app.js:1914</a></td>
+<td><code>module data.x</code></td>
+<td>object definition · <code>0</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1914">app.js:1914</a></td>
+<td><code>module data.y</code></td>
+<td>object definition · <code>0</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1918">app.js:1918</a></td>
+<td><code>module data.x</code></td>
+<td>object definition · <code>e.clientX</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1918">app.js:1918</a></td>
+<td><code>module data.y</code></td>
+<td>object definition · <code>e.clientY</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1918">app.js:1918</a></td>
+<td><code>module data.startX</code></td>
+<td>object definition · <code>pan.x</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1918">app.js:1918</a></td>
+<td><code>module data.startY</code></td>
+<td>object definition · <code>pan.y</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1918">app.js:1918</a></td>
+<td><code>module data.moved</code></td>
+<td>object definition · <code>false</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1925">app.js:1925</a></td>
+<td><code>drag.moved</code></td>
+<td>= · <code>true</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1926">app.js:1926</a></td>
+<td><code>module data.x</code></td>
+<td>object definition · <code>drag.startX + dx</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1926">app.js:1926</a></td>
+<td><code>module data.y</code></td>
+<td>object definition · <code>drag.startY + dy</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1937">app.js:1937</a></td>
+<td><code>nearest.id</code></td>
+<td>object definition · <code>a.id</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1937">app.js:1937</a></td>
+<td><code>nearest.d</code></td>
+<td>object definition · <code>Math.hypot(positions[a.id].x - x, positions[a.id].y - y)</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1951">app.js:1951</a></td>
+<td><code>module data.name</code></td>
+<td>object definition · <code>name</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1951">app.js:1951</a></td>
+<td><code>module data.payload</code></td>
+<td>object definition · <code>payload()</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1951">app.js:1951</a></td>
+<td><code>module data.updated</code></td>
+<td>object definition · <code>Date.now()</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L1953">app.js:1953</a></td>
+<td><code>$('savedNames').value</code></td>
+<td>= · <code>name</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L2097">app.js:2097</a></td>
+<td><code>e.target.value</code></td>
+<td>= · <code>''</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L2102">app.js:2102</a></td>
+<td><code>$('reportEventDetail').hidden</code></td>
+<td>= · <code>true</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/app.js.html#L2121">app.js:2121</a></td>
+<td><code>module data.type</code></td>
+<td>object definition · <code>'pause'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="../TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

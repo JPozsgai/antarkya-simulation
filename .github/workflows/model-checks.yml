@@ -1,7 +1,7 @@
 name: Model checks
 on:
   push:
-    branches: [main, codex/causal-audit-v2.1, codex/country-start-v2.3, codex/dynamics-v2.4, codex/impact-display-v2.4.1, codex/policy-report-v2.4.2]
+    branches: [main, codex/causal-audit-v2.1, codex/country-start-v2.3, codex/dynamics-v2.4, codex/impact-display-v2.4.1, codex/policy-report-v2.4.2, codex/auditor-documentation]
 permissions:
   contents: read
 jobs:
@@ -12,6 +12,10 @@ jobs:
       - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
+      - name: Install pinned documentation tooling
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify audit documentation, references and unchanged runtime
+        run: npm run docs:check
       - name: Check JavaScript syntax
         run: |
           node --version
@@ -20,4 +24,3 @@ jobs:
           done
       - name: Regression, causal, display and stress checks
         run: node --test --test-concurrency=1 reporting.test.js dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
-

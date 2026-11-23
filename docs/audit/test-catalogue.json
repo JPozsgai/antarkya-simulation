@@ -1,0 +1,557 @@
+[
+  {
+    "file": "adaptation.test.js",
+    "line": 75,
+    "name": "all twelve policy mappings are explicit, distinct and leave untargeted elements absent"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 92,
+    "name": "profiles contain reproducible numerical susceptibility traits without redrawing other traits"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 107,
+    "name": "selecting education or funding a still-uninstalled programme cannot teach an agent"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 124,
+    "name": "receptiveness responds to source trust, individual traits, motives and own history"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 143,
+    "name": "uptake and conditional influence are distinct random draws"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 162,
+    "name": "repeat exposure caps diminish and are shared across organizational sources"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 177,
+    "name": "thousands of fully delivered exposures stay below per-policy and per-element ceilings"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 196,
+    "name": "wear-off changes retained influence without resetting exposure history or lifetime conduct"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 215,
+    "name": "reinforcement can restore lost influence after novelty is exhausted without raising the ceiling"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 232,
+    "name": "retention traits change decay rather than the original influence cap"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 257,
+    "name": "history and environment slowly change actual motives and traits while preserving positive weights"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 277,
+    "name": "professional skill changes with performed work and cannot jump or erase expertise"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 294,
+    "name": "education reaches attitude, norm and control in actual choices, keeping the nine interests"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 327,
+    "name": "a penalty exposure changes perceived cost once without adding attitude/norm/control bonuses"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 344,
+    "name": "report-channel knowledge and control are specific to reporting contexts"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 358,
+    "name": "identical exposure draws reproduce profiles and independent draws yield different histories"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 394,
+    "name": "skill learning feeds real subsequent organizational capacity"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 409,
+    "name": "a known inactive or suspended reform stops new exposures while memories can wear off"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 424,
+    "name": "continuous reinforcement over 1,200 months retains partial bounded influence"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 442,
+    "name": "financial expectations learn from actual total receipts with individual learning rates"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 459,
+    "name": "a later change in receptiveness can permit modest new learning after repeated rejected messages"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 477,
+    "name": "conflicting credible experience adjusts the retained target without deleting earlier history"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 490,
+    "name": "a corrupt staffing proposal prevented by real merit review is not a completed patronage act"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 509,
+    "name": "formal education adoption cannot manufacture knowledge before anyone learns"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 524,
+    "name": "knowledge assessment responds continuously to retained learning and subsequent wear-off"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 541,
+    "name": "agents do not read hidden true protection capacity when deciding whether to report"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 572,
+    "name": "experienced protection and credible failure change subjective safety in opposite directions"
+  },
+  {
+    "file": "adaptation.test.js",
+    "line": 589,
+    "name": "inspection summaries stay numerical and reject malformed imported learning histories"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 45,
+    "name": "country overrides preserve underlying person draws while reconstructed histories can respond"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 79,
+    "name": "all nine consequence dimensions can independently affect the utility choice"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 100,
+    "name": "implemented encounter consequences distinguish social, economic and political domains"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 120,
+    "name": "directional trust changes only the intended direction and zero ties confer no access"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 150,
+    "name": "affinity changes contact routing while locations and random keys stay fixed"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 179,
+    "name": "individual staff competence contributes to effective organizational capacity"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 196,
+    "name": "financial security changes subjective economic gains without knowledge of hidden corruption"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 211,
+    "name": "verification of covered personal declarations affects audit detection"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 248,
+    "name": "zero legal scrutiny scope prevents audit detection despite trained capacity"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 276,
+    "name": "penalty collection capacity changes actual transferred resources after the same decision"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 311,
+    "name": "policy ordering follows actor priorities independently of menu/storage order"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 351,
+    "name": "experienced waiting changes support and perceived access without inventing corruption information"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 376,
+    "name": "resource-review utility responds to experienced stakeholder support"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 405,
+    "name": "social sharing uses receiver trust and ignores zero-strength links"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 421,
+    "name": "editorial independence and real funding dependence enter publication incentives"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 456,
+    "name": "recent participation denominators remain bounded and inactivity cannot erase history"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 485,
+    "name": "a dense network alone does not produce a capture event; repeated abuse is required"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 511,
+    "name": "country mandates change real referrals without merging investigation, prosecution and courts"
+  },
+  {
+    "file": "audit.test.js",
+    "line": 538,
+    "name": "out-of-scope audits cannot create false allegations through a false-positive draw"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 38,
+    "name": "a one-option duty and repeated calls without a new choice cannot inflate integrity or recovery"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 73,
+    "name": "failed or deferred intentions do not become completed integrity choices"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 87,
+    "name": "twenty waiting requests have one bounded monthly effect on trust and control"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 114,
+    "name": "waiting is accumulated as request-months, without inventing new service contacts or recounting it at completion"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 144,
+    "name": "living-needs priors share the earnings scale and retain heterogeneous financial pressure"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 162,
+    "name": "uncollected adjudicated liability persists, and subsequent collection transfers real money once"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 216,
+    "name": "personally experienced and communicated accountability updates are bounded, deduplicated and reversible over time"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 238,
+    "name": "higher perceived accountability changes actual utility choices under identical event draws"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 271,
+    "name": "reference disapproval can transmit an expectation instead of every lawful interaction manufacturing approval"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 292,
+    "name": "network layout spreads the healthy disc while preserving participation bands, default integrity and physical geography"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 313,
+    "name": "coercive ties cannot attract victims as though they indicated affinity or voluntary cooperation"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 324,
+    "name": "a public decision has one cost-learning pathway and cannot replay an already personally experienced sanction"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 348,
+    "name": "pay adequacy assesses modeled take-home receipts rather than gross receipts"
+  },
+  {
+    "file": "dynamics.test.js",
+    "line": 362,
+    "name": "saved-state verification accepts key order and insignificant floating rounding while rejecting substantive edits"
+  },
+  {
+    "file": "initialization.test.js",
+    "line": 23,
+    "name": "political defaults use sourced country scores and keep unmeasured culture explicit"
+  },
+  {
+    "file": "initialization.test.js",
+    "line": 46,
+    "name": "instrument-specific observations inform bounded estimates without treating missing criteria as no safeguards"
+  },
+  {
+    "file": "initialization.test.js",
+    "line": 65,
+    "name": "the pre-policy year executes all twelve months, with eligible actors throughout"
+  },
+  {
+    "file": "initialization.test.js",
+    "line": 85,
+    "name": "month zero has coherent conduct, ongoing work, cross-class ties and behavior-derived map positions"
+  },
+  {
+    "file": "initialization.test.js",
+    "line": 113,
+    "name": "pre-policy history is independent of reform, duration, repetitions and future-event seeds"
+  },
+  {
+    "file": "initialization.test.js",
+    "line": 136,
+    "name": "a saved reconstructed snapshot is accepted exactly and rejects edited histories and old starts"
+  },
+  {
+    "file": "initialization.test.js",
+    "line": 155,
+    "name": "inherited casework advances across adoption without duplicate IDs, invalid clocks or lost money"
+  },
+  {
+    "file": "model.test.js",
+    "line": 30,
+    "name": "ten country societies: 1,000 people, overlapping motives, independent support and membership"
+  },
+  {
+    "file": "model.test.js",
+    "line": 51,
+    "name": "reform selection, mobilization, duration and future-event seed do not regenerate the initial society"
+  },
+  {
+    "file": "model.test.js",
+    "line": 67,
+    "name": "paired no-new-reform branches are identical; repetitions share state but subsequent events differ"
+  },
+  {
+    "file": "model.test.js",
+    "line": 81,
+    "name": "diagnostics, rendering and actor inspection do not mutate state or random events"
+  },
+  {
+    "file": "model.test.js",
+    "line": 101,
+    "name": "each country conserves resources and shared time with all twelve reforms"
+  },
+  {
+    "file": "model.test.js",
+    "line": 124,
+    "name": "initial zero mobilization is persistent until a review; full funding does not install capacity immediately"
+  },
+  {
+    "file": "model.test.js",
+    "line": 139,
+    "name": "single act switches display; inactivity cannot recover; six months and three meaningful choices can"
+  },
+  {
+    "file": "model.test.js",
+    "line": 175,
+    "name": "coercion records the official as perpetrator without marking the victim corrupt"
+  },
+  {
+    "file": "model.test.js",
+    "line": 201,
+    "name": "unaccepted corrupt proposals are not counted as integrity by the proposer"
+  },
+  {
+    "file": "model.test.js",
+    "line": 223,
+    "name": "employment transitions retain identity, money, history, home and existing ties"
+  },
+  {
+    "file": "model.test.js",
+    "line": 240,
+    "name": "China uses personnel appointment; civil and criminal functions remain distinct"
+  },
+  {
+    "file": "model.test.js",
+    "line": 264,
+    "name": "case deduplication and policy costs are explicit; diagnostics use observed denominators"
+  },
+  {
+    "file": "model.test.js",
+    "line": 287,
+    "name": "reject invalid scenario settings"
+  },
+  {
+    "file": "model.test.js",
+    "line": 310,
+    "name": "serialized initial society is structurally verified and retained without regeneration"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 39,
+    "name": "all twelve tools have distinct output definitions and relevant starting conditions"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 61,
+    "name": "policy starting snapshots precede formal adoption and remain fixed during the run"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 75,
+    "name": "recording and interpretation do not consume RNG or change the simulated society"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 97,
+    "name": "same published engine produces identical initialization and conduct with monitoring enabled"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 123,
+    "name": "output uses weighted actual activity over equal historical windows"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 143,
+    "name": "delivered teaching is distinct from accepted influence and duplicate contacts"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 164,
+    "name": "generic activity does not get credited as a staff rotation"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 179,
+    "name": "read-only event references are relevant, dated and distinguish material changes"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 245,
+    "name": "interpretations handle delivery, lag, missing evidence and direction without claiming causation"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 264,
+    "name": "optional monitoring roundtrips without changing initial-state compatibility and rejects malformed records"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 367,
+    "name": "all twelve policy renderings show relevant before/current conditions and stage panels"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 404,
+    "name": "completion updates the final comparison and review slider without changing results"
+  },
+  {
+    "file": "reporting.test.js",
+    "line": 431,
+    "name": "older saved results get an honest monitoring-unavailable notice"
+  },
+  {
+    "file": "run-seeds.test.js",
+    "line": 22,
+    "name": "new runs get distinct event identities without modifying settings or society"
+  },
+  {
+    "file": "run-seeds.test.js",
+    "line": 48,
+    "name": "explicit exact replay consumes no new entropy and reproduces the entire event history"
+  },
+  {
+    "file": "run-seeds.test.js",
+    "line": 62,
+    "name": "fresh event seeds retain matching baseline/reform randomness and separate initialization"
+  },
+  {
+    "file": "stress.test.js",
+    "line": 15,
+    "name": "Peru ACA completes maximum 240-month duration with finite and conserved state"
+  },
+  {
+    "file": "stress.test.js",
+    "line": 35,
+    "name": "all-country extreme conditions retain valid resources, workload and decision utilities"
+  },
+  {
+    "file": "visualization.test.js",
+    "line": 22,
+    "name": "impact preserves the small nonzero difference from the reported run"
+  },
+  {
+    "file": "visualization.test.js",
+    "line": 43,
+    "name": "recent impact uses weighted encounter counts at matching month boundaries"
+  },
+  {
+    "file": "visualization.test.js",
+    "line": 66,
+    "name": "recent paired impact respects each branch denominator and never mutates history"
+  },
+  {
+    "file": "visualization.test.js",
+    "line": 89,
+    "name": "analytical projection preserves behavior radii when affinity and cooperation change"
+  },
+  {
+    "file": "visualization.test.js",
+    "line": 113,
+    "name": "new meaningful choices change radial position; elapsed time and role do not"
+  },
+  {
+    "file": "visualization.test.js",
+    "line": 144,
+    "name": "major event filter excludes routine case traffic without discarding the full log"
+  },
+  {
+    "file": "visualization.test.js",
+    "line": 159,
+    "name": "entrypoint loads consistent versions and all UI hooks including arbitrary whole-month duration"
+  },
+  {
+    "file": "visualization.test.js",
+    "line": 180,
+    "name": "startup map and class rates use completed choices from the reconstructed past"
+  },
+  {
+    "file": "worker.test.js",
+    "line": 61,
+    "name": "worker step/pause retains paired months and does not automatically run after initialization"
+  },
+  {
+    "file": "worker.test.js",
+    "line": 83,
+    "name": "worker completes five paired repetitions and keeps the first reform trajectory for review"
+  },
+  {
+    "file": "worker.test.js",
+    "line": 117,
+    "name": "invalid worker initialization returns a useful error"
+  }
+]

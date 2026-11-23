@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verification of this documentation edition · Antarkya audit</title><link rel="stylesheet" href="audit.css"></head><body><header><a href="index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="NARRATIVE.html">Narrative</a><a href="TECHNICAL.html">Technical rules</a><a href="SOURCE-INDEX.html">Annotated code</a><a href="GAPS.html">Limits</a><a href="../../index.html">Simulation</a></nav></header><main><h1 id="verification-of-this-documentation-edition">Verification of this documentation edition</h1>
+<p>Documentation edition 1.0, 23 November 2026. Audited behavioral base: <code>9ceb5ae38510f10d2211366406d150500a364a95</code> (behavior 2.4.0, display 2.4.2). File fingerprints in the manifest identify the exact included source independently of the publication commit. All 28 runtime, interface, test and tooling files were recovered byte-for-byte from their uploaded source viewers after an execution-workspace interruption; independent SHA-256 checks matched every source hash. The repository recheck reconstructs derived documentation from these verified sources and records a fresh test log without changing model rules.</p>
+<h2 id="executed-results">Executed results</h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Result and evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Complete existing regression suite</td>
+<td><strong>111 passed, 0 failed, 0 skipped</strong> locally on Node v24.22.3 (259.534 seconds). The <a href="test-results.txt">actual repository recheck log</a> records the final independent runner execution; its elapsed time and Node version may differ.</td>
+</tr>
+<tr>
+<td>Runtime preservation</td>
+<td>All ten normalized JavaScript syntax-tree fingerprints match the pinned audited base. Independently recomputed from Git objects, rather than trusting only the local working copies.</td>
+</tr>
+<tr>
+<td>Interface/style preservation</td>
+<td>Pinned Prettier normalization confirms identical HTML/CSS content after removing comments/blank lines, except the two declared audit-documentation link substitutions.</td>
+</tr>
+<tr>
+<td>Documentation generation</td>
+<td>All generated files reproduce exactly from committed sources. The checker rejects stale outputs.</td>
+</tr>
+<tr>
+<td>Mechanism and design coverage</td>
+<td>57 mechanism IDs; all 62 original rules and six behavioral amendments mapped; AM07 explicitly preserved as a historical checkpoint. No unresolved registered source symbols. Mapping does not imply that every rule is fully implemented.</td>
+</tr>
+<tr>
+<td>Source inventories</td>
+<td>2,674 numeric literals, 3,219 object definitions/member writes, 51 explicit nine-dimensional consequence vectors, and all 111 named tests indexed.</td>
+</tr>
+<tr>
+<td>Cross-references</td>
+<td>More than 34,000 local HTML links/targets checked, including mechanism and source-line fragments. Exact count is printed by <code>npm run docs:check</code> for the current generated edition.</td>
+</tr>
+<tr>
+<td>Browser documentation QA</td>
+<td>Managed desktop Chromium rendered the guide, accessible narrative, technical rule and full source viewer. A narrative link opened AK-DEC-01 and its source link targeted <code>Simulation.choose</code>.</td>
+</tr>
+<tr>
+<td>Narrow reading view</td>
+<td>Guide and narrative checked in a 393-pixel iframe (378-pixel content viewport with scrollbar). Both had document scroll width equal to viewport width after wrapping the commit hash; headings, navigation and collapsed index remained readable. This is responsive-document QA, not actual Android hardware testing.</td>
+</tr>
+</tbody>
+</table>
+<p>The initial full-suite attempt exposed an entrypoint check that searched the first literal occurrence of <code>model.js</code>: a new explanatory HTML comment preceded the real script tag. The comment was clarified to refer to the engine without that filename, and the final complete run passed all 111 tests. Formatting also required whitespace-tolerant extraction patterns in the reporting test harness and duration-input assertion; the exercised conditions and assertions remain the same. These are test/annotation maintenance, not behavioral repairs.</p>
+<p>The <a href="https://github.com/JPozsgai/antarkya-simulation/blob/main/.github/workflows/model-checks.yml">repository workflow</a> repeats generation/reference/semantic checks, syntax checks and the complete regression suite on the documentation branch and <code>main</code>. <a href="https://github.com/JPozsgai/antarkya-simulation/actions/runs/45140067889">GitHub Actions</a> supplies independent publication-time execution records. A workflow still running is not a pass; consult its actual completion status and commit.</p>
+<h2 id="reproduction">Reproduction</h2>
+<p>Use a full Git checkout, install the pinned development dependencies with <code>npm ci --ignore-scripts --no-audit --no-fund</code>, then run <code>npm run docs:check</code> and the test command in the <a href="DEVELOPERS.html">developer guide</a>. The reporting comparison requires historical Git object <code>4da71144763978c4967151efe9394ffe0e160dfd</code>. A shallow or source-only ZIP cannot reproduce that one check until history is fetched.</p>
+<p>The manifest includes the audited base commit, source hashes, unchanged runtime fingerprints and generated-file hashes. It does not hash itself, claim a digital signature or claim to know the later publication commit in advance. The standalone execution log records this local test run, not a general benchmark or probability of scientific correctness.</p>
+<h2 id="verification-limits">Verification limits</h2>
+<p>These checks establish engineering consistency and inspectable links for this edition. They do not establish empirical national validity, complete current legal fidelity, comprehensive model-design conformance, systematic sensitivity/uncertainty analysis, independent external replication or Android runtime/memory performance. The gap register and per-mechanism limits remain part of the documentation even when all engineering checks pass.</p>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>

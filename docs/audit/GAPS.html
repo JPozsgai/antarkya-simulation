@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Assumptions, limitations and implementation gaps · Antarkya audit</title><link rel="stylesheet" href="audit.css"></head><body><header><a href="index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="NARRATIVE.html">Narrative</a><a href="TECHNICAL.html">Technical rules</a><a href="SOURCE-INDEX.html">Annotated code</a><a href="GAPS.html">Limits</a><a href="../../index.html">Simulation</a></nav></header><main><h1 id="assumptions-limitations-and-implementation-gaps">Assumptions, limitations and implementation gaps</h1>
+<p>This is a public limitation register, not a queue of silently authorized behavioral changes. A documented gap is not repaired by describing it. Some mechanisms have executable pathways but remain partial or uncalibrated; their exact boundaries are listed here and beside their equations.</p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Current status</th>
+<th>Precise limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a> — Purpose, scope and version identity</td>
+<td>implemented with provisional parameters</td>
+<td>Passing implementation checks is not empirical validation. There is no national population expansion weight, endogenous GDP, complete legal system or calibrated policy forecast.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pop-01">AK-POP-01</a> — People and principal roles</td>
+<td>implemented with provisional parameters</td>
+<td>Country-informed composition has not been statistically calibrated; minimum representation disproportionately samples smaller roles.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pop-02">AK-POP-02</a> — Heterogeneous starting profiles</td>
+<td>implemented with provisional parameters</td>
+<td>Generic heterogeneous priors are not surveys of personality, corruption tolerance, wealth or national inequality.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-org-01">AK-ORG-01</a> — Organizations, formal affiliation and affinity</td>
+<td>partially implemented; provisional parameters and explicit gaps</td>
+<td>One primary fn field represents each public body; multiple tool capabilities do not amount to a complete multifunctional mandate model. Membership draws are not empirically calibrated.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-org-02">AK-ORG-02</a> — Membership, recruitment and continuity of identity</td>
+<td>partially implemented; provisional parameters and explicit gaps</td>
+<td>No explicit retirement, birth/death, general private-sector hiring or residential relocation pipeline exists. Recruitment/turnover and leadership succession are simplified.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-geo-01">AK-GEO-01</a> — Stable geography and selective encounters</td>
+<td>implemented with provisional parameters</td>
+<td>Coordinates are stylized, dimensionless locations, not a geographic reconstruction of national cities. Homes never relocate in the current engine.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-mot-01">AK-MOT-01</a> — Nine interests and beneficiaries</td>
+<td>implemented with provisional parameters</td>
+<td>The concentration 6, role shares, cultural mappings and motive drift are exploratory priors. Relevant-group utility is not fully resolved among multiple affiliations.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-dec-01">AK-DEC-01</a> — Subjective choice, TPB and random utility</td>
+<td>implemented with provisional parameters</td>
+<td>Fixed consequence valuations, utility coefficients and Gumbel scale .20 are uncalibrated. Information uncertainty is not an explicit Bayesian model or a separately observed intention time series.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-dec-02">AK-DEC-02</a> — Action-specific perceived consequences</td>
+<td>implemented with provisional parameters</td>
+<td>Not every context described in the original Word document has a distinct implemented initiator or action set; see the gap register.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-act-01">AK-ACT-01</a> — Encounters, corruption and victimization</td>
+<td>implemented with provisional parameters</td>
+<td>The headline “completed corrupt encounters” includes extortion demands without successful payment. Administrative encounters themselves do not have a universal per-person or per-official time budget. Some original proactive politician/business and official/protection scenarios are absent.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-act-02">AK-ACT-02</a> — Meaningful choices and integrity recovery</td>
+<td>implemented with provisional parameters</td>
+<td>The criterion is an implemented option/record definition, not a complete legal adjudication. Map radial participation and icon recovery are different summaries of persistent history.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-ins-01">AK-INS-01</a> — Role expectations and institutionalized ease</td>
+<td>partially implemented; provisional parameters and explicit gaps</td>
+<td>Practical work reductions are implemented for routine services; many other reductions affect subjective effort rather than actual charged person-months. Reference transmission is not a complete multilayer institution model.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-adp-01">AK-ADP-01</a> — Individual receptiveness and numerical psychology</td>
+<td>implemented with provisional parameters</td>
+<td>Receptiveness coefficients and distributions are assumptions. There is no empirical individual personality calibration.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-adp-02">AK-ADP-02</a> — Diminishing influence, reinforcement and wear-off</td>
+<td>implemented with provisional parameters</td>
+<td>Delivered-but-rejected episodes still consume novelty. Bounded event memories do not provide permanent global deduplication after older IDs expire; generated event IDs normally remain unique.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-adp-03">AK-ADP-03</a> — Evolving traits, motives, skill and income expectations</td>
+<td>implemented with provisional parameters</td>
+<td>No independent age process, personality test, retirement or general skill attrition is simulated.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-net-01">AK-NET-01</a> — Directional trust and useful relationships</td>
+<td>implemented with provisional parameters</td>
+<td>Relationships decay mainly through negative encounters, not a universal expiry timer. Strong access is a simplified protection opportunity; legal intervention still requires its actual process.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-inf-01">AK-INF-01</a> — Journalism, publication and funding leverage</td>
+<td>partially implemented; provisional parameters and explicit gaps</td>
+<td>No generated articles or complete social feed exist. Strategic misinformation content and correction discovery are simplified world-generator rules; editors do not explicitly optimize the falsity of content. Publication charges money but not a full shared newsroom time budget.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-inf-02">AK-INF-02</a> — Access, sharing and the separation of belief from truth</td>
+<td>implemented with provisional parameters</td>
+<td>Beliefs are bounded scalar memories rather than Bayesian probabilities. General descriptive belief directly informs political reputation defaults; it is not a separate universal norm term in every decision.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-eco-01">AK-ECO-01</a> — Money, lawful receipts and living needs</td>
+<td>implemented with provisional parameters</td>
+<td>Outside is a large finite balancing account, not empirically modeled trade or taxation. GDP is fixed. Public transfers for a tax advantage are a stylized foregone-revenue mechanism, not a full tax-return model.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-eco-02">AK-ECO-02</a> — Shared public staff capacity and priorities</td>
+<td>partially implemented; provisional parameters and explicit gaps</td>
+<td>There is no reusable shared-infrastructure asset deduplication across policy budgets, nor a general private-person time ledger. Reservations do not automatically rebalance unused time within the month.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-eco-03">AK-ECO-03</a> — Service queues and bounded experience feedback</td>
+<td>implemented with provisional parameters</td>
+<td>Service units/costs are normalized assumptions. Formal denial and detailed service quality are not independently modeled.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-cou-01">AK-COU-01</a> — Country observations, proxies and uncertainty</td>
+<td>implemented with provisional parameters</td>
+<td>No new source verification or live national updates are implied by this code audit. Regulatory quality is a proxy for business conditions; cultural scores, class composition, allocations and most costs lack comparable empirical calibration.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-cou-02">AK-COU-02</a> — Functional architecture and jurisdiction</td>
+<td>partially implemented; provisional parameters and explicit gaps</td>
+<td>Routing is stylized, not a comprehensive current offence/jurisdiction map. Institutional independence, appointment protections and civil/criminal procedures are only partially represented.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-ini-01">AK-INI-01</a> — A reconstructed pre-policy year</td>
+<td>implemented with provisional parameters</td>
+<td>Twelve months is a finite reconstruction, not a demonstrated equilibrium or estimated national backlog. Country-condition overrides change that reconstructed past; selecting different reforms or future event seeds does not.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-rng-01">AK-RNG-01</a> — Keyed probability, paired worlds and exact replay</td>
+<td>implemented with provisional parameters</td>
+<td>A 32-bit hash permits collisions and is not a security RNG or a proof of statistical independence. Determinism does not imply absence of probabilistic rules.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-ref-01">AK-REF-01</a> — Formal reform selection and legal scope</td>
+<td>implemented with provisional parameters</td>
+<td>The common .85 scope and generic country/tool uplift are not a complete set of 120 independently calibrated reforms. Coverage-sensitive diagnostics can improve on formal adoption without demonstrating new delivery.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-ref-02">AK-REF-02</a> — Requirements, mobilization and initial allocation</td>
+<td>implemented with provisional parameters</td>
+<td>Allocation is not measured national budget distribution. Shared infrastructure setup is not deduplicated across policies; cost tuples and 100% requirements remain exploratory.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-ref-03">AK-REF-03</a> — Implementation, resistance and setup</td>
+<td>implemented with provisional parameters</td>
+<td>Setup money and operating money can both be spent before installation. “Three months” is a minimum work-stage parameter, not a guaranteed completion time. Some prose channel descriptions are broader than actual exposure hooks.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-ref-04">AK-REF-04</a> — Resource reviews, narrowing and suspension</td>
+<td>implemented with provisional parameters</td>
+<td>Exceptional event-triggered reviews, full repeal, explicit reinstatement and automatic trajectory classification are not implemented. Narrowing consent is simplified and not full national legislative procedure.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-cas-01">AK-CAS-01</a> — Signals, reporting and case intake</td>
+<td>implemented with provisional parameters</td>
+<td>A report’s viability threshold is .16 RU, not the earlier proposal’s .10. Detection sampling and reporting opportunity rates are assumptions, not observed national rates.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-cas-02">AK-CAS-02</a> — Staged processing, discretion and evidence</td>
+<td>implemented with provisional parameters</td>
+<td>Appeals, detailed legal proof rules, real judicial independence protections and all offence-specific national procedures are absent.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-cas-03">AK-CAS-03</a> — Assessed liability, collection and accountability learning</td>
+<td>implemented with provisional parameters</td>
+<td>The risk score is relative expected cost, not a true probability of detection. Collection rules are generic assumptions and not claims about national garnishment law.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-gov-01">AK-GOV-01</a> — Political support, officeholding and authority</td>
+<td>implemented with provisional parameters</td>
+<td>All-person voting, simplified coalition formation, multiple office flags and relative calendars are scenario mechanisms rather than complete national electoral law. No legislature, campaign finance market or voter-demographic calibration is modeled.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-mac-01">AK-MAC-01</a> — Collective feedback and consequential developments</td>
+<td>partially implemented; provisional parameters and explicit gaps</td>
+<td>There is no separate GDP-growth equation, protest/organized-demand process, complete state-capture model or automatic five-trajectory classifier. Some macro variables are derived observations rather than causal state variables.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-aca">AK-POL-ACA</a> — Anti-corruption body</td>
+<td>implemented with provisional parameters</td>
+<td>The diagnostic is not a stratified exercise of mandate under observed high-power opposition.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-merit">AK-POL-MERIT</a> — Recruitment and promotion</td>
+<td>implemented with provisional parameters</td>
+<td>No general promotion ladder, protected selection committee or country-specific appointment pipeline is simulated.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-rotation">AK-POL-ROTATION</a> — Staff rotation</td>
+<td>implemented with provisional parameters</td>
+<td>It evaluates four service functions and direct ties, not comprehensive informal control or all high-risk public posts.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-protection">AK-POL-PROTECTION</a> — Protection for reporting persons</td>
+<td>implemented with provisional parameters</td>
+<td>Only modeled reported threats enter this realized denominator; missing complaints and unseen retaliation are not universal protection success.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-declarations">AK-POL-DECLARATIONS</a> — Asset, liability and gift declarations</td>
+<td>implemented with provisional parameters</td>
+<td>No itemized assets, gifts, liability forms or independent financial reconstruction are modeled.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-conflicts">AK-POL-CONFLICTS</a> — Conflict-of-interest disclosure and review</td>
+<td>implemented with provisional parameters</td>
+<td>No comprehensive legal conflict taxonomy, recusal procedure or independent review appeal is simulated.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-oversight">AK-POL-OVERSIGHT</a> — Audits and investigations</td>
+<td>implemented with provisional parameters</td>
+<td>Actual completed correction is not separately tested in every diagnostic reference situation; independence and high-power opposition remain simplified.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-pay">AK-POL-PAY</a> — Remuneration and incentives</td>
+<td>implemented with provisional parameters</td>
+<td>Career incentives beyond simple role income/recruitment are not a full predictable promotion system.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-penalties">AK-POL-PENALTIES</a> — Financial penalties</td>
+<td>implemented with provisional parameters</td>
+<td>The reported realized ratio is not a calibrated probability of appropriate imposition times collectible amount, nor a complete violation-specific penalty schedule.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-disclosure">AK-POL-DISCLOSURE</a> — Proactive disclosure</td>
+<td>implemented with provisional parameters</td>
+<td>No itemized publication registry, statutory request process or complete test of document timeliness/accessibility is implemented.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-complaints">AK-POL-COMPLAINTS</a> — Reporting and complaints</td>
+<td>implemented with provisional parameters</td>
+<td>It does not directly estimate the approved chapter-level share able to submit within an independently modeled 1-month/.10-RU requirement.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-pol-education">AK-POL-EDUCATION</a> — Awareness and education</td>
+<td>implemented with provisional parameters</td>
+<td>No role-specific question bank or empirically validated knowledge test exists. Repeated delivery counts contacts, not unique people or verified comprehension.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a> — Institutional indicators and fixed reference diagnostics</td>
+<td>partially implemented; provisional parameters and explicit gaps</td>
+<td>No stratified high-/low-power standardized case execution, full lawful-control diagnostic or uncertainty interval is implemented. The minimum 20-observation rule is not universal: new merit/protection ratios use n&gt;0 and show the count.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-mea-02">AK-MEA-02</a> — Package impact and paired comparison</td>
+<td>implemented with provisional parameters</td>
+<td>No automatic leave-one-out attribution, full welfare account or comprehensive displacement estimator exists. Extortion demands count even when no payment completes.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a> — Policy-specific before/current/final monitoring</td>
+<td>implemented with provisional parameters</td>
+<td>Some output categories are explicitly additional-reform contacts and have no modeled baseline delivery. General backlogs remain system context. Reporting does not empirically calibrate the observed processes.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a> — Interpretations and linked evidence</td>
+<td>implemented with provisional parameters</td>
+<td>Thresholds describe displayed precision, not statistical significance. Event ranking is explanatory selection, not causal identification or exhaustive evidence retrieval.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-vis-01">AK-VIS-01</a> — Analytical integrity, affinity and cooperation map</td>
+<td>implemented with provisional parameters</td>
+<td>Direction is a heuristic projection, not a geographic map, causal network embedding or literal degree of support for one adjacent quadrant.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a> — Influential actors and significant event feed</td>
+<td>implemented with provisional parameters</td>
+<td>Weighted degree plus leverage is a heuristic, not betweenness or a full power theory. The live last200 slice can omit older major records; the assessment evidence index mitigates this separately.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a> — One-page interface, synchronized assessment and review</td>
+<td>implemented with provisional parameters</td>
+<td>Automated DOM harnesses are not an actual Android or browser layout/performance benchmark.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a> — Saving, loading, import validation and exports</td>
+<td>implemented with provisional parameters</td>
+<td>Import validation is not a proof that every saved completed outcome was produced honestly; files are not signed. Full in-flight checkpoint/resume and arbitrary cross-version migration are not implemented.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a> — Worker scheduling, repetitions and browser operation</td>
+<td>implemented with provisional parameters</td>
+<td>No installed application, server-side simulation, external API key or live national data feed is required. Actual Android runtime/memory remains unbenchmarked.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a> — Engineering verification and audit reproducibility</td>
+<td>implemented with provisional parameters</td>
+<td>No comprehensive sensitivity analysis, out-of-sample calibration, national ranking validation, independent replication or Android performance certification has been completed.</td>
+</tr>
+<tr>
+<td><a href="TECHNICAL.html#ak-val-02">AK-VAL-02</a> — Evidence, assumptions, gaps and change control</td>
+<td>implemented with provisional parameters</td>
+<td>This is documentation for inspection, not a claim of conformance to every original aspiration or certification under ODD/TRACE. Private supplied documents and copyrighted full texts are not redistributed by the audit package.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="audit-conclusions-and-next-research-needs">Audit conclusions and next research needs</h2>
+<p>The code constructs real numerical agent profiles and uses their evolving values in choices and policy exposure. It also contains modeled money/staff constraints, institutional capacity, information and feedback pathways. These existence claims are inspectable; they do not establish that the priors are realistic. Membership composition, normalized resources/costs, nine-dimensional consequence vectors, uptake/retention parameters and most outcome diagnostics require sensitivity analysis and calibration.</p>
+<p>The agreed national policy architecture is represented through simplified functional nodes and limited legal-scope/descriptor mappings, rather than 120 complete country–policy legal packages. Several practical, political and strategic processes remain simplified or absent. No independent empirical predictive validation, systematic uncertainty analysis or actual Android performance certification is supplied by this audit.</p>
+<p>Original v1 behavior that was expressly superseded is distinguished from a missing v2 process in the decision crosswalk. When a reporting definition has aspirational wording, the technical rules identify the actual proxy used. Outputs, capability diagnostics, observed rolling outcomes and package-level impact must not be merged into one success score.</p>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>

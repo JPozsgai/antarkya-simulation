@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How to use this audit documentation · Antarkya audit</title><link rel="stylesheet" href="audit.css"></head><body><header><a href="index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="NARRATIVE.html">Narrative</a><a href="TECHNICAL.html">Technical rules</a><a href="SOURCE-INDEX.html">Annotated code</a><a href="GAPS.html">Limits</a><a href="../../index.html">Simulation</a></nav></header><main><h1 id="how-to-use-this-audit-documentation">How to use this audit documentation</h1>
+<p>This is a description of the executable Antarkya model at behavioral version <strong>2.4.0</strong>, assessment display <strong>2.4.2</strong>, audited against repository commit <strong>9ceb5ae38510f10d2211366406d150500a364a95</strong>. Documentation edition 1.0, 23 November 2026. The documentation revision formats and annotates source without changing its executable rules. It does not retroactively turn design intentions into implemented behavior.</p>
+<p>Start with the <a href="NARRATIVE.html">accessible narrative</a>. For each mechanism it explains the idea, how the simulation represents it and what that representation leaves out. Follow a reference such as <strong>AK-DEC-01</strong> to the corresponding <a href="TECHNICAL.html#ak-dec-01">technical rule</a>, its source units, parameter records and checks. The <a href="SOURCE-INDEX.html">full annotated source</a> reproduces all active JavaScript, tests, interface markup, styles and development tooling with line links. The actual executable files in the repository carry the same reference codes.</p>
+<table>
+<thead>
+<tr>
+<th>Reader or audit question</th>
+<th>Best starting point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What society and decisions does this model represent?</td>
+<td><a href="NARRATIVE.html">Accessible narrative</a></td>
+</tr>
+<tr>
+<td>What are the equations, state variables and update order?</td>
+<td><a href="TECHNICAL.html">Technical specification</a></td>
+</tr>
+<tr>
+<td>Did an accepted design rule make it into code?</td>
+<td><a href="RULE-CROSSWALK.html">Decision crosswalk</a></td>
+</tr>
+<tr>
+<td>Which values came from evidence and which are assumptions?</td>
+<td><a href="INPUTS.html">Country and policy inputs</a>, <a href="NUMERICS.html">numeric literals</a>, <a href="SOURCES.html">sources</a></td>
+</tr>
+<tr>
+<td>What consequences are attached to each action?</td>
+<td><a href="ACTIONS.html">Full action-consequence catalogue</a></td>
+</tr>
+<tr>
+<td>What state is stored and changed?</td>
+<td><a href="STATE.html">State and assignment inventory</a></td>
+</tr>
+<tr>
+<td>What do output, outcome and impact actually measure?</td>
+<td><a href="MEASUREMENT.html">Measurement dictionary</a></td>
+</tr>
+<tr>
+<td>What does each test establish?</td>
+<td><a href="TESTS.html">Test catalogue</a>, <a href="VERIFICATION.html">verification record</a></td>
+</tr>
+<tr>
+<td>What remains absent, simplified or unvalidated?</td>
+<td><a href="GAPS.html">Limits and gaps</a></td>
+</tr>
+<tr>
+<td>How can I reproduce and maintain this package?</td>
+<td><a href="DEVELOPERS.html">Developer guide</a>, <a href="manifest.json">manifest</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reading-the-references">Reading the references</h2>
+<p>Codes identify mechanisms, rather than line numbers: <code>AK-DEC-01</code> is the subjective decision rule; <code>AK-ADP-01</code> individual receptiveness; <code>AK-POL-EDUCATION</code> the education reform; <code>AK-MEA-02</code> the comparative impact estimand. Original accepted decisions retain their <code>R01</code>–<code>R62</code> codes and later <code>AM01</code>–<code>AM06</code> amendments. <code>AM07</code> is a historical implementation checkpoint. These are distinct from behavioral version numbers, country ISO codes and policy keys such as <code>education</code>.</p>
+<p>The registry connects <strong>57 mechanisms</strong> to the original decisions, source symbols, explanations, technical statements, limitations, evidence provenance and relevant test files. Symbols and parameter inventories are extracted from the files that ship with this edition. A related test is a route to inspect assertions; it is not proof that every statement in a mechanism has been empirically validated.</p>
+<p><strong>Implemented</strong> means an executable pathway exists. <strong>Provisional</strong> means its numerical parameters or representation are assumptions requiring calibration. <strong>Partial</strong> means the implementation covers only part of an agreed concept. <strong>Not implemented</strong> means an agreed intention or earlier proposal does not currently have the corresponding process. The limitations beside every mechanism and the gap register qualify the broad registry status.</p>
+<h2 id="what-this-documentation-can-establish">What this documentation can establish</h2>
+<p>It makes the current rule system inspectable and reproducible and distinguishes subjective beliefs, actual world processes and observation-only reporting. A source hash identifies the files included. A normalized syntax-tree fingerprint checks that annotations and formatting did not alter runtime expressions. Controlled tests check invariants, causal pathways and regressions.</p>
+<p>None of these establishes real national corruption prevalence, a causal estimate of a real reform's effect, comprehensive national legal fidelity or a forecast. Country observations inform a synthetic starting society; resource units, staffing, behavioral coefficients and most policy ranges remain modeling assumptions. Complete behavioral validation and systematic sensitivity analysis remain research work.</p>
+<h2 id="provenance-and-historical-material">Provenance and historical material</h2>
+<p>The decision register, original supplied description and later user decisions explain why the model was constructed. Earlier numerical proposals and older documentation remain in the repository for provenance. <strong>Where they disagree, this edition describes current code and records the difference; it does not imply that the difference was substantively approved.</strong> The original Word description's v1 binary preferences, wandering, score-reset demotion and campaign shortcuts were superseded. Archived <code>/v1/</code> source is available separately and is outside the active v2 conformance checks.</p>
+<p>Private drafts and supplied chapters are identified by title and role where possible but are not redistributed here. Stored source URLs and dates are evidence provenance, not a claim that every publication or legal condition was freshly revalidated for this documentation edition.</p>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>

@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>State definitions and writes — reporting.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="state-definitions-and-writes-reporting-js">State definitions and writes — reporting.js</h1>
+<p><a href="../STATE.html">Inventory guide</a>. Whole-function source is authoritative for types, branches, bounds and update semantics.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Field / target</th>
+<th>Operation / expression</th>
+<th>Owner / mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/reporting.js.html#L39">reporting.js:39</a></td>
+<td><code>definitions.aca</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L40">reporting.js:40</a></td>
+<td><code>definitions.aca.output</code></td>
+<td>object definition · <code>'Screenings completed'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L41">reporting.js:41</a></td>
+<td><code>definitions.aca.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L42">reporting.js:42</a></td>
+<td><code>definitions.aca.conditions</code></td>
+<td>object definition · <code>[ ['Relevant open case files', 'count'], ['Screening / inquiry staff capacity', 'PM'], ['Average mandate coverage', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L50">reporting.js:50</a></td>
+<td><code>definitions.merit</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L51">reporting.js:51</a></td>
+<td><code>definitions.merit.output</code></td>
+<td>object definition · <code>'Appointments completed'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L52">reporting.js:52</a></td>
+<td><code>definitions.merit.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L53">reporting.js:53</a></td>
+<td><code>definitions.merit.conditions</code></td>
+<td>object definition · <code>[ ['Appointment criteria met, past 12 months', '%'], ['Average staff competence', '%'], ['Covered staffing scope', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L61">reporting.js:61</a></td>
+<td><code>definitions.rotation</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L62">reporting.js:62</a></td>
+<td><code>definitions.rotation.output</code></td>
+<td>object definition · <code>'Staff transfers completed'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L63">reporting.js:63</a></td>
+<td><code>definitions.rotation.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L64">reporting.js:64</a></td>
+<td><code>definitions.rotation.conditions</code></td>
+<td>object definition · <code>[ ['Closed-network continuity', '%'], ['Current official staff', 'count'], ['Operating rotation capability', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L72">reporting.js:72</a></td>
+<td><code>definitions.protection</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L73">reporting.js:73</a></td>
+<td><code>definitions.protection.output</code></td>
+<td>object definition · <code>'Threats remedied'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L74">reporting.js:74</a></td>
+<td><code>definitions.protection.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L75">reporting.js:75</a></td>
+<td><code>definitions.protection.conditions</code></td>
+<td>object definition · <code>[ ['Reported threats, past 12 months', 'count'], ['Expected reporting safety', '%'], ['Operating protection capability', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L83">reporting.js:83</a></td>
+<td><code>definitions.declarations</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L84">reporting.js:84</a></td>
+<td><code>definitions.declarations.output</code></td>
+<td>object definition · <code>'Reform verification notices'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L85">reporting.js:85</a></td>
+<td><code>definitions.declarations.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L86">reporting.js:86</a></td>
+<td><code>definitions.declarations.conditions</code></td>
+<td>object definition · <code>[ ['Financial record completeness', '%'], ['Covered declaration scope', '%'], ['Operating verification capability', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L94">reporting.js:94</a></td>
+<td><code>definitions.conflicts</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L95">reporting.js:95</a></td>
+<td><code>definitions.conflicts.output</code></td>
+<td>object definition · <code>'Improper exchanges blocked'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L96">reporting.js:96</a></td>
+<td><code>definitions.conflicts.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L97">reporting.js:97</a></td>
+<td><code>definitions.conflicts.conditions</code></td>
+<td>object definition · <code>[ ['Conflict-record quality', '%'], ['Covered conflict-review scope', '%'], ['Operating review capability', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L105">reporting.js:105</a></td>
+<td><code>definitions.oversight</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L106">reporting.js:106</a></td>
+<td><code>definitions.oversight.output</code></td>
+<td>object definition · <code>'Investigations completed'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L107">reporting.js:107</a></td>
+<td><code>definitions.oversight.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L108">reporting.js:108</a></td>
+<td><code>definitions.oversight.conditions</code></td>
+<td>object definition · <code>[ ['Audit / inquiry open files', 'count'], ['Audit / inquiry staff capacity', 'PM'], ['Operating scrutiny capability', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L116">reporting.js:116</a></td>
+<td><code>definitions.pay</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L117">reporting.js:117</a></td>
+<td><code>definitions.pay.output</code></td>
+<td>object definition · <code>'Net public pay delivered'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L118">reporting.js:118</a></td>
+<td><code>definitions.pay.unit</code></td>
+<td>object definition · <code>'RU'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L119">reporting.js:119</a></td>
+<td><code>definitions.pay.conditions</code></td>
+<td>object definition · <code>[ ['Reliable adequate net pay', '%'], ['Average official unmet-needs pressure', '%'], ['Average net pay / living needs', 'ratio'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L127">reporting.js:127</a></td>
+<td><code>definitions.penalties</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L128">reporting.js:128</a></td>
+<td><code>definitions.penalties.output</code></td>
+<td>object definition · <code>'Liability actually collected'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L129">reporting.js:129</a></td>
+<td><code>definitions.penalties.unit</code></td>
+<td>object definition · <code>'RU'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L130">reporting.js:130</a></td>
+<td><code>definitions.penalties.conditions</code></td>
+<td>object definition · <code>[ ['Outstanding assessed liability', 'RU'], ['Officials’ expected accountability cost', '%'], ['Operating collection capability', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L138">reporting.js:138</a></td>
+<td><code>definitions.disclosure</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L139">reporting.js:139</a></td>
+<td><code>definitions.disclosure.output</code></td>
+<td>object definition · <code>'Public-record delivery work'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L140">reporting.js:140</a></td>
+<td><code>definitions.disclosure.unit</code></td>
+<td>object definition · <code>'PM'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L141">reporting.js:141</a></td>
+<td><code>definitions.disclosure.conditions</code></td>
+<td>object definition · <code>[ ['Public-record quality', '%'], ['Covered disclosure scope', '%'], ['Operating disclosure capability', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L149">reporting.js:149</a></td>
+<td><code>definitions.complaints</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L150">reporting.js:150</a></td>
+<td><code>definitions.complaints.output</code></td>
+<td>object definition · <code>'Reports submitted'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L151">reporting.js:151</a></td>
+<td><code>definitions.complaints.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L152">reporting.js:152</a></td>
+<td><code>definitions.complaints.conditions</code></td>
+<td>object definition · <code>[ ['Unresolved complaint files', 'count'], ['Experienced reporting knowledge', '%'], ['Modeled reporting access', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L160">reporting.js:160</a></td>
+<td><code>definitions.education</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L161">reporting.js:161</a></td>
+<td><code>definitions.education.output</code></td>
+<td>object definition · <code>'Reform teaching contacts'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L162">reporting.js:162</a></td>
+<td><code>definitions.education.unit</code></td>
+<td>object definition · <code>'count'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L163">reporting.js:163</a></td>
+<td><code>definitions.education.conditions</code></td>
+<td>object definition · <code>[ ['Usable knowledge', '%'], ['Perceived approval of lawful conduct', '%'], ['Lawful-action capability', '%'], ['Retained attitude influence', '%'], ]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L182">reporting.js:182</a></td>
+<td><code>sim.monitor.counts[id]</code></td>
+<td>+= · <code>amount</code></td>
+<td>activity · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L190">reporting.js:190</a></td>
+<td><code>sim.monitor</code></td>
+<td>= · <code>Object(8 entries); child fields listed separately</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L191">reporting.js:191</a></td>
+<td><code>init.schema</code></td>
+<td>object definition · <code>schema</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L192">reporting.js:192</a></td>
+<td><code>init.counts</code></td>
+<td>object definition · <code>Object.fromEntries( [...ids, 'meritGood', 'threats'].map((id) =&gt; [id, pre?.counts[id] &amp;#124;&amp;#124; 0]), )</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L195">reporting.js:195</a></td>
+<td><code>init.history</code></td>
+<td>object definition · <code>pre ? clone(pre.history) : []</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L196">reporting.js:196</a></td>
+<td><code>init.start</code></td>
+<td>object definition · <code>null</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L197">reporting.js:197</a></td>
+<td><code>init.lastMetrics</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L198">reporting.js:198</a></td>
+<td><code>init.lastMonth</code></td>
+<td>object definition · <code>sim.month</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L199">reporting.js:199</a></td>
+<td><code>init.events</code></td>
+<td>object definition · <code>[]</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L200">reporting.js:200</a></td>
+<td><code>init.eventCursor</code></td>
+<td>object definition · <code>0</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L202">reporting.js:202</a></td>
+<td><code>sim.monitor.start</code></td>
+<td>= · <code>sample(sim)</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L205">reporting.js:205</a></td>
+<td><code>sim.monitor.start.impact</code></td>
+<td>= · <code>Object(2 entries); child fields listed separately</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L206">reporting.js:206</a></td>
+<td><code>init.opportunities</code></td>
+<td>object definition · <code>m.encounterOpportunities &amp;#124;&amp;#124; 0</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L207">reporting.js:207</a></td>
+<td><code>init.corrupt</code></td>
+<td>object definition · <code>m.encounterCorruptActs &amp;#124;&amp;#124; 0</code></td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L217">reporting.js:217</a></td>
+<td><code>remember.counts</code></td>
+<td>object definition · <code>clone(report.counts)</code></td>
+<td>remember · <a href="../TECHNICAL.html#ak-ini-01">AK-INI-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L217">reporting.js:217</a></td>
+<td><code>remember.history</code></td>
+<td>object definition · <code>clone(report.history)</code></td>
+<td>remember · <a href="../TECHNICAL.html#ak-ini-01">AK-INI-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L284">reporting.js:284</a></td>
+<td><code>outcome[id]</code></td>
+<td>= · <code>sim.diagnostic(id).value</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L285">reporting.js:285</a></td>
+<td><code>outcome.merit</code></td>
+<td>= · <code>appointments &gt; 0 ? (100 * merit) / appointments : null</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L286">reporting.js:286</a></td>
+<td><code>outcome.protection</code></td>
+<td>= · <code>threats &gt; 0 ? (100 * protectedCount) / threats : null</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L292">reporting.js:292</a></td>
+<td><code>outcome.penalties</code></td>
+<td>= · <code>matured.length &gt;= 20 ? sum( s.cases .filter( (c) =&gt; matureIds.has(c.recordId) &amp;&amp; c.truth &amp;&amp; c.status === 'closed' &amp;&amp; …</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L320">reporting.js:320</a></td>
+<td><code>conditions.aca</code></td>
+<td>object definition · <code>[open.filter((c) =&gt; relevant('aca', c)).length, staff(pool('aca')), scope('aca')]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L321">reporting.js:321</a></td>
+<td><code>conditions.merit</code></td>
+<td>object definition · <code>[outcome.merit, pct(officials.map((a) =&gt; a.skill)), scope('merit')]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L322">reporting.js:322</a></td>
+<td><code>conditions.rotation</code></td>
+<td>object definition · <code>[rotation.value, officials.length, cap('rotation')]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L323">reporting.js:323</a></td>
+<td><code>conditions.protection</code></td>
+<td>object definition · <code>[threats, pct(sim.agents.map((a) =&gt; Adaptive.safety(a))), cap('protection')]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L324">reporting.js:324</a></td>
+<td><code>conditions.declarations</code></td>
+<td>object definition · <code>[ pct(officials.map((a) =&gt; a.disclosure)), scope('declarations'), cap('declarations'), ]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L329">reporting.js:329</a></td>
+<td><code>conditions.conflicts</code></td>
+<td>object definition · <code>[ pct(pool('conflicts').map((o) =&gt; o.recordQuality)), scope('conflicts'), cap('conflicts'), ]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L334">reporting.js:334</a></td>
+<td><code>conditions.oversight</code></td>
+<td>object definition · <code>[ open.filter((c) =&gt; relevant('oversight', c)).length, staff(pool('oversight')), cap('oversight'), ]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L339">reporting.js:339</a></td>
+<td><code>conditions.pay</code></td>
+<td>object definition · <code>[ pay.value, pct(officials.map((a) =&gt; a.financialPressure &amp;#124;&amp;#124; 0)), mean(officials.map((a) =&gt; (0.9 * mean(a.receipts)) / Math.max(0.001, a.cost))), ]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L344">reporting.js:344</a></td>
+<td><code>conditions.penalties</code></td>
+<td>object definition · <code>[ sum(sim.agents.flatMap((a) =&gt; (a.liabilities &amp;#124;&amp;#124; []).map((c) =&gt; c.remaining))), pct(officials.map((a) =&gt; a.riskBelief)), cap('penalties'), ]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L349">reporting.js:349</a></td>
+<td><code>conditions.disclosure</code></td>
+<td>object definition · <code>[ pct(pool('disclosure').map((o) =&gt; o.disclosureQuality)), scope('disclosure'), cap('disclosure'), ]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L354">reporting.js:354</a></td>
+<td><code>conditions.complaints</code></td>
+<td>object definition · <code>[ open.filter((c) =&gt; c.source === 'complaint').length, pct(sim.agents.map((a) =&gt; Adaptive.knowledge(a, 'report'))), 100 * sim.cap('complaints'), ]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L359">reporting.js:359</a></td>
+<td><code>conditions.education</code></td>
+<td>object definition · <code>Array(4 entries); see exact source</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L377">reporting.js:377</a></td>
+<td><code>tools[id]</code></td>
+<td>= · <code>Object(4 entries); child fields listed separately</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L378">reporting.js:378</a></td>
+<td><code>sample.outcome</code></td>
+<td>object definition · <code>outcome[id]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L379">reporting.js:379</a></td>
+<td><code>sample.conditions</code></td>
+<td>object definition · <code>conditions[id]</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L380">reporting.js:380</a></td>
+<td><code>sample.scope</code></td>
+<td>object definition · <code>scope(id)</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L381">reporting.js:381</a></td>
+<td><code>sample.n</code></td>
+<td>object definition · <code>id === 'merit' ? appointments : id === 'protection' ? threats : id === 'penalties' ? matured.length : null</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L391">reporting.js:391</a></td>
+<td><code>sample.month</code></td>
+<td>object definition · <code>sim.month</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L392">reporting.js:392</a></td>
+<td><code>sample.counts</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L393">reporting.js:393</a></td>
+<td><code>sample.tools</code></td>
+<td>object definition · <code>tools</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L394">reporting.js:394</a></td>
+<td><code>sample.impact</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L395">reporting.js:395</a></td>
+<td><code>sample.impact.opportunities</code></td>
+<td>object definition · <code>s.metrics.encounterOpportunities &amp;#124;&amp;#124; 0</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L396">reporting.js:396</a></td>
+<td><code>sample.impact.corrupt</code></td>
+<td>object definition · <code>s.metrics.encounterCorruptActs &amp;#124;&amp;#124; 0</code></td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L435">reporting.js:435</a></td>
+<td><code>r.counts[id]</code></td>
+<td>+= · <code>Math.max(0, (sim.state.metrics[key] &amp;#124;&amp;#124; 0) - (r.lastMetrics[key] &amp;#124;&amp;#124; 0))</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L436">reporting.js:436</a></td>
+<td><code>r.lastMetrics</code></td>
+<td>= · <code>Object(1 entries); child fields listed separately</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L437">reporting.js:437</a></td>
+<td><code>r.lastMonth</code></td>
+<td>= · <code>sim.month</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L441">reporting.js:441</a></td>
+<td><code>r.history[at]</code></td>
+<td>= · <code>point</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L452">reporting.js:452</a></td>
+<td><code>record.policies</code></td>
+<td>object definition · <code>policies</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L453">reporting.js:453</a></td>
+<td><code>record.change</code></td>
+<td>object definition · <code>review?.passed ? review.to - review.from : 0</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L454">reporting.js:454</a></td>
+<td><code>record.material</code></td>
+<td>object definition · <code>event.status === 'Operating' &amp;#124;&amp;#124; event.status === 'Formal suspension' &amp;#124;&amp;#124; !!(review?.passed &amp;&amp; (review.to !== review.from &amp;#124;&amp;#124; review.choice === 'narrow'))</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L461">reporting.js:461</a></td>
+<td><code>r.eventCursor</code></td>
+<td>= · <code>sim.state.events.length</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L466">reporting.js:466</a></td>
+<td><code>keep.events</code></td>
+<td>object definition · <code>r.events</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L470">reporting.js:470</a></td>
+<td><code>r.events</code></td>
+<td>= · <code>r.events.filter((e) =&gt; keep.has(e.id + '.' + e.update) &amp;#124;&amp;#124; recent.includes(e))</code></td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L480">reporting.js:480</a></td>
+<td><code>view.schema</code></td>
+<td>object definition · <code>schema</code></td>
+<td>view · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L480">reporting.js:480</a></td>
+<td><code>view.start</code></td>
+<td>object definition · <code>r.start</code></td>
+<td>view · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L480">reporting.js:480</a></td>
+<td><code>view.history</code></td>
+<td>object definition · <code>r.history</code></td>
+<td>view · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L480">reporting.js:480</a></td>
+<td><code>view.events</code></td>
+<td>object definition · <code>r.events</code></td>
+<td>view · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L495">reporting.js:495</a></td>
+<td><code>windowValue.value</code></td>
+<td>object definition · <code>point.counts[id] - start.counts[id]</code></td>
+<td>windowValue · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L496">reporting.js:496</a></td>
+<td><code>windowValue.months</code></td>
+<td>object definition · <code>month - from</code></td>
+<td>windowValue · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L497">reporting.js:497</a></td>
+<td><code>windowValue.fromMonth</code></td>
+<td>object definition · <code>from</code></td>
+<td>windowValue · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L498">reporting.js:498</a></td>
+<td><code>windowValue.month</code></td>
+<td>object definition · <code>month</code></td>
+<td>windowValue · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L507">reporting.js:507</a></td>
+<td><code>outcomeMeta.method</code></td>
+<td>object definition · <code>'Observed appointments in the trailing 12 months'</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L507">reporting.js:507</a></td>
+<td><code>outcomeMeta.unit</code></td>
+<td>object definition · <code>'%'</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L507">reporting.js:507</a></td>
+<td><code>outcomeMeta.lowerBetter</code></td>
+<td>object definition · <code>false</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L510">reporting.js:510</a></td>
+<td><code>outcomeMeta.method</code></td>
+<td>object definition · <code>'Observed reporting threats in the trailing 12 months'</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L511">reporting.js:511</a></td>
+<td><code>outcomeMeta.unit</code></td>
+<td>object definition · <code>'%'</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L512">reporting.js:512</a></td>
+<td><code>outcomeMeta.lowerBetter</code></td>
+<td>object definition · <code>false</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L516">reporting.js:516</a></td>
+<td><code>outcomeMeta.method</code></td>
+<td>object definition · <code>'Actual collection per matured extortion violation; 12-month cohort ending six months earlier'</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L518">reporting.js:518</a></td>
+<td><code>outcomeMeta.unit</code></td>
+<td>object definition · <code>'RU'</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L519">reporting.js:519</a></td>
+<td><code>outcomeMeta.lowerBetter</code></td>
+<td>object definition · <code>false</code></td>
+<td>outcomeMeta · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L552">reporting.js:552</a></td>
+<td><code>eventsFor.relation</code></td>
+<td>object definition · <code>direct ? 'direct policy record' : 'connected development'</code></td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L553">reporting.js:553</a></td>
+<td><code>eventsFor.score</code></td>
+<td>object definition · <code>(direct ? 4 : 0) + (e.material ? 8 : 0) + (important ? 3 : 0) + (e.month &gt;= from ? 2 : 0) + e.month / Math.max(1, month)</code></td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L566">reporting.js:566</a></td>
+<td><code>templates.outputMore</code></td>
+<td>object definition · <code>'More delivery is recorded than in the baseline; institutional change is assessed separately.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L568">reporting.js:568</a></td>
+<td><code>templates.outputLess</code></td>
+<td>object definition · <code>'Less delivery is recorded than in the baseline during this period.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L569">reporting.js:569</a></td>
+<td><code>templates.outputSame</code></td>
+<td>object definition · <code>'Delivery matches the baseline during this period.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L570">reporting.js:570</a></td>
+<td><code>templates.noOutput</code></td>
+<td>object definition · <code>'No delivery of this activity is recorded during this period.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L571">reporting.js:571</a></td>
+<td><code>templates.outcomeBetter</code></td>
+<td>object definition · <code>'The policy-specific institutional indicator improves against baseline.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L572">reporting.js:572</a></td>
+<td><code>templates.outcomeWorse</code></td>
+<td>object definition · <code>'The policy-specific institutional indicator worsens against baseline.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L573">reporting.js:573</a></td>
+<td><code>templates.outcomeSame</code></td>
+<td>object definition · <code>'The institutional indicator matches baseline at the displayed precision.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L574">reporting.js:574</a></td>
+<td><code>templates.lag</code></td>
+<td>object definition · <code>'Additional activity is recorded, while institutional change remains limited.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L575">reporting.js:575</a></td>
+<td><code>templates.gap</code></td>
+<td>object definition · <code>'Institutional conditions improve, while the package’s conduct effect remains limited.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L576">reporting.js:576</a></td>
+<td><code>templates.impactBetter</code></td>
+<td>object definition · <code>'The reform package records fewer corrupt encounters per opportunity than baseline.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L578">reporting.js:578</a></td>
+<td><code>templates.impactWorse</code></td>
+<td>object definition · <code>'The reform package records more corrupt encounters per opportunity than baseline.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L580">reporting.js:580</a></td>
+<td><code>templates.impactSame</code></td>
+<td>object definition · <code>'The package’s encounter rate matches baseline at the displayed precision.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L581">reporting.js:581</a></td>
+<td><code>templates.missing</code></td>
+<td>object definition · <code>'There are too few applicable observations to assess this result yet.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L590">reporting.js:590</a></td>
+<td><code>interpret.value</code></td>
+<td>object definition · <code>value</code></td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L591">reporting.js:591</a></td>
+<td><code>interpret.baseline</code></td>
+<td>object definition · <code>baseline</code></td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L592">reporting.js:592</a></td>
+<td><code>interpret.lowerBetter</code></td>
+<td>object definition · <code>lowerBetter = false</code></td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L593">reporting.js:593</a></td>
+<td><code>interpret.outputDelta</code></td>
+<td>object definition · <code>outputDelta = null</code></td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L594">reporting.js:594</a></td>
+<td><code>interpret.impactDelta</code></td>
+<td>object definition · <code>impactDelta = null</code></td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L595">reporting.js:595</a></td>
+<td><code>interpret.estimated</code></td>
+<td>object definition · <code>estimated = false</code></td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L697">reporting.js:697</a></td>
+<td><code>api.schema</code></td>
+<td>object definition · <code>schema</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L698">reporting.js:698</a></td>
+<td><code>api.ids</code></td>
+<td>object definition · <code>ids</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L699">reporting.js:699</a></td>
+<td><code>api.definitions</code></td>
+<td>object definition · <code>definitions</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L700">reporting.js:700</a></td>
+<td><code>api.init</code></td>
+<td>object definition · <code>init</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L701">reporting.js:701</a></td>
+<td><code>api.remember</code></td>
+<td>object definition · <code>remember</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L702">reporting.js:702</a></td>
+<td><code>api.activity</code></td>
+<td>object definition · <code>activity</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L703">reporting.js:703</a></td>
+<td><code>api.record</code></td>
+<td>object definition · <code>record</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L704">reporting.js:704</a></td>
+<td><code>api.view</code></td>
+<td>object definition · <code>view</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L705">reporting.js:705</a></td>
+<td><code>api.windowValue</code></td>
+<td>object definition · <code>windowValue</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L706">reporting.js:706</a></td>
+<td><code>api.outcomeMeta</code></td>
+<td>object definition · <code>outcomeMeta</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L707">reporting.js:707</a></td>
+<td><code>api.eventsFor</code></td>
+<td>object definition · <code>eventsFor</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L708">reporting.js:708</a></td>
+<td><code>api.templates</code></td>
+<td>object definition · <code>templates</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L709">reporting.js:709</a></td>
+<td><code>api.interpret</code></td>
+<td>object definition · <code>interpret</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L710">reporting.js:710</a></td>
+<td><code>api.valid</code></td>
+<td>object definition · <code>valid</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L712">reporting.js:712</a></td>
+<td><code>module.exports</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L713">reporting.js:713</a></td>
+<td><code>root.AntarkyaReporting</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

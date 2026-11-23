@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numeric literals — visualization.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="numeric-literals-visualization-js">Numeric literals — visualization.js</h1>
+<p><a href="../NUMERICS.html">Inventory guide</a>. Exact contexts are accessible in the full source.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Literal</th>
+<th>Unit / mechanism</th>
+<th>Expression context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/visualization.js.html#L10">visualization.js:10</a></td>
+<td>-3</td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a>, <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>-3 * Math.PI</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L10">visualization.js:10</a></td>
+<td>4</td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a>, <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(-3 * Math.PI) / 4</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L10">visualization.js:10</a></td>
+<td>4</td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a>, <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>-Math.PI / 4</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L10">visualization.js:10</a></td>
+<td>4</td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a>, <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>Math.PI / 4</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L10">visualization.js:10</a></td>
+<td>3</td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a>, <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>3 * Math.PI</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L10">visualization.js:10</a></td>
+<td>4</td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a>, <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(3 * Math.PI) / 4</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L11">visualization.js:11</a></td>
+<td>0.48</td>
+<td>module data · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a>, <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>core = 0.48</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L17">visualization.js:17</a></td>
+<td>2166136261</td>
+<td>hash · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>n = 2166136261</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L18">visualization.js:18</a></td>
+<td>0</td>
+<td>hash · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>c.charCodeAt(0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L18">visualization.js:18</a></td>
+<td>16777619</td>
+<td>hash · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>Math.imul(n ^ c.charCodeAt(0), 16777619)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L19">visualization.js:19</a></td>
+<td>0</td>
+<td>hash · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>n &gt;&gt;&gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L19">visualization.js:19</a></td>
+<td>4294967296</td>
+<td>hash · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(n &gt;&gt;&gt; 0) / 4294967296</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L28">visualization.js:28</a></td>
+<td>0.05</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>l.strength &lt;= 0.05</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L34">visualization.js:34</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>l.strength * (trust ?? 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L38">visualization.js:38</a></td>
+<td>0.5</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>affinity = a.affinityByRole &amp;#124;&amp;#124; [0.5, 0.5, 0.5, 0.5]</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L38">visualization.js:38</a></td>
+<td>0.5</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>affinity = a.affinityByRole &amp;#124;&amp;#124; [0.5, 0.5, 0.5, 0.5]</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L38">visualization.js:38</a></td>
+<td>0.5</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>affinity = a.affinityByRole &amp;#124;&amp;#124; [0.5, 0.5, 0.5, 0.5]</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L38">visualization.js:38</a></td>
+<td>0.5</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>affinity = a.affinityByRole &amp;#124;&amp;#124; [0.5, 0.5, 0.5, 0.5]</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L39">visualization.js:39</a></td>
+<td>0.2</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.2 * Math.cos(directions[a.role])</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L40">visualization.js:40</a></td>
+<td>0.2</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.2 * Math.sin(directions[a.role])</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L41">visualization.js:41</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>r = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L41">visualization.js:41</a></td>
+<td>4</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>r &lt; 4</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L42">visualization.js:42</a></td>
+<td>2</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>2 * (affinity[r] - 0.5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L42">visualization.js:42</a></td>
+<td>0.5</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>affinity[r] - 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L46">visualization.js:46</a></td>
+<td>0.001</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>Math.hypot(x, y) &lt; 0.001</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L47">visualization.js:47</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>rate = a.recentOpportunities ? a.recentCorrupt / a.recentOpportunities : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L48">visualization.js:48</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>rate &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L48">visualization.js:48</a></td>
+<td>0.54</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.54 + 0.41 * Math.sqrt(rate)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L48">visualization.js:48</a></td>
+<td>0.41</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.41 * Math.sqrt(rate)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L48">visualization.js:48</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>integrityRadius: rate &gt; 0 ? 0.54 + 0.41 * Math.sqrt(rate) : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L52">visualization.js:52</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>a.rate &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L54">visualization.js:54</a></td>
+<td>0.035</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.035 + 0.43 * Math.sqrt(hash(view.agents[i].id + '-spacing'))</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L54">visualization.js:54</a></td>
+<td>0.43</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.43 * Math.sqrt(hash(view.agents[i].id + '-spacing'))</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L55">visualization.js:55</a></td>
+<td>0.5</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>hash(i + '-angle') - 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L55">visualization.js:55</a></td>
+<td>0.8</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>(hash(i + '-angle') - 0.5) * 0.8</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L59">visualization.js:59</a></td>
+<td>0.032</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>cell = 0.032</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L60">visualization.js:60</a></td>
+<td>0.023</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>minDistance = 0.023</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L61">visualization.js:61</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>pass = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L61">visualization.js:61</a></td>
+<td>8</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>pass &lt; 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L63">visualization.js:63</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>i = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L72">visualization.js:72</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>px = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L73">visualization.js:73</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>py = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L74">visualization.js:74</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>mass = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L83">visualization.js:83</a></td>
+<td>0.18</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.18 * (initial[id].x - p.x)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L84">visualization.js:84</a></td>
+<td>0.18</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.18 * (initial[id].y - p.y)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L86">visualization.js:86</a></td>
+<td>0.05</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.05 * (px / mass - p.x)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L87">visualization.js:87</a></td>
+<td>0.05</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.05 * (py / mass - p.y)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L91">visualization.js:91</a></td>
+<td>-1</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>dx = -1</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L91">visualization.js:91</a></td>
+<td>1</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>dx &lt;= 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L92">visualization.js:92</a></td>
+<td>-1</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>dy = -1</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L92">visualization.js:92</a></td>
+<td>1</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>dy &lt;= 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L99">visualization.js:99</a></td>
+<td>1e-7</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>d &lt; 1e-7</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L100">visualization.js:100</a></td>
+<td>2</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>hash(id + '-' + other) * Math.PI * 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L101">visualization.js:101</a></td>
+<td>0.001</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>Math.cos(angle) * 0.001</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L102">visualization.js:102</a></td>
+<td>0.001</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>Math.sin(angle) * 0.001</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L103">visualization.js:103</a></td>
+<td>0.001</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>d = 0.001</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L106">visualization.js:106</a></td>
+<td>0.35</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>0.35 * (minDistance - d)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L112">visualization.js:112</a></td>
+<td>1e-8</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>radius &gt; 1e-8</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L113">visualization.js:113</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>a.rate &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L132">visualization.js:132</a></td>
+<td>0</td>
+<td>projection · <a href="../TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td><code>source.rate &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L153">visualization.js:153</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(function (root) { const directions = [(-3 * Math.PI) / 4, -Math.PI / 4, Math.PI / 4, (3 * Math.PI) / 4], core = 0.48; /** [AK-MEA-02] hash * Implementation unit for Package impact and paired compa…</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L155">visualization.js:155</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>Math.max(0, month - window)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L155">visualization.js:155</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>startMonth = window ? Math.max(0, month - window) : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L158">visualization.js:158</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(end.encounterOpportunities &amp;#124;&amp;#124; 0) - (start.encounterOpportunities &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L158">visualization.js:158</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(end.encounterOpportunities &amp;#124;&amp;#124; 0) - (start.encounterOpportunities &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L159">visualization.js:159</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(end.encounterCorruptActs &amp;#124;&amp;#124; 0) - (start.encounterCorruptActs &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L159">visualization.js:159</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(end.encounterCorruptActs &amp;#124;&amp;#124; 0) - (start.encounterCorruptActs &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L163">visualization.js:163</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>opportunities &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L164">visualization.js:164</a></td>
+<td>0</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>corrupt &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L174">visualization.js:174</a></td>
+<td>100</td>
+<td>impactWindow · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>100 * corrupt</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L181">visualization.js:181</a></td>
+<td>0</td>
+<td>impactSeries · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>(function (root) { const directions = [(-3 * Math.PI) / 4, -Math.PI / 4, Math.PI / 4, (3 * Math.PI) / 4], core = 0.48; /** [AK-MEA-02] hash * Implementation unit for Package impact and paired compa…</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L184">visualization.js:184</a></td>
+<td>0</td>
+<td>impactSeries · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>x.month &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L202">visualization.js:202</a></td>
+<td>0</td>
+<td>impactDifference · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>value === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L205">visualization.js:205</a></td>
+<td>0</td>
+<td>impactDifference · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>value &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L206">visualization.js:206</a></td>
+<td>0.0005</td>
+<td>impactDifference · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>Math.abs(value) &lt; 0.0005</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L206">visualization.js:206</a></td>
+<td>1</td>
+<td>impactDifference · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>value.toExponential(1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/visualization.js.html#L206">visualization.js:206</a></td>
+<td>3</td>
+<td>impactDifference · <a href="../TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td><code>value.toFixed(3)</code></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numeric literals — reporting.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="numeric-literals-reporting-js">Numeric literals — reporting.js</h1>
+<p><a href="../NUMERICS.html">Inventory guide</a>. Exact contexts are accessible in the full source.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Literal</th>
+<th>Unit / mechanism</th>
+<th>Expression context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/reporting.js.html#L35">reporting.js:35</a></td>
+<td>0</td>
+<td>sum · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>a.reduce((x, y) =&gt; x + y, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L176">reporting.js:176</a></td>
+<td>100</td>
+<td>pct · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>100 * mean(a)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L181">reporting.js:181</a></td>
+<td>1</td>
+<td>activity · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>(function (root) { const Adaptive = typeof module !== 'undefined' &amp;&amp; module.exports ? require('./adaptation.js') : root.AntarkyaAdaptation; const ids = [ 'aca', 'merit', 'rotation', 'protection', '…</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L182">reporting.js:182</a></td>
+<td>0</td>
+<td>activity · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>amount &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L193">reporting.js:193</a></td>
+<td>0</td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>[...ids, 'meritGood', 'threats'].map((id) =&gt; [id, pre?.counts[id] &amp;#124;&amp;#124; 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L200">reporting.js:200</a></td>
+<td>0</td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>eventCursor: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L206">reporting.js:206</a></td>
+<td>0</td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>opportunities: m.encounterOpportunities &amp;#124;&amp;#124; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L207">reporting.js:207</a></td>
+<td>0</td>
+<td>init · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>corrupt: m.encounterCorruptActs &amp;#124;&amp;#124; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L218">reporting.js:218</a></td>
+<td>2</td>
+<td>remember · <a href="../TECHNICAL.html#ak-ini-01">AK-INI-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>archives.size &gt; 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L232">reporting.js:232</a></td>
+<td>12</td>
+<td>recent · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>(function (root) { const Adaptive = typeof module !== 'undefined' &amp;&amp; module.exports ? require('./adaptation.js') : root.AntarkyaAdaptation; const ids = [ 'aca', 'merit', 'rotation', 'protection', '…</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L234">reporting.js:234</a></td>
+<td>0</td>
+<td>recent · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>earliest = r.history[0]?.month ?? sim.month</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L246">reporting.js:246</a></td>
+<td>2</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>a.role === 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L272">reporting.js:272</a></td>
+<td>2</td>
+<td>staff · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>sim.agents[id].role === 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L273">reporting.js:273</a></td>
+<td>0.25</td>
+<td>staff · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>0.25 + 0.4 * o.skill</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L273">reporting.js:273</a></td>
+<td>0.4</td>
+<td>staff · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>0.4 * o.skill</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L273">reporting.js:273</a></td>
+<td>0.35</td>
+<td>staff · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>0.35 * (o.professionalSkill ?? o.skill)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L285">reporting.js:285</a></td>
+<td>0</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>appointments &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L285">reporting.js:285</a></td>
+<td>100</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>100 * merit</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L286">reporting.js:286</a></td>
+<td>0</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>threats &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L286">reporting.js:286</a></td>
+<td>100</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>100 * protectedCount</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L289">reporting.js:289</a></td>
+<td>18</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>sim.month - 18</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L289">reporting.js:289</a></td>
+<td>6</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>sim.month - 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L293">reporting.js:293</a></td>
+<td>20</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>matured.length &gt;= 20</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L304">reporting.js:304</a></td>
+<td>0</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>s.cases .filter( (c) =&gt; matureIds.has(c.recordId) &amp;&amp; c.truth &amp;&amp; c.status === 'closed' &amp;&amp; c.decision === 'sanction' &amp;&amp; c.route !== 'civil', ) .map((c) =&gt; c.collected &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L315">reporting.js:315</a></td>
+<td>1</td>
+<td>relevant · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>c.stage === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L341">reporting.js:341</a></td>
+<td>0</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>officials.map((a) =&gt; a.financialPressure &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L342">reporting.js:342</a></td>
+<td>0.9</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>0.9 * mean(a.receipts)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L342">reporting.js:342</a></td>
+<td>0.001</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>Math.max(0.001, a.cost)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L357">reporting.js:357</a></td>
+<td>100</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>100 * sim.cap('complaints')</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L365">reporting.js:365</a></td>
+<td>1</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>1 - norm</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L365">reporting.js:365</a></td>
+<td>1</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>norm + e.norm * (1 - norm) + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L365">reporting.js:365</a></td>
+<td>2</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>(norm + e.norm * (1 - norm) + 1) / 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L370">reporting.js:370</a></td>
+<td>1</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>1 - a.control</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L395">reporting.js:395</a></td>
+<td>0</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>opportunities: s.metrics.encounterOpportunities &amp;#124;&amp;#124; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L396">reporting.js:396</a></td>
+<td>0</td>
+<td>sample · <a href="../TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>corrupt: s.metrics.encounterCorruptActs &amp;#124;&amp;#124; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L435">reporting.js:435</a></td>
+<td>0</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>Math.max(0, (sim.state.metrics[key] &amp;#124;&amp;#124; 0) - (r.lastMetrics[key] &amp;#124;&amp;#124; 0))</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L435">reporting.js:435</a></td>
+<td>0</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>(sim.state.metrics[key] &amp;#124;&amp;#124; 0) - (r.lastMetrics[key] &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L435">reporting.js:435</a></td>
+<td>0</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>(sim.state.metrics[key] &amp;#124;&amp;#124; 0) - (r.lastMetrics[key] &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L441">reporting.js:441</a></td>
+<td>0</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>at &gt;= 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L445">reporting.js:445</a></td>
+<td>1</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>ids.map((id) =&gt; [id, related(id, event, sim)]).filter((x) =&gt; x[1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L453">reporting.js:453</a></td>
+<td>0</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>change: review?.passed ? review.to - review.from : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L463">reporting.js:463</a></td>
+<td>400</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>r.events.length &gt; 400</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L466">reporting.js:466</a></td>
+<td>0</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>eventsFor({ events: r.events }, id, 'outcome', sim.month, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L469">reporting.js:469</a></td>
+<td>400</td>
+<td>record · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>400 - keep.size</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L486">reporting.js:486</a></td>
+<td>12</td>
+<td>windowValue · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>(function (root) { const Adaptive = typeof module !== 'undefined' &amp;&amp; module.exports ? require('./adaptation.js') : root.AntarkyaAdaptation; const ids = [ 'aca', 'merit', 'rotation', 'protection', '…</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L490">reporting.js:490</a></td>
+<td>0</td>
+<td>windowValue · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>earliest = report.history[0].month</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L491">reporting.js:491</a></td>
+<td>0</td>
+<td>windowValue · <a href="../TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td><code>from = window ? Math.max(earliest, month - window) : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L527">reporting.js:527</a></td>
+<td>12</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(function (root) { const Adaptive = typeof module !== 'undefined' &amp;&amp; module.exports ? require('./adaptation.js') : root.AntarkyaAdaptation; const ids = [ 'aca', 'merit', 'rotation', 'protection', '…</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L529">reporting.js:529</a></td>
+<td>0</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>Math.max(0, month - window)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L529">reporting.js:529</a></td>
+<td>0</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>from = window ? Math.max(0, month - window) : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L533">reporting.js:533</a></td>
+<td>0</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>e.month &gt;= 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L554">reporting.js:554</a></td>
+<td>4</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(direct ? 4 : 0) + (e.material ? 8 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L554">reporting.js:554</a></td>
+<td>0</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(direct ? 4 : 0) + (e.material ? 8 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L555">reporting.js:555</a></td>
+<td>8</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(direct ? 4 : 0) + (e.material ? 8 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L555">reporting.js:555</a></td>
+<td>0</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(direct ? 4 : 0) + (e.material ? 8 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L556">reporting.js:556</a></td>
+<td>3</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(direct ? 4 : 0) + (e.material ? 8 : 0) + (important ? 3 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L556">reporting.js:556</a></td>
+<td>0</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(direct ? 4 : 0) + (e.material ? 8 : 0) + (important ? 3 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L557">reporting.js:557</a></td>
+<td>2</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(direct ? 4 : 0) + (e.material ? 8 : 0) + (important ? 3 : 0) + (e.month &gt;= from ? 2 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L557">reporting.js:557</a></td>
+<td>0</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>(direct ? 4 : 0) + (e.material ? 8 : 0) + (important ? 3 : 0) + (e.month &gt;= from ? 2 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L558">reporting.js:558</a></td>
+<td>1</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>Math.max(1, month)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L563">reporting.js:563</a></td>
+<td>0</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>report.events .filter( (e) =&gt; e.month &gt;= 0 &amp;&amp; e.month &lt;= month &amp;&amp; !e.id.startsWith('INIT-') &amp;&amp; (level === 'impact' ? e.salient &amp;#124;&amp;#124; Object.values(e.policies).includes('direct') : e.policies[id]), ) .…</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L563">reporting.js:563</a></td>
+<td>8</td>
+<td>eventsFor · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>report.events .filter( (e) =&gt; e.month &gt;= 0 &amp;&amp; e.month &lt;= month &amp;&amp; !e.id.startsWith('INIT-') &amp;&amp; (level === 'impact' ? e.salient &amp;#124;&amp;#124; Object.values(e.policies).includes('direct') : e.policies[id]), ) .…</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L600">reporting.js:600</a></td>
+<td>0.0005</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>tolerance = level === 'impact' ? 0.0005 : level === 'outcome' ? 0.05 : 1e-8</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L600">reporting.js:600</a></td>
+<td>0.05</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>tolerance = level === 'impact' ? 0.0005 : level === 'outcome' ? 0.05 : 1e-8</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L600">reporting.js:600</a></td>
+<td>1e-8</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>tolerance = level === 'impact' ? 0.0005 : level === 'outcome' ? 0.05 : 1e-8</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L619">reporting.js:619</a></td>
+<td>0</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>outputDelta &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L620">reporting.js:620</a></td>
+<td>0</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>difference &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L620">reporting.js:620</a></td>
+<td>0</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>difference &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L622">reporting.js:622</a></td>
+<td>0.0005</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>Math.abs(impactDelta) &lt; 0.0005</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L626">reporting.js:626</a></td>
+<td>0</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>text[0].toLowerCase()</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L626">reporting.js:626</a></td>
+<td>1</td>
+<td>interpret · <a href="../TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td><code>text.slice(1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L638">reporting.js:638</a></td>
+<td>254</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>report.history.length &gt; 254</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L640">reporting.js:640</a></td>
+<td>400</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>report.events.length &gt; 400</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L649">reporting.js:649</a></td>
+<td>-12</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>p.month &lt; -12</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L650">reporting.js:650</a></td>
+<td>240</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>p.month &gt; 240</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L659">reporting.js:659</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>p.impact.opportunities &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L660">reporting.js:660</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>p.impact.corrupt &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L668">reporting.js:668</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>p.counts[id] &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L691">reporting.js:691</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>x &gt;= 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/reporting.js.html#L691">reporting.js:691</a></td>
+<td>1000</td>
+<td>valid · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>x &lt; 1000</code></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

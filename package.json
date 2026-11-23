@@ -1,0 +1,1 @@
+{"name":"antarkya-audit-tooling","private":true,"version":"1.0.0","description":"Development-only generation and verification for the Antarkya auditor documentation; no browser runtime dependency.","scripts":{"docs:build":"node scripts/build-audit.mjs","docs:check":"node scripts/check-audit.mjs"},"devDependencies":{"markdown-it":"14.1.0","prettier":"3.6.2"}}

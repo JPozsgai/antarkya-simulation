@@ -1,5 +1,7 @@
 # Antarkya v2.4
 
+**Full audit documentation:** [reader guide](docs/audit/index.html) · [accessible narrative](docs/audit/NARRATIVE.md) · [technical specification](docs/audit/TECHNICAL.md) · [annotated full code](docs/audit/SOURCE-INDEX.md) · [design crosswalk and gaps](docs/audit/RULE-CROSSWALK.md). [Read it on the live site](https://jpozsgai.github.io/antarkya-simulation/docs/audit/). This edition documents actual behavior, provisional assumptions and incomplete design requirements; the runtime rules remain unchanged.
+
 A working, dependency-free browser simulation of 1,000 people, organizations, corruption and anti-corruption reform. Run it at **https://jpozsgai.github.io/antarkya-simulation/**. The earlier v1 remains at `/v1/`.
 
 Choose one of ten countries, select any combination of twelve reforms, set initial resource mobilization and duration, then Run. The engine computes a reform branch and a no-new-reform baseline from exactly the same starting society. Repetitions reuse that society and vary subsequent random events. The analytical map shows recent integrity-related participation and affinity/cooperation in the first reform run; four class cards compare it with the baseline. Duration accepts any whole number from 6 to 240 months. Major system developments are the default event feed.

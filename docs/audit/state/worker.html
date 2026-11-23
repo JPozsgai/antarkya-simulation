@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>State definitions and writes — worker.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="state-definitions-and-writes-worker-js">State definitions and writes — worker.js</h1>
+<p><a href="../STATE.html">Inventory guide</a>. Whole-function source is authoritative for types, branches, bounds and update semantics.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Field / target</th>
+<th>Operation / expression</th>
+<th>Owner / mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/worker.js.html#L32">worker.js:32</a></td>
+<td><code>summary.version</code></td>
+<td>object definition · <code>Antarkya.VERSION</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L33">worker.js:33</a></td>
+<td><code>summary.month</code></td>
+<td>object definition · <code>s.month</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L34">worker.js:34</a></td>
+<td><code>summary.reporting</code></td>
+<td>object definition · <code>s.reporting()</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L35">worker.js:35</a></td>
+<td><code>summary.metrics</code></td>
+<td>object definition · <code>s.metrics()</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L36">worker.js:36</a></td>
+<td><code>summary.assessment</code></td>
+<td>object definition · <code>s.assessment()</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L37">worker.js:37</a></td>
+<td><code>summary.history</code></td>
+<td>object definition · <code>s.state.history</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L38">worker.js:38</a></td>
+<td><code>summary.classActivity</code></td>
+<td>object definition · <code>s.classActivity()</code></td>
+<td>summary · <a href="../TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L56">worker.js:56</a></td>
+<td><code>send.type</code></td>
+<td>object definition · <code>type</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L57">worker.js:57</a></td>
+<td><code>send.reform</code></td>
+<td>object definition · <code>view</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L58">worker.js:58</a></td>
+<td><code>send.baseline</code></td>
+<td>object definition · <code>base</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L59">worker.js:59</a></td>
+<td><code>send.comparison</code></td>
+<td>object definition · <code>Antarkya.comparison(view, base)</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L60">worker.js:60</a></td>
+<td><code>send.replicate</code></td>
+<td>object definition · <code>replicate + 1</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L61">worker.js:61</a></td>
+<td><code>send.repetitions</code></td>
+<td>object definition · <code>config.repetitions</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L62">worker.js:62</a></td>
+<td><code>send.repeatMonth</code></td>
+<td>object definition · <code>reform.month</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L63">worker.js:63</a></td>
+<td><code>send.eventSeed</code></td>
+<td>object definition · <code>config.eventSeed</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L64">worker.js:64</a></td>
+<td><code>send.running</code></td>
+<td>object definition · <code>active</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L65">worker.js:65</a></td>
+<td><code>send.elapsed</code></td>
+<td>object definition · <code>performance.now() - started</code></td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L79">worker.js:79</a></td>
+<td><code>finishPair.replicate</code></td>
+<td>object definition · <code>replicate + 1</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L80">worker.js:80</a></td>
+<td><code>finishPair.eventSeed</code></td>
+<td>object definition · <code>config.eventSeed</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L81">worker.js:81</a></td>
+<td><code>finishPair.reformMetrics</code></td>
+<td>object definition · <code>r.metrics</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L82">worker.js:82</a></td>
+<td><code>finishPair.baselineMetrics</code></td>
+<td>object definition · <code>b.metrics</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L84">worker.js:84</a></td>
+<td><code>finishPair.policyOutcomes</code></td>
+<td>object definition · <code>Object.fromEntries( Antarkya.KEYS.map((id) =&gt; { const x = r.reporting.history.at(-1).tools[id].outcome, y = b.reporting.history.at(-1).tools[id].outcome; return [ id, { reform: x, basel…</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L90">worker.js:90</a></td>
+<td><code>finishPair.policyOutcomes.reform</code></td>
+<td>object definition · <code>x</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L90">worker.js:90</a></td>
+<td><code>finishPair.policyOutcomes.baseline</code></td>
+<td>object definition · <code>y</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L90">worker.js:90</a></td>
+<td><code>finishPair.policyOutcomes.difference</code></td>
+<td>object definition · <code>x === null &amp;#124;&amp;#124; y === null ? null : x - y</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L97">worker.js:97</a></td>
+<td><code>finishPair.reform</code></td>
+<td>object definition · <code>Object(5 entries); child fields listed separately</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L99">worker.js:99</a></td>
+<td><code>finishPair.reform.events</code></td>
+<td>object definition · <code>reform.state.events</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L100">worker.js:100</a></td>
+<td><code>finishPair.reform.cases</code></td>
+<td>object definition · <code>reform.state.cases</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L101">worker.js:101</a></td>
+<td><code>finishPair.reform.conduct</code></td>
+<td>object definition · <code>reform.state.conduct</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L102">worker.js:102</a></td>
+<td><code>finishPair.reform.agentProfiles</code></td>
+<td>object definition · <code>reform.agents.map((a) =&gt; ({ id: a.id, motives: a.motives, skill: a.skill, control: a.control, normCorrupt: a.normCorrupt, riskBelief: a.riskBelief, financialPressure: …</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L103">worker.js:103</a></td>
+<td><code>finishPair.reform.agentProfiles.id</code></td>
+<td>object definition · <code>a.id</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L104">worker.js:104</a></td>
+<td><code>finishPair.reform.agentProfiles.motives</code></td>
+<td>object definition · <code>a.motives</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L105">worker.js:105</a></td>
+<td><code>finishPair.reform.agentProfiles.skill</code></td>
+<td>object definition · <code>a.skill</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L106">worker.js:106</a></td>
+<td><code>finishPair.reform.agentProfiles.control</code></td>
+<td>object definition · <code>a.control</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L107">worker.js:107</a></td>
+<td><code>finishPair.reform.agentProfiles.normCorrupt</code></td>
+<td>object definition · <code>a.normCorrupt</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L108">worker.js:108</a></td>
+<td><code>finishPair.reform.agentProfiles.riskBelief</code></td>
+<td>object definition · <code>a.riskBelief</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L109">worker.js:109</a></td>
+<td><code>finishPair.reform.agentProfiles.financialPressure</code></td>
+<td>object definition · <code>a.financialPressure</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L110">worker.js:110</a></td>
+<td><code>finishPair.reform.agentProfiles.liabilities</code></td>
+<td>object definition · <code>a.liabilities</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L111">worker.js:111</a></td>
+<td><code>finishPair.reform.agentProfiles.experience</code></td>
+<td>object definition · <code>a.experience</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L112">worker.js:112</a></td>
+<td><code>finishPair.reform.agentProfiles.income</code></td>
+<td>object definition · <code>a.income</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L113">worker.js:113</a></td>
+<td><code>finishPair.reform.agentProfiles.cost</code></td>
+<td>object definition · <code>a.cost</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L114">worker.js:114</a></td>
+<td><code>finishPair.reform.agentProfiles.startingRole</code></td>
+<td>object definition · <code>a.startingRole</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L115">worker.js:115</a></td>
+<td><code>finishPair.reform.agentProfiles.psychology</code></td>
+<td>object definition · <code>a.psychology</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L118">worker.js:118</a></td>
+<td><code>finishPair.baseline</code></td>
+<td>object definition · <code>b</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L128">worker.js:128</a></td>
+<td><code>finishPair.type</code></td>
+<td>object definition · <code>'complete'</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L130">worker.js:130</a></td>
+<td><code>finishPair.eventSeed</code></td>
+<td>object definition · <code>config.eventSeed</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L131">worker.js:131</a></td>
+<td><code>finishPair.repetitions</code></td>
+<td>object definition · <code>config.repetitions</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L132">worker.js:132</a></td>
+<td><code>finishPair.replicate</code></td>
+<td>object definition · <code>config.repetitions</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L133">worker.js:133</a></td>
+<td><code>finishPair.comparison</code></td>
+<td>object definition · <code>Antarkya.comparison(firstResult.reform, firstResult.baseline)</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L134">worker.js:134</a></td>
+<td><code>finishPair.replications</code></td>
+<td>object definition · <code>replications</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L135">worker.js:135</a></td>
+<td><code>finishPair.statistics</code></td>
+<td>object definition · <code>Object(3 entries); child fields listed separately</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L136">worker.js:136</a></td>
+<td><code>finishPair.statistics.meanDifference</code></td>
+<td>object definition · <code>differences.length ? differences.reduce((a, b) =&gt; a + b, 0) / differences.length : null</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L139">worker.js:139</a></td>
+<td><code>finishPair.statistics.minDifference</code></td>
+<td>object definition · <code>differences.length ? Math.min(...differences) : null</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L140">worker.js:140</a></td>
+<td><code>finishPair.statistics.maxDifference</code></td>
+<td>object definition · <code>differences.length ? Math.max(...differences) : null</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L142">worker.js:142</a></td>
+<td><code>finishPair.elapsed</code></td>
+<td>object definition · <code>performance.now() - started</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L143">worker.js:143</a></td>
+<td><code>finishPair.initialKey</code></td>
+<td>object definition · <code>initial.initialKey</code></td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L173">worker.js:173</a></td>
+<td><code>pump.type</code></td>
+<td>object definition · <code>'error'</code></td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L173">worker.js:173</a></td>
+<td><code>pump.message</code></td>
+<td>object definition · <code>e.message</code></td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L209">worker.js:209</a></td>
+<td><code>module data.type</code></td>
+<td>object definition · <code>'error'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L209">worker.js:209</a></td>
+<td><code>module data.message</code></td>
+<td>object definition · <code>e.message</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

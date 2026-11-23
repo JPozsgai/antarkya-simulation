@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>State definitions and writes — config.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="state-definitions-and-writes-config-js">State definitions and writes — config.js</h1>
+<p><a href="../STATE.html">Inventory guide</a>. Whole-function source is authoritative for types, branches, bounds and update semantics.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Field / target</th>
+<th>Operation / expression</th>
+<th>Owner / mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/config.js.html#L10">config.js:10</a></td>
+<td><code>countries.NGA</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L11">config.js:11</a></td>
+<td><code>countries.NGA.counts</code></td>
+<td>object definition · <code>[635, 210, 130, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L12">config.js:12</a></td>
+<td><code>countries.NGA.cycle</code></td>
+<td>object definition · <code>48</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L13">config.js:13</a></td>
+<td><code>countries.NGA.firstReview</code></td>
+<td>object definition · <code>24</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L14">config.js:14</a></td>
+<td><code>countries.NGA.mode</code></td>
+<td>object definition · <code>'presidential'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L15">config.js:15</a></td>
+<td><code>countries.NGA.central</code></td>
+<td>object definition · <code>0.7</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L16">config.js:16</a></td>
+<td><code>countries.NGA.nodes</code></td>
+<td>object definition · <code>Array(6 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L25">config.js:25</a></td>
+<td><code>countries.ZAF</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L26">config.js:26</a></td>
+<td><code>countries.ZAF.counts</code></td>
+<td>object definition · <code>[610, 220, 145, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L27">config.js:27</a></td>
+<td><code>countries.ZAF.cycle</code></td>
+<td>object definition · <code>60</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L28">config.js:28</a></td>
+<td><code>countries.ZAF.firstReview</code></td>
+<td>object definition · <code>36</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L29">config.js:29</a></td>
+<td><code>countries.ZAF.mode</code></td>
+<td>object definition · <code>'parliamentary'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L30">config.js:30</a></td>
+<td><code>countries.ZAF.central</code></td>
+<td>object definition · <code>0.55</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L31">config.js:31</a></td>
+<td><code>countries.ZAF.nodes</code></td>
+<td>object definition · <code>Array(7 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L41">config.js:41</a></td>
+<td><code>countries.IDN</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L42">config.js:42</a></td>
+<td><code>countries.IDN.counts</code></td>
+<td>object definition · <code>[625, 220, 130, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L43">config.js:43</a></td>
+<td><code>countries.IDN.cycle</code></td>
+<td>object definition · <code>60</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L44">config.js:44</a></td>
+<td><code>countries.IDN.firstReview</code></td>
+<td>object definition · <code>36</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L45">config.js:45</a></td>
+<td><code>countries.IDN.mode</code></td>
+<td>object definition · <code>'presidential'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L46">config.js:46</a></td>
+<td><code>countries.IDN.central</code></td>
+<td>object definition · <code>0.65</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L47">config.js:47</a></td>
+<td><code>countries.IDN.nodes</code></td>
+<td>object definition · <code>Array(6 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L56">config.js:56</a></td>
+<td><code>countries.IND</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L57">config.js:57</a></td>
+<td><code>countries.IND.counts</code></td>
+<td>object definition · <code>[650, 205, 120, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L58">config.js:58</a></td>
+<td><code>countries.IND.cycle</code></td>
+<td>object definition · <code>60</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L59">config.js:59</a></td>
+<td><code>countries.IND.firstReview</code></td>
+<td>object definition · <code>36</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L60">config.js:60</a></td>
+<td><code>countries.IND.mode</code></td>
+<td>object definition · <code>'parliamentary'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L61">config.js:61</a></td>
+<td><code>countries.IND.central</code></td>
+<td>object definition · <code>0.5</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L62">config.js:62</a></td>
+<td><code>countries.IND.nodes</code></td>
+<td>object definition · <code>Array(6 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L71">config.js:71</a></td>
+<td><code>countries.CHN</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L72">config.js:72</a></td>
+<td><code>countries.CHN.counts</code></td>
+<td>object definition · <code>[590, 235, 150, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L73">config.js:73</a></td>
+<td><code>countries.CHN.cycle</code></td>
+<td>object definition · <code>60</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L74">config.js:74</a></td>
+<td><code>countries.CHN.firstReview</code></td>
+<td>object definition · <code>36</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L75">config.js:75</a></td>
+<td><code>countries.CHN.mode</code></td>
+<td>object definition · <code>'appointment'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L76">config.js:76</a></td>
+<td><code>countries.CHN.central</code></td>
+<td>object definition · <code>0.8</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L77">config.js:77</a></td>
+<td><code>countries.CHN.nodes</code></td>
+<td>object definition · <code>Array(7 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L87">config.js:87</a></td>
+<td><code>countries.PER</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L88">config.js:88</a></td>
+<td><code>countries.PER.counts</code></td>
+<td>object definition · <code>[630, 210, 135, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L89">config.js:89</a></td>
+<td><code>countries.PER.cycle</code></td>
+<td>object definition · <code>60</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L90">config.js:90</a></td>
+<td><code>countries.PER.firstReview</code></td>
+<td>object definition · <code>12</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L91">config.js:91</a></td>
+<td><code>countries.PER.mode</code></td>
+<td>object definition · <code>'presidential'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L92">config.js:92</a></td>
+<td><code>countries.PER.central</code></td>
+<td>object definition · <code>0.6</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L93">config.js:93</a></td>
+<td><code>countries.PER.nodes</code></td>
+<td>object definition · <code>Array(6 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L102">config.js:102</a></td>
+<td><code>countries.BRA</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L103">config.js:103</a></td>
+<td><code>countries.BRA.counts</code></td>
+<td>object definition · <code>[600, 230, 145, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L104">config.js:104</a></td>
+<td><code>countries.BRA.cycle</code></td>
+<td>object definition · <code>48</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L105">config.js:105</a></td>
+<td><code>countries.BRA.firstReview</code></td>
+<td>object definition · <code>12</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L106">config.js:106</a></td>
+<td><code>countries.BRA.mode</code></td>
+<td>object definition · <code>'presidential'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L107">config.js:107</a></td>
+<td><code>countries.BRA.central</code></td>
+<td>object definition · <code>0.55</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L108">config.js:108</a></td>
+<td><code>countries.BRA.nodes</code></td>
+<td>object definition · <code>Array(6 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L117">config.js:117</a></td>
+<td><code>countries.USA</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L118">config.js:118</a></td>
+<td><code>countries.USA.counts</code></td>
+<td>object definition · <code>[570, 270, 135, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L119">config.js:119</a></td>
+<td><code>countries.USA.cycle</code></td>
+<td>object definition · <code>48</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L120">config.js:120</a></td>
+<td><code>countries.USA.firstReview</code></td>
+<td>object definition · <code>24</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L121">config.js:121</a></td>
+<td><code>countries.USA.mode</code></td>
+<td>object definition · <code>'presidential'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L122">config.js:122</a></td>
+<td><code>countries.USA.central</code></td>
+<td>object definition · <code>0.45</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L123">config.js:123</a></td>
+<td><code>countries.USA.nodes</code></td>
+<td>object definition · <code>Array(7 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L133">config.js:133</a></td>
+<td><code>countries.DEU</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L134">config.js:134</a></td>
+<td><code>countries.DEU.counts</code></td>
+<td>object definition · <code>[575, 255, 145, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L135">config.js:135</a></td>
+<td><code>countries.DEU.cycle</code></td>
+<td>object definition · <code>48</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L136">config.js:136</a></td>
+<td><code>countries.DEU.firstReview</code></td>
+<td>object definition · <code>36</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L137">config.js:137</a></td>
+<td><code>countries.DEU.mode</code></td>
+<td>object definition · <code>'parliamentary'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L138">config.js:138</a></td>
+<td><code>countries.DEU.central</code></td>
+<td>object definition · <code>0.4</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L139">config.js:139</a></td>
+<td><code>countries.DEU.nodes</code></td>
+<td>object definition · <code>Array(6 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L148">config.js:148</a></td>
+<td><code>countries.ITA</code></td>
+<td>object definition · <code>Object(6 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L149">config.js:149</a></td>
+<td><code>countries.ITA.counts</code></td>
+<td>object definition · <code>[590, 245, 140, 25]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L150">config.js:150</a></td>
+<td><code>countries.ITA.cycle</code></td>
+<td>object definition · <code>60</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L151">config.js:151</a></td>
+<td><code>countries.ITA.firstReview</code></td>
+<td>object definition · <code>24</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L152">config.js:152</a></td>
+<td><code>countries.ITA.mode</code></td>
+<td>object definition · <code>'parliamentary'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L153">config.js:153</a></td>
+<td><code>countries.ITA.central</code></td>
+<td>object definition · <code>0.6</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L154">config.js:154</a></td>
+<td><code>countries.ITA.nodes</code></td>
+<td>object definition · <code>Array(6 entries); see exact source</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L166">config.js:166</a></td>
+<td><code>costs.aca</code></td>
+<td>object definition · <code>[0.12, 0.025, 0.035]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L169">config.js:169</a></td>
+<td><code>costs.merit</code></td>
+<td>object definition · <code>[0.05, 0.02, 0.025]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L172">config.js:172</a></td>
+<td><code>costs.rotation</code></td>
+<td>object definition · <code>[0.04, 0.015, 0.025]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L175">config.js:175</a></td>
+<td><code>costs.protection</code></td>
+<td>object definition · <code>[0.08, 0.025, 0.03]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L178">config.js:178</a></td>
+<td><code>costs.declarations</code></td>
+<td>object definition · <code>[0.09, 0.025, 0.03]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L181">config.js:181</a></td>
+<td><code>costs.conflicts</code></td>
+<td>object definition · <code>[0.06, 0.018, 0.025]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L184">config.js:184</a></td>
+<td><code>costs.oversight</code></td>
+<td>object definition · <code>[0.1, 0.03, 0.04]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L187">config.js:187</a></td>
+<td><code>costs.pay</code></td>
+<td>object definition · <code>[0.015, 0.22, 0.01]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L190">config.js:190</a></td>
+<td><code>costs.penalties</code></td>
+<td>object definition · <code>[0.06, 0.015, 0.02]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L193">config.js:193</a></td>
+<td><code>costs.disclosure</code></td>
+<td>object definition · <code>[0.08, 0.02, 0.025]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L196">config.js:196</a></td>
+<td><code>costs.complaints</code></td>
+<td>object definition · <code>[0.07, 0.022, 0.03]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L199">config.js:199</a></td>
+<td><code>costs.education</code></td>
+<td>object definition · <code>[0.04, 0.015, 0.025]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L203">config.js:203</a></td>
+<td><code>assumptions.roleComposition</code></td>
+<td>object definition · <code>'Provisional scaled representation; not national population percentages.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L204">config.js:204</a></td>
+<td><code>assumptions.centralAllocation</code></td>
+<td>object definition · <code>'Estimated central-versus-local allocation pattern, not measured budget shares.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L206">config.js:206</a></td>
+<td><code>assumptions.calendar</code></td>
+<td>object definition · <code>'Simplified relative electoral/appointment cycle; phase is a scenario assumption, not a forecast calendar.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L208">config.js:208</a></td>
+<td><code>assumptions.culture</code></td>
+<td>object definition · <code>'Unknown national cultural measures use a common neutral scenario prior of 50; editable.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L210">config.js:210</a></td>
+<td><code>assumptions.politics</code></td>
+<td>object definition · <code>'Freedom House CL (2026), electoral process and political participation (2025) rescaled as distinct dated proxies, not action probabilities.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L212">config.js:212</a></td>
+<td><code>assumptions.costs</code></td>
+<td>object definition · <code>'Normalized engineering assumptions for setup/recurring RU and staff-time requirements.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L213">config.js:213</a></td>
+<td><code>assumptions.mappings</code></td>
+<td>object definition · <code>'WGI, GDP and narrow OECD instrument observations inform bounded capacity/resource estimates; they are not corruption probabilities or comprehensive national effectiveness scores.'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L216">config.js:216</a></td>
+<td><code>api.countries</code></td>
+<td>object definition · <code>countries</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L216">config.js:216</a></td>
+<td><code>api.costs</code></td>
+<td>object definition · <code>costs</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L216">config.js:216</a></td>
+<td><code>api.assumptions</code></td>
+<td>object definition · <code>assumptions</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L217">config.js:217</a></td>
+<td><code>module.exports</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+<tr>
+<td><a href="../source/config.js.html#L218">config.js:218</a></td>
+<td><code>root.AntarkyaConfig</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="../TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

@@ -1,3 +1,5 @@
+> **Current auditor documentation:** See the [accessible narrative](docs/audit/NARRATIVE.md), [full technical specification](docs/audit/TECHNICAL.md), [annotated source](docs/audit/SOURCE-INDEX.md) and [gap register](docs/audit/GAPS.md). This earlier overview is retained as supplemental context. Where its shorthand or earlier proposals differ, the linked audit edition describes current code.
+
 # Antarkya v2.4 — operational model
 
 23 November 2026 · engine and rules 2.4.0

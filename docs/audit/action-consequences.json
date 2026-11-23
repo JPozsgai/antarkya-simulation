@@ -1,0 +1,693 @@
+[
+  {
+    "file": "model.js",
+    "line": 1303,
+    "owner": "priorities",
+    "refs": [
+      "AK-ECO-02",
+      "AK-REF-03"
+    ],
+    "option": "'prioritize'",
+    "social": "[0, 0.05, 0.15]",
+    "economic": "[0, 0.05, 0.3 * (1 - perf.delivery)]",
+    "political": "[0, 0.1, 0.4 * perf.support]"
+  },
+  {
+    "file": "model.js",
+    "line": 1312,
+    "owner": "priorities",
+    "refs": [
+      "AK-ECO-02",
+      "AK-REF-03"
+    ],
+    "option": "'defer'",
+    "social": "[0, 0, 0]",
+    "economic": "[0.04, 0, 0]",
+    "political": "[0, 0, 0]"
+  },
+  {
+    "file": "model.js",
+    "line": 1610,
+    "owner": "scheduleWork",
+    "refs": [
+      "AK-ECO-02"
+    ],
+    "option": "name",
+    "social": "[0, 0, 0.1]",
+    "economic": "[0, 0, need]",
+    "political": "[0, 0, need]"
+  },
+  {
+    "file": "model.js",
+    "line": 1685,
+    "owner": "implementPolicies",
+    "refs": [
+      "AK-REF-03",
+      "AK-POL-ACA",
+      "AK-POL-MERIT",
+      "AK-POL-ROTATION",
+      "AK-POL-PROTECTION",
+      "AK-POL-DECLARATIONS",
+      "AK-POL-CONFLICTS",
+      "AK-POL-OVERSIGHT",
+      "AK-POL-PAY",
+      "AK-POL-PENALTIES",
+      "AK-POL-DISCLOSURE",
+      "AK-POL-COMPLAINTS",
+      "AK-POL-EDUCATION"
+    ],
+    "option": "'implement'",
+    "social": "[0.1, 0.15, 0.45]",
+    "economic": "[0.05, 0.35, 0.9]",
+    "political": "[0.05, 0.1, 0.65]"
+  },
+  {
+    "file": "model.js",
+    "line": 1691,
+    "owner": "implementPolicies",
+    "refs": [
+      "AK-REF-03",
+      "AK-POL-ACA",
+      "AK-POL-MERIT",
+      "AK-POL-ROTATION",
+      "AK-POL-PROTECTION",
+      "AK-POL-DECLARATIONS",
+      "AK-POL-CONFLICTS",
+      "AK-POL-OVERSIGHT",
+      "AK-POL-PAY",
+      "AK-POL-PENALTIES",
+      "AK-POL-DISCLOSURE",
+      "AK-POL-COMPLAINTS",
+      "AK-POL-EDUCATION"
+    ],
+    "option": "'selective'",
+    "social": "[0.1, 0.4, 0.05]",
+    "economic": "[0.15, 0.6, 0.3]",
+    "political": "[0.15, 0.35, -0.1]"
+  },
+  {
+    "file": "model.js",
+    "line": 1697,
+    "owner": "implementPolicies",
+    "refs": [
+      "AK-REF-03",
+      "AK-POL-ACA",
+      "AK-POL-MERIT",
+      "AK-POL-ROTATION",
+      "AK-POL-PROTECTION",
+      "AK-POL-DECLARATIONS",
+      "AK-POL-CONFLICTS",
+      "AK-POL-OVERSIGHT",
+      "AK-POL-PAY",
+      "AK-POL-PENALTIES",
+      "AK-POL-DISCLOSURE",
+      "AK-POL-COMPLAINTS",
+      "AK-POL-EDUCATION"
+    ],
+    "option": "'resist'",
+    "social": "[0.1, 0.2, -0.2]",
+    "economic": "[0.1, 0.2, -0.4]",
+    "political": "[0.05, 0.3, -0.35]"
+  },
+  {
+    "file": "model.js",
+    "line": 1703,
+    "owner": "implementPolicies",
+    "refs": [
+      "AK-REF-03",
+      "AK-POL-ACA",
+      "AK-POL-MERIT",
+      "AK-POL-ROTATION",
+      "AK-POL-PROTECTION",
+      "AK-POL-DECLARATIONS",
+      "AK-POL-CONFLICTS",
+      "AK-POL-OVERSIGHT",
+      "AK-POL-PAY",
+      "AK-POL-PENALTIES",
+      "AK-POL-DISCLOSURE",
+      "AK-POL-COMPLAINTS",
+      "AK-POL-EDUCATION"
+    ],
+    "option": "'redirect'",
+    "social": "[-0.2, 0.1, -0.5]",
+    "economic": "[0.8, 0.35, -0.8]",
+    "political": "[0.2, 0.15, -0.7]"
+  },
+  {
+    "file": "model.js",
+    "line": 1888,
+    "owner": "budgetReview",
+    "refs": [
+      "AK-DEC-02",
+      "AK-REF-04"
+    ],
+    "option": "'increase'",
+    "social": "[0.1, 0.1, 0.4]",
+    "economic": "[-0.1, 0.2, 0.25 + 0.65 * feedback.delivery]",
+    "political": "[0.2 * (2 * feedback.support - 1), 0.25, 0.6 - 0.03 * feedback.wait]"
+  },
+  {
+    "file": "model.js",
+    "line": 1900,
+    "owner": "budgetReview",
+    "refs": [
+      "AK-DEC-02",
+      "AK-REF-04"
+    ],
+    "option": "'hold'",
+    "social": "[0, 0.15, 0.1]",
+    "economic": "[0.1, 0.3, 0.25]",
+    "political": "[0.1, 0.2, 0.1]"
+  },
+  {
+    "file": "model.js",
+    "line": 1905,
+    "owner": "budgetReview",
+    "refs": [
+      "AK-DEC-02",
+      "AK-REF-04"
+    ],
+    "option": "'decrease'",
+    "social": "[0, 0.1, -0.2]",
+    "economic": "[0.25, 0.5, -0.35 - 0.3 * feedback.delivery]",
+    "political": "[0.2 * (1 - feedback.support), 0.3, -0.3]"
+  },
+  {
+    "file": "model.js",
+    "line": 1914,
+    "owner": "budgetReview",
+    "refs": [
+      "AK-DEC-02",
+      "AK-REF-04"
+    ],
+    "option": "'narrow'",
+    "social": "[-0.1, 0.2, -0.4]",
+    "economic": "[0.4, 0.6, -0.6]",
+    "political": "[0.3 * (1 - feedback.support), 0.45 + 0.2 * feedback.resistance, -0.6]"
+  },
+  {
+    "file": "model.js",
+    "line": 1930,
+    "owner": "budgetReview",
+    "refs": [
+      "AK-DEC-02",
+      "AK-REF-04"
+    ],
+    "option": "'approve'",
+    "social": "[0.1, 0.15, 0.2]",
+    "economic": "[0.05, 0.2, 0.6]",
+    "political": "[0.1, 0.1, 0.4]"
+  },
+  {
+    "file": "model.js",
+    "line": 1935,
+    "owner": "budgetReview",
+    "refs": [
+      "AK-DEC-02",
+      "AK-REF-04"
+    ],
+    "option": "'withhold'",
+    "social": "[0, 0.1, -0.15]",
+    "economic": "[0.2, 0.2, -0.3]",
+    "political": "[0.05, 0.2, -0.3]"
+  },
+  {
+    "file": "model.js",
+    "line": 1949,
+    "owner": "budgetReview",
+    "refs": [
+      "AK-DEC-02",
+      "AK-REF-04"
+    ],
+    "option": "'approve'",
+    "social": "[0.05, 0.25, 0.2]",
+    "economic": "[0.05, 0.4, 0.5]",
+    "political": "[0.1, 0.5, 0.3]"
+  },
+  {
+    "file": "model.js",
+    "line": 1954,
+    "owner": "budgetReview",
+    "refs": [
+      "AK-DEC-02",
+      "AK-REF-04"
+    ],
+    "option": "'withhold'",
+    "social": "[0, 0.15, -0.15]",
+    "economic": "[0.15, 0.3, -0.2]",
+    "political": "[0.15, 0.3, -0.2]"
+  },
+  {
+    "file": "model.js",
+    "line": 2056,
+    "owner": "report",
+    "refs": [
+      "AK-CAS-01"
+    ],
+    "option": "'report'",
+    "social": "[-0.1, 0, 0.65]",
+    "economic": "[-0.1, 0, 0.7]",
+    "political": "[0, -0.05, 0.6]"
+  },
+  {
+    "file": "model.js",
+    "line": 2062,
+    "owner": "report",
+    "refs": [
+      "AK-CAS-01"
+    ],
+    "option": "'stay silent'",
+    "social": "[0.1, 0.1, -0.15]",
+    "economic": "[0.05, 0.1, -0.2]",
+    "political": "[0, 0.1, -0.3]"
+  },
+  {
+    "file": "model.js",
+    "line": 2089,
+    "owner": "encounter",
+    "refs": [
+      "AK-DEC-02",
+      "AK-ACT-01"
+    ],
+    "option": "'lawful'",
+    "social": "[0.15, 0.1, 0.35]",
+    "economic": "[0.12, 0.1, 0.65]",
+    "political": "[0.05, 0.02, 0.2]"
+  },
+  {
+    "file": "model.js",
+    "line": 2095,
+    "owner": "encounter",
+    "refs": [
+      "AK-DEC-02",
+      "AK-ACT-01"
+    ],
+    "option": "'offer improper advantage'",
+    "social": "[-0.2, 0.15, -0.4]",
+    "economic": "[gain, 0.35, -0.85]",
+    "political": "[kind === 'political pressure' || kind === 'vote buying' ? 0.7 : 0.05, 0.25, -0.65]"
+  },
+  {
+    "file": "model.js",
+    "line": 2108,
+    "owner": "encounter",
+    "refs": [
+      "AK-DEC-02",
+      "AK-ACT-01"
+    ],
+    "option": "'decline / defer'",
+    "social": "[0, 0, -0.1]",
+    "economic": "[-0.15, 0, -0.05]",
+    "political": "[0, 0, -0.1]"
+  },
+  {
+    "file": "model.js",
+    "line": 2116,
+    "owner": "encounter",
+    "refs": [
+      "AK-DEC-02",
+      "AK-ACT-01"
+    ],
+    "option": "'perform duty'",
+    "social": "[0.15, 0.1, 0.5]",
+    "economic": "[0.1, 0.1, 0.6]",
+    "political": "[0.05, 0.05, 0.35]"
+  },
+  {
+    "file": "model.js",
+    "line": 2124,
+    "owner": "encounter",
+    "refs": [
+      "AK-DEC-02",
+      "AK-ACT-01"
+    ],
+    "option": "'accept'",
+    "social": "[-0.2, 0.1, -0.45]",
+    "economic": "[0.6, 0.3, -0.8]",
+    "political": "[0.1, 0.2, -0.5]"
+  },
+  {
+    "file": "model.js",
+    "line": 2132,
+    "owner": "encounter",
+    "refs": [
+      "AK-DEC-02",
+      "AK-ACT-01"
+    ],
+    "option": "'demand payment'",
+    "social": "[-0.35, 0, -0.6]",
+    "economic": "[0.8, 0.2, -0.9]",
+    "political": "[0.2, 0.1, -0.7]"
+  },
+  {
+    "file": "model.js",
+    "line": 2144,
+    "owner": "encounter",
+    "refs": [
+      "AK-DEC-02",
+      "AK-ACT-01"
+    ],
+    "option": "'pay under coercion'",
+    "social": "[-0.2, 0.05, -0.1]",
+    "economic": "[-bribe, 0.05, -0.1]",
+    "political": "[0, 0, 0]"
+  },
+  {
+    "file": "model.js",
+    "line": 2149,
+    "owner": "encounter",
+    "refs": [
+      "AK-DEC-02",
+      "AK-ACT-01"
+    ],
+    "option": "'refuse coercion'",
+    "social": "[0.1, 0, 0.3]",
+    "economic": "[-0.45, 0, 0.35]",
+    "political": "[-0.1, 0, 0.3]"
+  },
+  {
+    "file": "model.js",
+    "line": 2494,
+    "owner": "processCases",
+    "refs": [
+      "AK-DEC-02",
+      "AK-CAS-02",
+      "AK-CAS-03"
+    ],
+    "option": "'process'",
+    "social": "[0.1, 0.1, 0.5]",
+    "economic": "[0.1, 0.1, 0.8]",
+    "political": "[0.1, 0, 0.65]"
+  },
+  {
+    "file": "model.js",
+    "line": 2499,
+    "owner": "processCases",
+    "refs": [
+      "AK-DEC-02",
+      "AK-CAS-02",
+      "AK-CAS-03"
+    ],
+    "option": "'delay'",
+    "social": "[0, 0.2, -0.2]",
+    "economic": "[insider ? 0.65 : 0.1, insider ? 0.5 : 0.1, -0.4]",
+    "political": "[0.1, 0.35, -0.45]"
+  },
+  {
+    "file": "model.js",
+    "line": 2509,
+    "owner": "processCases",
+    "refs": [
+      "AK-DEC-02",
+      "AK-CAS-02",
+      "AK-CAS-03"
+    ],
+    "option": "'dismiss'",
+    "social": "[-0.05, 0.1, -0.3]",
+    "economic": "[insider ? 0.5 : 0.05, 0.1, -0.3]",
+    "political": "[0.1, 0.2, -0.3]"
+  },
+  {
+    "file": "model.js",
+    "line": 2666,
+    "owner": "processCases",
+    "refs": [
+      "AK-DEC-02",
+      "AK-CAS-02",
+      "AK-CAS-03"
+    ],
+    "option": "'leave reporter alone'",
+    "social": "[0.1, 0, 0.3]",
+    "economic": "[0.1, 0, 0.2]",
+    "political": "[0, 0, 0.25]"
+  },
+  {
+    "file": "model.js",
+    "line": 2671,
+    "owner": "processCases",
+    "refs": [
+      "AK-DEC-02",
+      "AK-CAS-02",
+      "AK-CAS-03"
+    ],
+    "option": "'retaliate'",
+    "social": "[-0.3, 0.1, -0.5]",
+    "economic": "[0.3, 0.4, -0.6]",
+    "political": "[0.2, 0.3, -0.6]"
+  },
+  {
+    "file": "model.js",
+    "line": 2808,
+    "owner": "publish",
+    "refs": [
+      "AK-INF-01"
+    ],
+    "option": "'publish'",
+    "social": "[0.25, 0.2, 0.7]",
+    "economic": "[0.2 - dependence, 0.3, 0.65]",
+    "political": "[0.05, 0.1 * independence, 0.65]"
+  },
+  {
+    "file": "model.js",
+    "line": 2817,
+    "owner": "publish",
+    "refs": [
+      "AK-INF-01"
+    ],
+    "option": "'withhold'",
+    "social": "[-0.15, 0.2, -0.4]",
+    "economic": "[0.1 + dependence, this.related(editor, this.agents[subject]) ? 0.6 : 0.1, -0.2]",
+    "political": "[0.1, 0.2 + dependence - independence * 0.3, -0.45]"
+  },
+  {
+    "file": "model.js",
+    "line": 2973,
+    "owner": "information",
+    "refs": [
+      "AK-INF-02"
+    ],
+    "option": "'share'",
+    "social": "[0.15, 0.1, 0.4]",
+    "economic": "[0.1, 0.25, 0.35]",
+    "political": "[0, 0.05, 0.25]"
+  },
+  {
+    "file": "model.js",
+    "line": 2978,
+    "owner": "information",
+    "refs": [
+      "AK-INF-02"
+    ],
+    "option": "'do not share'",
+    "social": "[0, 0, 0]",
+    "economic": "[0.05, 0.05, 0]",
+    "political": "[0, 0, 0]"
+  },
+  {
+    "file": "model.js",
+    "line": 3020,
+    "owner": "funding",
+    "refs": [
+      "AK-INF-01"
+    ],
+    "option": "'fund'",
+    "social": "[0.1, 0.4, 0.05]",
+    "economic": "[-0.2, 0.8, 0.1]",
+    "political": "[0.1, 0.45, 0.05]"
+  },
+  {
+    "file": "model.js",
+    "line": 3025,
+    "owner": "funding",
+    "refs": [
+      "AK-INF-01"
+    ],
+    "option": "'withdraw / do not fund'",
+    "social": "[0, -0.1, 0]",
+    "economic": "[0.15, 0.1, -0.1]",
+    "political": "[0, -0.15, 0]"
+  },
+  {
+    "file": "model.js",
+    "line": 3038,
+    "owner": "funding",
+    "refs": [
+      "AK-INF-01"
+    ],
+    "option": "'accept'",
+    "social": "[0.1, 0.3, 0]",
+    "economic": "[0.1, 0.7, 0.2]",
+    "political": "[0.1, 0.15, -0.1]"
+  },
+  {
+    "file": "model.js",
+    "line": 3043,
+    "owner": "funding",
+    "refs": [
+      "AK-INF-01"
+    ],
+    "option": "'refuse'",
+    "social": "[0.05, 0.1, 0.3]",
+    "economic": "[0, 0.1, 0.45]",
+    "political": "[0, 0, 0.2]"
+  },
+  {
+    "file": "model.js",
+    "line": 3138,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'admit'",
+    "social": "[0.1, 0.45, 0.1]",
+    "economic": "[0.05, 0.5, 0.2]",
+    "political": "[0.05, 0.2, 0.1]"
+  },
+  {
+    "file": "model.js",
+    "line": 3143,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'decline'",
+    "social": "[0, 0.05, 0]",
+    "economic": "[0.05, 0.1, 0]",
+    "political": "[0, 0, 0]"
+  },
+  {
+    "file": "model.js",
+    "line": 3172,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'give notice'",
+    "social": "[0.2, -0.2, 0.05]",
+    "economic": "[0.2, -0.1, 0.15]",
+    "political": "[0.05, -0.1, 0]"
+  },
+  {
+    "file": "model.js",
+    "line": 3177,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'stay'",
+    "social": "[0.1, 0.2, 0]",
+    "economic": "[0.05, 0.2, 0.05]",
+    "political": "[0, 0.1, 0]"
+  },
+  {
+    "file": "model.js",
+    "line": 3202,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'apply'",
+    "social": "[0.2, 0.6, 0.1]",
+    "economic": "[0.1, 0.5 * target.affinity, 0.2]",
+    "political": "[0, 0.3, 0.1]"
+  },
+  {
+    "file": "model.js",
+    "line": 3211,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'remain unaffiliated'",
+    "social": "[0, 0, 0]",
+    "economic": "[0.05, 0.05, 0]",
+    "political": "[0, 0, 0]"
+  },
+  {
+    "file": "model.js",
+    "line": 3245,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'merit'",
+    "social": "[0.2, 0, 0.5]",
+    "economic": "[0.1, 0.2, 0.8]",
+    "political": "[0.05, 0, 0.45]"
+  },
+  {
+    "file": "model.js",
+    "line": 3250,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'connection override'",
+    "social": "[-0.2, 0.35, -0.4]",
+    "economic": "[0.4, 0.7, -0.6]",
+    "political": "[0.2, 0.5, -0.5]"
+  },
+  {
+    "file": "model.js",
+    "line": 3293,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'rotate'",
+    "social": "[0.05, 0, 0.2]",
+    "economic": "[0.05, 0.1, 0.6]",
+    "political": "[0, -0.1, 0.4]"
+  },
+  {
+    "file": "model.js",
+    "line": 3298,
+    "owner": "organizations",
+    "refs": [
+      "AK-ORG-02"
+    ],
+    "option": "'retain'",
+    "social": "[0.1, 0.3, 0]",
+    "economic": "[0.15, 0.3, 0]",
+    "political": "[0.05, 0.2, -0.1]"
+  },
+  {
+    "file": "model.js",
+    "line": 3328,
+    "owner": "politicalReview",
+    "refs": [
+      "AK-REF-04",
+      "AK-GOV-01"
+    ],
+    "option": "String(a.id)",
+    "social": "[0.15, 0.3, 0.1]",
+    "economic": "[this.related(incumbent, a) ? 0.4 : 0.1, 0.4, a.skill * 0.7]",
+    "political": "[a.skill * 0.2, 0.5, a.skill * 0.4]"
+  },
+  {
+    "file": "model.js",
+    "line": 3353,
+    "owner": "politicalReview",
+    "refs": [
+      "AK-REF-04",
+      "AK-GOV-01"
+    ],
+    "option": "String(p.id)",
+    "social": "[0.1, 0.25, 0.2]",
+    "economic": "[ 0.15 * (1 - rep), affinity * 0.7, 0.8 * (1 - rep) * (0.5 + s.env.representation / 100), ]",
+    "political": "[ 0.25 * (1 - rep), affinity * 0.85, 0.7 * (1 - rep) * (0.5 + s.env.representation / 100), ]"
+  },
+  {
+    "file": "model.js",
+    "line": 3374,
+    "owner": "politicalReview",
+    "refs": [
+      "AK-REF-04",
+      "AK-GOV-01"
+    ],
+    "option": "'abstain'",
+    "social": "[0, 0, 0]",
+    "economic": "[0.05, 0, 0]",
+    "political": "[0, 0, -0.05]"
+  }
+]

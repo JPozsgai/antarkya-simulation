@@ -1,0 +1,7411 @@
+{
+  "schema": "antarkya.audit.traceability.v1",
+  "baseCommit": "9ceb5ae38510f10d2211366406d150500a364a95",
+  "entries": [
+    {
+      "id": "AK-OV-01",
+      "rules": [
+        "R01",
+        "R03",
+        "R54"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:VERSION",
+          "file": "model.js",
+          "line": 28,
+          "endLine": 28,
+          "refs": [
+            "AK-OV-01"
+          ]
+        },
+        {
+          "symbol": "model.js:validate",
+          "file": "model.js",
+          "line": 126,
+          "endLine": 165,
+          "refs": [
+            "AK-OV-01"
+          ]
+        },
+        {
+          "symbol": "worker.js:summary",
+          "file": "worker.js",
+          "line": 31,
+          "endLine": 39,
+          "refs": [
+            "AK-OV-01"
+          ]
+        },
+        {
+          "symbol": "model.js:constructor",
+          "file": "model.js",
+          "line": 787,
+          "endLine": 797,
+          "refs": [
+            "AK-OV-01"
+          ]
+        },
+        {
+          "symbol": "app.js:profile",
+          "file": "app.js",
+          "line": 66,
+          "endLine": 68,
+          "refs": [
+            "AK-OV-01"
+          ]
+        },
+        {
+          "symbol": "app.js:summaryText",
+          "file": "app.js",
+          "line": 105,
+          "endLine": 127,
+          "refs": [
+            "AK-OV-01"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "initialization.test.js",
+        "reporting.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "id": "AK-POP-01",
+      "rules": [
+        "R02",
+        "R04",
+        "R09"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:createPopulation",
+          "file": "model.js",
+          "line": 220,
+          "endLine": 513,
+          "refs": [
+            "AK-POP-01",
+            "AK-POP-02",
+            "AK-ORG-01",
+            "AK-GEO-01"
+          ]
+        },
+        {
+          "symbol": "config.js:countries",
+          "file": "config.js",
+          "line": 9,
+          "endLine": 163,
+          "refs": [
+            "AK-POP-01",
+            "AK-COU-02",
+            "AK-GOV-01"
+          ]
+        }
+      ],
+      "tests": [
+        "initialization.test.js",
+        "model.test.js",
+        "stress.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-POP-02",
+      "rules": [
+        "R05",
+        "R09",
+        "R13",
+        "AM03"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:createPopulation",
+          "file": "model.js",
+          "line": 220,
+          "endLine": 513,
+          "refs": [
+            "AK-POP-01",
+            "AK-POP-02",
+            "AK-ORG-01",
+            "AK-GEO-01"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:initialize",
+          "file": "adaptation.js",
+          "line": 175,
+          "endLine": 200,
+          "refs": [
+            "AK-POP-02",
+            "AK-ADP-01"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:recentParticipation",
+          "file": "adaptation.js",
+          "line": 205,
+          "endLine": 208,
+          "refs": [
+            "AK-POP-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:summary",
+          "file": "adaptation.js",
+          "line": 521,
+          "endLine": 541,
+          "refs": [
+            "AK-POP-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:valid",
+          "file": "adaptation.js",
+          "line": 546,
+          "endLine": 615,
+          "refs": [
+            "AK-POP-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:validSummary",
+          "file": "adaptation.js",
+          "line": 620,
+          "endLine": 676,
+          "refs": [
+            "AK-POP-02"
+          ]
+        }
+      ],
+      "tests": [
+        "initialization.test.js",
+        "adaptation.test.js",
+        "dynamics.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-ORG-01",
+      "rules": [
+        "R04",
+        "R05",
+        "R20"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:createPopulation",
+          "file": "model.js",
+          "line": 220,
+          "endLine": 513,
+          "refs": [
+            "AK-POP-01",
+            "AK-POP-02",
+            "AK-ORG-01",
+            "AK-GEO-01"
+          ]
+        },
+        {
+          "symbol": "model.js:org",
+          "file": "model.js",
+          "line": 2081,
+          "endLine": 2081,
+          "refs": [
+            "AK-ORG-01"
+          ]
+        },
+        {
+          "symbol": "model.js:relationship",
+          "file": "model.js",
+          "line": 1249,
+          "endLine": 1260,
+          "refs": [
+            "AK-ORG-01",
+            "AK-NET-01"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "initialization.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-ORG-02",
+      "rules": [
+        "R06",
+        "R53"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:organizations",
+          "file": "model.js",
+          "line": 3117,
+          "endLine": 3312,
+          "refs": [
+            "AK-ORG-02"
+          ]
+        },
+        {
+          "symbol": "model.js:changeEmployment",
+          "file": "model.js",
+          "line": 3092,
+          "endLine": 3112,
+          "refs": [
+            "AK-ORG-02",
+            "AK-ECO-01"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "reporting.test.js",
+        "model.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-GEO-01",
+      "rules": [
+        "R07"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:createPopulation",
+          "file": "model.js",
+          "line": 220,
+          "endLine": 513,
+          "refs": [
+            "AK-POP-01",
+            "AK-POP-02",
+            "AK-ORG-01",
+            "AK-GEO-01"
+          ]
+        },
+        {
+          "symbol": "model.js:nearest",
+          "file": "model.js",
+          "line": 1497,
+          "endLine": 1528,
+          "refs": [
+            "AK-GEO-01"
+          ]
+        },
+        {
+          "symbol": "model.js:encounters",
+          "file": "model.js",
+          "line": 2227,
+          "endLine": 2267,
+          "refs": [
+            "AK-GEO-01",
+            "AK-ACT-01"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "visualization.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-MOT-01",
+      "rules": [
+        "R08",
+        "R09",
+        "R10",
+        "AM01"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:motives",
+          "file": "model.js",
+          "line": 95,
+          "endLine": 108,
+          "refs": [
+            "AK-MOT-01"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:advance",
+          "file": "adaptation.js",
+          "line": 419,
+          "endLine": 452,
+          "refs": [
+            "AK-MOT-01",
+            "AK-ADP-02",
+            "AK-ADP-03"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "adaptation.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "AK-DEC-01",
+      "rules": [
+        "R11",
+        "R12",
+        "R13",
+        "AM01"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:choose",
+          "file": "model.js",
+          "line": 969,
+          "endLine": 1036,
+          "refs": [
+            "AK-DEC-01",
+            "AK-ACT-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:decision",
+          "file": "adaptation.js",
+          "line": 503,
+          "endLine": 516,
+          "refs": [
+            "AK-DEC-01",
+            "AK-ADP-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:context",
+          "file": "adaptation.js",
+          "line": 490,
+          "endLine": 498,
+          "refs": [
+            "AK-DEC-01"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "adaptation.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "AK-DEC-02",
+      "rules": [
+        "R10",
+        "R12",
+        "R14",
+        "R44"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:effects",
+          "file": "model.js",
+          "line": 976,
+          "endLine": 976,
+          "refs": [
+            "AK-DEC-02"
+          ]
+        },
+        {
+          "symbol": "model.js:encounter",
+          "file": "model.js",
+          "line": 2078,
+          "endLine": 2222,
+          "refs": [
+            "AK-DEC-02",
+            "AK-ACT-01"
+          ]
+        },
+        {
+          "symbol": "model.js:budgetReview",
+          "file": "model.js",
+          "line": 1870,
+          "endLine": 2007,
+          "refs": [
+            "AK-DEC-02",
+            "AK-REF-04"
+          ]
+        },
+        {
+          "symbol": "model.js:processCases",
+          "file": "model.js",
+          "line": 2457,
+          "endLine": 2727,
+          "refs": [
+            "AK-DEC-02",
+            "AK-CAS-02",
+            "AK-CAS-03"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "model.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "AK-ACT-01",
+      "rules": [
+        "R14",
+        "R44",
+        "R45"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:encounter",
+          "file": "model.js",
+          "line": 2078,
+          "endLine": 2222,
+          "refs": [
+            "AK-DEC-02",
+            "AK-ACT-01"
+          ]
+        },
+        {
+          "symbol": "model.js:encounters",
+          "file": "model.js",
+          "line": 2227,
+          "endLine": 2267,
+          "refs": [
+            "AK-GEO-01",
+            "AK-ACT-01"
+          ]
+        },
+        {
+          "symbol": "model.js:completeCorruption",
+          "file": "model.js",
+          "line": 1141,
+          "endLine": 1167,
+          "refs": [
+            "AK-ACT-01"
+          ]
+        },
+        {
+          "symbol": "model.js:act",
+          "file": "model.js",
+          "line": 1097,
+          "endLine": 1136,
+          "refs": [
+            "AK-ACT-01",
+            "AK-ACT-02"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "audit.test.js",
+        "dynamics.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-ACT-02",
+      "rules": [
+        "R14",
+        "R60"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:choose",
+          "file": "model.js",
+          "line": 969,
+          "endLine": 1036,
+          "refs": [
+            "AK-DEC-01",
+            "AK-ACT-02"
+          ]
+        },
+        {
+          "symbol": "model.js:act",
+          "file": "model.js",
+          "line": 1097,
+          "endLine": 1136,
+          "refs": [
+            "AK-ACT-01",
+            "AK-ACT-02"
+          ]
+        },
+        {
+          "symbol": "model.js:recover",
+          "file": "model.js",
+          "line": 3435,
+          "endLine": 3444,
+          "refs": [
+            "AK-ACT-02"
+          ]
+        },
+        {
+          "symbol": "model.js:classActivity",
+          "file": "model.js",
+          "line": 3477,
+          "endLine": 3490,
+          "refs": [
+            "AK-ACT-02"
+          ]
+        }
+      ],
+      "tests": [
+        "dynamics.test.js",
+        "visualization.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-INS-01",
+      "rules": [
+        "R15",
+        "R16",
+        "R17"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:link",
+          "file": "model.js",
+          "line": 1423,
+          "endLine": 1492,
+          "refs": [
+            "AK-INS-01",
+            "AK-NET-01"
+          ]
+        },
+        {
+          "symbol": "model.js:practice",
+          "file": "model.js",
+          "line": 3530,
+          "endLine": 3530,
+          "refs": [
+            "AK-INS-01"
+          ]
+        },
+        {
+          "symbol": "model.js:processServices",
+          "file": "model.js",
+          "line": 2272,
+          "endLine": 2308,
+          "refs": [
+            "AK-INS-01",
+            "AK-ECO-03"
+          ]
+        }
+      ],
+      "tests": [
+        "dynamics.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S04"
+      ]
+    },
+    {
+      "id": "AK-ADP-01",
+      "rules": [
+        "AM03",
+        "AM04",
+        "R13"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:initialize",
+          "file": "adaptation.js",
+          "line": 175,
+          "endLine": 200,
+          "refs": [
+            "AK-POP-02",
+            "AK-ADP-01"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:receptiveness",
+          "file": "adaptation.js",
+          "line": 213,
+          "endLine": 232,
+          "refs": [
+            "AK-ADP-01"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:feedback",
+          "file": "adaptation.js",
+          "line": 237,
+          "endLine": 246,
+          "refs": [
+            "AK-ADP-01"
+          ]
+        },
+        {
+          "symbol": "model.js:expose",
+          "file": "model.js",
+          "line": 1052,
+          "endLine": 1068,
+          "refs": [
+            "AK-ADP-01"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:knowledge",
+          "file": "adaptation.js",
+          "line": 378,
+          "endLine": 382,
+          "refs": [
+            "AK-ADP-01"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:safety",
+          "file": "adaptation.js",
+          "line": 387,
+          "endLine": 391,
+          "refs": [
+            "AK-ADP-01"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S04"
+      ]
+    },
+    {
+      "id": "AK-ADP-02",
+      "rules": [
+        "AM02",
+        "AM04",
+        "AM05",
+        "AM06"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:observe",
+          "file": "adaptation.js",
+          "line": 251,
+          "endLine": 326,
+          "refs": [
+            "AK-ADP-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:influence",
+          "file": "adaptation.js",
+          "line": 331,
+          "endLine": 362,
+          "refs": [
+            "AK-ADP-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:advance",
+          "file": "adaptation.js",
+          "line": 419,
+          "endLine": 452,
+          "refs": [
+            "AK-MOT-01",
+            "AK-ADP-02",
+            "AK-ADP-03"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:decision",
+          "file": "adaptation.js",
+          "line": 503,
+          "endLine": 516,
+          "refs": [
+            "AK-DEC-01",
+            "AK-ADP-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:refresh",
+          "file": "adaptation.js",
+          "line": 367,
+          "endLine": 373,
+          "refs": [
+            "AK-ADP-02"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S04"
+      ]
+    },
+    {
+      "id": "AK-ADP-03",
+      "rules": [
+        "AM04",
+        "R13",
+        "R53"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:advance",
+          "file": "adaptation.js",
+          "line": 419,
+          "endLine": 452,
+          "refs": [
+            "AK-MOT-01",
+            "AK-ADP-02",
+            "AK-ADP-03"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:work",
+          "file": "adaptation.js",
+          "line": 457,
+          "endLine": 465,
+          "refs": [
+            "AK-ADP-03"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:incomeExperience",
+          "file": "adaptation.js",
+          "line": 470,
+          "endLine": 475,
+          "refs": [
+            "AK-ADP-03"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "dynamics.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-NET-01",
+      "rules": [
+        "R49",
+        "R37",
+        "R53"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:relationship",
+          "file": "model.js",
+          "line": 1249,
+          "endLine": 1260,
+          "refs": [
+            "AK-ORG-01",
+            "AK-NET-01"
+          ]
+        },
+        {
+          "symbol": "model.js:related",
+          "file": "model.js",
+          "line": 1416,
+          "endLine": 1418,
+          "refs": [
+            "AK-NET-01"
+          ]
+        },
+        {
+          "symbol": "model.js:link",
+          "file": "model.js",
+          "line": 1423,
+          "endLine": 1492,
+          "refs": [
+            "AK-INS-01",
+            "AK-NET-01"
+          ]
+        },
+        {
+          "symbol": "model.js:tie",
+          "file": "model.js",
+          "line": 1409,
+          "endLine": 1411,
+          "refs": [
+            "AK-NET-01"
+          ]
+        },
+        {
+          "symbol": "model.js:peers",
+          "file": "model.js",
+          "line": 1363,
+          "endLine": 1384,
+          "refs": [
+            "AK-NET-01"
+          ]
+        },
+        {
+          "symbol": "model.js:index",
+          "file": "model.js",
+          "line": 830,
+          "endLine": 837,
+          "refs": [
+            "AK-NET-01"
+          ]
+        },
+        {
+          "symbol": "model.js:recentAmount",
+          "file": "model.js",
+          "line": 1397,
+          "endLine": 1398,
+          "refs": [
+            "AK-NET-01"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "visualization.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "AK-INF-01",
+      "rules": [
+        "R46",
+        "R47",
+        "R48",
+        "R50"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:publish",
+          "file": "model.js",
+          "line": 2792,
+          "endLine": 2885,
+          "refs": [
+            "AK-INF-01"
+          ]
+        },
+        {
+          "symbol": "model.js:funding",
+          "file": "model.js",
+          "line": 3003,
+          "endLine": 3087,
+          "refs": [
+            "AK-INF-01"
+          ]
+        },
+        {
+          "symbol": "model.js:fundingDependence",
+          "file": "model.js",
+          "line": 1389,
+          "endLine": 1404,
+          "refs": [
+            "AK-INF-01"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "dynamics.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S02",
+        "S06"
+      ]
+    },
+    {
+      "id": "AK-INF-02",
+      "rules": [
+        "R13",
+        "R46",
+        "R47",
+        "R48"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:information",
+          "file": "model.js",
+          "line": 2890,
+          "endLine": 2998,
+          "refs": [
+            "AK-INF-02"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:messageRate",
+          "file": "adaptation.js",
+          "line": 480,
+          "endLine": 485,
+          "refs": [
+            "AK-INF-02"
+          ]
+        },
+        {
+          "symbol": "model.js:communicatedDecision",
+          "file": "model.js",
+          "line": 2732,
+          "endLine": 2749,
+          "refs": [
+            "AK-INF-02",
+            "AK-CAS-03"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "adaptation.test.js",
+        "dynamics.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S04",
+        "S06"
+      ]
+    },
+    {
+      "id": "AK-ECO-01",
+      "rules": [
+        "R30",
+        "R42",
+        "R43"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:totalMoney",
+          "file": "model.js",
+          "line": 184,
+          "endLine": 192,
+          "refs": [
+            "AK-ECO-01"
+          ]
+        },
+        {
+          "symbol": "model.js:transfer",
+          "file": "model.js",
+          "line": 197,
+          "endLine": 202,
+          "refs": [
+            "AK-ECO-01"
+          ]
+        },
+        {
+          "symbol": "model.js:monthlyAccounts",
+          "file": "model.js",
+          "line": 1533,
+          "endLine": 1586,
+          "refs": [
+            "AK-ECO-01",
+            "AK-ECO-02"
+          ]
+        },
+        {
+          "symbol": "model.js:changeEmployment",
+          "file": "model.js",
+          "line": 3092,
+          "endLine": 3112,
+          "refs": [
+            "AK-ORG-02",
+            "AK-ECO-01"
+          ]
+        }
+      ],
+      "tests": [
+        "dynamics.test.js",
+        "model.test.js",
+        "stress.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-ECO-02",
+      "rules": [
+        "R33",
+        "R35",
+        "R39",
+        "R40",
+        "R41",
+        "R43"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:monthlyAccounts",
+          "file": "model.js",
+          "line": 1533,
+          "endLine": 1586,
+          "refs": [
+            "AK-ECO-01",
+            "AK-ECO-02"
+          ]
+        },
+        {
+          "symbol": "model.js:scheduleWork",
+          "file": "model.js",
+          "line": 1591,
+          "endLine": 1623,
+          "refs": [
+            "AK-ECO-02"
+          ]
+        },
+        {
+          "symbol": "model.js:priorities",
+          "file": "model.js",
+          "line": 1295,
+          "endLine": 1326,
+          "refs": [
+            "AK-ECO-02",
+            "AK-REF-03"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "dynamics.test.js",
+        "stress.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-ECO-03",
+      "rules": [
+        "R07",
+        "R43",
+        "R59"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:addService",
+          "file": "model.js",
+          "line": 2012,
+          "endLine": 2024,
+          "refs": [
+            "AK-ECO-03"
+          ]
+        },
+        {
+          "symbol": "model.js:processServices",
+          "file": "model.js",
+          "line": 2272,
+          "endLine": 2308,
+          "refs": [
+            "AK-INS-01",
+            "AK-ECO-03"
+          ]
+        },
+        {
+          "symbol": "model.js:experienced",
+          "file": "model.js",
+          "line": 1265,
+          "endLine": 1290,
+          "refs": [
+            "AK-ECO-03"
+          ]
+        }
+      ],
+      "tests": [
+        "dynamics.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-COU-01",
+      "rules": [
+        "R18",
+        "R19",
+        "R21",
+        "R54"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:conditions",
+          "file": "model.js",
+          "line": 170,
+          "endLine": 179,
+          "refs": [
+            "AK-COU-01"
+          ]
+        },
+        {
+          "symbol": "baseline.js:conditions",
+          "file": "baseline.js",
+          "line": 81,
+          "endLine": 95,
+          "refs": [
+            "AK-COU-01"
+          ]
+        },
+        {
+          "symbol": "baseline.js:organization",
+          "file": "baseline.js",
+          "line": 100,
+          "endLine": 116,
+          "refs": [
+            "AK-COU-01"
+          ]
+        },
+        {
+          "symbol": "profiles.js:data",
+          "file": "profiles.js",
+          "line": 9,
+          "endLine": 1782,
+          "refs": [
+            "AK-COU-01",
+            "AK-VAL-02"
+          ]
+        }
+      ],
+      "tests": [
+        "initialization.test.js",
+        "stress.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S07"
+      ]
+    },
+    {
+      "id": "AK-COU-02",
+      "rules": [
+        "R19",
+        "R20",
+        "R25",
+        "R37",
+        "R45",
+        "R51"
+      ],
+      "symbols": [
+        {
+          "symbol": "config.js:countries",
+          "file": "config.js",
+          "line": 9,
+          "endLine": 163,
+          "refs": [
+            "AK-POP-01",
+            "AK-COU-02",
+            "AK-GOV-01"
+          ]
+        },
+        {
+          "symbol": "model.js:eligibleTool",
+          "file": "model.js",
+          "line": 1175,
+          "endLine": 1208,
+          "refs": [
+            "AK-COU-02"
+          ]
+        },
+        {
+          "symbol": "model.js:responsible",
+          "file": "model.js",
+          "line": 2420,
+          "endLine": 2452,
+          "refs": [
+            "AK-COU-02",
+            "AK-CAS-02"
+          ]
+        },
+        {
+          "symbol": "model.js:makeCase",
+          "file": "model.js",
+          "line": 2313,
+          "endLine": 2373,
+          "refs": [
+            "AK-COU-02",
+            "AK-CAS-01"
+          ]
+        }
+      ],
+      "tests": [
+        "initialization.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S07"
+      ]
+    },
+    {
+      "id": "AK-INI-01",
+      "rules": [
+        "R13",
+        "R55",
+        "R60"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:createInitial",
+          "file": "model.js",
+          "line": 522,
+          "endLine": 584,
+          "refs": [
+            "AK-INI-01"
+          ]
+        },
+        {
+          "symbol": "model.js:initialDifference",
+          "file": "model.js",
+          "line": 589,
+          "endLine": 611,
+          "refs": [
+            "AK-INI-01"
+          ]
+        },
+        {
+          "symbol": "model.js:validateInitial",
+          "file": "model.js",
+          "line": 616,
+          "endLine": 782,
+          "refs": [
+            "AK-INI-01"
+          ]
+        },
+        {
+          "symbol": "reporting.js:remember",
+          "file": "reporting.js",
+          "line": 215,
+          "endLine": 219,
+          "refs": [
+            "AK-INI-01",
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "app.js:signature",
+          "file": "app.js",
+          "line": 284,
+          "endLine": 286,
+          "refs": [
+            "AK-INI-01"
+          ]
+        },
+        {
+          "symbol": "app.js:initialFor",
+          "file": "app.js",
+          "line": 291,
+          "endLine": 298,
+          "refs": [
+            "AK-INI-01"
+          ]
+        }
+      ],
+      "tests": [
+        "initialization.test.js",
+        "dynamics.test.js",
+        "reporting.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-RNG-01",
+      "rules": [
+        "R12",
+        "R55"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:hash",
+          "file": "model.js",
+          "line": 43,
+          "endLine": 51,
+          "refs": [
+            "AK-RNG-01"
+          ]
+        },
+        {
+          "symbol": "model.js:draw",
+          "file": "model.js",
+          "line": 56,
+          "endLine": 58,
+          "refs": [
+            "AK-RNG-01"
+          ]
+        },
+        {
+          "symbol": "model.js:rand",
+          "file": "model.js",
+          "line": 823,
+          "endLine": 825,
+          "refs": [
+            "AK-RNG-01"
+          ]
+        },
+        {
+          "symbol": "model.js:generator",
+          "file": "model.js",
+          "line": 63,
+          "endLine": 66,
+          "refs": [
+            "AK-RNG-01"
+          ]
+        },
+        {
+          "symbol": "run-seeds.js:newEventSeed",
+          "file": "run-seeds.js",
+          "line": 15,
+          "endLine": 25,
+          "refs": [
+            "AK-RNG-01"
+          ]
+        },
+        {
+          "symbol": "run-seeds.js:prepareRun",
+          "file": "run-seeds.js",
+          "line": 30,
+          "endLine": 32,
+          "refs": [
+            "AK-RNG-01"
+          ]
+        }
+      ],
+      "tests": [
+        "run-seeds.test.js",
+        "model.test.js",
+        "worker.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-REF-01",
+      "rules": [
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:adopt",
+          "file": "model.js",
+          "line": 921,
+          "endLine": 954,
+          "refs": [
+            "AK-REF-01"
+          ]
+        },
+        {
+          "symbol": "model.js:coverage",
+          "file": "model.js",
+          "line": 1213,
+          "endLine": 1219,
+          "refs": [
+            "AK-REF-01"
+          ]
+        },
+        {
+          "symbol": "model.js:covered",
+          "file": "model.js",
+          "line": 1224,
+          "endLine": 1235,
+          "refs": [
+            "AK-REF-01"
+          ]
+        },
+        {
+          "symbol": "model.js:operational",
+          "file": "model.js",
+          "line": 1240,
+          "endLine": 1244,
+          "refs": [
+            "AK-REF-01"
+          ]
+        },
+        {
+          "symbol": "model.js:cap",
+          "file": "model.js",
+          "line": 862,
+          "endLine": 874,
+          "refs": [
+            "AK-REF-01"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "adaptation.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03"
+      ]
+    },
+    {
+      "id": "AK-REF-02",
+      "rules": [
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R33",
+        "R39",
+        "R40"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:requirements",
+          "file": "model.js",
+          "line": 207,
+          "endLine": 215,
+          "refs": [
+            "AK-REF-02"
+          ]
+        },
+        {
+          "symbol": "model.js:recipients",
+          "file": "model.js",
+          "line": 879,
+          "endLine": 916,
+          "refs": [
+            "AK-REF-02"
+          ]
+        },
+        {
+          "symbol": "model.js:fundPolicies",
+          "file": "model.js",
+          "line": 1628,
+          "endLine": 1642,
+          "refs": [
+            "AK-REF-02"
+          ]
+        },
+        {
+          "symbol": "config.js:costs",
+          "file": "config.js",
+          "line": 164,
+          "endLine": 200,
+          "refs": [
+            "AK-REF-02"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "model.test.js",
+        "stress.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-REF-03",
+      "rules": [
+        "R31",
+        "R33",
+        "R34",
+        "R35",
+        "R40",
+        "R41"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        },
+        {
+          "symbol": "model.js:priorities",
+          "file": "model.js",
+          "line": 1295,
+          "endLine": 1326,
+          "refs": [
+            "AK-ECO-02",
+            "AK-REF-03"
+          ]
+        },
+        {
+          "symbol": "model.js:operatingPolicy",
+          "file": "model.js",
+          "line": 1041,
+          "endLine": 1047,
+          "refs": [
+            "AK-REF-03"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "model.test.js",
+        "adaptation.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-REF-04",
+      "rules": [
+        "R31",
+        "R32",
+        "R36",
+        "R37",
+        "R38"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:budgetReview",
+          "file": "model.js",
+          "line": 1870,
+          "endLine": 2007,
+          "refs": [
+            "AK-DEC-02",
+            "AK-REF-04"
+          ]
+        },
+        {
+          "symbol": "model.js:policyFeedback",
+          "file": "model.js",
+          "line": 1331,
+          "endLine": 1358,
+          "refs": [
+            "AK-REF-04",
+            "AK-MAC-01"
+          ]
+        },
+        {
+          "symbol": "model.js:politicalReview",
+          "file": "model.js",
+          "line": 3317,
+          "endLine": 3430,
+          "refs": [
+            "AK-REF-04",
+            "AK-GOV-01"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "model.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S08"
+      ]
+    },
+    {
+      "id": "AK-CAS-01",
+      "rules": [
+        "R14",
+        "R37",
+        "R45",
+        "R47"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:report",
+          "file": "model.js",
+          "line": 2029,
+          "endLine": 2073,
+          "refs": [
+            "AK-CAS-01"
+          ]
+        },
+        {
+          "symbol": "model.js:makeCase",
+          "file": "model.js",
+          "line": 2313,
+          "endLine": 2373,
+          "refs": [
+            "AK-COU-02",
+            "AK-CAS-01"
+          ]
+        },
+        {
+          "symbol": "model.js:audit",
+          "file": "model.js",
+          "line": 2378,
+          "endLine": 2415,
+          "refs": [
+            "AK-CAS-01"
+          ]
+        }
+      ],
+      "tests": [
+        "audit.test.js",
+        "model.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-CAS-02",
+      "rules": [
+        "R37",
+        "R45",
+        "R48"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:processCases",
+          "file": "model.js",
+          "line": 2457,
+          "endLine": 2727,
+          "refs": [
+            "AK-DEC-02",
+            "AK-CAS-02",
+            "AK-CAS-03"
+          ]
+        },
+        {
+          "symbol": "model.js:responsible",
+          "file": "model.js",
+          "line": 2420,
+          "endLine": 2452,
+          "refs": [
+            "AK-COU-02",
+            "AK-CAS-02"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "audit.test.js",
+        "stress.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-CAS-03",
+      "rules": [
+        "R37",
+        "R43",
+        "R45",
+        "AM06"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:collectLiabilities",
+          "file": "model.js",
+          "line": 2754,
+          "endLine": 2787,
+          "refs": [
+            "AK-CAS-03"
+          ]
+        },
+        {
+          "symbol": "model.js:communicatedDecision",
+          "file": "model.js",
+          "line": 2732,
+          "endLine": 2749,
+          "refs": [
+            "AK-INF-02",
+            "AK-CAS-03"
+          ]
+        },
+        {
+          "symbol": "adaptation.js:accountability",
+          "file": "adaptation.js",
+          "line": 396,
+          "endLine": 414,
+          "refs": [
+            "AK-CAS-03"
+          ]
+        },
+        {
+          "symbol": "model.js:processCases",
+          "file": "model.js",
+          "line": 2457,
+          "endLine": 2727,
+          "refs": [
+            "AK-DEC-02",
+            "AK-CAS-02",
+            "AK-CAS-03"
+          ]
+        },
+        {
+          "symbol": "model.js:riskExperience",
+          "file": "model.js",
+          "line": 1073,
+          "endLine": 1085,
+          "refs": [
+            "AK-CAS-03"
+          ]
+        }
+      ],
+      "tests": [
+        "dynamics.test.js",
+        "adaptation.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-GOV-01",
+      "rules": [
+        "R51",
+        "R52",
+        "R53",
+        "R31"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:politicalReview",
+          "file": "model.js",
+          "line": 3317,
+          "endLine": 3430,
+          "refs": [
+            "AK-REF-04",
+            "AK-GOV-01"
+          ]
+        },
+        {
+          "symbol": "config.js:countries",
+          "file": "config.js",
+          "line": 9,
+          "endLine": 163,
+          "refs": [
+            "AK-POP-01",
+            "AK-COU-02",
+            "AK-GOV-01"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "audit.test.js",
+        "initialization.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-MAC-01",
+      "rules": [
+        "R36",
+        "R38",
+        "R42",
+        "R43",
+        "R59"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:macroDevelopments",
+          "file": "model.js",
+          "line": 3495,
+          "endLine": 3648,
+          "refs": [
+            "AK-MAC-01"
+          ]
+        },
+        {
+          "symbol": "model.js:policyFeedback",
+          "file": "model.js",
+          "line": 1331,
+          "endLine": 1358,
+          "refs": [
+            "AK-REF-04",
+            "AK-MAC-01"
+          ]
+        },
+        {
+          "symbol": "model.js:metrics",
+          "file": "model.js",
+          "line": 3653,
+          "endLine": 3675,
+          "refs": [
+            "AK-MAC-01"
+          ]
+        }
+      ],
+      "tests": [
+        "dynamics.test.js",
+        "visualization.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S08"
+      ]
+    },
+    {
+      "id": "AK-POL-ACA",
+      "rules": [
+        "R22",
+        "R24",
+        "R57"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.aca",
+          "file": "adaptation.js",
+          "line": 43,
+          "endLine": 50,
+          "refs": [
+            "AK-POL-ACA"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.aca",
+          "file": "config.js",
+          "line": 166,
+          "endLine": 166,
+          "refs": [
+            "AK-POL-ACA"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.aca",
+          "file": "reporting.js",
+          "line": 39,
+          "endLine": 47,
+          "refs": [
+            "AK-POL-ACA"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-MERIT",
+      "rules": [
+        "R22",
+        "R57"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.merit",
+          "file": "adaptation.js",
+          "line": 53,
+          "endLine": 59,
+          "refs": [
+            "AK-POL-MERIT"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.merit",
+          "file": "config.js",
+          "line": 169,
+          "endLine": 169,
+          "refs": [
+            "AK-POL-MERIT"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.merit",
+          "file": "reporting.js",
+          "line": 50,
+          "endLine": 58,
+          "refs": [
+            "AK-POL-MERIT"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-ROTATION",
+      "rules": [
+        "R22",
+        "R53",
+        "R57"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.rotation",
+          "file": "adaptation.js",
+          "line": 62,
+          "endLine": 68,
+          "refs": [
+            "AK-POL-ROTATION"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.rotation",
+          "file": "config.js",
+          "line": 172,
+          "endLine": 172,
+          "refs": [
+            "AK-POL-ROTATION"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.rotation",
+          "file": "reporting.js",
+          "line": 61,
+          "endLine": 69,
+          "refs": [
+            "AK-POL-ROTATION"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-PROTECTION",
+      "rules": [
+        "R22",
+        "R37",
+        "R57"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.protection",
+          "file": "adaptation.js",
+          "line": 71,
+          "endLine": 77,
+          "refs": [
+            "AK-POL-PROTECTION"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.protection",
+          "file": "config.js",
+          "line": 175,
+          "endLine": 175,
+          "refs": [
+            "AK-POL-PROTECTION"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.protection",
+          "file": "reporting.js",
+          "line": 72,
+          "endLine": 80,
+          "refs": [
+            "AK-POL-PROTECTION"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-DECLARATIONS",
+      "rules": [
+        "R22",
+        "R57"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.declarations",
+          "file": "adaptation.js",
+          "line": 80,
+          "endLine": 86,
+          "refs": [
+            "AK-POL-DECLARATIONS"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.declarations",
+          "file": "config.js",
+          "line": 178,
+          "endLine": 178,
+          "refs": [
+            "AK-POL-DECLARATIONS"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.declarations",
+          "file": "reporting.js",
+          "line": 83,
+          "endLine": 91,
+          "refs": [
+            "AK-POL-DECLARATIONS"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-CONFLICTS",
+      "rules": [
+        "R22",
+        "R57"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.conflicts",
+          "file": "adaptation.js",
+          "line": 89,
+          "endLine": 95,
+          "refs": [
+            "AK-POL-CONFLICTS"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.conflicts",
+          "file": "config.js",
+          "line": 181,
+          "endLine": 181,
+          "refs": [
+            "AK-POL-CONFLICTS"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.conflicts",
+          "file": "reporting.js",
+          "line": 94,
+          "endLine": 102,
+          "refs": [
+            "AK-POL-CONFLICTS"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-OVERSIGHT",
+      "rules": [
+        "R22",
+        "R45",
+        "R57"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.oversight",
+          "file": "adaptation.js",
+          "line": 98,
+          "endLine": 104,
+          "refs": [
+            "AK-POL-OVERSIGHT"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.oversight",
+          "file": "config.js",
+          "line": 184,
+          "endLine": 184,
+          "refs": [
+            "AK-POL-OVERSIGHT"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.oversight",
+          "file": "reporting.js",
+          "line": 105,
+          "endLine": 113,
+          "refs": [
+            "AK-POL-OVERSIGHT"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-PAY",
+      "rules": [
+        "R22",
+        "R43",
+        "R57",
+        "AM06"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.pay",
+          "file": "adaptation.js",
+          "line": 107,
+          "endLine": 113,
+          "refs": [
+            "AK-POL-PAY"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.pay",
+          "file": "config.js",
+          "line": 187,
+          "endLine": 187,
+          "refs": [
+            "AK-POL-PAY"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.pay",
+          "file": "reporting.js",
+          "line": 116,
+          "endLine": 124,
+          "refs": [
+            "AK-POL-PAY"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-PENALTIES",
+      "rules": [
+        "R22",
+        "R45",
+        "R57",
+        "AM06"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.penalties",
+          "file": "adaptation.js",
+          "line": 116,
+          "endLine": 122,
+          "refs": [
+            "AK-POL-PENALTIES"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.penalties",
+          "file": "config.js",
+          "line": 190,
+          "endLine": 190,
+          "refs": [
+            "AK-POL-PENALTIES"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.penalties",
+          "file": "reporting.js",
+          "line": 127,
+          "endLine": 135,
+          "refs": [
+            "AK-POL-PENALTIES"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-DISCLOSURE",
+      "rules": [
+        "R22",
+        "R47",
+        "R57",
+        "AM06"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.disclosure",
+          "file": "adaptation.js",
+          "line": 125,
+          "endLine": 131,
+          "refs": [
+            "AK-POL-DISCLOSURE"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.disclosure",
+          "file": "config.js",
+          "line": 193,
+          "endLine": 193,
+          "refs": [
+            "AK-POL-DISCLOSURE"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.disclosure",
+          "file": "reporting.js",
+          "line": 138,
+          "endLine": 146,
+          "refs": [
+            "AK-POL-DISCLOSURE"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-COMPLAINTS",
+      "rules": [
+        "R22",
+        "R45",
+        "R57"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.complaints",
+          "file": "adaptation.js",
+          "line": 134,
+          "endLine": 140,
+          "refs": [
+            "AK-POL-COMPLAINTS"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.complaints",
+          "file": "config.js",
+          "line": 196,
+          "endLine": 196,
+          "refs": [
+            "AK-POL-COMPLAINTS"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.complaints",
+          "file": "reporting.js",
+          "line": 149,
+          "endLine": 157,
+          "refs": [
+            "AK-POL-COMPLAINTS"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-POL-EDUCATION",
+      "rules": [
+        "R22",
+        "R57",
+        "AM02",
+        "AM03",
+        "AM04",
+        "AM05"
+      ],
+      "symbols": [
+        {
+          "symbol": "adaptation.js:map.education",
+          "file": "adaptation.js",
+          "line": 143,
+          "endLine": 149,
+          "refs": [
+            "AK-POL-EDUCATION"
+          ]
+        },
+        {
+          "symbol": "config.js:costs.education",
+          "file": "config.js",
+          "line": 199,
+          "endLine": 199,
+          "refs": [
+            "AK-POL-EDUCATION"
+          ]
+        },
+        {
+          "symbol": "reporting.js:definitions.education",
+          "file": "reporting.js",
+          "line": 160,
+          "endLine": 169,
+          "refs": [
+            "AK-POL-EDUCATION"
+          ]
+        },
+        {
+          "symbol": "model.js:implementPolicies",
+          "file": "model.js",
+          "line": 1647,
+          "endLine": 1865,
+          "refs": [
+            "AK-REF-03",
+            "AK-POL-ACA",
+            "AK-POL-MERIT",
+            "AK-POL-ROTATION",
+            "AK-POL-PROTECTION",
+            "AK-POL-DECLARATIONS",
+            "AK-POL-CONFLICTS",
+            "AK-POL-OVERSIGHT",
+            "AK-POL-PAY",
+            "AK-POL-PENALTIES",
+            "AK-POL-DISCLOSURE",
+            "AK-POL-COMPLAINTS",
+            "AK-POL-EDUCATION"
+          ]
+        }
+      ],
+      "tests": [
+        "adaptation.test.js",
+        "reporting.test.js",
+        "audit.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-MEA-01",
+      "rules": [
+        "R56",
+        "R57",
+        "R58"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:diagnostic",
+          "file": "model.js",
+          "line": 3695,
+          "endLine": 3827,
+          "refs": [
+            "AK-MEA-01"
+          ]
+        },
+        {
+          "symbol": "model.js:assessment",
+          "file": "model.js",
+          "line": 3832,
+          "endLine": 3834,
+          "refs": [
+            "AK-MEA-01"
+          ]
+        },
+        {
+          "symbol": "reporting.js:sample",
+          "file": "reporting.js",
+          "line": 243,
+          "endLine": 399,
+          "refs": [
+            "AK-MEA-01",
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:outcomeMeta",
+          "file": "reporting.js",
+          "line": 505,
+          "endLine": 522,
+          "refs": [
+            "AK-MEA-01"
+          ]
+        }
+      ],
+      "tests": [
+        "reporting.test.js",
+        "initialization.test.js",
+        "adaptation.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-MEA-02",
+      "rules": [
+        "R55",
+        "R58",
+        "R59"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:comparison",
+          "file": "model.js",
+          "line": 4003,
+          "endLine": 4034,
+          "refs": [
+            "AK-MEA-02"
+          ]
+        },
+        {
+          "symbol": "visualization.js:impactWindow",
+          "file": "visualization.js",
+          "line": 153,
+          "endLine": 176,
+          "refs": [
+            "AK-MEA-02"
+          ]
+        },
+        {
+          "symbol": "visualization.js:impactSeries",
+          "file": "visualization.js",
+          "line": 181,
+          "endLine": 195,
+          "refs": [
+            "AK-MEA-02"
+          ]
+        },
+        {
+          "symbol": "visualization.js:impactDifference",
+          "file": "visualization.js",
+          "line": 200,
+          "endLine": 208,
+          "refs": [
+            "AK-MEA-02"
+          ]
+        },
+        {
+          "symbol": "visualization.js:hash",
+          "file": "visualization.js",
+          "line": 16,
+          "endLine": 20,
+          "refs": [
+            "AK-MEA-02"
+          ]
+        }
+      ],
+      "tests": [
+        "visualization.test.js",
+        "model.test.js",
+        "worker.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S09"
+      ]
+    },
+    {
+      "id": "AK-MEA-03",
+      "rules": [
+        "R55",
+        "R56",
+        "R58",
+        "R59"
+      ],
+      "symbols": [
+        {
+          "symbol": "reporting.js:init",
+          "file": "reporting.js",
+          "line": 188,
+          "endLine": 210,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:activity",
+          "file": "reporting.js",
+          "line": 181,
+          "endLine": 183,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:record",
+          "file": "reporting.js",
+          "line": 423,
+          "endLine": 472,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:windowValue",
+          "file": "reporting.js",
+          "line": 486,
+          "endLine": 500,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:sample",
+          "file": "reporting.js",
+          "line": 243,
+          "endLine": 399,
+          "refs": [
+            "AK-MEA-01",
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "model.js:record",
+          "file": "model.js",
+          "line": 2894,
+          "endLine": 2894,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "model.js:reporting",
+          "file": "model.js",
+          "line": 3688,
+          "endLine": 3690,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:remember",
+          "file": "reporting.js",
+          "line": 215,
+          "endLine": 219,
+          "refs": [
+            "AK-INI-01",
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:counterAt",
+          "file": "reporting.js",
+          "line": 224,
+          "endLine": 227,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:recent",
+          "file": "reporting.js",
+          "line": 469,
+          "endLine": 469,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        },
+        {
+          "symbol": "reporting.js:view",
+          "file": "reporting.js",
+          "line": 477,
+          "endLine": 481,
+          "refs": [
+            "AK-MEA-03"
+          ]
+        }
+      ],
+      "tests": [
+        "reporting.test.js",
+        "worker.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S10"
+      ]
+    },
+    {
+      "id": "AK-MEA-04",
+      "rules": [
+        "R56",
+        "R58",
+        "R61"
+      ],
+      "symbols": [
+        {
+          "symbol": "reporting.js:interpret",
+          "file": "reporting.js",
+          "line": 587,
+          "endLine": 627,
+          "refs": [
+            "AK-MEA-04"
+          ]
+        },
+        {
+          "symbol": "reporting.js:eventsFor",
+          "file": "reporting.js",
+          "line": 527,
+          "endLine": 564,
+          "refs": [
+            "AK-MEA-04"
+          ]
+        },
+        {
+          "symbol": "app.js:reportMeaning",
+          "file": "app.js",
+          "line": 802,
+          "endLine": 816,
+          "refs": [
+            "AK-MEA-04"
+          ]
+        },
+        {
+          "symbol": "app.js:showReportEvent",
+          "file": "app.js",
+          "line": 907,
+          "endLine": 954,
+          "refs": [
+            "AK-MEA-04"
+          ]
+        }
+      ],
+      "tests": [
+        "reporting.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S10"
+      ]
+    },
+    {
+      "id": "AK-VIS-01",
+      "rules": [
+        "R07",
+        "R49",
+        "R60",
+        "R61"
+      ],
+      "symbols": [
+        {
+          "symbol": "visualization.js:projection",
+          "file": "visualization.js",
+          "line": 25,
+          "endLine": 135,
+          "refs": [
+            "AK-VIS-01"
+          ]
+        },
+        {
+          "symbol": "app.js:drawMap",
+          "file": "app.js",
+          "line": 579,
+          "endLine": 754,
+          "refs": [
+            "AK-VIS-01"
+          ]
+        }
+      ],
+      "tests": [
+        "visualization.test.js",
+        "dynamics.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-VIS-02",
+      "rules": [
+        "R46",
+        "R49",
+        "R61"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:influential",
+          "file": "model.js",
+          "line": 3867,
+          "endLine": 3867,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        },
+        {
+          "symbol": "model.js:emit",
+          "file": "model.js",
+          "line": 842,
+          "endLine": 857,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        },
+        {
+          "symbol": "app.js:inspector",
+          "file": "app.js",
+          "line": 504,
+          "endLine": 523,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        },
+        {
+          "symbol": "app.js:renderFeed",
+          "file": "app.js",
+          "line": 540,
+          "endLine": 574,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        },
+        {
+          "symbol": "visualization.js:importantEvents",
+          "file": "visualization.js",
+          "line": 140,
+          "endLine": 146,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        },
+        {
+          "symbol": "model.js:view",
+          "file": "model.js",
+          "line": 3866,
+          "endLine": 3946,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        },
+        {
+          "symbol": "app.js:learningPanel",
+          "file": "app.js",
+          "line": 445,
+          "endLine": 499,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        },
+        {
+          "symbol": "app.js:selectActor",
+          "file": "app.js",
+          "line": 528,
+          "endLine": 535,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        },
+        {
+          "symbol": "app.js:reportEventButtons",
+          "file": "app.js",
+          "line": 784,
+          "endLine": 797,
+          "refs": [
+            "AK-VIS-02"
+          ]
+        }
+      ],
+      "tests": [
+        "visualization.test.js",
+        "worker.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-VIS-03",
+      "rules": [
+        "R54",
+        "R61"
+      ],
+      "symbols": [
+        {
+          "symbol": "app.js:getConfig",
+          "file": "app.js",
+          "line": 73,
+          "endLine": 89,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:pending",
+          "file": "app.js",
+          "line": 132,
+          "endLine": 144,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:renderPolicyAssessment",
+          "file": "app.js",
+          "line": 959,
+          "endLine": 1260,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:renderAssessment",
+          "file": "app.js",
+          "line": 1265,
+          "endLine": 1354,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:render",
+          "file": "app.js",
+          "line": 1451,
+          "endLine": 1589,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:status",
+          "file": "app.js",
+          "line": 58,
+          "endLine": 61,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:remember",
+          "file": "app.js",
+          "line": 94,
+          "endLine": 100,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:buildPolicies",
+          "file": "app.js",
+          "line": 149,
+          "endLine": 176,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:countryFields",
+          "file": "app.js",
+          "line": 181,
+          "endLine": 256,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:applyConfig",
+          "file": "app.js",
+          "line": 261,
+          "endLine": 279,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:baseSummary",
+          "file": "app.js",
+          "line": 303,
+          "endLine": 311,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:preview",
+          "file": "app.js",
+          "line": 316,
+          "endLine": 330,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:tinyComparison",
+          "file": "app.js",
+          "line": 759,
+          "endLine": 763,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:reportFormat",
+          "file": "app.js",
+          "line": 773,
+          "endLine": 779,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:reportChart",
+          "file": "app.js",
+          "line": 821,
+          "endLine": 902,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:renderReplications",
+          "file": "app.js",
+          "line": 1359,
+          "endLine": 1407,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:selectedImpact",
+          "file": "app.js",
+          "line": 1412,
+          "endLine": 1416,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        },
+        {
+          "symbol": "app.js:drawImpact",
+          "file": "app.js",
+          "line": 1421,
+          "endLine": 1446,
+          "refs": [
+            "AK-VIS-03"
+          ]
+        }
+      ],
+      "tests": [
+        "reporting.test.js",
+        "visualization.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-IO-01",
+      "rules": [
+        "R55",
+        "R62"
+      ],
+      "symbols": [
+        {
+          "symbol": "app.js:payload",
+          "file": "app.js",
+          "line": 1676,
+          "endLine": 1688,
+          "refs": [
+            "AK-IO-01"
+          ]
+        },
+        {
+          "symbol": "app.js:validatePayload",
+          "file": "app.js",
+          "line": 1693,
+          "endLine": 1787,
+          "refs": [
+            "AK-IO-01"
+          ]
+        },
+        {
+          "symbol": "app.js:loadPayload",
+          "file": "app.js",
+          "line": 1792,
+          "endLine": 1816,
+          "refs": [
+            "AK-IO-01"
+          ]
+        },
+        {
+          "symbol": "app.js:storeAction",
+          "file": "app.js",
+          "line": 1614,
+          "endLine": 1655,
+          "refs": [
+            "AK-IO-01"
+          ]
+        },
+        {
+          "symbol": "app.js:csv",
+          "file": "app.js",
+          "line": 1834,
+          "endLine": 1854,
+          "refs": [
+            "AK-IO-01"
+          ]
+        },
+        {
+          "symbol": "app.js:openDB",
+          "file": "app.js",
+          "line": 1594,
+          "endLine": 1609,
+          "refs": [
+            "AK-IO-01"
+          ]
+        },
+        {
+          "symbol": "app.js:refreshSaves",
+          "file": "app.js",
+          "line": 1660,
+          "endLine": 1671,
+          "refs": [
+            "AK-IO-01"
+          ]
+        },
+        {
+          "symbol": "app.js:download",
+          "file": "app.js",
+          "line": 1821,
+          "endLine": 1829,
+          "refs": [
+            "AK-IO-01"
+          ]
+        },
+        {
+          "symbol": "app.js:showStorage",
+          "file": "app.js",
+          "line": 1859,
+          "endLine": 1865,
+          "refs": [
+            "AK-IO-01"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "dynamics.test.js",
+        "reporting.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S10"
+      ]
+    },
+    {
+      "id": "AK-OPS-01",
+      "rules": [
+        "R03",
+        "R55",
+        "R61"
+      ],
+      "symbols": [
+        {
+          "symbol": "worker.js:makePair",
+          "file": "worker.js",
+          "line": 44,
+          "endLine": 47,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        },
+        {
+          "symbol": "worker.js:advance",
+          "file": "worker.js",
+          "line": 151,
+          "endLine": 157,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        },
+        {
+          "symbol": "worker.js:pump",
+          "file": "worker.js",
+          "line": 162,
+          "endLine": 175,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        },
+        {
+          "symbol": "worker.js:finishPair",
+          "file": "worker.js",
+          "line": 72,
+          "endLine": 146,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        },
+        {
+          "symbol": "app.js:initializeWorker",
+          "file": "app.js",
+          "line": 345,
+          "endLine": 393,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        },
+        {
+          "symbol": "app.js:stopWorker",
+          "file": "app.js",
+          "line": 335,
+          "endLine": 340,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        },
+        {
+          "symbol": "app.js:start",
+          "file": "app.js",
+          "line": 398,
+          "endLine": 421,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        },
+        {
+          "symbol": "app.js:reset",
+          "file": "app.js",
+          "line": 426,
+          "endLine": 440,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        },
+        {
+          "symbol": "worker.js:send",
+          "file": "worker.js",
+          "line": 52,
+          "endLine": 67,
+          "refs": [
+            "AK-OPS-01"
+          ]
+        }
+      ],
+      "tests": [
+        "worker.test.js",
+        "run-seeds.test.js"
+      ],
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AK-VAL-01",
+      "rules": [
+        "R55",
+        "R58",
+        "R62"
+      ],
+      "symbols": [
+        {
+          "symbol": "model.js:assertInvariants",
+          "file": "model.js",
+          "line": 3966,
+          "endLine": 3997,
+          "refs": [
+            "AK-VAL-01"
+          ]
+        },
+        {
+          "symbol": "model.js:snapshot",
+          "file": "model.js",
+          "line": 3959,
+          "endLine": 3961,
+          "refs": [
+            "AK-VAL-01"
+          ]
+        },
+        {
+          "symbol": "reporting.js:valid",
+          "file": "reporting.js",
+          "line": 632,
+          "endLine": 695,
+          "refs": [
+            "AK-VAL-01"
+          ]
+        },
+        {
+          "symbol": "model.js:finite",
+          "file": "model.js",
+          "line": 627,
+          "endLine": 628,
+          "refs": [
+            "AK-VAL-01"
+          ]
+        },
+        {
+          "symbol": "model.js:ids",
+          "file": "model.js",
+          "line": 3744,
+          "endLine": 3744,
+          "refs": [
+            "AK-VAL-01"
+          ]
+        }
+      ],
+      "tests": [
+        "model.test.js",
+        "audit.test.js",
+        "adaptation.test.js",
+        "dynamics.test.js",
+        "initialization.test.js",
+        "visualization.test.js",
+        "reporting.test.js",
+        "worker.test.js",
+        "run-seeds.test.js",
+        "stress.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S11"
+      ]
+    },
+    {
+      "id": "AK-VAL-02",
+      "rules": [
+        "R21",
+        "R23",
+        "R25",
+        "R58"
+      ],
+      "symbols": [
+        {
+          "symbol": "config.js:assumptions",
+          "file": "config.js",
+          "line": 202,
+          "endLine": 215,
+          "refs": [
+            "AK-VAL-02"
+          ]
+        },
+        {
+          "symbol": "baseline.js:fieldStatus",
+          "file": "baseline.js",
+          "line": 121,
+          "endLine": 127,
+          "refs": [
+            "AK-VAL-02"
+          ]
+        },
+        {
+          "symbol": "profiles.js:data",
+          "file": "profiles.js",
+          "line": 9,
+          "endLine": 1782,
+          "refs": [
+            "AK-COU-01",
+            "AK-VAL-02"
+          ]
+        }
+      ],
+      "tests": [
+        "initialization.test.js",
+        "reporting.test.js"
+      ],
+      "sources": [
+        "S01",
+        "S02",
+        "S11"
+      ]
+    }
+  ],
+  "units": {
+    "model.js": [
+      {
+        "name": "clamp",
+        "line": 35,
+        "endLine": 35,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "sum",
+        "line": 36,
+        "endLine": 36,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "mean",
+        "line": 37,
+        "endLine": 37,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "clone",
+        "line": 38,
+        "endLine": 38,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "hash",
+        "line": 43,
+        "endLine": 51,
+        "parent": null,
+        "refs": [
+          "AK-RNG-01"
+        ],
+        "note": "Hash an explicit namespace/key to an unsigned 32-bit integer. This is reproducible simulation randomization, not cryptography; changing mixing or key order changes every downstream experiment."
+      },
+      {
+        "name": "draw",
+        "line": 56,
+        "endLine": 58,
+        "parent": null,
+        "refs": [
+          "AK-RNG-01"
+        ],
+        "note": "Return a uniform value strictly inside (0,1) from the keyed hash. Keep this separate from display hashes and never call it to animate or inspect a result."
+      },
+      {
+        "name": "generator",
+        "line": 63,
+        "endLine": 66,
+        "parent": null,
+        "refs": [
+          "AK-RNG-01"
+        ],
+        "note": "Supply sequential initialization draws within a dedicated namespace. Runtime choices instead use stable semantic keys so policy branches do not shift a shared RNG cursor."
+      },
+      {
+        "name": "gaussian",
+        "line": 71,
+        "endLine": 73,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": "Box–Muller helper used by initialization gamma draws. It is a numerical sampler, not an empirical behavioral distribution."
+      },
+      {
+        "name": "gamma",
+        "line": 78,
+        "endLine": 90,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": "Generate positive gamma variates for nine heterogeneous motive weights. Rejection/shape transforms consume only the initialization generator."
+      },
+      {
+        "name": "motives",
+        "line": 95,
+        "endLine": 108,
+        "parent": null,
+        "refs": [
+          "AK-MOT-01"
+        ],
+        "note": "Construct all nine social/economic/political × self/group/public weights and normalize them. Role/domain and beneficiary proportions are provisional priors; a motive is not a conduct classification."
+      },
+      {
+        "name": "validate",
+        "line": 126,
+        "endLine": 165,
+        "parent": null,
+        "refs": [
+          "AK-OV-01"
+        ],
+        "note": "Normalize and reject unsupported setup values before constructing a world. Defaults, duration/repetition limits, override bounds and distinct policy IDs are part of the experiment contract."
+      },
+      {
+        "name": "conditions",
+        "line": 170,
+        "endLine": 179,
+        "parent": null,
+        "refs": [
+          "AK-COU-01"
+        ],
+        "note": "Combine dated stored descriptors, bounded country baseline mappings and explicit user overrides. An override deliberately changes the reconstructed past as well as future conditions."
+      },
+      {
+        "name": "totalMoney",
+        "line": 184,
+        "endLine": 192,
+        "parent": null,
+        "refs": [
+          "AK-ECO-01"
+        ],
+        "note": "Sum every modeled cash account, including outside and unspent policy allocations. Use this conserved total rather than treating a bribe/fine transfer as newly created or destroyed money."
+      },
+      {
+        "name": "transfer",
+        "line": 197,
+        "endLine": 202,
+        "parent": null,
+        "refs": [
+          "AK-ECO-01"
+        ],
+        "note": "Execute a clipped conserved transfer without negative cash. Requested and actually paid amounts can differ, and unpaid ordinary costs are not silently created as debt."
+      },
+      {
+        "name": "requirements",
+        "line": 207,
+        "endLine": 215,
+        "parent": null,
+        "refs": [
+          "AK-REF-02"
+        ],
+        "note": "Compute additional policy setup, recurring money and staff-time estimates. Cost tuples and GDP normalization are assumptions; this is not the existing institution’s entire budget."
+      },
+      {
+        "name": "createPopulation",
+        "line": 220,
+        "endLine": 513,
+        "parent": null,
+        "refs": [
+          "AK-POP-01",
+          "AK-POP-02",
+          "AK-ORG-01",
+          "AK-GEO-01"
+        ],
+        "note": "Build the raw fixed 1,000-person society and its organizations, profiles, account structure and initial links. Its parameters mix sourced descriptors with explicit generic distributions; createInitial supplies the experienced starting state."
+      },
+      {
+        "name": "org",
+        "line": 301,
+        "endLine": 348,
+        "parent": "createPopulation",
+        "refs": [
+          "AK-ORG-01"
+        ],
+        "note": "Create a simplified functional organization with capabilities, legal coverage, role practices and a leader/member roster. fn is one principal function, not a complete legal mandate description."
+      },
+      {
+        "name": "createInitial",
+        "line": 522,
+        "endLine": 584,
+        "parent": null,
+        "refs": [
+          "AK-INI-01"
+        ],
+        "note": "Execute the dedicated twelve-month pre-policy reconstruction and preserve unfinished work/history. Reset intervention counters, not people, finances or cases; cache the identical state for matched comparisons."
+      },
+      {
+        "name": "initialDifference",
+        "line": 589,
+        "endLine": 611,
+        "parent": null,
+        "refs": [
+          "AK-INI-01"
+        ],
+        "note": "Compare expected and imported starting states without replacing the imported values. Integers remain exact; only insignificant finite noninteger rounding and object-key order are tolerated."
+      },
+      {
+        "name": "validateInitial",
+        "line": 616,
+        "endLine": 782,
+        "parent": null,
+        "refs": [
+          "AK-INI-01"
+        ],
+        "note": "Enforce initial schema, IDs, role counts, memberships, finances and exact reconstructed provenance. A plausible-looking JSON society is not accepted merely because its total population is correct."
+      },
+      {
+        "name": "finite",
+        "line": 627,
+        "endLine": 628,
+        "parent": "validateInitial",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "ids",
+        "line": 629,
+        "endLine": 629,
+        "parent": "validateInitial",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "constructor",
+        "line": 787,
+        "endLine": 797,
+        "parent": null,
+        "refs": [
+          "AK-OV-01"
+        ],
+        "note": "Clone the supplied initial world, set the future-event stream/replicate, and create an observation sidecar before formal adoption. Only the reform branch adopts selected policies; baseline retains inherited arrangements."
+      },
+      {
+        "name": "get agents",
+        "line": 802,
+        "endLine": 804,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "get orgs",
+        "line": 809,
+        "endLine": 811,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "get month",
+        "line": 816,
+        "endLine": 818,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "rand",
+        "line": 823,
+        "endLine": 825,
+        "parent": null,
+        "refs": [
+          "AK-RNG-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "index",
+        "line": 830,
+        "endLine": 837,
+        "parent": null,
+        "refs": [
+          "AK-NET-01"
+        ],
+        "note": "Rebuild role/function/case lookup indexes after relevant transitions. These indexes accelerate access but do not create additional people or organizations."
+      },
+      {
+        "name": "emit",
+        "line": 842,
+        "endLine": 857,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": "Append a tracked event/update without consuming world randomness. A tracking family can span case stages, resource reviews or a developing relationship."
+      },
+      {
+        "name": "cap",
+        "line": 862,
+        "endLine": 874,
+        "parent": null,
+        "refs": [
+          "AK-REF-01"
+        ],
+        "note": "Aggregate operative capability among the relevant public functions, or inspect one organization. Capability is a bounded scenario quantity, not an empirical success probability."
+      },
+      {
+        "name": "recipients",
+        "line": 879,
+        "endLine": 916,
+        "parent": null,
+        "refs": [
+          "AK-REF-02"
+        ],
+        "note": "Choose legally/functionally competent recipients and split reform funds using configured central/local shares. The shares are provisional country assumptions rather than measured budget allocations."
+      },
+      {
+        "name": "adopt",
+        "line": 921,
+        "endLine": 954,
+        "parent": null,
+        "refs": [
+          "AK-REF-01"
+        ],
+        "note": "Enact the user-selected formal reform and its common intended scope immediately. This does not install implementation capacity, deliver teaching or bypass practical funding/work constraints."
+      },
+      {
+        "name": "effects",
+        "line": 959,
+        "endLine": 964,
+        "parent": null,
+        "refs": [
+          "AK-DEC-02"
+        ],
+        "note": "Keep all nine consequence slots explicit and finite. The returned vector is an assessed valuation used by utility, not a physical resource transfer."
+      },
+      {
+        "name": "choose",
+        "line": 969,
+        "endLine": 1036,
+        "parent": null,
+        "refs": [
+          "AK-DEC-01",
+          "AK-ACT-02"
+        ],
+        "note": "Score every available option under subjective motives, need, accountability expectations, TPB elements and keyed Gumbel uncertainty; take the maximum. Record meaningful opportunities only when a real alternative to a qualifying improper option exists."
+      },
+      {
+        "name": "operatingPolicy",
+        "line": 1041,
+        "endLine": 1047,
+        "parent": null,
+        "refs": [
+          "AK-REF-03"
+        ],
+        "note": "Require active formal status, completed setup and recent delivery at the specific recipient. The check gates new personal exposure without erasing older memories or baseline capability."
+      },
+      {
+        "name": "expose",
+        "line": 1052,
+        "endLine": 1068,
+        "parent": null,
+        "refs": [
+          "AK-ADP-01"
+        ],
+        "note": "Deliver a real encountered policy episode with known source credibility and actual dose. Count additional teaching/verification contacts only when delivery is substantive and not a duplicate; uptake may still fail."
+      },
+      {
+        "name": "riskExperience",
+        "line": 1073,
+        "endLine": 1085,
+        "parent": null,
+        "refs": [
+          "AK-CAS-03"
+        ],
+        "note": "Attribute communicated procedure-specific cost information to one operative tool, falling back to ordinary experience. Avoid stacking the same event as generic risk and several policy bonuses."
+      },
+      {
+        "name": "practice",
+        "line": 1090,
+        "endLine": 1092,
+        "parent": null,
+        "refs": [
+          "AK-INS-01"
+        ],
+        "note": "Read organization-and-role-specific honest/corrupt familiarity. This scalar affects particular effort/work expressions; its existence does not make repeated conduct an institution without reference reactions."
+      },
+      {
+        "name": "act",
+        "line": 1097,
+        "endLine": 1136,
+        "parent": null,
+        "refs": [
+          "AK-ACT-01",
+          "AK-ACT-02"
+        ],
+        "note": "Complete the current meaningful choice or record an actual corrupt act, preserving the last-24 history. A one-option duty or repeated call cannot manufacture lawful recovery credits."
+      },
+      {
+        "name": "completeCorruption",
+        "line": 1141,
+        "endLine": 1167,
+        "parent": null,
+        "refs": [
+          "AK-ACT-01"
+        ],
+        "note": "Record one qualifying act and its participants, roles, amount, source organization and visibility. Victim payments are accounted separately; records can exist before any case or public allegation."
+      },
+      {
+        "name": "eligibleTool",
+        "line": 1175,
+        "endLine": 1208,
+        "parent": null,
+        "refs": [
+          "AK-COU-02"
+        ],
+        "note": "Apply principal-function and covered-role gates. These are simplified modeled mandates and should not be presented as a comprehensive legal jurisdiction map."
+      },
+      {
+        "name": "coverage",
+        "line": 1213,
+        "endLine": 1219,
+        "parent": null,
+        "refs": [
+          "AK-REF-01"
+        ],
+        "note": "Return current formal scope, with any endogenous narrowing applied. Formal scope can change before new delivery, so scope-sensitive diagnostics are capability estimates rather than proof of implementation."
+      },
+      {
+        "name": "covered",
+        "line": 1224,
+        "endLine": 1235,
+        "parent": null,
+        "refs": [
+          "AK-REF-01"
+        ],
+        "note": "Use a fixed society/body/tool/person draw to keep legal coverage consistent over repeated encounters. Do not replace this with a fresh monthly compliance lottery."
+      },
+      {
+        "name": "operational",
+        "line": 1240,
+        "endLine": 1244,
+        "parent": null,
+        "refs": [
+          "AK-REF-01"
+        ],
+        "note": "Combine legal coverage with actual organization capability, using a deterministic coverage gate for a specified person. This differs from the extra installed-delivery gate required for persuasive exposure."
+      },
+      {
+        "name": "relationship",
+        "line": 1249,
+        "endLine": 1260,
+        "parent": null,
+        "refs": [
+          "AK-ORG-01",
+          "AK-NET-01"
+        ],
+        "note": "Separate directional trust, shared membership, support affinity and effective access. Access can affect opportunity and insider incentives without providing automatic immunity."
+      },
+      {
+        "name": "experienced",
+        "line": 1265,
+        "endLine": 1290,
+        "parent": null,
+        "refs": [
+          "AK-ECO-03"
+        ],
+        "note": "Aggregate all service experiences into at most one bounded opinion/control update per person/month. Waiting files can increase actual burden without multiplying the learning rate indefinitely."
+      },
+      {
+        "name": "priorities",
+        "line": 1295,
+        "endLine": 1326,
+        "parent": null,
+        "refs": [
+          "AK-ECO-02",
+          "AK-REF-03"
+        ],
+        "note": "Rank work/funding requests by the actor’s evaluated priority-versus-defer utility difference. Ranking does not create additional money or time, and the later feasibility checks still bind."
+      },
+      {
+        "name": "policyFeedback",
+        "line": 1331,
+        "endLine": 1358,
+        "parent": null,
+        "refs": [
+          "AK-REF-04",
+          "AK-MAC-01"
+        ],
+        "note": "Compute observed delivery, governing support, resistance and waiting used in actor reviews. This is derived feedback, not a separately invented political-will coefficient."
+      },
+      {
+        "name": "peers",
+        "line": 1363,
+        "endLine": 1384,
+        "parent": null,
+        "refs": [
+          "AK-NET-01"
+        ],
+        "note": "Select at most two accessible peers using directional relationship strength/trust. Sharing is selective and cannot broadcast omniscient world truth to the entire society."
+      },
+      {
+        "name": "fundingDependence",
+        "line": 1389,
+        "endLine": 1404,
+        "parent": null,
+        "refs": [
+          "AK-INF-01"
+        ],
+        "note": "Measure recent active funder leverage relevant to the story subject using actual private flows. These private payments never replenish the public reform implementation pool."
+      },
+      {
+        "name": "recentAmount",
+        "line": 1397,
+        "endLine": 1398,
+        "parent": "fundingDependence",
+        "refs": [
+          "AK-NET-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "tie",
+        "line": 1409,
+        "endLine": 1411,
+        "parent": null,
+        "refs": [
+          "AK-NET-01"
+        ],
+        "note": "Look up a single undirected link record whose two trust fields remain directional. An absent record is not the same as absent organizational affinity."
+      },
+      {
+        "name": "related",
+        "line": 1416,
+        "endLine": 1418,
+        "parent": null,
+        "refs": [
+          "AK-NET-01"
+        ],
+        "note": "Translate the modeled relationship-access threshold into a connected/outsider gate. This is an operational threshold, not a permanent class characteristic or legal finding."
+      },
+      {
+        "name": "link",
+        "line": 1423,
+        "endLine": 1492,
+        "parent": null,
+        "refs": [
+          "AK-INS-01",
+          "AK-NET-01"
+        ],
+        "note": "Update useful/coercive ties and transmit a relevant reference’s approval/disapproval. Corrupt cooperation and coerced payment are distinct relationship kinds; neither repetition alone nor category membership establishes an institution."
+      },
+      {
+        "name": "nearest",
+        "line": 1497,
+        "endLine": 1528,
+        "parent": null,
+        "refs": [
+          "AK-GEO-01"
+        ],
+        "note": "Sample a small weighted candidate set using proximity, affinity and access, with possible remote contact. Despite the name it is stochastic weighted contact selection, not simply Euclidean nearest neighbor."
+      },
+      {
+        "name": "monthlyAccounts",
+        "line": 1533,
+        "endLine": 1586,
+        "parent": null,
+        "refs": [
+          "AK-ECO-01",
+          "AK-ECO-02"
+        ],
+        "note": "Move ordinary income, organizational funding, modeled withholding and consumption through conserved accounts. Reset public staff budgets and record actual unmet-needs pressure; there is no endogenous GDP update."
+      },
+      {
+        "name": "scheduleWork",
+        "line": 1591,
+        "endLine": 1623,
+        "parent": null,
+        "refs": [
+          "AK-ECO-02"
+        ],
+        "note": "Reserve one finite public time budget across routine, reform and case categories using assessed priorities. Later operations debit both the relevant reservation and common remaining capacity."
+      },
+      {
+        "name": "fundPolicies",
+        "line": 1628,
+        "endLine": 1642,
+        "parent": null,
+        "refs": [
+          "AK-REF-02"
+        ],
+        "note": "Disburse actually available treasury resources against each policy’s starting/current rate and setup/recurring requirement. Requested amounts can exceed mobilized funds, and policy order matters under scarcity."
+      },
+      {
+        "name": "implementPolicies",
+        "line": 1647,
+        "endLine": 1865,
+        "parent": null,
+        "refs": [
+          "AK-REF-03",
+          "AK-POL-ACA",
+          "AK-POL-MERIT",
+          "AK-POL-ROTATION",
+          "AK-POL-PROTECTION",
+          "AK-POL-DECLARATIONS",
+          "AK-POL-CONFLICTS",
+          "AK-POL-OVERSIGHT",
+          "AK-POL-PAY",
+          "AK-POL-PENALTIES",
+          "AK-POL-DISCLOSURE",
+          "AK-POL-COMPLAINTS",
+          "AK-POL-EDUCATION"
+        ],
+        "note": "Execute actor-selected implementation/resistance/selectivity/diversion, shared-time/cash constraints and progressive setup. Apply only the operating tool’s named structural/learning hooks; full funding does not guarantee completion or integrity."
+      },
+      {
+        "name": "budgetReview",
+        "line": 1870,
+        "endLine": 2007,
+        "parent": null,
+        "refs": [
+          "AK-DEC-02",
+          "AK-REF-04"
+        ],
+        "note": "Run six-month utility/authorization decisions that can change rates, narrow scope or suspend a reform. Exceptional reviews, full repeal and reinstatement are not implemented by this routine."
+      },
+      {
+        "name": "addService",
+        "line": 2012,
+        "endLine": 2024,
+        "parent": null,
+        "refs": [
+          "AK-ECO-03"
+        ],
+        "note": "Create one persistent administrative request and count a contact once at arrival. Pending work is not silently counted as a newly arriving contact every month."
+      },
+      {
+        "name": "report",
+        "line": 2029,
+        "endLine": 2073,
+        "parent": null,
+        "refs": [
+          "AK-CAS-01"
+        ],
+        "note": "Let a witness/victim choose whether to report under subjective knowledge/safety and real costs. A submitted signal is not proof and can fail the affordability/viability threshold."
+      },
+      {
+        "name": "encounter",
+        "line": 2078,
+        "endLine": 2222,
+        "parent": null,
+        "refs": [
+          "AK-DEC-02",
+          "AK-ACT-01"
+        ],
+        "note": "Separate proposer choice, counterpart response, extortion/refusal, prevention and physical completion. Only actual completed voluntary exchanges enter that category; extortion demands and victim payments have separate records."
+      },
+      {
+        "name": "encounters",
+        "line": 2227,
+        "endLine": 2267,
+        "parent": null,
+        "refs": [
+          "AK-GEO-01",
+          "AK-ACT-01"
+        ],
+        "note": "Schedule role-specific opportunities in keyed random order, including campaigns and political pressure. These opportunity frequencies are generic model priors, not national encounter statistics."
+      },
+      {
+        "name": "processServices",
+        "line": 2272,
+        "endLine": 2308,
+        "parent": null,
+        "refs": [
+          "AK-INS-01",
+          "AK-ECO-03"
+        ],
+        "note": "Process prioritized requests with actual public staff/cash, preserving unresolved queues. Aggregate per-person experience once; completed waiting and unfinished waiting are distinct metrics."
+      },
+      {
+        "name": "makeCase",
+        "line": 2313,
+        "endLine": 2373,
+        "parent": null,
+        "refs": [
+          "AK-COU-02",
+          "AK-CAS-01"
+        ],
+        "note": "De-duplicate an underlying signal and assign its route, jurisdiction, evidence and next-stage date. A new file is not a guilty verdict or a newly created corrupt act."
+      },
+      {
+        "name": "audit",
+        "line": 2378,
+        "endLine": 2415,
+        "parent": null,
+        "refs": [
+          "AK-CAS-01"
+        ],
+        "note": "Spend finite scrutiny time on recent conduct records, with detection depending on actual covered capabilities and records. Include a lawful-control false-signal pathway and communicate notices separately from hidden detection truth."
+      },
+      {
+        "name": "responsible",
+        "line": 2420,
+        "endLine": 2452,
+        "parent": null,
+        "refs": [
+          "AK-COU-02",
+          "AK-CAS-02"
+        ],
+        "note": "Route a case stage to a configured competent function with explicit country exceptions. Fall-throughs and simplified mandates are intentional abstractions documented as limits."
+      },
+      {
+        "name": "pick",
+        "line": 2425,
+        "endLine": 2425,
+        "parent": "responsible",
+        "refs": [
+          "AK-COU-02",
+          "AK-CAS-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "processCases",
+        "line": 2457,
+        "endLine": 2727,
+        "parent": null,
+        "refs": [
+          "AK-DEC-02",
+          "AK-CAS-02",
+          "AK-CAS-03"
+        ],
+        "note": "Apply stage readiness, actual staff/money, controller choices and evidence thresholds before advancing or closing a case. Separate administrative/civil/criminal labels, proven findings, actual collections and unlawful adverse actions."
+      },
+      {
+        "name": "communicatedDecision",
+        "line": 2732,
+        "endLine": 2749,
+        "parent": null,
+        "refs": [
+          "AK-INF-02",
+          "AK-CAS-03"
+        ],
+        "note": "Update an accessed final decision once, using either one attributable operative policy or ordinary baseline-belief learning. A personally experienced decision cannot add a second public cost increment."
+      },
+      {
+        "name": "collectLiabilities",
+        "line": 2754,
+        "endLine": 2787,
+        "parent": null,
+        "refs": [
+          "AK-CAS-03"
+        ],
+        "note": "Collect only an existing assessed claim under cash, needs-buffer, per-month receipt cap and enforcement-resource constraints. Installments reduce debt and transfer money but do not create fresh sanction counts."
+      },
+      {
+        "name": "publish",
+        "line": 2792,
+        "endLine": 2885,
+        "parent": null,
+        "refs": [
+          "AK-INF-01"
+        ],
+        "note": "Make an editor’s publish/withhold choice before spending publication funds and creating a claim/decision/correction record. Publication and announced decisions remain distinct from hidden model guilt."
+      },
+      {
+        "name": "information",
+        "line": 2890,
+        "endLine": 2998,
+        "parent": null,
+        "refs": [
+          "AK-INF-02"
+        ],
+        "note": "Apply bounded attention, local/media exposure, credibility-weighted beliefs and selective social sharing. Descriptive conduct beliefs, reference expectations and objective truth are not interchangeable fields."
+      },
+      {
+        "name": "funding",
+        "line": 3003,
+        "endLine": 3087,
+        "parent": null,
+        "refs": [
+          "AK-INF-01"
+        ],
+        "note": "Execute bilateral business-to-civic funding or withdrawal choices with actual private money. Dependence can change editorial conditions without mechanically buying compliance or funding public implementation."
+      },
+      {
+        "name": "changeEmployment",
+        "line": 3092,
+        "endLine": 3112,
+        "parent": null,
+        "refs": [
+          "AK-ORG-02",
+          "AK-ECO-01"
+        ],
+        "note": "Move a person’s primary role/workplace membership while preserving identity, home, resources, history and ties. Count rotation only for an actual official-to-official organizational transfer."
+      },
+      {
+        "name": "organizations",
+        "line": 3117,
+        "endLine": 3312,
+        "parent": null,
+        "refs": [
+          "AK-ORG-02"
+        ],
+        "note": "Process constrained affiliation requests and periodic staffing/rotation. Requests with due=next month are still processed only at six-month organizational reviews, a documented effective delay."
+      },
+      {
+        "name": "politicalReview",
+        "line": 3317,
+        "endLine": 3430,
+        "parent": null,
+        "refs": [
+          "AK-REF-04",
+          "AK-GOV-01"
+        ],
+        "note": "Aggregate perceived conduct and affinity through the configured simplified election/appointment procedure. Update authority while retaining identity and history; this is not a national electoral forecast."
+      },
+      {
+        "name": "recover",
+        "line": 3435,
+        "endLine": 3444,
+        "parent": null,
+        "refs": [
+          "AK-ACT-02"
+        ],
+        "note": "Change the display state only after both the six-month no-new-act interval and three genuine completed integrity choices. The underlying conduct record and other agents’ reputations persist."
+      },
+      {
+        "name": "step",
+        "line": 3449,
+        "endLine": 3472,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": "Execute the authoritative monthly order. Moving a call here can alter both causal timing and random-key identity even if each submodel remains individually correct."
+      },
+      {
+        "name": "classActivity",
+        "line": 3477,
+        "endLine": 3490,
+        "parent": null,
+        "refs": [
+          "AK-ACT-02"
+        ],
+        "note": "Summarize current-role agents’ last-24 meaningful opportunities. The denominator includes recorded attempted/uncompleted opportunities and is distinct from the common-encounter impact denominator."
+      },
+      {
+        "name": "macroDevelopments",
+        "line": 3495,
+        "endLine": 3648,
+        "parent": null,
+        "refs": [
+          "AK-MAC-01"
+        ],
+        "note": "Observe consequential treasury/service/pay, institution, public-disclosure and repeated-abuse developments. Notification thresholds do not themselves impose an extra behavioral corruption coefficient."
+      },
+      {
+        "name": "find",
+        "line": 3589,
+        "endLine": 3597,
+        "parent": "macroDevelopments",
+        "refs": [
+          "AK-MAC-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "metrics",
+        "line": 3653,
+        "endLine": 3675,
+        "parent": null,
+        "refs": [
+          "AK-MAC-01"
+        ],
+        "note": "Read cumulative process counters and current collective states. A transfer, backlog stock, completed waiting total and true-conduct rate have different interpretations and must not be added as one welfare score."
+      },
+      {
+        "name": "record",
+        "line": 3680,
+        "endLine": 3683,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": "Append ordinary metrics and an observation-sidecar snapshot after all monthly processes. Recording is passive; do not let reporting consume RNG or alter actors/accounts."
+      },
+      {
+        "name": "reporting",
+        "line": 3688,
+        "endLine": 3690,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": "Expose the observation-only sidecar separately from the complaint report() method and simulation state. Initial-state/save compatibility remains governed by behavioral schema2.4."
+      },
+      {
+        "name": "diagnostic",
+        "line": 3695,
+        "endLine": 3827,
+        "parent": null,
+        "refs": [
+          "AK-MEA-01"
+        ],
+        "note": "Calculate explicitly labeled fixed-reference capability proxies or special realized indicators. This does not run independent empirical tests of institutions or consume simulation randomness."
+      },
+      {
+        "name": "assessment",
+        "line": 3832,
+        "endLine": 3834,
+        "parent": null,
+        "refs": [
+          "AK-MEA-01"
+        ],
+        "note": "Collect the twelve legacy diagnostic definitions. New reporting overrides for rolling merit/protection/penalty cohorts are a distinct documented readout path."
+      },
+      {
+        "name": "influential",
+        "line": 3839,
+        "endLine": 3861,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": "Rank weighted network degree plus control/leadership leverage and retain eight people for detailed inspection. This is a heuristic power/centrality proxy, not all-pairs centrality."
+      },
+      {
+        "name": "view",
+        "line": 3866,
+        "endLine": 3946,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": "Prepare a display payload with all people but detailed traits/traces only for highlighted actors. Keep display transformations separate from state; completion exports fuller records."
+      },
+      {
+        "name": "run",
+        "line": 3951,
+        "endLine": 3954,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": "Advance until the configured duration using the same step() implementation. No alternative batch behavior or stochastic shortcut is introduced."
+      },
+      {
+        "name": "snapshot",
+        "line": 3959,
+        "endLine": 3961,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": "Serialize simulation state, excluding observation and UI sidecars. Used to verify exact replay, import identity and documentation-only non-mutation."
+      },
+      {
+        "name": "assertInvariants",
+        "line": 3966,
+        "endLine": 3997,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": "Fail loudly on population, balances, money conservation, staff double spending or invalid bounded profiles/history. These checks establish engineering consistency, not country realism."
+      },
+      {
+        "name": "comparison",
+        "line": 4003,
+        "endLine": 4034,
+        "parent": null,
+        "refs": [
+          "AK-MEA-02"
+        ],
+        "note": "Compare reform and baseline rate/quantity indicators with their own denominators. A null denominator remains unavailable; package impacts do not imply individual tool attribution."
+      },
+      {
+        "name": "rate",
+        "line": 4009,
+        "endLine": 4012,
+        "parent": "comparison",
+        "refs": [
+          "AK-MEA-02"
+        ],
+        "note": null
+      }
+    ],
+    "adaptation.js": [
+      {
+        "name": "clamp",
+        "line": 13,
+        "endLine": 13,
+        "parent": null,
+        "refs": [
+          "AK-ADP-01",
+          "AK-ADP-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "initialize",
+        "line": 175,
+        "endLine": 200,
+        "parent": null,
+        "refs": [
+          "AK-POP-02",
+          "AK-ADP-01"
+        ],
+        "note": "Construct each person’s stored trait baselines, current traits, expectations, motive anchors and learning memories using separate keyed draws."
+      },
+      {
+        "name": "recentParticipation",
+        "line": 205,
+        "endLine": 208,
+        "parent": null,
+        "refs": [
+          "AK-POP-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "receptiveness",
+        "line": 213,
+        "endLine": 232,
+        "parent": null,
+        "refs": [
+          "AK-ADP-01"
+        ],
+        "note": "Compute component-specific uptake and conditional strength from actual individual traits, motives, knowledge, trust and own history. Credibility controls uptake; delivery quality later controls dose."
+      },
+      {
+        "name": "feedback",
+        "line": 237,
+        "endLine": 246,
+        "parent": null,
+        "refs": [
+          "AK-ADP-01"
+        ],
+        "note": "Record bounded experienced/enacted salience and credibility feedback used for slow future adaptation; no conduct classification occurs here."
+      },
+      {
+        "name": "observe",
+        "line": 251,
+        "endLine": 326,
+        "parent": null,
+        "refs": [
+          "AK-ADP-02"
+        ],
+        "note": "Deduplicate substantive episodes, draw uptake and magnitude separately, and apply declining new-learning caps plus bounded restoration. Rejected delivery still advances the exposure counter; it is not successful learning."
+      },
+      {
+        "name": "influence",
+        "line": 331,
+        "endLine": 362,
+        "parent": null,
+        "refs": [
+          "AK-ADP-02"
+        ],
+        "note": "Sum retained eligible component levels and targets, applying context gates and cross-policy bounds. A non-targeted component must not receive a generic bonus."
+      },
+      {
+        "name": "refresh",
+        "line": 367,
+        "endLine": 373,
+        "parent": null,
+        "refs": [
+          "AK-ADP-02"
+        ],
+        "note": "Refresh derived knowledge/accountability expectations from retained memories without double-counting generic gains."
+      },
+      {
+        "name": "knowledge",
+        "line": 378,
+        "endLine": 382,
+        "parent": null,
+        "refs": [
+          "AK-ADP-01"
+        ],
+        "note": "Read context-specific usable knowledge from baseline and retained component influence. Reporting-channel instructions are not universal knowledge for unrelated conduct."
+      },
+      {
+        "name": "safety",
+        "line": 387,
+        "endLine": 391,
+        "parent": null,
+        "refs": [
+          "AK-ADP-01"
+        ],
+        "note": "Read subjective reporting safety from experienced baseline and retained target-specific learning. Do not replace it with omniscient true protection capacity."
+      },
+      {
+        "name": "accountability",
+        "line": 396,
+        "endLine": 414,
+        "parent": null,
+        "refs": [
+          "AK-CAS-03"
+        ],
+        "note": "Learn from one personally experienced or accessed announced decision with bounded prior-relative targets. Deduplication and forgetting limits are explicit and do not reveal hidden truth."
+      },
+      {
+        "name": "advance",
+        "line": 419,
+        "endLine": 452,
+        "parent": null,
+        "refs": [
+          "AK-MOT-01",
+          "AK-ADP-02",
+          "AK-ADP-03"
+        ],
+        "note": "Apply wear-off, bounded trait/motive evolution and ordinary risk relaxation exactly once per elapsed month. Never erase conduct or restore an integrity icon through this learning update."
+      },
+      {
+        "name": "work",
+        "line": 457,
+        "endLine": 465,
+        "parent": null,
+        "refs": [
+          "AK-ADP-03"
+        ],
+        "note": "Improve skill only through performed work, with a ceiling relative to initial skill. This is not an instant expertise gain from selecting a policy."
+      },
+      {
+        "name": "incomeExperience",
+        "line": 470,
+        "endLine": 475,
+        "parent": null,
+        "refs": [
+          "AK-ADP-03"
+        ],
+        "note": "Learn expected lawful receipts from one actual monthly observation, including supplements. It is separate from measured unmet-needs pressure and from new money creation."
+      },
+      {
+        "name": "messageRate",
+        "line": 480,
+        "endLine": 485,
+        "parent": null,
+        "refs": [
+          "AK-INF-02"
+        ],
+        "note": "Scale accessed information by credibility and the recipient’s openness/learning. This does not guarantee acceptance of a true or false claim."
+      },
+      {
+        "name": "context",
+        "line": 490,
+        "endLine": 498,
+        "parent": null,
+        "refs": [
+          "AK-DEC-01"
+        ],
+        "note": "Map action names to the policy-learning contexts actually used by decision(). A new action name needs an explicit context review."
+      },
+      {
+        "name": "decision",
+        "line": 503,
+        "endLine": 516,
+        "parent": null,
+        "refs": [
+          "AK-DEC-01",
+          "AK-ADP-02"
+        ],
+        "note": "Adjust only the relevant attitude, norm and feasibility elements for the specific option/context. Actual resources, consent and law are still checked by the engine after intention."
+      },
+      {
+        "name": "summary",
+        "line": 521,
+        "endLine": 541,
+        "parent": null,
+        "refs": [
+          "AK-POP-02"
+        ],
+        "note": "Export interpretable numerical traits, retained influences and exposure histories for inspection. Summary values are model traits rather than validated psychological scores."
+      },
+      {
+        "name": "valid",
+        "line": 546,
+        "endLine": 615,
+        "parent": null,
+        "refs": [
+          "AK-POP-02"
+        ],
+        "note": "Validate complete stored numerical psychology, memories and bounds for initial/final profiles."
+      },
+      {
+        "name": "validSummary",
+        "line": 620,
+        "endLine": 676,
+        "parent": null,
+        "refs": [
+          "AK-POP-02"
+        ],
+        "note": "Validate the smaller inspection-summary structure accepted in completed saved results."
+      },
+      {
+        "name": "unit",
+        "line": 624,
+        "endLine": 624,
+        "parent": "validSummary",
+        "refs": [
+          "AK-POP-02"
+        ],
+        "note": null
+      }
+    ],
+    "reporting.js": [
+      {
+        "name": "clone",
+        "line": 34,
+        "endLine": 34,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03",
+          "AK-MEA-04"
+        ],
+        "note": null
+      },
+      {
+        "name": "sum",
+        "line": 35,
+        "endLine": 35,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03",
+          "AK-MEA-04"
+        ],
+        "note": null
+      },
+      {
+        "name": "mean",
+        "line": 36,
+        "endLine": 36,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03",
+          "AK-MEA-04"
+        ],
+        "note": null
+      },
+      {
+        "name": "finite",
+        "line": 175,
+        "endLine": 175,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03",
+          "AK-MEA-04"
+        ],
+        "note": null
+      },
+      {
+        "name": "pct",
+        "line": 176,
+        "endLine": 176,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03",
+          "AK-MEA-04"
+        ],
+        "note": null
+      },
+      {
+        "name": "activity",
+        "line": 181,
+        "endLine": 183,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": "Accumulate an actual delivered process hook only; selecting a policy or inspecting a panel cannot create output."
+      },
+      {
+        "name": "init",
+        "line": 188,
+        "endLine": 210,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": "Capture conditions before adopt() and inherit the separately archived pre-policy observations. Keep the monitor outside state and separate from the complaint report() method."
+      },
+      {
+        "name": "remember",
+        "line": 215,
+        "endLine": 219,
+        "parent": null,
+        "refs": [
+          "AK-INI-01",
+          "AK-MEA-03"
+        ],
+        "note": "Cache a cloned pre-policy observation archive keyed to the starting society without changing its serialized state."
+      },
+      {
+        "name": "counterAt",
+        "line": 224,
+        "endLine": 227,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "recent",
+        "line": 232,
+        "endLine": 238,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "sample",
+        "line": 243,
+        "endLine": 399,
+        "parent": null,
+        "refs": [
+          "AK-MEA-01",
+          "AK-MEA-03"
+        ],
+        "note": "Read all policy-specific snapshot conditions and explicitly defined outcomes. Estimated capability, rolling realized ratios and matured violation cohorts remain distinct."
+      },
+      {
+        "name": "pool",
+        "line": 253,
+        "endLine": 253,
+        "parent": "sample",
+        "refs": [
+          "AK-MEA-01",
+          "AK-MEA-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "scope",
+        "line": 258,
+        "endLine": 258,
+        "parent": "sample",
+        "refs": [
+          "AK-MEA-01",
+          "AK-MEA-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "cap",
+        "line": 263,
+        "endLine": 263,
+        "parent": "sample",
+        "refs": [
+          "AK-MEA-01",
+          "AK-MEA-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "staff",
+        "line": 268,
+        "endLine": 275,
+        "parent": "sample",
+        "refs": [
+          "AK-MEA-01",
+          "AK-MEA-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "relevant",
+        "line": 311,
+        "endLine": 318,
+        "parent": "sample",
+        "refs": [
+          "AK-MEA-01",
+          "AK-MEA-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "related",
+        "line": 404,
+        "endLine": 418,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03",
+          "AK-MEA-04"
+        ],
+        "note": null
+      },
+      {
+        "name": "record",
+        "line": 423,
+        "endLine": 472,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": "Update passive counters/snapshots and a bounded real-event evidence index after the monthly world update. Protect important per-policy records from last-200 feed truncation."
+      },
+      {
+        "name": "view",
+        "line": 477,
+        "endLine": 481,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": "Return the observation payload without recomputing actor decisions or consuming simulation draws."
+      },
+      {
+        "name": "windowValue",
+        "line": 486,
+        "endLine": 500,
+        "parent": null,
+        "refs": [
+          "AK-MEA-03"
+        ],
+        "note": "Subtract cumulative observed activities at equal month boundaries, including the inherited year. Never compare an opening queue stock with a year of activity or average unweighted monthly rates."
+      },
+      {
+        "name": "outcomeMeta",
+        "line": 505,
+        "endLine": 522,
+        "parent": null,
+        "refs": [
+          "AK-MEA-01"
+        ],
+        "note": "Name the rolling observed reporting overrides so they cannot be confused with the older aggregate diagnostic definitions."
+      },
+      {
+        "name": "eventsFor",
+        "line": 527,
+        "endLine": 564,
+        "parent": null,
+        "refs": [
+          "AK-MEA-04"
+        ],
+        "note": "Select existing records no later than the review month, prioritizing material implementation changes. Package impact uses the whole package independently of the policy selector; contextual connections do not identify causes."
+      },
+      {
+        "name": "interpret",
+        "line": 587,
+        "endLine": 627,
+        "parent": null,
+        "refs": [
+          "AK-MEA-04"
+        ],
+        "note": "Choose a predefined statement from measured levels/direction/missingness. Precision thresholds are not significance tests; no anecdote or causal explanation is generated from hidden assumptions."
+      },
+      {
+        "name": "valid",
+        "line": 632,
+        "endLine": 695,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": "Validate optional saved observation histories, numeric fields, IDs and bounded event metadata. Absence in an older completed save is reported honestly rather than filled with invented data."
+      }
+    ],
+    "config.js": [],
+    "baseline.js": [
+      {
+        "name": "clamp",
+        "line": 13,
+        "endLine": 13,
+        "parent": null,
+        "refs": [
+          "AK-COU-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "sources",
+        "line": 54,
+        "endLine": 76,
+        "parent": null,
+        "refs": [
+          "AK-COU-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "conditions",
+        "line": 81,
+        "endLine": 95,
+        "parent": null,
+        "refs": [
+          "AK-COU-01"
+        ],
+        "note": "Rescale distinct dated political proxies and keep unmeasured cultural fields as explicit neutral editable assumptions."
+      },
+      {
+        "name": "sum",
+        "line": 86,
+        "endLine": 86,
+        "parent": "conditions",
+        "refs": [
+          "AK-COU-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "organization",
+        "line": 100,
+        "endLine": 116,
+        "parent": null,
+        "refs": [
+          "AK-COU-01"
+        ],
+        "note": "Map stored descriptors/narrow instrument observations to bounded provisional coverage/capability priors. Missing evidence is not absence of national safeguards."
+      },
+      {
+        "name": "fieldStatus",
+        "line": 121,
+        "endLine": 127,
+        "parent": null,
+        "refs": [
+          "AK-VAL-02"
+        ],
+        "note": null
+      }
+    ],
+    "profiles.js": [],
+    "run-seeds.js": [
+      {
+        "name": "newEventSeed",
+        "line": 15,
+        "endLine": 25,
+        "parent": null,
+        "refs": [
+          "AK-RNG-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "prepareRun",
+        "line": 30,
+        "endLine": 32,
+        "parent": null,
+        "refs": [
+          "AK-RNG-01"
+        ],
+        "note": "Preserve exact replay seeds when requested and otherwise assign a fresh future-event identity without redrawing the starting society."
+      }
+    ],
+    "visualization.js": [
+      {
+        "name": "hash",
+        "line": 16,
+        "endLine": 20,
+        "parent": null,
+        "refs": [
+          "AK-MEA-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "projection",
+        "line": 25,
+        "endLine": 135,
+        "parent": null,
+        "refs": [
+          "AK-VIS-01"
+        ],
+        "note": "Compute deterministic analytical layout using conduct radius, affinity and bounded local collision/cooperation forces. Do not mutate physical locations or world randomness."
+      },
+      {
+        "name": "importantEvents",
+        "line": 140,
+        "endLine": 146,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "impactWindow",
+        "line": 153,
+        "endLine": 176,
+        "parent": null,
+        "refs": [
+          "AK-MEA-02"
+        ],
+        "note": "Calculate interval counts before dividing, preserving each branch’s denominator. Missing observations return unavailable rather than manufactured zero."
+      },
+      {
+        "name": "impactSeries",
+        "line": 181,
+        "endLine": 195,
+        "parent": null,
+        "refs": [
+          "AK-MEA-02"
+        ],
+        "note": "Align paired months and their chosen rate windows. An absent corresponding observation cannot be treated as a zero-effect month."
+      },
+      {
+        "name": "impactDifference",
+        "line": 200,
+        "endLine": 208,
+        "parent": null,
+        "refs": [
+          "AK-MEA-02"
+        ],
+        "note": "Keep a tiny nonzero effect visible with three decimals or scientific notation; formatting precision is not empirical accuracy."
+      }
+    ],
+    "worker.js": [
+      {
+        "name": "summary",
+        "line": 31,
+        "endLine": 39,
+        "parent": null,
+        "refs": [
+          "AK-OV-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "makePair",
+        "line": 44,
+        "endLine": 47,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": "Construct reform and no-new-reform baseline from the exact same initialized state and replicate identity."
+      },
+      {
+        "name": "send",
+        "line": 52,
+        "endLine": 67,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "finishPair",
+        "line": 72,
+        "endLine": 146,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": "Check invariants, retain the first visible trajectory, export complete records and summarize repetitions. Simulation ranges are not empirical confidence intervals."
+      },
+      {
+        "name": "advance",
+        "line": 151,
+        "endLine": 157,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "pump",
+        "line": 162,
+        "endLine": 175,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": "Schedule bounded batches without changing monthly step order or random streams; pause/pace affect responsiveness only."
+      }
+    ],
+    "app.js": [
+      {
+        "name": "$",
+        "line": 17,
+        "endLine": 17,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03",
+          "AK-IO-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "esc",
+        "line": 22,
+        "endLine": 26,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03",
+          "AK-IO-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "number",
+        "line": 31,
+        "endLine": 34,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03",
+          "AK-IO-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "status",
+        "line": 58,
+        "endLine": 61,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "profile",
+        "line": 66,
+        "endLine": 68,
+        "parent": null,
+        "refs": [
+          "AK-OV-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "getConfig",
+        "line": 73,
+        "endLine": 89,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": "Read and validate draft setup independently of an active run. Source values, user overrides and initial/future seeds retain separate meanings."
+      },
+      {
+        "name": "remember",
+        "line": 94,
+        "endLine": 100,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "summaryText",
+        "line": 105,
+        "endLine": 127,
+        "parent": null,
+        "refs": [
+          "AK-OV-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "pending",
+        "line": 132,
+        "endLine": 144,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "buildPolicies",
+        "line": 149,
+        "endLine": 176,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "countryFields",
+        "line": 181,
+        "endLine": 256,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "applyConfig",
+        "line": 261,
+        "endLine": 279,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "signature",
+        "line": 284,
+        "endLine": 286,
+        "parent": null,
+        "refs": [
+          "AK-INI-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "initialFor",
+        "line": 291,
+        "endLine": 298,
+        "parent": null,
+        "refs": [
+          "AK-INI-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "baseSummary",
+        "line": 303,
+        "endLine": 311,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "preview",
+        "line": 316,
+        "endLine": 330,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "stopWorker",
+        "line": 335,
+        "endLine": 340,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "initializeWorker",
+        "line": 345,
+        "endLine": 393,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": "Start a fresh paired experiment and reset historical-review selection; use a new event seed unless exact replay was requested."
+      },
+      {
+        "name": "start",
+        "line": 398,
+        "endLine": 421,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "reset",
+        "line": 426,
+        "endLine": 440,
+        "parent": null,
+        "refs": [
+          "AK-OPS-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "learningPanel",
+        "line": 445,
+        "endLine": 499,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "inspector",
+        "line": 504,
+        "endLine": 523,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": "Explain why a highlighted actor matters and show recorded choices plus numerical learning. Perceived intentions and completed acts remain distinct."
+      },
+      {
+        "name": "selectActor",
+        "line": 528,
+        "endLine": 535,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "renderFeed",
+        "line": 540,
+        "endLine": 574,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "drawMap",
+        "line": 579,
+        "endLine": 754,
+        "parent": null,
+        "refs": [
+          "AK-VIS-01"
+        ],
+        "note": "Project observed conduct/affinity/network data for display without changing physical geography or simulation RNG."
+      },
+      {
+        "name": "tinyComparison",
+        "line": 759,
+        "endLine": 763,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "reportFormat",
+        "line": 773,
+        "endLine": 779,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "reportEventButtons",
+        "line": 784,
+        "endLine": 797,
+        "parent": null,
+        "refs": [
+          "AK-VIS-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "reportMeaning",
+        "line": 802,
+        "endLine": 816,
+        "parent": null,
+        "refs": [
+          "AK-MEA-04"
+        ],
+        "note": "Insert an escaped predefined interpretation with at most two real linked records and expandable additional developments."
+      },
+      {
+        "name": "reportChart",
+        "line": 821,
+        "endLine": 902,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": "Draw observational series and a shared review-month marker; impact uses paired difference against zero rather than an overlapping pair of cumulative curves."
+      },
+      {
+        "name": "x",
+        "line": 836,
+        "endLine": 836,
+        "parent": "reportChart",
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "y",
+        "line": 837,
+        "endLine": 837,
+        "parent": "reportChart",
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "lines",
+        "line": 842,
+        "endLine": 854,
+        "parent": "reportChart",
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "showReportEvent",
+        "line": 907,
+        "endLine": 954,
+        "parent": null,
+        "refs": [
+          "AK-MEA-04"
+        ],
+        "note": "Open an existing tracked record and its available updates in place, then highlight participants without rerunning the model."
+      },
+      {
+        "name": "renderPolicyAssessment",
+        "line": 959,
+        "endLine": 1260,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": "Connect one selected policy’s outputs/outcomes with the package impact, same-month baseline and fixed pre-adoption snapshot. Rendering must remain passive and preserve the real measurement windows."
+      },
+      {
+        "name": "renderAssessment",
+        "line": 1265,
+        "endLine": 1354,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": "Coordinate the new stage panels with expandable full-package quantities and repetition summaries. Package totals remain separate from tool-specific conditions."
+      },
+      {
+        "name": "renderReplications",
+        "line": 1359,
+        "endLine": 1407,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "selectedImpact",
+        "line": 1412,
+        "endLine": 1416,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "drawImpact",
+        "line": 1421,
+        "endLine": 1446,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "label",
+        "line": 1442,
+        "endLine": 1442,
+        "parent": "drawImpact",
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "render",
+        "line": 1451,
+        "endLine": 1589,
+        "parent": null,
+        "refs": [
+          "AK-VIS-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "openDB",
+        "line": 1594,
+        "endLine": 1609,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "storeAction",
+        "line": 1614,
+        "endLine": 1655,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": "Persist named scenarios on device with IndexedDB and localStorage fallback, reporting failures instead of silently promising durable storage."
+      },
+      {
+        "name": "refreshSaves",
+        "line": 1660,
+        "endLine": 1671,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "payload",
+        "line": 1676,
+        "endLine": 1688,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": "Serialize setup, exact initial society and matching completed results. This is a scenario/result backup, not an in-flight checkpoint."
+      },
+      {
+        "name": "validatePayload",
+        "line": 1693,
+        "endLine": 1787,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": "Validate untrusted JSON data and preserve exact starting-state identity; never execute imported content. Monitoring is optional for older2.4 results but checked when supplied."
+      },
+      {
+        "name": "loadPayload",
+        "line": 1792,
+        "endLine": 1816,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": "Stop execution, reset review state and load for inspection only. Existing completed results do not gain missing monitoring data without a rerun."
+      },
+      {
+        "name": "download",
+        "line": 1821,
+        "endLine": 1829,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "csv",
+        "line": 1834,
+        "endLine": 1854,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": "Escape CSV values and guard formula-like string cells. CSV quantities retain their named units and are not a substitute for the full JSON state."
+      },
+      {
+        "name": "showStorage",
+        "line": 1859,
+        "endLine": 1865,
+        "parent": null,
+        "refs": [
+          "AK-IO-01"
+        ],
+        "note": null
+      }
+    ],
+    "adaptation.test.js": [
+      {
+        "name": "config",
+        "line": 16,
+        "endLine": 22,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "simulation",
+        "line": 27,
+        "endLine": 27,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "clone",
+        "line": 32,
+        "endLine": 32,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "receptive",
+        "line": 37,
+        "endLine": 41,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "maximal",
+        "line": 46,
+        "endLine": 46,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "deliver",
+        "line": 51,
+        "endLine": 58,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "operate",
+        "line": 63,
+        "endLine": 70,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: all twelve policy mappings are explicit, distinct and leave untargeted elements absent",
+        "line": 75,
+        "endLine": 87,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: profiles contain reproducible numerical susceptibility traits without redrawing other traits",
+        "line": 92,
+        "endLine": 102,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: selecting education or funding a still-uninstalled programme cannot teach an agent",
+        "line": 107,
+        "endLine": 119,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: receptiveness responds to source trust, individual traits, motives and own history",
+        "line": 124,
+        "endLine": 138,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: uptake and conditional influence are distinct random draws",
+        "line": 143,
+        "endLine": 157,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: repeat exposure caps diminish and are shared across organizational sources",
+        "line": 162,
+        "endLine": 172,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: thousands of fully delivered exposures stay below per-policy and per-element ceilings",
+        "line": 177,
+        "endLine": 191,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: wear-off changes retained influence without resetting exposure history or lifetime conduct",
+        "line": 196,
+        "endLine": 210,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: reinforcement can restore lost influence after novelty is exhausted without raising the ceiling",
+        "line": 215,
+        "endLine": 227,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: retention traits change decay rather than the original influence cap",
+        "line": 232,
+        "endLine": 252,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: history and environment slowly change actual motives and traits while preserving positive weights",
+        "line": 257,
+        "endLine": 272,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: professional skill changes with performed work and cannot jump or erase expertise",
+        "line": 277,
+        "endLine": 289,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: education reaches attitude, norm and control in actual choices, keeping the nine interests",
+        "line": 294,
+        "endLine": 322,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a penalty exposure changes perceived cost once without adding attitude/norm/control bonuses",
+        "line": 327,
+        "endLine": 339,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: report-channel knowledge and control are specific to reporting contexts",
+        "line": 344,
+        "endLine": 353,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: identical exposure draws reproduce profiles and independent draws yield different histories",
+        "line": 358,
+        "endLine": 389,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "rng",
+        "line": 366,
+        "endLine": 369,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: skill learning feeds real subsequent organizational capacity",
+        "line": 394,
+        "endLine": 404,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a known inactive or suspended reform stops new exposures while memories can wear off",
+        "line": 409,
+        "endLine": 419,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: continuous reinforcement over 1,200 months retains partial bounded influence",
+        "line": 424,
+        "endLine": 437,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: financial expectations learn from actual total receipts with individual learning rates",
+        "line": 442,
+        "endLine": 454,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a later change in receptiveness can permit modest new learning after repeated rejected messages",
+        "line": 459,
+        "endLine": 472,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: conflicting credible experience adjusts the retained target without deleting earlier history",
+        "line": 477,
+        "endLine": 485,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a corrupt staffing proposal prevented by real merit review is not a completed patronage act",
+        "line": 490,
+        "endLine": 504,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: formal education adoption cannot manufacture knowledge before anyone learns",
+        "line": 509,
+        "endLine": 519,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: knowledge assessment responds continuously to retained learning and subsequent wear-off",
+        "line": 524,
+        "endLine": 536,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: agents do not read hidden true protection capacity when deciding whether to report",
+        "line": 541,
+        "endLine": 567,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "option",
+        "line": 562,
+        "endLine": 565,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: experienced protection and credible failure change subjective safety in opposite directions",
+        "line": 572,
+        "endLine": 584,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: inspection summaries stay numerical and reject malformed imported learning histories",
+        "line": 589,
+        "endLine": 604,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "audit.test.js": [
+      {
+        "name": "config",
+        "line": 15,
+        "endLine": 21,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "sim",
+        "line": 26,
+        "endLine": 26,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "clone",
+        "line": 31,
+        "endLine": 31,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "pair",
+        "line": 36,
+        "endLine": 40,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: country overrides preserve underlying person draws while reconstructed histories can respond",
+        "line": 45,
+        "endLine": 74,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "traits",
+        "line": 51,
+        "endLine": 58,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: all nine consequence dimensions can independently affect the utility choice",
+        "line": 79,
+        "endLine": 95,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: implemented encounter consequences distinguish social, economic and political domains",
+        "line": 100,
+        "endLine": 115,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: directional trust changes only the intended direction and zero ties confer no access",
+        "line": 120,
+        "endLine": 145,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: affinity changes contact routing while locations and random keys stay fixed",
+        "line": 150,
+        "endLine": 174,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: individual staff competence contributes to effective organizational capacity",
+        "line": 179,
+        "endLine": 191,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: financial security changes subjective economic gains without knowledge of hidden corruption",
+        "line": 196,
+        "endLine": 206,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: verification of covered personal declarations affects audit detection",
+        "line": 211,
+        "endLine": 243,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: zero legal scrutiny scope prevents audit detection despite trained capacity",
+        "line": 248,
+        "endLine": 271,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: penalty collection capacity changes actual transferred resources after the same decision",
+        "line": 276,
+        "endLine": 306,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: policy ordering follows actor priorities independently of menu/storage order",
+        "line": 311,
+        "endLine": 346,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "values",
+        "line": 336,
+        "endLine": 344,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: experienced waiting changes support and perceived access without inventing corruption information",
+        "line": 351,
+        "endLine": 371,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: resource-review utility responds to experienced stakeholder support",
+        "line": 376,
+        "endLine": 400,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "score",
+        "line": 394,
+        "endLine": 397,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: social sharing uses receiver trust and ignores zero-strength links",
+        "line": 405,
+        "endLine": 416,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: editorial independence and real funding dependence enter publication incentives",
+        "line": 421,
+        "endLine": 451,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: recent participation denominators remain bounded and inactivity cannot erase history",
+        "line": 456,
+        "endLine": 480,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a dense network alone does not produce a capture event; repeated abuse is required",
+        "line": 485,
+        "endLine": 506,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: country mandates change real referrals without merging investigation, prosecution and courts",
+        "line": 511,
+        "endLine": 533,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: out-of-scope audits cannot create false allegations through a false-positive draw",
+        "line": 538,
+        "endLine": 561,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "dynamics.test.js": [
+      {
+        "name": "sim",
+        "line": 17,
+        "endLine": 17,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "clone",
+        "line": 18,
+        "endLine": 18,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "opportunity",
+        "line": 23,
+        "endLine": 33,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a one-option duty and repeated calls without a new choice cannot inflate integrity or recovery",
+        "line": 38,
+        "endLine": 68,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: failed or deferred intentions do not become completed integrity choices",
+        "line": 73,
+        "endLine": 82,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: twenty waiting requests have one bounded monthly effect on trust and control",
+        "line": 87,
+        "endLine": 109,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: waiting is accumulated as request-months, without inventing new service contacts or recounting it at completion",
+        "line": 114,
+        "endLine": 139,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: living-needs priors share the earnings scale and retain heterogeneous financial pressure",
+        "line": 144,
+        "endLine": 157,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: uncollected adjudicated liability persists, and subsequent collection transfers real money once",
+        "line": 162,
+        "endLine": 211,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: personally experienced and communicated accountability updates are bounded, deduplicated and reversible over time",
+        "line": 216,
+        "endLine": 233,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: higher perceived accountability changes actual utility choices under identical event draws",
+        "line": 238,
+        "endLine": 266,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: reference disapproval can transmit an expectation instead of every lawful interaction manufacturing approval",
+        "line": 271,
+        "endLine": 287,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: network layout spreads the healthy disc while preserving participation bands, default integrity and physical geography",
+        "line": 292,
+        "endLine": 308,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: coercive ties cannot attract victims as though they indicated affinity or voluntary cooperation",
+        "line": 313,
+        "endLine": 319,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a public decision has one cost-learning pathway and cannot replay an already personally experienced sanction",
+        "line": 324,
+        "endLine": 343,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: pay adequacy assesses modeled take-home receipts rather than gross receipts",
+        "line": 348,
+        "endLine": 357,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: saved-state verification accepts key order and insignificant floating rounding while rejecting substantive edits",
+        "line": 362,
+        "endLine": 378,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "initialization.test.js": [
+      {
+        "name": "config",
+        "line": 18,
+        "endLine": 18,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: political defaults use sourced country scores and keep unmeasured culture explicit",
+        "line": 23,
+        "endLine": 41,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: instrument-specific observations inform bounded estimates without treating missing criteria as no safeguards",
+        "line": 46,
+        "endLine": 60,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: the pre-policy year executes all twelve months, with eligible actors throughout",
+        "line": 65,
+        "endLine": 80,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: month zero has coherent conduct, ongoing work, cross-class ties and behavior-derived map positions",
+        "line": 85,
+        "endLine": 108,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: pre-policy history is independent of reform, duration, repetitions and future-event seeds",
+        "line": 113,
+        "endLine": 131,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a saved reconstructed snapshot is accepted exactly and rejects edited histories and old starts",
+        "line": 136,
+        "endLine": 150,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: inherited casework advances across adoption without duplicate IDs, invalid clocks or lost money",
+        "line": 155,
+        "endLine": 174,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "model.test.js": [
+      {
+        "name": "config",
+        "line": 17,
+        "endLine": 25,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: ten country societies: 1,000 people, overlapping motives, independent support and membership",
+        "line": 30,
+        "endLine": 46,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: reform selection, mobilization, duration and future-event seed do not regenerate the initial society",
+        "line": 51,
+        "endLine": 62,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: paired no-new-reform branches are identical; repetitions share state but subsequent events differ",
+        "line": 67,
+        "endLine": 76,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: diagnostics, rendering and actor inspection do not mutate state or random events",
+        "line": 81,
+        "endLine": 96,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: each country conserves resources and shared time with all twelve reforms",
+        "line": 101,
+        "endLine": 119,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: initial zero mobilization is persistent until a review; full funding does not install capacity immediately",
+        "line": 124,
+        "endLine": 134,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: single act switches display; inactivity cannot recover; six months and three meaningful choices can",
+        "line": 139,
+        "endLine": 170,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: coercion records the official as perpetrator without marking the victim corrupt",
+        "line": 175,
+        "endLine": 196,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: unaccepted corrupt proposals are not counted as integrity by the proposer",
+        "line": 201,
+        "endLine": 218,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: employment transitions retain identity, money, history, home and existing ties",
+        "line": 223,
+        "endLine": 235,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: China uses personnel appointment; civil and criminal functions remain distinct",
+        "line": 240,
+        "endLine": 259,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: case deduplication and policy costs are explicit; diagnostics use observed denominators",
+        "line": 264,
+        "endLine": 282,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: reject invalid scenario settings",
+        "line": 287,
+        "endLine": 305,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: serialized initial society is structurally verified and retained without regeneration",
+        "line": 310,
+        "endLine": 324,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "reporting.test.js": [
+      {
+        "name": "config",
+        "line": 23,
+        "endLine": 29,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "clone",
+        "line": 34,
+        "endLine": 34,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: all twelve tools have distinct output definitions and relevant starting conditions",
+        "line": 39,
+        "endLine": 56,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: policy starting snapshots precede formal adoption and remain fixed during the run",
+        "line": 61,
+        "endLine": 70,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: recording and interpretation do not consume RNG or change the simulated society",
+        "line": 75,
+        "endLine": 92,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: same published engine produces identical initialization and conduct with monitoring enabled",
+        "line": 97,
+        "endLine": 118,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: output uses weighted actual activity over equal historical windows",
+        "line": 123,
+        "endLine": 138,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: delivered teaching is distinct from accepted influence and duplicate contacts",
+        "line": 143,
+        "endLine": 159,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: generic activity does not get credited as a staff rotation",
+        "line": 164,
+        "endLine": 174,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: read-only event references are relevant, dated and distinguish material changes",
+        "line": 179,
+        "endLine": 240,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: interpretations handle delivery, lag, missing evidence and direction without claiming causation",
+        "line": 245,
+        "endLine": 259,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: optional monitoring roundtrips without changing initial-state compatibility and rejects malformed records",
+        "line": 264,
+        "endLine": 287,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "harness",
+        "line": 292,
+        "endLine": 362,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "$",
+        "line": 298,
+        "endLine": 320,
+        "parent": "harness",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "esc",
+        "line": 325,
+        "endLine": 329,
+        "parent": "harness",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "number",
+        "line": 330,
+        "endLine": 330,
+        "parent": "harness",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: all twelve policy renderings show relevant before/current conditions and stage panels",
+        "line": 367,
+        "endLine": 399,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: completion updates the final comparison and review slider without changing results",
+        "line": 404,
+        "endLine": 426,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: older saved results get an honest monitoring-unavailable notice",
+        "line": 431,
+        "endLine": 443,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "run-seeds.test.js": [
+      {
+        "name": "test: new runs get distinct event identities without modifying settings or society",
+        "line": 22,
+        "endLine": 43,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "fill",
+        "line": 27,
+        "endLine": 27,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: explicit exact replay consumes no new entropy and reproduces the entire event history",
+        "line": 48,
+        "endLine": 57,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: fresh event seeds retain matching baseline/reform randomness and separate initialization",
+        "line": 62,
+        "endLine": 71,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "stress.test.js": [
+      {
+        "name": "test: Peru ACA completes maximum 240-month duration with finite and conserved state",
+        "line": 15,
+        "endLine": 30,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: all-country extreme conditions retain valid resources, workload and decision utilities",
+        "line": 35,
+        "endLine": 67,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "visualization.test.js": [
+      {
+        "name": "fixture",
+        "line": 17,
+        "endLine": 17,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: impact preserves the small nonzero difference from the reported run",
+        "line": 22,
+        "endLine": 38,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: recent impact uses weighted encounter counts at matching month boundaries",
+        "line": 43,
+        "endLine": 61,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: recent paired impact respects each branch denominator and never mutates history",
+        "line": 66,
+        "endLine": 84,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: analytical projection preserves behavior radii when affinity and cooperation change",
+        "line": 89,
+        "endLine": 108,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: new meaningful choices change radial position; elapsed time and role do not",
+        "line": 113,
+        "endLine": 139,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: major event filter excludes routine case traffic without discarding the full log",
+        "line": 144,
+        "endLine": 154,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: entrypoint loads consistent versions and all UI hooks including arbitrary whole-month duration",
+        "line": 159,
+        "endLine": 175,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: startup map and class rates use completed choices from the reconstructed past",
+        "line": 180,
+        "endLine": 192,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "worker.test.js": [
+      {
+        "name": "runtime",
+        "line": 17,
+        "endLine": 56,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "handler",
+        "line": 24,
+        "endLine": 24,
+        "parent": "runtime",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: worker step/pause retains paired months and does not automatically run after initialization",
+        "line": 61,
+        "endLine": 78,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: worker completes five paired repetitions and keeps the first reform trajectory for review",
+        "line": 83,
+        "endLine": 112,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: invalid worker initialization returns a useful error",
+        "line": 117,
+        "endLine": 126,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "index.html": [],
+    "style.css": [],
+    "scripts/audit-lib.mjs": [
+      {
+        "name": "testFiles",
+        "line": 6,
+        "endLine": 6,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "sha",
+        "line": 7,
+        "endLine": 7,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "read",
+        "line": 8,
+        "endLine": 8,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "parse",
+        "line": 9,
+        "endLine": 9,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "canonical",
+        "line": 11,
+        "endLine": 18,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "semanticHash",
+        "line": 19,
+        "endLine": 19,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "walk",
+        "line": 20,
+        "endLine": 20,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "nameOf",
+        "line": 21,
+        "endLine": 21,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "refsFor",
+        "line": 22,
+        "endLine": 23,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "units",
+        "line": 24,
+        "endLine": 28,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "enclosing",
+        "line": 29,
+        "endLine": 29,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "anchor",
+        "line": 30,
+        "endLine": 30,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "escape",
+        "line": 31,
+        "endLine": 31,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "cell",
+        "line": 32,
+        "endLine": 32,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "scripts/build-audit.mjs": [
+      {
+        "name": "put",
+        "line": 9,
+        "endLine": 9,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "table",
+        "line": 10,
+        "endLine": 10,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "json",
+        "line": 11,
+        "endLine": 11,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "code",
+        "line": 12,
+        "endLine": 12,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "prose",
+        "line": 13,
+        "endLine": 13,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "shell",
+        "line": 14,
+        "endLine": 16,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "page",
+        "line": 17,
+        "endLine": 17,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "build",
+        "line": 18,
+        "endLine": 139,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "loc",
+        "line": 68,
+        "endLine": 68,
+        "parent": "build",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "sourceLink",
+        "line": 68,
+        "endLine": 68,
+        "parent": "build",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "refLink",
+        "line": 69,
+        "endLine": 69,
+        "parent": "build",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "sourceCell",
+        "line": 70,
+        "endLine": 70,
+        "parent": "build",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "scripts/check-audit.mjs": [],
+    ".github/workflows/model-checks.yml": [],
+    "package.json": [],
+    "package-lock.json": []
+  }
+}

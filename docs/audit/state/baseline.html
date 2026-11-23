@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>State definitions and writes — baseline.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="state-definitions-and-writes-baseline-js">State definitions and writes — baseline.js</h1>
+<p><a href="../STATE.html">Inventory guide</a>. Whole-function source is authoritative for types, branches, bounds and update semantics.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Field / target</th>
+<th>Operation / expression</th>
+<th>Owner / mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/baseline.js.html#L20">baseline.js:20</a></td>
+<td><code>political.NGA</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L20">baseline.js:20</a></td>
+<td><code>political.NGA.slug</code></td>
+<td>object definition · <code>'nigeria'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L20">baseline.js:20</a></td>
+<td><code>political.NGA.civil</code></td>
+<td>object definition · <code>24</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L20">baseline.js:20</a></td>
+<td><code>political.NGA.electoral</code></td>
+<td>object definition · <code>[2, 2, 2]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L20">baseline.js:20</a></td>
+<td><code>political.NGA.participation</code></td>
+<td>object definition · <code>[3, 3, 1, 2]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L21">baseline.js:21</a></td>
+<td><code>political.ZAF</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L21">baseline.js:21</a></td>
+<td><code>political.ZAF.slug</code></td>
+<td>object definition · <code>'south-africa'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L21">baseline.js:21</a></td>
+<td><code>political.ZAF.civil</code></td>
+<td>object definition · <code>47</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L21">baseline.js:21</a></td>
+<td><code>political.ZAF.electoral</code></td>
+<td>object definition · <code>[4, 4, 4]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L21">baseline.js:21</a></td>
+<td><code>political.ZAF.participation</code></td>
+<td>object definition · <code>[3, 4, 3, 4]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L22">baseline.js:22</a></td>
+<td><code>political.IDN</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L22">baseline.js:22</a></td>
+<td><code>political.IDN.slug</code></td>
+<td>object definition · <code>'indonesia'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L22">baseline.js:22</a></td>
+<td><code>political.IDN.civil</code></td>
+<td>object definition · <code>28</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L22">baseline.js:22</a></td>
+<td><code>political.IDN.electoral</code></td>
+<td>object definition · <code>[4, 4, 3]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L22">baseline.js:22</a></td>
+<td><code>political.IDN.participation</code></td>
+<td>object definition · <code>[4, 3, 2, 2]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L23">baseline.js:23</a></td>
+<td><code>political.IND</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L23">baseline.js:23</a></td>
+<td><code>political.IND.slug</code></td>
+<td>object definition · <code>'india'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L23">baseline.js:23</a></td>
+<td><code>political.IND.civil</code></td>
+<td>object definition · <code>31</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L23">baseline.js:23</a></td>
+<td><code>political.IND.electoral</code></td>
+<td>object definition · <code>[4, 4, 3]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L23">baseline.js:23</a></td>
+<td><code>political.IND.participation</code></td>
+<td>object definition · <code>[3, 3, 3, 2]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L24">baseline.js:24</a></td>
+<td><code>political.CHN</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L24">baseline.js:24</a></td>
+<td><code>political.CHN.slug</code></td>
+<td>object definition · <code>'china'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L24">baseline.js:24</a></td>
+<td><code>political.CHN.civil</code></td>
+<td>object definition · <code>11</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L24">baseline.js:24</a></td>
+<td><code>political.CHN.electoral</code></td>
+<td>object definition · <code>[0, 0, 0]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L24">baseline.js:24</a></td>
+<td><code>political.CHN.participation</code></td>
+<td>object definition · <code>[0, 0, 0, 0]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L25">baseline.js:25</a></td>
+<td><code>political.PER</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L25">baseline.js:25</a></td>
+<td><code>political.PER.slug</code></td>
+<td>object definition · <code>'peru'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L25">baseline.js:25</a></td>
+<td><code>political.PER.civil</code></td>
+<td>object definition · <code>39</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L25">baseline.js:25</a></td>
+<td><code>political.PER.electoral</code></td>
+<td>object definition · <code>[3, 4, 3]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L25">baseline.js:25</a></td>
+<td><code>political.PER.participation</code></td>
+<td>object definition · <code>[3, 4, 3, 2]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L26">baseline.js:26</a></td>
+<td><code>political.BRA</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L26">baseline.js:26</a></td>
+<td><code>political.BRA.slug</code></td>
+<td>object definition · <code>'brazil'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L26">baseline.js:26</a></td>
+<td><code>political.BRA.civil</code></td>
+<td>object definition · <code>43</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L26">baseline.js:26</a></td>
+<td><code>political.BRA.electoral</code></td>
+<td>object definition · <code>[3, 3, 4]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L26">baseline.js:26</a></td>
+<td><code>political.BRA.participation</code></td>
+<td>object definition · <code>[4, 4, 2, 3]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L27">baseline.js:27</a></td>
+<td><code>political.USA</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L27">baseline.js:27</a></td>
+<td><code>political.USA.slug</code></td>
+<td>object definition · <code>'united-states'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L27">baseline.js:27</a></td>
+<td><code>political.USA.civil</code></td>
+<td>object definition · <code>49</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L27">baseline.js:27</a></td>
+<td><code>political.USA.electoral</code></td>
+<td>object definition · <code>[4, 4, 3]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L27">baseline.js:27</a></td>
+<td><code>political.USA.participation</code></td>
+<td>object definition · <code>[4, 4, 3, 3]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L28">baseline.js:28</a></td>
+<td><code>political.DEU</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L28">baseline.js:28</a></td>
+<td><code>political.DEU.slug</code></td>
+<td>object definition · <code>'germany'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L28">baseline.js:28</a></td>
+<td><code>political.DEU.civil</code></td>
+<td>object definition · <code>55</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L28">baseline.js:28</a></td>
+<td><code>political.DEU.electoral</code></td>
+<td>object definition · <code>[4, 4, 4]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L28">baseline.js:28</a></td>
+<td><code>political.DEU.participation</code></td>
+<td>object definition · <code>[4, 4, 4, 4]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L29">baseline.js:29</a></td>
+<td><code>political.ITA</code></td>
+<td>object definition · <code>Object(4 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L29">baseline.js:29</a></td>
+<td><code>political.ITA.slug</code></td>
+<td>object definition · <code>'italy'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L29">baseline.js:29</a></td>
+<td><code>political.ITA.civil</code></td>
+<td>object definition · <code>52</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L29">baseline.js:29</a></td>
+<td><code>political.ITA.electoral</code></td>
+<td>object definition · <code>[4, 4, 4]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L29">baseline.js:29</a></td>
+<td><code>political.ITA.participation</code></td>
+<td>object definition · <code>[4, 4, 3, 3]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L35">baseline.js:35</a></td>
+<td><code>integrity.PER</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L35">baseline.js:35</a></td>
+<td><code>integrity.PER.conflicts</code></td>
+<td>object definition · <code>[89, 33]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L35">baseline.js:35</a></td>
+<td><code>integrity.PER.disclosure</code></td>
+<td>object definition · <code>[89, 92]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L36">baseline.js:36</a></td>
+<td><code>integrity.IDN</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L36">baseline.js:36</a></td>
+<td><code>integrity.IDN.conflicts</code></td>
+<td>object definition · <code>[100, 56]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L36">baseline.js:36</a></td>
+<td><code>integrity.IDN.disclosure</code></td>
+<td>object definition · <code>[56, 58]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L37">baseline.js:37</a></td>
+<td><code>integrity.BRA</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L37">baseline.js:37</a></td>
+<td><code>integrity.BRA.conflicts</code></td>
+<td>object definition · <code>[100, 0]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L37">baseline.js:37</a></td>
+<td><code>integrity.BRA.disclosure</code></td>
+<td>object definition · <code>[78, 62]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L38">baseline.js:38</a></td>
+<td><code>integrity.USA</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L38">baseline.js:38</a></td>
+<td><code>integrity.USA.conflicts</code></td>
+<td>object definition · <code>[100, 89]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L38">baseline.js:38</a></td>
+<td><code>integrity.USA.disclosure</code></td>
+<td>object definition · <code>[67, 54]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L39">baseline.js:39</a></td>
+<td><code>integrity.DEU</code></td>
+<td>object definition · <code>Object(2 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L39">baseline.js:39</a></td>
+<td><code>integrity.DEU.conflicts</code></td>
+<td>object definition · <code>[22, 11]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L39">baseline.js:39</a></td>
+<td><code>integrity.DEU.disclosure</code></td>
+<td>object definition · <code>[89, 58]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L40">baseline.js:40</a></td>
+<td><code>integrity.ITA</code></td>
+<td>object definition · <code>Object(1 entries); child fields listed separately</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L40">baseline.js:40</a></td>
+<td><code>integrity.ITA.conflicts</code></td>
+<td>object definition · <code>[100, 22]</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L43">baseline.js:43</a></td>
+<td><code>oecdUrls.PER</code></td>
+<td>object definition · <code>'peru_ed06008b-en.html'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L44">baseline.js:44</a></td>
+<td><code>oecdUrls.IDN</code></td>
+<td>object definition · <code>'indonesia_f62cee7b.html'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L45">baseline.js:45</a></td>
+<td><code>oecdUrls.BRA</code></td>
+<td>object definition · <code>'brazil_237acf05-en.html'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L46">baseline.js:46</a></td>
+<td><code>oecdUrls.USA</code></td>
+<td>object definition · <code>'united-states_1d9a74d5-en.html'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L47">baseline.js:47</a></td>
+<td><code>oecdUrls.DEU</code></td>
+<td>object definition · <code>'germany_d57a73fc-en.html'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L48">baseline.js:48</a></td>
+<td><code>oecdUrls.ITA</code></td>
+<td>object definition · <code>'italy_78ff2b97-en.html'</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L58">baseline.js:58</a></td>
+<td><code>out.title</code></td>
+<td>object definition · <code>'Freedom House 2026: civil liberties'</code></td>
+<td>sources · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L59">baseline.js:59</a></td>
+<td><code>out.url</code></td>
+<td>object definition · <code>'https://freedomhouse.org/country/' + p.slug + '/freedom-world/2026'</code></td>
+<td>sources · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L62">baseline.js:62</a></td>
+<td><code>out.title</code></td>
+<td>object definition · <code>'Freedom House 2025: electoral process and political participation'</code></td>
+<td>sources · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L63">baseline.js:63</a></td>
+<td><code>out.url</code></td>
+<td>object definition · <code>'https://freedomhouse.org/country/' + p.slug + '/freedom-world/2025'</code></td>
+<td>sources · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L68">baseline.js:68</a></td>
+<td><code>sources.title</code></td>
+<td>object definition · <code>'OECD 2026: existing integrity instruments (criteria, not behavioral rates)'</code></td>
+<td>sources · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L69">baseline.js:69</a></td>
+<td><code>sources.url</code></td>
+<td>object definition · <code>country === 'IDN' ? 'https://www.oecd.org/en/publications/2026/03/anti-corruption-and-integrity-outlook-2026-country-notes_b1df9263/indonesia_f62cee7b.html' : 'https://www.oecd.org/en/publications/anti-corruption-…</code></td>
+<td>sources · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L88">baseline.js:88</a></td>
+<td><code>conditions.civil_liberties</code></td>
+<td>object definition · <code>(100 * p.civil) / 60</code></td>
+<td>conditions · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L89">baseline.js:89</a></td>
+<td><code>conditions.representation</code></td>
+<td>object definition · <code>(100 * sum(p.participation)) / 16</code></td>
+<td>conditions · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L90">baseline.js:90</a></td>
+<td><code>conditions.electoral_integrity</code></td>
+<td>object definition · <code>(100 * sum(p.electoral)) / 12</code></td>
+<td>conditions · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L91">baseline.js:91</a></td>
+<td><code>conditions.kinship</code></td>
+<td>object definition · <code>50</code></td>
+<td>conditions · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L92">baseline.js:92</a></td>
+<td><code>conditions.informality</code></td>
+<td>object definition · <code>50</code></td>
+<td>conditions · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L93">baseline.js:93</a></td>
+<td><code>conditions.public_private_separation</code></td>
+<td>object definition · <code>50</code></td>
+<td>conditions · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L115">baseline.js:115</a></td>
+<td><code>organization.scope</code></td>
+<td>object definition · <code>scope</code></td>
+<td>organization · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L115">baseline.js:115</a></td>
+<td><code>organization.capacity</code></td>
+<td>object definition · <code>clamp(capacity + (noise - 0.5) * 0.22, 0.08, 0.9)</code></td>
+<td>organization · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L129">baseline.js:129</a></td>
+<td><code>api.schema</code></td>
+<td>object definition · <code>schema</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L130">baseline.js:130</a></td>
+<td><code>api.months</code></td>
+<td>object definition · <code>months</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L131">baseline.js:131</a></td>
+<td><code>api.retrieved</code></td>
+<td>object definition · <code>retrieved</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L132">baseline.js:132</a></td>
+<td><code>api.political</code></td>
+<td>object definition · <code>political</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L133">baseline.js:133</a></td>
+<td><code>api.integrity</code></td>
+<td>object definition · <code>integrity</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L134">baseline.js:134</a></td>
+<td><code>api.conditions</code></td>
+<td>object definition · <code>conditions</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L135">baseline.js:135</a></td>
+<td><code>api.organization</code></td>
+<td>object definition · <code>organization</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L136">baseline.js:136</a></td>
+<td><code>api.sources</code></td>
+<td>object definition · <code>sources</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L137">baseline.js:137</a></td>
+<td><code>api.fieldStatus</code></td>
+<td>object definition · <code>fieldStatus</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L139">baseline.js:139</a></td>
+<td><code>module.exports</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/baseline.js.html#L140">baseline.js:140</a></td>
+<td><code>root.AntarkyaBaseline</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>
