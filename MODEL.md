@@ -1,6 +1,6 @@
-# Antarkya v2.2 — operational model
+# Antarkya v2.3 — operational model
 
-23 November 2026 · engine and rules 2.2.0
+23 November 2026 · engine and rules 2.3.0
 
 This is an exploratory 1,000-person corruption and anti-corruption model. It combines sourced country descriptors and simplified institutional architecture with explicit provisional behavioral, resource and coverage assumptions. Engineering verification does not establish a calibrated national forecast.
 
@@ -30,9 +30,9 @@ Experienced service reliability and waiting update access expectations and organ
 
 ## Country baselines and procedures
 
-The ten profiles retain sourced GDP PPP, government effectiveness, rule of law and regulatory-quality descriptors, plus institutional evidence. Numeric political/cultural estimates, role composition, allocation and costs remain visible assumptions.
+The ten profiles retain sourced GDP PPP, government effectiveness, rule of law and regulatory-quality descriptors, plus institutional evidence. Civil liberties, political participation and electoral process now use dated Freedom House proxies. Cultural scores remain explicitly unmeasured neutral assumptions; role composition, allocation and costs are estimates. [Starting-state documentation](docs/INITIALIZATION.md) separates observations from numerical mappings.
 
-Legal authority is function-specific and operative. Individual coverage uses fixed reference draws; trained capacity cannot substitute for missing authority. Initial .55 and adopted .85 scope values are **common exploratory coverage priors**, not country effectiveness estimates. Country evidence tags indicating an instrument, a scope gap or an unscoped tool are not converted to made-up success probabilities.
+Legal authority is function-specific and operative. Individual coverage uses fixed reference draws; trained capacity cannot substitute for missing authority. Initial formal coverage uses a provisional .75 within-mandate prior, with explicit instrument and country-scope mappings in `baseline.js`; reform adoption uses .85. These are estimated numerical coverage assumptions, not national effectiveness rates. Narrow OECD regulations/practice observations inform bounded mappings for conflicts and public information where evidence is available, retaining nonzero floors and wider safeguards. Country evidence tags indicating an instrument, a scope gap or an unscoped tool are not converted to made-up success probabilities.
 
 Configured country architecture changes screening, specialist/general referral, investigation, prosecution, administrative determination and court routes. Nigerian/Indonesian/Chinese specialist bodies can investigate qualifying covered matters. Indian complaint referral and Peruvian political-finance intake use distinct functions. South African civil recovery remains separate from criminal conviction. Chinese supervision-linked administrative action and personnel appointments retain their own routes. Other distributed architectures retain separate prevention, investigation, audit and court functions. Regional intake and handoffs consume actual time, resources and delay. Detailed real-world jurisdiction and financial calibration remain incomplete.
 
@@ -50,11 +50,11 @@ Institutional diagnostics use applicable scope and capacity, actual observations
 
 ## Reproducibility and validation boundary
 
-The initial society is shared exactly across branches and repetitions. Parameter-independent initial random streams keep unrelated personal characteristics stable in controlled comparisons. Event seeds vary subsequent events; exact replay intentionally reproduces the same trajectory. Display controls, rendering pace and diagnostics consume no event randomness.
+The initial society includes a twelve-month reconstructed pre-policy year executed under the same rules, with no newly selected reform. Month 0 retains completed choices, learned expectations, resources, ties, service experience and ongoing casework. The map includes those choices; intervention-period cumulative act counters start at zero. The complete resulting society is shared exactly across branches and repetitions. Parameter-independent initial random streams keep home locations and underlying person draws stable. Country overrides can change the reconstructed experiences, support, employment and learning that result from them. Event seeds vary subsequent events; exact replay intentionally reproduces the same trajectory. Display controls, rendering pace and diagnostics consume no event randomness.
 
 The regression, causal, visualization and stress suites are described in [docs/VALIDATION.md](docs/VALIDATION.md). They test engineering consistency and specific causal pathways. They do not establish empirical effect sizes, comprehensive country-law fidelity, robust sensitivity results or Android-browser performance.
 
-Rules version 2.2.0 deliberately rejects older saved initial-state formats; those trajectories cannot be relabeled as results of the new rules. Recreate a scenario from its settings.
+Rules version 2.3.0 deliberately rejects older saved initial-state formats; those trajectories cannot be relabeled as results of the new rules. Recreate a scenario from its settings.
 
 Conceptual basis: Ajzen (2020), doi: [10.1002/hbe2.195](https://doi.org/10.1002/hbe2.195); [McFadden on economic choices](https://eml.berkeley.edu/wp/mcfadden0300.pdf); Villeneuve, Mugellini and Heide, doi: [10.1007/s10610-019-09410-w](https://doi.org/10.1007/s10610-019-09410-w); the supplied reform-mobilization draft; and the assessment chapter, doi: [10.4337/9781035337712.00043](https://doi.org/10.4337/9781035337712.00043). These sources motivate mechanisms and assessment structure, not the engineering coefficients.
 

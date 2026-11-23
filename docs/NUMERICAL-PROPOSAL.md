@@ -1,20 +1,22 @@
-# Antarkya v2.2 — executable numerical specification
+# Antarkya v2.3 — executable numerical specification
 
-23 November 2026 · rules version 2.2.0 · exploratory implementation
+23 November 2026 · rules version 2.3.0 · exploratory implementation
+
+**Current starting-state rules:** [INITIALIZATION.md](INITIALIZATION.md) specifies the sourced political proxies, bounded country/instrument mappings and twelve-month pre-policy reconstruction. These replace the empty-history start and common inherited corrupt flag. All constructed histories and mapping coefficients remain estimates; missing cultural data stay explicit.
 
 **Current adaptation rules:** [POLICY-INFLUENCE.md](POLICY-INFLUENCE.md) specifies the full executable policy–element mapping, individual receptiveness, evolving motives/traits, bounded accumulation, reinforcement and wear-off. Its learning equations replace the earlier fixed-motive and education-risk update assumptions. All new coefficients remain explicit provisional priors.
 
-This is the numerical rule set implemented by `model.js`, `adaptation.js`, `config.js`, `worker.js` and `visualization.js`. It replaces the earlier numerical proposal, preserved in [the v0.1 archive](NUMERICAL-PROPOSAL-v0.1.md). The agreed decisions remain in [AGREED-RULES.md](AGREED-RULES.md). A coefficient below is an explicit scenario/engineering assumption unless the country evidence identifies a sourced observation. Executable coverage is not empirical validation.
+This is the numerical rule set implemented by `model.js`, `adaptation.js`, `config.js`, `baseline.js`, `worker.js` and `visualization.js`. It replaces the earlier numerical proposal, preserved in [the v0.1 archive](NUMERICAL-PROPOSAL-v0.1.md). The agreed decisions remain in [AGREED-RULES.md](AGREED-RULES.md). A coefficient below is an explicit scenario/engineering assumption unless the country evidence identifies a sourced observation. Executable coverage is not empirical validation.
 
 ## 1. State and initialization
 
 There are exactly 1,000 people, four principal roles, multiple organizations per category, and a monthly clock. Duration is any whole number from 6 to 240 months. Country role counts and organization/function lists are in `config.js`; all classes have at least 20 people. Primary role/employment, formal membership, support, directional trust and funding remain separate.
 
-Every organization starts with at least one person of its principal class. Other membership sizes follow the existing skewed assignment prior. Every person has support values for all organizations; affinity need not imply membership. Homes occupy five synthetic geographical clusters; work locations belong to employers. This is not a national geographical map or a calibrated membership census.
+Every organization starts with at least one person of its principal class. Other membership sizes follow the existing skewed assignment prior. Every person has correlated class-level and organization-specific support values for all organizations; affinity need not imply membership. Homes occupy five synthetic geographical clusters; work locations belong to employers. This is not a national geographical map or a calibrated membership census.
 
 Money is held by people, organizations, treasury, reform allocations and an outside account. Every financial flow uses a conserved transfer. RU are normalized resource units; PM are staff person-months. National GDP and background national indices stay fixed. No inflation, growth, recession or other additional economic variable is introduced.
 
-The initial identity hashes the rules version, country, conditions and the society seed; parameter-independent characteristic streams remain separate. Random initial characteristics use a separate stream keyed by country and society seed, excluding parameter values. Each person's Dirichlet draw has its own keyed stream. Changing an override can therefore change its intended mapping without shifting everyone else's home, income, support and skill draws. The same complete initial state is cloned for baseline/reform and every repetition.
+The initial identity hashes the rules version, country, conditions and the society seed; parameter-independent characteristic streams remain separate. Random initial characteristics use a separate stream keyed by country and society seed, excluding parameter values. Each person's Dirichlet draw has its own keyed stream. Changing an override preserves underlying person draws and home locations. Reconstructing a year under different conditions can legitimately change experienced support, income/resources, skills and employment; this is an intended causal response, not an unrelated redraw. The same complete initial state is cloned for baseline/reform and every repetition.
 
 Event draws use `(event seed, replicate, month, process, stable context/actor IDs)`. Fresh runs generate fresh event seeds unless exact replay is explicitly selected. A seed fixes the draws, not a pre-scripted sequence of actions: agents respond to the evolving state, and a repeated seed reproduces those responses when the entire scenario is identical.
 
@@ -70,7 +72,7 @@ Effective organization capacity is:
 
 Recruitment decisions and transfers therefore change subsequent productive capacity. They do not overwrite people's identity, home, money, motives, memories or ties. Merit enforcement uses actual record quality and operational merit coverage/capacity; rotation moves staff while informal links can persist.
 
-Additional policy requirements retain `config.js` setup/monthly/time coefficients, scaled by `clamp(sqrt(GDP PPP/20,000), .6, 1.8)`. Monthly public revenue is 180 times this scale; starting treasury is 1,800 times it. These are modeling priors, not national budgets.
+Additional policy requirements retain `config.js` setup/monthly/time coefficients, scaled by `clamp(sqrt(GDP PPP/20,000), .6, 1.8)`. Monthly public revenue is 180 times this scale; pre-reconstruction treasury is 1,800 times it. These are modeling priors, not national budgets.
 
 The user's mobilization is a persistent rate against additional requirements. Requested monthly disbursement is `rate × (recurring requirement + setup requirement/3 while setup remains)`. Treasury affordability constrains the actual transfer.
 
@@ -84,7 +86,7 @@ Setup needs at least three stages, accumulated setup work of 1 and 85% of setup-
 
 ## 6. Legal scope, country baselines and accountability
 
-An operational tool first needs a competent organizational function, then applicable legal coverage, then trained capability, records, cash, time and actual procedure. Ineligible functions receive no authority from an unrelated capability score. Baseline applicable scope .55 and adopted intended scope .85 are explicit **common exploratory coverage priors**, not measured country effectiveness.
+An operational tool first needs a competent organizational function, then applicable legal coverage, then trained capability, records, cash, time and actual procedure. Ineligible functions receive no authority from an unrelated capability score. Baseline applicable scope uses a provisional within-mandate .75 prior and the explicit country/instrument estimates in `baseline.js`; adopted intended scope is .85. The mappings from narrow OECD criteria and dated protection limitations are specified in [INITIALIZATION.md](INITIALIZATION.md). These are bounded estimates, not measured national coverage or effectiveness.
 
 Individual scope uses a fixed, parameter-independent coverage draw. A covered person's operational capability is the relevant trained capability; population-average capability is coverage × trained capability. Coverage is not applied twice to the same person. Narrowing an authorized reform narrows operative scope while leaving acquired skills in place.
 
@@ -163,7 +165,7 @@ node --test model.test.js worker.test.js run-seeds.test.js audit.test.js visuali
 
 The causal suite holds unrelated initialization traits and keyed random draws fixed while changing a specific mechanism. Stability tests cover ten countries/all tools, extreme conditions, conserved money/shared time, 240-month Peru/ACA, repeatability, diagnostics, coercion, recovery, imports and worker lifecycle. Projection tests check behavioral radius invariance under affinity changes and confirm display independence.
 
-Rules version 2.2.0 intentionally rejects older saved initial-state formats; silent reuse would mix different numerical rules. Recreate a scenario from its settings rather than treating an older result as a v2.2 trajectory.
+Rules version 2.3.0 intentionally rejects older saved initial-state formats; silent reuse would mix different numerical rules. Recreate a scenario from its settings rather than treating an older result as a v2.3 trajectory.
 
 Remaining limits: real country membership/role distributions, political/cultural calibration, detailed jurisdiction/law, national allocation/cost data, empirical policy/outcome validation, broad sensitivity analysis and actual Android performance/browser QA. These gaps are not resolved by engineering tests. Conceptual references remain the supplied Ajzen, Mugellini/co-authors, assessment chapter and reform-mobilization draft; none establishes these numerical coefficients.
 

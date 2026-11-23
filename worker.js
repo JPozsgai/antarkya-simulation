@@ -1,5 +1,5 @@
 'use strict';
-importScripts('profiles.js?v=2.2.0','config.js?v=2.2.0','adaptation.js?v=2.2.0','model.js?v=2.2.0');
+importScripts('profiles.js?v=2.3.0','config.js?v=2.3.0','baseline.js?v=2.3.0','adaptation.js?v=2.3.0','model.js?v=2.3.0');
 let config,initial,reform,baseline,replicate=0,active=false,delay=100,timer=null,firstResult=null,replications=[],started=0;
 const summary=s=>({version:Antarkya.VERSION,month:s.month,metrics:s.metrics(),assessment:s.assessment(),history:s.state.history,classActivity:s.classActivity()});
 function makePair(){reform=new Antarkya.Simulation(config,initial,replicate,false);baseline=new Antarkya.Simulation(config,initial,replicate,true);}

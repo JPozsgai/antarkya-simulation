@@ -22,9 +22,10 @@
     centralAllocation:'Estimated central-versus-local allocation pattern, not measured budget shares.',
     calendar:'Simplified relative electoral/appointment cycle; phase is a scenario assumption, not a forecast calendar.',
     culture:'Unknown national cultural measures use a common neutral scenario prior of 50; editable.',
-    politics:'Numeric political estimates use a common scenario prior of 50; institutional constraints still differ.',
+    politics:'Freedom House CL (2026), electoral process and political participation (2025) rescaled as distinct dated proxies, not action probabilities.',
     costs:'Normalized engineering assumptions for setup/recurring RU and staff-time requirements.',
-    mappings:'WGI and GDP enter bounded capacity/resource priors; they are not corruption or sanction probabilities.'};
+    mappings:'WGI, GDP and narrow OECD instrument observations inform bounded capacity/resource estimates; they are not corruption probabilities or comprehensive national effectiveness scores.'};
   const api={countries,costs,assumptions};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AntarkyaConfig=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
+

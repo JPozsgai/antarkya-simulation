@@ -4,10 +4,10 @@ const config=(extra={})=>({country:'PER',duration:12,eventSeed:'causal-audit',po
 const sim=extra=>new A.Simulation(config(extra));
 const clone=x=>JSON.parse(JSON.stringify(x));
 function pair(){const c=config(),i=A.createInitial(c);return [new A.Simulation(c,i),new A.Simulation(c,i)];}
-test('country overrides preserve unrelated random traits, contacts and scope draws',()=>{
- const c=config(),base=A.createInitial(c),traits=s=>s.agents.map(a=>({id:a.id,x:a.x,y:a.y,skill:a.skill,support:a.support,income:a.income,memberships:a.memberships}));
+test('country overrides preserve underlying person draws while reconstructed histories can respond',()=>{
+ const c=config(),base=A.createInitial(c),traits=s=>s.agents.map(a=>({id:a.id,x:a.x,y:a.y,initialSkill:a.psychology.initialSkill,baseTraits:a.psychology.baseTraits}));
  for(const overrides of [{rule_of_law:90},{government_effectiveness:90},{kinship:90},{informality:90},{public_private_separation:90},{gdp_per_capita_ppp:50000}]){const next=A.createInitial({...c,overrides});assert.deepEqual(traits(base),traits(next));assert.equal(base.societyDrawKey,next.societyDrawKey);}
- const other=A.createInitial({...c,overrides:{kinship:90}});assert.notDeepEqual(base.agents[0].motives,other.agents[0].motives);assert.equal(base.agents[0].normCorrupt,other.agents[0].normCorrupt);
+ const other=A.createInitial({...c,overrides:{kinship:90}});assert.notDeepEqual(base.agents[0].motives,other.agents[0].motives);assert.notDeepEqual(base.initialization.history,other.initialization.history);
 });
 test('all nine consequence dimensions can independently affect the utility choice',()=>{
  const s=sim(),a=s.agents[0];
@@ -32,19 +32,19 @@ test('financial security changes subjective economic gains without knowledge of 
  const s=sim(),a=s.agents[0],options=[{name:'benefit',effects:[0,0,0,1,0,0,0,0,0],norm:0,control:.5}];a.balance=0;s.choose(a,'Security',options,'same');const scarce=a.lastDecision.perceived.attitude;a.balance=100;s.choose(a,'Security',options,'same');assert.ok(scarce>a.lastDecision.perceived.attitude);
 });
 test('verification of covered personal declarations affects audit detection',()=>{
- const [low,high]=pair();for(const s of [low,high]){s.state.month=1;s.monthlyAccounts();const auditor=s.publicOrgs.find(o=>o.fn==='audit'),subject=s.roles[2].find(a=>s.orgs[a.org].fn==='service'),employer=s.orgs[subject.org];auditor.caps.oversight=1;auditor.legal.oversight=1;employer.legal.declarations=1;employer.caps.declarations=1;employer.disclosureQuality=0;subject.disclosure=s===high?1:0;s.state.conduct=[{id:'declaration-audit',month:1,kind:'service',actors:[subject.id],org:employer.id,truth:true,visibility:0}];const original=s.rand.bind(s);s.rand=(process,...key)=>process==='audit-signal'?.5:original(process,...key);s.audit();}assert.equal(low.state.cases.length,0);assert.equal(high.state.cases.length,1);
+ const [low,high]=pair();for(const s of [low,high]){s.state.month=1;s.monthlyAccounts();s.state.cases=[];const auditor=s.publicOrgs.find(o=>o.fn==='audit'),subject=s.roles[2].find(a=>s.orgs[a.org].fn==='service'),employer=s.orgs[subject.org];auditor.caps.oversight=1;auditor.legal.oversight=1;employer.legal.declarations=1;employer.caps.declarations=1;employer.disclosureQuality=0;subject.disclosure=s===high?1:0;s.state.conduct=[{id:'declaration-audit',month:1,kind:'service',actors:[subject.id],org:employer.id,truth:true,visibility:0}];const original=s.rand.bind(s);s.rand=(process,...key)=>process==='audit-signal'?.5:original(process,...key);s.audit();}assert.equal(low.state.cases.length,0);assert.equal(high.state.cases.length,1);
 });
 test('zero legal scrutiny scope prevents audit detection despite trained capacity',()=>{
- const s=sim();s.state.month=1;s.monthlyAccounts();const o=s.publicOrgs.find(o=>o.fn==='audit');o.caps.oversight=1;o.legal.oversight=0;s.state.conduct=[{id:'outside-scope',month:1,kind:'service',actors:[s.roles[2][0].id],org:s.services[0].id,truth:true,visibility:1}];const original=s.rand.bind(s);s.rand=(p,...k)=>p==='audit-signal'?.001:original(p,...k);s.audit();assert.equal(s.state.cases.length,0);
+ const s=sim();s.state.month=1;s.monthlyAccounts();s.state.cases=[];const o=s.publicOrgs.find(o=>o.fn==='audit');o.caps.oversight=1;o.legal.oversight=0;s.state.conduct=[{id:'outside-scope',month:1,kind:'service',actors:[s.roles[2][0].id],org:s.services[0].id,truth:true,visibility:1}];const original=s.rand.bind(s);s.rand=(p,...k)=>p==='audit-signal'?.001:original(p,...k);s.audit();assert.equal(s.state.cases.length,0);
 });
 test('penalty collection capacity changes actual transferred resources after the same decision',()=>{
- const [low,high]=pair();for(const s of [low,high]){s.state.month=1;s.monthlyAccounts();const target=s.roles[2][0],record={id:'liability',actors:[target.id],kind:'extortion',org:target.org,truth:true,visibility:1};const c=s.makeCase(record,null,'audit');c.stage=3;c.evidence=1;c.next=0;c.jurisdiction=null;c.intakeDone=true;const body=s.responsible(3,'criminal',c);body.caps.penalties=s===high?1:.1;body.legal.penalties=1;s.choose=(a,context,options)=>options.find(o=>o.name==='process')||options[0];s.processCases();s.assertInvariants();}assert.ok(high.state.cases[0].collected>low.state.cases[0].collected);
+ const [low,high]=pair();for(const s of [low,high]){s.state.month=1;s.monthlyAccounts();s.state.cases=[];const target=s.roles[2][0],record={id:'liability',actors:[target.id],kind:'extortion',org:target.org,truth:true,visibility:1};A.transfer(s.state.outside,target,10);const c=s.makeCase(record,null,'audit');c.stage=3;c.evidence=1;c.next=0;c.jurisdiction=null;c.intakeDone=true;const body=s.responsible(3,'criminal',c);body.caps.penalties=s===high?1:.1;body.legal.penalties=1;s.choose=(a,context,options)=>options.find(o=>o.name==='process')||options[0];s.processCases();s.assertInvariants();}assert.ok(high.state.cases[0].collected>low.state.cases[0].collected);
 });
 test('policy ordering follows actor priorities independently of menu/storage order',()=>{
- const c=config({policies:[{id:'merit',mobilization:.8},{id:'pay',mobilization:.8},{id:'education',mobilization:.8}]}),i=A.createInitial(c),a=new A.Simulation(c,i),b=new A.Simulation(c,i);b.state.policies.reverse();for(const s of [a,b]){s.state.month=1;s.monthlyAccounts();s.fundPolicies();s.scheduleWork();s.implementPolicies();s.assertInvariants();}const values=s=>s.state.policies.map(p=>({id:p.id,mobilized:p.mobilized,deployed:p.deployed,work:p.allocations.map(x=>x.work)})).sort((a,b)=>a.id.localeCompare(b.id));assert.deepEqual(values(a),values(b));
+ const c=config({policies:[{id:'merit',mobilization:.8},{id:'pay',mobilization:.8},{id:'education',mobilization:.8}]}),i=A.createInitial(c),a=new A.Simulation(c,i),b=new A.Simulation(c,i);b.state.policies.reverse();for(const s of [a,b]){s.state.month=1;s.monthlyAccounts();s.state.cases=[];s.fundPolicies();s.scheduleWork();s.implementPolicies();s.assertInvariants();}const values=s=>s.state.policies.map(p=>({id:p.id,mobilized:p.mobilized,deployed:p.deployed,work:p.allocations.map(x=>x.work)})).sort((a,b)=>a.id.localeCompare(b.id));assert.deepEqual(values(a),values(b));
 });
 test('experienced waiting changes support and perceived access without inventing corruption information',()=>{
- const s=sim(),a=s.roles[0][0],o=s.services[0],party=a.support.find(t=>t.org===s.state.politics.governingParty),before={support:party.affinity,control:a.control,beliefs:clone(a.beliefs)};s.addService(a,o,false,'service');o.time=0;s.processServices();assert.ok(party.affinity<before.support);assert.ok(a.control<before.control);assert.deepEqual(a.beliefs,before.beliefs);assert.equal(a.experience.wait,1);
+ const s=sim(),a=s.roles[0][0],o=s.services[0],party=a.support.find(t=>t.org===s.state.politics.governingParty),before={support:party.affinity,control:a.control,beliefs:clone(a.beliefs),wait:a.experience.wait};s.state.services=[];s.addService(a,o,false,'service');o.time=0;s.processServices();assert.ok(party.affinity<before.support);assert.ok(a.control<before.control);assert.deepEqual(a.beliefs,before.beliefs);assert.equal(a.experience.wait,before.wait+1);
 });
 test('resource-review utility responds to experienced stakeholder support',()=>{
  const c=config({policies:[{id:'aca',mobilization:.5}]}),i=A.createInitial(c),a=new A.Simulation(c,i),b=new A.Simulation(c,i);
@@ -75,5 +75,6 @@ test('country mandates change real referrals without merging investigation, pros
 });
 
 test('out-of-scope audits cannot create false allegations through a false-positive draw',()=>{
- const s=sim();s.state.month=1;s.monthlyAccounts();const o=s.publicOrgs.find(o=>o.fn==='audit');o.legal.oversight=0;o.caps.oversight=1;s.state.conduct=[{id:'lawful-outside-scope',month:1,kind:'service',actors:[s.roles[2][0].id],org:s.services[0].id,truth:false,visibility:1}];s.rand=()=>.001;s.audit();assert.equal(s.state.cases.length,0);s.assertInvariants();
+ const s=sim();s.state.month=1;s.monthlyAccounts();s.state.cases=[];const o=s.publicOrgs.find(o=>o.fn==='audit');o.legal.oversight=0;o.caps.oversight=1;s.state.conduct=[{id:'lawful-outside-scope',month:1,kind:'service',actors:[s.roles[2][0].id],org:s.services[0].id,truth:false,visibility:1}];s.rand=()=>.001;s.audit();assert.equal(s.state.cases.length,0);s.assertInvariants();
 });
+
