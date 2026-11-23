@@ -75,6 +75,6 @@ The major-event feed retains elections/appointments, consequential service/resou
 
 ## Verification and limits
 
-The dedicated dynamics checks address the reported defects and their behavioral consequences, in addition to regression, country, worker, replay, accounting, 240-month and extreme-condition checks. Plotting and filtering cannot mutate simulation state. Saved scenarios use rules version 2.4 and require a newly reconstructed initial state.
+The dedicated dynamics checks address the reported defects and their behavioral consequences, in addition to regression, country, worker, replay, accounting, 240-month and extreme-condition checks. Plotting and filtering cannot mutate simulation state. Saved scenarios use rules version 2.4 and require a newly reconstructed initial state. Import verification compares all expected fields independent of object-key order, tolerates only insignificant non-integer rounding (relative tolerance 1e-10), and requires exact integer identities and counters. It retains the imported snapshot rather than replacing it with locally reconstructed values.
 
 The corrections are not evidence that every policy must reduce corruption, that changes must be visually dramatic, or that the country profiles now support forecasts. Finite resources, resistance, information, delays and conflicting incentives can still limit reforms. Policy effects require repeated paired runs and substantive calibration; larger populations remain outside this release.

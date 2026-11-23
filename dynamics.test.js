@@ -59,3 +59,7 @@ test('a public decision has one cost-learning pathway and cannot replay an alrea
 test('pay adequacy assesses modeled take-home receipts rather than gross receipts',()=>{
  const s=sim();for(const a of s.roles[2]){a.cost=.95;a.receipts=Array(6).fill(1);}assert.equal(s.diagnostic('pay').value,0);for(const a of s.roles[2])a.receipts=Array(6).fill(1.2);assert.equal(s.diagnostic('pay').value,100);
 });
+
+test('saved-state verification accepts key order and insignificant floating rounding while rejecting substantive edits',()=>{
+ const c={country:'PER'},initial=A.createInitial(c),copy=clone(initial);copy.agents[0].x+=1e-13;copy.agents[0].psychology.traits={learning:copy.agents[0].psychology.traits.learning,retention:copy.agents[0].psychology.traits.retention,openness:copy.agents[0].psychology.traits.openness};assert.equal(A.validateInitial(copy,c),true);copy.agents[0].x+=.001;assert.throws(()=>A.validateInitial(copy,c));const bad=clone(initial);bad.agents[0].id+=1e-13;assert.throws(()=>A.validateInitial(bad,c));
+});

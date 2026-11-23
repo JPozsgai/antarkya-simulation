@@ -86,6 +86,19 @@
     initialCache.set(cacheKey,clone(s));if(initialCache.size>1)initialCache.delete(initialCache.keys().next().value);
     return clone(s);
   }
+  function initialDifference(actual,expected,path='state'){
+    if(actual===expected)return null;
+    if(typeof actual!==typeof expected||actual===null||expected===null)return path;
+    if(typeof expected==='number'){
+      // Identifiers/counters stay exact. Floating calculations can differ by
+      // insignificant rounding across browser and Node math implementations.
+      if(Number.isInteger(actual)||Number.isInteger(expected))return path;
+      return Number.isFinite(actual)&&Math.abs(actual-expected)<=1e-10*Math.max(1,Math.abs(expected))?null:path;
+    }
+    if(typeof expected!=='object'||Array.isArray(actual)!==Array.isArray(expected))return path;
+    const keys=Object.keys(expected).sort(),got=Object.keys(actual).sort();if(keys.length!==got.length||keys.some((k,i)=>k!==got[i]))return path;
+    for(const key of keys){const difference=initialDifference(actual[key],expected[key],path+'.'+key);if(difference)return difference;}return null;
+  }
   function validateInitial(s,input){const c=validate(input),env=conditions(c),spec=Settings.countries[c.country],key=hash(VERSION+'|'+c.initialSeed+'|'+c.country+'|'+JSON.stringify(env)).toString(16);const finite=(x,lo=-Infinity,hi=Infinity)=>typeof x==='number'&&Number.isFinite(x)&&x>=lo&&x<=hi,ids=(a,n)=>Array.isArray(a)&&a.every(x=>Number.isInteger(x)&&x>=0&&x<n);
     if(!s||s.societyDrawKey!==hash(c.initialSeed+'|'+c.country+'|society-draws').toString(16)||s.version!==VERSION||s.month!==0||s.country!==c.country||s.initialKey!==key||JSON.stringify(s.env)!==JSON.stringify(env)||!Array.isArray(s.agents)||s.agents.length!==1000||!Array.isArray(s.orgs)||s.orgs.length<40||s.orgs.length>60)throw Error('The saved initial society is incompatible with this configuration.');
     if(!s.initialization||s.initialization.schema!==Baseline.schema||s.initialization.months!==Baseline.months)throw Error('Expected a reconstructed pre-policy society.');
@@ -98,7 +111,7 @@
     for(const o of s.orgs)for(const id of o.members)if(!s.agents[id].memberships.includes(o.id))throw Error('Membership references do not match.');for(const a of s.agents)for(const id of a.memberships)if(!s.orgs[id].members.includes(a.id))throw Error('Membership references do not match.');
     if(!s.links||typeof s.links!=='object'||Array.isArray(s.links))throw Error('Invalid network.');for(const l of Object.values(s.links))if(!Number.isInteger(l.a)||!Number.isInteger(l.b)||l.a<0||l.a>=1000||l.b<0||l.b>=1000||!finite(l.strength,0,1))throw Error('Invalid network reference.');
     if(!Number.isInteger(s.politics?.controller)||!s.agents[s.politics.controller]||!finite(s.politics.nextReview,1)||!finite(s.politics.cycle,1)||Math.abs(totalMoney(s)-s.accountingTotal)>.001)throw Error('Initial authority or accounts are inconsistent.');
-    if(JSON.stringify(s)!==JSON.stringify(createInitial(c)))throw Error('The saved starting society has been altered or uses different initialization rules.');return true;
+    const difference=initialDifference(s,createInitial(c));if(difference)throw Error('The saved starting society differs from these initialization rules at '+difference+'.');return true;
   }
   class Simulation{
     constructor(input={},initial=null,replicate=0,baseline=false){this.config=validate(input);this.state=clone(initial||createInitial(this.config));this.baseline=baseline;this.replicate=replicate;this.seed=this.config.eventSeed+'|'+replicate;this.index();if(!baseline)this.adopt();this.record();}
