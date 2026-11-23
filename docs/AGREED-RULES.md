@@ -350,3 +350,8 @@ No chapter is represented as prescribing the twelve proposed simulation indicato
 ## Starting-state correction · 23 November 2026
 
 The user requested correction and publication of the unrealistic starting state. v2.3 retains fixed paired starting societies but reconstructs a pre-policy year with the same numerical rules before adopting any selected reform. It carries prior actions, expectations, learning, ties, balances and ongoing work into month 0. The common inherited 8% flag is removed. Country political proxies and selected existing-instrument observations are sourced; mappings and missing cultural measures remain clearly identified estimates/assumptions. The complete numerical implementation and its evidence limits are in [INITIALIZATION.md](INITIALIZATION.md). This correction does not establish observed national corruption prevalence.
+
+
+## Behavioral corrections authorized · 23 November 2026
+
+The user requested correction and publication while retaining exactly 1,000 agents. v2.4 fixes genuine-opportunity/recovery counting, repeated waiting feedback, structurally excessive routine-service work units, income/needs consistency and uncollected financial obligations. It strengthens the actual experienced/communicated accountability pathway without a direct corruption-reduction multiplier. Reference reactions can approve or disapprove, rather than mechanically manufacturing honest expectations. The map retains conduct-based outer distance, class colors and integrity shapes while adding readable inner-disc spacing, cooperation constraints, class filtering and compact experienced-condition readouts. Numerical assumptions and verification limits are in [DYNAMICS.md](DYNAMICS.md).
