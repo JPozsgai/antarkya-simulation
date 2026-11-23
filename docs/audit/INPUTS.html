@@ -1,0 +1,3170 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Country, policy and parameter inputs · Antarkya audit</title><link rel="stylesheet" href="audit.css"></head><body><header><a href="index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="NARRATIVE.html">Narrative</a><a href="TECHNICAL.html">Technical rules</a><a href="SOURCE-INDEX.html">Annotated code</a><a href="GAPS.html">Limits</a><a href="../../index.html">Simulation</a></nav></header><main><h1 id="country-policy-and-parameter-inputs">Country, policy and parameter inputs</h1>
+<p>These are the exact data shipped with this edition. Country observations/proxies are distinct from mappings and engineering priors. For every remaining hard-coded number, inspect the complete <a href="NUMERICS.html">numeric literal inventory</a>. Source code remains authoritative for transformations, eligibility and process constraints.</p>
+<h2 id="country-conditions-and-institutional-topology">Country conditions and institutional topology</h2>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Role counts (citizen/business/official/politician)</th>
+<th>Political mode / relative cycle / first review</th>
+<th>Central share prior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nigeria (NGA)</td>
+<td>635 / 210 / 130 / 25</td>
+<td>presidential / 48 / 24</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>South Africa (ZAF)</td>
+<td>610 / 220 / 145 / 25</td>
+<td>parliamentary / 60 / 36</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>Indonesia (IDN)</td>
+<td>625 / 220 / 130 / 25</td>
+<td>presidential / 60 / 36</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>India (IND)</td>
+<td>650 / 205 / 120 / 25</td>
+<td>parliamentary / 60 / 36</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>China (CHN)</td>
+<td>590 / 235 / 150 / 25</td>
+<td>appointment / 60 / 36</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>Peru (PER)</td>
+<td>630 / 210 / 135 / 25</td>
+<td>presidential / 60 / 12</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>Brazil (BRA)</td>
+<td>600 / 230 / 145 / 25</td>
+<td>presidential / 48 / 12</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>United States (USA)</td>
+<td>570 / 270 / 135 / 25</td>
+<td>presidential / 48 / 24</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>Germany (DEU)</td>
+<td>575 / 255 / 145 / 25</td>
+<td>parliamentary / 48 / 36</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>Italy (ITA)</td>
+<td>590 / 245 / 140 / 25</td>
+<td>parliamentary / 60 / 24</td>
+<td>0.6</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nigeria-nga">Nigeria (NGA)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>9531.61073275049</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/NGA/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>33.6477279</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/NGA/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>42.9536547</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/NGA/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>44.3833952</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/NGA/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>40</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>56.25</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>50</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICPC</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>EFCC</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>Federal audit</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Justice and courts</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Code of conduct function</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;NGA&quot;,
+  &quot;name&quot;: &quot;Nigeria&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 9531.61073275049,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/NGA/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 33.6477279,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/NGA/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 42.9536547,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/NGA/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 44.3833952,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/NGA/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;Federal jurisdictions and electoral/appointment procedures require their own legal mapping; national political-index values remain pending.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;ICPC: prevention, complaints, corruption investigation and prosecution functions; adjudication remains judicial.&quot;,
+    &quot;EFCC: economic/financial crime investigation and enforcement, with prosecutorial and court interfaces.&quot;,
+    &quot;OAuGF and legislative Public Accounts Committees: external audit and accountability, distinct from criminal adjudication.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;Keep federal/state jurisdictions and overlapping mandates explicit.&quot;,
+    &quot;The 2016 federal whistleblowing policy is an existing baseline; the August 2024 source described draft legal protection, not an enacted later statute. Verify current protection law before coding.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;2023 survey: 56% of adults had public-official contact; 27% of that contact group paid a bribe in the preceding year; 8.6% of bribe payers reported to an official institution. These are annual person-level measures, not encounter or case-success probabilities.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;icpc&quot;,
+    &quot;ng-audit&quot;,
+    &quot;ng-survey&quot;,
+    &quot;ng-reporting&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="south-africa-zaf">South Africa (ZAF)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>15905.6794419658</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/ZAF/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>51.872237</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/ZAF/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>59.3034187</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/ZAF/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>54.3217993</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/ZAF/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>78.33333333333333</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>87.5</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>100</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>National integrity coordination</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>Hawks / SAPS</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>NPA / IDAC</td>
+<td>prosecution</td>
+</tr>
+<tr>
+<td>AGSA</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>SIU civil route</td>
+<td>civil</td>
+</tr>
+<tr>
+<td>Courts</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;ZAF&quot;,
+  &quot;name&quot;: &quot;South Africa&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 15905.6794419658,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/ZAF/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 51.872237,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/ZAF/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 59.3034187,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/ZAF/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 54.3217993,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/ZAF/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;National, provincial and local authority and electoral/accountability procedures must remain distinct.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;Hawks/SAPS investigate; NPA prosecutes, including IDAC within NPA; courts adjudicate.&quot;,
+    &quot;SIU follows proclamation-based investigation and civil recovery with a criminal-referral route.&quot;,
+    &quot;AGSA external audit is a separate accountability route; the national strategy coordinates a distributed system.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;Do not treat civil recovery as a criminal conviction or create a freestanding all-purpose IDAC.&quot;,
+    &quot;The May 2026 source described the new Protected Disclosures Bill as a draft; retain existing-law protections without initializing draft guarantees.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;AGSA reported 151 of 417 national/provincial auditees with clean 2024–25 audits (36%), covering 12% of expenditure. Audit shortcomings do not by themselves establish corruption.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;existing_with_documented_scope_gap&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;sa-system&quot;,
+    &quot;sa-audit&quot;,
+    &quot;sa-draft&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="indonesia-idn">Indonesia (IDN)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>17659.7921291587</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/IDN/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>57.5639886</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/IDN/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>54.4365507</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/IDN/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>57.3259714</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/IDN/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>46.666666666666664</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>68.75</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>91.66666666666667</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KPK</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>Police / prosecutors</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>BPK</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Administrative integrity</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>Courts</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;IDN&quot;,
+  &quot;name&quot;: &quot;Indonesia&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 17659.7921291587,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/IDN/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 57.5639886,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/IDN/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 54.4365507,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/IDN/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 57.3259714,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/IDN/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;Presidential system. Do not copy the OECD contextual-table label “Parliamentary”; detailed electoral calendar/authority mapping remains pending.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;KPK combines prevention, coordination and qualifying corruption investigation/prosecution; police and Attorney General retain cases; courts adjudicate.&quot;,
+    &quot;BPK audits state finances. PANRB and Information Commission cover administrative integrity and information functions.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;KPK jurisdiction is conditional; improvements must respect coverage and interagency handoffs.&quot;,
+    &quot;The strategic plan identifies implementation commitment and planning/budget-cycle misalignment. OECD records gaps between rules and demonstrated practice.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;Existing wealth/gratification reporting, education and monitoring mean reforms strengthen a baseline. OECD criteria scores must not be turned into enforcement probabilities.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;existing_with_documented_scope_gap&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;existing_with_documented_scope_gap&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;id-kpk&quot;,
+    &quot;id-bpk&quot;,
+    &quot;IDN-oecd&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="india-ind">India (IND)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>11747.9160436011</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/IND/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>62.6217125</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/IND/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>56.5115218</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/IND/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>52.5770806</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/IND/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>51.666666666666664</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>68.75</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>91.66666666666667</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CVC / departmental vigilance</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>CBI / state investigation</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>Lokpal referral function</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>CAG</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Special judges</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;IND&quot;,
+  &quot;name&quot;: &quot;India&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 11747.9160436011,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/IND/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 62.6217125,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/IND/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 56.5115218,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/IND/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 52.5770806,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/IND/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;Federal Union/state institutions and personnel systems; country-specific electoral/appointment mapping still required.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;CVC/CVO central vigilance, CBI covered criminal investigations and Lokpal inquiry/referral functions; special judges/courts adjudicate.&quot;,
+    &quot;State Lokayuktas and anti-corruption police have separate jurisdictions; CAG provides external audit.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;March 2026 parliamentary findings distinguish Lokpal’s formally constituted prosecution wing from operational reliance on CBI and incomplete staffing. Model queues and handoffs.&quot;,
+    &quot;The December 2025 government answer said the 2014 Whistle Blowers Protection Act had not commenced; PIDPI/CVC channels existed. Later commencement must be checked.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;Central conduct rules already regulate gifts, private business and property transactions; do not extend this scope automatically to all states, politicians or private workers.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;existing_with_documented_scope_gap&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;in-committee&quot;,
+    &quot;in-reporting&quot;,
+    &quot;in-conduct&quot;,
+    &quot;in-audit&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="china-chn">China (CHN)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>29333.3311051433</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/CHN/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>65.1127866</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/CHN/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>51.5591046</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/CHN/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>53.5889642</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/CHN/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>18.333333333333332</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>0</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>0</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supervision commissions</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>Duty-crime investigation</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>Procuratorates</td>
+<td>prosecution</td>
+</tr>
+<tr>
+<td>NAO / local audit</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Courts</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Personnel authorities</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;CHN&quot;,
+  &quot;name&quot;: &quot;China&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 29333.3311051433,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/CHN/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 65.1127866,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/CHN/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 51.5591046,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/CHN/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 53.5889642,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/CHN/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;CPC-led personnel and supervisory accountability; do not impose competitive national multiparty elections.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;CPC-led national/local supervision commissions investigate duty violations/crimes and impose applicable administrative discipline.&quot;,
+    &quot;Procuratorates review/prosecute criminal transfers; courts adjudicate. NAO/local audit bodies follow the constitutional executive audit structure.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;Use the revised Supervision Law effective 1 June 2025; supervisory powers do not collapse prosecution and adjudication.&quot;,
+    &quot;Open Government Information rules provide disclosure with exceptions. Internal personnel/asset reporting is not equivalent to a public assets register.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;Formal reporting, confidentiality, recusal and anti-retaliation provisions are a baseline, not measured zero-retaliation guarantees. Statutory powers do not measure practical political autonomy.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;cn-law&quot;,
+    &quot;cn-audit&quot;,
+    &quot;cn-info&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="peru-per">Peru (PER)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>18816.1045522938</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/PER/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>49.4035596</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/PER/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>47.7804439</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/PER/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>57.5499416</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/PER/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>65</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>75</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>83.33333333333333</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIP / integrity offices</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>Specialized prosecutors</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>CGR control system</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Judiciary</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Political-finance oversight</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;PER&quot;,
+  &quot;name&quot;: &quot;Peru&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 18816.1045522938,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/PER/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 49.4035596,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/PER/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 47.7804439,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/PER/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 57.5499416,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/PER/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;National and subnational political/administrative accountability are separate; exact calendars and authority still require scoping.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;SIP within PCM coordinates prevention; CAN coordinates policy; distributed Integrity Offices implement internal arrangements.&quot;,
+    &quot;Ministerio Público specialized corruption prosecutors and criminal courts handle criminal cases. State Procuradurías are a distinct representation function.&quot;,
+    &quot;CGR/National Control System: audit and applicable administrative accountability; ONPE: political finance.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;OECD records uneven municipal integrity capacity, turnover and coordination gaps. National rules do not imply uniform local delivery.&quot;,
+    &quot;Lobbying definitions exist, but OECD reports no dedicated oversight authority/public registry after amendments. Do not infer absence of all regulation.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;Reforms improve the existing Integrity Model, interests declarations and transparency framework; targets for future municipal coverage are not achieved counts.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;PER-oecd&quot;,
+    &quot;pe-economy&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="brazil-bra">Brazil (BRA)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>23433.2897595431</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/BRA/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>51.6145142</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/BRA/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>50.6314613</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/BRA/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>47.8892296</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/BRA/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>71.66666666666667</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>81.25</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>83.33333333333333</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CGU / integrity offices</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>Police / prosecutors</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>TCU / public audit</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Courts</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Ombudsman system</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;BRA&quot;,
+  &quot;name&quot;: &quot;Brazil&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 23433.2897595431,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/BRA/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 51.6145142,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/BRA/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 50.6314613,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/BRA/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 47.8892296,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/BRA/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;Federal, state and local jurisdictions and political-finance channels coexist; preserve jurisdiction tags.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;CGU: federal executive integrity, internal control, discipline and ombudsman systems.&quot;,
+    &quot;Police and federal/state prosecutors feed competent courts; TCU supports congressional external control of federal resources.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;Do not turn CGU or TCU into a single criminal investigator/prosecutor/court.&quot;,
+    &quot;OECD identifies incomplete strategic outcome baselines, risk analysis and evidence of conflict-of-interest follow-up. Missing evidence is not zero real compliance.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;The 2025–27 integrity plan, conflict/financial declaration arrangements, access-information law and reporting systems already exist. Improvements target coverage, verification and follow-through.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;existing_with_documented_scope_gap&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;BRA-oecd&quot;,
+    &quot;br-cgu&quot;,
+    &quot;br-tcu&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="united-states-usa">United States (USA)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>90026.5163005744</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/USA/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>76.7214861</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/USA/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>71.672083</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/USA/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>72.8150032</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/USA/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>81.66666666666667</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>87.5</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>91.66666666666667</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OGE / agency ethics</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>Agency inspectors general</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>DOJ / investigators</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>Federal / state courts</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>OSC / personnel channels</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>GAO external audit</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;USA&quot;,
+  &quot;name&quot;: &quot;United States&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 90026.5163005744,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/USA/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 76.7214861,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/USA/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 71.672083,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/USA/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 72.8150032,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/USA/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;Federal/state/local elections, appointments and agency authority require separate procedures; no universal national control chain.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;OGE/agency ethics offices: executive ethics; agency inspectors general: audit/investigation/referral.&quot;,
+    &quot;FBI/competent investigators and DOJ/U.S. Attorneys feed courts; GAO provides federal external audit.&quot;,
+    &quot;OSC wrongdoing-disclosure and retaliation/personnel-practice functions are distinct; state/local systems coexist.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;No single all-purpose national ACA. Federal jurisdiction over state/local misconduct requires a legal basis.&quot;,
+    &quot;Federal disclosure, reporting and merit rules do not establish identical coverage for every private worker, contractor or intelligence role. Detailed 2026 changes require targeted checks.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;OECD documents strategy cost/monitoring and integrity-data gaps; these do not imply no institutions or zero integrity.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;existing_with_documented_scope_gap&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;USA-oecd&quot;,
+    &quot;us-doj&quot;,
+    &quot;us-osc&quot;,
+    &quot;us-oig&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="germany-deu">Germany (DEU)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>75406.6888111618</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/DEU/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>82.8363275</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/DEU/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>85.067519</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/DEU/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>76.4294022</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/DEU/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>91.66666666666667</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>100</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>100</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Federal / Land prevention</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>Land police / prosecutors</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>Federal / Land audit</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Courts</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Reporting / personnel channels</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;DEU&quot;,
+  &quot;name&quot;: &quot;Germany&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 75406.6888111618,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/DEU/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 82.8363275,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/DEU/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 85.067519,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/DEU/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 76.4294022,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/DEU/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;Federal/Länder jurisdictions and administrative appointments; retain decentralized authority rather than inventing a national corruption prosecutor.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;Federal administrative prevention and decentralized conflict oversight; Länder police/prosecutors handle most corruption cases; courts adjudicate.&quot;,
+    &quot;BKA coordinates information. Federal and Länder audit bodies provide separate financial oversight.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;A federal prevention directive, multiple-eyes controls, risk assessment, conduct rules and protected reporting channels are existing safeguards.&quot;,
+    &quot;OECD strategic-framework/data gaps and lack of uniform asset declarations are not evidence of no integrity protection. Detailed state procedures remain to be mapped.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;Use risk-based safeguards and scope-sensitive disclosure; a reform need not copy an all-purpose ACA or uniform public asset-register model.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;existing_with_documented_scope_gap&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;DEU-oecd&quot;,
+    &quot;de-prevention&quot;,
+    &quot;de-audit&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="italy-ita">Italy (ITA)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Year / unit</th>
+<th>Evidence status / source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gdp_per_capita_ppp</td>
+<td>62802.5108384276</td>
+<td>2025 · current international dollars; not household income</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/ITA/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>government_effectiveness</td>
+<td>71.2690275</td>
+<td>2025 · governance score, 0–100; broad descriptor</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/ITA/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>rule_of_law</td>
+<td>68.2753091</td>
+<td>2025 · governance score, 0–100; not a case-success probability</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/ITA/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+<tr>
+<td>regulatory_quality_proxy</td>
+<td>65.7903769</td>
+<td>2025 · governance score, 0–100; incomplete proxy for business conditions</td>
+<td>sourced_descriptor · <a href="https://api.worldbank.org/v2/country/ITA/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025">source</a> · retrieved 2026-11-22</td>
+</tr>
+</tbody>
+</table>
+<p>Political/cultural mapping from <code>baseline.conditions</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Initial value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>civil_liberties</td>
+<td>86.66666666666667</td>
+<td>Sourced proxy · Freedom House 2026 CL / 60</td>
+</tr>
+<tr>
+<td>representation</td>
+<td>87.5</td>
+<td>Sourced proxy · Freedom House 2025 B / 16</td>
+</tr>
+<tr>
+<td>electoral_integrity</td>
+<td>100</td>
+<td>Sourced proxy · Freedom House 2025 A / 12</td>
+</tr>
+<tr>
+<td>kinship</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>informality</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+<tr>
+<td>public_private_separation</td>
+<td>50</td>
+<td>Unmeasured cultural condition · neutral assumption</td>
+</tr>
+</tbody>
+</table>
+<p>Institutional nodes (simplified names and model functions):</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ANAC / integrity managers</td>
+<td>prevention</td>
+</tr>
+<tr>
+<td>Financial police / prosecutors</td>
+<td>investigation</td>
+</tr>
+<tr>
+<td>Corte dei conti</td>
+<td>audit</td>
+</tr>
+<tr>
+<td>Ordinary courts</td>
+<td>decision</td>
+</tr>
+<tr>
+<td>Internal reporting channels</td>
+<td>integrity</td>
+</tr>
+<tr>
+<td>Budget authority</td>
+<td>budget</td>
+</tr>
+</tbody>
+</table>
+<p>Inherited policy evidence is reproduced in the complete country object below; observations and unquantified notes must not be read as numeric behavioral effectiveness.</p>
+<details><summary>Complete stored profile and inherited evidence</summary>
+<pre><code class="language-json">{
+  &quot;iso3&quot;: &quot;ITA&quot;,
+  &quot;name&quot;: &quot;Italy&quot;,
+  &quot;readiness&quot;: &quot;initial evidence profile; not calibrated for simulation&quot;,
+  &quot;indicators&quot;: {
+    &quot;gdp_per_capita_ppp&quot;: {
+      &quot;value&quot;: 62802.5108384276,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;current international dollars; not household income&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/ITA/indicator/NY.GDP.PCAP.PP.CD?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;government_effectiveness&quot;: {
+      &quot;value&quot;: 71.2690275,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; broad descriptor&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/ITA/indicator/GOV_WGI_GE_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;rule_of_law&quot;: {
+      &quot;value&quot;: 68.2753091,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; not a case-success probability&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/ITA/indicator/GOV_WGI_RL_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    },
+    &quot;regulatory_quality_proxy&quot;: {
+      &quot;value&quot;: 65.7903769,
+      &quot;year&quot;: 2025,
+      &quot;unit&quot;: &quot;governance score, 0–100; incomplete proxy for business conditions&quot;,
+      &quot;status&quot;: &quot;sourced_descriptor&quot;,
+      &quot;source&quot;: &quot;https://api.worldbank.org/v2/country/ITA/indicator/GOV_WGI_RQ_SC?format=json&amp;date=2025&quot;,
+      &quot;retrieved&quot;: &quot;2026-11-22&quot;
+    }
+  },
+  &quot;political&quot;: {
+    &quot;numeric_values&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence&quot;,
+    &quot;institutional_constraint&quot;: &quot;National, regional and municipal implementation; judicial and accounting-liability routes must remain distinct.&quot;,
+    &quot;proposed_source&quot;: &quot;vdem&quot;
+  },
+  &quot;culture&quot;: {
+    &quot;kinship&quot;: null,
+    &quot;informality&quot;: null,
+    &quot;public_private_separation&quot;: null,
+    &quot;status&quot;: &quot;needs_evidence; no national cultural scores invented&quot;
+  },
+  &quot;architecture&quot;: [
+    &quot;ANAC: prevention, transparency and procurement oversight, alongside administration-level integrity managers.&quot;,
+    &quot;Guardia di Finanza and ordinary prosecutors feed criminal courts. Corte dei conti audit/accounting liability follows a separate route.&quot;
+  ],
+  &quot;implementation_constraints&quot;: [
+    &quot;Protected reporting under Legislative Decree 24/2023 is an existing baseline with conditions for external escalation.&quot;,
+    &quot;The EC July 2026 chapter reports repeal/narrowing of relevant offences and January 2026 accounting-liability changes under challenge. Verify current law before assigning exact sanctions.&quot;
+  ],
+  &quot;evidence_notes&quot;: [
+    &quot;OECD reports missing strategic outcome baselines/cost projections. Political conflict/lobbying coverage and practical justice capacity need separate treatment from formal adoption.&quot;
+  ],
+  &quot;tool_baseline&quot;: {
+    &quot;aca&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;status&quot;: &quot;existing_with_documented_scope_gap&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;status&quot;: &quot;existing_relevant_instrument&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    },
+    &quot;education&quot;: {
+      &quot;status&quot;: &quot;not_scoped_not_absent&quot;,
+      &quot;numerical_strength&quot;: null,
+      &quot;detail&quot;: &quot;Read country notes and source scope; this tag is not a national coverage/effectiveness score.&quot;
+    }
+  },
+  &quot;sources&quot;: [
+    &quot;ITA-oecd&quot;,
+    &quot;it-gdf&quot;,
+    &quot;it-reporting&quot;,
+    &quot;it-ec&quot;
+  ],
+  &quot;pending&quot;: {
+    &quot;role_counts&quot;: null,
+    &quot;organization_counts_and_sizes&quot;: null,
+    &quot;membership_and_support_distributions&quot;: null,
+    &quot;resource_allocation_shares&quot;: null,
+    &quot;country_tool_costs&quot;: null,
+    &quot;procedure_calendar&quot;: null
+  }
+}
+</code></pre>
+</details>
+<h2 id="policy-specific-implementation-costs-and-direct-influence">Policy-specific implementation costs and direct influence</h2>
+<p>Cost vectors are <code>[setup RU, recurring RU, staff PM]</code> normalized engineering coefficients consumed by the requirement function. They are not currency budgets. The cognitive map lists the exact element-specific maxima, half-life, delivery channel and contextual restrictions. A ceiling is not guaranteed uptake or a national treatment-effect estimate.</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Costs</th>
+<th>Elements and maxima</th>
+<th>Contexts / half-life</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aca — Anti-corruption body</td>
+<td>[0.12,0.025,0.035]</td>
+<td>risk: 0.25; control: 0.15</td>
+<td>integrity, report, refuse, recruit, implementation, case, retaliation / 10 months</td>
+</tr>
+<tr>
+<td>merit — Recruitment and promotion</td>
+<td>[0.05,0.02,0.025]</td>
+<td>norm: 0.12; control: 0.15</td>
+<td>recruit / 12 months</td>
+</tr>
+<tr>
+<td>rotation — Staff rotation</td>
+<td>[0.04,0.015,0.025]</td>
+<td>norm: 0.1</td>
+<td>integrity, case / 8 months</td>
+</tr>
+<tr>
+<td>protection — Protect reporting persons</td>
+<td>[0.08,0.025,0.03]</td>
+<td>control: 0.25; reportSafety: 0.35</td>
+<td>report, refuse / 8 months</td>
+</tr>
+<tr>
+<td>declarations — Asset, liability and gift declarations</td>
+<td>[0.09,0.025,0.03]</td>
+<td>risk: 0.15</td>
+<td>integrity, report, refuse, recruit, implementation, case, retaliation / 10 months</td>
+</tr>
+<tr>
+<td>conflicts — Conflict-of-interest disclosure</td>
+<td>[0.06,0.018,0.025]</td>
+<td>norm: 0.1; corruptControl: 0.25</td>
+<td>integrity, recruit, implementation / 10 months</td>
+</tr>
+<tr>
+<td>oversight — Audits and investigations</td>
+<td>[0.1,0.03,0.04]</td>
+<td>risk: 0.3</td>
+<td>integrity, report, refuse, recruit, implementation, case, retaliation / 8 months</td>
+</tr>
+<tr>
+<td>pay — Remuneration and incentives</td>
+<td>[0.015,0.22,0.01]</td>
+<td></td>
+<td>/ 12 months</td>
+</tr>
+<tr>
+<td>penalties — Financial penalties</td>
+<td>[0.06,0.015,0.02]</td>
+<td>risk: 0.4</td>
+<td>integrity, report, refuse, recruit, implementation, case, retaliation / 8 months</td>
+</tr>
+<tr>
+<td>disclosure — Proactive public disclosure</td>
+<td>[0.08,0.02,0.025]</td>
+<td></td>
+<td>/ 8 months</td>
+</tr>
+<tr>
+<td>complaints — Reporting and complaints</td>
+<td>[0.07,0.022,0.03]</td>
+<td>control: 0.3; knowledge: 0.2</td>
+<td>report / 8 months</td>
+</tr>
+<tr>
+<td>education — Awareness and education</td>
+<td>[0.04,0.015,0.025]</td>
+<td>attitude: 0.3; norm: 0.2; control: 0.25; knowledge: 0.35</td>
+<td>integrity, report, refuse, recruit, implementation, case, retaliation / 6 months</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-json">{
+  &quot;assumptions&quot;: {
+    &quot;roleComposition&quot;: &quot;Provisional scaled representation; not national population percentages.&quot;,
+    &quot;centralAllocation&quot;: &quot;Estimated central-versus-local allocation pattern, not measured budget shares.&quot;,
+    &quot;calendar&quot;: &quot;Simplified relative electoral/appointment cycle; phase is a scenario assumption, not a forecast calendar.&quot;,
+    &quot;culture&quot;: &quot;Unknown national cultural measures use a common neutral scenario prior of 50; editable.&quot;,
+    &quot;politics&quot;: &quot;Freedom House CL (2026), electoral process and political participation (2025) rescaled as distinct dated proxies, not action probabilities.&quot;,
+    &quot;costs&quot;: &quot;Normalized engineering assumptions for setup/recurring RU and staff-time requirements.&quot;,
+    &quot;mappings&quot;: &quot;WGI, GDP and narrow OECD instrument observations inform bounded capacity/resource estimates; they are not corruption probabilities or comprehensive national effectiveness scores.&quot;
+  },
+  &quot;cognitiveMap&quot;: {
+    &quot;aca&quot;: {
+      &quot;elements&quot;: {
+        &quot;risk&quot;: 0.25,
+        &quot;control&quot;: 0.15
+      },
+      &quot;contexts&quot;: [
+        &quot;integrity&quot;,
+        &quot;report&quot;,
+        &quot;refuse&quot;,
+        &quot;recruit&quot;,
+        &quot;implementation&quot;,
+        &quot;case&quot;,
+        &quot;retaliation&quot;
+      ],
+      &quot;elementContexts&quot;: {
+        &quot;control&quot;: [
+          &quot;case&quot;,
+          &quot;report&quot;
+        ]
+      },
+      &quot;halfLife&quot;: 10,
+      &quot;channel&quot;: &quot;Communicated screening/inquiry and actual staff training&quot;,
+      &quot;structural&quot;: &quot;Mandate, inquiry capacity, referrals and shared case work&quot;
+    },
+    &quot;merit&quot;: {
+      &quot;elements&quot;: {
+        &quot;norm&quot;: 0.12,
+        &quot;control&quot;: 0.15
+      },
+      &quot;contexts&quot;: [
+        &quot;recruit&quot;
+      ],
+      &quot;halfLife&quot;: 12,
+      &quot;channel&quot;: &quot;Experienced appointment/review procedure&quot;,
+      &quot;structural&quot;: &quot;Actual selection and the competence of appointed staff&quot;
+    },
+    &quot;rotation&quot;: {
+      &quot;elements&quot;: {
+        &quot;norm&quot;: 0.1
+      },
+      &quot;contexts&quot;: [
+        &quot;integrity&quot;,
+        &quot;case&quot;
+      ],
+      &quot;halfLife&quot;: 8,
+      &quot;channel&quot;: &quot;Actual transfer and new workplace induction&quot;,
+      &quot;structural&quot;: &quot;Changed staff locations and access; existing ties survive&quot;
+    },
+    &quot;protection&quot;: {
+      &quot;elements&quot;: {
+        &quot;control&quot;: 0.25,
+        &quot;reportSafety&quot;: 0.35
+      },
+      &quot;contexts&quot;: [
+        &quot;report&quot;,
+        &quot;refuse&quot;
+      ],
+      &quot;halfLife&quot;: 8,
+      &quot;channel&quot;: &quot;Personally experienced protection or failure&quot;,
+      &quot;structural&quot;: &quot;Timely protection, staff work and actual victim costs&quot;
+    },
+    &quot;declarations&quot;: {
+      &quot;elements&quot;: {
+        &quot;risk&quot;: 0.15
+      },
+      &quot;contexts&quot;: [
+        &quot;integrity&quot;,
+        &quot;report&quot;,
+        &quot;refuse&quot;,
+        &quot;recruit&quot;,
+        &quot;implementation&quot;,
+        &quot;case&quot;,
+        &quot;retaliation&quot;
+      ],
+      &quot;halfLife&quot;: 10,
+      &quot;channel&quot;: &quot;Personally communicated verification&quot;,
+      &quot;structural&quot;: &quot;Covered personal records used in real scrutiny&quot;
+    },
+    &quot;conflicts&quot;: {
+      &quot;elements&quot;: {
+        &quot;norm&quot;: 0.1,
+        &quot;corruptControl&quot;: 0.25
+      },
+      &quot;contexts&quot;: [
+        &quot;integrity&quot;,
+        &quot;recruit&quot;,
+        &quot;implementation&quot;
+      ],
+      &quot;halfLife&quot;: 10,
+      &quot;channel&quot;: &quot;Experienced conflict review or blocked exchange&quot;,
+      &quot;structural&quot;: &quot;Records, applicable review and actual prevention&quot;
+    },
+    &quot;oversight&quot;: {
+      &quot;elements&quot;: {
+        &quot;risk&quot;: 0.3
+      },
+      &quot;contexts&quot;: [
+        &quot;integrity&quot;,
+        &quot;report&quot;,
+        &quot;refuse&quot;,
+        &quot;recruit&quot;,
+        &quot;implementation&quot;,
+        &quot;case&quot;,
+        &quot;retaliation&quot;
+      ],
+      &quot;halfLife&quot;: 8,
+      &quot;channel&quot;: &quot;Communicated audit/inquiry; never hidden audit truth&quot;,
+      &quot;structural&quot;: &quot;Finite scrutiny, evidence quality and corrective work&quot;
+    },
+    &quot;pay&quot;: {
+      &quot;elements&quot;: {},
+      &quot;contexts&quot;: [],
+      &quot;halfLife&quot;: 12,
+      &quot;channel&quot;: &quot;Actual pay receipts inform experienced financial security&quot;,
+      &quot;structural&quot;: &quot;Conserved supplements and actual income/cost valuations; no honesty bonus&quot;
+    },
+    &quot;penalties&quot;: {
+      &quot;elements&quot;: {
+        &quot;risk&quot;: 0.4
+      },
+      &quot;contexts&quot;: [
+        &quot;integrity&quot;,
+        &quot;report&quot;,
+        &quot;refuse&quot;,
+        &quot;recruit&quot;,
+        &quot;implementation&quot;,
+        &quot;case&quot;,
+        &quot;retaliation&quot;
+      ],
+      &quot;halfLife&quot;: 8,
+      &quot;channel&quot;: &quot;Observed actual liability and collection&quot;,
+      &quot;structural&quot;: &quot;Lawful liability, collectible resources and collection capacity&quot;
+    },
+    &quot;disclosure&quot;: {
+      &quot;elements&quot;: {},
+      &quot;contexts&quot;: [],
+      &quot;halfLife&quot;: 8,
+      &quot;channel&quot;: &quot;Accessed publications enter ordinary credibility-weighted belief learning&quot;,
+      &quot;structural&quot;: &quot;Real record visibility; no generic persuasion bonus&quot;
+    },
+    &quot;complaints&quot;: {
+      &quot;elements&quot;: {
+        &quot;control&quot;: 0.3,
+        &quot;knowledge&quot;: 0.2
+      },
+      &quot;contexts&quot;: [
+        &quot;report&quot;
+      ],
+      &quot;halfLife&quot;: 8,
+      &quot;channel&quot;: &quot;Encountered reporting instructions and actual intake&quot;,
+      &quot;structural&quot;: &quot;Channel access, monetary cost and competent recipient&quot;
+    },
+    &quot;education&quot;: {
+      &quot;elements&quot;: {
+        &quot;attitude&quot;: 0.3,
+        &quot;norm&quot;: 0.2,
+        &quot;control&quot;: 0.25,
+        &quot;knowledge&quot;: 0.35
+      },
+      &quot;contexts&quot;: [
+        &quot;integrity&quot;,
+        &quot;report&quot;,
+        &quot;refuse&quot;,
+        &quot;recruit&quot;,
+        &quot;implementation&quot;,
+        &quot;case&quot;,
+        &quot;retaliation&quot;
+      ],
+      &quot;halfLife&quot;: 6,
+      &quot;channel&quot;: &quot;Delivered teaching/messages with a known source&quot;,
+      &quot;structural&quot;: &quot;Funded setup, staff time, content delivery and coverage&quot;
+    },
+    &quot;experience&quot;: {
+      &quot;elements&quot;: {
+        &quot;risk&quot;: 0.2,
+        &quot;reportSafety&quot;: 0.15
+      },
+      &quot;contexts&quot;: [
+        &quot;integrity&quot;,
+        &quot;report&quot;,
+        &quot;refuse&quot;,
+        &quot;recruit&quot;,
+        &quot;implementation&quot;,
+        &quot;case&quot;,
+        &quot;retaliation&quot;
+      ],
+      &quot;halfLife&quot;: 6,
+      &quot;channel&quot;: &quot;Policy-independent personally accessed experience&quot;,
+      &quot;structural&quot;: &quot;Ordinary accountability and life experience&quot;
+    }
+  },
+  &quot;sharedBounds&quot;: {
+    &quot;attitude&quot;: 0.45,
+    &quot;norm&quot;: 0.45,
+    &quot;control&quot;: 0.5,
+    &quot;corruptControl&quot;: 0.5,
+    &quot;risk&quot;: 0.6,
+    &quot;knowledge&quot;: 0.6,
+    &quot;reportSafety&quot;: 0.6
+  },
+  &quot;novelty&quot;: 0.7,
+  &quot;noveltyFloor&quot;: 0.05,
+  &quot;maintenance&quot;: 0.35,
+  &quot;reportingDefinitions&quot;: {
+    &quot;aca&quot;: {
+      &quot;output&quot;: &quot;Screenings completed&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Relevant open case files&quot;,
+          &quot;count&quot;
+        ],
+        [
+          &quot;Screening / inquiry staff capacity&quot;,
+          &quot;PM&quot;
+        ],
+        [
+          &quot;Average mandate coverage&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;merit&quot;: {
+      &quot;output&quot;: &quot;Appointments completed&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Appointment criteria met, past 12 months&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Average staff competence&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Covered staffing scope&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;rotation&quot;: {
+      &quot;output&quot;: &quot;Staff transfers completed&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Closed-network continuity&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Current official staff&quot;,
+          &quot;count&quot;
+        ],
+        [
+          &quot;Operating rotation capability&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;protection&quot;: {
+      &quot;output&quot;: &quot;Threats remedied&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Reported threats, past 12 months&quot;,
+          &quot;count&quot;
+        ],
+        [
+          &quot;Expected reporting safety&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Operating protection capability&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;declarations&quot;: {
+      &quot;output&quot;: &quot;Reform verification notices&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Financial record completeness&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Covered declaration scope&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Operating verification capability&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;conflicts&quot;: {
+      &quot;output&quot;: &quot;Improper exchanges blocked&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Conflict-record quality&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Covered conflict-review scope&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Operating review capability&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;oversight&quot;: {
+      &quot;output&quot;: &quot;Investigations completed&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Audit / inquiry open files&quot;,
+          &quot;count&quot;
+        ],
+        [
+          &quot;Audit / inquiry staff capacity&quot;,
+          &quot;PM&quot;
+        ],
+        [
+          &quot;Operating scrutiny capability&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;pay&quot;: {
+      &quot;output&quot;: &quot;Net public pay delivered&quot;,
+      &quot;unit&quot;: &quot;RU&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Reliable adequate net pay&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Average official unmet-needs pressure&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Average net pay / living needs&quot;,
+          &quot;ratio&quot;
+        ]
+      ]
+    },
+    &quot;penalties&quot;: {
+      &quot;output&quot;: &quot;Liability actually collected&quot;,
+      &quot;unit&quot;: &quot;RU&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Outstanding assessed liability&quot;,
+          &quot;RU&quot;
+        ],
+        [
+          &quot;Officials’ expected accountability cost&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Operating collection capability&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;disclosure&quot;: {
+      &quot;output&quot;: &quot;Public-record delivery work&quot;,
+      &quot;unit&quot;: &quot;PM&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Public-record quality&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Covered disclosure scope&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Operating disclosure capability&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;complaints&quot;: {
+      &quot;output&quot;: &quot;Reports submitted&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Unresolved complaint files&quot;,
+          &quot;count&quot;
+        ],
+        [
+          &quot;Experienced reporting knowledge&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Modeled reporting access&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    },
+    &quot;education&quot;: {
+      &quot;output&quot;: &quot;Reform teaching contacts&quot;,
+      &quot;unit&quot;: &quot;count&quot;,
+      &quot;conditions&quot;: [
+        [
+          &quot;Usable knowledge&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Perceived approval of lawful conduct&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Lawful-action capability&quot;,
+          &quot;%&quot;
+        ],
+        [
+          &quot;Retained attitude influence&quot;,
+          &quot;%&quot;
+        ]
+      ]
+    }
+  }
+}
+</code></pre>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>

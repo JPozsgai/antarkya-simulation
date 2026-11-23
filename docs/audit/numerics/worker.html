@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numeric literals — worker.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="numeric-literals-worker-js">Numeric literals — worker.js</h1>
+<p><a href="../NUMERICS.html">Inventory guide</a>. Exact contexts are accessible in the full source.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Literal</th>
+<th>Unit / mechanism</th>
+<th>Expression context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/worker.js.html#L20">worker.js:20</a></td>
+<td>0</td>
+<td>module data · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L22">worker.js:22</a></td>
+<td>100</td>
+<td>module data · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>delay = 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L26">worker.js:26</a></td>
+<td>0</td>
+<td>module data · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>started = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L53">worker.js:53</a></td>
+<td>0</td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L54">worker.js:54</a></td>
+<td>0</td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L60">worker.js:60</a></td>
+<td>1</td>
+<td>send · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L79">worker.js:79</a></td>
+<td>1</td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L86">worker.js:86</a></td>
+<td>-1</td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>r.reporting.history.at(-1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L87">worker.js:87</a></td>
+<td>-1</td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>b.reporting.history.at(-1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L95">worker.js:95</a></td>
+<td>0</td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L120">worker.js:120</a></td>
+<td>1</td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L137">worker.js:137</a></td>
+<td>0</td>
+<td>finishPair · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>differences.reduce((a, b) =&gt; a + b, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L165">worker.js:165</a></td>
+<td>0</td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L165">worker.js:165</a></td>
+<td>3</td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>batch = replicate &gt; 0 ? 3 : delay &lt; 40 ? 3 : 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L165">worker.js:165</a></td>
+<td>40</td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>delay &lt; 40</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L165">worker.js:165</a></td>
+<td>3</td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>batch = replicate &gt; 0 ? 3 : delay &lt; 40 ? 3 : 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L165">worker.js:165</a></td>
+<td>1</td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>batch = replicate &gt; 0 ? 3 : delay &lt; 40 ? 3 : 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L166">worker.js:166</a></td>
+<td>0</td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>i = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L170">worker.js:170</a></td>
+<td>0</td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L170">worker.js:170</a></td>
+<td>0</td>
+<td>pump · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>setTimeout(pump, replicate &gt; 0 ? 0 : delay)</code></td>
+</tr>
+<tr>
+<td><a href="../source/worker.js.html#L185">worker.js:185</a></td>
+<td>0</td>
+<td>module data · <a href="../TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td><code>replicate = 0</code></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

@@ -1,0 +1,14 @@
+{
+  "baseCommit": "9ceb5ae38510f10d2211366406d150500a364a95",
+  "method": "Pinned Prettier normalization, comments and blank lines removed; only two documented link substitutions allowed in HTML",
+  "files": {
+    "index.html": {
+      "parser": "html",
+      "sha256": "8114b1411d0b7a392c8a3a387648bc74d4d947edd502358f20d3cf773b3397b4"
+    },
+    "style.css": {
+      "parser": "css",
+      "sha256": "deb7560fb7c19b486de0ef399c22fb1255af1779d21d8c69b8362feda5c50278"
+    }
+  }
+}

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Measurement dictionary: output, outcome and impact · Antarkya audit</title><link rel="stylesheet" href="audit.css"></head><body><header><a href="index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="NARRATIVE.html">Narrative</a><a href="TECHNICAL.html">Technical rules</a><a href="SOURCE-INDEX.html">Annotated code</a><a href="GAPS.html">Limits</a><a href="../../index.html">Simulation</a></nav></header><main><h1 id="measurement-dictionary-output-outcome-and-impact">Measurement dictionary: output, outcome and impact</h1>
+<p>References: <strong>AK-MEA-01</strong>, <strong>AK-MEA-02</strong>, <strong>AK-MEA-03</strong>, <strong>AK-MEA-04</strong>. Measurements are observation-only. This dictionary distinguishes the current policy-reporting panel from the older <code>assessment()</code> readout still used in compatibility/export paths. The same label must not conceal different denominators or windows.</p>
+<h2 id="common-definitions">Common definitions</h2>
+<p>For reporting output at month <code>t</code>, use cumulative process counter at <code>t</code> minus that at <code>max(earliest recorded month, t−12)</code>. The month-zero window can include reconstructed months -12 to 0. Output is activity in that interval, not a monthly mean or unique-person count. A baseline zero can mean that the model counts only additional reform delivery in that output category; it is not evidence that a country has no inherited activity.</p>
+<p>For fixed diagnostics, assign reference index <code>i</code> to eligible public organization <code>o</code> and current official <code>a</code> in cyclic order. Let <code>q=coverage(tool,o,a)</code>, <code>b=1/(1+(o.backlog+o.caseBacklog)/max(1,o.members.length))</code>, and <code>c=clamp((.5*o.skill+.5*professionalSkill)*(.4+.6*b))</code>. Compare the tool's threshold with <code>draw('Antarkya-fixed-diagnostic',societyDrawKey,tool,i)</code>. The value is <code>100*passed/n</code>; <code>n</code> is current official count, except complaints uses 100. These are fixed-draw capability diagnostics. They can remain unchanged until a threshold crosses a fixed draw; this does not prove that the underlying continuous capability is static. The reported formal scope field and the diagnostic's actual <code>coverage</code> expression must also be distinguished.</p>
+<h2 id="current-reporting-measures">Current reporting measures</h2>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Output and unit</th>
+<th>Outcome actually computed</th>
+<th>Denominator / method / direction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anti-corruption body</td>
+<td>Screening stages completed; count</td>
+<td>Threshold <code>q*o.caps.aca*c*(.4+.6*o.recordQuality)</code></td>
+<td>Fixed diagnostic; higher better; does not execute a real opposition-sensitive mandate test</td>
+</tr>
+<tr>
+<td>Recruitment/promotion</td>
+<td>Appointments completed; count</td>
+<td><code>100*meritGood/appointments</code> over the trailing 12 months</td>
+<td>Actual appointments; unavailable if none; higher better; one appointment is sufficient for a displayed ratio, with count shown</td>
+</tr>
+<tr>
+<td>Rotation</td>
+<td>Staff transfers completed; count</td>
+<td>Share of service functions retaining original leader, a direct current-leader tie stronger than .30, or a current member's tie to original leader stronger than .50</td>
+<td>Four service functions; lower better; direct continuity proxy, not complete network control</td>
+</tr>
+<tr>
+<td>Reporting-person protection</td>
+<td>Threats actually remedied; count</td>
+<td><code>100*protectedCount/threats</code> over trailing 12 months</td>
+<td>Modeled reported threats; unavailable if none; higher better; unseen threats are excluded</td>
+</tr>
+<tr>
+<td>Declarations</td>
+<td>Additional-reform verification contacts; count</td>
+<td>Threshold <code>q*o.caps.declarations*a.disclosure</code></td>
+<td>Fixed diagnostic; higher better; no itemized financial form reconstruction</td>
+</tr>
+<tr>
+<td>Conflicts of interest</td>
+<td>Connected exchanges blocked; count</td>
+<td>Threshold <code>q*o.caps.conflicts*o.recordQuality</code></td>
+<td>Fixed diagnostic; higher better; not an observed recusal success rate</td>
+</tr>
+<tr>
+<td>Audits/investigations</td>
+<td>Investigation stages completed; count</td>
+<td>Threshold <code>q*o.caps.oversight*c*(.4+.6*o.recordQuality)</code></td>
+<td>Fixed diagnostic; higher better; correction and high-power independence not fully exercised</td>
+</tr>
+<tr>
+<td>Remuneration</td>
+<td>Actual regular/supplemental public pay after .10 withholding; RU</td>
+<td>Share of officials with six receipts whose net receipt covers needs in at least five of those six months</td>
+<td>Eligible officials with six receipts; unavailable if none; higher better</td>
+</tr>
+<tr>
+<td>Financial penalties</td>
+<td>Actual liability collected; RU</td>
+<td>Sum collected in closed true sanction cases on noncivil routes linked to matured extortion acts, divided by the number of those acts</td>
+<td>True extortion cohort <code>t−18 &lt; act.month &lt;= t−6</code>; at least 20 acts; RU per violation; higher better; not a percentage</td>
+</tr>
+<tr>
+<td>Proactive disclosure</td>
+<td>Additional-reform record-delivery implementation work; PM</td>
+<td>Threshold <code>q*o.disclosureQuality*(.4+.6*o.caps.disclosure)</code></td>
+<td>Fixed diagnostic; higher better; output is not a fabricated document count</td>
+</tr>
+<tr>
+<td>Complaints</td>
+<td>Actual reports submitted; count</td>
+<td>Threshold <code>q*sim.cap('complaints')*(.5+.5*b)</code></td>
+<td>Fixed diagnostic with 100 references; higher better; not 100 executed submissions</td>
+</tr>
+<tr>
+<td>Education</td>
+<td>Additional-reform teaching contacts; count</td>
+<td><code>100*mean(Adaptive.knowledge(agent,'integrity'))</code> over all people</td>
+<td>Exact modeled usable-knowledge mean for 1,000; higher better; no question-bank test</td>
+</tr>
+</tbody>
+</table>
+<p>Output increments are attached to completed process hooks; the full source is authoritative for conditional routing. <code>Reporting.record</code> additionally observes appointment/merit/threat/protection/complaint/collection changes through actual metrics. Teaching output can count delivery without acceptance or comprehension; it does not imply successful learning.</p>
+<h2 id="before-current-final-condition-fields">Before/current/final condition fields</h2>
+<p>The exact condition labels and units are in the <a href="INPUTS.html">input tables</a> and <code>reporting.definitions</code>. Their formulas are:</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Conditions in displayed order</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anti-corruption body</td>
+<td>Relevant open files whose responsible function is prevention/integrity/investigation; matching-role staffing capacity in eligible bodies; mean coverage ×100</td>
+</tr>
+<tr>
+<td>Recruitment/promotion</td>
+<td>Current trailing-year merit ratio; mean current official skill ×100; mean coverage ×100</td>
+</tr>
+<tr>
+<td>Rotation</td>
+<td>Continuity diagnostic; current official count; mean operative capability ×100</td>
+</tr>
+<tr>
+<td>Protection</td>
+<td>Trailing-year threats; mean personal reporting safety ×100; mean operative protection ×100</td>
+</tr>
+<tr>
+<td>Declarations</td>
+<td>Mean official disclosure completeness ×100; mean coverage ×100; mean operative declarations ×100</td>
+</tr>
+<tr>
+<td>Conflicts</td>
+<td>Mean eligible-body record quality ×100; mean coverage ×100; mean operative conflicts ×100</td>
+</tr>
+<tr>
+<td>Oversight</td>
+<td>Open audit-source files or files in inquiry stage; eligible-body staffing capacity; mean operative oversight ×100</td>
+</tr>
+<tr>
+<td>Pay</td>
+<td>Six-receipt adequacy ratio; mean official financial pressure ×100; mean per-official ratio of .90×mean gross receipts to needs</td>
+</tr>
+<tr>
+<td>Penalties</td>
+<td>Sum remaining personal assessed liabilities; mean official expected accountability-cost score ×100; mean operative collection capability ×100</td>
+</tr>
+<tr>
+<td>Disclosure</td>
+<td>Mean eligible-body public-record quality ×100; mean coverage ×100; mean operative disclosure ×100</td>
+</tr>
+<tr>
+<td>Complaints</td>
+<td>Open complaint-source files; mean usable reporting knowledge ×100; aggregate complaint capability ×100</td>
+</tr>
+<tr>
+<td>Education</td>
+<td>Mean usable knowledge ×100; perceived approval of lawful conduct after retained norm influence; lawful-action control after retained influence; mean retained attitude influence ×100</td>
+</tr>
+</tbody>
+</table>
+<p>For mean coverage/capability, each eligible organization receives equal weight; it is not a national population-weighted coverage estimate. Staff capacity is <code>matching official count*(.25+.4*organization skill+.35*mean staff skill)</code>. Some conditions duplicate an outcome intentionally to show the starting/current/final level. Conditions, outputs and outcomes may use different observation windows; the panel names them. General pending cases/services appear as expandable system context because they are not universally relevant reform results.</p>
+<h2 id="legacy-compatibility-readouts">Legacy compatibility readouts</h2>
+<p><code>Simulation.assessment()</code> uses <code>diagnostic()</code> directly. Before 20 cumulative appointments, its merit measure is the fixed threshold <code>q*o.caps.merit*o.recordQuality</code>; thereafter it is cumulative merit appointments/all appointments. Its protection measure remains fixed threshold <code>q*o.caps.protection*c</code>, even though current reporting uses actual trailing-year threats. Legacy penalties use all true extortion acts at least six months old, with a 20-act minimum; the new panel uses the rolling 12-month cohort ending six months earlier. Rotation, pay, education and other fixed diagnostics follow the same instantaneous formulas described above.</p>
+<p>These compatibility paths are intentionally disclosed. They must not be compared as if they were identical time series. Neither the legacy diagnostic's numerator nor a prose indicator title should be taken as a literal real-world success count.</p>
+<h2 id="package-impact">Package impact</h2>
+<p>Impact uses actual branch counts: <code>100*encounterCorruptActs/encounterOpportunities</code>. The difference is <strong>reform minus baseline</strong>, in percentage points; a negative value means fewer modeled corrupt encounters per opportunity in the reform branch. Zero denominator yields unavailable, not zero. Extortion demands count even if the victim refuses or cannot pay; voluntary bilateral participation requires completion. This is narrower than all abuse and broader than completed corrupt money exchanges.</p>
+<p>For the past-12-month post-adoption window, subtract each branch's cumulative counters at <code>s=max(0,t−12)</code> and divide its own interval counts. For since-adoption, use <code>s=0</code>. Do not average unweighted monthly percentages. The package effect is the same when switching the selected policy; no individual-policy attribution is claimed. Repetitions summarize mean/min/max paired differences on the identical starting society with new event draws, not an empirical confidence interval.</p>
+<p>Changes in money, services, public resources, coercion, sanctions and beliefs are separately named consequences. A bribe, wage or fine transfer is not automatically a net welfare loss. The model does not compute a complete social welfare account.</p>
+<h2 id="interpretations-and-event-links">Interpretations and event links</h2>
+<p>Predefined statements distinguish increase/decrease/no display-relevant difference and unavailable measurements. Tolerances are output <code>1e−8</code>, outcome <code>.05</code> indicator units and impact <code>.0005</code> points; these concern display precision, not statistical significance. Estimated diagnostics are identified as estimates. Up to two event references appear inline, with up to eight selected contextual records available. Records must already exist, be no later than the review month and meet the policy/package selection rules. Links describe connected developments; they do not identify causal mediation.</p>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>

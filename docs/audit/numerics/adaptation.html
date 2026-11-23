@@ -1,0 +1,1390 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numeric literals — adaptation.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="numeric-literals-adaptation-js">Numeric literals — adaptation.js</h1>
+<p><a href="../NUMERICS.html">Inventory guide</a>. Exact contexts are accessible in the full source.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Literal</th>
+<th>Unit / mechanism</th>
+<th>Expression context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/adaptation.js.html#L13">adaptation.js:13</a></td>
+<td>0</td>
+<td>clamp · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>clamp = (x, l = 0, h = 1) =&gt; Math.max(l, Math.min(h, x))</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L13">adaptation.js:13</a></td>
+<td>1</td>
+<td>clamp · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>clamp = (x, l = 0, h = 1) =&gt; Math.max(l, Math.min(h, x))</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L44">adaptation.js:44</a></td>
+<td>0.25</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>risk: 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L44">adaptation.js:44</a></td>
+<td>0.15</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>control: 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L47">adaptation.js:47</a></td>
+<td>10</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 10</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L54">adaptation.js:54</a></td>
+<td>0.12</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>norm: 0.12</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L54">adaptation.js:54</a></td>
+<td>0.15</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>control: 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L56">adaptation.js:56</a></td>
+<td>12</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 12</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L63">adaptation.js:63</a></td>
+<td>0.1</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>norm: 0.1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L65">adaptation.js:65</a></td>
+<td>8</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L72">adaptation.js:72</a></td>
+<td>0.25</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>control: 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L72">adaptation.js:72</a></td>
+<td>0.35</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>reportSafety: 0.35</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L74">adaptation.js:74</a></td>
+<td>8</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L81">adaptation.js:81</a></td>
+<td>0.15</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>risk: 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L83">adaptation.js:83</a></td>
+<td>10</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 10</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L90">adaptation.js:90</a></td>
+<td>0.1</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>norm: 0.1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L90">adaptation.js:90</a></td>
+<td>0.25</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>corruptControl: 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L92">adaptation.js:92</a></td>
+<td>10</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 10</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L99">adaptation.js:99</a></td>
+<td>0.3</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>risk: 0.3</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L101">adaptation.js:101</a></td>
+<td>8</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L110">adaptation.js:110</a></td>
+<td>12</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 12</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L117">adaptation.js:117</a></td>
+<td>0.4</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>risk: 0.4</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L119">adaptation.js:119</a></td>
+<td>8</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L128">adaptation.js:128</a></td>
+<td>8</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L135">adaptation.js:135</a></td>
+<td>0.3</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>control: 0.3</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L135">adaptation.js:135</a></td>
+<td>0.2</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>knowledge: 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L137">adaptation.js:137</a></td>
+<td>8</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td>0.3</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>attitude: 0.3</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td>0.2</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>norm: 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td>0.25</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>control: 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L144">adaptation.js:144</a></td>
+<td>0.35</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>knowledge: 0.35</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L146">adaptation.js:146</a></td>
+<td>6</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L151">adaptation.js:151</a></td>
+<td>0.2</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>risk: 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L151">adaptation.js:151</a></td>
+<td>0.15</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>reportSafety: 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L153">adaptation.js:153</a></td>
+<td>6</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>halfLife: 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L159">adaptation.js:159</a></td>
+<td>0.45</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>attitude: 0.45</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L160">adaptation.js:160</a></td>
+<td>0.45</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>norm: 0.45</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L161">adaptation.js:161</a></td>
+<td>0.5</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>control: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L162">adaptation.js:162</a></td>
+<td>0.5</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>corruptControl: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L163">adaptation.js:163</a></td>
+<td>0.6</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>risk: 0.6</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L164">adaptation.js:164</a></td>
+<td>0.6</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>knowledge: 0.6</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L165">adaptation.js:165</a></td>
+<td>0.6</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>reportSafety: 0.6</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L168">adaptation.js:168</a></td>
+<td>0.7</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>novelty = 0.7</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L169">adaptation.js:169</a></td>
+<td>0.05</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>noveltyFloor = 0.05</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L170">adaptation.js:170</a></td>
+<td>0.35</td>
+<td>module data · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>maintenance = 0.35</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L177">adaptation.js:177</a></td>
+<td>0.2</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.2 + 0.6 * random('openness')</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L177">adaptation.js:177</a></td>
+<td>0.6</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.6 * random('openness')</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L178">adaptation.js:178</a></td>
+<td>0.2</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.2 + 0.6 * random('retention')</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L178">adaptation.js:178</a></td>
+<td>0.6</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.6 * random('retention')</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L179">adaptation.js:179</a></td>
+<td>0.2</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.2 + 0.6 * random('learning')</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L179">adaptation.js:179</a></td>
+<td>0.6</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.6 * random('learning')</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L182">adaptation.js:182</a></td>
+<td>1</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>version: 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L191">adaptation.js:191</a></td>
+<td>0.2</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.2 + 0.6 * random('reporting-safety')</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L191">adaptation.js:191</a></td>
+<td>0.6</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.6 * random('reporting-safety')</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L193">adaptation.js:193</a></td>
+<td>9</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>Array(9)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L193">adaptation.js:193</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>Array(9).fill(0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L195">adaptation.js:195</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>feedback: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L196">adaptation.js:196</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>lastAdvance: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L207">adaptation.js:207</a></td>
+<td>0</td>
+<td>recentParticipation · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>return h.length ? h.filter((x) =&gt; x.corrupt).length / h.length : 0;</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L213">adaptation.js:213</a></td>
+<td>1</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>(function (root) { /** [AK-ADP-01] [AK-ADP-02] clamp * Implementation unit for Individual receptiveness and numerical psychology. Follow the reference IDs for its equations, assumptions and verific…</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L215">adaptation.js:215</a></td>
+<td>2</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>a.motives[2] + a.motives[5]</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L215">adaptation.js:215</a></td>
+<td>5</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>a.motives[2] + a.motives[5]</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L215">adaptation.js:215</a></td>
+<td>8</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>a.motives[2] + a.motives[5] + a.motives[8]</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L216">adaptation.js:216</a></td>
+<td>3</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>economicSelf = a.motives[3]</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L217">adaptation.js:217</a></td>
+<td>1</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>1 - clamp(a.normCorrupt, -1, 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L217">adaptation.js:217</a></td>
+<td>-1</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>clamp(a.normCorrupt, -1, 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L217">adaptation.js:217</a></td>
+<td>1</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>clamp(a.normCorrupt, -1, 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L217">adaptation.js:217</a></td>
+<td>2</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>(1 - clamp(a.normCorrupt, -1, 1)) / 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L221">adaptation.js:221</a></td>
+<td>0.45</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.45 + 0.4 * economicSelf</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L221">adaptation.js:221</a></td>
+<td>0.4</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.4 * economicSelf</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L221">adaptation.js:221</a></td>
+<td>0.15</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.15 * a.knowledge</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L223">adaptation.js:223</a></td>
+<td>0.25</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.25 + 0.35 * publicInterest</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L223">adaptation.js:223</a></td>
+<td>0.35</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.35 * publicInterest</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L223">adaptation.js:223</a></td>
+<td>0.3</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.3 * honestExpectation</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L223">adaptation.js:223</a></td>
+<td>0.2</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.2 * ownHistory</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L224">adaptation.js:224</a></td>
+<td>0.35</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.35 + 0.35 * a.knowledge</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L224">adaptation.js:224</a></td>
+<td>0.35</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.35 * a.knowledge</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L224">adaptation.js:224</a></td>
+<td>0.3</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.3 * (a.experience?.trust ?? 0.5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L224">adaptation.js:224</a></td>
+<td>0.5</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.3 * (a.experience?.trust ?? 0.5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L227">adaptation.js:227</a></td>
+<td>0.1</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.1 + 0.55 * p.traits.openness</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L227">adaptation.js:227</a></td>
+<td>0.55</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.55 * p.traits.openness</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L227">adaptation.js:227</a></td>
+<td>0.2</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.2 * alignment</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L227">adaptation.js:227</a></td>
+<td>0.15</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.15 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L230">adaptation.js:230</a></td>
+<td>0.25</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.25 + 0.45 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L230">adaptation.js:230</a></td>
+<td>0.45</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.45 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L230">adaptation.js:230</a></td>
+<td>0.3</td>
+<td>receptiveness · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.3 * alignment</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L237">adaptation.js:237</a></td>
+<td>0.5</td>
+<td>feedback · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>(function (root) { /** [AK-ADP-01] [AK-ADP-02] clamp * Implementation unit for Individual receptiveness and numerical psychology. Follow the reference IDs for its equations, assumptions and verific…</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L240">adaptation.js:240</a></td>
+<td>0.1</td>
+<td>feedback · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.1 * (c - p.feedback)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L243">adaptation.js:243</a></td>
+<td>0</td>
+<td>feedback · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>i &gt;= 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L243">adaptation.js:243</a></td>
+<td>9</td>
+<td>feedback · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>i &lt; 9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L244">adaptation.js:244</a></td>
+<td>0.08</td>
+<td>feedback · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>0.08 * c</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L255">adaptation.js:255</a></td>
+<td>1</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>clamp(options.quality ?? 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L256">adaptation.js:256</a></td>
+<td>0.55</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>clamp(options.credibility ?? 0.55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L263">adaptation.js:263</a></td>
+<td>32</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>memory.events.length &gt; 32</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L281">adaptation.js:281</a></td>
+<td>0</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>level: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L282">adaptation.js:282</a></td>
+<td>0</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>peak: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L283">adaptation.js:283</a></td>
+<td>0</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>count: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L284">adaptation.js:284</a></td>
+<td>0</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>accepted: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L285">adaptation.js:285</a></td>
+<td>1</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>target: element === 'reportSafety' ? 1 : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L285">adaptation.js:285</a></td>
+<td>0</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>target: element === 'reportSafety' ? 1 : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L290">adaptation.js:290</a></td>
+<td>0</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>gain = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L291">adaptation.js:291</a></td>
+<td>0</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>restoration = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L297">adaptation.js:297</a></td>
+<td>0</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>Math.max(0, state.peak - state.level)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L305">adaptation.js:305</a></td>
+<td>1</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>state.accepted === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td>2</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>2: 0.7</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td>0.7</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>2: 0.7</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td>5</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>5: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td>0.5</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>5: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td>8</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>8: 0.4</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td>0.4</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>8: 0.4</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td>3</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>3: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L324">adaptation.js:324</a></td>
+<td>0.5</td>
+<td>observe · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>3: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L332">adaptation.js:332</a></td>
+<td>0</td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>elements.map((k) =&gt; [k, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L333">adaptation.js:333</a></td>
+<td>0</td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>riskTarget = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L334">adaptation.js:334</a></td>
+<td>0</td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>riskWeight = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L335">adaptation.js:335</a></td>
+<td>0</td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>safetyTarget = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L336">adaptation.js:336</a></td>
+<td>0</td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>safetyWeight = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L360">adaptation.js:360</a></td>
+<td>0.5</td>
+<td>influence · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>out.safetyTarget = safetyWeight ? safetyTarget / safetyWeight : 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L371">adaptation.js:371</a></td>
+<td>1</td>
+<td>refresh · <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>1 - p.baseKnowledge</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L381">adaptation.js:381</a></td>
+<td>1</td>
+<td>knowledge · <a href="../TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td><code>1 - p.baseKnowledge</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L396">adaptation.js:396</a></td>
+<td>1</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>(function (root) { /** [AK-ADP-01] [AK-ADP-02] clamp * Implementation unit for Individual receptiveness and numerical psychology. Follow the reference IDs for its equations, assumptions and verific…</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L401">adaptation.js:401</a></td>
+<td>64</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>p.accountabilityEvents.length &gt; 64</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L402">adaptation.js:402</a></td>
+<td>0.35</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>span = personal ? 0.35 : 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L402">adaptation.js:402</a></td>
+<td>0.15</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>span = personal ? 0.35 : 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L403">adaptation.js:403</a></td>
+<td>0.03</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>clamp(p.riskPrior + span * clamp(signal), 0.03, 0.95)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L403">adaptation.js:403</a></td>
+<td>0.95</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>clamp(p.riskPrior + span * clamp(signal), 0.03, 0.95)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L405">adaptation.js:405</a></td>
+<td>0.12</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>0.12 + 0.12 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L405">adaptation.js:405</a></td>
+<td>0.12</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>0.12 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L405">adaptation.js:405</a></td>
+<td>0.015</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>0.015 + 0.025 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L405">adaptation.js:405</a></td>
+<td>0.025</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>0.025 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L409">adaptation.js:409</a></td>
+<td>0.03</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>Math.max(0.03, p.riskPrior - 0.15)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L409">adaptation.js:409</a></td>
+<td>0.15</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>p.riskPrior - 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L410">adaptation.js:410</a></td>
+<td>0.95</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>Math.min(0.95, p.riskPrior + 0.35)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L410">adaptation.js:410</a></td>
+<td>0.35</td>
+<td>accountability · <a href="../TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td><code>p.riskPrior + 0.35</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L423">adaptation.js:423</a></td>
+<td>0.005</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.005 * (p.riskPrior - p.baseRisk)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L425">adaptation.js:425</a></td>
+<td>0.5</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.5 + p.traits.retention</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L429">adaptation.js:429</a></td>
+<td>0.5</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>trust = a.experience?.trust ?? 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L431">adaptation.js:431</a></td>
+<td>0.12</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.12 * (2 * trust - 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L431">adaptation.js:431</a></td>
+<td>2</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>2 * trust</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L431">adaptation.js:431</a></td>
+<td>1</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>2 * trust - 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L431">adaptation.js:431</a></td>
+<td>0.08</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.08 * recentParticipation(a)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L434">adaptation.js:434</a></td>
+<td>0.01</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.01 * (openness - p.traits.openness)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L435">adaptation.js:435</a></td>
+<td>0</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>Math.max(0, p.baseTraits.openness - 0.15)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L435">adaptation.js:435</a></td>
+<td>0.15</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>p.baseTraits.openness - 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L436">adaptation.js:436</a></td>
+<td>1</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>Math.min(1, p.baseTraits.openness + 0.15)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L436">adaptation.js:436</a></td>
+<td>0.15</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>p.baseTraits.openness + 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L438">adaptation.js:438</a></td>
+<td>0.15</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.15 * p.feedback</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L439">adaptation.js:439</a></td>
+<td>0.005</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.005 * (learning - p.traits.learning)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L440">adaptation.js:440</a></td>
+<td>0.1</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.1 * p.feedback</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L441">adaptation.js:441</a></td>
+<td>0.005</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.005 * (retention - p.traits.retention)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L442">adaptation.js:442</a></td>
+<td>0.35</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.35 * p.salience[i]</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L443">adaptation.js:443</a></td>
+<td>0</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>target.reduce((x, y) =&gt; x + y, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L444">adaptation.js:444</a></td>
+<td>0.002</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.002 * (target[i] / total - v)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L445">adaptation.js:445</a></td>
+<td>0</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>a.motives.reduce((x, y) =&gt; x + y, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L447">adaptation.js:447</a></td>
+<td>0.99</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>v * 0.99</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L448">adaptation.js:448</a></td>
+<td>0.98</td>
+<td>advance · <a href="../TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>p.feedback *= 0.98</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L458">adaptation.js:458</a></td>
+<td>0</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>time &lt;= 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L461">adaptation.js:461</a></td>
+<td>0</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>Math.max(0, Math.min(1, p.initialSkill + 0.2) - a.skill)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L461">adaptation.js:461</a></td>
+<td>1</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>Math.min(1, p.initialSkill + 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L461">adaptation.js:461</a></td>
+<td>0.2</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>p.initialSkill + 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L462">adaptation.js:462</a></td>
+<td>0.003</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.003 * time</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L462">adaptation.js:462</a></td>
+<td>0</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>Math.max(0, 1 - a.skill)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L462">adaptation.js:462</a></td>
+<td>1</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>1 - a.skill</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L464">adaptation.js:464</a></td>
+<td>3</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>3: 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L464">adaptation.js:464</a></td>
+<td>0.25</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>3: 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L464">adaptation.js:464</a></td>
+<td>4</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>4: 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L464">adaptation.js:464</a></td>
+<td>0.15</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>4: 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L464">adaptation.js:464</a></td>
+<td>0.6</td>
+<td>work · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>feedback(a, { 3: 0.25, 4: 0.15 }, 0.6)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L472">adaptation.js:472</a></td>
+<td>0</td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>Math.max(0, received)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L473">adaptation.js:473</a></td>
+<td>0.05</td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.05 + 0.25 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L473">adaptation.js:473</a></td>
+<td>0.25</td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.25 * p.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
+<td>3</td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>3: clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost))</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
+<td>0.9</td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>0.9 * observed</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
+<td>0.1</td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>Math.max(0.1, a.cost)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
+<td>0.8</td>
+<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td><code>feedback(a, { 3: clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost)) }, 0.8)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L483">adaptation.js:483</a></td>
+<td>0.25</td>
+<td>messageRate · <a href="../TECHNICAL.html#ak-inf-02">AK-INF-02</a></td>
+<td><code>0.25 + 0.5 * a.psychology.traits.openness</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L483">adaptation.js:483</a></td>
+<td>0.5</td>
+<td>messageRate · <a href="../TECHNICAL.html#ak-inf-02">AK-INF-02</a></td>
+<td><code>0.5 * a.psychology.traits.openness</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L483">adaptation.js:483</a></td>
+<td>0.25</td>
+<td>messageRate · <a href="../TECHNICAL.html#ak-inf-02">AK-INF-02</a></td>
+<td><code>0.25 * a.psychology.traits.learning</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L506">adaptation.js:506</a></td>
+<td>-1</td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>Math.min(-1, attitude)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L508">adaptation.js:508</a></td>
+<td>-1</td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>(option.corrupt ? -1 : 1) - norm</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L508">adaptation.js:508</a></td>
+<td>1</td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>(option.corrupt ? -1 : 1) - norm</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L509">adaptation.js:509</a></td>
+<td>1</td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>1 - e.corruptControl</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L513">adaptation.js:513</a></td>
+<td>1</td>
+<td>decision · <a href="../TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="../TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td><code>1 - control</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L550">adaptation.js:550</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.version !== 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L551">adaptation.js:551</a></td>
+<td>9</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.initialMotives?.length !== 9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L552">adaptation.js:552</a></td>
+<td>9</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.salience?.length !== 9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L553">adaptation.js:553</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>x &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L554">adaptation.js:554</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.initialMotives.reduce((x, y) =&gt; x + y, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L554">adaptation.js:554</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.initialMotives.reduce((x, y) =&gt; x + y, 0) - 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L554">adaptation.js:554</a></td>
+<td>1e-6</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>Math.abs(p.initialMotives.reduce((x, y) =&gt; x + y, 0) - 1) &gt; 1e-6</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L555">adaptation.js:555</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>x &gt;= 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L555">adaptation.js:555</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>x &lt;= 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L557">adaptation.js:557</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.riskPrior &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L558">adaptation.js:558</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.riskPrior &gt; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L560">adaptation.js:560</a></td>
+<td>64</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.accountabilityEvents.length &gt; 64</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L562">adaptation.js:562</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseRisk &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L563">adaptation.js:563</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseRisk &gt; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L565">adaptation.js:565</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseKnowledge &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L566">adaptation.js:566</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseKnowledge &gt; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L568">adaptation.js:568</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.initialSkill &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L569">adaptation.js:569</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.initialSkill &gt; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L571">adaptation.js:571</a></td>
+<td>-12</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.lastAdvance &lt; -12</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L576">adaptation.js:576</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.expectedIncome &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L578">adaptation.js:578</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.feedback &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L579">adaptation.js:579</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.feedback &gt; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L581">adaptation.js:581</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseSafety &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L582">adaptation.js:582</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseSafety &gt; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L589">adaptation.js:589</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>t[k] &gt;= 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L589">adaptation.js:589</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>t[k] &lt;= 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L595">adaptation.js:595</a></td>
+<td>32</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>m.events.length &gt; 32</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L601">adaptation.js:601</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>s.level &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L602">adaptation.js:602</a></td>
+<td>1e-9</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>s.peak + 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L603">adaptation.js:603</a></td>
+<td>1e-9</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>max + 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L604">adaptation.js:604</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>s.target &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L605">adaptation.js:605</a></td>
+<td>1</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>s.target &gt; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L608">adaptation.js:608</a></td>
+<td>0</td>
+<td>valid · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>s.accepted &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L624">adaptation.js:624</a></td>
+<td>0</td>
+<td>unit · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>x &gt;= 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L624">adaptation.js:624</a></td>
+<td>1</td>
+<td>unit · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>x &lt;= 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L630">adaptation.js:630</a></td>
+<td>0</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.expectedIncome &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L633">adaptation.js:633</a></td>
+<td>9</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseMotives.length !== 9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L635">adaptation.js:635</a></td>
+<td>0</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseMotives.reduce((x, y) =&gt; x + y, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L635">adaptation.js:635</a></td>
+<td>1</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>p.baseMotives.reduce((x, y) =&gt; x + y, 0) - 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L635">adaptation.js:635</a></td>
+<td>1e-6</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>Math.abs(p.baseMotives.reduce((x, y) =&gt; x + y, 0) - 1) &gt; 1e-6</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L637">adaptation.js:637</a></td>
+<td>1e-9</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>bounds[k] + 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L652">adaptation.js:652</a></td>
+<td>1e-9</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>s.peak + 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L653">adaptation.js:653</a></td>
+<td>1e-9</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>maximum + 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L656">adaptation.js:656</a></td>
+<td>0</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>s.accepted &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L668">adaptation.js:668</a></td>
+<td>500</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>last.event.length &gt; 500</code></td>
+</tr>
+<tr>
+<td><a href="../source/adaptation.js.html#L670">adaptation.js:670</a></td>
+<td>-12</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td><code>last.month &lt; -12</code></td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

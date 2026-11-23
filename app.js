@@ -1,152 +1,2136 @@
+/* AUDIT FILE — app.js
+ * References: AK-OV-01, AK-INI-01, AK-MEA-04, AK-VIS-01, AK-VIS-02, AK-VIS-03, AK-IO-01, AK-OPS-01
+ * See docs/audit/TECHNICAL.md and the line-linked full source in docs/audit/source/.
+ * Documentation-only revision: execution is checked against the pinned pre-annotation AST.
+ */
+
 'use strict';
 (() => {
-  const A=window.Antarkya,D=window.AntarkyaProfiles,C=window.AntarkyaConfig,R=window.AntarkyaRunSeeds,V=window.AntarkyaVisualization,$=id=>document.getElementById(id);
-  const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const number=(v,d=1)=>v===null||v===undefined||!Number.isFinite(Number(v))?'—':Number(v).toLocaleString(undefined,{maximumFractionDigits:d,minimumFractionDigits:d});
-  const colors=['#4585ad','#d08b2f','#31836b','#996296'],LAST='antarkya.v2.last',FALLBACK='antarkya.v2.saves';
-  let draftInitialSeed='Antarkya-v2-society';
-  let worker=null,initial=null,current=null,activeConfig=null,completed=null,running=false,selected=[],selectedEvent=null,inspected=null,zoom=1,pan={x:0,y:0},positions=[],dbPromise=null,drag=null,lastSignature='';
-  function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('alert',error);}
-  function profile(){return D.profiles.find(p=>p.iso3===$('country').value);}
-  function getConfig(){const overrides={};for(const el of document.querySelectorAll('[data-override]'))if(el.value!==''&&el.value!==el.dataset.defaultValue)overrides[el.dataset.override]=Number(el.value);return A.validate({country:$('country').value,duration:Number($('duration').value),repetitions:Number($('repetitions').value),eventSeed:$('eventSeed').value,initialSeed:draftInitialSeed,overrides,policies:D.policies.filter(p=>$('p-'+p.id).checked).map(p=>({id:p.id,mobilization:Number($('rate-'+p.id).value)/100}))});}
-  function remember(){try{localStorage.setItem(LAST,JSON.stringify(getConfig()));}catch(e){/* Save/export controls report their own storage errors. */}}
-  function summaryText(){const c=getConfig();$('eventSeed').readOnly=!$('reuseEventSeed').checked;$('policyCount').textContent=c.policies.length+' selected';$('setupSummary').textContent=`${profile().name} · ${c.policies.length} reform${c.policies.length===1?'':'s'} · ${c.duration} months · `+(c.policies.length?c.policies.map(p=>D.policies.find(q=>q.id===p.id).label+' '+Math.round(p.mobilization*100)+'%').join('; '):'No new reform');const counts=C.countries[c.country].counts;$('composition').textContent='Provisional scaled composition: '+counts.map((n,i)=>n+' '+A.TYPES[i].toLowerCase()).join(', ')+'. These are model counts, not national population percentages.';}
-  function pending(){try{summaryText();remember();if(activeConfig){status('Setup changes prepare a new scenario. The active run is unchanged; Reset or start a new run to apply them.');}else preview();}catch(e){status(e.message,true);}}
-  function buildPolicies(){const families=[...new Set(D.policies.map(p=>p.family))];$('policies').innerHTML=families.map(f=>`<details><summary>${esc(f)}</summary><div>${D.policies.filter(p=>p.family===f).map(p=>`<div class="policy"><label><input type="checkbox" id="p-${p.id}" ${['oversight','complaints'].includes(p.id)?'checked':''}><span class="policyname">${esc(p.label)}</span></label><small>${esc(p.outcome)}</small><div class="range" id="range-${p.id}" ${['oversight','complaints'].includes(p.id)?'':'hidden'}><label for="slide-${p.id}" class="small">Mobilization</label><input type="range" id="slide-${p.id}" min="0" max="100" step="5" value="60" aria-label="${esc(p.label)} mobilization"><input type="number" id="rate-${p.id}" min="0" max="100" value="60" aria-label="${esc(p.label)} mobilization percent"><span>%</span></div></div>`).join('')}</div></details>`).join('');for(const p of D.policies){$('p-'+p.id).addEventListener('change',()=>{$('range-'+p.id).hidden=!$('p-'+p.id).checked;pending();});for(const prefix of ['slide-','rate-'])$(prefix+p.id).addEventListener('input',()=>{const value=Math.max(0,Math.min(100,Number($(prefix+p.id).value)||0));$('slide-'+p.id).value=value;$('rate-'+p.id).value=value;pending();});}}
-  function countryFields(){const p=profile(),base=A.conditions(A.validate({country:p.iso3}));const fields=[['gdp_per_capita_ppp','GDP per capita PPP (intl $)'],['government_effectiveness','Government effectiveness (0–100)'],['rule_of_law','Rule of law (0–100)'],['regulatory_quality_proxy','Regulatory quality proxy (0–100)']];$('macroFields').innerHTML=fields.map(([key,label])=>`<div class="field"><label for="o-${key}">${esc(label)}</label><input type="number" id="o-${key}" data-override="${key}" min="${A.NUMERIC[key][0]}" max="${A.NUMERIC[key][1]}" step="0.1" value="${base[key].toFixed(1)}"><span class="sourceflag">Sourced 2025 descriptor</span></div>`).join('');const other=[['civil_liberties','Civil liberties'],['representation','Political representation'],['electoral_integrity','Electoral integrity'],['kinship','Kinship attachment'],['informality','Informality'],['public_private_separation','Public/private separation'],['central_allocation','Central allocation share (%)']];$('otherFields').innerHTML=other.map(([key,label])=>`<div class="field"><label for="o-${key}">${esc(label)}</label><input type="number" id="o-${key}" data-override="${key}" min="0" max="100" step="0.01" value="${Number(base[key].toFixed(2))}"><span class="sourceflag">${esc(A.Baseline.fieldStatus(key))}</span></div>`).join('');$('countryFacts').innerHTML='<h3>Inherited architecture</h3><ul>'+p.architecture.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul><p class="small"><b>Procedural constraint:</b> '+esc(p.political.institutional_constraint)+'</p><p class="small muted">'+esc(p.implementation_constraints.join(' '))+'</p>';$('countrySources').innerHTML=A.Baseline.sources(p.iso3).map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a></li>`).join('')+p.sources.map(id=>`<li><a href="${esc(D.sources[id].url)}" target="_blank" rel="noopener">${esc(D.sources[id].title)}</a></li>`).join('')+'<li><a href="https://www.worldbank.org/en/publication/worldwide-governance-indicators/frequently-asked-questions" target="_blank" rel="noopener">World Bank WGI definitions</a> · retrieved 22 November 2026</li>';$('toolBaseline').innerHTML='<p class="small">A verified instrument is not necessarily fully operational. An unscoped instrument is not absent.</p><ul class="small">'+D.policies.map(q=>'<li>'+esc(q.label)+': '+esc(({existing_relevant_instrument:'relevant existing instrument documented',existing_with_documented_scope_gap:'existing instrument; documented scope gap',not_scoped_not_absent:'not fully scoped in this evidence pass'})[p.tool_baseline[q.id].status])+'</li>').join('')+'</ul>';
-    for(const el of document.querySelectorAll('[data-override]')){el.dataset.defaultValue=el.value;el.addEventListener('change',pending);}
-  }
-  function applyConfig(c){draftInitialSeed=c.initialSeed;$('country').value=c.country;$('duration').value=String(c.duration);$('repetitions').value=String(c.repetitions);$('eventSeed').value=c.eventSeed;countryFields();for(const[k,v]of Object.entries(c.overrides))if($('o-'+k))$('o-'+k).value=v;for(const p of D.policies){const found=c.policies.find(q=>q.id===p.id);$('p-'+p.id).checked=!!found;$('range-'+p.id).hidden=!found;if(found){$('rate-'+p.id).value=found.mobilization*100;$('slide-'+p.id).value=found.mobilization*100;}}summaryText();}
-  function signature(c){return JSON.stringify({country:c.country,env:A.conditions(c),initialSeed:c.initialSeed});}
-  function initialFor(c){const sig=signature(c);if(!initial||sig!==lastSignature){initial=A.createInitial(c);lastSignature=sig;}return initial;}
-  function baseSummary(b){return{reporting:b.reporting(),metrics:b.metrics(),assessment:b.assessment(),history:b.state.history,classActivity:b.classActivity()};}
-  function preview(){const c=getConfig(),i=initialFor(c),r=new A.Simulation(c,i,0,false),b=new A.Simulation(c,i,0,true);current={reform:r.view(),baseline:baseSummary(b),comparison:A.comparison(r.view(),baseSummary(b)),replicate:1,repetitions:c.repetitions};completed=null;render();}
-  function stopWorker(){if(worker)worker.terminate();worker=null;running=false;$('run').textContent='Run';}
-  function initializeWorker(){const c=R.prepareRun(getConfig(),$('reuseEventSeed').checked);$('eventSeed').value=c.eventSeed;remember();stopWorker();activeConfig=c;completed=null;assessmentMonth=null;$('reportEventDetail').hidden=true;initialFor(c);if(!window.Worker)throw Error('This browser does not support Web Workers. Open the site in a current browser.');worker=new Worker('worker.js?v=2.4.2');worker.onmessage=e=>{const m=e.data;if(m.type==='error'){running=false;$('run').textContent='Run';status('Simulation stopped: '+m.message,true);return;}if(m.type==='complete'){completed=m;current=m;running=false;$('run').textContent='Run again';status('Run complete. The baseline and reform used initial society '+initial.initialKey+'. Results are ready to inspect or export.');}else{current=m;running=m.running;$('run').textContent=running?'Pause':'Run';}render();};worker.onerror=e=>{running=false;$('run').textContent='Run';status('The simulation could not load or continue. Reload the page; if it persists, export your setup and report the error. '+(e.message||''),true);};worker.postMessage({type:'init',config:c,initial});}
-  function start(){try{if(running){worker.postMessage({type:'pause'});return;}const newRun=!worker||!!completed||JSON.stringify(getConfig())!==JSON.stringify(activeConfig);if(newRun)initializeWorker();worker.postMessage({type:'run',delay:Number($('pace').value)});running=true;$('run').textContent='Pause';status(newRun?'Running with '+($('reuseEventSeed').checked?'the chosen replay seed':'a fresh event seed')+'. The starting society is held fixed, and this reform/baseline pair shares the same subsequent shocks.':'Continuing the existing run with its unchanged event seed and society.');$('simulationHeading').scrollIntoView({behavior:'auto',block:'start'});}catch(e){status(e.message,true);}}
-  function reset(){try{getConfig();stopWorker();activeConfig=null;completed=null;selected=[];selectedEvent=null;inspected=null;preview();status('Reset to the same initial society. Setup changes are now reflected.');}catch(e){status(e.message,true);}}
-  function learningPanel(actor){const p=actor.psychology;if(!p)return '';const labels={attitude:'Attitude',norm:'Perceived norm',control:'Lawful/reporting control',corruptControl:'Improper-action control',risk:'Accountability-cost learning',knowledge:'Knowledge',reportSafety:'Reporting safety'};return '<details><summary>Learning and policy influence</summary><div><p class="small">Openness '+number(p.traits.openness,2)+' · learning '+number(p.traits.learning,2)+' · retention '+number(p.traits.retention,2)+' (relative 0–1 traits, not direct action probabilities). Expected lawful receipts: '+number(p.expectedIncome)+' RU/month.</p><p class="small">Motivational attachments evolve slowly through experienced and enacted salience. Each policy has its own targeted components, limits and decay.</p>'+Object.entries(p.exposures).map(([id,components])=>'<h4>'+esc(D.policies.find(x=>x.id===id)?.label||'Ordinary experience')+'</h4><table class="compact-table"><tr><th>Element</th><th>Retained influence</th><th>Accepted / exposures</th></tr>'+Object.entries(components).map(([key,value])=>'<tr><td>'+esc(labels[key]||key)+'</td><td>'+number(value.level*100)+'%</td><td>'+esc(value.accepted)+' / '+esc(value.count)+'</td></tr>').join('')+'</table>').join('')+(p.lastExposure?'<p class="small">Last encountered event: '+esc(p.lastExposure.event)+' · month '+esc(p.lastExposure.month)+'. Delivery, uptake and the magnitude of learning are distinct.</p>':'<p class="small">No substantive policy or accountability learning episode recorded yet.</p>')+'</div></details>';}
-  function inspector(){const r=current?.reform;if(!r||inspected===null)return;const actor=r.agents.find(a=>a.id===inspected),salient=r.influential.find(x=>x.id===inspected);if(!actor)return;const org=r.organizations.find(o=>o.id===actor.org),decisions=actor.decisions||[];$('inspector').innerHTML=`<h3>${esc(actor.type)} #${actor.id}</h3><p>${esc(org?.name)} · ${actor.state==='corrupt'?'Triangle: qualifying conduct recorded':'Circle: expected integrity / recovery criteria satisfied'}</p><p><b>Why highlighted:</b> ${esc(salient?.reason||'Selected through a tracked event; detailed inspection is reserved for currently influential people.')}</p><p class="small">Resources ${number(actor.balance)} RU · unmet-needs pressure ${number(actor.financialPressure*100)}% · ${actor.corruptActions} lifetime qualifying acts · ${actor.office?'holds office':'no current executive office'}</p>${decisions.slice(-3).reverse().map(d=>`<div class="trace"><b>Month ${esc(d.month)}: ${esc(d.context)}</b><p>Chose “${esc(d.choice)}”.</p><p class="small">Perceived attitude ${number(d.perceived.attitude,2)}; expected reference approval ${number(d.perceived.norm,2)}; residual perceived capability ${number(d.perceived.control,2)}. ${d.completed===true?'The recorded act was completed.':d.completed===false?'The intended act did not complete.':'The choice is recorded; its process result is tracked separately.'}</p></div>`).join('')}${learningPanel(actor)}${actor.motives?'<details><summary>Nine motive attachments</summary><div class="motives">'+['Social / self','Social / group','Social / public','Economic / self','Economic / group','Economic / public','Political / self','Political / group','Political / public'].map((label,i)=>'<span>'+label+'<br><b>'+number(actor.motives[i]*100,0)+'%</b></span>').join('')+'</div></details>':''}`;}
-  function selectActor(id){inspected=id;selected=[id];selectedEvent=null;inspector();drawMap();renderFeed();}
-  function renderFeed(){const r=current.reform,filter=$('eventFilter').value,events=V.importantEvents(r.events,filter).slice(-80).reverse();$('feedCount').textContent=events.length;$('feed').innerHTML=events.length?events.map(e=>`<button class="event" data-event="${esc(e.id+'.'+e.update)}" aria-pressed="${selectedEvent===e.id+'.'+e.update}"><span class="eventmeta"><span>${esc(e.id)} · update ${e.update}</span><span>Month ${e.month}</span></span><strong>${esc(e.title)}</strong><p>${esc(e.text)}</p><span class="link">${esc(e.status||e.kind)} · ${esc(e.actors.map(id=>'#'+id).join(', '))}</span></button>`).join(''):'<p class="empty">No important developments match this view yet. Run or Step to advance the model.</p>';for(const el of document.querySelectorAll('[data-event]'))el.addEventListener('click',()=>{selectedEvent=el.dataset.event;const e=r.events.find(x=>x.id+'.'+x.update===selectedEvent);selected=e.actors;inspected=null;$('inspector').innerHTML='<h3>'+esc(e.id)+' · '+esc(e.status||e.kind)+'</h3><p>'+esc(e.title)+'</p><p class="small">Month '+e.month+' · highlighted actors '+esc(e.actors.map(id=>'#'+id).join(', '))+'. Other developments with the same tracking ID form part of this process.</p>';drawMap();renderFeed();});}
-  function drawMap(){if(!current)return;const r=current.reform,canvas=$('map'),ctx=canvas.getContext('2d');if(!ctx)return;const rect=canvas.getBoundingClientRect(),w=rect.width,h=rect.height,dpr=Math.min(devicePixelRatio||1,2),size=Math.min(w,h)*.43,cx=w/2+pan.x,cy=h/2+pan.y;
-    canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.scale(dpr,dpr);ctx.fillStyle='#f6f8f5';ctx.fillRect(0,0,w,h);
-    ctx.beginPath();ctx.arc(cx,cy,size*V.core*zoom,0,Math.PI*2);ctx.fillStyle='#e8f1eb';ctx.fill();
-    for(const radius of [V.core,.72,.95]){ctx.beginPath();ctx.arc(cx,cy,size*radius*zoom,0,Math.PI*2);ctx.strokeStyle='#d7e1da';ctx.lineWidth=1;ctx.stroke();}
-    ctx.setLineDash([4,7]);ctx.beginPath();ctx.moveTo(cx-size*zoom,cy);ctx.lineTo(cx+size*zoom,cy);ctx.moveTo(cx,cy-size*zoom);ctx.lineTo(cx,cy+size*zoom);ctx.strokeStyle='#c9d7cf';ctx.stroke();ctx.setLineDash([]);
-    const anchors=V.directions.map(angle=>({x:cx+size*.88*zoom*Math.cos(angle),y:cy+size*.88*zoom*Math.sin(angle)}));ctx.font='14px system-ui';ctx.textAlign='center';anchors.forEach((p,i)=>{ctx.fillStyle=colors[i];ctx.fillText(A.TYPES[i],p.x,p.y);});
-    const projected=V.projection(r);positions=projected.map(p=>({x:cx+p.x*size*zoom,y:cy+p.y*size*zoom}));
-    const roleFilter=$('mapClass').value,visible=new Set(r.agents.filter(a=>roleFilter==='all'||String(a.role)===roleFilter).map(a=>a.id));
-    const mode=$('relation').value,focus=new Set(selected.length?selected:r.influential.map(x=>x.id));
-    let links=r.links.filter(l=>l.strength>.35||l.lastKind==='coercion'&&l.last>=r.month-6).sort((a,b)=>Number(b.last>=r.month-3)-Number(a.last>=r.month-3)||Number(b.lastKind==='corrupt cooperation')-Number(a.lastKind==='corrupt cooperation')||b.strength-a.strength);
-    if(mode==='support')links=r.agents.filter(a=>focus.has(a.id)).flatMap(a=>(a.supports||[]).map(t=>({a:a.id,b:r.organizations[t.org].leader,strength:t.affinity,lastKind:'support',born:-1}))).filter(l=>l.a!==l.b);
-    if(mode==='membership')links=r.agents.filter(a=>focus.has(a.id)).flatMap(a=>a.memberships.map(org=>({a:a.id,b:r.organizations[org].leader,strength:.5,lastKind:'membership',born:-1}))).filter(l=>l.a!==l.b);
-    if(mode==='funding')links=r.funding.filter(f=>f.active).map(f=>({a:r.organizations[f.from].leader,b:r.organizations[f.to].leader,strength:Math.min(1,f.total/5),lastKind:'funding',born:f.last}));
-    if(selected.length&&mode==='informal')links=links.filter(l=>focus.has(l.a)||focus.has(l.b));links=links.filter(l=>visible.has(l.a)&&visible.has(l.b)).slice(0,selected.length?180:320);
-    for(const l of links){if(!visible.has(l.a)||!visible.has(l.b))continue;const a=positions[l.a],b=positions[l.b];if(!a||!b)continue;const high=focus.has(l.a)||focus.has(l.b),kind=l.lastKind||'cooperation',color=kind==='coercion'?'#b84949':kind==='corrupt cooperation'?'#c78422':kind==='funding'?'#996296':kind==='support'?colors[r.agents[l.b].role]:'#3e8075';
-      ctx.globalAlpha=high?.8:.09;ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=high?1.3+l.strength: .5+l.strength;ctx.setLineDash(kind==='support'?[3,3]:[]);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();ctx.setLineDash([]);
-      if(high){const angle=Math.atan2(b.y-a.y,b.x-a.x),x=a.x+(b.x-a.x)*.72,y=a.y+(b.y-a.y)*.72;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-5*Math.cos(angle-.45),y-5*Math.sin(angle-.45));ctx.lineTo(x-5*Math.cos(angle+.45),y-5*Math.sin(angle+.45));ctx.closePath();ctx.fill();}}
-    ctx.globalAlpha=1;const salient=new Set(r.influential.map(a=>a.id));for(const a of r.agents){if(!visible.has(a.id))continue;const p=positions[a.id],radius=salient.has(a.id)?4.2:1.5;ctx.fillStyle=colors[a.role];ctx.beginPath();if(a.state==='corrupt'){ctx.moveTo(p.x,p.y-radius*1.25);ctx.lineTo(p.x+radius,p.y+radius);ctx.lineTo(p.x-radius,p.y+radius);ctx.closePath();}else ctx.arc(p.x,p.y,radius,0,Math.PI*2);ctx.fill();if(salient.has(a.id)||selected.includes(a.id)){ctx.beginPath();ctx.strokeStyle=selected.includes(a.id)?'#102f28':'#fff';ctx.lineWidth=selected.includes(a.id)?2:1;ctx.arc(p.x,p.y,radius+2.5,0,Math.PI*2);ctx.stroke();}}
-    ctx.font='13px system-ui';ctx.textAlign='left';ctx.fillStyle='#53645e';ctx.fillText('Inner disc: expected integrity',12,h-26);ctx.fillText('Outer bands: repeated participation · '+zoom.toFixed(1)+'×',12,h-9);
-  }
-  function tinyComparison(base,reform,unit){if(base===null||reform===null)return'';const max=unit==='RU'?Math.max(1,base,reform):100;return`<div class="compare cardsmall"><span>Baseline <b>${number(base)}${unit==='%'?'%':' RU'}</b></span><span>Reform <b>${number(reform)}${unit==='%'?'%':' RU'}</b></span></div><div class="barwrap"><div class="bar baselinebar" style="width:${Math.min(100,100*base/max)}%"></div></div><div class="barwrap"><div class="bar" style="width:${Math.min(100,100*reform/max)}%"></div></div>`;}
+  /** [AK-VIS-03] [AK-IO-01] $
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  const A = window.Antarkya,
+    D = window.AntarkyaProfiles,
+    C = window.AntarkyaConfig,
+    R = window.AntarkyaRunSeeds,
+    V = window.AntarkyaVisualization,
+    $ = (id) => document.getElementById(id);
 
-  const Q=A.Reporting;
-  let assessmentPolicy=null,assessmentLevel='outcome',assessmentMonth=null;
-  function reportFormat(value,unit='count'){if(value===null||value===undefined||!Number.isFinite(value))return '—';return number(value,unit==='count'?0:unit==='ratio'?2:1)+(unit==='%'?'%':unit==='count'?'':' '+unit);}
-  function reportEventButtons(events){return events.map(e=>'<button type="button" class="eventref" data-report-event="'+esc(e.id+'.'+e.update)+'">Month '+e.month+' · '+esc(e.change<0?'Funding reduced':e.change>0?'Funding increased':e.title)+'</button>').join(' ');}
-  function reportMeaning(level,values,events){const text=Q.interpret(level,values),links=events.slice(0,2);return '<p class="report-meaning">'+esc(text)+(links.length?' <span>Connected developments:</span> '+reportEventButtons(links):'')+'</p>'+(events.length>2?'<details class="report-more"><summary>More developments</summary><div>'+reportEventButtons(events.slice(2))+'</div></details>':'');}
-  function reportChart(series,month,unit,label,allowNegative=false){
-    const width=340,height=155,left=56,right=12,top=12,bottom=120,duration=activeConfig?.duration||getConfig().duration,values=series.flatMap(p=>[p.reform,p.baseline]).filter(x=>Number.isFinite(x)),min=allowNegative?Math.min(0,...values):0,max=Math.max(allowNegative?.05:1,...values),span=max-min||1,x=m=>left+(width-left-right)*m/duration,y=v=>bottom-(bottom-top)*(v-min)/span;
-    function lines(key){let path='',connected=false;for(const p of series){if(!Number.isFinite(p[key])){connected=false;continue;}path+=(connected?' L':' M')+x(p.month).toFixed(1)+' '+y(p[key]).toFixed(1);connected=true;}return path;}
-    return '<svg viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+esc(label)+'. '+(allowNegative?'Green paired difference, dashed grey zero reference':'Green reform, dashed grey baseline')+'; marker at month '+month+'."><title>'+esc(label)+'</title><path d="M'+left+' '+top+' V'+bottom+' H'+(width-right)+'" fill="none" stroke="#b2beb1"/><text x="0" y="20" font-size="14" fill="#53645e">'+esc(number(max,unit==='count'?0:2))+'</text><text x="0" y="'+bottom+'" font-size="14" fill="#53645e">'+esc(number(min,unit==='count'?0:2))+'</text><path d="'+lines('baseline')+'" fill="none" stroke="#899a91" stroke-width="2" stroke-dasharray="5 4"/><path d="'+lines('reform')+'" fill="none" stroke="#256c54" stroke-width="2.5"/><path d="M'+x(month).toFixed(1)+' '+top+' V'+bottom+'" stroke="#9b6d37" stroke-dasharray="3 3"/><text x="'+left+'" y="144" font-size="14" fill="#53645e">0</text><text x="'+(width-72)+'" y="144" font-size="14" fill="#53645e">'+duration+' mo.</text></svg>';
+  /** [AK-VIS-03] [AK-IO-01] esc
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  const esc = (x) =>
+    String(x ?? '').replace(
+      /[&<>"']/g,
+      (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
+    );
+
+  /** [AK-VIS-03] [AK-IO-01] number
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  const number = (v, d = 1) =>
+    v === null || v === undefined || !Number.isFinite(Number(v))
+      ? '—'
+      : Number(v).toLocaleString(undefined, { maximumFractionDigits: d, minimumFractionDigits: d });
+  const colors = ['#4585ad', '#d08b2f', '#31836b', '#996296'],
+    LAST = 'antarkya.v2.last',
+    FALLBACK = 'antarkya.v2.saves';
+  let draftInitialSeed = 'Antarkya-v2-society';
+  let worker = null,
+    initial = null,
+    current = null,
+    activeConfig = null,
+    completed = null,
+    running = false,
+    selected = [],
+    selectedEvent = null,
+    inspected = null,
+    zoom = 1,
+    pan = { x: 0, y: 0 },
+    positions = [],
+    dbPromise = null,
+    drag = null,
+    lastSignature = '';
+
+  /** [AK-VIS-03] status
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function status(message, error = false) {
+    $('status').textContent = message;
+    $('status').classList.toggle('alert', error);
   }
-  function showReportEvent(key){
-    const report=current.reform.reporting,events=[...(report?.events||[]),...current.reform.events],event=events.find(e=>e.id+'.'+e.update===key);if(!event)return;
-    selected=event.actors;selectedEvent=key;inspected=null;
-    const updates=events.filter(e=>e.id===event.id).filter((e,i,a)=>a.findIndex(x=>x.update===e.update)===i).sort((a,b)=>a.month-b.month||a.update-b.update);
-    $('reportEventDetail').hidden=false;$('reportEventDetail').innerHTML='<h3>'+esc(event.title)+'</h3><p class="small">Month '+event.month+' · '+esc(event.id)+' · update '+event.update+' · '+esc(event.status||event.kind)+'</p><p>'+esc(event.text)+'</p><p class="small muted">This is a connected record; chronology alone does not establish the cause of the result.</p>'+(updates.length>1?'<details><summary>Tracked updates ('+updates.length+')</summary><div>'+updates.map(e=>'<p class="small"><b>Month '+e.month+' · '+esc(e.status||e.kind)+'</b> '+esc(e.text)+'</p>').join('')+'</div></details>':'');
-    drawMap();$('reportEventDetail').scrollIntoView({behavior:'auto',block:'nearest'});
+
+  /** [AK-OV-01] profile
+   * Implementation unit for Purpose, scope and version identity. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function profile() {
+    return D.profiles.find((p) => p.iso3 === $('country').value);
   }
-  function renderPolicyAssessment(config){
-    const r=current.reform,b=current.baseline,chosen=config.policies,select=$('assessmentPolicy'),old=assessmentPolicy;
-    assessmentPolicy=chosen.some(p=>p.id===old)?old:chosen[0]?.id??null;
-    if([...select.options].map(o=>o.value).join('|')!==chosen.map(p=>p.id).join('|'))select.innerHTML=chosen.map(p=>'<option value="'+esc(p.id)+'">'+esc(D.policies.find(q=>q.id===p.id).label)+'</option>').join('');
-    select.value=assessmentPolicy||'';select.disabled=!chosen.length;
-    const month=assessmentMonth===null?r.month:Math.min(assessmentMonth,r.month),final=!!completed&&month===r.month,phase=final?'Final':'Current';
-    $('assessmentMonth').max=String(r.month);$('assessmentMonth').value=String(month);$('assessmentMonth').disabled=!r.month;
-    $('assessmentPhase').textContent=(final?'Run complete · Final conditions':month===r.month?'Current conditions':'Reviewing conditions')+' · month '+month+(completed&&month!==r.month?' · completed at month '+r.month:'')+'. All panels follow the same month marker.';
-    if(!assessmentPolicy){$('assessment').innerHTML='<p>No additional reform selected. Select a reform to inspect its delivery and policy-specific conditions; package impact remains available below.</p>';$('reportEventDetail').hidden=true;return;}
-    const id=assessmentPolicy,def=Q.definitions[id],rp=r.reporting,bp=b.reporting;
-    if(!rp||!bp){$('reportEventDetail').hidden=true;$('assessment').innerHTML='<p class="notice">Policy-specific starting conditions and delivery histories were not recorded in this saved result. Run the scenario again to create the new assessment. Existing results remain available in the package details below.</p>';return;}
-    const point=rp.history.find(x=>x.month===month),base=bp.history.find(x=>x.month===month);if(!point||!base)return;
-    const tool=point.tools[id],baseTool=base.tools[id],before=rp.start.tools[id],initialOutput=Q.windowValue(rp,id,0,12),output=Q.windowValue(rp,id,month,12),baseOutput=Q.windowValue(bp,id,month,12),meta=Q.outcomeMeta(id)||r.assessment[id],outcomeUnit=meta.unit,impact=V.impactSeries(r.history,b.history,Number($('impactWindow').value)),ip=impact.find(p=>p.month===month),startImpact=rp.start.impact.opportunities?100*rp.start.impact.corrupt/rp.start.impact.opportunities:null;
-    const markers=rp.history.filter(p=>p.month>=0&&p.month<=r.month),outSeries=markers.map(p=>({month:p.month,reform:Q.windowValue(rp,id,p.month,12)?.value??null,baseline:Q.windowValue(bp,id,p.month,12)?.value??null})),outcomeSeries=markers.map(p=>({month:p.month,reform:p.tools[id].outcome,baseline:bp.history.find(q=>q.month===p.month)?.tools[id].outcome??null})),impactSeries=impact.map(p=>({month:p.month,reform:p.difference,baseline:p.difference===null?null:0}));
-    const levels=[
-     {id:'output',title:'Output',label:def.output,value:output?.value??null,baseline:baseOutput?.value??null,unit:def.unit,period:'Actual activity · trailing 12 months',series:outSeries},
-     {id:'outcome',title:'Outcome',label:D.policies.find(p=>p.id===id).outcome,value:tool.outcome,baseline:baseTool.outcome,unit:outcomeUnit,period:meta.method,series:outcomeSeries},
-     {id:'impact',title:'Impact',label:config.policies.length>1?'Combined reform package':'Reform scenario',value:ip?.reform?.rate??null,baseline:ip?.baseline?.rate??null,unit:'%',period:'Reform minus baseline, in percentage points · '+(Number($('impactWindow').value)?'past 12 post-adoption months':'since adoption'),series:impactSeries}
-    ];
-    const open=$('assessment').querySelector('[data-policy-conditions]')?.open;
-    let html='<div class="assessment-headlines">'+levels.map(p=>'<button type="button" data-assessment-level="'+p.id+'" class="assessment-headline '+(assessmentLevel===p.id?'selected':'')+'" aria-pressed="'+(assessmentLevel===p.id)+'" aria-controls="stage-'+p.id+'"><span>'+p.title+'</span><strong>'+esc(p.id==='impact'?V.impactDifference(ip?.difference??null)+' pts':reportFormat(p.value,p.unit))+'</strong><small>'+esc(p.id==='impact'?'Rate difference vs baseline':p.id==='output'?def.unit==='count'?'Delivered activity':def.unit:'Institutional indicator')+'</small></button>').join('')+'</div><p class="small muted assessment-mobile-hint">Select a stage to see its chart and explanation.</p><div class="assessment-panels">';
-    for(const p of levels){const events=Q.eventsFor(rp,id,p.id,month,Number($('impactWindow').value)||0),estimated=p.id==='outcome'&&/diagnostic/i.test(meta.method),interpret={value:p.value,baseline:p.baseline,lowerBetter:p.id==='impact'||!!meta.lowerBetter,outputDelta:(output?.value??0)-(baseOutput?.value??0),impactDelta:ip?.difference??null,estimated};
-     html+='<section id="stage-'+p.id+'" class="assessment-stage '+(assessmentLevel===p.id?'selected':'')+'"><h3>'+p.title+' · '+esc(p.label)+'</h3><p class="small muted">'+esc(p.period)+'</p>'+reportChart(p.series,month,p.unit,p.title+' '+p.label,p.id==='impact')+'<p class="small">Reform <b>'+esc((p.id==='impact'?number(p.value,3):reportFormat(p.value,p.unit)))+'</b> · baseline <b>'+esc(p.id==='impact'?number(p.baseline,3):reportFormat(p.baseline,p.unit))+'</b>'+(p.id==='impact'&&ip?.difference!==null&&ip?.difference!==undefined?' · difference <b>'+esc(V.impactDifference(ip.difference))+' points</b>':'')+'</p>'+reportMeaning(p.id,interpret,events)+(p.id==='outcome'&&tool.n!==null?'<p class="small muted">'+number(tool.n,0)+' applicable observations.</p>':'')+'</section>';
+
+  /** [AK-VIS-03] getConfig
+   * Read and validate draft setup independently of an active run. Source values, user overrides and initial/future seeds retain separate meanings.
+   */
+  function getConfig() {
+    const overrides = {};
+    for (const el of document.querySelectorAll('[data-override]'))
+      if (el.value !== '' && el.value !== el.dataset.defaultValue)
+        overrides[el.dataset.override] = Number(el.value);
+    return A.validate({
+      country: $('country').value,
+      duration: Number($('duration').value),
+      repetitions: Number($('repetitions').value),
+      eventSeed: $('eventSeed').value,
+      initialSeed: draftInitialSeed,
+      overrides,
+      policies: D.policies
+        .filter((p) => $('p-' + p.id).checked)
+        .map((p) => ({ id: p.id, mobilization: Number($('rate-' + p.id).value) / 100 })),
+    });
+  }
+
+  /** [AK-VIS-03] remember
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function remember() {
+    try {
+      localStorage.setItem(LAST, JSON.stringify(getConfig()));
+    } catch (e) {
+      /* Save/export controls report their own storage errors. */
     }
-    const rows=[[def.output+' · trailing 12 months',initialOutput?.value??null,output?.value??null,baseOutput?.value??null,def.unit],['Institutional outcome · '+meta.method,before.outcome,tool.outcome,baseTool.outcome,outcomeUnit],...def.conditions.map(([name,unit],i)=>[name,before.conditions[i],tool.conditions[i],baseTool.conditions[i],unit]),['Package corrupt encounters / 100',startImpact,ip?.reform?.rate??null,ip?.baseline?.rate??null,'%']];
-    const flow=r.policies.find(p=>p.id===id),responses=flow?r.organizations.filter(o=>o.responses[id]).reduce((all,o)=>{const k=o.responses[id];all[k]=(all[k]||0)+1;return all;},{}):{};
-    html+='</div><details data-policy-conditions '+(open?'open':'')+'><summary>Starting and '+phase.toLowerCase()+' policy conditions</summary><div><p class="small">Before reform is the same inherited society for both branches, immediately before formal adoption. Conditions are snapshots; activity counts use equal 12-month windows, including inherited months early in the run. Impact starts at adoption; its starting value describes the reconstructed pre-policy year. Eligible populations follow current roles.</p><div class="report-table-wrap"><table class="compact-table"><thead><tr><th>Policy-specific measure</th><th>Before reform</th><th>'+phase+' reform · month '+month+'</th><th>'+phase+' baseline · month '+month+'</th></tr></thead><tbody>'+rows.map(([label,x,y,z,unit])=>'<tr><th scope="row">'+esc(label)+'</th><td>'+esc(reportFormat(x,unit))+'</td><td>'+esc(reportFormat(y,unit))+'</td><td>'+esc(reportFormat(z,unit))+'</td></tr>').join('')+'</tbody></table></div></div></details>';
-    if(flow)html+='<details><summary>Resources and implementation for this policy</summary><div><p class="small">Latest live implementation at month '+r.month+': '+flow.allocations.filter(a=>a.installed).length+' / '+flow.allocations.length+' recipient setups complete. Mobilized '+number(flow.mobilized)+' RU; deployed '+number(flow.deployed)+' RU; diverted '+number(flow.diverted)+' RU. Current authorized rate '+Math.round(flow.rate*100)+'%; formal status '+esc(flow.formal)+'.</p><p class="small">Organizational responses: '+esc(Object.entries(responses).map(([label,n])=>n+' '+label).join(', ')||'none yet')+'.</p><p class="small">'+esc(A.Adaptation.map[id].structural)+'. '+esc(A.Adaptation.map[id].channel)+'.</p></div></details>';
-    html+='<p class="small muted">Output/outcome charts: green reform, dashed grey baseline. The impact chart shows their difference against zero. Output is delivery; outcome is the policy-specific institutional result. Impact describes the package and cannot isolate one tool’s contribution in a combination. Estimated capability is labeled separately from observed activity.</p>';
-    $('assessment').innerHTML=html;
-    for(const el of $('assessment').querySelectorAll('[data-assessment-level]'))el.addEventListener('click',()=>{assessmentLevel=el.dataset.assessmentLevel;renderPolicyAssessment(activeConfig||getConfig());});
-    for(const el of $('assessment').querySelectorAll('[data-report-event]'))el.addEventListener('click',()=>showReportEvent(el.dataset.reportEvent));
   }
 
-  function renderAssessment(){const r=current.reform,b=current.baseline,c=current.comparison,config=activeConfig||getConfig();renderPolicyAssessment(config);
-    const impact=selectedImpact(),point=impact.point,rw=point?.reform,bw=point?.baseline,difference=point?.difference??null;
-    $('impactPeriod').textContent=impact.window?'Recent results · '+(rw?.months??0)+' modeled months'+(rw?.months?' · months '+(rw.fromMonth+1)+'–'+rw.month:''):'Since reform adoption · months 1–'+r.month;
-    $('baseImpact').textContent=number(bw?.rate,3);$('reformImpact').textContent=number(rw?.rate,3);$('impactDifference').textContent=V.impactDifference(difference)+(difference===null?'':' percentage points');
-    $('impactExplanation').textContent=difference===null?'Advance the model to create comparable relevant encounters.':`In this assessment period, reform: ${rw.corrupt} completed corrupt encounters / ${rw.opportunities} relevant encounters; baseline: ${bw.corrupt} / ${bw.opportunities}. `+(difference<0?'The reform rate is lower.':difference>0?'The reform rate is higher.':'The rates are equal.')+' This is a paired model result, not evidence of a real-world effect.';
-    const flows=r.policies||[],allocations=flows.flatMap(p=>p.allocations),installed=allocations.filter(a=>a.installed).length,delivering=flows.filter(p=>p.formal==='active').flatMap(p=>p.allocations).filter(a=>a.installed&&a.lastDelivered===r.month).length;
-    $('implementationStatus').textContent=flows.length?`Implementation: ${installed} of ${allocations.length} policy-recipient setups completed; ${delivering} delivered reform work in month ${r.month}. Completed setup does not guarantee continued delivery or changed conduct.`:'No additional reform selected: both branches retain the inherited policies.';
-    $('impactDetails').innerHTML='<table class="compact-table"><tr><th>Whole-system consequence · since adoption</th><th>Baseline</th><th>Reform</th></tr>'+[['All qualifying acts',b.metrics.corruptActs,r.metrics.corruptActs],['Coerced payments',b.metrics.coercedPayments,r.metrics.coercedPayments],['Victim payment burden (RU)',b.metrics.bribeBurden,r.metrics.bribeBurden],['Diverted resources (RU)',b.metrics.diversion,r.metrics.diversion],['Foregone tax revenue (RU)',b.metrics.foregoneRevenue,r.metrics.foregoneRevenue],['Service waiting (person-months)',b.metrics.serviceWait,r.metrics.serviceWait],['Pending services',b.metrics.backlog,r.metrics.backlog],['Sanctions / remedies on persons',b.metrics.sanctions,r.metrics.sanctions]].map(([label,x,y])=>'<tr><td>'+label+'</td><td>'+number(x,label.includes('RU')?1:0)+'</td><td>'+number(y,label.includes('RU')?1:0)+'</td></tr>').join('')+'</table>';
-    $('distribution').innerHTML='<p class="small">Completed simulation participation counts by role at the time of the act; two-party acts can involve two people. Victim payment burdens and waiting are separate.</p><table class="compact-table"><tr><th>Role</th><th>Act participations</th><th>Victim burden (RU)</th><th>Service waiting</th></tr>'+r.distribution.map((x,i)=>'<tr><td>'+A.TYPES[i]+'</td><td>'+esc(x.acts)+'</td><td>'+number(x.victimBurden)+'</td><td>'+number(x.wait,0)+'</td></tr>').join('')+'</table><p class="small">Transfers are not automatically net societal losses. Check whole-system diversion and service effects alongside the common-encounter rate.</p>';
-    const stats=completed?.statistics;$('repeatResults').textContent=stats&&completed.replications.length>1?`Across ${completed.replications.length} repetitions of the same starting society (since adoption): mean paired difference ${V.impactDifference(stats.meanDifference)} points; simulation range ${V.impactDifference(stats.minDifference)} to ${V.impactDifference(stats.maxDifference)}. Map and policy cards show repetition 1; expand individual results below to compare all repetitions. This is model-event variation, not an empirical confidence interval.`:'';renderReplications(config);drawImpact();}
-  function renderReplications(config){const rows=completed?.replications||[];$('replicationDetails').hidden=rows.length<2;if(rows.length<2){$('replicationTable').innerHTML='';return;}let html='<p class="small">Every row uses the identical initial society. Repetition numbers identify distinct subsequent event streams. A rounded or discrete institutional indicator can legitimately repeat even when conduct and events differ.</p><table class="compact-table"><tr><th>Run</th><th>Corrupt acts</th><th>Baseline acts</th><th>Encounter-rate difference · since adoption</th></tr>';for(const r of rows)html+='<tr><td>'+esc(r.replicate)+'</td><td>'+number(r.reformMetrics?.corruptActs,0)+'</td><td>'+number(r.baselineMetrics?.corruptActs,0)+'</td><td>'+V.impactDifference(r.difference)+' points</td></tr>';html+='</table>';for(const selected of config.policies){const policy=D.policies.find(p=>p.id===selected.id);html+='<h3>'+esc(policy.label)+'</h3><table class="compact-table"><tr><th>Run</th><th>Reform outcome</th><th>Baseline outcome</th><th>Difference</th></tr>';for(const r of rows){const a=r.assessment[selected.id],observed=r.policyOutcomes?.[selected.id],unit=a.reform.unit==='%'?'%':' RU';html+='<tr><td>'+esc(r.replicate)+'</td><td>'+number(observed?observed.reform:a.reform.value)+unit+'</td><td>'+number(observed?observed.baseline:a.baseline.value)+unit+'</td><td>'+number(observed?observed.difference:a.difference)+(unit==='%'?' points':' RU')+'</td></tr>';}html+='</table>';} $('replicationTable').innerHTML=html;}
-  function selectedImpact(){const window=Number($('impactWindow').value),series=V.impactSeries(current.reform.history,current.baseline.history,window);return{window,series,point:series.at(-1)};}
-  function drawImpact(){
-    const width=Math.max(280,$('impactChart').getBoundingClientRect().width||620),plot=width-94,{series,window}=selectedImpact(),values=series.filter(x=>x.difference!==null),extent=Math.max(.05,...values.map(x=>Math.abs(x.difference)))*1.15,duration=activeConfig?.duration||getConfig().duration,zero=94,scale=62/extent;
-    const points=values.map(x=>(70+plot*x.month/duration).toFixed(1)+','+(zero-scale*x.difference).toFixed(1)).join(' '),label=x=>Number(x.toPrecision(2)).toString(),mode=window?'past-12-month':'since-adoption';
-    $('impactChart').innerHTML=`<svg viewBox="0 0 ${width} 210" role="img" aria-label="${mode} reform minus baseline corrupt-encounter rate, in percentage points. Negative values mean fewer corrupt encounters per opportunity."><title>Paired difference over time (${mode})</title><path d="M70 25 V159 H${width-24}" stroke="#b2beb1" fill="none"/><path d="M70 ${zero} H${width-24}" stroke="#7a8a80" stroke-dasharray="4 4" fill="none"/><text x="3" y="36" fill="#53645e" font-size="14">+${label(extent)}</text><text x="39" y="99" fill="#53645e" font-size="14">0</text><text x="3" y="160" fill="#53645e" font-size="14">−${label(extent)}</text><text x="67" y="182" fill="#53645e" font-size="14">0</text><text x="${width-82}" y="182" fill="#53645e" font-size="14">${duration} mo.</text><polyline points="${points}" fill="none" stroke="#25483f" stroke-width="2.5"/><text x="70" y="205" fill="#53645e" font-size="14">Difference in percentage points</text></svg>`;
+  /** [AK-OV-01] summaryText
+   * Implementation unit for Purpose, scope and version identity. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function summaryText() {
+    const c = getConfig();
+    $('eventSeed').readOnly = !$('reuseEventSeed').checked;
+    $('policyCount').textContent = c.policies.length + ' selected';
+    $('setupSummary').textContent =
+      `${profile().name} · ${c.policies.length} reform${c.policies.length === 1 ? '' : 's'} · ${c.duration} months · ` +
+      (c.policies.length
+        ? c.policies
+            .map(
+              (p) =>
+                D.policies.find((q) => q.id === p.id).label +
+                ' ' +
+                Math.round(p.mobilization * 100) +
+                '%',
+            )
+            .join('; ')
+        : 'No new reform');
+    const counts = C.countries[c.country].counts;
+    $('composition').textContent =
+      'Provisional scaled composition: ' +
+      counts.map((n, i) => n + ' ' + A.TYPES[i].toLowerCase()).join(', ') +
+      '. These are model counts, not national population percentages.';
   }
-  function render(){if(!current)return;const r=current.reform,duration=activeConfig?.duration||getConfig().duration;$('progressFill').style.width=(r.month/duration*100)+'%';const progress=document.querySelector('[role=progressbar]');progress.setAttribute('aria-valuemax',duration);progress.setAttribute('aria-valuenow',r.month);$('progressLabel').textContent=(completed?'Complete':running?'Running':r.month?'Paused':'Ready')+` · month ${r.month} / ${duration}`+(activeConfig?' · '+D.profiles.find(p=>p.iso3===activeConfig.country).name:'');$('repeatStatus').textContent=completed&&activeConfig?.repetitions>1?'All '+activeConfig.repetitions+' repetitions complete · map and cards show repetition 1':current.repetitions>1?`Repetition ${current.replicate||current.replications?.length||1} / ${current.repetitions||activeConfig.repetitions}`+(current.repeatMonth!==undefined?' · processing month '+current.repeatMonth:'')+' · visible map: first reform run':'';$('runIdentity').textContent='Starting society '+initial.initialKey+' · Event seed '+(activeConfig?.eventSeed||getConfig().eventSeed);$('snapshotNote').textContent='Initial society '+initial.initialKey+' · model '+A.VERSION+' · reconstructed pre-policy year';$('initialConditions').textContent='Starting estimate: '+initial.initialization.metrics.corruptState+' agents with recorded qualifying conduct; '+initial.initialization.metrics.encounterOpportunities+' modeled encounters during the reconstructed pre-policy year. Policy-specific starting and current conditions appear in the assessment below; general inherited workloads are available in the expandable system context. Past choices appear on the map; the act counter starts at reform adoption. These are model estimates, not observed national prevalence.';$('corruptStat').textContent=number(r.metrics.corruptState/10)+'%';$('actsStat').textContent=number(r.metrics.corruptActs,0);$('encounterStat').textContent=number(current.comparison.reformRate);$('classActivity').innerHTML=(r.classActivity||[]).map((x,i)=>{const baseline=current.baseline.classActivity?.[i]?.rate,delta=x.rate===null||baseline===null||baseline===undefined?null:x.rate-baseline;return '<div class="classcard" style="border-color:'+colors[i]+'"><b>'+esc(x.type)+'</b><strong>'+number(x.rate)+'%</strong><span>'+x.corrupt+' / '+x.opportunities+' recent opportunities</span><small>'+(delta===null?'Awaiting comparable opportunities':(delta>0?'+':'')+number(delta)+' points vs baseline')+'</small></div>';}).join('');$('actors').innerHTML=r.influential.map(x=>`<button data-actor="${x.id}">${esc(r.agents[x.id].type)} #${x.id}</button>`).join('');for(const el of document.querySelectorAll('[data-actor]'))el.addEventListener('click',()=>selectActor(Number(el.dataset.actor)));$('systemStats').innerHTML='<p class="small">Inherited system workload: '+initial.cases.filter(c=>c.status!=='closed').length+' pending cases and '+initial.services.length+' pending services at reform adoption. These totals provide system context; policy-specific conditions are reported separately below.</p><table class="compact-table">'+[['Public treasury',number(r.metrics.cash)+' RU'],['Average trust / lawful control',number(r.metrics.meanTrust*100)+'% / '+number(r.metrics.meanControl*100)+'%'],['Average perceived accountability cost',number(r.metrics.meanRisk*100)+' / 100'],['Agents with negligible cash',number(r.metrics.cashConstrained,0)+' / 1,000'],['Average unmet-needs pressure',number(r.metrics.meanFinancialPressure*100)+'%'],['Outstanding financial liability',number(r.metrics.outstandingLiability)+' RU'],['Monthly staff capacity',number(r.metrics.capacity)+' PM'],['Routine / reform / case staff time',[r.metrics.routineTime,r.metrics.reformTime,r.metrics.caseTime].map(v=>number(v)).join(' / ')+' PM'],['Pending services',number(r.metrics.backlog,0)],['Pending cases',number(r.metrics.caseBacklog,0)],['Reports / audit checks',r.metrics.reports+' / '+r.metrics.audits],['Failed proposals / refusals',r.metrics.failedProposals+' / '+r.metrics.refusals],['Extortion / coerced payments',r.metrics.extortion+' / '+r.metrics.coercedPayments],['Case remedies / sanctions',r.metrics.sanctions],['Collected financial liability',number(r.metrics.collected)+' RU']].map(([k,v])=>'<tr><td>'+k+'</td><td>'+v+'</td></tr>').join('')+'</table>';const pm=current.baseline.metrics;const pressures=[['Service trust','meanTrust'],['Lawful control','meanControl'],['Expected accountability cost','meanRisk'],['Unmet-needs pressure','meanFinancialPressure']];$('decisionPressures').innerHTML=pressures.map(([label,key])=>'<div class="pressure"><span>'+label+'</span><b>'+number(r.metrics[key]*100)+(key==='meanRisk'?' / 100':'%')+'</b><div class="pressurebars"><i class="baselinebar" style="width:'+Math.max(0,Math.min(100,pm[key]*100))+'%"></i><i style="width:'+Math.max(0,Math.min(100,r.metrics[key]*100))+'%"></i></div><small>Baseline '+number(pm[key]*100)+(key==='meanRisk'?' / 100':'%')+'</small></div>').join('');drawMap();renderFeed();renderAssessment();inspector();}
-  function openDB(){if(dbPromise)return dbPromise;dbPromise=new Promise((resolve,reject)=>{if(!window.indexedDB){reject(Error('IndexedDB unavailable'));return;}const request=indexedDB.open('antarkya-v2',1);request.onupgradeneeded=()=>request.result.createObjectStore('scenarios',{keyPath:'name'});request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);request.onblocked=()=>reject(Error('Storage is blocked by another tab.'));});return dbPromise;}
-  async function storeAction(action,key,value){try{const db=await openDB();return await new Promise((resolve,reject)=>{const tx=db.transaction('scenarios',action==='put'?'readwrite':'readonly'),store=tx.objectStore('scenarios'),request=action==='put'?store.put(value):action==='get'?store.get(key):store.getAllKeys();let result;request.onsuccess=()=>{result=request.result;};tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||Error('Storage transaction failed.'));});}catch(error){let saves;try{saves=JSON.parse(localStorage.getItem(FALLBACK)||'{}');if(!saves||typeof saves!=='object'||Array.isArray(saves))saves={};}catch(e){saves={};}if(action==='put'){Object.defineProperty(saves,key,{value,enumerable:true,writable:true,configurable:true});localStorage.setItem(FALLBACK,JSON.stringify(saves));return key;}if(action==='get')return Object.hasOwn(saves,key)?saves[key]:undefined;return Object.keys(saves);}}
-  async function refreshSaves(){try{const names=await storeAction('keys');$('savedNames').innerHTML='<option value="">Choose a scenario</option>'+names.map(name=>'<option value="'+esc(name)+'">'+esc(name)+'</option>').join('');}catch(e){status('Device storage is unavailable. You can still export a JSON backup.',true);}}
-  function payload(){const c=getConfig(),same=activeConfig&&JSON.stringify(c)===JSON.stringify(activeConfig);return{schema:'antarkya.scenario.v2',modelVersion:A.VERSION,profileVersion:D.schema,createdAt:new Date().toISOString(),config:c,initial:A.createInitial(c),results:same?completed:null};}
-  function validatePayload(p){if(!p||p.schema!=='antarkya.scenario.v2'||p.modelVersion!==A.VERSION)throw Error('This file uses different model rules. Version 2.4 requires a reconstructed starting state; recreate the scenario from its settings.');const c=A.validate(p.config);A.validateInitial(p.initial,c);if(p.results){const result=p.results;if(result.type!=='complete'||result.reform?.agents?.length!==1000||!Array.isArray(result.reform.events)||!Array.isArray(result.baseline?.history)||!result.reform.assessment)throw Error('Completed results are incomplete.');for(let i=0;i<1000;i++){const a=result.reform.agents[i];if(a.id!==i||!Number.isInteger(a.role)||a.role<0||a.role>3||!Number.isFinite(a.x)||!Number.isFinite(a.y)||a.x<0||a.x>1||a.y<0||a.y>1)throw Error('Invalid agent in completed results.');if(a.psychology&&!A.Adaptation.validSummary(a.psychology))throw Error('Invalid numerical learning profile in completed results.');}if(result.reform.agentProfiles){if(!Array.isArray(result.reform.agentProfiles)||result.reform.agentProfiles.length!==1000||result.reform.agentProfiles.some((a,i)=>a.id!==i||!A.Adaptation.valid(a)||!Array.isArray(a.motives)||a.motives.length!==9||!a.motives.every(x=>Number.isFinite(x)&&x>0)||Math.abs(a.motives.reduce((x,y)=>x+y,0)-1)>1e-6))throw Error('Invalid exported agent profiles.');}
-    for(const branch of [result.reform,result.baseline]){if(!branch.metrics||Object.values(branch.metrics).some(v=>typeof v!=='number'||!Number.isFinite(v)))throw Error('Invalid numeric result.');for(const key of A.KEYS){const m=branch.assessment?.[key];if(!m||(m.value!==null&&!Number.isFinite(m.value))||!Number.isFinite(m.numerator)||!Number.isFinite(m.denominator)||!['%','RU'].includes(m.unit)||typeof m.method!=='string')throw Error('Invalid assessment result.');}}
-    for(const branch of [result.reform,result.baseline])if(branch.reporting&&!Q.valid(branch.reporting))throw Error('Invalid policy monitoring history.');
-    for(const e of result.reform.events)if(!Number.isInteger(e.month)||!Number.isInteger(e.update)||!Array.isArray(e.actors)||e.actors.some(id=>!Number.isInteger(id)||id<0||id>=1000))throw Error('Invalid event record.');
-    if(!Array.isArray(result.reform.organizations)||!Array.isArray(result.reform.influential)||result.reform.influential.some(x=>!Number.isInteger(x.id)||x.id<0||x.id>=1000)||!Array.isArray(result.reform.policies)||!Array.isArray(result.reform.distribution)||result.reform.distribution.length!==4)throw Error('Invalid result structure.');
-  }return c;}
-  function loadPayload(p){const c=validatePayload(p);stopWorker();assessmentMonth=null;$('reportEventDetail').hidden=true;activeConfig=null;applyConfig(c);initial=p.initial;lastSignature=signature(c);selected=[];inspected=null;selectedEvent=null;if(p.results){activeConfig=c;completed=p.results;current=p.results;render();$('run').textContent='Run again';}else preview();remember();status('Loaded for review. No run has started.'+(p.results?' Completed results are displayed.':''));}
-  function download(content,name,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}
-  function csv(rows,name){download(rows.map(row=>row.map(v=>'"'+String(typeof v==='string'&&/^[=+@-]/.test(v)?"'"+v:v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n'),name,'text/csv;charset=utf-8');}
-  async function showStorage(){const el=$('storage');el.hidden=false;el.open=true;await refreshSaves();el.scrollIntoView({behavior:'auto',block:'nearest'});}
-  $('country').innerHTML=D.profiles.map(p=>'<option value="'+p.iso3+'">'+esc(p.name)+'</option>').join('');$('country').value='PER';buildPolicies();countryFields();
-  $('country').addEventListener('change',()=>{countryFields();pending();});$('duration').addEventListener('change',pending);$('duration').addEventListener('input',()=>{try{summaryText();}catch(e){/* A partially typed duration is not yet a scenario. */}});$('repetitions').addEventListener('change',pending);$('eventSeed').addEventListener('change',pending);$('reuseEventSeed').addEventListener('change',pending);$('restoreCountry').addEventListener('click',()=>{countryFields();pending();});$('run').addEventListener('click',start);$('step').addEventListener('click',()=>{try{if(!worker||completed||JSON.stringify(getConfig())!==JSON.stringify(activeConfig))initializeWorker();worker.postMessage({type:'step'});}catch(e){status(e.message,true);}});$('reset').addEventListener('click',reset);$('pace').addEventListener('change',()=>worker?.postMessage({type:'pace',delay:Number($('pace').value)}));$('relation').addEventListener('change',drawMap);$('mapClass').addEventListener('change',drawMap);$('eventFilter').addEventListener('change',renderFeed);$('zoomIn').addEventListener('click',()=>{zoom=Math.min(3,zoom+.25);drawMap();});$('zoomOut').addEventListener('click',()=>{zoom=Math.max(1,zoom-.25);if(zoom===1)pan={x:0,y:0};drawMap();});
-  $('map').addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,startX:pan.x,startY:pan.y,moved:false};$('map').setPointerCapture(e.pointerId);});$('map').addEventListener('pointermove',e=>{if(!drag||zoom<=1)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>5)drag.moved=true;pan={x:drag.startX+dx,y:drag.startY+dy};drawMap();});$('map').addEventListener('pointerup',e=>{const moved=drag?.moved;drag=null;if(moved)return;const rect=$('map').getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top,nearest=current.reform.influential.map(a=>({id:a.id,d:Math.hypot(positions[a.id].x-x,positions[a.id].y-y)})).sort((a,b)=>a.d-b.d)[0];if(nearest?.d<25)selectActor(nearest.id);});window.addEventListener('resize',()=>{drawMap();if(current)drawImpact();});
-  $('saveBtn').addEventListener('click',showStorage);$('loadBtn').addEventListener('click',showStorage);$('saveConfirm').addEventListener('click',async()=>{try{const name=$('scenarioName').value.trim()||'Antarkya scenario';status('Saving scenario and completed results…');await storeAction('put',name,{name,payload:payload(),updated:Date.now()});await refreshSaves();$('savedNames').value=name;status('Saved “'+name+'” with the exact initial society'+(payload().results?' and completed results.':'.'));}catch(e){status('Saving failed: '+e.message+'. Use Export full JSON for a backup.',true);}});$('loadConfirm').addEventListener('click',async()=>{try{const name=$('savedNames').value;if(!name)throw Error('Choose a saved scenario first.');const entry=await storeAction('get',name);if(!entry)throw Error('The selected scenario is unavailable.');loadPayload(entry.payload);}catch(e){status(e.message,true);}});$('exportJson').addEventListener('click',()=>{try{download(JSON.stringify(payload()),'antarkya-v2-scenario.json','application/json');status('Exported the setup, exact initial society and matching completed results, if available.');}catch(e){status(e.message,true);}});
-  $('exportCsv').addEventListener('click',()=>{const c=activeConfig||getConfig(),fields=['month','opportunities','encounterOpportunities','encounterCorruptActs','corruptActs','corruptState','extortion','coercedPayments','bribeBurden','diversion','foregoneRevenue','sanctions','reports','audits','backlog','caseBacklog','serviceCompleted','serviceWait','capacity','reformTime','routineTime','caseTime','cash'];const rows=[['model','country','initial_society','event_seed','replicate','branch',...fields]];for(const branch of ['baseline','reform'])for(const h of current[branch].history)rows.push([A.VERSION,c.country,initial.initialKey,c.eventSeed,1,branch,...fields.map(k=>h[k]??0)]);csv(rows,'antarkya-v2-paired-history.csv');});
-  $('exportAgents').addEventListener('click',()=>{const rows=[['model','initial_society','month','id','role','organization','integrity_state','resources_RU','lifetime_corrupt_acts','last_corrupt_month','recovery_choices'],...current.reform.agents.map(a=>[A.VERSION,initial.initialKey,current.reform.month,a.id,a.type,current.reform.organizations[a.org].name,a.state,a.balance,a.corruptActions,a.lastCorrupt,a.recoveryChoices])];csv(rows,'antarkya-v2-agents.csv');});
-  $('exportEvents').addEventListener('click',()=>{const rows=[['model','tracking_id','update','month','kind','status','actors','title','description'],...current.reform.events.map(e=>[A.VERSION,e.id,e.update,e.month,e.kind,e.status,e.actors.join(';'),e.title,e.text])];csv(rows,'antarkya-v2-events.csv');if(!completed)status('Exported the current recent-event view. Complete the run for the full tracked log.');});
-  $('importJson').addEventListener('change',async e=>{try{const file=e.target.files[0];if(!file)return;if(file.size>64*1024*1024)throw Error('JSON files must be at most 64 MB.');loadPayload(JSON.parse(await file.text()));}catch(error){status('Import failed: '+error.message,true);}finally{e.target.value='';}});
-  $('assessmentPolicy').addEventListener('change',()=>{assessmentPolicy=$('assessmentPolicy').value;$('reportEventDetail').hidden=true;renderAssessment();});
-  $('assessmentMonth').addEventListener('input',()=>{assessmentMonth=Number($('assessmentMonth').value)===current.reform.month?null:Number($('assessmentMonth').value);renderAssessment();});
-  $('assessmentLatest').addEventListener('click',()=>{assessmentMonth=null;renderAssessment();});
-  $('impactWindow').addEventListener('change',()=>{if(current)renderAssessment();});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden&&running&&worker){worker.postMessage({type:'pause'});status('Paused while the page is hidden. Press Run to continue.');}});
-  try{const saved=JSON.parse(localStorage.getItem(LAST)||'null');if(saved)applyConfig(A.validate(saved));}catch(e){status('The previous setup was incompatible; default settings are ready.');}summaryText();preview();status('Ready. Run compares the selected reforms with a no-new-reform baseline from the same initial society.');
+
+  /** [AK-VIS-03] pending
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function pending() {
+    try {
+      summaryText();
+      remember();
+      if (activeConfig) {
+        status(
+          'Setup changes prepare a new scenario. The active run is unchanged; Reset or start a new run to apply them.',
+        );
+      } else preview();
+    } catch (e) {
+      status(e.message, true);
+    }
+  }
+
+  /** [AK-VIS-03] buildPolicies
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function buildPolicies() {
+    const families = [...new Set(D.policies.map((p) => p.family))];
+    $('policies').innerHTML = families
+      .map(
+        (f) =>
+          `<details><summary>${esc(f)}</summary><div>${D.policies
+            .filter((p) => p.family === f)
+            .map(
+              (p) =>
+                `<div class="policy"><label><input type="checkbox" id="p-${p.id}" ${['oversight', 'complaints'].includes(p.id) ? 'checked' : ''}><span class="policyname">${esc(p.label)}</span></label><small>${esc(p.outcome)}</small><div class="range" id="range-${p.id}" ${['oversight', 'complaints'].includes(p.id) ? '' : 'hidden'}><label for="slide-${p.id}" class="small">Mobilization</label><input type="range" id="slide-${p.id}" min="0" max="100" step="5" value="60" aria-label="${esc(p.label)} mobilization"><input type="number" id="rate-${p.id}" min="0" max="100" value="60" aria-label="${esc(p.label)} mobilization percent"><span>%</span></div></div>`,
+            )
+            .join('')}</div></details>`,
+      )
+      .join('');
+    for (const p of D.policies) {
+      $('p-' + p.id).addEventListener('change', () => {
+        $('range-' + p.id).hidden = !$('p-' + p.id).checked;
+        pending();
+      });
+      for (const prefix of ['slide-', 'rate-'])
+        $(prefix + p.id).addEventListener('input', () => {
+          const value = Math.max(0, Math.min(100, Number($(prefix + p.id).value) || 0));
+          $('slide-' + p.id).value = value;
+          $('rate-' + p.id).value = value;
+          pending();
+        });
+    }
+  }
+
+  /** [AK-VIS-03] countryFields
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function countryFields() {
+    const p = profile(),
+      base = A.conditions(A.validate({ country: p.iso3 }));
+    const fields = [
+      ['gdp_per_capita_ppp', 'GDP per capita PPP (intl $)'],
+      ['government_effectiveness', 'Government effectiveness (0–100)'],
+      ['rule_of_law', 'Rule of law (0–100)'],
+      ['regulatory_quality_proxy', 'Regulatory quality proxy (0–100)'],
+    ];
+    $('macroFields').innerHTML = fields
+      .map(
+        ([key, label]) =>
+          `<div class="field"><label for="o-${key}">${esc(label)}</label><input type="number" id="o-${key}" data-override="${key}" min="${A.NUMERIC[key][0]}" max="${A.NUMERIC[key][1]}" step="0.1" value="${base[key].toFixed(1)}"><span class="sourceflag">Sourced 2025 descriptor</span></div>`,
+      )
+      .join('');
+    const other = [
+      ['civil_liberties', 'Civil liberties'],
+      ['representation', 'Political representation'],
+      ['electoral_integrity', 'Electoral integrity'],
+      ['kinship', 'Kinship attachment'],
+      ['informality', 'Informality'],
+      ['public_private_separation', 'Public/private separation'],
+      ['central_allocation', 'Central allocation share (%)'],
+    ];
+    $('otherFields').innerHTML = other
+      .map(
+        ([key, label]) =>
+          `<div class="field"><label for="o-${key}">${esc(label)}</label><input type="number" id="o-${key}" data-override="${key}" min="0" max="100" step="0.01" value="${Number(base[key].toFixed(2))}"><span class="sourceflag">${esc(A.Baseline.fieldStatus(key))}</span></div>`,
+      )
+      .join('');
+    $('countryFacts').innerHTML =
+      '<h3>Inherited architecture</h3><ul>' +
+      p.architecture.map((x) => '<li>' + esc(x) + '</li>').join('') +
+      '</ul><p class="small"><b>Procedural constraint:</b> ' +
+      esc(p.political.institutional_constraint) +
+      '</p><p class="small muted">' +
+      esc(p.implementation_constraints.join(' ')) +
+      '</p>';
+    $('countrySources').innerHTML =
+      A.Baseline.sources(p.iso3)
+        .map(
+          (x) =>
+            `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a></li>`,
+        )
+        .join('') +
+      p.sources
+        .map(
+          (id) =>
+            `<li><a href="${esc(D.sources[id].url)}" target="_blank" rel="noopener">${esc(D.sources[id].title)}</a></li>`,
+        )
+        .join('') +
+      '<li><a href="https://www.worldbank.org/en/publication/worldwide-governance-indicators/frequently-asked-questions" target="_blank" rel="noopener">World Bank WGI definitions</a> · retrieved 22 November 2026</li>';
+    $('toolBaseline').innerHTML =
+      '<p class="small">A verified instrument is not necessarily fully operational. An unscoped instrument is not absent.</p><ul class="small">' +
+      D.policies
+        .map(
+          (q) =>
+            '<li>' +
+            esc(q.label) +
+            ': ' +
+            esc(
+              {
+                existing_relevant_instrument: 'relevant existing instrument documented',
+                existing_with_documented_scope_gap: 'existing instrument; documented scope gap',
+                not_scoped_not_absent: 'not fully scoped in this evidence pass',
+              }[p.tool_baseline[q.id].status],
+            ) +
+            '</li>',
+        )
+        .join('') +
+      '</ul>';
+    for (const el of document.querySelectorAll('[data-override]')) {
+      el.dataset.defaultValue = el.value;
+      el.addEventListener('change', pending);
+    }
+  }
+
+  /** [AK-VIS-03] applyConfig
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function applyConfig(c) {
+    draftInitialSeed = c.initialSeed;
+    $('country').value = c.country;
+    $('duration').value = String(c.duration);
+    $('repetitions').value = String(c.repetitions);
+    $('eventSeed').value = c.eventSeed;
+    countryFields();
+    for (const [k, v] of Object.entries(c.overrides)) if ($('o-' + k)) $('o-' + k).value = v;
+    for (const p of D.policies) {
+      const found = c.policies.find((q) => q.id === p.id);
+      $('p-' + p.id).checked = !!found;
+      $('range-' + p.id).hidden = !found;
+      if (found) {
+        $('rate-' + p.id).value = found.mobilization * 100;
+        $('slide-' + p.id).value = found.mobilization * 100;
+      }
+    }
+    summaryText();
+  }
+
+  /** [AK-INI-01] signature
+   * Implementation unit for A reconstructed pre-policy year. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function signature(c) {
+    return JSON.stringify({ country: c.country, env: A.conditions(c), initialSeed: c.initialSeed });
+  }
+
+  /** [AK-INI-01] initialFor
+   * Implementation unit for A reconstructed pre-policy year. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function initialFor(c) {
+    const sig = signature(c);
+    if (!initial || sig !== lastSignature) {
+      initial = A.createInitial(c);
+      lastSignature = sig;
+    }
+    return initial;
+  }
+
+  /** [AK-VIS-03] baseSummary
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function baseSummary(b) {
+    return {
+      reporting: b.reporting(),
+      metrics: b.metrics(),
+      assessment: b.assessment(),
+      history: b.state.history,
+      classActivity: b.classActivity(),
+    };
+  }
+
+  /** [AK-VIS-03] preview
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function preview() {
+    const c = getConfig(),
+      i = initialFor(c),
+      r = new A.Simulation(c, i, 0, false),
+      b = new A.Simulation(c, i, 0, true);
+    current = {
+      reform: r.view(),
+      baseline: baseSummary(b),
+      comparison: A.comparison(r.view(), baseSummary(b)),
+      replicate: 1,
+      repetitions: c.repetitions,
+    };
+    completed = null;
+    render();
+  }
+
+  /** [AK-OPS-01] stopWorker
+   * Implementation unit for Worker scheduling, repetitions and browser operation. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function stopWorker() {
+    if (worker) worker.terminate();
+    worker = null;
+    running = false;
+    $('run').textContent = 'Run';
+  }
+
+  /** [AK-OPS-01] initializeWorker
+   * Start a fresh paired experiment and reset historical-review selection; use a new event seed unless exact replay was requested.
+   */
+  function initializeWorker() {
+    const c = R.prepareRun(getConfig(), $('reuseEventSeed').checked);
+    $('eventSeed').value = c.eventSeed;
+    remember();
+    stopWorker();
+    activeConfig = c;
+    completed = null;
+    assessmentMonth = null;
+    $('reportEventDetail').hidden = true;
+    initialFor(c);
+    if (!window.Worker)
+      throw Error('This browser does not support Web Workers. Open the site in a current browser.');
+    worker = new Worker('worker.js?v=2.4.2');
+    worker.onmessage = (e) => {
+      const m = e.data;
+      if (m.type === 'error') {
+        running = false;
+        $('run').textContent = 'Run';
+        status('Simulation stopped: ' + m.message, true);
+        return;
+      }
+      if (m.type === 'complete') {
+        completed = m;
+        current = m;
+        running = false;
+        $('run').textContent = 'Run again';
+        status(
+          'Run complete. The baseline and reform used initial society ' +
+            initial.initialKey +
+            '. Results are ready to inspect or export.',
+        );
+      } else {
+        current = m;
+        running = m.running;
+        $('run').textContent = running ? 'Pause' : 'Run';
+      }
+      render();
+    };
+    worker.onerror = (e) => {
+      running = false;
+      $('run').textContent = 'Run';
+      status(
+        'The simulation could not load or continue. Reload the page; if it persists, export your setup and report the error. ' +
+          (e.message || ''),
+        true,
+      );
+    };
+    worker.postMessage({ type: 'init', config: c, initial });
+  }
+
+  /** [AK-OPS-01] start
+   * Implementation unit for Worker scheduling, repetitions and browser operation. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function start() {
+    try {
+      if (running) {
+        worker.postMessage({ type: 'pause' });
+        return;
+      }
+      const newRun =
+        !worker || !!completed || JSON.stringify(getConfig()) !== JSON.stringify(activeConfig);
+      if (newRun) initializeWorker();
+      worker.postMessage({ type: 'run', delay: Number($('pace').value) });
+      running = true;
+      $('run').textContent = 'Pause';
+      status(
+        newRun
+          ? 'Running with ' +
+              ($('reuseEventSeed').checked ? 'the chosen replay seed' : 'a fresh event seed') +
+              '. The starting society is held fixed, and this reform/baseline pair shares the same subsequent shocks.'
+          : 'Continuing the existing run with its unchanged event seed and society.',
+      );
+      $('simulationHeading').scrollIntoView({ behavior: 'auto', block: 'start' });
+    } catch (e) {
+      status(e.message, true);
+    }
+  }
+
+  /** [AK-OPS-01] reset
+   * Implementation unit for Worker scheduling, repetitions and browser operation. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function reset() {
+    try {
+      getConfig();
+      stopWorker();
+      activeConfig = null;
+      completed = null;
+      selected = [];
+      selectedEvent = null;
+      inspected = null;
+      preview();
+      status('Reset to the same initial society. Setup changes are now reflected.');
+    } catch (e) {
+      status(e.message, true);
+    }
+  }
+
+  /** [AK-VIS-02] learningPanel
+   * Implementation unit for Influential actors and significant event feed. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function learningPanel(actor) {
+    const p = actor.psychology;
+    if (!p) return '';
+    const labels = {
+      attitude: 'Attitude',
+      norm: 'Perceived norm',
+      control: 'Lawful/reporting control',
+      corruptControl: 'Improper-action control',
+      risk: 'Accountability-cost learning',
+      knowledge: 'Knowledge',
+      reportSafety: 'Reporting safety',
+    };
+    return (
+      '<details><summary>Learning and policy influence</summary><div><p class="small">Openness ' +
+      number(p.traits.openness, 2) +
+      ' · learning ' +
+      number(p.traits.learning, 2) +
+      ' · retention ' +
+      number(p.traits.retention, 2) +
+      ' (relative 0–1 traits, not direct action probabilities). Expected lawful receipts: ' +
+      number(p.expectedIncome) +
+      ' RU/month.</p><p class="small">Motivational attachments evolve slowly through experienced and enacted salience. Each policy has its own targeted components, limits and decay.</p>' +
+      Object.entries(p.exposures)
+        .map(
+          ([id, components]) =>
+            '<h4>' +
+            esc(D.policies.find((x) => x.id === id)?.label || 'Ordinary experience') +
+            '</h4><table class="compact-table"><tr><th>Element</th><th>Retained influence</th><th>Accepted / exposures</th></tr>' +
+            Object.entries(components)
+              .map(
+                ([key, value]) =>
+                  '<tr><td>' +
+                  esc(labels[key] || key) +
+                  '</td><td>' +
+                  number(value.level * 100) +
+                  '%</td><td>' +
+                  esc(value.accepted) +
+                  ' / ' +
+                  esc(value.count) +
+                  '</td></tr>',
+              )
+              .join('') +
+            '</table>',
+        )
+        .join('') +
+      (p.lastExposure
+        ? '<p class="small">Last encountered event: ' +
+          esc(p.lastExposure.event) +
+          ' · month ' +
+          esc(p.lastExposure.month) +
+          '. Delivery, uptake and the magnitude of learning are distinct.</p>'
+        : '<p class="small">No substantive policy or accountability learning episode recorded yet.</p>') +
+      '</div></details>'
+    );
+  }
+
+  /** [AK-VIS-02] inspector
+   * Explain why a highlighted actor matters and show recorded choices plus numerical learning. Perceived intentions and completed acts remain distinct.
+   */
+  function inspector() {
+    const r = current?.reform;
+    if (!r || inspected === null) return;
+    const actor = r.agents.find((a) => a.id === inspected),
+      salient = r.influential.find((x) => x.id === inspected);
+    if (!actor) return;
+    const org = r.organizations.find((o) => o.id === actor.org),
+      decisions = actor.decisions || [];
+    $('inspector').innerHTML =
+      `<h3>${esc(actor.type)} #${actor.id}</h3><p>${esc(org?.name)} · ${actor.state === 'corrupt' ? 'Triangle: qualifying conduct recorded' : 'Circle: expected integrity / recovery criteria satisfied'}</p><p><b>Why highlighted:</b> ${esc(salient?.reason || 'Selected through a tracked event; detailed inspection is reserved for currently influential people.')}</p><p class="small">Resources ${number(actor.balance)} RU · unmet-needs pressure ${number(actor.financialPressure * 100)}% · ${actor.corruptActions} lifetime qualifying acts · ${actor.office ? 'holds office' : 'no current executive office'}</p>${decisions
+        .slice(-3)
+        .reverse()
+        .map(
+          (d) =>
+            `<div class="trace"><b>Month ${esc(d.month)}: ${esc(d.context)}</b><p>Chose “${esc(d.choice)}”.</p><p class="small">Perceived attitude ${number(d.perceived.attitude, 2)}; expected reference approval ${number(d.perceived.norm, 2)}; residual perceived capability ${number(d.perceived.control, 2)}. ${d.completed === true ? 'The recorded act was completed.' : d.completed === false ? 'The intended act did not complete.' : 'The choice is recorded; its process result is tracked separately.'}</p></div>`,
+        )
+        .join(
+          '',
+        )}${learningPanel(actor)}${actor.motives ? '<details><summary>Nine motive attachments</summary><div class="motives">' + ['Social / self', 'Social / group', 'Social / public', 'Economic / self', 'Economic / group', 'Economic / public', 'Political / self', 'Political / group', 'Political / public'].map((label, i) => '<span>' + label + '<br><b>' + number(actor.motives[i] * 100, 0) + '%</b></span>').join('') + '</div></details>' : ''}`;
+  }
+
+  /** [AK-VIS-02] selectActor
+   * Implementation unit for Influential actors and significant event feed. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function selectActor(id) {
+    inspected = id;
+    selected = [id];
+    selectedEvent = null;
+    inspector();
+    drawMap();
+    renderFeed();
+  }
+
+  /** [AK-VIS-02] renderFeed
+   * Implementation unit for Influential actors and significant event feed. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function renderFeed() {
+    const r = current.reform,
+      filter = $('eventFilter').value,
+      events = V.importantEvents(r.events, filter).slice(-80).reverse();
+    $('feedCount').textContent = events.length;
+    $('feed').innerHTML = events.length
+      ? events
+          .map(
+            (e) =>
+              `<button class="event" data-event="${esc(e.id + '.' + e.update)}" aria-pressed="${selectedEvent === e.id + '.' + e.update}"><span class="eventmeta"><span>${esc(e.id)} · update ${e.update}</span><span>Month ${e.month}</span></span><strong>${esc(e.title)}</strong><p>${esc(e.text)}</p><span class="link">${esc(e.status || e.kind)} · ${esc(e.actors.map((id) => '#' + id).join(', '))}</span></button>`,
+          )
+          .join('')
+      : '<p class="empty">No important developments match this view yet. Run or Step to advance the model.</p>';
+    for (const el of document.querySelectorAll('[data-event]'))
+      el.addEventListener('click', () => {
+        selectedEvent = el.dataset.event;
+        const e = r.events.find((x) => x.id + '.' + x.update === selectedEvent);
+        selected = e.actors;
+        inspected = null;
+        $('inspector').innerHTML =
+          '<h3>' +
+          esc(e.id) +
+          ' · ' +
+          esc(e.status || e.kind) +
+          '</h3><p>' +
+          esc(e.title) +
+          '</p><p class="small">Month ' +
+          e.month +
+          ' · highlighted actors ' +
+          esc(e.actors.map((id) => '#' + id).join(', ')) +
+          '. Other developments with the same tracking ID form part of this process.</p>';
+        drawMap();
+        renderFeed();
+      });
+  }
+
+  /** [AK-VIS-01] drawMap
+   * Project observed conduct/affinity/network data for display without changing physical geography or simulation RNG.
+   */
+  function drawMap() {
+    if (!current) return;
+    const r = current.reform,
+      canvas = $('map'),
+      ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const rect = canvas.getBoundingClientRect(),
+      w = rect.width,
+      h = rect.height,
+      dpr = Math.min(devicePixelRatio || 1, 2),
+      size = Math.min(w, h) * 0.43,
+      cx = w / 2 + pan.x,
+      cy = h / 2 + pan.y;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.scale(dpr, dpr);
+    ctx.fillStyle = '#f6f8f5';
+    ctx.fillRect(0, 0, w, h);
+    ctx.beginPath();
+    ctx.arc(cx, cy, size * V.core * zoom, 0, Math.PI * 2);
+    ctx.fillStyle = '#e8f1eb';
+    ctx.fill();
+    for (const radius of [V.core, 0.72, 0.95]) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, size * radius * zoom, 0, Math.PI * 2);
+      ctx.strokeStyle = '#d7e1da';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    ctx.setLineDash([4, 7]);
+    ctx.beginPath();
+    ctx.moveTo(cx - size * zoom, cy);
+    ctx.lineTo(cx + size * zoom, cy);
+    ctx.moveTo(cx, cy - size * zoom);
+    ctx.lineTo(cx, cy + size * zoom);
+    ctx.strokeStyle = '#c9d7cf';
+    ctx.stroke();
+    ctx.setLineDash([]);
+    const anchors = V.directions.map((angle) => ({
+      x: cx + size * 0.88 * zoom * Math.cos(angle),
+      y: cy + size * 0.88 * zoom * Math.sin(angle),
+    }));
+    ctx.font = '14px system-ui';
+    ctx.textAlign = 'center';
+    anchors.forEach((p, i) => {
+      ctx.fillStyle = colors[i];
+      ctx.fillText(A.TYPES[i], p.x, p.y);
+    });
+    const projected = V.projection(r);
+    positions = projected.map((p) => ({ x: cx + p.x * size * zoom, y: cy + p.y * size * zoom }));
+    const roleFilter = $('mapClass').value,
+      visible = new Set(
+        r.agents
+          .filter((a) => roleFilter === 'all' || String(a.role) === roleFilter)
+          .map((a) => a.id),
+      );
+    const mode = $('relation').value,
+      focus = new Set(selected.length ? selected : r.influential.map((x) => x.id));
+    let links = r.links
+      .filter((l) => l.strength > 0.35 || (l.lastKind === 'coercion' && l.last >= r.month - 6))
+      .sort(
+        (a, b) =>
+          Number(b.last >= r.month - 3) - Number(a.last >= r.month - 3) ||
+          Number(b.lastKind === 'corrupt cooperation') -
+            Number(a.lastKind === 'corrupt cooperation') ||
+          b.strength - a.strength,
+      );
+    if (mode === 'support')
+      links = r.agents
+        .filter((a) => focus.has(a.id))
+        .flatMap((a) =>
+          (a.supports || []).map((t) => ({
+            a: a.id,
+            b: r.organizations[t.org].leader,
+            strength: t.affinity,
+            lastKind: 'support',
+            born: -1,
+          })),
+        )
+        .filter((l) => l.a !== l.b);
+    if (mode === 'membership')
+      links = r.agents
+        .filter((a) => focus.has(a.id))
+        .flatMap((a) =>
+          a.memberships.map((org) => ({
+            a: a.id,
+            b: r.organizations[org].leader,
+            strength: 0.5,
+            lastKind: 'membership',
+            born: -1,
+          })),
+        )
+        .filter((l) => l.a !== l.b);
+    if (mode === 'funding')
+      links = r.funding
+        .filter((f) => f.active)
+        .map((f) => ({
+          a: r.organizations[f.from].leader,
+          b: r.organizations[f.to].leader,
+          strength: Math.min(1, f.total / 5),
+          lastKind: 'funding',
+          born: f.last,
+        }));
+    if (selected.length && mode === 'informal')
+      links = links.filter((l) => focus.has(l.a) || focus.has(l.b));
+    links = links
+      .filter((l) => visible.has(l.a) && visible.has(l.b))
+      .slice(0, selected.length ? 180 : 320);
+    for (const l of links) {
+      if (!visible.has(l.a) || !visible.has(l.b)) continue;
+      const a = positions[l.a],
+        b = positions[l.b];
+      if (!a || !b) continue;
+      const high = focus.has(l.a) || focus.has(l.b),
+        kind = l.lastKind || 'cooperation',
+        color =
+          kind === 'coercion'
+            ? '#b84949'
+            : kind === 'corrupt cooperation'
+              ? '#c78422'
+              : kind === 'funding'
+                ? '#996296'
+                : kind === 'support'
+                  ? colors[r.agents[l.b].role]
+                  : '#3e8075';
+      ctx.globalAlpha = high ? 0.8 : 0.09;
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+      ctx.lineWidth = high ? 1.3 + l.strength : 0.5 + l.strength;
+      ctx.setLineDash(kind === 'support' ? [3, 3] : []);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      if (high) {
+        const angle = Math.atan2(b.y - a.y, b.x - a.x),
+          x = a.x + (b.x - a.x) * 0.72,
+          y = a.y + (b.y - a.y) * 0.72;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x - 5 * Math.cos(angle - 0.45), y - 5 * Math.sin(angle - 0.45));
+        ctx.lineTo(x - 5 * Math.cos(angle + 0.45), y - 5 * Math.sin(angle + 0.45));
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+    const salient = new Set(r.influential.map((a) => a.id));
+    for (const a of r.agents) {
+      if (!visible.has(a.id)) continue;
+      const p = positions[a.id],
+        radius = salient.has(a.id) ? 4.2 : 1.5;
+      ctx.fillStyle = colors[a.role];
+      ctx.beginPath();
+      if (a.state === 'corrupt') {
+        ctx.moveTo(p.x, p.y - radius * 1.25);
+        ctx.lineTo(p.x + radius, p.y + radius);
+        ctx.lineTo(p.x - radius, p.y + radius);
+        ctx.closePath();
+      } else ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+      ctx.fill();
+      if (salient.has(a.id) || selected.includes(a.id)) {
+        ctx.beginPath();
+        ctx.strokeStyle = selected.includes(a.id) ? '#102f28' : '#fff';
+        ctx.lineWidth = selected.includes(a.id) ? 2 : 1;
+        ctx.arc(p.x, p.y, radius + 2.5, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
+    ctx.font = '13px system-ui';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#53645e';
+    ctx.fillText('Inner disc: expected integrity', 12, h - 26);
+    ctx.fillText('Outer bands: repeated participation · ' + zoom.toFixed(1) + '×', 12, h - 9);
+  }
+
+  /** [AK-VIS-03] tinyComparison
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function tinyComparison(base, reform, unit) {
+    if (base === null || reform === null) return '';
+    const max = unit === 'RU' ? Math.max(1, base, reform) : 100;
+    return `<div class="compare cardsmall"><span>Baseline <b>${number(base)}${unit === '%' ? '%' : ' RU'}</b></span><span>Reform <b>${number(reform)}${unit === '%' ? '%' : ' RU'}</b></span></div><div class="barwrap"><div class="bar baselinebar" style="width:${Math.min(100, (100 * base) / max)}%"></div></div><div class="barwrap"><div class="bar" style="width:${Math.min(100, (100 * reform) / max)}%"></div></div>`;
+  }
+
+  const Q = A.Reporting;
+  let assessmentPolicy = null,
+    assessmentLevel = 'outcome',
+    assessmentMonth = null;
+
+  /** [AK-VIS-03] reportFormat
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function reportFormat(value, unit = 'count') {
+    if (value === null || value === undefined || !Number.isFinite(value)) return '—';
+    return (
+      number(value, unit === 'count' ? 0 : unit === 'ratio' ? 2 : 1) +
+      (unit === '%' ? '%' : unit === 'count' ? '' : ' ' + unit)
+    );
+  }
+
+  /** [AK-VIS-02] reportEventButtons
+   * Implementation unit for Influential actors and significant event feed. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function reportEventButtons(events) {
+    return events
+      .map(
+        (e) =>
+          '<button type="button" class="eventref" data-report-event="' +
+          esc(e.id + '.' + e.update) +
+          '">Month ' +
+          e.month +
+          ' · ' +
+          esc(e.change < 0 ? 'Funding reduced' : e.change > 0 ? 'Funding increased' : e.title) +
+          '</button>',
+      )
+      .join(' ');
+  }
+
+  /** [AK-MEA-04] reportMeaning
+   * Insert an escaped predefined interpretation with at most two real linked records and expandable additional developments.
+   */
+  function reportMeaning(level, values, events) {
+    const text = Q.interpret(level, values),
+      links = events.slice(0, 2);
+    return (
+      '<p class="report-meaning">' +
+      esc(text) +
+      (links.length ? ' <span>Connected developments:</span> ' + reportEventButtons(links) : '') +
+      '</p>' +
+      (events.length > 2
+        ? '<details class="report-more"><summary>More developments</summary><div>' +
+          reportEventButtons(events.slice(2)) +
+          '</div></details>'
+        : '')
+    );
+  }
+
+  /** [AK-VIS-03] reportChart
+   * Draw observational series and a shared review-month marker; impact uses paired difference against zero rather than an overlapping pair of cumulative curves.
+   */
+  function reportChart(series, month, unit, label, allowNegative = false) {
+    /** [AK-VIS-03] x
+     * Local helper for reportChart; its inputs and return value are part of the enclosing mechanism. One-page interface, synchronized assessment and review.
+     */
+    const width = 340,
+      height = 155,
+      left = 56,
+      right = 12,
+      top = 12,
+      bottom = 120,
+      duration = activeConfig?.duration || getConfig().duration,
+      values = series.flatMap((p) => [p.reform, p.baseline]).filter((x) => Number.isFinite(x)),
+      min = allowNegative ? Math.min(0, ...values) : 0,
+      max = Math.max(allowNegative ? 0.05 : 1, ...values),
+      span = max - min || 1,
+      x = (m) => left + ((width - left - right) * m) / duration,
+      y = (v) => bottom - ((bottom - top) * (v - min)) / span;
+
+    /** [AK-VIS-03] lines
+     * Local helper for reportChart; its inputs and return value are part of the enclosing mechanism. One-page interface, synchronized assessment and review.
+     */
+    function lines(key) {
+      let path = '',
+        connected = false;
+      for (const p of series) {
+        if (!Number.isFinite(p[key])) {
+          connected = false;
+          continue;
+        }
+        path += (connected ? ' L' : ' M') + x(p.month).toFixed(1) + ' ' + y(p[key]).toFixed(1);
+        connected = true;
+      }
+      return path;
+    }
+    return (
+      '<svg viewBox="0 0 ' +
+      width +
+      ' ' +
+      height +
+      '" role="img" aria-label="' +
+      esc(label) +
+      '. ' +
+      (allowNegative
+        ? 'Green paired difference, dashed grey zero reference'
+        : 'Green reform, dashed grey baseline') +
+      '; marker at month ' +
+      month +
+      '."><title>' +
+      esc(label) +
+      '</title><path d="M' +
+      left +
+      ' ' +
+      top +
+      ' V' +
+      bottom +
+      ' H' +
+      (width - right) +
+      '" fill="none" stroke="#b2beb1"/><text x="0" y="20" font-size="14" fill="#53645e">' +
+      esc(number(max, unit === 'count' ? 0 : 2)) +
+      '</text><text x="0" y="' +
+      bottom +
+      '" font-size="14" fill="#53645e">' +
+      esc(number(min, unit === 'count' ? 0 : 2)) +
+      '</text><path d="' +
+      lines('baseline') +
+      '" fill="none" stroke="#899a91" stroke-width="2" stroke-dasharray="5 4"/><path d="' +
+      lines('reform') +
+      '" fill="none" stroke="#256c54" stroke-width="2.5"/><path d="M' +
+      x(month).toFixed(1) +
+      ' ' +
+      top +
+      ' V' +
+      bottom +
+      '" stroke="#9b6d37" stroke-dasharray="3 3"/><text x="' +
+      left +
+      '" y="144" font-size="14" fill="#53645e">0</text><text x="' +
+      (width - 72) +
+      '" y="144" font-size="14" fill="#53645e">' +
+      duration +
+      ' mo.</text></svg>'
+    );
+  }
+
+  /** [AK-MEA-04] showReportEvent
+   * Open an existing tracked record and its available updates in place, then highlight participants without rerunning the model.
+   */
+  function showReportEvent(key) {
+    const report = current.reform.reporting,
+      events = [...(report?.events || []), ...current.reform.events],
+      event = events.find((e) => e.id + '.' + e.update === key);
+    if (!event) return;
+    selected = event.actors;
+    selectedEvent = key;
+    inspected = null;
+    const updates = events
+      .filter((e) => e.id === event.id)
+      .filter((e, i, a) => a.findIndex((x) => x.update === e.update) === i)
+      .sort((a, b) => a.month - b.month || a.update - b.update);
+    $('reportEventDetail').hidden = false;
+    $('reportEventDetail').innerHTML =
+      '<h3>' +
+      esc(event.title) +
+      '</h3><p class="small">Month ' +
+      event.month +
+      ' · ' +
+      esc(event.id) +
+      ' · update ' +
+      event.update +
+      ' · ' +
+      esc(event.status || event.kind) +
+      '</p><p>' +
+      esc(event.text) +
+      '</p><p class="small muted">This is a connected record; chronology alone does not establish the cause of the result.</p>' +
+      (updates.length > 1
+        ? '<details><summary>Tracked updates (' +
+          updates.length +
+          ')</summary><div>' +
+          updates
+            .map(
+              (e) =>
+                '<p class="small"><b>Month ' +
+                e.month +
+                ' · ' +
+                esc(e.status || e.kind) +
+                '</b> ' +
+                esc(e.text) +
+                '</p>',
+            )
+            .join('') +
+          '</div></details>'
+        : '');
+    drawMap();
+    $('reportEventDetail').scrollIntoView({ behavior: 'auto', block: 'nearest' });
+  }
+
+  /** [AK-VIS-03] renderPolicyAssessment
+   * Connect one selected policy’s outputs/outcomes with the package impact, same-month baseline and fixed pre-adoption snapshot. Rendering must remain passive and preserve the real measurement windows.
+   */
+  function renderPolicyAssessment(config) {
+    const r = current.reform,
+      b = current.baseline,
+      chosen = config.policies,
+      select = $('assessmentPolicy'),
+      old = assessmentPolicy;
+    assessmentPolicy = chosen.some((p) => p.id === old) ? old : (chosen[0]?.id ?? null);
+    if ([...select.options].map((o) => o.value).join('|') !== chosen.map((p) => p.id).join('|'))
+      select.innerHTML = chosen
+        .map(
+          (p) =>
+            '<option value="' +
+            esc(p.id) +
+            '">' +
+            esc(D.policies.find((q) => q.id === p.id).label) +
+            '</option>',
+        )
+        .join('');
+    select.value = assessmentPolicy || '';
+    select.disabled = !chosen.length;
+    const month = assessmentMonth === null ? r.month : Math.min(assessmentMonth, r.month),
+      final = !!completed && month === r.month,
+      phase = final ? 'Final' : 'Current';
+    $('assessmentMonth').max = String(r.month);
+    $('assessmentMonth').value = String(month);
+    $('assessmentMonth').disabled = !r.month;
+    $('assessmentPhase').textContent =
+      (final
+        ? 'Run complete · Final conditions'
+        : month === r.month
+          ? 'Current conditions'
+          : 'Reviewing conditions') +
+      ' · month ' +
+      month +
+      (completed && month !== r.month ? ' · completed at month ' + r.month : '') +
+      '. All panels follow the same month marker.';
+    if (!assessmentPolicy) {
+      $('assessment').innerHTML =
+        '<p>No additional reform selected. Select a reform to inspect its delivery and policy-specific conditions; package impact remains available below.</p>';
+      $('reportEventDetail').hidden = true;
+      return;
+    }
+    const id = assessmentPolicy,
+      def = Q.definitions[id],
+      rp = r.reporting,
+      bp = b.reporting;
+    if (!rp || !bp) {
+      $('reportEventDetail').hidden = true;
+      $('assessment').innerHTML =
+        '<p class="notice">Policy-specific starting conditions and delivery histories were not recorded in this saved result. Run the scenario again to create the new assessment. Existing results remain available in the package details below.</p>';
+      return;
+    }
+    const point = rp.history.find((x) => x.month === month),
+      base = bp.history.find((x) => x.month === month);
+    if (!point || !base) return;
+    const tool = point.tools[id],
+      baseTool = base.tools[id],
+      before = rp.start.tools[id],
+      initialOutput = Q.windowValue(rp, id, 0, 12),
+      output = Q.windowValue(rp, id, month, 12),
+      baseOutput = Q.windowValue(bp, id, month, 12),
+      meta = Q.outcomeMeta(id) || r.assessment[id],
+      outcomeUnit = meta.unit,
+      impact = V.impactSeries(r.history, b.history, Number($('impactWindow').value)),
+      ip = impact.find((p) => p.month === month),
+      startImpact = rp.start.impact.opportunities
+        ? (100 * rp.start.impact.corrupt) / rp.start.impact.opportunities
+        : null;
+    const markers = rp.history.filter((p) => p.month >= 0 && p.month <= r.month),
+      outSeries = markers.map((p) => ({
+        month: p.month,
+        reform: Q.windowValue(rp, id, p.month, 12)?.value ?? null,
+        baseline: Q.windowValue(bp, id, p.month, 12)?.value ?? null,
+      })),
+      outcomeSeries = markers.map((p) => ({
+        month: p.month,
+        reform: p.tools[id].outcome,
+        baseline: bp.history.find((q) => q.month === p.month)?.tools[id].outcome ?? null,
+      })),
+      impactSeries = impact.map((p) => ({
+        month: p.month,
+        reform: p.difference,
+        baseline: p.difference === null ? null : 0,
+      }));
+    const levels = [
+      {
+        id: 'output',
+        title: 'Output',
+        label: def.output,
+        value: output?.value ?? null,
+        baseline: baseOutput?.value ?? null,
+        unit: def.unit,
+        period: 'Actual activity · trailing 12 months',
+        series: outSeries,
+      },
+      {
+        id: 'outcome',
+        title: 'Outcome',
+        label: D.policies.find((p) => p.id === id).outcome,
+        value: tool.outcome,
+        baseline: baseTool.outcome,
+        unit: outcomeUnit,
+        period: meta.method,
+        series: outcomeSeries,
+      },
+      {
+        id: 'impact',
+        title: 'Impact',
+        label: config.policies.length > 1 ? 'Combined reform package' : 'Reform scenario',
+        value: ip?.reform?.rate ?? null,
+        baseline: ip?.baseline?.rate ?? null,
+        unit: '%',
+        period:
+          'Reform minus baseline, in percentage points · ' +
+          (Number($('impactWindow').value) ? 'past 12 post-adoption months' : 'since adoption'),
+        series: impactSeries,
+      },
+    ];
+    const open = $('assessment').querySelector('[data-policy-conditions]')?.open;
+    let html =
+      '<div class="assessment-headlines">' +
+      levels
+        .map(
+          (p) =>
+            '<button type="button" data-assessment-level="' +
+            p.id +
+            '" class="assessment-headline ' +
+            (assessmentLevel === p.id ? 'selected' : '') +
+            '" aria-pressed="' +
+            (assessmentLevel === p.id) +
+            '" aria-controls="stage-' +
+            p.id +
+            '"><span>' +
+            p.title +
+            '</span><strong>' +
+            esc(
+              p.id === 'impact'
+                ? V.impactDifference(ip?.difference ?? null) + ' pts'
+                : reportFormat(p.value, p.unit),
+            ) +
+            '</strong><small>' +
+            esc(
+              p.id === 'impact'
+                ? 'Rate difference vs baseline'
+                : p.id === 'output'
+                  ? def.unit === 'count'
+                    ? 'Delivered activity'
+                    : def.unit
+                  : 'Institutional indicator',
+            ) +
+            '</small></button>',
+        )
+        .join('') +
+      '</div><p class="small muted assessment-mobile-hint">Select a stage to see its chart and explanation.</p><div class="assessment-panels">';
+    for (const p of levels) {
+      const events = Q.eventsFor(rp, id, p.id, month, Number($('impactWindow').value) || 0),
+        estimated = p.id === 'outcome' && /diagnostic/i.test(meta.method),
+        interpret = {
+          value: p.value,
+          baseline: p.baseline,
+          lowerBetter: p.id === 'impact' || !!meta.lowerBetter,
+          outputDelta: (output?.value ?? 0) - (baseOutput?.value ?? 0),
+          impactDelta: ip?.difference ?? null,
+          estimated,
+        };
+      html +=
+        '<section id="stage-' +
+        p.id +
+        '" class="assessment-stage ' +
+        (assessmentLevel === p.id ? 'selected' : '') +
+        '"><h3>' +
+        p.title +
+        ' · ' +
+        esc(p.label) +
+        '</h3><p class="small muted">' +
+        esc(p.period) +
+        '</p>' +
+        reportChart(p.series, month, p.unit, p.title + ' ' + p.label, p.id === 'impact') +
+        '<p class="small">Reform <b>' +
+        esc(p.id === 'impact' ? number(p.value, 3) : reportFormat(p.value, p.unit)) +
+        '</b> · baseline <b>' +
+        esc(p.id === 'impact' ? number(p.baseline, 3) : reportFormat(p.baseline, p.unit)) +
+        '</b>' +
+        (p.id === 'impact' && ip?.difference !== null && ip?.difference !== undefined
+          ? ' · difference <b>' + esc(V.impactDifference(ip.difference)) + ' points</b>'
+          : '') +
+        '</p>' +
+        reportMeaning(p.id, interpret, events) +
+        (p.id === 'outcome' && tool.n !== null
+          ? '<p class="small muted">' + number(tool.n, 0) + ' applicable observations.</p>'
+          : '') +
+        '</section>';
+    }
+    const rows = [
+      [
+        def.output + ' · trailing 12 months',
+        initialOutput?.value ?? null,
+        output?.value ?? null,
+        baseOutput?.value ?? null,
+        def.unit,
+      ],
+      [
+        'Institutional outcome · ' + meta.method,
+        before.outcome,
+        tool.outcome,
+        baseTool.outcome,
+        outcomeUnit,
+      ],
+      ...def.conditions.map(([name, unit], i) => [
+        name,
+        before.conditions[i],
+        tool.conditions[i],
+        baseTool.conditions[i],
+        unit,
+      ]),
+      [
+        'Package corrupt encounters / 100',
+        startImpact,
+        ip?.reform?.rate ?? null,
+        ip?.baseline?.rate ?? null,
+        '%',
+      ],
+    ];
+    const flow = r.policies.find((p) => p.id === id),
+      responses = flow
+        ? r.organizations
+            .filter((o) => o.responses[id])
+            .reduce((all, o) => {
+              const k = o.responses[id];
+              all[k] = (all[k] || 0) + 1;
+              return all;
+            }, {})
+        : {};
+    html +=
+      '</div><details data-policy-conditions ' +
+      (open ? 'open' : '') +
+      '><summary>Starting and ' +
+      phase.toLowerCase() +
+      ' policy conditions</summary><div><p class="small">Before reform is the same inherited society for both branches, immediately before formal adoption. Conditions are snapshots; activity counts use equal 12-month windows, including inherited months early in the run. Impact starts at adoption; its starting value describes the reconstructed pre-policy year. Eligible populations follow current roles.</p><div class="report-table-wrap"><table class="compact-table"><thead><tr><th>Policy-specific measure</th><th>Before reform</th><th>' +
+      phase +
+      ' reform · month ' +
+      month +
+      '</th><th>' +
+      phase +
+      ' baseline · month ' +
+      month +
+      '</th></tr></thead><tbody>' +
+      rows
+        .map(
+          ([label, x, y, z, unit]) =>
+            '<tr><th scope="row">' +
+            esc(label) +
+            '</th><td>' +
+            esc(reportFormat(x, unit)) +
+            '</td><td>' +
+            esc(reportFormat(y, unit)) +
+            '</td><td>' +
+            esc(reportFormat(z, unit)) +
+            '</td></tr>',
+        )
+        .join('') +
+      '</tbody></table></div></div></details>';
+    if (flow)
+      html +=
+        '<details><summary>Resources and implementation for this policy</summary><div><p class="small">Latest live implementation at month ' +
+        r.month +
+        ': ' +
+        flow.allocations.filter((a) => a.installed).length +
+        ' / ' +
+        flow.allocations.length +
+        ' recipient setups complete. Mobilized ' +
+        number(flow.mobilized) +
+        ' RU; deployed ' +
+        number(flow.deployed) +
+        ' RU; diverted ' +
+        number(flow.diverted) +
+        ' RU. Current authorized rate ' +
+        Math.round(flow.rate * 100) +
+        '%; formal status ' +
+        esc(flow.formal) +
+        '.</p><p class="small">Organizational responses: ' +
+        esc(
+          Object.entries(responses)
+            .map(([label, n]) => n + ' ' + label)
+            .join(', ') || 'none yet',
+        ) +
+        '.</p><p class="small">' +
+        esc(A.Adaptation.map[id].structural) +
+        '. ' +
+        esc(A.Adaptation.map[id].channel) +
+        '.</p></div></details>';
+    html +=
+      '<p class="small muted">Output/outcome charts: green reform, dashed grey baseline. The impact chart shows their difference against zero. Output is delivery; outcome is the policy-specific institutional result. Impact describes the package and cannot isolate one tool’s contribution in a combination. Estimated capability is labeled separately from observed activity.</p>';
+    $('assessment').innerHTML = html;
+    for (const el of $('assessment').querySelectorAll('[data-assessment-level]'))
+      el.addEventListener('click', () => {
+        assessmentLevel = el.dataset.assessmentLevel;
+        renderPolicyAssessment(activeConfig || getConfig());
+      });
+    for (const el of $('assessment').querySelectorAll('[data-report-event]'))
+      el.addEventListener('click', () => showReportEvent(el.dataset.reportEvent));
+  }
+
+  /** [AK-VIS-03] renderAssessment
+   * Coordinate the new stage panels with expandable full-package quantities and repetition summaries. Package totals remain separate from tool-specific conditions.
+   */
+  function renderAssessment() {
+    const r = current.reform,
+      b = current.baseline,
+      c = current.comparison,
+      config = activeConfig || getConfig();
+    renderPolicyAssessment(config);
+    const impact = selectedImpact(),
+      point = impact.point,
+      rw = point?.reform,
+      bw = point?.baseline,
+      difference = point?.difference ?? null;
+    $('impactPeriod').textContent = impact.window
+      ? 'Recent results · ' +
+        (rw?.months ?? 0) +
+        ' modeled months' +
+        (rw?.months ? ' · months ' + (rw.fromMonth + 1) + '–' + rw.month : '')
+      : 'Since reform adoption · months 1–' + r.month;
+    $('baseImpact').textContent = number(bw?.rate, 3);
+    $('reformImpact').textContent = number(rw?.rate, 3);
+    $('impactDifference').textContent =
+      V.impactDifference(difference) + (difference === null ? '' : ' percentage points');
+    $('impactExplanation').textContent =
+      difference === null
+        ? 'Advance the model to create comparable relevant encounters.'
+        : `In this assessment period, reform: ${rw.corrupt} completed corrupt encounters / ${rw.opportunities} relevant encounters; baseline: ${bw.corrupt} / ${bw.opportunities}. ` +
+          (difference < 0
+            ? 'The reform rate is lower.'
+            : difference > 0
+              ? 'The reform rate is higher.'
+              : 'The rates are equal.') +
+          ' This is a paired model result, not evidence of a real-world effect.';
+    const flows = r.policies || [],
+      allocations = flows.flatMap((p) => p.allocations),
+      installed = allocations.filter((a) => a.installed).length,
+      delivering = flows
+        .filter((p) => p.formal === 'active')
+        .flatMap((p) => p.allocations)
+        .filter((a) => a.installed && a.lastDelivered === r.month).length;
+    $('implementationStatus').textContent = flows.length
+      ? `Implementation: ${installed} of ${allocations.length} policy-recipient setups completed; ${delivering} delivered reform work in month ${r.month}. Completed setup does not guarantee continued delivery or changed conduct.`
+      : 'No additional reform selected: both branches retain the inherited policies.';
+    $('impactDetails').innerHTML =
+      '<table class="compact-table"><tr><th>Whole-system consequence · since adoption</th><th>Baseline</th><th>Reform</th></tr>' +
+      [
+        ['All qualifying acts', b.metrics.corruptActs, r.metrics.corruptActs],
+        ['Coerced payments', b.metrics.coercedPayments, r.metrics.coercedPayments],
+        ['Victim payment burden (RU)', b.metrics.bribeBurden, r.metrics.bribeBurden],
+        ['Diverted resources (RU)', b.metrics.diversion, r.metrics.diversion],
+        ['Foregone tax revenue (RU)', b.metrics.foregoneRevenue, r.metrics.foregoneRevenue],
+        ['Service waiting (person-months)', b.metrics.serviceWait, r.metrics.serviceWait],
+        ['Pending services', b.metrics.backlog, r.metrics.backlog],
+        ['Sanctions / remedies on persons', b.metrics.sanctions, r.metrics.sanctions],
+      ]
+        .map(
+          ([label, x, y]) =>
+            '<tr><td>' +
+            label +
+            '</td><td>' +
+            number(x, label.includes('RU') ? 1 : 0) +
+            '</td><td>' +
+            number(y, label.includes('RU') ? 1 : 0) +
+            '</td></tr>',
+        )
+        .join('') +
+      '</table>';
+    $('distribution').innerHTML =
+      '<p class="small">Completed simulation participation counts by role at the time of the act; two-party acts can involve two people. Victim payment burdens and waiting are separate.</p><table class="compact-table"><tr><th>Role</th><th>Act participations</th><th>Victim burden (RU)</th><th>Service waiting</th></tr>' +
+      r.distribution
+        .map(
+          (x, i) =>
+            '<tr><td>' +
+            A.TYPES[i] +
+            '</td><td>' +
+            esc(x.acts) +
+            '</td><td>' +
+            number(x.victimBurden) +
+            '</td><td>' +
+            number(x.wait, 0) +
+            '</td></tr>',
+        )
+        .join('') +
+      '</table><p class="small">Transfers are not automatically net societal losses. Check whole-system diversion and service effects alongside the common-encounter rate.</p>';
+    const stats = completed?.statistics;
+    $('repeatResults').textContent =
+      stats && completed.replications.length > 1
+        ? `Across ${completed.replications.length} repetitions of the same starting society (since adoption): mean paired difference ${V.impactDifference(stats.meanDifference)} points; simulation range ${V.impactDifference(stats.minDifference)} to ${V.impactDifference(stats.maxDifference)}. Map and policy cards show repetition 1; expand individual results below to compare all repetitions. This is model-event variation, not an empirical confidence interval.`
+        : '';
+    renderReplications(config);
+    drawImpact();
+  }
+
+  /** [AK-VIS-03] renderReplications
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function renderReplications(config) {
+    const rows = completed?.replications || [];
+    $('replicationDetails').hidden = rows.length < 2;
+    if (rows.length < 2) {
+      $('replicationTable').innerHTML = '';
+      return;
+    }
+    let html =
+      '<p class="small">Every row uses the identical initial society. Repetition numbers identify distinct subsequent event streams. A rounded or discrete institutional indicator can legitimately repeat even when conduct and events differ.</p><table class="compact-table"><tr><th>Run</th><th>Corrupt acts</th><th>Baseline acts</th><th>Encounter-rate difference · since adoption</th></tr>';
+    for (const r of rows)
+      html +=
+        '<tr><td>' +
+        esc(r.replicate) +
+        '</td><td>' +
+        number(r.reformMetrics?.corruptActs, 0) +
+        '</td><td>' +
+        number(r.baselineMetrics?.corruptActs, 0) +
+        '</td><td>' +
+        V.impactDifference(r.difference) +
+        ' points</td></tr>';
+    html += '</table>';
+    for (const selected of config.policies) {
+      const policy = D.policies.find((p) => p.id === selected.id);
+      html +=
+        '<h3>' +
+        esc(policy.label) +
+        '</h3><table class="compact-table"><tr><th>Run</th><th>Reform outcome</th><th>Baseline outcome</th><th>Difference</th></tr>';
+      for (const r of rows) {
+        const a = r.assessment[selected.id],
+          observed = r.policyOutcomes?.[selected.id],
+          unit = a.reform.unit === '%' ? '%' : ' RU';
+        html +=
+          '<tr><td>' +
+          esc(r.replicate) +
+          '</td><td>' +
+          number(observed ? observed.reform : a.reform.value) +
+          unit +
+          '</td><td>' +
+          number(observed ? observed.baseline : a.baseline.value) +
+          unit +
+          '</td><td>' +
+          number(observed ? observed.difference : a.difference) +
+          (unit === '%' ? ' points' : ' RU') +
+          '</td></tr>';
+      }
+      html += '</table>';
+    }
+    $('replicationTable').innerHTML = html;
+  }
+
+  /** [AK-VIS-03] selectedImpact
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function selectedImpact() {
+    const window = Number($('impactWindow').value),
+      series = V.impactSeries(current.reform.history, current.baseline.history, window);
+    return { window, series, point: series.at(-1) };
+  }
+
+  /** [AK-VIS-03] drawImpact
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function drawImpact() {
+    const width = Math.max(280, $('impactChart').getBoundingClientRect().width || 620),
+      plot = width - 94,
+      { series, window } = selectedImpact(),
+      values = series.filter((x) => x.difference !== null),
+      extent = Math.max(0.05, ...values.map((x) => Math.abs(x.difference))) * 1.15,
+      duration = activeConfig?.duration || getConfig().duration,
+      zero = 94,
+      scale = 62 / extent;
+
+    /** [AK-VIS-03] label
+     * Local helper for drawImpact; its inputs and return value are part of the enclosing mechanism. One-page interface, synchronized assessment and review.
+     */
+    const points = values
+        .map(
+          (x) =>
+            (70 + (plot * x.month) / duration).toFixed(1) +
+            ',' +
+            (zero - scale * x.difference).toFixed(1),
+        )
+        .join(' '),
+      label = (x) => Number(x.toPrecision(2)).toString(),
+      mode = window ? 'past-12-month' : 'since-adoption';
+    $('impactChart').innerHTML =
+      `<svg viewBox="0 0 ${width} 210" role="img" aria-label="${mode} reform minus baseline corrupt-encounter rate, in percentage points. Negative values mean fewer corrupt encounters per opportunity."><title>Paired difference over time (${mode})</title><path d="M70 25 V159 H${width - 24}" stroke="#b2beb1" fill="none"/><path d="M70 ${zero} H${width - 24}" stroke="#7a8a80" stroke-dasharray="4 4" fill="none"/><text x="3" y="36" fill="#53645e" font-size="14">+${label(extent)}</text><text x="39" y="99" fill="#53645e" font-size="14">0</text><text x="3" y="160" fill="#53645e" font-size="14">−${label(extent)}</text><text x="67" y="182" fill="#53645e" font-size="14">0</text><text x="${width - 82}" y="182" fill="#53645e" font-size="14">${duration} mo.</text><polyline points="${points}" fill="none" stroke="#25483f" stroke-width="2.5"/><text x="70" y="205" fill="#53645e" font-size="14">Difference in percentage points</text></svg>`;
+  }
+
+  /** [AK-VIS-03] render
+   * Implementation unit for One-page interface, synchronized assessment and review. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function render() {
+    if (!current) return;
+    const r = current.reform,
+      duration = activeConfig?.duration || getConfig().duration;
+    $('progressFill').style.width = (r.month / duration) * 100 + '%';
+    const progress = document.querySelector('[role=progressbar]');
+    progress.setAttribute('aria-valuemax', duration);
+    progress.setAttribute('aria-valuenow', r.month);
+    $('progressLabel').textContent =
+      (completed ? 'Complete' : running ? 'Running' : r.month ? 'Paused' : 'Ready') +
+      ` · month ${r.month} / ${duration}` +
+      (activeConfig ? ' · ' + D.profiles.find((p) => p.iso3 === activeConfig.country).name : '');
+    $('repeatStatus').textContent =
+      completed && activeConfig?.repetitions > 1
+        ? 'All ' +
+          activeConfig.repetitions +
+          ' repetitions complete · map and cards show repetition 1'
+        : current.repetitions > 1
+          ? `Repetition ${current.replicate || current.replications?.length || 1} / ${current.repetitions || activeConfig.repetitions}` +
+            (current.repeatMonth !== undefined
+              ? ' · processing month ' + current.repeatMonth
+              : '') +
+            ' · visible map: first reform run'
+          : '';
+    $('runIdentity').textContent =
+      'Starting society ' +
+      initial.initialKey +
+      ' · Event seed ' +
+      (activeConfig?.eventSeed || getConfig().eventSeed);
+    $('snapshotNote').textContent =
+      'Initial society ' +
+      initial.initialKey +
+      ' · model ' +
+      A.VERSION +
+      ' · reconstructed pre-policy year';
+    $('initialConditions').textContent =
+      'Starting estimate: ' +
+      initial.initialization.metrics.corruptState +
+      ' agents with recorded qualifying conduct; ' +
+      initial.initialization.metrics.encounterOpportunities +
+      ' modeled encounters during the reconstructed pre-policy year. Policy-specific starting and current conditions appear in the assessment below; general inherited workloads are available in the expandable system context. Past choices appear on the map; the act counter starts at reform adoption. These are model estimates, not observed national prevalence.';
+    $('corruptStat').textContent = number(r.metrics.corruptState / 10) + '%';
+    $('actsStat').textContent = number(r.metrics.corruptActs, 0);
+    $('encounterStat').textContent = number(current.comparison.reformRate);
+    $('classActivity').innerHTML = (r.classActivity || [])
+      .map((x, i) => {
+        const baseline = current.baseline.classActivity?.[i]?.rate,
+          delta =
+            x.rate === null || baseline === null || baseline === undefined
+              ? null
+              : x.rate - baseline;
+        return (
+          '<div class="classcard" style="border-color:' +
+          colors[i] +
+          '"><b>' +
+          esc(x.type) +
+          '</b><strong>' +
+          number(x.rate) +
+          '%</strong><span>' +
+          x.corrupt +
+          ' / ' +
+          x.opportunities +
+          ' recent opportunities</span><small>' +
+          (delta === null
+            ? 'Awaiting comparable opportunities'
+            : (delta > 0 ? '+' : '') + number(delta) + ' points vs baseline') +
+          '</small></div>'
+        );
+      })
+      .join('');
+    $('actors').innerHTML = r.influential
+      .map((x) => `<button data-actor="${x.id}">${esc(r.agents[x.id].type)} #${x.id}</button>`)
+      .join('');
+    for (const el of document.querySelectorAll('[data-actor]'))
+      el.addEventListener('click', () => selectActor(Number(el.dataset.actor)));
+    $('systemStats').innerHTML =
+      '<p class="small">Inherited system workload: ' +
+      initial.cases.filter((c) => c.status !== 'closed').length +
+      ' pending cases and ' +
+      initial.services.length +
+      ' pending services at reform adoption. These totals provide system context; policy-specific conditions are reported separately below.</p><table class="compact-table">' +
+      [
+        ['Public treasury', number(r.metrics.cash) + ' RU'],
+        [
+          'Average trust / lawful control',
+          number(r.metrics.meanTrust * 100) + '% / ' + number(r.metrics.meanControl * 100) + '%',
+        ],
+        ['Average perceived accountability cost', number(r.metrics.meanRisk * 100) + ' / 100'],
+        ['Agents with negligible cash', number(r.metrics.cashConstrained, 0) + ' / 1,000'],
+        ['Average unmet-needs pressure', number(r.metrics.meanFinancialPressure * 100) + '%'],
+        ['Outstanding financial liability', number(r.metrics.outstandingLiability) + ' RU'],
+        ['Monthly staff capacity', number(r.metrics.capacity) + ' PM'],
+        [
+          'Routine / reform / case staff time',
+          [r.metrics.routineTime, r.metrics.reformTime, r.metrics.caseTime]
+            .map((v) => number(v))
+            .join(' / ') + ' PM',
+        ],
+        ['Pending services', number(r.metrics.backlog, 0)],
+        ['Pending cases', number(r.metrics.caseBacklog, 0)],
+        ['Reports / audit checks', r.metrics.reports + ' / ' + r.metrics.audits],
+        ['Failed proposals / refusals', r.metrics.failedProposals + ' / ' + r.metrics.refusals],
+        ['Extortion / coerced payments', r.metrics.extortion + ' / ' + r.metrics.coercedPayments],
+        ['Case remedies / sanctions', r.metrics.sanctions],
+        ['Collected financial liability', number(r.metrics.collected) + ' RU'],
+      ]
+        .map(([k, v]) => '<tr><td>' + k + '</td><td>' + v + '</td></tr>')
+        .join('') +
+      '</table>';
+    const pm = current.baseline.metrics;
+    const pressures = [
+      ['Service trust', 'meanTrust'],
+      ['Lawful control', 'meanControl'],
+      ['Expected accountability cost', 'meanRisk'],
+      ['Unmet-needs pressure', 'meanFinancialPressure'],
+    ];
+    $('decisionPressures').innerHTML = pressures
+      .map(
+        ([label, key]) =>
+          '<div class="pressure"><span>' +
+          label +
+          '</span><b>' +
+          number(r.metrics[key] * 100) +
+          (key === 'meanRisk' ? ' / 100' : '%') +
+          '</b><div class="pressurebars"><i class="baselinebar" style="width:' +
+          Math.max(0, Math.min(100, pm[key] * 100)) +
+          '%"></i><i style="width:' +
+          Math.max(0, Math.min(100, r.metrics[key] * 100)) +
+          '%"></i></div><small>Baseline ' +
+          number(pm[key] * 100) +
+          (key === 'meanRisk' ? ' / 100' : '%') +
+          '</small></div>',
+      )
+      .join('');
+    drawMap();
+    renderFeed();
+    renderAssessment();
+    inspector();
+  }
+
+  /** [AK-IO-01] openDB
+   * Implementation unit for Saving, loading, import validation and exports. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function openDB() {
+    if (dbPromise) return dbPromise;
+    dbPromise = new Promise((resolve, reject) => {
+      if (!window.indexedDB) {
+        reject(Error('IndexedDB unavailable'));
+        return;
+      }
+      const request = indexedDB.open('antarkya-v2', 1);
+      request.onupgradeneeded = () =>
+        request.result.createObjectStore('scenarios', { keyPath: 'name' });
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+      request.onblocked = () => reject(Error('Storage is blocked by another tab.'));
+    });
+    return dbPromise;
+  }
+
+  /** [AK-IO-01] storeAction
+   * Persist named scenarios on device with IndexedDB and localStorage fallback, reporting failures instead of silently promising durable storage.
+   */
+  async function storeAction(action, key, value) {
+    try {
+      const db = await openDB();
+      return await new Promise((resolve, reject) => {
+        const tx = db.transaction('scenarios', action === 'put' ? 'readwrite' : 'readonly'),
+          store = tx.objectStore('scenarios'),
+          request =
+            action === 'put'
+              ? store.put(value)
+              : action === 'get'
+                ? store.get(key)
+                : store.getAllKeys();
+        let result;
+        request.onsuccess = () => {
+          result = request.result;
+        };
+        tx.oncomplete = () => resolve(result);
+        tx.onerror = () => reject(tx.error);
+        tx.onabort = () => reject(tx.error || Error('Storage transaction failed.'));
+      });
+    } catch (error) {
+      let saves;
+      try {
+        saves = JSON.parse(localStorage.getItem(FALLBACK) || '{}');
+        if (!saves || typeof saves !== 'object' || Array.isArray(saves)) saves = {};
+      } catch (e) {
+        saves = {};
+      }
+      if (action === 'put') {
+        Object.defineProperty(saves, key, {
+          value,
+          enumerable: true,
+          writable: true,
+          configurable: true,
+        });
+        localStorage.setItem(FALLBACK, JSON.stringify(saves));
+        return key;
+      }
+      if (action === 'get') return Object.hasOwn(saves, key) ? saves[key] : undefined;
+      return Object.keys(saves);
+    }
+  }
+
+  /** [AK-IO-01] refreshSaves
+   * Implementation unit for Saving, loading, import validation and exports. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  async function refreshSaves() {
+    try {
+      const names = await storeAction('keys');
+      $('savedNames').innerHTML =
+        '<option value="">Choose a scenario</option>' +
+        names
+          .map((name) => '<option value="' + esc(name) + '">' + esc(name) + '</option>')
+          .join('');
+    } catch (e) {
+      status('Device storage is unavailable. You can still export a JSON backup.', true);
+    }
+  }
+
+  /** [AK-IO-01] payload
+   * Serialize setup, exact initial society and matching completed results. This is a scenario/result backup, not an in-flight checkpoint.
+   */
+  function payload() {
+    const c = getConfig(),
+      same = activeConfig && JSON.stringify(c) === JSON.stringify(activeConfig);
+    return {
+      schema: 'antarkya.scenario.v2',
+      modelVersion: A.VERSION,
+      profileVersion: D.schema,
+      createdAt: new Date().toISOString(),
+      config: c,
+      initial: A.createInitial(c),
+      results: same ? completed : null,
+    };
+  }
+
+  /** [AK-IO-01] validatePayload
+   * Validate untrusted JSON data and preserve exact starting-state identity; never execute imported content. Monitoring is optional for older2.4 results but checked when supplied.
+   */
+  function validatePayload(p) {
+    if (!p || p.schema !== 'antarkya.scenario.v2' || p.modelVersion !== A.VERSION)
+      throw Error(
+        'This file uses different model rules. Version 2.4 requires a reconstructed starting state; recreate the scenario from its settings.',
+      );
+    const c = A.validate(p.config);
+    A.validateInitial(p.initial, c);
+    if (p.results) {
+      const result = p.results;
+      if (
+        result.type !== 'complete' ||
+        result.reform?.agents?.length !== 1000 ||
+        !Array.isArray(result.reform.events) ||
+        !Array.isArray(result.baseline?.history) ||
+        !result.reform.assessment
+      )
+        throw Error('Completed results are incomplete.');
+      for (let i = 0; i < 1000; i++) {
+        const a = result.reform.agents[i];
+        if (
+          a.id !== i ||
+          !Number.isInteger(a.role) ||
+          a.role < 0 ||
+          a.role > 3 ||
+          !Number.isFinite(a.x) ||
+          !Number.isFinite(a.y) ||
+          a.x < 0 ||
+          a.x > 1 ||
+          a.y < 0 ||
+          a.y > 1
+        )
+          throw Error('Invalid agent in completed results.');
+        if (a.psychology && !A.Adaptation.validSummary(a.psychology))
+          throw Error('Invalid numerical learning profile in completed results.');
+      }
+      if (result.reform.agentProfiles) {
+        if (
+          !Array.isArray(result.reform.agentProfiles) ||
+          result.reform.agentProfiles.length !== 1000 ||
+          result.reform.agentProfiles.some(
+            (a, i) =>
+              a.id !== i ||
+              !A.Adaptation.valid(a) ||
+              !Array.isArray(a.motives) ||
+              a.motives.length !== 9 ||
+              !a.motives.every((x) => Number.isFinite(x) && x > 0) ||
+              Math.abs(a.motives.reduce((x, y) => x + y, 0) - 1) > 1e-6,
+          )
+        )
+          throw Error('Invalid exported agent profiles.');
+      }
+      for (const branch of [result.reform, result.baseline]) {
+        if (
+          !branch.metrics ||
+          Object.values(branch.metrics).some((v) => typeof v !== 'number' || !Number.isFinite(v))
+        )
+          throw Error('Invalid numeric result.');
+        for (const key of A.KEYS) {
+          const m = branch.assessment?.[key];
+          if (
+            !m ||
+            (m.value !== null && !Number.isFinite(m.value)) ||
+            !Number.isFinite(m.numerator) ||
+            !Number.isFinite(m.denominator) ||
+            !['%', 'RU'].includes(m.unit) ||
+            typeof m.method !== 'string'
+          )
+            throw Error('Invalid assessment result.');
+        }
+      }
+      for (const branch of [result.reform, result.baseline])
+        if (branch.reporting && !Q.valid(branch.reporting))
+          throw Error('Invalid policy monitoring history.');
+      for (const e of result.reform.events)
+        if (
+          !Number.isInteger(e.month) ||
+          !Number.isInteger(e.update) ||
+          !Array.isArray(e.actors) ||
+          e.actors.some((id) => !Number.isInteger(id) || id < 0 || id >= 1000)
+        )
+          throw Error('Invalid event record.');
+      if (
+        !Array.isArray(result.reform.organizations) ||
+        !Array.isArray(result.reform.influential) ||
+        result.reform.influential.some(
+          (x) => !Number.isInteger(x.id) || x.id < 0 || x.id >= 1000,
+        ) ||
+        !Array.isArray(result.reform.policies) ||
+        !Array.isArray(result.reform.distribution) ||
+        result.reform.distribution.length !== 4
+      )
+        throw Error('Invalid result structure.');
+    }
+    return c;
+  }
+
+  /** [AK-IO-01] loadPayload
+   * Stop execution, reset review state and load for inspection only. Existing completed results do not gain missing monitoring data without a rerun.
+   */
+  function loadPayload(p) {
+    const c = validatePayload(p);
+    stopWorker();
+    assessmentMonth = null;
+    $('reportEventDetail').hidden = true;
+    activeConfig = null;
+    applyConfig(c);
+    initial = p.initial;
+    lastSignature = signature(c);
+    selected = [];
+    inspected = null;
+    selectedEvent = null;
+    if (p.results) {
+      activeConfig = c;
+      completed = p.results;
+      current = p.results;
+      render();
+      $('run').textContent = 'Run again';
+    } else preview();
+    remember();
+    status(
+      'Loaded for review. No run has started.' +
+        (p.results ? ' Completed results are displayed.' : ''),
+    );
+  }
+
+  /** [AK-IO-01] download
+   * Implementation unit for Saving, loading, import validation and exports. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  function download(content, name, type) {
+    const blob = new Blob([content], { type }),
+      url = URL.createObjectURL(blob),
+      link = document.createElement('a');
+    link.href = url;
+    link.download = name;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
+  /** [AK-IO-01] csv
+   * Escape CSV values and guard formula-like string cells. CSV quantities retain their named units and are not a substitute for the full JSON state.
+   */
+  function csv(rows, name) {
+    download(
+      rows
+        .map((row) =>
+          row
+            .map(
+              (v) =>
+                '"' +
+                String(typeof v === 'string' && /^[=+@-]/.test(v) ? "'" + v : (v ?? '')).replace(
+                  /"/g,
+                  '""',
+                ) +
+                '"',
+            )
+            .join(','),
+        )
+        .join('\r\n'),
+      name,
+      'text/csv;charset=utf-8',
+    );
+  }
+
+  /** [AK-IO-01] showStorage
+   * Implementation unit for Saving, loading, import validation and exports. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  async function showStorage() {
+    const el = $('storage');
+    el.hidden = false;
+    el.open = true;
+    await refreshSaves();
+    el.scrollIntoView({ behavior: 'auto', block: 'nearest' });
+  }
+  $('country').innerHTML = D.profiles
+    .map((p) => '<option value="' + p.iso3 + '">' + esc(p.name) + '</option>')
+    .join('');
+  $('country').value = 'PER';
+  buildPolicies();
+  countryFields();
+  $('country').addEventListener('change', () => {
+    countryFields();
+    pending();
+  });
+  $('duration').addEventListener('change', pending);
+  $('duration').addEventListener('input', () => {
+    try {
+      summaryText();
+    } catch (e) {
+      /* A partially typed duration is not yet a scenario. */
+    }
+  });
+  $('repetitions').addEventListener('change', pending);
+  $('eventSeed').addEventListener('change', pending);
+  $('reuseEventSeed').addEventListener('change', pending);
+  $('restoreCountry').addEventListener('click', () => {
+    countryFields();
+    pending();
+  });
+  $('run').addEventListener('click', start);
+  $('step').addEventListener('click', () => {
+    try {
+      if (!worker || completed || JSON.stringify(getConfig()) !== JSON.stringify(activeConfig))
+        initializeWorker();
+      worker.postMessage({ type: 'step' });
+    } catch (e) {
+      status(e.message, true);
+    }
+  });
+  $('reset').addEventListener('click', reset);
+  $('pace').addEventListener('change', () =>
+    worker?.postMessage({ type: 'pace', delay: Number($('pace').value) }),
+  );
+  $('relation').addEventListener('change', drawMap);
+  $('mapClass').addEventListener('change', drawMap);
+  $('eventFilter').addEventListener('change', renderFeed);
+  $('zoomIn').addEventListener('click', () => {
+    zoom = Math.min(3, zoom + 0.25);
+    drawMap();
+  });
+  $('zoomOut').addEventListener('click', () => {
+    zoom = Math.max(1, zoom - 0.25);
+    if (zoom === 1) pan = { x: 0, y: 0 };
+    drawMap();
+  });
+  $('map').addEventListener('pointerdown', (e) => {
+    drag = { x: e.clientX, y: e.clientY, startX: pan.x, startY: pan.y, moved: false };
+    $('map').setPointerCapture(e.pointerId);
+  });
+  $('map').addEventListener('pointermove', (e) => {
+    if (!drag || zoom <= 1) return;
+    const dx = e.clientX - drag.x,
+      dy = e.clientY - drag.y;
+    if (Math.hypot(dx, dy) > 5) drag.moved = true;
+    pan = { x: drag.startX + dx, y: drag.startY + dy };
+    drawMap();
+  });
+  $('map').addEventListener('pointerup', (e) => {
+    const moved = drag?.moved;
+    drag = null;
+    if (moved) return;
+    const rect = $('map').getBoundingClientRect(),
+      x = e.clientX - rect.left,
+      y = e.clientY - rect.top,
+      nearest = current.reform.influential
+        .map((a) => ({ id: a.id, d: Math.hypot(positions[a.id].x - x, positions[a.id].y - y) }))
+        .sort((a, b) => a.d - b.d)[0];
+    if (nearest?.d < 25) selectActor(nearest.id);
+  });
+  window.addEventListener('resize', () => {
+    drawMap();
+    if (current) drawImpact();
+  });
+  $('saveBtn').addEventListener('click', showStorage);
+  $('loadBtn').addEventListener('click', showStorage);
+  $('saveConfirm').addEventListener('click', async () => {
+    try {
+      const name = $('scenarioName').value.trim() || 'Antarkya scenario';
+      status('Saving scenario and completed results…');
+      await storeAction('put', name, { name, payload: payload(), updated: Date.now() });
+      await refreshSaves();
+      $('savedNames').value = name;
+      status(
+        'Saved “' +
+          name +
+          '” with the exact initial society' +
+          (payload().results ? ' and completed results.' : '.'),
+      );
+    } catch (e) {
+      status('Saving failed: ' + e.message + '. Use Export full JSON for a backup.', true);
+    }
+  });
+  $('loadConfirm').addEventListener('click', async () => {
+    try {
+      const name = $('savedNames').value;
+      if (!name) throw Error('Choose a saved scenario first.');
+      const entry = await storeAction('get', name);
+      if (!entry) throw Error('The selected scenario is unavailable.');
+      loadPayload(entry.payload);
+    } catch (e) {
+      status(e.message, true);
+    }
+  });
+  $('exportJson').addEventListener('click', () => {
+    try {
+      download(JSON.stringify(payload()), 'antarkya-v2-scenario.json', 'application/json');
+      status(
+        'Exported the setup, exact initial society and matching completed results, if available.',
+      );
+    } catch (e) {
+      status(e.message, true);
+    }
+  });
+  $('exportCsv').addEventListener('click', () => {
+    const c = activeConfig || getConfig(),
+      fields = [
+        'month',
+        'opportunities',
+        'encounterOpportunities',
+        'encounterCorruptActs',
+        'corruptActs',
+        'corruptState',
+        'extortion',
+        'coercedPayments',
+        'bribeBurden',
+        'diversion',
+        'foregoneRevenue',
+        'sanctions',
+        'reports',
+        'audits',
+        'backlog',
+        'caseBacklog',
+        'serviceCompleted',
+        'serviceWait',
+        'capacity',
+        'reformTime',
+        'routineTime',
+        'caseTime',
+        'cash',
+      ];
+    const rows = [
+      ['model', 'country', 'initial_society', 'event_seed', 'replicate', 'branch', ...fields],
+    ];
+    for (const branch of ['baseline', 'reform'])
+      for (const h of current[branch].history)
+        rows.push([
+          A.VERSION,
+          c.country,
+          initial.initialKey,
+          c.eventSeed,
+          1,
+          branch,
+          ...fields.map((k) => h[k] ?? 0),
+        ]);
+    csv(rows, 'antarkya-v2-paired-history.csv');
+  });
+  $('exportAgents').addEventListener('click', () => {
+    const rows = [
+      [
+        'model',
+        'initial_society',
+        'month',
+        'id',
+        'role',
+        'organization',
+        'integrity_state',
+        'resources_RU',
+        'lifetime_corrupt_acts',
+        'last_corrupt_month',
+        'recovery_choices',
+      ],
+      ...current.reform.agents.map((a) => [
+        A.VERSION,
+        initial.initialKey,
+        current.reform.month,
+        a.id,
+        a.type,
+        current.reform.organizations[a.org].name,
+        a.state,
+        a.balance,
+        a.corruptActions,
+        a.lastCorrupt,
+        a.recoveryChoices,
+      ]),
+    ];
+    csv(rows, 'antarkya-v2-agents.csv');
+  });
+  $('exportEvents').addEventListener('click', () => {
+    const rows = [
+      [
+        'model',
+        'tracking_id',
+        'update',
+        'month',
+        'kind',
+        'status',
+        'actors',
+        'title',
+        'description',
+      ],
+      ...current.reform.events.map((e) => [
+        A.VERSION,
+        e.id,
+        e.update,
+        e.month,
+        e.kind,
+        e.status,
+        e.actors.join(';'),
+        e.title,
+        e.text,
+      ]),
+    ];
+    csv(rows, 'antarkya-v2-events.csv');
+    if (!completed)
+      status('Exported the current recent-event view. Complete the run for the full tracked log.');
+  });
+  $('importJson').addEventListener('change', async (e) => {
+    try {
+      const file = e.target.files[0];
+      if (!file) return;
+      if (file.size > 64 * 1024 * 1024) throw Error('JSON files must be at most 64 MB.');
+      loadPayload(JSON.parse(await file.text()));
+    } catch (error) {
+      status('Import failed: ' + error.message, true);
+    } finally {
+      e.target.value = '';
+    }
+  });
+  $('assessmentPolicy').addEventListener('change', () => {
+    assessmentPolicy = $('assessmentPolicy').value;
+    $('reportEventDetail').hidden = true;
+    renderAssessment();
+  });
+  $('assessmentMonth').addEventListener('input', () => {
+    assessmentMonth =
+      Number($('assessmentMonth').value) === current.reform.month
+        ? null
+        : Number($('assessmentMonth').value);
+    renderAssessment();
+  });
+  $('assessmentLatest').addEventListener('click', () => {
+    assessmentMonth = null;
+    renderAssessment();
+  });
+  $('impactWindow').addEventListener('change', () => {
+    if (current) renderAssessment();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && running && worker) {
+      worker.postMessage({ type: 'pause' });
+      status('Paused while the page is hidden. Press Run to continue.');
+    }
+  });
+  try {
+    const saved = JSON.parse(localStorage.getItem(LAST) || 'null');
+    if (saved) applyConfig(A.validate(saved));
+  } catch (e) {
+    status('The previous setup was incompatible; default settings are ready.');
+  }
+  summaryText();
+  preview();
+  status(
+    'Ready. Run compares the selected reforms with a no-new-reform baseline from the same initial society.',
+  );
 })();
-

@@ -1,0 +1,2285 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Full annotated code and developer notes · Antarkya audit</title><link rel="stylesheet" href="audit.css"></head><body><header><a href="index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="NARRATIVE.html">Narrative</a><a href="TECHNICAL.html">Technical rules</a><a href="SOURCE-INDEX.html">Annotated code</a><a href="GAPS.html">Limits</a><a href="../../index.html">Simulation</a></nav></header><main><h1 id="full-annotated-code-and-developer-notes">Full annotated code and developer notes</h1>
+<p>All active runtime modules, the interface, tests and audit tooling are reproduced below. The JavaScript is formatted for inspection, with mechanism codes and developer notes in the actual files. These comments and formatting preserve the pinned runtime syntax-tree fingerprints. Anonymous callbacks belong to their nearest named unit; data definitions and writes are separately inventoried. Archived v1 is excluded.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose / source</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model.js</td>
+<td><a href="source/model.js.html">Full file</a></td>
+<td>03ba8fea58d7c3a1f8e8f89cd648144a35d46670aafa940ec00017bebc2967b9</td>
+</tr>
+<tr>
+<td>adaptation.js</td>
+<td><a href="source/adaptation.js.html">Full file</a></td>
+<td>543896bbfba6d979b044dbf40aef74bbbbb2667cd8ef2f4a876c4b790ec52769</td>
+</tr>
+<tr>
+<td>reporting.js</td>
+<td><a href="source/reporting.js.html">Full file</a></td>
+<td>b78cebda27694785fb32c4e29bc9005df3e8593d64aa86243d9cdfe73f3ce3ac</td>
+</tr>
+<tr>
+<td>config.js</td>
+<td><a href="source/config.js.html">Full file</a></td>
+<td>0659d3d3d62a5dfe87681b47d4f6e7e07a77c50890f0f845e7c2ea3e1b2b2fc3</td>
+</tr>
+<tr>
+<td>baseline.js</td>
+<td><a href="source/baseline.js.html">Full file</a></td>
+<td>78064fd4cb790ab7df0fbba0041e75ba2a6eba9f11af0c5897d4f848ac6b7c6b</td>
+</tr>
+<tr>
+<td>profiles.js</td>
+<td><a href="source/profiles.js.html">Full file</a></td>
+<td>6c056abb03086e688df88c9dc711dd746108263b818475b89f78895804c3b411</td>
+</tr>
+<tr>
+<td>run-seeds.js</td>
+<td><a href="source/run-seeds.js.html">Full file</a></td>
+<td>4ffae05af2e6e17b3caa06f377aef776b87a8ce898bee6a71a4865294a536bc6</td>
+</tr>
+<tr>
+<td>visualization.js</td>
+<td><a href="source/visualization.js.html">Full file</a></td>
+<td>a0c3741075c37c41fc518f9f71b6c5fbd6b67cfd6ad2303ccd2ea97b178386af</td>
+</tr>
+<tr>
+<td>worker.js</td>
+<td><a href="source/worker.js.html">Full file</a></td>
+<td>cefb5f9948adc785a50de0875ca46c3bacdaff01aab130dcfd58f4aaccbcb609</td>
+</tr>
+<tr>
+<td>app.js</td>
+<td><a href="source/app.js.html">Full file</a></td>
+<td>cea9b4ae47a2d8cb70e44fff080581f609d4dc3b36e4df44cb9d3afc10e93298</td>
+</tr>
+<tr>
+<td>adaptation.test.js</td>
+<td><a href="source/adaptation.test.js.html">Full file</a></td>
+<td>4e5ebc3edc78257033372a8404ae6fc211b53dd0b450c590985aed7cc98579fc</td>
+</tr>
+<tr>
+<td>audit.test.js</td>
+<td><a href="source/audit.test.js.html">Full file</a></td>
+<td>139828e7ec490ad388c700369811ee0738f9cb5708ea039dd814069f62a0b22b</td>
+</tr>
+<tr>
+<td>dynamics.test.js</td>
+<td><a href="source/dynamics.test.js.html">Full file</a></td>
+<td>0627e97128a74fcad724f335b3e49a08fc6843fd8071c2962c72c997f7828691</td>
+</tr>
+<tr>
+<td>initialization.test.js</td>
+<td><a href="source/initialization.test.js.html">Full file</a></td>
+<td>d64221f033101aec3d99543cbe02ed7ae544a3aa41c43299df6d6ca20bfd6cbe</td>
+</tr>
+<tr>
+<td>model.test.js</td>
+<td><a href="source/model.test.js.html">Full file</a></td>
+<td>d12fd99f8db5363c4128429823030bdd31cee8373c2ec48cceab80e6fb28bb8f</td>
+</tr>
+<tr>
+<td>reporting.test.js</td>
+<td><a href="source/reporting.test.js.html">Full file</a></td>
+<td>aea86c4080cfbf643ed6e797430eaa8f4b05edc125008cd827ed5c33058d6f8f</td>
+</tr>
+<tr>
+<td>run-seeds.test.js</td>
+<td><a href="source/run-seeds.test.js.html">Full file</a></td>
+<td>7f5bb4086ea7553f4909721ecffd60791e4b62f907f5d2de38fdde60f7c49b59</td>
+</tr>
+<tr>
+<td>stress.test.js</td>
+<td><a href="source/stress.test.js.html">Full file</a></td>
+<td>e77b33102be8581dfec1fbdbb6a0cd74f5f0298b93327bf4e5041cc8e1e4057a</td>
+</tr>
+<tr>
+<td>visualization.test.js</td>
+<td><a href="source/visualization.test.js.html">Full file</a></td>
+<td>00507f9bd62c2f55a944926005f587a17c02d9593a7dabcdffe3e01830614c7d</td>
+</tr>
+<tr>
+<td>worker.test.js</td>
+<td><a href="source/worker.test.js.html">Full file</a></td>
+<td>9fc0d71016e4ee1e3b1481f59e2f848b3383b9ef9df9bf3f9eaf81f530ca3b97</td>
+</tr>
+<tr>
+<td>index.html</td>
+<td><a href="source/index.html.html">Full file</a></td>
+<td>c78b1eb949a7fc208010876bcb1dcd6a465037e1f1b9e724fc53d121b6fd9f0c</td>
+</tr>
+<tr>
+<td>style.css</td>
+<td><a href="source/style.css.html">Full file</a></td>
+<td>48253651f5fbf2ab0e951e696c31d2d0a8457eba91393713c2d005dd8312154a</td>
+</tr>
+<tr>
+<td>scripts/audit-lib.mjs</td>
+<td><a href="source/scripts__audit-lib.mjs.html">Full file</a></td>
+<td>30ed055672b85bc56f33d317e53013d9c3d8489ca3ec8b23d5d17fae7e2cb99a</td>
+</tr>
+<tr>
+<td>scripts/build-audit.mjs</td>
+<td><a href="source/scripts__build-audit.mjs.html">Full file</a></td>
+<td>7a5b11fc42118d665f8794d16c100bffc4ffc4be9ae7d151e89f8e92a58242d0</td>
+</tr>
+<tr>
+<td>scripts/check-audit.mjs</td>
+<td><a href="source/scripts__check-audit.mjs.html">Full file</a></td>
+<td>6eeac4ed317d9e8e99b3c6724962861b23faabf20084cb501483ac70de6742cd</td>
+</tr>
+<tr>
+<td>.github/workflows/model-checks.yml</td>
+<td><a href="source/.github__workflows__model-checks.yml.html">Full file</a></td>
+<td>c826b9d9129da51c002d2586f8a15ea78e8b1fd96263a543f078e1208dfd486b</td>
+</tr>
+<tr>
+<td>package.json</td>
+<td><a href="source/package.json.html">Full file</a></td>
+<td>0978d90eda1b43066a6898371ff66ec66c83dac068c4106340db82ac09c9f11a</td>
+</tr>
+<tr>
+<td>package-lock.json</td>
+<td><a href="source/package-lock.json.html">Full file</a></td>
+<td>abfd2db3acbd654855495e4d7de70a8bd6702aa60ff4e4bf4efa6ad113f75695</td>
+</tr>
+</tbody>
+</table>
+<h2 id="model-js">model.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/model.js.html#L35">model.js:35</a> · clamp</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L36">model.js:36</a> · sum</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L37">model.js:37</a> · mean</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L38">model.js:38</a> · clone</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L43">model.js:43</a> · hash</td>
+<td><a href="TECHNICAL.html#ak-rng-01">AK-RNG-01</a></td>
+<td>Hash an explicit namespace/key to an unsigned 32-bit integer. This is reproducible simulation randomization, not cryptography; changing mixing or key order changes every downstream experiment.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L56">model.js:56</a> · draw</td>
+<td><a href="TECHNICAL.html#ak-rng-01">AK-RNG-01</a></td>
+<td>Return a uniform value strictly inside (0,1) from the keyed hash. Keep this separate from display hashes and never call it to animate or inspect a result.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L63">model.js:63</a> · generator</td>
+<td><a href="TECHNICAL.html#ak-rng-01">AK-RNG-01</a></td>
+<td>Supply sequential initialization draws within a dedicated namespace. Runtime choices instead use stable semantic keys so policy branches do not shift a shared RNG cursor.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L71">model.js:71</a> · gaussian</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Box–Muller helper used by initialization gamma draws. It is a numerical sampler, not an empirical behavioral distribution.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L78">model.js:78</a> · gamma</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Generate positive gamma variates for nine heterogeneous motive weights. Rejection/shape transforms consume only the initialization generator.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L95">model.js:95</a> · motives</td>
+<td><a href="TECHNICAL.html#ak-mot-01">AK-MOT-01</a></td>
+<td>Construct all nine social/economic/political × self/group/public weights and normalize them. Role/domain and beneficiary proportions are provisional priors; a motive is not a conduct classification.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L126">model.js:126</a> · validate</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+<td>Normalize and reject unsupported setup values before constructing a world. Defaults, duration/repetition limits, override bounds and distinct policy IDs are part of the experiment contract.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L170">model.js:170</a> · conditions</td>
+<td><a href="TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+<td>Combine dated stored descriptors, bounded country baseline mappings and explicit user overrides. An override deliberately changes the reconstructed past as well as future conditions.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L184">model.js:184</a> · totalMoney</td>
+<td><a href="TECHNICAL.html#ak-eco-01">AK-ECO-01</a></td>
+<td>Sum every modeled cash account, including outside and unspent policy allocations. Use this conserved total rather than treating a bribe/fine transfer as newly created or destroyed money.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L197">model.js:197</a> · transfer</td>
+<td><a href="TECHNICAL.html#ak-eco-01">AK-ECO-01</a></td>
+<td>Execute a clipped conserved transfer without negative cash. Requested and actually paid amounts can differ, and unpaid ordinary costs are not silently created as debt.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L207">model.js:207</a> · requirements</td>
+<td><a href="TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+<td>Compute additional policy setup, recurring money and staff-time estimates. Cost tuples and GDP normalization are assumptions; this is not the existing institution’s entire budget.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L220">model.js:220</a> · createPopulation</td>
+<td><a href="TECHNICAL.html#ak-pop-01">AK-POP-01</a>, <a href="TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="TECHNICAL.html#ak-org-01">AK-ORG-01</a>, <a href="TECHNICAL.html#ak-geo-01">AK-GEO-01</a></td>
+<td>Build the raw fixed 1,000-person society and its organizations, profiles, account structure and initial links. Its parameters mix sourced descriptors with explicit generic distributions; createInitial supplies the experienced starting state.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L301">model.js:301</a> · org</td>
+<td><a href="TECHNICAL.html#ak-org-01">AK-ORG-01</a></td>
+<td>Create a simplified functional organization with capabilities, legal coverage, role practices and a leader/member roster. fn is one principal function, not a complete legal mandate description.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L522">model.js:522</a> · createInitial</td>
+<td><a href="TECHNICAL.html#ak-ini-01">AK-INI-01</a></td>
+<td>Execute the dedicated twelve-month pre-policy reconstruction and preserve unfinished work/history. Reset intervention counters, not people, finances or cases; cache the identical state for matched comparisons.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L589">model.js:589</a> · initialDifference</td>
+<td><a href="TECHNICAL.html#ak-ini-01">AK-INI-01</a></td>
+<td>Compare expected and imported starting states without replacing the imported values. Integers remain exact; only insignificant finite noninteger rounding and object-key order are tolerated.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L616">model.js:616</a> · validateInitial</td>
+<td><a href="TECHNICAL.html#ak-ini-01">AK-INI-01</a></td>
+<td>Enforce initial schema, IDs, role counts, memberships, finances and exact reconstructed provenance. A plausible-looking JSON society is not accepted merely because its total population is correct.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L627">model.js:627</a> · finite</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by validateInitial; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L629">model.js:629</a> · ids</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by validateInitial; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L787">model.js:787</a> · constructor</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+<td>Clone the supplied initial world, set the future-event stream/replicate, and create an observation sidecar before formal adoption. Only the reform branch adopts selected policies; baseline retains inherited arrangements.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L802">model.js:802</a> · get agents</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L809">model.js:809</a> · get orgs</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L816">model.js:816</a> · get month</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L823">model.js:823</a> · rand</td>
+<td><a href="TECHNICAL.html#ak-rng-01">AK-RNG-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L830">model.js:830</a> · index</td>
+<td><a href="TECHNICAL.html#ak-net-01">AK-NET-01</a></td>
+<td>Rebuild role/function/case lookup indexes after relevant transitions. These indexes accelerate access but do not create additional people or organizations.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L842">model.js:842</a> · emit</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Append a tracked event/update without consuming world randomness. A tracking family can span case stages, resource reviews or a developing relationship.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L862">model.js:862</a> · cap</td>
+<td><a href="TECHNICAL.html#ak-ref-01">AK-REF-01</a></td>
+<td>Aggregate operative capability among the relevant public functions, or inspect one organization. Capability is a bounded scenario quantity, not an empirical success probability.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L879">model.js:879</a> · recipients</td>
+<td><a href="TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+<td>Choose legally/functionally competent recipients and split reform funds using configured central/local shares. The shares are provisional country assumptions rather than measured budget allocations.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L921">model.js:921</a> · adopt</td>
+<td><a href="TECHNICAL.html#ak-ref-01">AK-REF-01</a></td>
+<td>Enact the user-selected formal reform and its common intended scope immediately. This does not install implementation capacity, deliver teaching or bypass practical funding/work constraints.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L959">model.js:959</a> · effects</td>
+<td><a href="TECHNICAL.html#ak-dec-02">AK-DEC-02</a></td>
+<td>Keep all nine consequence slots explicit and finite. The returned vector is an assessed valuation used by utility, not a physical resource transfer.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L969">model.js:969</a> · choose</td>
+<td><a href="TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="TECHNICAL.html#ak-act-02">AK-ACT-02</a></td>
+<td>Score every available option under subjective motives, need, accountability expectations, TPB elements and keyed Gumbel uncertainty; take the maximum. Record meaningful opportunities only when a real alternative to a qualifying improper option exists.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1041">model.js:1041</a> · operatingPolicy</td>
+<td><a href="TECHNICAL.html#ak-ref-03">AK-REF-03</a></td>
+<td>Require active formal status, completed setup and recent delivery at the specific recipient. The check gates new personal exposure without erasing older memories or baseline capability.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1052">model.js:1052</a> · expose</td>
+<td><a href="TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td>Deliver a real encountered policy episode with known source credibility and actual dose. Count additional teaching/verification contacts only when delivery is substantive and not a duplicate; uptake may still fail.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1073">model.js:1073</a> · riskExperience</td>
+<td><a href="TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td>Attribute communicated procedure-specific cost information to one operative tool, falling back to ordinary experience. Avoid stacking the same event as generic risk and several policy bonuses.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1090">model.js:1090</a> · practice</td>
+<td><a href="TECHNICAL.html#ak-ins-01">AK-INS-01</a></td>
+<td>Read organization-and-role-specific honest/corrupt familiarity. This scalar affects particular effort/work expressions; its existence does not make repeated conduct an institution without reference reactions.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1097">model.js:1097</a> · act</td>
+<td><a href="TECHNICAL.html#ak-act-01">AK-ACT-01</a>, <a href="TECHNICAL.html#ak-act-02">AK-ACT-02</a></td>
+<td>Complete the current meaningful choice or record an actual corrupt act, preserving the last-24 history. A one-option duty or repeated call cannot manufacture lawful recovery credits.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1141">model.js:1141</a> · completeCorruption</td>
+<td><a href="TECHNICAL.html#ak-act-01">AK-ACT-01</a></td>
+<td>Record one qualifying act and its participants, roles, amount, source organization and visibility. Victim payments are accounted separately; records can exist before any case or public allegation.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1175">model.js:1175</a> · eligibleTool</td>
+<td><a href="TECHNICAL.html#ak-cou-02">AK-COU-02</a></td>
+<td>Apply principal-function and covered-role gates. These are simplified modeled mandates and should not be presented as a comprehensive legal jurisdiction map.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1213">model.js:1213</a> · coverage</td>
+<td><a href="TECHNICAL.html#ak-ref-01">AK-REF-01</a></td>
+<td>Return current formal scope, with any endogenous narrowing applied. Formal scope can change before new delivery, so scope-sensitive diagnostics are capability estimates rather than proof of implementation.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1224">model.js:1224</a> · covered</td>
+<td><a href="TECHNICAL.html#ak-ref-01">AK-REF-01</a></td>
+<td>Use a fixed society/body/tool/person draw to keep legal coverage consistent over repeated encounters. Do not replace this with a fresh monthly compliance lottery.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1240">model.js:1240</a> · operational</td>
+<td><a href="TECHNICAL.html#ak-ref-01">AK-REF-01</a></td>
+<td>Combine legal coverage with actual organization capability, using a deterministic coverage gate for a specified person. This differs from the extra installed-delivery gate required for persuasive exposure.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1249">model.js:1249</a> · relationship</td>
+<td><a href="TECHNICAL.html#ak-org-01">AK-ORG-01</a>, <a href="TECHNICAL.html#ak-net-01">AK-NET-01</a></td>
+<td>Separate directional trust, shared membership, support affinity and effective access. Access can affect opportunity and insider incentives without providing automatic immunity.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1265">model.js:1265</a> · experienced</td>
+<td><a href="TECHNICAL.html#ak-eco-03">AK-ECO-03</a></td>
+<td>Aggregate all service experiences into at most one bounded opinion/control update per person/month. Waiting files can increase actual burden without multiplying the learning rate indefinitely.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1295">model.js:1295</a> · priorities</td>
+<td><a href="TECHNICAL.html#ak-eco-02">AK-ECO-02</a>, <a href="TECHNICAL.html#ak-ref-03">AK-REF-03</a></td>
+<td>Rank work/funding requests by the actor’s evaluated priority-versus-defer utility difference. Ranking does not create additional money or time, and the later feasibility checks still bind.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1331">model.js:1331</a> · policyFeedback</td>
+<td><a href="TECHNICAL.html#ak-ref-04">AK-REF-04</a>, <a href="TECHNICAL.html#ak-mac-01">AK-MAC-01</a></td>
+<td>Compute observed delivery, governing support, resistance and waiting used in actor reviews. This is derived feedback, not a separately invented political-will coefficient.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1363">model.js:1363</a> · peers</td>
+<td><a href="TECHNICAL.html#ak-net-01">AK-NET-01</a></td>
+<td>Select at most two accessible peers using directional relationship strength/trust. Sharing is selective and cannot broadcast omniscient world truth to the entire society.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1389">model.js:1389</a> · fundingDependence</td>
+<td><a href="TECHNICAL.html#ak-inf-01">AK-INF-01</a></td>
+<td>Measure recent active funder leverage relevant to the story subject using actual private flows. These private payments never replenish the public reform implementation pool.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1397">model.js:1397</a> · recentAmount</td>
+<td><a href="TECHNICAL.html#ak-net-01">AK-NET-01</a></td>
+<td>Owned by fundingDependence; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1409">model.js:1409</a> · tie</td>
+<td><a href="TECHNICAL.html#ak-net-01">AK-NET-01</a></td>
+<td>Look up a single undirected link record whose two trust fields remain directional. An absent record is not the same as absent organizational affinity.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1416">model.js:1416</a> · related</td>
+<td><a href="TECHNICAL.html#ak-net-01">AK-NET-01</a></td>
+<td>Translate the modeled relationship-access threshold into a connected/outsider gate. This is an operational threshold, not a permanent class characteristic or legal finding.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1423">model.js:1423</a> · link</td>
+<td><a href="TECHNICAL.html#ak-ins-01">AK-INS-01</a>, <a href="TECHNICAL.html#ak-net-01">AK-NET-01</a></td>
+<td>Update useful/coercive ties and transmit a relevant reference’s approval/disapproval. Corrupt cooperation and coerced payment are distinct relationship kinds; neither repetition alone nor category membership establishes an institution.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1497">model.js:1497</a> · nearest</td>
+<td><a href="TECHNICAL.html#ak-geo-01">AK-GEO-01</a></td>
+<td>Sample a small weighted candidate set using proximity, affinity and access, with possible remote contact. Despite the name it is stochastic weighted contact selection, not simply Euclidean nearest neighbor.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1533">model.js:1533</a> · monthlyAccounts</td>
+<td><a href="TECHNICAL.html#ak-eco-01">AK-ECO-01</a>, <a href="TECHNICAL.html#ak-eco-02">AK-ECO-02</a></td>
+<td>Move ordinary income, organizational funding, modeled withholding and consumption through conserved accounts. Reset public staff budgets and record actual unmet-needs pressure; there is no endogenous GDP update.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1591">model.js:1591</a> · scheduleWork</td>
+<td><a href="TECHNICAL.html#ak-eco-02">AK-ECO-02</a></td>
+<td>Reserve one finite public time budget across routine, reform and case categories using assessed priorities. Later operations debit both the relevant reservation and common remaining capacity.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1628">model.js:1628</a> · fundPolicies</td>
+<td><a href="TECHNICAL.html#ak-ref-02">AK-REF-02</a></td>
+<td>Disburse actually available treasury resources against each policy’s starting/current rate and setup/recurring requirement. Requested amounts can exceed mobilized funds, and policy order matters under scarcity.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1647">model.js:1647</a> · implementPolicies</td>
+<td><a href="TECHNICAL.html#ak-ref-03">AK-REF-03</a>, <a href="TECHNICAL.html#ak-pol-aca">AK-POL-ACA</a>, <a href="TECHNICAL.html#ak-pol-merit">AK-POL-MERIT</a>, <a href="TECHNICAL.html#ak-pol-rotation">AK-POL-ROTATION</a>, <a href="TECHNICAL.html#ak-pol-protection">AK-POL-PROTECTION</a>, <a href="TECHNICAL.html#ak-pol-declarations">AK-POL-DECLARATIONS</a>, <a href="TECHNICAL.html#ak-pol-conflicts">AK-POL-CONFLICTS</a>, <a href="TECHNICAL.html#ak-pol-oversight">AK-POL-OVERSIGHT</a>, <a href="TECHNICAL.html#ak-pol-pay">AK-POL-PAY</a>, <a href="TECHNICAL.html#ak-pol-penalties">AK-POL-PENALTIES</a>, <a href="TECHNICAL.html#ak-pol-disclosure">AK-POL-DISCLOSURE</a>, <a href="TECHNICAL.html#ak-pol-complaints">AK-POL-COMPLAINTS</a>, <a href="TECHNICAL.html#ak-pol-education">AK-POL-EDUCATION</a></td>
+<td>Execute actor-selected implementation/resistance/selectivity/diversion, shared-time/cash constraints and progressive setup. Apply only the operating tool’s named structural/learning hooks; full funding does not guarantee completion or integrity.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L1870">model.js:1870</a> · budgetReview</td>
+<td><a href="TECHNICAL.html#ak-dec-02">AK-DEC-02</a>, <a href="TECHNICAL.html#ak-ref-04">AK-REF-04</a></td>
+<td>Run six-month utility/authorization decisions that can change rates, narrow scope or suspend a reform. Exceptional reviews, full repeal and reinstatement are not implemented by this routine.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2012">model.js:2012</a> · addService</td>
+<td><a href="TECHNICAL.html#ak-eco-03">AK-ECO-03</a></td>
+<td>Create one persistent administrative request and count a contact once at arrival. Pending work is not silently counted as a newly arriving contact every month.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2029">model.js:2029</a> · report</td>
+<td><a href="TECHNICAL.html#ak-cas-01">AK-CAS-01</a></td>
+<td>Let a witness/victim choose whether to report under subjective knowledge/safety and real costs. A submitted signal is not proof and can fail the affordability/viability threshold.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2078">model.js:2078</a> · encounter</td>
+<td><a href="TECHNICAL.html#ak-dec-02">AK-DEC-02</a>, <a href="TECHNICAL.html#ak-act-01">AK-ACT-01</a></td>
+<td>Separate proposer choice, counterpart response, extortion/refusal, prevention and physical completion. Only actual completed voluntary exchanges enter that category; extortion demands and victim payments have separate records.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2227">model.js:2227</a> · encounters</td>
+<td><a href="TECHNICAL.html#ak-geo-01">AK-GEO-01</a>, <a href="TECHNICAL.html#ak-act-01">AK-ACT-01</a></td>
+<td>Schedule role-specific opportunities in keyed random order, including campaigns and political pressure. These opportunity frequencies are generic model priors, not national encounter statistics.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2272">model.js:2272</a> · processServices</td>
+<td><a href="TECHNICAL.html#ak-ins-01">AK-INS-01</a>, <a href="TECHNICAL.html#ak-eco-03">AK-ECO-03</a></td>
+<td>Process prioritized requests with actual public staff/cash, preserving unresolved queues. Aggregate per-person experience once; completed waiting and unfinished waiting are distinct metrics.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2313">model.js:2313</a> · makeCase</td>
+<td><a href="TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="TECHNICAL.html#ak-cas-01">AK-CAS-01</a></td>
+<td>De-duplicate an underlying signal and assign its route, jurisdiction, evidence and next-stage date. A new file is not a guilty verdict or a newly created corrupt act.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2378">model.js:2378</a> · audit</td>
+<td><a href="TECHNICAL.html#ak-cas-01">AK-CAS-01</a></td>
+<td>Spend finite scrutiny time on recent conduct records, with detection depending on actual covered capabilities and records. Include a lawful-control false-signal pathway and communicate notices separately from hidden detection truth.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2420">model.js:2420</a> · responsible</td>
+<td><a href="TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="TECHNICAL.html#ak-cas-02">AK-CAS-02</a></td>
+<td>Route a case stage to a configured competent function with explicit country exceptions. Fall-throughs and simplified mandates are intentional abstractions documented as limits.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2425">model.js:2425</a> · pick</td>
+<td><a href="TECHNICAL.html#ak-cou-02">AK-COU-02</a>, <a href="TECHNICAL.html#ak-cas-02">AK-CAS-02</a></td>
+<td>Owned by responsible; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2457">model.js:2457</a> · processCases</td>
+<td><a href="TECHNICAL.html#ak-dec-02">AK-DEC-02</a>, <a href="TECHNICAL.html#ak-cas-02">AK-CAS-02</a>, <a href="TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td>Apply stage readiness, actual staff/money, controller choices and evidence thresholds before advancing or closing a case. Separate administrative/civil/criminal labels, proven findings, actual collections and unlawful adverse actions.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2732">model.js:2732</a> · communicatedDecision</td>
+<td><a href="TECHNICAL.html#ak-inf-02">AK-INF-02</a>, <a href="TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td>Update an accessed final decision once, using either one attributable operative policy or ordinary baseline-belief learning. A personally experienced decision cannot add a second public cost increment.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2754">model.js:2754</a> · collectLiabilities</td>
+<td><a href="TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td>Collect only an existing assessed claim under cash, needs-buffer, per-month receipt cap and enforcement-resource constraints. Installments reduce debt and transfer money but do not create fresh sanction counts.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2792">model.js:2792</a> · publish</td>
+<td><a href="TECHNICAL.html#ak-inf-01">AK-INF-01</a></td>
+<td>Make an editor’s publish/withhold choice before spending publication funds and creating a claim/decision/correction record. Publication and announced decisions remain distinct from hidden model guilt.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L2890">model.js:2890</a> · information</td>
+<td><a href="TECHNICAL.html#ak-inf-02">AK-INF-02</a></td>
+<td>Apply bounded attention, local/media exposure, credibility-weighted beliefs and selective social sharing. Descriptive conduct beliefs, reference expectations and objective truth are not interchangeable fields.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3003">model.js:3003</a> · funding</td>
+<td><a href="TECHNICAL.html#ak-inf-01">AK-INF-01</a></td>
+<td>Execute bilateral business-to-civic funding or withdrawal choices with actual private money. Dependence can change editorial conditions without mechanically buying compliance or funding public implementation.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3092">model.js:3092</a> · changeEmployment</td>
+<td><a href="TECHNICAL.html#ak-org-02">AK-ORG-02</a>, <a href="TECHNICAL.html#ak-eco-01">AK-ECO-01</a></td>
+<td>Move a person’s primary role/workplace membership while preserving identity, home, resources, history and ties. Count rotation only for an actual official-to-official organizational transfer.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3117">model.js:3117</a> · organizations</td>
+<td><a href="TECHNICAL.html#ak-org-02">AK-ORG-02</a></td>
+<td>Process constrained affiliation requests and periodic staffing/rotation. Requests with due=next month are still processed only at six-month organizational reviews, a documented effective delay.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3317">model.js:3317</a> · politicalReview</td>
+<td><a href="TECHNICAL.html#ak-ref-04">AK-REF-04</a>, <a href="TECHNICAL.html#ak-gov-01">AK-GOV-01</a></td>
+<td>Aggregate perceived conduct and affinity through the configured simplified election/appointment procedure. Update authority while retaining identity and history; this is not a national electoral forecast.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3435">model.js:3435</a> · recover</td>
+<td><a href="TECHNICAL.html#ak-act-02">AK-ACT-02</a></td>
+<td>Change the display state only after both the six-month no-new-act interval and three genuine completed integrity choices. The underlying conduct record and other agents’ reputations persist.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3449">model.js:3449</a> · step</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Execute the authoritative monthly order. Moving a call here can alter both causal timing and random-key identity even if each submodel remains individually correct.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3477">model.js:3477</a> · classActivity</td>
+<td><a href="TECHNICAL.html#ak-act-02">AK-ACT-02</a></td>
+<td>Summarize current-role agents’ last-24 meaningful opportunities. The denominator includes recorded attempted/uncompleted opportunities and is distinct from the common-encounter impact denominator.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3495">model.js:3495</a> · macroDevelopments</td>
+<td><a href="TECHNICAL.html#ak-mac-01">AK-MAC-01</a></td>
+<td>Observe consequential treasury/service/pay, institution, public-disclosure and repeated-abuse developments. Notification thresholds do not themselves impose an extra behavioral corruption coefficient.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3589">model.js:3589</a> · find</td>
+<td><a href="TECHNICAL.html#ak-mac-01">AK-MAC-01</a></td>
+<td>Owned by macroDevelopments; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3653">model.js:3653</a> · metrics</td>
+<td><a href="TECHNICAL.html#ak-mac-01">AK-MAC-01</a></td>
+<td>Read cumulative process counters and current collective states. A transfer, backlog stock, completed waiting total and true-conduct rate have different interpretations and must not be added as one welfare score.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3680">model.js:3680</a> · record</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Append ordinary metrics and an observation-sidecar snapshot after all monthly processes. Recording is passive; do not let reporting consume RNG or alter actors/accounts.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3688">model.js:3688</a> · reporting</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Expose the observation-only sidecar separately from the complaint report() method and simulation state. Initial-state/save compatibility remains governed by behavioral schema2.4.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3695">model.js:3695</a> · diagnostic</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+<td>Calculate explicitly labeled fixed-reference capability proxies or special realized indicators. This does not run independent empirical tests of institutions or consume simulation randomness.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3832">model.js:3832</a> · assessment</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+<td>Collect the twelve legacy diagnostic definitions. New reporting overrides for rolling merit/protection/penalty cohorts are a distinct documented readout path.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3839">model.js:3839</a> · influential</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Rank weighted network degree plus control/leadership leverage and retain eight people for detailed inspection. This is a heuristic power/centrality proxy, not all-pairs centrality.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3866">model.js:3866</a> · view</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Prepare a display payload with all people but detailed traits/traces only for highlighted actors. Keep display transformations separate from state; completion exports fuller records.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3951">model.js:3951</a> · run</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a>, <a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Advance until the configured duration using the same step() implementation. No alternative batch behavior or stochastic shortcut is introduced.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3959">model.js:3959</a> · snapshot</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Serialize simulation state, excluding observation and UI sidecars. Used to verify exact replay, import identity and documentation-only non-mutation.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L3966">model.js:3966</a> · assertInvariants</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Fail loudly on population, balances, money conservation, staff double spending or invalid bounded profiles/history. These checks establish engineering consistency, not country realism.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L4003">model.js:4003</a> · comparison</td>
+<td><a href="TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td>Compare reform and baseline rate/quantity indicators with their own denominators. A null denominator remains unavailable; package impacts do not imply individual tool attribution.</td>
+</tr>
+<tr>
+<td><a href="source/model.js.html#L4009">model.js:4009</a> · rate</td>
+<td><a href="TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td>Owned by comparison; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="adaptation-js">adaptation.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/adaptation.js.html#L13">adaptation.js:13</a> · clamp</td>
+<td><a href="TECHNICAL.html#ak-adp-01">AK-ADP-01</a>, <a href="TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L175">adaptation.js:175</a> · initialize</td>
+<td><a href="TECHNICAL.html#ak-pop-02">AK-POP-02</a>, <a href="TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td>Construct each person’s stored trait baselines, current traits, expectations, motive anchors and learning memories using separate keyed draws.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L205">adaptation.js:205</a> · recentParticipation</td>
+<td><a href="TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L213">adaptation.js:213</a> · receptiveness</td>
+<td><a href="TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td>Compute component-specific uptake and conditional strength from actual individual traits, motives, knowledge, trust and own history. Credibility controls uptake; delivery quality later controls dose.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L237">adaptation.js:237</a> · feedback</td>
+<td><a href="TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td>Record bounded experienced/enacted salience and credibility feedback used for slow future adaptation; no conduct classification occurs here.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L251">adaptation.js:251</a> · observe</td>
+<td><a href="TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td>Deduplicate substantive episodes, draw uptake and magnitude separately, and apply declining new-learning caps plus bounded restoration. Rejected delivery still advances the exposure counter; it is not successful learning.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L331">adaptation.js:331</a> · influence</td>
+<td><a href="TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td>Sum retained eligible component levels and targets, applying context gates and cross-policy bounds. A non-targeted component must not receive a generic bonus.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L367">adaptation.js:367</a> · refresh</td>
+<td><a href="TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td>Refresh derived knowledge/accountability expectations from retained memories without double-counting generic gains.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L378">adaptation.js:378</a> · knowledge</td>
+<td><a href="TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td>Read context-specific usable knowledge from baseline and retained component influence. Reporting-channel instructions are not universal knowledge for unrelated conduct.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L387">adaptation.js:387</a> · safety</td>
+<td><a href="TECHNICAL.html#ak-adp-01">AK-ADP-01</a></td>
+<td>Read subjective reporting safety from experienced baseline and retained target-specific learning. Do not replace it with omniscient true protection capacity.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L396">adaptation.js:396</a> · accountability</td>
+<td><a href="TECHNICAL.html#ak-cas-03">AK-CAS-03</a></td>
+<td>Learn from one personally experienced or accessed announced decision with bounded prior-relative targets. Deduplication and forgetting limits are explicit and do not reveal hidden truth.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L419">adaptation.js:419</a> · advance</td>
+<td><a href="TECHNICAL.html#ak-mot-01">AK-MOT-01</a>, <a href="TECHNICAL.html#ak-adp-02">AK-ADP-02</a>, <a href="TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td>Apply wear-off, bounded trait/motive evolution and ordinary risk relaxation exactly once per elapsed month. Never erase conduct or restore an integrity icon through this learning update.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L457">adaptation.js:457</a> · work</td>
+<td><a href="TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td>Improve skill only through performed work, with a ceiling relative to initial skill. This is not an instant expertise gain from selecting a policy.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L470">adaptation.js:470</a> · incomeExperience</td>
+<td><a href="TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
+<td>Learn expected lawful receipts from one actual monthly observation, including supplements. It is separate from measured unmet-needs pressure and from new money creation.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L480">adaptation.js:480</a> · messageRate</td>
+<td><a href="TECHNICAL.html#ak-inf-02">AK-INF-02</a></td>
+<td>Scale accessed information by credibility and the recipient’s openness/learning. This does not guarantee acceptance of a true or false claim.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L490">adaptation.js:490</a> · context</td>
+<td><a href="TECHNICAL.html#ak-dec-01">AK-DEC-01</a></td>
+<td>Map action names to the policy-learning contexts actually used by decision(). A new action name needs an explicit context review.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L503">adaptation.js:503</a> · decision</td>
+<td><a href="TECHNICAL.html#ak-dec-01">AK-DEC-01</a>, <a href="TECHNICAL.html#ak-adp-02">AK-ADP-02</a></td>
+<td>Adjust only the relevant attitude, norm and feasibility elements for the specific option/context. Actual resources, consent and law are still checked by the engine after intention.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L521">adaptation.js:521</a> · summary</td>
+<td><a href="TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td>Export interpretable numerical traits, retained influences and exposure histories for inspection. Summary values are model traits rather than validated psychological scores.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L546">adaptation.js:546</a> · valid</td>
+<td><a href="TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td>Validate complete stored numerical psychology, memories and bounds for initial/final profiles.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L620">adaptation.js:620</a> · validSummary</td>
+<td><a href="TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td>Validate the smaller inspection-summary structure accepted in completed saved results.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.js.html#L624">adaptation.js:624</a> · unit</td>
+<td><a href="TECHNICAL.html#ak-pop-02">AK-POP-02</a></td>
+<td>Owned by validSummary; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reporting-js">reporting.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/reporting.js.html#L34">reporting.js:34</a> · clone</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L35">reporting.js:35</a> · sum</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L36">reporting.js:36</a> · mean</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L175">reporting.js:175</a> · finite</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L176">reporting.js:176</a> · pct</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L181">reporting.js:181</a> · activity</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Accumulate an actual delivered process hook only; selecting a policy or inspecting a panel cannot create output.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L188">reporting.js:188</a> · init</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Capture conditions before adopt() and inherit the separately archived pre-policy observations. Keep the monitor outside state and separate from the complaint report() method.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L215">reporting.js:215</a> · remember</td>
+<td><a href="TECHNICAL.html#ak-ini-01">AK-INI-01</a>, <a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Cache a cloned pre-policy observation archive keyed to the starting society without changing its serialized state.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L224">reporting.js:224</a> · counterAt</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L232">reporting.js:232</a> · recent</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L243">reporting.js:243</a> · sample</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Read all policy-specific snapshot conditions and explicitly defined outcomes. Estimated capability, rolling realized ratios and matured violation cohorts remain distinct.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L253">reporting.js:253</a> · pool</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Owned by sample; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L258">reporting.js:258</a> · scope</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Owned by sample; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L263">reporting.js:263</a> · cap</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Owned by sample; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L268">reporting.js:268</a> · staff</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Owned by sample; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L311">reporting.js:311</a> · relevant</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a>, <a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Owned by sample; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L404">reporting.js:404</a> · related</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a>, <a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L423">reporting.js:423</a> · record</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Update passive counters/snapshots and a bounded real-event evidence index after the monthly world update. Protect important per-policy records from last-200 feed truncation.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L477">reporting.js:477</a> · view</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Return the observation payload without recomputing actor decisions or consuming simulation draws.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L486">reporting.js:486</a> · windowValue</td>
+<td><a href="TECHNICAL.html#ak-mea-03">AK-MEA-03</a></td>
+<td>Subtract cumulative observed activities at equal month boundaries, including the inherited year. Never compare an opening queue stock with a year of activity or average unweighted monthly rates.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L505">reporting.js:505</a> · outcomeMeta</td>
+<td><a href="TECHNICAL.html#ak-mea-01">AK-MEA-01</a></td>
+<td>Name the rolling observed reporting overrides so they cannot be confused with the older aggregate diagnostic definitions.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L527">reporting.js:527</a> · eventsFor</td>
+<td><a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Select existing records no later than the review month, prioritizing material implementation changes. Package impact uses the whole package independently of the policy selector; contextual connections do not identify causes.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L587">reporting.js:587</a> · interpret</td>
+<td><a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Choose a predefined statement from measured levels/direction/missingness. Precision thresholds are not significance tests; no anecdote or causal explanation is generated from hidden assumptions.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.js.html#L632">reporting.js:632</a> · valid</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Validate optional saved observation histories, numeric fields, IDs and bounded event metadata. Absence in an older completed save is reported honestly rather than filled with invented data.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="baseline-js">baseline.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/baseline.js.html#L13">baseline.js:13</a> · clamp</td>
+<td><a href="TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/baseline.js.html#L54">baseline.js:54</a> · sources</td>
+<td><a href="TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/baseline.js.html#L81">baseline.js:81</a> · conditions</td>
+<td><a href="TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+<td>Rescale distinct dated political proxies and keep unmeasured cultural fields as explicit neutral editable assumptions.</td>
+</tr>
+<tr>
+<td><a href="source/baseline.js.html#L86">baseline.js:86</a> · sum</td>
+<td><a href="TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+<td>Owned by conditions; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/baseline.js.html#L100">baseline.js:100</a> · organization</td>
+<td><a href="TECHNICAL.html#ak-cou-01">AK-COU-01</a></td>
+<td>Map stored descriptors/narrow instrument observations to bounded provisional coverage/capability priors. Missing evidence is not absence of national safeguards.</td>
+</tr>
+<tr>
+<td><a href="source/baseline.js.html#L121">baseline.js:121</a> · fieldStatus</td>
+<td><a href="TECHNICAL.html#ak-val-02">AK-VAL-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="run-seeds-js">run-seeds.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/run-seeds.js.html#L15">run-seeds.js:15</a> · newEventSeed</td>
+<td><a href="TECHNICAL.html#ak-rng-01">AK-RNG-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/run-seeds.js.html#L30">run-seeds.js:30</a> · prepareRun</td>
+<td><a href="TECHNICAL.html#ak-rng-01">AK-RNG-01</a></td>
+<td>Preserve exact replay seeds when requested and otherwise assign a fresh future-event identity without redrawing the starting society.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="visualization-js">visualization.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/visualization.js.html#L16">visualization.js:16</a> · hash</td>
+<td><a href="TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.js.html#L25">visualization.js:25</a> · projection</td>
+<td><a href="TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td>Compute deterministic analytical layout using conduct radius, affinity and bounded local collision/cooperation forces. Do not mutate physical locations or world randomness.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.js.html#L140">visualization.js:140</a> · importantEvents</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.js.html#L153">visualization.js:153</a> · impactWindow</td>
+<td><a href="TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td>Calculate interval counts before dividing, preserving each branch’s denominator. Missing observations return unavailable rather than manufactured zero.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.js.html#L181">visualization.js:181</a> · impactSeries</td>
+<td><a href="TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td>Align paired months and their chosen rate windows. An absent corresponding observation cannot be treated as a zero-effect month.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.js.html#L200">visualization.js:200</a> · impactDifference</td>
+<td><a href="TECHNICAL.html#ak-mea-02">AK-MEA-02</a></td>
+<td>Keep a tiny nonzero effect visible with three decimals or scientific notation; formatting precision is not empirical accuracy.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="worker-js">worker.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/worker.js.html#L31">worker.js:31</a> · summary</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/worker.js.html#L44">worker.js:44</a> · makePair</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Construct reform and no-new-reform baseline from the exact same initialized state and replicate identity.</td>
+</tr>
+<tr>
+<td><a href="source/worker.js.html#L52">worker.js:52</a> · send</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/worker.js.html#L72">worker.js:72</a> · finishPair</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Check invariants, retain the first visible trajectory, export complete records and summarize repetitions. Simulation ranges are not empirical confidence intervals.</td>
+</tr>
+<tr>
+<td><a href="source/worker.js.html#L151">worker.js:151</a> · advance</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/worker.js.html#L162">worker.js:162</a> · pump</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Schedule bounded batches without changing monthly step order or random streams; pause/pace affect responsiveness only.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-js">app.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/app.js.html#L17">app.js:17</a> · $</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L22">app.js:22</a> · esc</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L31">app.js:31</a> · number</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a>, <a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L58">app.js:58</a> · status</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L66">app.js:66</a> · profile</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L73">app.js:73</a> · getConfig</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Read and validate draft setup independently of an active run. Source values, user overrides and initial/future seeds retain separate meanings.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L94">app.js:94</a> · remember</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L105">app.js:105</a> · summaryText</td>
+<td><a href="TECHNICAL.html#ak-ov-01">AK-OV-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L132">app.js:132</a> · pending</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L149">app.js:149</a> · buildPolicies</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L181">app.js:181</a> · countryFields</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L261">app.js:261</a> · applyConfig</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L284">app.js:284</a> · signature</td>
+<td><a href="TECHNICAL.html#ak-ini-01">AK-INI-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L291">app.js:291</a> · initialFor</td>
+<td><a href="TECHNICAL.html#ak-ini-01">AK-INI-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L303">app.js:303</a> · baseSummary</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L316">app.js:316</a> · preview</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L335">app.js:335</a> · stopWorker</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L345">app.js:345</a> · initializeWorker</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Start a fresh paired experiment and reset historical-review selection; use a new event seed unless exact replay was requested.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L398">app.js:398</a> · start</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L426">app.js:426</a> · reset</td>
+<td><a href="TECHNICAL.html#ak-ops-01">AK-OPS-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L445">app.js:445</a> · learningPanel</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L504">app.js:504</a> · inspector</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Explain why a highlighted actor matters and show recorded choices plus numerical learning. Perceived intentions and completed acts remain distinct.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L528">app.js:528</a> · selectActor</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L540">app.js:540</a> · renderFeed</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L579">app.js:579</a> · drawMap</td>
+<td><a href="TECHNICAL.html#ak-vis-01">AK-VIS-01</a></td>
+<td>Project observed conduct/affinity/network data for display without changing physical geography or simulation RNG.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L759">app.js:759</a> · tinyComparison</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L773">app.js:773</a> · reportFormat</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L784">app.js:784</a> · reportEventButtons</td>
+<td><a href="TECHNICAL.html#ak-vis-02">AK-VIS-02</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L802">app.js:802</a> · reportMeaning</td>
+<td><a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Insert an escaped predefined interpretation with at most two real linked records and expandable additional developments.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L821">app.js:821</a> · reportChart</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Draw observational series and a shared review-month marker; impact uses paired difference against zero rather than an overlapping pair of cumulative curves.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L836">app.js:836</a> · x</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by reportChart; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L837">app.js:837</a> · y</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by reportChart; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L842">app.js:842</a> · lines</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by reportChart; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L907">app.js:907</a> · showReportEvent</td>
+<td><a href="TECHNICAL.html#ak-mea-04">AK-MEA-04</a></td>
+<td>Open an existing tracked record and its available updates in place, then highlight participants without rerunning the model.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L959">app.js:959</a> · renderPolicyAssessment</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Connect one selected policy’s outputs/outcomes with the package impact, same-month baseline and fixed pre-adoption snapshot. Rendering must remain passive and preserve the real measurement windows.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1265">app.js:1265</a> · renderAssessment</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Coordinate the new stage panels with expandable full-package quantities and repetition summaries. Package totals remain separate from tool-specific conditions.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1359">app.js:1359</a> · renderReplications</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1412">app.js:1412</a> · selectedImpact</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1421">app.js:1421</a> · drawImpact</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1442">app.js:1442</a> · label</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by drawImpact; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1451">app.js:1451</a> · render</td>
+<td><a href="TECHNICAL.html#ak-vis-03">AK-VIS-03</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1594">app.js:1594</a> · openDB</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1614">app.js:1614</a> · storeAction</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Persist named scenarios on device with IndexedDB and localStorage fallback, reporting failures instead of silently promising durable storage.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1660">app.js:1660</a> · refreshSaves</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1676">app.js:1676</a> · payload</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Serialize setup, exact initial society and matching completed results. This is a scenario/result backup, not an in-flight checkpoint.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1693">app.js:1693</a> · validatePayload</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Validate untrusted JSON data and preserve exact starting-state identity; never execute imported content. Monitoring is optional for older2.4 results but checked when supplied.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1792">app.js:1792</a> · loadPayload</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Stop execution, reset review state and load for inspection only. Existing completed results do not gain missing monitoring data without a rerun.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1821">app.js:1821</a> · download</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1834">app.js:1834</a> · csv</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Escape CSV values and guard formula-like string cells. CSV quantities retain their named units and are not a substitute for the full JSON state.</td>
+</tr>
+<tr>
+<td><a href="source/app.js.html#L1859">app.js:1859</a> · showStorage</td>
+<td><a href="TECHNICAL.html#ak-io-01">AK-IO-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="adaptation-test-js">adaptation.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/adaptation.test.js.html#L16">adaptation.test.js:16</a> · config</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L27">adaptation.test.js:27</a> · simulation</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L32">adaptation.test.js:32</a> · clone</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L37">adaptation.test.js:37</a> · receptive</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L46">adaptation.test.js:46</a> · maximal</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L51">adaptation.test.js:51</a> · deliver</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L63">adaptation.test.js:63</a> · operate</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L75">adaptation.test.js:75</a> · test: all twelve policy mappings are explicit, distinct and leave untargeted elements absent</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L92">adaptation.test.js:92</a> · test: profiles contain reproducible numerical susceptibility traits without redrawing other traits</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L107">adaptation.test.js:107</a> · test: selecting education or funding a still-uninstalled programme cannot teach an agent</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L124">adaptation.test.js:124</a> · test: receptiveness responds to source trust, individual traits, motives and own history</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L143">adaptation.test.js:143</a> · test: uptake and conditional influence are distinct random draws</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L162">adaptation.test.js:162</a> · test: repeat exposure caps diminish and are shared across organizational sources</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L177">adaptation.test.js:177</a> · test: thousands of fully delivered exposures stay below per-policy and per-element ceilings</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L196">adaptation.test.js:196</a> · test: wear-off changes retained influence without resetting exposure history or lifetime conduct</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L215">adaptation.test.js:215</a> · test: reinforcement can restore lost influence after novelty is exhausted without raising the ceiling</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L232">adaptation.test.js:232</a> · test: retention traits change decay rather than the original influence cap</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L257">adaptation.test.js:257</a> · test: history and environment slowly change actual motives and traits while preserving positive weights</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L277">adaptation.test.js:277</a> · test: professional skill changes with performed work and cannot jump or erase expertise</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L294">adaptation.test.js:294</a> · test: education reaches attitude, norm and control in actual choices, keeping the nine interests</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L327">adaptation.test.js:327</a> · test: a penalty exposure changes perceived cost once without adding attitude/norm/control bonuses</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L344">adaptation.test.js:344</a> · test: report-channel knowledge and control are specific to reporting contexts</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L358">adaptation.test.js:358</a> · test: identical exposure draws reproduce profiles and independent draws yield different histories</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L366">adaptation.test.js:366</a> · rng</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L394">adaptation.test.js:394</a> · test: skill learning feeds real subsequent organizational capacity</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L409">adaptation.test.js:409</a> · test: a known inactive or suspended reform stops new exposures while memories can wear off</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L424">adaptation.test.js:424</a> · test: continuous reinforcement over 1,200 months retains partial bounded influence</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L442">adaptation.test.js:442</a> · test: financial expectations learn from actual total receipts with individual learning rates</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L459">adaptation.test.js:459</a> · test: a later change in receptiveness can permit modest new learning after repeated rejected messages</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L477">adaptation.test.js:477</a> · test: conflicting credible experience adjusts the retained target without deleting earlier history</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L490">adaptation.test.js:490</a> · test: a corrupt staffing proposal prevented by real merit review is not a completed patronage act</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L509">adaptation.test.js:509</a> · test: formal education adoption cannot manufacture knowledge before anyone learns</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L524">adaptation.test.js:524</a> · test: knowledge assessment responds continuously to retained learning and subsequent wear-off</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L541">adaptation.test.js:541</a> · test: agents do not read hidden true protection capacity when deciding whether to report</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L562">adaptation.test.js:562</a> · option</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L572">adaptation.test.js:572</a> · test: experienced protection and credible failure change subjective safety in opposite directions</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/adaptation.test.js.html#L589">adaptation.test.js:589</a> · test: inspection summaries stay numerical and reject malformed imported learning histories</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="audit-test-js">audit.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/audit.test.js.html#L15">audit.test.js:15</a> · config</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L26">audit.test.js:26</a> · sim</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L31">audit.test.js:31</a> · clone</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L36">audit.test.js:36</a> · pair</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L45">audit.test.js:45</a> · test: country overrides preserve underlying person draws while reconstructed histories can respond</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L51">audit.test.js:51</a> · traits</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L79">audit.test.js:79</a> · test: all nine consequence dimensions can independently affect the utility choice</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L100">audit.test.js:100</a> · test: implemented encounter consequences distinguish social, economic and political domains</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L120">audit.test.js:120</a> · test: directional trust changes only the intended direction and zero ties confer no access</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L150">audit.test.js:150</a> · test: affinity changes contact routing while locations and random keys stay fixed</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L179">audit.test.js:179</a> · test: individual staff competence contributes to effective organizational capacity</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L196">audit.test.js:196</a> · test: financial security changes subjective economic gains without knowledge of hidden corruption</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L211">audit.test.js:211</a> · test: verification of covered personal declarations affects audit detection</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L248">audit.test.js:248</a> · test: zero legal scrutiny scope prevents audit detection despite trained capacity</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L276">audit.test.js:276</a> · test: penalty collection capacity changes actual transferred resources after the same decision</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L311">audit.test.js:311</a> · test: policy ordering follows actor priorities independently of menu/storage order</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L336">audit.test.js:336</a> · values</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L351">audit.test.js:351</a> · test: experienced waiting changes support and perceived access without inventing corruption information</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L376">audit.test.js:376</a> · test: resource-review utility responds to experienced stakeholder support</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L394">audit.test.js:394</a> · score</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L405">audit.test.js:405</a> · test: social sharing uses receiver trust and ignores zero-strength links</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L421">audit.test.js:421</a> · test: editorial independence and real funding dependence enter publication incentives</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L456">audit.test.js:456</a> · test: recent participation denominators remain bounded and inactivity cannot erase history</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L485">audit.test.js:485</a> · test: a dense network alone does not produce a capture event; repeated abuse is required</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L511">audit.test.js:511</a> · test: country mandates change real referrals without merging investigation, prosecution and courts</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/audit.test.js.html#L538">audit.test.js:538</a> · test: out-of-scope audits cannot create false allegations through a false-positive draw</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dynamics-test-js">dynamics.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/dynamics.test.js.html#L17">dynamics.test.js:17</a> · sim</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L18">dynamics.test.js:18</a> · clone</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L23">dynamics.test.js:23</a> · opportunity</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L38">dynamics.test.js:38</a> · test: a one-option duty and repeated calls without a new choice cannot inflate integrity or recovery</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L73">dynamics.test.js:73</a> · test: failed or deferred intentions do not become completed integrity choices</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L87">dynamics.test.js:87</a> · test: twenty waiting requests have one bounded monthly effect on trust and control</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L114">dynamics.test.js:114</a> · test: waiting is accumulated as request-months, without inventing new service contacts or recounting it at completion</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L144">dynamics.test.js:144</a> · test: living-needs priors share the earnings scale and retain heterogeneous financial pressure</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L162">dynamics.test.js:162</a> · test: uncollected adjudicated liability persists, and subsequent collection transfers real money once</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L216">dynamics.test.js:216</a> · test: personally experienced and communicated accountability updates are bounded, deduplicated and reversible over time</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L238">dynamics.test.js:238</a> · test: higher perceived accountability changes actual utility choices under identical event draws</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L271">dynamics.test.js:271</a> · test: reference disapproval can transmit an expectation instead of every lawful interaction manufacturing approval</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L292">dynamics.test.js:292</a> · test: network layout spreads the healthy disc while preserving participation bands, default integrity and physical geography</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L313">dynamics.test.js:313</a> · test: coercive ties cannot attract victims as though they indicated affinity or voluntary cooperation</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L324">dynamics.test.js:324</a> · test: a public decision has one cost-learning pathway and cannot replay an already personally experienced sanction</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L348">dynamics.test.js:348</a> · test: pay adequacy assesses modeled take-home receipts rather than gross receipts</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/dynamics.test.js.html#L362">dynamics.test.js:362</a> · test: saved-state verification accepts key order and insignificant floating rounding while rejecting substantive edits</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="initialization-test-js">initialization.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/initialization.test.js.html#L18">initialization.test.js:18</a> · config</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/initialization.test.js.html#L23">initialization.test.js:23</a> · test: political defaults use sourced country scores and keep unmeasured culture explicit</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/initialization.test.js.html#L46">initialization.test.js:46</a> · test: instrument-specific observations inform bounded estimates without treating missing criteria as no safeguards</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/initialization.test.js.html#L65">initialization.test.js:65</a> · test: the pre-policy year executes all twelve months, with eligible actors throughout</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/initialization.test.js.html#L85">initialization.test.js:85</a> · test: month zero has coherent conduct, ongoing work, cross-class ties and behavior-derived map positions</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/initialization.test.js.html#L113">initialization.test.js:113</a> · test: pre-policy history is independent of reform, duration, repetitions and future-event seeds</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/initialization.test.js.html#L136">initialization.test.js:136</a> · test: a saved reconstructed snapshot is accepted exactly and rejects edited histories and old starts</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/initialization.test.js.html#L155">initialization.test.js:155</a> · test: inherited casework advances across adoption without duplicate IDs, invalid clocks or lost money</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="model-test-js">model.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/model.test.js.html#L17">model.test.js:17</a> · config</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L30">model.test.js:30</a> · test: ten country societies: 1,000 people, overlapping motives, independent support and membership</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L51">model.test.js:51</a> · test: reform selection, mobilization, duration and future-event seed do not regenerate the initial society</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L67">model.test.js:67</a> · test: paired no-new-reform branches are identical; repetitions share state but subsequent events differ</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L81">model.test.js:81</a> · test: diagnostics, rendering and actor inspection do not mutate state or random events</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L101">model.test.js:101</a> · test: each country conserves resources and shared time with all twelve reforms</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L124">model.test.js:124</a> · test: initial zero mobilization is persistent until a review; full funding does not install capacity immediately</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L139">model.test.js:139</a> · test: single act switches display; inactivity cannot recover; six months and three meaningful choices can</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L175">model.test.js:175</a> · test: coercion records the official as perpetrator without marking the victim corrupt</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L201">model.test.js:201</a> · test: unaccepted corrupt proposals are not counted as integrity by the proposer</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L223">model.test.js:223</a> · test: employment transitions retain identity, money, history, home and existing ties</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L240">model.test.js:240</a> · test: China uses personnel appointment; civil and criminal functions remain distinct</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L264">model.test.js:264</a> · test: case deduplication and policy costs are explicit; diagnostics use observed denominators</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L287">model.test.js:287</a> · test: reject invalid scenario settings</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/model.test.js.html#L310">model.test.js:310</a> · test: serialized initial society is structurally verified and retained without regeneration</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reporting-test-js">reporting.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/reporting.test.js.html#L23">reporting.test.js:23</a> · config</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L34">reporting.test.js:34</a> · clone</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L39">reporting.test.js:39</a> · test: all twelve tools have distinct output definitions and relevant starting conditions</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L61">reporting.test.js:61</a> · test: policy starting snapshots precede formal adoption and remain fixed during the run</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L75">reporting.test.js:75</a> · test: recording and interpretation do not consume RNG or change the simulated society</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L97">reporting.test.js:97</a> · test: same published engine produces identical initialization and conduct with monitoring enabled</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L123">reporting.test.js:123</a> · test: output uses weighted actual activity over equal historical windows</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L143">reporting.test.js:143</a> · test: delivered teaching is distinct from accepted influence and duplicate contacts</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L164">reporting.test.js:164</a> · test: generic activity does not get credited as a staff rotation</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L179">reporting.test.js:179</a> · test: read-only event references are relevant, dated and distinguish material changes</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L245">reporting.test.js:245</a> · test: interpretations handle delivery, lag, missing evidence and direction without claiming causation</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L264">reporting.test.js:264</a> · test: optional monitoring roundtrips without changing initial-state compatibility and rejects malformed records</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L292">reporting.test.js:292</a> · harness</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L298">reporting.test.js:298</a> · $</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by harness; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L325">reporting.test.js:325</a> · esc</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by harness; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L330">reporting.test.js:330</a> · number</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by harness; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L367">reporting.test.js:367</a> · test: all twelve policy renderings show relevant before/current conditions and stage panels</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L404">reporting.test.js:404</a> · test: completion updates the final comparison and review slider without changing results</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/reporting.test.js.html#L431">reporting.test.js:431</a> · test: older saved results get an honest monitoring-unavailable notice</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="run-seeds-test-js">run-seeds.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/run-seeds.test.js.html#L22">run-seeds.test.js:22</a> · test: new runs get distinct event identities without modifying settings or society</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/run-seeds.test.js.html#L27">run-seeds.test.js:27</a> · fill</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/run-seeds.test.js.html#L48">run-seeds.test.js:48</a> · test: explicit exact replay consumes no new entropy and reproduces the entire event history</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/run-seeds.test.js.html#L62">run-seeds.test.js:62</a> · test: fresh event seeds retain matching baseline/reform randomness and separate initialization</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stress-test-js">stress.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/stress.test.js.html#L15">stress.test.js:15</a> · test: Peru ACA completes maximum 240-month duration with finite and conserved state</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/stress.test.js.html#L35">stress.test.js:35</a> · test: all-country extreme conditions retain valid resources, workload and decision utilities</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="visualization-test-js">visualization.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/visualization.test.js.html#L17">visualization.test.js:17</a> · fixture</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.test.js.html#L22">visualization.test.js:22</a> · test: impact preserves the small nonzero difference from the reported run</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.test.js.html#L43">visualization.test.js:43</a> · test: recent impact uses weighted encounter counts at matching month boundaries</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.test.js.html#L66">visualization.test.js:66</a> · test: recent paired impact respects each branch denominator and never mutates history</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.test.js.html#L89">visualization.test.js:89</a> · test: analytical projection preserves behavior radii when affinity and cooperation change</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.test.js.html#L113">visualization.test.js:113</a> · test: new meaningful choices change radial position; elapsed time and role do not</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.test.js.html#L144">visualization.test.js:144</a> · test: major event filter excludes routine case traffic without discarding the full log</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.test.js.html#L159">visualization.test.js:159</a> · test: entrypoint loads consistent versions and all UI hooks including arbitrary whole-month duration</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/visualization.test.js.html#L180">visualization.test.js:180</a> · test: startup map and class rates use completed choices from the reconstructed past</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="worker-test-js">worker.test.js</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/worker.test.js.html#L17">worker.test.js:17</a> · runtime</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/worker.test.js.html#L24">worker.test.js:24</a> · handler</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by runtime; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/worker.test.js.html#L61">worker.test.js:61</a> · test: worker step/pause retains paired months and does not automatically run after initialization</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/worker.test.js.html#L83">worker.test.js:83</a> · test: worker completes five paired repetitions and keeps the first reform trajectory for review</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/worker.test.js.html#L117">worker.test.js:117</a> · test: invalid worker initialization returns a useful error</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scripts-audit-lib-mjs">scripts/audit-lib.mjs</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L6">scripts/audit-lib.mjs:6</a> · testFiles</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L7">scripts/audit-lib.mjs:7</a> · sha</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L8">scripts/audit-lib.mjs:8</a> · read</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L9">scripts/audit-lib.mjs:9</a> · parse</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L11">scripts/audit-lib.mjs:11</a> · canonical</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L19">scripts/audit-lib.mjs:19</a> · semanticHash</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L20">scripts/audit-lib.mjs:20</a> · walk</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L21">scripts/audit-lib.mjs:21</a> · nameOf</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L22">scripts/audit-lib.mjs:22</a> · refsFor</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L24">scripts/audit-lib.mjs:24</a> · units</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L29">scripts/audit-lib.mjs:29</a> · enclosing</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L30">scripts/audit-lib.mjs:30</a> · anchor</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L31">scripts/audit-lib.mjs:31</a> · escape</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__audit-lib.mjs.html#L32">scripts/audit-lib.mjs:32</a> · cell</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scripts-build-audit-mjs">scripts/build-audit.mjs</h2>
+<table>
+<thead>
+<tr>
+<th>Unit / line</th>
+<th>Mechanism references</th>
+<th>Developer note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L9">scripts/build-audit.mjs:9</a> · put</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L10">scripts/build-audit.mjs:10</a> · table</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L11">scripts/build-audit.mjs:11</a> · json</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L12">scripts/build-audit.mjs:12</a> · code</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L13">scripts/build-audit.mjs:13</a> · prose</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L14">scripts/build-audit.mjs:14</a> · shell</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L17">scripts/build-audit.mjs:17</a> · page</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L18">scripts/build-audit.mjs:18</a> · build</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by module; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L68">scripts/build-audit.mjs:68</a> · loc</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by build; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L68">scripts/build-audit.mjs:68</a> · sourceLink</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by build; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L69">scripts/build-audit.mjs:69</a> · refLink</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by build; consult the linked technical rule and full function body.</td>
+</tr>
+<tr>
+<td><a href="source/scripts__build-audit.mjs.html#L70">scripts/build-audit.mjs:70</a> · sourceCell</td>
+<td><a href="TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td>Owned by build; consult the linked technical rule and full function body.</td>
+</tr>
+</tbody>
+</table>
+</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>
