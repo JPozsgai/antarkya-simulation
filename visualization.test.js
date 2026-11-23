@@ -1,6 +1,19 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),A=require('./model'),V=require('./visualization'),fs=require('node:fs');
 const fixture=()=>new A.Simulation({country:'PER',duration:6,policies:[]});
+test('impact preserves the small nonzero difference from the reported run',()=>{
+ const baseline=[{month:0},{month:120,encounterCorruptActs:7117,encounterOpportunities:50695}],reform=[{month:0},{month:120,encounterCorruptActs:7108,encounterOpportunities:50695}],p=V.impactSeries(reform,baseline).at(-1);
+ assert.ok(Math.abs(p.difference-(-900/50695))<1e-12);assert.equal(V.impactDifference(p.difference),'-0.018');assert.equal(V.impactDifference(0),'0.000');assert.equal(V.impactDifference(null),'—');assert.equal(V.impactDifference(-.000001),'-1.0e-6');assert.equal(V.impactDifference(.01),'+0.010');
+});
+test('recent impact uses weighted encounter counts at matching month boundaries',()=>{
+ const history=[{month:0},{month:1,encounterCorruptActs:10,encounterOpportunities:10},{month:2,encounterCorruptActs:10,encounterOpportunities:1000},{month:12,encounterCorruptActs:100,encounterOpportunities:2000},{month:13,encounterCorruptActs:101,encounterOpportunities:2100}];
+ const result=V.impactWindow(history,13,12);assert.equal(result.corrupt,91);assert.equal(result.opportunities,2090);assert.equal(result.fromMonth,1);assert.equal(result.months,12);assert.equal(result.rate,100*91/2090);assert.equal(V.impactWindow(history,2,12).rate,1);assert.equal(V.impactWindow(history,13).corrupt,101);
+ assert.equal(V.impactWindow(history,0).rate,null);assert.equal(V.impactWindow(history,14,12),null);
+});
+test('recent paired impact respects each branch denominator and never mutates history',()=>{
+ const r=[{month:0},{month:1,encounterCorruptActs:1,encounterOpportunities:10},{month:13,encounterCorruptActs:9,encounterOpportunities:110}],b=[{month:0},{month:1,encounterCorruptActs:1,encounterOpportunities:10},{month:13,encounterCorruptActs:9,encounterOpportunities:210}],before=JSON.stringify([r,b]),s=V.impactSeries(r,b,12);
+ assert.equal(s.at(-1).difference,4);assert.equal(s.at(-1).reform.rate,8);assert.equal(s.at(-1).baseline.rate,4);assert.equal(JSON.stringify([r,b]),before);assert.equal(V.impactSeries([{month:0},{month:1}],b,12)[0].difference,null);
+});
 test('analytical projection preserves behavior radii when affinity and cooperation change',()=>{
  const s=fixture(),view=s.view(),before=JSON.stringify(s.snapshot()),first=V.projection(view);for(const a of view.agents)a.affinityByRole=[1,0,0,1];view.links=view.links.map(l=>({...l,trustAB:1,trustBA:1,strength:1}));const next=V.projection(view);assert.deepEqual(first.map(p=>p.integrityRadius),next.map(p=>p.integrityRadius));assert.notDeepEqual(first.map(p=>p.angle),next.map(p=>p.angle));assert.equal(JSON.stringify(s.snapshot()),before);for(const p of next)assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.radius<=.950000001);
 });
@@ -11,7 +24,7 @@ test('major event filter excludes routine case traffic without discarding the fu
  const events=[{kind:'case',title:'Case update'},{kind:'macro',title:'Institution changes'},{kind:'politics',title:'Election'}];assert.equal(V.importantEvents(events).length,2);assert.equal(V.importantEvents(events,'all').length,3);assert.equal(V.importantEvents(events,'case').length,1);assert.equal(events.length,3);
 });
 test('entrypoint loads consistent versions and all UI hooks including arbitrary whole-month duration',()=>{
- const html=fs.readFileSync('index.html','utf8'),app=fs.readFileSync('app.js','utf8'),ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));for(const m of app.matchAll(/\$\('([^']+)'\)/g))if(!m[1].endsWith('-'))assert.ok(ids.has(m[1]),'Missing UI element '+m[1]);assert.match(html,/<input type="number" id="duration" min="6" max="240"/);assert.match(html,/value="major" selected/);assert.ok(!ids.has('casesStat'));for(const file of ['profiles','config','baseline','adaptation','model','run-seeds','visualization','app'])assert.ok(html.includes(file+'.js?v=2.4.0'));assert.ok(app.includes("worker.js?v=2.4.0"));assert.ok(html.indexOf('visualization.js')<html.indexOf('app.js'));
+ const html=fs.readFileSync('index.html','utf8'),app=fs.readFileSync('app.js','utf8'),ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));for(const m of app.matchAll(/\$\('([^']+)'\)/g))if(!m[1].endsWith('-'))assert.ok(ids.has(m[1]),'Missing UI element '+m[1]);assert.match(html,/<input type="number" id="duration" min="6" max="240"/);assert.match(html,/value="major" selected/);assert.ok(!ids.has('casesStat'));for(const file of ['profiles','config','baseline','adaptation','model','run-seeds'])assert.ok(html.includes(file+'.js?v=2.4.0'));for(const file of ['visualization','app'])assert.ok(html.includes(file+'.js?v=2.4.1'));assert.ok(app.includes("worker.js?v=2.4.0"));assert.ok(html.indexOf('visualization.js')<html.indexOf('app.js'));
 });
 
 test('startup map and class rates use completed choices from the reconstructed past',()=>{
