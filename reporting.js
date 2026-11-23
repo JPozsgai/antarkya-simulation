@@ -16,7 +16,7 @@
   penalties:{output:'Liability actually collected',unit:'RU',conditions:[['Outstanding assessed liability','RU'],['Officials’ expected accountability cost','%'],['Operating collection capability','%']]},
   disclosure:{output:'Public-record delivery work',unit:'PM',conditions:[['Public-record quality','%'],['Covered disclosure scope','%'],['Operating disclosure capability','%']]},
   complaints:{output:'Reports submitted',unit:'count',conditions:[['Unresolved complaint files','count'],['Experienced reporting knowledge','%'],['Modeled reporting access','%']]},
-  education:{output:'Teaching contacts delivered',unit:'count',conditions:[['Usable knowledge','%'],['Perceived approval of lawful conduct','%'],['Lawful-action capability','%'],['Retained attitude influence','%']]}
+  education:{output:'Reform teaching contacts',unit:'count',conditions:[['Usable knowledge','%'],['Perceived approval of lawful conduct','%'],['Lawful-action capability','%'],['Retained attitude influence','%']]}
  };
  const finite=x=>Number.isFinite(x),pct=a=>a.length?100*mean(a):null;
  function activity(sim,id,amount=1){if(sim.monitor&&finite(amount)&&amount>0)sim.monitor.counts[id]+=amount;}

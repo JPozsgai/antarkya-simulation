@@ -61,14 +61,14 @@ function harness(current,c,completed){
 }
 test('all twelve policy renderings show relevant before/current conditions and stage panels',()=>{
  const c=config({policies:A.KEYS.map(id=>({id,mobilization:.6}))}),i=A.createInitial(c),r=new A.Simulation(c,i),b=new A.Simulation(c,i,0,true),h=harness({reform:r.view(),baseline:{reporting:b.reporting(),history:b.state.history,assessment:b.assessment()}},c,null);
- for(const id of A.KEYS){h.render(id);const html=h.nodes.assessment.innerHTML;assert.ok(html.includes('Before reform'));assert.ok(html.includes('Current baseline'));assert.ok(html.includes('stage-output'));assert.ok(html.includes('stage-outcome'));assert.ok(html.includes('stage-impact'));assert.ok(html.includes(Q.definitions[id].output));}
+ for(const id of A.KEYS){h.render(id);const html=h.nodes.assessment.innerHTML;assert.ok(html.includes('Before reform'));assert.ok(html.includes('Current baseline'));assert.ok(html.includes('stage-output'));assert.ok(html.includes('stage-outcome'));assert.ok(html.includes('stage-impact'));assert.ok(html.includes('Rate difference vs baseline'));assert.ok(html.includes(Q.definitions[id].output));}
  h.render('education');assert.ok(!h.nodes.assessment.innerHTML.includes('pending cases'));h.render('pay');assert.ok(!h.nodes.assessment.innerHTML.includes('pending services'));
 });
 test('completion updates the final comparison and review slider without changing results',()=>{
  const c=config(),i=A.createInitial(c),r=new A.Simulation(c,i),b=new A.Simulation(c,i,0,true);for(let m=0;m<6;m++){r.step();b.step();}
- const current={reform:r.view(),baseline:{reporting:b.reporting(),history:b.state.history,assessment:b.assessment()}},before=clone(current),h=harness(current,c,{type:'complete'});h.render('education');
+ const current={reform:r.view(),baseline:{reporting:b.reporting(),history:b.state.history,assessment:b.assessment()}},before=structuredClone(current),h=harness(current,c,{type:'complete'});h.render('education');
  assert.match(h.nodes.assessmentPhase.textContent,/Run complete · Final conditions/);assert.ok(h.nodes.assessment.innerHTML.includes('Final baseline'));assert.equal(h.nodes.assessmentMonth.max,'6');h.render('education',2);assert.match(h.nodes.assessmentPhase.textContent,/Reviewing conditions · month 2/);assert.deepEqual(current,before);
 });
 test('older saved results get an honest monitoring-unavailable notice',()=>{
- const c=config(),r=new A.Simulation(c),view=r.view();delete view.reporting;const h=harness({reform:view,baseline:{history:[],assessment:r.assessment()}},c,{type:'complete'});h.render('education');assert.match(h.nodes.assessment.innerHTML,/not recorded in this saved result/);
+ const c=config(),r=new A.Simulation(c),view=r.view();delete view.reporting;const h=harness({reform:view,baseline:{history:[],assessment:r.assessment()}},c,{type:'complete'});h.nodes.reportEventDetail={hidden:false};h.render('education');assert.equal(h.nodes.reportEventDetail.hidden,true);assert.match(h.nodes.assessment.innerHTML,/not recorded in this saved result/);
 });

@@ -4,7 +4,7 @@
 
 ## Three stages and time
 
-A policy selector controls output and outcome. Impact is always the reform scenario or combined package, not an estimate of an individual tool's causal contribution. Three headlines remain together; wide screens show aligned charts, while narrow screens show the selected stage's larger chart. A shared review-month slider follows the latest month by default. Completion changes Current to Final. Reviewing earlier months does not rerun the simulation.
+A policy selector controls output and outcome. Impact is always the reform scenario or combined package, not an estimate of an individual tool's causal contribution. Three headlines remain together; wide screens show aligned charts, while narrow screens show the selected stage's larger chart. Impact's headline and chart display the paired difference in percentage points, with underlying rates shown precisely beneath. A shared review-month slider follows the latest month by default. Completion changes Current to Final. Reviewing earlier months does not rerun the simulation.
 
 Expanded details compare Before reform (immediately before formal adoption), Current/Final reform, and the same-month baseline. Stock/condition measures are snapshots. Output always uses actual activity in a trailing 12-month window, including the reconstructed pre-policy year where necessary during early months. Its starting value is the reconstructed year's activity, not an opening stock. The impact-window control affects only impact, whose post-adoption rate can use the past 12 months or since adoption. The impact starting value separately describes the reconstructed pre-policy year and is labeled accordingly.
 
@@ -25,7 +25,7 @@ The observation recorder is outside simulation state. It accumulates actual reco
 | Penalties | Actual collections | Collected RU per matured extortion violation; 12-month cohort ending six months earlier, minimum 20 violations | Outstanding orders, subjective accountability cost, collection capability |
 | Disclosure | Actual delivered public-record implementation work (PM) | Existing disclosure-quality capability diagnostic | Record quality, scope and operation |
 | Complaints | Submitted reports | Existing intake capability diagnostic | Complaint backlog, reporting knowledge and access |
-| Education | Delivered teaching contacts, regardless of uptake | Expected usable knowledge across all agents | Effective lawful reference approval/control and retained attitude influence |
+| Education | Delivered reform teaching contacts, regardless of uptake | Expected usable knowledge across all agents | Effective lawful reference approval/control and retained attitude influence |
 
 Output is process delivery, not a success score. Teaching counts episodes, not unique people or successful persuasion. Notices measure additional-reform communications, not every existing legal obligation. Disclosure currently models delivered implementation work and record quality rather than countable government documents; no documents or publications are fabricated for this report. Several tools retain estimated capability outcomes, explicitly labeled. These diagnostics do not become observed success rates merely because they are plotted.
 
