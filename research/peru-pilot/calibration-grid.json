@@ -1,0 +1,353 @@
+[
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.16,
+      "backgroundCompliance": 0.65
+    },
+    "fiscalShare": 0.10732004059026024,
+    "loss": 0.04067995940973976,
+    "runs": [
+      {
+        "taxShareYear1": 0.10653211983694143,
+        "growthYear1": -0.09085300487481662,
+        "indexFinal": 90.91469951251834,
+        "investmentOrdersShareYear1": 0.022145319083675605,
+        "capacityInstalledYear1": 5.2599225151103965,
+        "capitalFinal": 484.6887739520844,
+        "capabilityFinal": 0.4312497643017201,
+        "pressureFinal": 0.14260491283809823,
+        "arrearsFinal": 0,
+        "corruptActs": 994,
+        "maxMoneyError": 7.618218660354614e-7,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.10810796134357906,
+        "growthYear1": -0.08910113669337871,
+        "indexFinal": 91.08988633066213,
+        "investmentOrdersShareYear1": 0.02291147536220048,
+        "capacityInstalledYear1": 5.504423080896721,
+        "capitalFinal": 484.9379610540466,
+        "capabilityFinal": 0.43103255286223263,
+        "pressureFinal": 0.14146025412786406,
+        "arrearsFinal": 0,
+        "corruptActs": 940,
+        "maxMoneyError": 7.636845111846924e-7,
+        "months": 12
+      }
+    ],
+    "initialHash": "0f49ad731b0dcdea05920b64193dfee6047764ff5466b38ee110a7c22fa3f299"
+  },
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.16,
+      "backgroundCompliance": 0.85
+    },
+    "fiscalShare": 0.12509431823371436,
+    "loss": 0.02290568176628563,
+    "runs": [
+      {
+        "taxShareYear1": 0.12442031151059345,
+        "growthYear1": -0.05268425134904409,
+        "indexFinal": 94.7315748650956,
+        "investmentOrdersShareYear1": 0.021802077628503606,
+        "capacityInstalledYear1": 5.259925991318947,
+        "capitalFinal": 484.68877743873134,
+        "capabilityFinal": 0.4326173875045531,
+        "pressureFinal": 0.14387852798945794,
+        "arrearsFinal": 0,
+        "corruptActs": 1163,
+        "maxMoneyError": 0.000001173466444015503,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.1257683249568353,
+        "growthYear1": -0.048620979353138805,
+        "indexFinal": 95.13790206468612,
+        "investmentOrdersShareYear1": 0.022518606547233005,
+        "capacityInstalledYear1": 5.504423648336832,
+        "capitalFinal": 484.9379616506643,
+        "capabilityFinal": 0.43242151044999255,
+        "pressureFinal": 0.14186923378024172,
+        "arrearsFinal": 0,
+        "corruptActs": 1107,
+        "maxMoneyError": 0.000001257285475730896,
+        "months": 12
+      }
+    ],
+    "initialHash": "31196f0527f252d2dd349ff04d85d4dbf4a3901148e0eb860d8967f014624a9c"
+  },
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.16,
+      "backgroundCompliance": 1
+    },
+    "fiscalShare": 0.13952444356785335,
+    "loss": 0.008475556432146647,
+    "runs": [
+      {
+        "taxShareYear1": 0.13876432366805364,
+        "growthYear1": -0.034998686252192934,
+        "indexFinal": 96.50013137478071,
+        "investmentOrdersShareYear1": 0.021754859150426513,
+        "capacityInstalledYear1": 5.259930768557102,
+        "capitalFinal": 484.68878308662653,
+        "capabilityFinal": 0.4326932393222066,
+        "pressureFinal": 0.14468710965899456,
+        "arrearsFinal": 0,
+        "corruptActs": 1177,
+        "maxMoneyError": 0.0000012740492820739746,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.14028456346765306,
+        "growthYear1": -0.039315290978892636,
+        "indexFinal": 96.06847090211073,
+        "investmentOrdersShareYear1": 0.022499881626275746,
+        "capacityInstalledYear1": 5.504430519317121,
+        "capitalFinal": 484.9379693640645,
+        "capabilityFinal": 0.432421510448816,
+        "pressureFinal": 0.14320580984562875,
+        "arrearsFinal": 0,
+        "corruptActs": 1108,
+        "maxMoneyError": 0.0000012703239917755127,
+        "months": 12
+      }
+    ],
+    "initialHash": "960ee7b3ef7c9997f7884995b2a0c4aa39cf90b8636a0300d82ab24c34c530c3"
+  },
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.19,
+      "backgroundCompliance": 0.65
+    },
+    "fiscalShare": 0.12511007479034428,
+    "loss": 0.022889925209655715,
+    "runs": [
+      {
+        "taxShareYear1": 0.12483307913499153,
+        "growthYear1": -0.0509155437180735,
+        "indexFinal": 94.90844562819265,
+        "investmentOrdersShareYear1": 0.017072650622523285,
+        "capacityInstalledYear1": 3.7301593614846213,
+        "capitalFinal": 483.1016783642149,
+        "capabilityFinal": 0.4327543865642411,
+        "pressureFinal": 0.14419352006092204,
+        "arrearsFinal": 0,
+        "corruptActs": 1178,
+        "maxMoneyError": 0.000001210719347000122,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.12538707044569702,
+        "growthYear1": -0.04901039796550932,
+        "indexFinal": 95.09896020344907,
+        "investmentOrdersShareYear1": 0.015490083946875384,
+        "capacityInstalledYear1": 4.065583872738124,
+        "capitalFinal": 483.420265091477,
+        "capabilityFinal": 0.43241961552036823,
+        "pressureFinal": 0.14211385331314666,
+        "arrearsFinal": 0,
+        "corruptActs": 1120,
+        "maxMoneyError": 0.0000012349337339401245,
+        "months": 12
+      }
+    ],
+    "initialHash": "afcfafb63a9f38870f8f749387bce3fbfd955c543b15dfa3b39f412b73fa055e"
+  },
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.19,
+      "backgroundCompliance": 0.85
+    },
+    "fiscalShare": 0.14785361841204386,
+    "loss": 0.0001463815879561292,
+    "runs": [
+      {
+        "taxShareYear1": 0.14738381033418227,
+        "growthYear1": -0.03490724544073298,
+        "indexFinal": 96.5092754559267,
+        "investmentOrdersShareYear1": 0.01656520747900148,
+        "capacityInstalledYear1": 3.7170949793366086,
+        "capitalFinal": 483.08873350413353,
+        "capabilityFinal": 0.43313800011952924,
+        "pressureFinal": 0.1451240063033606,
+        "arrearsFinal": 0,
+        "corruptActs": 1184,
+        "maxMoneyError": 0.0000012796372175216675,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.14832342648990549,
+        "growthYear1": -0.040105242592847534,
+        "indexFinal": 95.98947574071525,
+        "investmentOrdersShareYear1": 0.015476197297737608,
+        "capacityInstalledYear1": 4.2595009634447045,
+        "capitalFinal": 483.6141838112149,
+        "capabilityFinal": 0.432345809178093,
+        "pressureFinal": 0.14400320826804647,
+        "arrearsFinal": 0,
+        "corruptActs": 1125,
+        "maxMoneyError": 0.0000012926757335662842,
+        "months": 12
+      }
+    ],
+    "initialHash": "092e27add2d633cbe93c68fdc5a7e4bb2832587660b589d6ba934d5d6792f37b"
+  },
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.19,
+      "backgroundCompliance": 1
+    },
+    "fiscalShare": 0.16521596272889677,
+    "loss": 0.017215962728896778,
+    "runs": [
+      {
+        "taxShareYear1": 0.16474411618349807,
+        "growthYear1": -0.0349500571003728,
+        "indexFinal": 96.50499428996272,
+        "investmentOrdersShareYear1": 0.016565125704603046,
+        "capacityInstalledYear1": 3.7170998196982046,
+        "capitalFinal": 483.0887382782276,
+        "capabilityFinal": 0.43313800011952924,
+        "pressureFinal": 0.14589963744825904,
+        "arrearsFinal": 0,
+        "corruptActs": 1184,
+        "maxMoneyError": 0.0000012740492820739746,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.1656878092742955,
+        "growthYear1": -0.04013825906924806,
+        "indexFinal": 95.98617409307519,
+        "investmentOrdersShareYear1": 0.015476100353313982,
+        "capacityInstalledYear1": 4.259505403853079,
+        "capitalFinal": 483.6141881850095,
+        "capabilityFinal": 0.4323458091780904,
+        "pressureFinal": 0.14417367260191966,
+        "arrearsFinal": 0,
+        "corruptActs": 1125,
+        "maxMoneyError": 0.0000012889504432678223,
+        "months": 12
+      }
+    ],
+    "initialHash": "807466e3bacbfb60e355e2a82b5bc652a0453c66595b4ca5b507a8eb4a7c3979"
+  },
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.22,
+      "backgroundCompliance": 0.65
+    },
+    "fiscalShare": 0.14403942742962855,
+    "loss": 0.00396057257037144,
+    "runs": [
+      {
+        "taxShareYear1": 0.1433252387861515,
+        "growthYear1": -0.06443755335043766,
+        "indexFinal": 93.55624466495624,
+        "investmentOrdersShareYear1": 0.01495312577031779,
+        "capacityInstalledYear1": 3.4615523806830577,
+        "capitalFinal": 482.69222704663525,
+        "capabilityFinal": 0.4324536953488219,
+        "pressureFinal": 0.1583821816026494,
+        "arrearsFinal": 0,
+        "corruptActs": 1179,
+        "maxMoneyError": 0.0000012945383787155151,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.1447536160731056,
+        "growthYear1": -0.06835522445737618,
+        "indexFinal": 93.16447755426238,
+        "investmentOrdersShareYear1": 0.014754351173547604,
+        "capacityInstalledYear1": 3.8394670403753475,
+        "capitalFinal": 483.0532797387125,
+        "capabilityFinal": 0.43172652885976687,
+        "pressureFinal": 0.15789225690898598,
+        "arrearsFinal": 0,
+        "corruptActs": 1112,
+        "maxMoneyError": 0.000001253560185432434,
+        "months": 12
+      }
+    ],
+    "initialHash": "09bbbea3b7d0cf26863d65d56fafdee48d354ca297bd785d4e5ce29b664206f0"
+  },
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.22,
+      "backgroundCompliance": 0.85
+    },
+    "fiscalShare": 0.17118868206558924,
+    "loss": 0.023188682065589244,
+    "runs": [
+      {
+        "taxShareYear1": 0.17053278855311704,
+        "growthYear1": -0.06424661784687191,
+        "indexFinal": 93.57533821531281,
+        "investmentOrdersShareYear1": 0.01495231492028761,
+        "capacityInstalledYear1": 3.4615585946709926,
+        "capitalFinal": 482.692233211501,
+        "capabilityFinal": 0.4324536953488219,
+        "pressureFinal": 0.1593988972493946,
+        "arrearsFinal": 0,
+        "corruptActs": 1180,
+        "maxMoneyError": 0.0000012870877981185913,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.17184457557806143,
+        "growthYear1": -0.06846534333494392,
+        "indexFinal": 93.15346566650561,
+        "investmentOrdersShareYear1": 0.013211535833171415,
+        "capacityInstalledYear1": 3.711136893759145,
+        "capitalFinal": 482.9243739999425,
+        "capabilityFinal": 0.43157974762835727,
+        "pressureFinal": 0.15868077597479371,
+        "arrearsFinal": 0,
+        "corruptActs": 1113,
+        "maxMoneyError": 0.0000012852251529693604,
+        "months": 12
+      }
+    ],
+    "initialHash": "43ab6ceb9a16233b13f9fccda492803084bd6e9534f3e02f94edaba5fadee147"
+  },
+  {
+    "overrides": {
+      "taxAssessmentRate": 0.22,
+      "backgroundCompliance": 1
+    },
+    "fiscalShare": 0.19142477786726897,
+    "loss": 0.04342477786726898,
+    "runs": [
+      {
+        "taxShareYear1": 0.19058955828578628,
+        "growthYear1": -0.06491387446500485,
+        "indexFinal": 93.50861255349952,
+        "investmentOrdersShareYear1": 0.01439989118438786,
+        "capacityInstalledYear1": 3.337059150150729,
+        "capitalFinal": 482.56773376082305,
+        "capabilityFinal": 0.4323108724283527,
+        "pressureFinal": 0.1599643529113349,
+        "arrearsFinal": 0,
+        "corruptActs": 1183,
+        "maxMoneyError": 0.0000012833625078201294,
+        "months": 12
+      },
+      {
+        "taxShareYear1": 0.19225999744875166,
+        "growthYear1": -0.06846533424643142,
+        "indexFinal": 93.15346657535686,
+        "investmentOrdersShareYear1": 0.013211508528130758,
+        "capacityInstalledYear1": 3.711137991453429,
+        "capitalFinal": 482.92437508087966,
+        "capabilityFinal": 0.43157974762835727,
+        "pressureFinal": 0.15958132456352916,
+        "arrearsFinal": 0,
+        "corruptActs": 1113,
+        "maxMoneyError": 0.0000012796372175216675,
+        "months": 12
+      }
+    ],
+    "initialHash": "b7950716468f0e53cf763df35e36daafb8a4ccb39a9d98af3dd65955ff3ac151"
+  }
+]

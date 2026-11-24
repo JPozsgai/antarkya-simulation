@@ -1,0 +1,647 @@
+{
+  "groups": [
+    {
+      "label": "published",
+      "scenario": "baseline",
+      "n": 5,
+      "taxShareYear1": {
+        "mean": 0.17116833615159974,
+        "minimum": 0.17010635817564393,
+        "maximum": 0.17240961759381437,
+        "sd": 0.0010028861380991635
+      },
+      "growthYear1": {
+        "mean": -0.05964915347528936,
+        "minimum": -0.07061460719013768,
+        "maximum": -0.0433275892617655,
+        "sd": 0.010656374109654905
+      },
+      "indexFinal": {
+        "mean": 86.99893985517569,
+        "minimum": 85.9614579083623,
+        "maximum": 87.99485689667277,
+        "sd": 0.7679848657746108
+      },
+      "capitalFinal": {
+        "mean": 449.91745568772495,
+        "minimum": 448.7454985726677,
+        "maximum": 451.27710513570213,
+        "sd": 1.2303879845154293
+      },
+      "corruptionRateFinal": {
+        "mean": 16.23074283527251,
+        "minimum": 14.318138831095139,
+        "maximum": 19.495196835562254,
+        "sd": 2.0281540159158595
+      },
+      "investmentOrdersShareYear1": {
+        "mean": 0.01618293670737212,
+        "minimum": 0.014332241995919044,
+        "maximum": 0.017935417558380393,
+        "sd": 0.0017570200908322339
+      },
+      "pressureFinal": {
+        "mean": 0.19408173812539214,
+        "minimum": 0.1893718062750556,
+        "maximum": 0.19860292096914398,
+        "sd": 0.004184739397267709
+      }
+    },
+    {
+      "label": "published",
+      "scenario": "education",
+      "n": 5,
+      "taxShareYear1": {
+        "mean": 0.17043628696805999,
+        "minimum": 0.16969458082621774,
+        "maximum": 0.17140070996488688,
+        "sd": 0.0006961056003763558
+      },
+      "growthYear1": {
+        "mean": -0.053947682867548453,
+        "minimum": -0.06545120867778176,
+        "maximum": -0.04385054029591229,
+        "sd": 0.008512109651172172
+      },
+      "indexFinal": {
+        "mean": 87.92923493747072,
+        "minimum": 87.04063442443753,
+        "maximum": 88.40215001967417,
+        "sd": 0.5393253710692663
+      },
+      "capitalFinal": {
+        "mean": 450.1844636758931,
+        "minimum": 448.8812780699353,
+        "maximum": 451.58033254298726,
+        "sd": 1.2589181380813077
+      },
+      "corruptionRateFinal": {
+        "mean": 15.276708360641107,
+        "minimum": 13.838518801297958,
+        "maximum": 18.505065952972664,
+        "sd": 2.0093538740983705
+      },
+      "investmentOrdersShareYear1": {
+        "mean": 0.01645275872183109,
+        "minimum": 0.013518891225626183,
+        "maximum": 0.018147145606377455,
+        "sd": 0.002116721325558656
+      },
+      "pressureFinal": {
+        "mean": 0.19249665963584345,
+        "minimum": 0.1890905459061262,
+        "maximum": 0.19616913601304428,
+        "sd": 0.0031175849191701533
+      }
+    },
+    {
+      "label": "published",
+      "scenario": "aca",
+      "n": 5,
+      "taxShareYear1": {
+        "mean": 0.17035339071208563,
+        "minimum": 0.16930715814394967,
+        "maximum": 0.1712783739480782,
+        "sd": 0.000744100495023999
+      },
+      "growthYear1": {
+        "mean": -0.056961654032301176,
+        "minimum": -0.07167404038296321,
+        "maximum": -0.039769132702986654,
+        "sd": 0.012186730794216746
+      },
+      "indexFinal": {
+        "mean": 87.93607751938073,
+        "minimum": 86.81784981739985,
+        "maximum": 88.51310891728146,
+        "sd": 0.6762623016399832
+      },
+      "capitalFinal": {
+        "mean": 449.81623943048885,
+        "minimum": 448.42227642382056,
+        "maximum": 451.24673810623403,
+        "sd": 1.0647382557816174
+      },
+      "corruptionRateFinal": {
+        "mean": 16.18431377594937,
+        "minimum": 14.307314307314307,
+        "maximum": 19.463847460826884,
+        "sd": 2.0297181848479084
+      },
+      "investmentOrdersShareYear1": {
+        "mean": 0.015961522480952475,
+        "minimum": 0.01308835749637483,
+        "maximum": 0.018385308972005156,
+        "sd": 0.0023856516601596773
+      },
+      "pressureFinal": {
+        "mean": 0.1925092415435925,
+        "minimum": 0.1880437957142295,
+        "maximum": 0.19823627519077064,
+        "sd": 0.004223218770644842
+      }
+    },
+    {
+      "label": "published",
+      "scenario": "combined",
+      "n": 5,
+      "taxShareYear1": {
+        "mean": 0.1697152558261834,
+        "minimum": 0.16913101823109555,
+        "maximum": 0.17066489128983434,
+        "sd": 0.0006307200818527643
+      },
+      "growthYear1": {
+        "mean": -0.052514626766236194,
+        "minimum": -0.06641008178829022,
+        "maximum": -0.040824459522940226,
+        "sd": 0.009643277612035083
+      },
+      "indexFinal": {
+        "mean": 88.37809227119499,
+        "minimum": 87.50480702857739,
+        "maximum": 88.64170202882966,
+        "sd": 0.48894712508612526
+      },
+      "capitalFinal": {
+        "mean": 449.95713997338953,
+        "minimum": 448.8342398074237,
+        "maximum": 451.80943787558243,
+        "sd": 1.1201477359797156
+      },
+      "corruptionRateFinal": {
+        "mean": 15.299438608347861,
+        "minimum": 13.86733902249806,
+        "maximum": 18.66284622731614,
+        "sd": 2.08547484458303
+      },
+      "investmentOrdersShareYear1": {
+        "mean": 0.016355696649765723,
+        "minimum": 0.013271977593286403,
+        "maximum": 0.018278851120194388,
+        "sd": 0.002184493893471589
+      },
+      "pressureFinal": {
+        "mean": 0.1926732398531669,
+        "minimum": 0.18885887291664252,
+        "maximum": 0.19605513698873134,
+        "sd": 0.0030831822504689636
+      }
+    },
+    {
+      "label": "candidate",
+      "scenario": "baseline",
+      "n": 5,
+      "taxShareYear1": {
+        "mean": 0.14836743862292076,
+        "minimum": 0.1473641215485308,
+        "maximum": 0.14933129919269114,
+        "sd": 0.0007547577476925321
+      },
+      "growthYear1": {
+        "mean": -0.033059069019480594,
+        "minimum": -0.04287795924871174,
+        "maximum": -0.01731486376379654,
+        "sd": 0.010249029910626107
+      },
+      "indexFinal": {
+        "mean": 87.25834351084657,
+        "minimum": 86.2832248578735,
+        "maximum": 88.2308995026497,
+        "sd": 0.8819010723488476
+      },
+      "capitalFinal": {
+        "mean": 450.8945108204111,
+        "minimum": 449.8454084782855,
+        "maximum": 451.4916319965573,
+        "sd": 0.6282308389707872
+      },
+      "corruptionRateFinal": {
+        "mean": 16.225458188161795,
+        "minimum": 14.431202600216684,
+        "maximum": 19.345300950369587,
+        "sd": 1.91329770284355
+      },
+      "investmentOrdersShareYear1": {
+        "mean": 0.017680176180031957,
+        "minimum": 0.015595900898212353,
+        "maximum": 0.020328462058655364,
+        "sd": 0.0022457552447299944
+      },
+      "pressureFinal": {
+        "mean": 0.17211392100983716,
+        "minimum": 0.16764144126068808,
+        "maximum": 0.1754689898619491,
+        "sd": 0.0031433301123806345
+      }
+    },
+    {
+      "label": "candidate",
+      "scenario": "education",
+      "n": 5,
+      "taxShareYear1": {
+        "mean": 0.1477814315196274,
+        "minimum": 0.14675756227318112,
+        "maximum": 0.14905421085924933,
+        "sd": 0.0008701770883493362
+      },
+      "growthYear1": {
+        "mean": -0.030698627443232616,
+        "minimum": -0.04153596243652402,
+        "maximum": -0.01185715197169146,
+        "sd": 0.011502535451879464
+      },
+      "indexFinal": {
+        "mean": 87.08171800151244,
+        "minimum": 85.81599315727233,
+        "maximum": 88.05973020183512,
+        "sd": 0.914208147446459
+      },
+      "capitalFinal": {
+        "mean": 451.33338618594934,
+        "minimum": 449.6605785890321,
+        "maximum": 452.7908608406536,
+        "sd": 1.345793601962028
+      },
+      "corruptionRateFinal": {
+        "mean": 15.4922188995211,
+        "minimum": 14.04234606960331,
+        "maximum": 18.928404305100607,
+        "sd": 2.0479706122264965
+      },
+      "investmentOrdersShareYear1": {
+        "mean": 0.017752344422663956,
+        "minimum": 0.014829198351379793,
+        "maximum": 0.02019635485388783,
+        "sd": 0.002405859276392091
+      },
+      "pressureFinal": {
+        "mean": 0.17232213478188108,
+        "minimum": 0.16772743736170212,
+        "maximum": 0.17570226688439183,
+        "sd": 0.0030886731480909485
+      }
+    },
+    {
+      "label": "candidate",
+      "scenario": "aca",
+      "n": 5,
+      "taxShareYear1": {
+        "mean": 0.14769920329689554,
+        "minimum": 0.1468116209807299,
+        "maximum": 0.148910172523959,
+        "sd": 0.0008291823995773881
+      },
+      "growthYear1": {
+        "mean": -0.034833532945924596,
+        "minimum": -0.044202069057515225,
+        "maximum": -0.012688536173356524,
+        "sd": 0.012810123378532573
+      },
+      "indexFinal": {
+        "mean": 87.18869421262973,
+        "minimum": 86.48667650189567,
+        "maximum": 87.8739250073118,
+        "sd": 0.6178158324692185
+      },
+      "capitalFinal": {
+        "mean": 450.77972199561975,
+        "minimum": 449.3681172265788,
+        "maximum": 452.84520651849664,
+        "sd": 1.3039071730579481
+      },
+      "corruptionRateFinal": {
+        "mean": 16.389006749680696,
+        "minimum": 14.551513468480978,
+        "maximum": 19.400352733686066,
+        "sd": 1.8305478067563206
+      },
+      "investmentOrdersShareYear1": {
+        "mean": 0.017015842129728297,
+        "minimum": 0.014361498092263522,
+        "maximum": 0.020197981594734092,
+        "sd": 0.002930356380102568
+      },
+      "pressureFinal": {
+        "mean": 0.17195845875904134,
+        "minimum": 0.16769696526114233,
+        "maximum": 0.17425687327882583,
+        "sd": 0.0025615906005226857
+      }
+    },
+    {
+      "label": "candidate",
+      "scenario": "combined",
+      "n": 5,
+      "taxShareYear1": {
+        "mean": 0.14710519490308246,
+        "minimum": 0.14623963354531874,
+        "maximum": 0.14851769047006083,
+        "sd": 0.0008614757771284172
+      },
+      "growthYear1": {
+        "mean": -0.029082886674993057,
+        "minimum": -0.03917175684875995,
+        "maximum": -0.00948346836009828,
+        "sd": 0.012041068285880356
+      },
+      "indexFinal": {
+        "mean": 87.11456147166756,
+        "minimum": 85.9190321751029,
+        "maximum": 88.0439063892371,
+        "sd": 0.8847596773642061
+      },
+      "capitalFinal": {
+        "mean": 451.26446722906195,
+        "minimum": 449.4261565254387,
+        "maximum": 453.063020390636,
+        "sd": 1.5563259124675795
+      },
+      "corruptionRateFinal": {
+        "mean": 15.76339787474409,
+        "minimum": 14.058355437665783,
+        "maximum": 19.163860830527497,
+        "sd": 2.024417339887717
+      },
+      "investmentOrdersShareYear1": {
+        "mean": 0.017564348235252204,
+        "minimum": 0.015026617596261635,
+        "maximum": 0.020028833935961398,
+        "sd": 0.002270714148854924
+      },
+      "pressureFinal": {
+        "mean": 0.17186203768706484,
+        "minimum": 0.16751838228455276,
+        "maximum": 0.17571834750698456,
+        "sd": 0.0029601270050903846
+      }
+    }
+  ],
+  "paired": [
+    {
+      "label": "published",
+      "scenario": "education",
+      "rows": [
+        {
+          "seed": "PER-holdout-01",
+          "indexDelta": 1.176363511213907,
+          "encounterRateDelta": -0.47962002979718044
+        },
+        {
+          "seed": "PER-holdout-02",
+          "indexDelta": 0.407293123001395,
+          "encounterRateDelta": -0.7836201982239857
+        },
+        {
+          "seed": "PER-holdout-03",
+          "indexDelta": 1.9781081193146832,
+          "encounterRateDelta": -1.3088616034831677
+        },
+        {
+          "seed": "PER-holdout-04",
+          "indexDelta": 0.4562012221165048,
+          "encounterRateDelta": -0.9901308825895896
+        },
+        {
+          "seed": "PER-holdout-05",
+          "indexDelta": 0.6335094358286568,
+          "encounterRateDelta": -1.2079396590630864
+        }
+      ],
+      "indexDelta": {
+        "mean": 0.9302950822950293,
+        "minimum": 0.407293123001395,
+        "maximum": 1.9781081193146832,
+        "sd": 0.6604618819226763
+      },
+      "encounterRateDelta": {
+        "mean": -0.954034474631402,
+        "minimum": -1.3088616034831677,
+        "maximum": -0.47962002979718044,
+        "sd": 0.33383498011322343
+      }
+    },
+    {
+      "label": "published",
+      "scenario": "aca",
+      "rows": [
+        {
+          "seed": "PER-holdout-01",
+          "indexDelta": 0.664582834339285,
+          "encounterRateDelta": -0.010824523780831541
+        },
+        {
+          "seed": "PER-holdout-02",
+          "indexDelta": 0.24388589165538122,
+          "encounterRateDelta": -0.050462843060557816
+        },
+        {
+          "seed": "PER-holdout-03",
+          "indexDelta": 0.8563919090375407,
+          "encounterRateDelta": -0.10828147752410544
+        },
+        {
+          "seed": "PER-holdout-04",
+          "indexDelta": 1.928675714960434,
+          "encounterRateDelta": -0.03134937473537036
+        },
+        {
+          "seed": "PER-holdout-05",
+          "indexDelta": 0.9921519710325697,
+          "encounterRateDelta": -0.03122707751483844
+        }
+      ],
+      "indexDelta": {
+        "mean": 0.9371376642050422,
+        "minimum": 0.24388589165538122,
+        "maximum": 1.928675714960434,
+        "sd": 0.6220085032488472
+      },
+      "encounterRateDelta": {
+        "mean": -0.04642905932314072,
+        "minimum": -0.10828147752410544,
+        "maximum": -0.010824523780831541,
+        "sd": 0.03731009628069001
+      }
+    },
+    {
+      "label": "published",
+      "scenario": "combined",
+      "rows": [
+        {
+          "seed": "PER-holdout-01",
+          "indexDelta": 1.4307429985191078,
+          "encounterRateDelta": -0.42553420659676355
+        },
+        {
+          "seed": "PER-holdout-02",
+          "indexDelta": 0.6468451321568836,
+          "encounterRateDelta": -0.7543875033838034
+        },
+        {
+          "seed": "PER-holdout-03",
+          "indexDelta": 2.618590885928427,
+          "encounterRateDelta": -1.3975193978299867
+        },
+        {
+          "seed": "PER-holdout-04",
+          "indexDelta": 0.9203738262563661,
+          "encounterRateDelta": -0.832350608246113
+        },
+        {
+          "seed": "PER-holdout-05",
+          "indexDelta": 1.279209237235733,
+          "encounterRateDelta": -1.246729418566579
+        }
+      ],
+      "indexDelta": {
+        "mean": 1.3791524160193034,
+        "minimum": 0.6468451321568836,
+        "maximum": 2.618590885928427,
+        "sd": 0.7575634792381307
+      },
+      "encounterRateDelta": {
+        "mean": -0.9313042269246491,
+        "minimum": -1.3975193978299867,
+        "maximum": -0.42553420659676355,
+        "sd": 0.3917091702670223
+      }
+    },
+    {
+      "label": "candidate",
+      "scenario": "education",
+      "rows": [
+        {
+          "seed": "PER-holdout-01",
+          "indexDelta": 0.002308649107249039,
+          "encounterRateDelta": -0.3888565306133742
+        },
+        {
+          "seed": "PER-holdout-02",
+          "indexDelta": 0.051352419582769926,
+          "encounterRateDelta": -0.7573599839442551
+        },
+        {
+          "seed": "PER-holdout-03",
+          "indexDelta": -0.46723170060117525,
+          "encounterRateDelta": -1.2907693780412952
+        },
+        {
+          "seed": "PER-holdout-04",
+          "indexDelta": -0.17116930081458293,
+          "encounterRateDelta": -0.41689664526898085
+        },
+        {
+          "seed": "PER-holdout-05",
+          "indexDelta": -0.2983876139449677,
+          "encounterRateDelta": -0.8123139053355697
+        }
+      ],
+      "indexDelta": {
+        "mean": -0.1766255093341414,
+        "minimum": -0.46723170060117525,
+        "maximum": 0.051352419582769926,
+        "sd": 0.21406722534274802
+      },
+      "encounterRateDelta": {
+        "mean": -0.733239288640695,
+        "minimum": -1.2907693780412952,
+        "maximum": -0.3888565306133742,
+        "sd": 0.3661784249434685
+      }
+    },
+    {
+      "label": "candidate",
+      "scenario": "aca",
+      "rows": [
+        {
+          "seed": "PER-holdout-01",
+          "indexDelta": 0.007693810456601113,
+          "encounterRateDelta": 0.12031086826429416
+        },
+        {
+          "seed": "PER-holdout-02",
+          "indexDelta": -0.5988555123797141,
+          "encounterRateDelta": -0.030327232955045247
+        },
+        {
+          "seed": "PER-holdout-03",
+          "indexDelta": 1.1267327155260745,
+          "encounterRateDelta": 0.14740874520781055
+        },
+        {
+          "seed": "PER-holdout-04",
+          "indexDelta": -0.6471746111834875,
+          "encounterRateDelta": 0.055051783316478975
+        },
+        {
+          "seed": "PER-holdout-05",
+          "indexDelta": -0.2366428935037419,
+          "encounterRateDelta": 0.5252986437609728
+        }
+      ],
+      "indexDelta": {
+        "mean": -0.06964929821685359,
+        "minimum": -0.6471746111834875,
+        "maximum": 1.1267327155260745,
+        "sd": 0.7209010758001916
+      },
+      "encounterRateDelta": {
+        "mean": 0.16354856151890224,
+        "minimum": -0.030327232955045247,
+        "maximum": 0.5252986437609728,
+        "sd": 0.21351375152076876
+      }
+    },
+    {
+      "label": "candidate",
+      "scenario": "combined",
+      "rows": [
+        {
+          "seed": "PER-holdout-01",
+          "indexDelta": 0.10487940786303795,
+          "encounterRateDelta": -0.3728471625509009
+        },
+        {
+          "seed": "PER-holdout-02",
+          "indexDelta": -0.07864866055226116,
+          "encounterRateDelta": -0.6043545194633815
+        },
+        {
+          "seed": "PER-holdout-03",
+          "indexDelta": -0.36419268277060723,
+          "encounterRateDelta": -0.7781885876456673
+        },
+        {
+          "seed": "PER-holdout-04",
+          "indexDelta": -0.31428674885685837,
+          "encounterRateDelta": -0.1814401198420903
+        },
+        {
+          "seed": "PER-holdout-05",
+          "indexDelta": -0.06666151157844524,
+          "encounterRateDelta": -0.3734711775864863
+        }
+      ],
+      "indexDelta": {
+        "mean": -0.14378203917902682,
+        "minimum": -0.36419268277060723,
+        "maximum": 0.10487940786303795,
+        "sd": 0.19343936767405928
+      },
+      "encounterRateDelta": {
+        "mean": -0.46206031341770526,
+        "minimum": -0.7781885876456673,
+        "maximum": -0.1814401198420903,
+        "sd": 0.23169993588574853
+      }
+    }
+  ],
+  "selected": {
+    "taxAssessmentRate": 0.19,
+    "backgroundCompliance": 0.85
+  },
+  "acceptance": "REJECTED FOR PRODUCTION: conditional fiscal match only; baseline dynamics and measurement coverage remain inadequate",
+  "trajectoryCount": 74,
+  "postAdoptionMonths": 1752
+}

@@ -1,0 +1,8 @@
+# Research scripts create raw JSON locally; deterministic compressed copies are committed.
+/unmodified-diagnostic.json
+/pilot-results.json
+/sensitivity-results.json
+/candidate-long-run.json
+/initial-robustness.json
+/training-trajectories.json
+/__pycache__/

@@ -1,0 +1,21 @@
+name: Peru pilot research checks
+on:
+  push:
+    branches: [codex/peru-calibration-pilot-v3]
+permissions:
+  contents: read
+jobs:
+  reproducibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify unchanged production audit
+        run: npm run docs:check
+      - name: Check isolated engine and parameter bounds
+        run: node --test research/peru-pilot/engine.test.cjs
+      - name: Verify research data hashes and study pairing
+        run: python research/peru-pilot/verify.py

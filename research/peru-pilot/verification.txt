@@ -1,0 +1,20 @@
+✔ isolated default engine reproduces published initial society and complete trajectory (7212.28193ms)
+✔ experimental parameters are bounded and isolated between engines (51.602165ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7404.56042
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> antarkya-audit-tooling@1.0.0 docs:check
+> node scripts/check-audit.mjs
+
+Audit checks passed: 83 mechanisms, 62 rules + 6 amendments, 12 version-pinned runtime ASTs, 117 reproducible generated files, 41061 local links.
+Test-harness maintenance: reporting.test.js locates its extracted UI block by whitespace-tolerant syntax patterns; visualization.test.js accepts formatting whitespace between duration attributes; test meaning is unchanged.
+
+Research source/data hashes, 40 held-out policy trajectories, disjoint seeds, matched initial states and 1,000-agent counts verified.

@@ -1,0 +1,149 @@
+{
+  "protocol": {
+    "schema": "antarkya.peru-pilot.protocol.v1",
+    "sourceCommit": "f90540ffe1d1bee659d43d1c46ab72874447b3fe",
+    "created": "2026-11-24",
+    "scope": "Conditional fiscal calibration plus structural screening and paired exploratory policy pilot; not full national validation",
+    "preliminaryDiagnosticAlreadyObserved": true,
+    "population": 1000,
+    "country": "PER",
+    "trainingSeeds": [
+      "PER-fit-01",
+      "PER-fit-02"
+    ],
+    "holdoutSeeds": [
+      "PER-holdout-01",
+      "PER-holdout-02",
+      "PER-holdout-03",
+      "PER-holdout-04",
+      "PER-holdout-05"
+    ],
+    "initialSeed": "Antarkya-v2-society",
+    "trainingMonths": 12,
+    "pilotMonths": 24,
+    "longRunMonths": 120,
+    "fiscalTarget": 0.148,
+    "selection": "Minimum absolute difference between 12-month sum of realized tax and sum of domestic value added and 0.148, averaged over training seeds. Growth, investment and policy results are not optimized.",
+    "acceptance": "Fitting one lumped fiscal ratio alone does not establish empirical validity. Do not promote a candidate to public defaults if coverage/measurement or baseline-dynamics checks fail.",
+    "grid": {
+      "taxAssessmentRate": [
+        0.16,
+        0.19,
+        0.22
+      ],
+      "backgroundCompliance": [
+        0.65,
+        0.85,
+        1
+      ]
+    },
+    "policies": {
+      "baseline": [],
+      "education": [
+        {
+          "id": "education",
+          "mobilization": 0.7
+        }
+      ],
+      "aca": [
+        {
+          "id": "aca",
+          "mobilization": 0.7
+        }
+      ],
+      "combined": [
+        {
+          "id": "education",
+          "mobilization": 0.7
+        },
+        {
+          "id": "aca",
+          "mobilization": 0.7
+        }
+      ]
+    },
+    "sensitivity": {
+      "annualDepreciation": [
+        0.03,
+        0.12
+      ],
+      "capitalOutputYears": [
+        2,
+        5
+      ],
+      "maintenanceShare": [
+        0.01,
+        0.05
+      ],
+      "damageRate": [
+        0,
+        0.02
+      ],
+      "exportDemand": [
+        30,
+        120
+      ]
+    },
+    "uncertainty": "Five event-seed holdouts conditional on one initial society. Report paired seed ranges and sample SD; no population confidence intervals, identification claims or policy rankings.",
+    "units": "Fiscal shares use sums of same-period fixed-price normalized amounts. Real GDP growth is a loose plausibility screen. National investment and firm survey estimates lack exact model scope and are not fitted.",
+    "android": "No Android certification; record Node runtime and memory only."
+  },
+  "selected": {
+    "taxAssessmentRate": 0.19,
+    "backgroundCompliance": 0.85
+  },
+  "sourceHashes": {
+    "model.js": "a6dd56f005f8a1cd5f894ec5fdc9e157b0029dcabd1117171aad42c9f404782f",
+    "profiles.js": "6c056abb03086e688df88c9dc711dd746108263b818475b89f78895804c3b411",
+    "config.js": "0659d3d3d62a5dfe87681b47d4f6e7e07a77c50890f0f845e7c2ea3e1b2b2fc3",
+    "baseline.js": "78064fd4cb790ab7df0fbba0041e75ba2a6eba9f11af0c5897d4f848ac6b7c6b",
+    "adaptation.js": "3070b93b09a87112f1659314c2a4308289b4f4f16c897ec4a764e1acb6b5f181",
+    "reporting.js": "27dfc60f384f8980e8c177c54dc553d028449be3fa44bd1117cb54c7fd556c67",
+    "hybrid.js": "0ab2d19c1c0c16ad65058398049facc5b08d6e3e8ecfce33bc3146ae34db0c51"
+  },
+  "transformedHybridSHA256": "52e2a32c0f96dce736b55bacf85a81c7668e544a395b0f486ef30ad1dc9659a5",
+  "injectionMethod": "AST-located Object.freeze parameter initializer only; isolated CommonJS modules; no production file changes",
+  "modelVersion": "3.0.0",
+  "node": "v24.22.3",
+  "platform": "linux",
+  "wallSeconds": 273.840452606,
+  "peakRSSSampledBytes": 1026990080,
+  "runCount": 69,
+  "notes": "RSS sampled after each run; not peak-heap profiling or an Android result. One initial society per parameter set; matched baseline/reform states within each set.",
+  "completeStudyTrajectories": 74,
+  "postAdoptionMonths": 1752,
+  "acceptance": "REJECTED FOR PRODUCTION: conditional fiscal match only; baseline dynamics and measurement coverage remain inadequate",
+  "initialRobustness": {
+    "seeds": [
+      "PER-society-02",
+      "PER-society-03"
+    ],
+    "runs": 4
+  },
+  "researchSHA256": {
+    "initial-robustness.cjs": "7452a0292be7d08361332a6f884cc2403f9768ce73154261438181f386c6fded",
+    "pilot.cjs": "b9c3d54b60cc4762b27c0d86ccdebb78cfbb53551549612b01c453da05b0a052",
+    "verify.py": "c21ddae2009be10c3f9ad13eff62099e94e0d6e12f568b8bded05cb9fbb06365",
+    "engine.test.cjs": "68187c072c1388daf98599faaf421a4e58685e13fd3ed73b50248d50ae4fac56",
+    "archive-training.cjs": "b7dbb70b52602b244f1b8b9318b2e3686c5fa79e6c2b04703650a14e4e8b4e08",
+    "observe.cjs": "88f3a445873a4595fecc816792210903a3bbddb174e38ceddbb6b67407ae1139",
+    "engine.cjs": "a4a8c52ec73ca3adbb5ecfc3d8f789f60cb3e913ea04a72e88f182f50cf58305",
+    "analyze.py": "fe3b52fbb37737129d4e05d351a7e85d6576ad6fd88fff629a0e31687df10838"
+  },
+  "dataSHA256": {
+    "unmodified-diagnostic.json.gz": "1185952fa7b64b8f5885cd011347ba997f25766ff57b75ab7142398a5a6af91f",
+    "pilot-results.json.gz": "c2a90280ee056f4fdf4222e795f964670f026409bb2abeb45640196a56c7174d",
+    "sensitivity-results.json.gz": "754e805c8be62631379a377efd1b5eb954358e483bc422a6a6735c1bd0d30c3a",
+    "candidate-long-run.json.gz": "e0b631d80c6e489d815372e9eb321f013d223b4671716868c3f8fe001fe7f869",
+    "initial-robustness.json.gz": "5242ec28893bbb68b3f414ff9b3cb811df99f44798919e28e8d5eb8e9c21bf38",
+    "training-trajectories.json.gz": "27bf68709d5c6770a328595a6c79f081cf71ff9c88af41229d325365ee68b125",
+    "monthly.csv": "9ca844fed6342b33ab8faa99f510fc3e54dd3be5a0205c1833698b2f0963dce9",
+    "results-summary.json": "9a45e46bcde27fb7d67673026f91428650f0ecfaa73bf09cb5614c7cc1ddfc44",
+    "calibration-register.json": "56e3cae0ab737a0dc296c205e8a42da49d7e765b264a274f11c7561db3bf5086",
+    "evidence.json": "31123267047728b96f0bc6aab2c8dadb506284952d3d31d87cda1da3aef99a49",
+    "protocol.json": "2855a78481a945ba3185bd4f74822af00321ece2abf6ed74a62d33cdc5bf6586"
+  },
+  "archivalTrainingReplays": 18,
+  "analysisPython": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "matplotlibVersion": "3.10.8"
+}

@@ -1,0 +1,78 @@
+{
+  "BCRP-FISCAL-2025": {
+    "url": "https://www.bcrp.gob.pe/docs/Publicaciones/Notas-Estudios/2026/nota-de-estudios-13-2026.pdf",
+    "title": "Informe Macroecon\u00f3mico IV trimestre 2025, No.13, Table 11",
+    "published": "2026-02-20",
+    "scope": "General government, accumulated last four quarters, percent of nominal GDP",
+    "extracted": {
+      "tax": 14.8,
+      "nontax": 4.2,
+      "nonfinancial_spending": 20.0
+    },
+    "vintage": "Fixed publication, preliminary; different from MEF rolling table 14.9 / 4.2 / 20.1.",
+    "retrieved": "2026-11-24"
+  },
+  "BCRP-MEF-ALTERNATIVE": {
+    "url": "https://www.mef.gob.pe/es/informacion-del-mef-art-26/balance-del-sector-publico",
+    "title": "Balance del Sector P\u00fablico",
+    "scope": "General government, preliminary rolling table",
+    "extracted": {
+      "tax": 14.9,
+      "nontax": 4.2,
+      "nonfinancial_spending": 20.1
+    },
+    "use": "Sensitivity/vintage comparison only; not blended with fixed-publication target.",
+    "retrieved": "2026-11-24"
+  },
+  "BCRP-GROWTH": {
+    "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/anuales/resultados/PM04863AA/html",
+    "title": "Real total GDP growth",
+    "year": 2025,
+    "value": 3.4,
+    "unit": "percent/year",
+    "use": "Unfitted plausibility screen, not a guaranteed future path.",
+    "retrieved": "2026-11-24"
+  },
+  "BCRP-REAL-PER-CAPITA": {
+    "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/anuales/resultados/PM04862AA/html",
+    "title": "Real GDP per capita",
+    "year": 2025,
+    "value": 17633.3,
+    "unit": "2007 soles/person/year",
+    "use": "Context only. No national expansion weights or RU conversion inferred.",
+    "retrieved": "2026-11-24"
+  },
+  "BCRP-INVESTMENT": {
+    "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/anuales/resultados/PM04962AA/html",
+    "title": "Private gross fixed investment, nominal GDP expenditure structure",
+    "year": 2025,
+    "value": 16.6,
+    "unit": "percent of nominal GDP",
+    "use": "Coverage diagnostic, not an exact fixed-price or all-model-capital matching target.",
+    "retrieved": "2026-11-24"
+  },
+  "WBES-2023": {
+    "url": "https://www.enterprisesurveys.org/content/dam/enterprisesurveys/documents/country/Peru-2023.pdf",
+    "title": "Peru 2023 Country Profile, pages 12\u201313",
+    "year": 2023,
+    "extracted": {
+      "management_regulation_time": 12.3,
+      "operating_license_days": 118.3,
+      "bribery_incidence": 7.6,
+      "tax_contact_prevalence": 22.1
+    },
+    "scope": "Formal eligible firms, at least five workers, weighted survey indicators. Bribery incidence covers six transaction types, not a monthly encounter probability.",
+    "retrieved": "2026-11-24"
+  },
+  "WBES-CAPACITY-METADATA": {
+    "url": "https://microdata.worldbank.org/catalog/6463/variable/V185",
+    "title": "f1: Last FY capacity utilization of establishment",
+    "year": 2023,
+    "valid_including_unknown": 451,
+    "unknown_code": -9,
+    "unknown_count": 7,
+    "system_missing": 536,
+    "use": "Weighted population mean remains unextracted; catalogue frequencies are explicitly not population statistics.",
+    "retrieved": "2026-11-24"
+  }
+}
