@@ -1,0 +1,746 @@
+{
+  "edition": "0.2",
+  "agreements": [
+    {
+      "id": "D01",
+      "requirement": "Organizational capability persists separately from current delivery; funding interruptions and capability erosion have different time scales.",
+      "mechanism": "AKX-CAP-01"
+    },
+    {
+      "id": "D02",
+      "requirement": "Maintenance competes for real money/time and is chosen through the shared decision framework.",
+      "mechanism": "AKX-MNT-01"
+    },
+    {
+      "id": "D03",
+      "requirement": "Unfinished maintenance persists; maintenance, repair and rebuilding have different completion and recovery processes.",
+      "mechanism": "AKX-MNT-02"
+    },
+    {
+      "id": "D04",
+      "requirement": "Policy-value and implementation-performance beliefs are distinct, learned subjectively.",
+      "mechanism": "AKX-BEL-01"
+    },
+    {
+      "id": "D05",
+      "requirement": "Office carries decision rights; personal relationships and credibility remain with the person after office changes.",
+      "mechanism": "AKX-AGY-01"
+    },
+    {
+      "id": "D06",
+      "requirement": "Supporter dependence influences consequences, norms and perceived control within TPB\u2013utility.",
+      "mechanism": "AKX-AGY-02"
+    },
+    {
+      "id": "D07",
+      "requirement": "Ordinary members, organizational leaders and national authorities are authority tiers where applicable, within four existing classes.",
+      "mechanism": "AKX-GOV-01"
+    },
+    {
+      "id": "D08",
+      "requirement": "Insiders can span organizational categories and change with relationships; no automatic immunity.",
+      "mechanism": "AKX-GOV-01"
+    },
+    {
+      "id": "D09",
+      "requirement": "Appointment and removal require the relevant authority, procedures and resources; appointees remain autonomous decision makers.",
+      "mechanism": "AKX-GOV-02"
+    },
+    {
+      "id": "D10",
+      "requirement": "Agents can build, sustain, alter or oppose coalitions through costly attempts and independently evaluated commitments.",
+      "mechanism": "AKX-COL-01"
+    },
+    {
+      "id": "D11",
+      "requirement": "Attention and active engagement can weaken without equivalent loss of policy support.",
+      "mechanism": "AKX-ATT-01"
+    },
+    {
+      "id": "D12",
+      "requirement": "Actors can attempt safeguard changes in every organizational category, through an available channel.",
+      "mechanism": "AKX-GOV-03"
+    },
+    {
+      "id": "D13",
+      "requirement": "A compact organization-specific governance profile defines initiators, approvers and protections.",
+      "mechanism": "AKX-GOV-03"
+    },
+    {
+      "id": "D14",
+      "requirement": "Political responses can be combined across demands or reform components; public claims differ from completed work.",
+      "mechanism": "AKX-STR-01"
+    },
+    {
+      "id": "D15",
+      "requirement": "Assess realized accountability coverage only, by relevant rank/group and eligibility.",
+      "mechanism": "AKX-COV-01"
+    },
+    {
+      "id": "D16",
+      "requirement": "Personal influence evolves by audience through accessed and interpreted information, not hidden analyst truth.",
+      "mechanism": "AKX-INF-01"
+    },
+    {
+      "id": "D17",
+      "requirement": "Month is a reporting/coupling period containing repeated, ordered interactions and appropriate process-specific updates.",
+      "mechanism": "AKX-TIM-01"
+    },
+    {
+      "id": "D18",
+      "requirement": "Demand generates attempted encounters; staff/resource constraints limit completion, with explicit retry/delay/abandonment rules.",
+      "mechanism": "AKX-ENC-01"
+    },
+    {
+      "id": "D19",
+      "requirement": "Shared stocks have balances; aggregates of agent beliefs are derived summaries, not duplicate autonomous stocks.",
+      "mechanism": "AKX-STA-01"
+    },
+    {
+      "id": "D20",
+      "requirement": "Delays follow completed work, interruptions and procedural minima rather than a guaranteed elapsed-time timer.",
+      "mechanism": "AKX-TIM-01"
+    },
+    {
+      "id": "D21",
+      "requirement": "Internal conditions can affect the economy, which feeds back into agents and organizations; GDP is not permanently fixed.",
+      "mechanism": "AKX-ECO-05"
+    },
+    {
+      "id": "D22",
+      "requirement": "Business investment uses the common choice framework, including political/organizational connections as perceived consequences, norms and feasibility.",
+      "mechanism": "AKX-ECO-01"
+    },
+    {
+      "id": "D23",
+      "requirement": "Completed business investment builds organization-held productive capacity, distinct from organizational capability.",
+      "mechanism": "AKX-ECO-02"
+    },
+    {
+      "id": "D24",
+      "requirement": "Actual production depends on demand and operating constraints; unused capacity is possible.",
+      "mechanism": "AKX-ECO-03"
+    },
+    {
+      "id": "D25",
+      "requirement": "Public revenue responds partly to realized economic activity and compliance; allocation remains a political/administrative choice.",
+      "mechanism": "AKX-ECO-04"
+    },
+    {
+      "id": "D26",
+      "requirement": "Use a compact Peru pilot, source-backed anchors, declared synthetic initialization and sensitivity analysis before expanding to ten countries.",
+      "mechanism": "AKX-CAL-01"
+    },
+    {
+      "id": "D27",
+      "requirement": "Result explanations connect consequential leadership/system events to the relevant output, outcome and impact, without claiming unsupported causality.",
+      "mechanism": "AKX-MEA-01"
+    },
+    {
+      "id": "D28",
+      "requirement": "Business-related income uses explicit compensation and eligible distributions from organizational funds, with retention for operations and investment; respect rights, obligations and actual resources.",
+      "mechanism": "AKX-ECO-01"
+    },
+    {
+      "id": "D29",
+      "requirement": "Use explicit domestic actors, an aggregate background domestic component for omitted activities, and a foreign component, with traceable transactions and stated adaptive/boundary rules; do not change the 1,000-agent classes.",
+      "mechanism": "AKX-ECO-05"
+    },
+    {
+      "id": "D30",
+      "requirement": "Use fixed reference prices for the pilot; leave endogenous inflation and exchange-rate dynamics outside it. No unexplained financing or overlap between explicit and background activities.",
+      "mechanism": "AKX-ECO-05"
+    },
+    {
+      "id": "D31",
+      "requirement": "Calculate an economic-activity index starting at 100 from realized domestic value added across explicit and background components. Starting country calibration is identical across paired runs; a GDP-per-capita equivalent requires validated scaling.",
+      "mechanism": "AKX-ECO-05"
+    },
+    {
+      "id": "D32",
+      "requirement": "Use one simplified tax mechanism on taxable business value added, separating assessment, compliance, actual collection and unpaid liabilities. Jointly calibrate parameters to starting receipts and identify other public-receipt flows.",
+      "mechanism": "AKX-ECO-04"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q01",
+      "title": "Income, distribution and purchasing demand",
+      "question": "How should organizational production and receipts generate agents\u2019 income, retained organizational resources and subsequent purchasing?",
+      "recommendation": "Use a compact explicit compensation/distribution process governed by existing roles, rights and cash constraints. Retain household needs and financial pressure; avoid a full labor market in the pilot. Ownership and eligibility for profit distributions must be defined, not inferred from Business class or membership.",
+      "options": "A: explicit compensation plus eligible distributions and retention; B: exogenous household incomes with only part of the feedback endogenous. Recommend A.",
+      "why": "Without this, production\u2192income\u2192demand is not closed, and earnings may be paid twice alongside old scheduled incomes.",
+      "blocks": [
+        "AKX-ECO-01",
+        "AKX-ECO-03",
+        "AKX-ECO-04"
+      ],
+      "status": "AGREED",
+      "resolved_date": "2026-11-24",
+      "decision_refs": "D28",
+      "resolution": "Explicit compensation, eligible distributions and retained organizational funds, governed by roles, rights, obligations and resources. Detailed payment amounts and timing remain numerical specification work."
+    },
+    {
+      "id": "Q02",
+      "title": "Financial and economic boundary",
+      "question": "What does the existing outside account represent, and which unmodeled domestic or external payments are permitted?",
+      "recommendation": "Replace its anonymous balancing role with classified boundary flows and balances. Begin with cash-constrained investment and an explicit residual sector/boundary account; do not silently add lending, government borrowing or money creation. The precise boundary still needs approval.",
+      "options": "A: compact open economy with declared residual-sector flows; B: fully closed represented economy requiring a more complete circular flow. Recommend A for feasibility.",
+      "why": "Transfers from a large outside account can sustain any arbitrary growth path unless linked to stated assumptions; eliminating them without closure can create artificial collapse.",
+      "blocks": [
+        "AKX-ECO-02",
+        "AKX-ECO-03",
+        "AKX-ECO-04",
+        "AKX-ECO-05"
+      ],
+      "status": "AGREED",
+      "resolved_date": "2026-11-24",
+      "decision_refs": "D29; D30",
+      "resolution": "Three economic domains: explicit domestic actors, background domestic activity and foreign transactions. Background spending follows receipts/reserves and demand/capacity; foreign conditions follow stated assumptions. Every payment has a counterpart. No extra agent population or anonymous financing."
+    },
+    {
+      "id": "Q03",
+      "title": "Representation and national economic interpretation",
+      "question": "What share of economic activity do the synthetic business organizations represent, and how is their value added mapped to country output?",
+      "recommendation": "Use declared output weights and a separately identified residual economy, initially reporting an economic-activity index anchored to a consistent real-output level. Do not multiply synthetic balances or role counts into national GDP. Coverage of informal/small firms and omitted sectors must be explicit.",
+      "options": "A: bounded represented share plus residual economy; B: all-economy representation with more calibration. Recommend A provisionally.",
+      "why": "Current population composition is not survey-weighted, the formal-firm survey excludes important sectors, and the income-to-output conversion is unidentified.",
+      "blocks": [
+        "AKX-ECO-05",
+        "AKX-CAL-01"
+      ],
+      "status": "AGREED",
+      "resolved_date": "2026-11-24",
+      "decision_refs": "D31",
+      "resolution": "Use an index of realized domestic value added starting at 100. Country data establish the initial scale; the index evolves through production. Numeric component assignments and a validated GDP-per-capita conversion remain calibration work."
+    },
+    {
+      "id": "Q04",
+      "title": "Tax base and public-resource baseline",
+      "question": "Which taxable base and collection mechanism should the compact fiscal module use, and how are non-tax receipts and existing spending represented?",
+      "recommendation": "Choose one transparent assessment/collection route and calibrate its combined baseline to a matched-scope fiscal target. Keep effective receipts/GDP distinct from a statutory rate. Reconcile or remove overlapping old transfers and withholding.",
+      "options": "A: one simplified tax base plus declared residual receipts; B: multiple taxes, enforcement and exemption systems. Recommend A.",
+      "why": "Observed revenue/GDP alone cannot identify statutory rates, taxable shares and compliance; multiplying it again by compliance can depress the baseline twice.",
+      "blocks": [
+        "AKX-ECO-04",
+        "AKX-ECO-05",
+        "AKX-CAL-01"
+      ],
+      "status": "AGREED",
+      "resolved_date": "2026-11-24",
+      "decision_refs": "D32",
+      "resolution": "A simplified levy on taxable business value added is the core endogenous tax mechanism. Compliance and administration operate through existing decisions and constraints. Other public receipts have identified sources. Effective revenue/GDP is a calibration target, not an inserted statutory rate."
+    }
+  ],
+  "calibration_register": [
+    {
+      "id": "C01",
+      "kind": "country",
+      "name": "Inherited GDP per capita, current PPP",
+      "symbol": "gdp_ppp_initial",
+      "unit": "current international dollars/person/year",
+      "value": 18816.1045522938,
+      "year": 2025,
+      "source": "S01",
+      "status": "STORED DESCRIPTOR",
+      "route": "Existing resource scaling only; not a real-growth series.",
+      "uncertainty": "Value stored in profiles.js; not independently revalidated in this draft.",
+      "dependency": "Q03"
+    },
+    {
+      "id": "C02",
+      "kind": "country",
+      "name": "Candidate GDP per capita, current USD",
+      "symbol": "gdp_current_usd",
+      "unit": "current USD/person/year",
+      "value": 9684.4,
+      "year": 2025,
+      "source": "S08",
+      "status": "OBSERVED CANDIDATE",
+      "route": "Price/scale context; not the real-output time-series target.",
+      "uncertainty": "Do not combine nominal exchange-rate changes with real growth.",
+      "dependency": "Q03"
+    },
+    {
+      "id": "C03",
+      "kind": "country",
+      "name": "Real GDP per capita level",
+      "symbol": "gdp_real_initial",
+      "unit": "constant-price output/person/year",
+      "value": null,
+      "year": null,
+      "source": "S07; S09",
+      "status": "NOT EXTRACTED",
+      "route": "Select a consistent vintage/price base for the economic anchor.",
+      "uncertainty": "National series located; real level not yet selected.",
+      "dependency": "Q03"
+    },
+    {
+      "id": "C04",
+      "kind": "country",
+      "name": "Real total GDP growth",
+      "symbol": "gdp_real_growth",
+      "unit": "percent/year",
+      "value": 3.4,
+      "year": 2025,
+      "source": "S08",
+      "status": "OBSERVED CANDIDATE",
+      "route": "Baseline plausibility target, not a guaranteed future rate.",
+      "uncertainty": "Total GDP growth, not per-capita growth; monthly seasonality not observed.",
+      "dependency": "Q03"
+    },
+    {
+      "id": "C05",
+      "kind": "country",
+      "name": "Private investment share",
+      "symbol": "private_investment_share",
+      "unit": "percent of GDP/year",
+      "value": null,
+      "year": null,
+      "source": "S07; S10",
+      "status": "SOURCE LOCATED",
+      "route": "Initialize investment intensity after matching private/public scope and price conventions.",
+      "uncertainty": "Do not substitute total fixed investment or real-price ratios without disclosure.",
+      "dependency": "Q03"
+    },
+    {
+      "id": "C06",
+      "kind": "country",
+      "name": "General-government tax receipts",
+      "symbol": "effective_tax_receipts_share",
+      "unit": "percent of GDP/year",
+      "value": 14.9,
+      "year": 2025,
+      "source": "S06",
+      "status": "OBSERVED CANDIDATE",
+      "route": "Target for aggregate realized receipts, not an individual tax rate.",
+      "uncertainty": "GDP denominator/revisions and refunds must match the selected vintage.",
+      "dependency": "Q04"
+    },
+    {
+      "id": "C07",
+      "kind": "country",
+      "name": "General-government non-tax receipts",
+      "symbol": "nontax_receipts_share",
+      "unit": "percent of GDP/year",
+      "value": 4.2,
+      "year": 2025,
+      "source": "S06",
+      "status": "OBSERVED CANDIDATE",
+      "route": "Identify residual public receipts; does not authorize free monthly injections.",
+      "uncertainty": "Scope/mapping to treasury remains unresolved.",
+      "dependency": "Q02; Q04"
+    },
+    {
+      "id": "C08",
+      "kind": "country",
+      "name": "General-government nonfinancial spending",
+      "symbol": "public_spending_share",
+      "unit": "percent of GDP/year",
+      "value": 20.1,
+      "year": 2025,
+      "source": "S06",
+      "status": "OBSERVED CANDIDATE",
+      "route": "Baseline spending plausibility, including public work outside selected reforms.",
+      "uncertainty": "Not all spending is production; transfers, procurement and investment differ.",
+      "dependency": "Q02; Q04"
+    },
+    {
+      "id": "C09",
+      "kind": "country",
+      "name": "Manufacturing capacity utilization",
+      "symbol": "capacity_utilization_initial",
+      "unit": "fraction of applicable capacity",
+      "value": null,
+      "year": 2023,
+      "source": "S15",
+      "status": "VARIABLE LOCATED",
+      "route": "Inform initial utilized vs unused productive capacity where applicable.",
+      "uncertainty": "Raw data/weighted estimate not extracted; manufacturing measure cannot stand for all firms.",
+      "dependency": "Q03"
+    },
+    {
+      "id": "C10",
+      "kind": "country",
+      "name": "Management regulatory burden",
+      "symbol": "management_time_regulation",
+      "unit": "percent of senior-management time",
+      "value": 12.3,
+      "year": 2023,
+      "source": "S05",
+      "status": "OBSERVED CANDIDATE",
+      "route": "Target a defined regulatory-work share, not all employee time.",
+      "uncertainty": "Formal surveyed firms only; conditional sampling and weights apply.",
+      "dependency": ""
+    },
+    {
+      "id": "C11",
+      "kind": "country",
+      "name": "Operating-license delay",
+      "symbol": "operating_license_delay",
+      "unit": "days among relevant applicants",
+      "value": 118.3,
+      "year": 2023,
+      "source": "S05",
+      "status": "OBSERVED CANDIDATE",
+      "route": "Compare modeled completed-license waits with a matched sample.",
+      "uncertainty": "Mean is not an identical delay for every firm; censoring/applicant selection matter.",
+      "dependency": ""
+    },
+    {
+      "id": "C12",
+      "kind": "country",
+      "name": "Bribery-request incidence",
+      "symbol": "bribery_request_incidence",
+      "unit": "percent of firms, survey definition",
+      "value": 7.6,
+      "year": 2023,
+      "source": "S05",
+      "status": "OBSERVED CANDIDATE",
+      "route": "External check for the matching set of transactions and recall period.",
+      "uncertainty": "Not per-encounter or monthly corruption probability; not a reform effect.",
+      "dependency": ""
+    },
+    {
+      "id": "C13",
+      "kind": "country",
+      "name": "Visits/meetings with tax officials",
+      "symbol": "tax_contact_prevalence",
+      "unit": "percent of surveyed firms",
+      "value": 22.1,
+      "year": 2023,
+      "source": "S05",
+      "status": "OBSERVED CANDIDATE",
+      "route": "Constrain tax-contact exposure after matching questionnaire period.",
+      "uncertainty": "Prevalence does not identify repeat counts or a monthly contact rate.",
+      "dependency": ""
+    },
+    {
+      "id": "C14",
+      "kind": "country",
+      "name": "Scaled role counts: Citizen, Business, Official, Politician",
+      "symbol": "role_counts",
+      "unit": "synthetic people",
+      "value": [
+        630,
+        210,
+        135,
+        25
+      ],
+      "year": null,
+      "source": "S01",
+      "status": "INHERITED ENGINEERING PRIOR",
+      "route": "Preserve current Peru composition for first controlled comparison unless deliberately revised.",
+      "uncertainty": "Not national population shares; exact total 1,000.",
+      "dependency": ""
+    },
+    {
+      "id": "C15",
+      "kind": "country",
+      "name": "Public allocation shares and governance profiles",
+      "symbol": "organization_governance",
+      "unit": "procedures and bounded shares",
+      "value": null,
+      "year": null,
+      "source": "S01; S04",
+      "status": "INCOMPLETE COUNTRY MAPPING",
+      "route": "Initialize authority, approvals, protections and allocation routes for Peru.",
+      "uncertainty": "National government indicators cannot identify organization-specific procedures.",
+      "dependency": ""
+    },
+    {
+      "id": "C16",
+      "kind": "country",
+      "name": "Informal/small and omitted-sector coverage",
+      "symbol": "represented_output_share",
+      "unit": "fraction of country output",
+      "value": null,
+      "year": null,
+      "source": "S15; D29; D31",
+      "status": "NUMERICAL MAPPING PENDING",
+      "route": "Calibrate nonoverlapping initial output assignments for explicit and background components.",
+      "uncertainty": "Architecture is agreed; the numerical shares and conversion are not fitted. Do not extrapolate formal sampled firms to all national activity.",
+      "dependency": "Q03"
+    },
+    {
+      "id": "P01",
+      "kind": "shared",
+      "name": "Choice uncertainty scale",
+      "symbol": "sigma_choice",
+      "unit": "utility units",
+      "value": 0.2,
+      "year": null,
+      "source": "S01",
+      "status": "INHERITED PRIOR",
+      "route": "Preserve keyed Gumbel scale for initial extension checks.",
+      "uncertainty": "Exploratory sensitivity proposal 0.10\u20130.30; not empirical confidence bounds.",
+      "dependency": ""
+    },
+    {
+      "id": "P02",
+      "kind": "shared",
+      "name": "Subjective-norm weight",
+      "symbol": "beta_norm",
+      "unit": "utility weight",
+      "value": 0.5,
+      "year": null,
+      "source": "S01",
+      "status": "INHERITED PRIOR",
+      "route": "Preserve existing choice framework.",
+      "uncertainty": "Exploratory sensitivity 0.25\u20130.75, changed separately from new mechanisms.",
+      "dependency": ""
+    },
+    {
+      "id": "P03",
+      "kind": "shared",
+      "name": "Perceived-control weight",
+      "symbol": "beta_control",
+      "unit": "utility weight",
+      "value": 0.25,
+      "year": null,
+      "source": "S01",
+      "status": "INHERITED PRIOR",
+      "route": "Preserve existing choice framework.",
+      "uncertainty": "Exploratory sensitivity 0.125\u20130.375; no claim of national TPB estimates.",
+      "dependency": ""
+    },
+    {
+      "id": "P04",
+      "kind": "shared",
+      "name": "Reference-norm learning",
+      "symbol": "lambda_norm",
+      "unit": "fraction per relevant observed reaction",
+      "value": 0.04,
+      "year": null,
+      "source": "S01",
+      "status": "INHERITED PRIOR",
+      "route": "Retain current reference reaction pathway unless explicitly amended.",
+      "uncertainty": "Encounter-rate changes alter exposure dose; test interaction with repeated contacts.",
+      "dependency": ""
+    },
+    {
+      "id": "P05",
+      "kind": "shared",
+      "name": "Maintenance requirement",
+      "symbol": "maintenance_work_share",
+      "unit": "PM per reference staff PM per month",
+      "value": null,
+      "year": null,
+      "source": "D02; D03",
+      "status": "EXPLORATORY RANGE ONLY",
+      "route": "Candidate 0.01\u20130.05; link to active organizational processes.",
+      "uncertainty": "No selected default or empirical Peru estimate. Reference staff scale must be recorded.",
+      "dependency": ""
+    },
+    {
+      "id": "P06",
+      "kind": "shared",
+      "name": "Damage under complete maintenance shortfall",
+      "symbol": "damage_max",
+      "unit": "fraction of capability/month",
+      "value": null,
+      "year": null,
+      "source": "D01; D03",
+      "status": "EXPLORATORY RANGE ONLY",
+      "route": "Candidate 0\u20130.02, with zero as a control; actual loss depends on shortfall.",
+      "uncertainty": "Do not apply full damage as well as a second unexplained decay.",
+      "dependency": ""
+    },
+    {
+      "id": "P07",
+      "kind": "shared",
+      "name": "Repair productivity",
+      "symbol": "repair_efficiency",
+      "unit": "capability fraction per normalized work unit",
+      "value": null,
+      "year": null,
+      "source": "D03",
+      "status": "EXPLORATORY RANGE ONLY",
+      "route": "Candidate 0.10\u20130.50; restoration bounded by recoverable documented loss.",
+      "uncertainty": "Normalization is one reference full-staff month; not a calendar-month guarantee.",
+      "dependency": ""
+    },
+    {
+      "id": "P08",
+      "kind": "shared",
+      "name": "Rebuilding work requirement",
+      "symbol": "rebuild_work_required",
+      "unit": "reference full-staff-month work units",
+      "value": null,
+      "year": null,
+      "source": "D03; D20",
+      "status": "EXPLORATORY RANGE ONLY",
+      "route": "Candidate 1\u20136 for a specified capability package.",
+      "uncertainty": "Actual delay depends on allocated work and required approvals; not 1\u20136 calendar months.",
+      "dependency": ""
+    },
+    {
+      "id": "P09",
+      "kind": "shared",
+      "name": "Attention retention",
+      "symbol": "attention_half_life",
+      "unit": "months without reinforcement",
+      "value": null,
+      "year": null,
+      "source": "D11",
+      "status": "EXPLORATORY RANGE ONLY",
+      "route": "Candidate 3\u201312; convert to decay by 1\u22122^(\u2212dt/h).",
+      "uncertainty": "Applies to issue attention, not automatic erosion of ethical commitments or mandatory duties.",
+      "dependency": ""
+    },
+    {
+      "id": "P10",
+      "kind": "shared",
+      "name": "Audience-specific credibility learning",
+      "symbol": "lambda_credibility",
+      "unit": "fraction per accessed episode",
+      "value": null,
+      "year": null,
+      "source": "D16",
+      "status": "EXPLORATORY RANGE ONLY",
+      "route": "Candidate 0.01\u20130.10 with source reliability and personal receptiveness filters.",
+      "uncertainty": "No reputation update from hidden truth; performance credibility differs from integrity reputation.",
+      "dependency": ""
+    },
+    {
+      "id": "P11",
+      "kind": "shared",
+      "name": "Capital depreciation",
+      "symbol": "depreciation_annual",
+      "unit": "fraction of capital/year",
+      "value": null,
+      "year": null,
+      "source": "D23",
+      "status": "EXPLORATORY RANGE ONLY",
+      "route": "Candidate 0.03\u20130.12; monthly fraction 1\u2212(1\u2212annual)^(1/12).",
+      "uncertainty": "Engineering exploration only; select sector/asset evidence before a baseline value.",
+      "dependency": ""
+    },
+    {
+      "id": "P12",
+      "kind": "shared",
+      "name": "Capital-to-annual-output ratio",
+      "symbol": "capital_output_ratio",
+      "unit": "years of potential output",
+      "value": null,
+      "year": null,
+      "source": "D23",
+      "status": "EXPLORATORY RANGE ONLY",
+      "route": "Candidate 2\u20135 only to expose sensitivity; productivity conversion eta=1/(12*ratio).",
+      "uncertainty": "Not measured in this draft; do not infer stock from investment flow alone.",
+      "dependency": "Q03"
+    },
+    {
+      "id": "P13",
+      "kind": "shared",
+      "name": "Compensation, retention and spending rules",
+      "symbol": "income_and_spending",
+      "unit": "fractions and payment rules",
+      "value": null,
+      "year": null,
+      "source": "D28; D29",
+      "status": "RULE AGREED; NUMBERS PENDING",
+      "route": "Specify explicit compensation, eligible distributions, retention and settlement timing under actual cash constraints.",
+      "uncertainty": "Do not retain old outside income in addition to replacement earnings. Q01/Q02 are resolved decision references, not pending approvals.",
+      "dependency": "Q01; Q02"
+    },
+    {
+      "id": "P14",
+      "kind": "shared",
+      "name": "Tax rate, taxable share and compliance",
+      "symbol": "tax_parameters",
+      "unit": "fractions of taxable business value added",
+      "value": null,
+      "year": null,
+      "source": "D32",
+      "status": "BASE AGREED; CALIBRATION PENDING",
+      "route": "Fit the assessment rate, eligible private-business base and baseline collection jointly; track assessment and collection separately.",
+      "uncertainty": "Receipts/GDP do not uniquely identify components. Do not apply the revenue ratio as a statutory rate or tax public transfers as new business production.",
+      "dependency": "Q04"
+    },
+    {
+      "id": "P15",
+      "kind": "shared",
+      "name": "Repeated encounter intensity",
+      "symbol": "lambda_contact",
+      "unit": "attempts/person/month by context",
+      "value": null,
+      "year": null,
+      "source": "D17; D18",
+      "status": "DISTRIBUTION NOT SELECTED",
+      "route": "Candidate counting-process family; role, demand and capacity constrain events.",
+      "uncertainty": "Survey prevalence cannot be inserted as a repeat-event intensity.",
+      "dependency": ""
+    },
+    {
+      "id": "P16",
+      "kind": "shared",
+      "name": "Routine familiarity effect",
+      "symbol": "familiarity_work_reduction",
+      "unit": "maximum fractional reduction",
+      "value": 0.4,
+      "year": null,
+      "source": "S01",
+      "status": "INHERITED PRIOR",
+      "route": "Current service expression uses 1\u22120.4*practice.",
+      "uncertainty": "Extend only to explicitly named tasks; never zero out unavoidable work.",
+      "dependency": ""
+    },
+    {
+      "id": "P17",
+      "kind": "shared",
+      "name": "Procedural approval and waiting requirements",
+      "symbol": "governance_procedures",
+      "unit": "rights, thresholds and months",
+      "value": null,
+      "year": null,
+      "source": "D09; D12; D13",
+      "status": "COUNTRY/ORGANIZATION RULE OPEN",
+      "route": "Use compact profiles by category and function.",
+      "uncertainty": "Proposed numerical thresholds are not empirical law; source or label each.",
+      "dependency": ""
+    },
+    {
+      "id": "P18",
+      "kind": "shared",
+      "name": "Policy-value/performance belief learning",
+      "symbol": "lambda_policy_belief",
+      "unit": "fraction per relevant accessed episode",
+      "value": null,
+      "year": null,
+      "source": "D04",
+      "status": "RANGE NOT SELECTED",
+      "route": "Reuse bounded subjective learning architecture with separate targets.",
+      "uncertainty": "No generic policy-success target or automatic reward for funding.",
+      "dependency": ""
+    },
+    {
+      "id": "P19",
+      "kind": "shared",
+      "name": "Coalition costs and commitment amounts",
+      "symbol": "coalition_costs",
+      "unit": "RU and PM per action/commitment",
+      "value": null,
+      "year": null,
+      "source": "D10",
+      "status": "RANGE NOT SELECTED",
+      "route": "Reserve actual own resources and track delivery of commitments.",
+      "uncertainty": "Does not authorize stakeholder top-ups to the policy implementation pool.",
+      "dependency": ""
+    },
+    {
+      "id": "P20",
+      "kind": "shared",
+      "name": "Event-log and experiment limits",
+      "symbol": "logging_limits",
+      "unit": "events, months and replicas",
+      "value": null,
+      "year": null,
+      "source": "D26; D27",
+      "status": "BENCHMARK PENDING",
+      "route": "1,000 agents; test paired 120-month runs and repeated runs sequentially.",
+      "uncertainty": "No measured Android time/memory result exists for the proposed extension.",
+      "dependency": ""
+    }
+  ]
+}

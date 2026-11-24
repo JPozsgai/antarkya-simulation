@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Provisional hybrid release · v3.0.0 · Antarkya audit</title><link rel="stylesheet" href="audit.css"></head><body><header><a href="index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="NARRATIVE.html">Narrative</a><a href="TECHNICAL.html">Technical rules</a><a href="SOURCE-INDEX.html">Annotated code</a><a href="GAPS.html">Limits</a><a href="../../index.html">Simulation</a></nav></header><main><h1 id="provisional-hybrid-release-v3-0-0">Provisional hybrid release · v3.0.0</h1>
+<p>Created and owned by <strong>Joseph Pozsgai-Alvarez</strong>. © 2026 Joseph Pozsgai-Alvarez.</p>
+<p>This is a new executable behavioral release, not the previously reported but unrecovered Peru pilot. Publication precedes empirical calibration at the project owner's request. New parameters are explicit engineering assumptions. No national forecast, fitted macroeconomic target, realistic service-delay distribution or validated policy effect is claimed.</p>
+<p>The published v2.4 application remains <a href="../../v2.4/index.html">available separately</a>. Its scenarios belong to that version; recreate settings for v3. The new engine preserves the same people within each v3 pair and every repetition. It reconstructs a common pre-policy year under the new rules, so its starting history intentionally differs from v2.4.</p>
+<h2 id="what-changed">What changed</h2>
+<p>The four resolved structural choices remain: explicit compensation and eligible distributions; separate explicit-domestic/background-domestic/foreign components; an endogenous domestic-value-added index starting at 100; and a simplified business-value-added assessment/collection mechanism. Exactly 1,000 individuals remain across the original four principal roles. The existing twelve reforms, individual learning and policy-specific output–outcome–impact assessment remain in place.</p>
+<p>The extension implements upkeep, repair and rebuilding; shared personal time; constrained governance procedures and appointments; active coalition commitments; separate policy value, implementation beliefs, attention and audience-specific credibility; repeated demand-driven contacts; productive capacity, orders, delivered production, investment and fiscal feedback. The system view reads their recorded flows and does not create a second engine.</p>
+<h2 id="reference-units-and-update-order">Reference units and update order</h2>
+<p>RU is a normalized purchasing-power unit with fixed reference prices, not yen or national GDP. PM is one normalized available person-month. Upkeep WU is normalized by an organization's fixed initial reference staff count; cross-organization backlog displays convert WU to PM before adding. Productive capacity is potential output RU/month. Capability and retained influence are bounded dimensionless stocks; plotted means aggregate individual/organizational stocks without independently changing them.</p>
+<p>Each month opens finite personal time, advances retention, pays role compensation from named accounts, disburses reform resources, allocates shared public time, undertakes upkeep and reform work, executes repeated encounters, processes services/cases, communicates information, reviews organizations/political authority, undertakes governance/coalition responses, reviews resources, and settles demand/production/investment/tax before recording. Earlier experiences can affect later encounters in the ordered encounter agenda. The phased schedule remains an approximation; it is not a continuous-time solver.</p>
+<h2 id="numerical-mechanisms-and-source-routes">Numerical mechanisms and source routes</h2>
+<p><a id="akx-scp-01"></a></p>
+<h3 id="akx-scp-01-scope-and-precedence">AKX-SCP-01 — Scope and precedence</h3>
+<p>The release retains 1,000 people and all ten country profiles. Peru calibration and empirical pilot validation remain pending. The new economic and governance processes run with common, visibly declared engineering assumptions rather than fitted national response parameters.</p>
+<p>Behavior version 3.0.0 replaces overlapping legacy accounts and encounter scheduling. Country GDP-PPP still sets a bounded initial resource scale, while realized domestic value added generates a separate endogenous index. No inflation, exchange-rate, banking or demographic model is added.</p>
+<p>Decision provenance: D26, D30. Source: <code>hybrid.js:initialize</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-tim-01"></a></p>
+<h3 id="akx-tim-01-monthly-reporting-with-repeated-internal-events">AKX-TIM-01 — Monthly reporting with repeated internal events</h3>
+<p>A reporting month contains ordered repeated encounters and progressive work. Available personal time is shared across primary employment, upkeep, contacts, governance and coalition activity; membership creates no additional time.</p>
+<p>Each person starts with 1 PM. Organizational capacity is bounded by matching-primary-role staff time and competence. Existing public task debits are reconciled to individual ledgers between phases. Governance has work and approval minima; investment waits for delivery and actual installation work. The agenda is ordered within the encounter phase; this is not a full continuous-time scheduler.</p>
+<p>Decision provenance: D17, D20. Source: <code>hybrid.js:open</code>, <code>hybrid.js:personalTime</code>, <code>hybrid.js:synchronizeTime</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-sta-01"></a></p>
+<h3 id="akx-sta-01-single-ownership-of-state-and-exact-balances">AKX-STA-01 — Single ownership of state and exact balances</h3>
+<p>Every modeled stock has an owner. Personal beliefs remain in individuals, organizational capability and productive capacity remain in organizations, and boundary cash has named counterpart accounts. Diagram means are derived observations.</p>
+<p>Cash total includes background domestic, treasury, all persons and organizations, reform allocations, foreign account and coalition escrow. Transfers clip to actual source funds. Transaction/flow IDs have separate counters from behavioral request and proposal IDs. Monthly histories are observer records and are not used to impose national belief changes.</p>
+<p>Decision provenance: D19. Source: <code>hybrid.js:initialize</code>, <code>hybrid.js:recordTransfer</code>, <code>hybrid.js:stocks</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-cap-01"></a></p>
+<h3 id="akx-cap-01-persistent-organizational-capability">AKX-CAP-01 — Persistent organizational capability</h3>
+<p>Capability persists through interruptions and is affected by actual upkeep. Current delivery also needs funds, staff time and authority; a capability stock alone cannot make a policy operate.</p>
+<p>The old fixed per-tool .998 decay is removed. For each organization, missing its .02 reference-staff upkeep requirement causes loss C*.008*shortfall. Capability is bounded, recoverable loss is recorded, and prolonged neglect transfers a bounded share to irreversible loss. Rebuilding and existing installed reform work can add capability.</p>
+<p>Decision provenance: D01. Source: <code>hybrid.js:care</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-mnt-01"></a></p>
+<h3 id="akx-mnt-01-maintenance-and-unfinished-work">AKX-MNT-01 — Maintenance and unfinished work</h3>
+<p>Leaders choose maintenance, repair, rebuilding or deferral through the established utility framework. Each performed task consumes actual organizational money and the same finite time used by other activities.</p>
+<p>Reference staff count is fixed at initialization. Backlog adds .02 reference WU/month and subtracts completed current upkeep or eligible repair. Public staff allocation includes maintenance as a fourth competing category. Upkeep costs .10 RU per performed PM; costs are charged once even when one action both clears neglected work and repairs damage.</p>
+<p>Decision provenance: D02, D03. Source: <code>hybrid.js:maintenanceNeed</code>, <code>hybrid.js:care</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-mnt-02"></a></p>
+<h3 id="akx-mnt-02-repair-and-rebuilding">AKX-MNT-02 — Repair and rebuilding</h3>
+<p>Repair can restore only recorded recoverable damage. Rebuilding accumulates work toward reconstructing lost capability; resumed funding or elapsed months cannot complete that work by themselves.</p>
+<p>Repair restoration is min(recorded recoverable loss,.25*completed repair WU). Rebuilding retains progress until 2 reference WU are performed; completion restores at most .10 of recorded irreversible loss and debits the completed work once. These defaults are uncalibrated assumptions, with no national estimate asserted.</p>
+<p>Decision provenance: D03. Source: <code>hybrid.js:care</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-bel-01"></a></p>
+<h3 id="akx-bel-01-policy-value-versus-implementation-performance-beliefs">AKX-BEL-01 — Policy value versus implementation-performance beliefs</h3>
+<p>Agents distinguish the value they attach to a policy from their assessment of its implementation. Experience and accessed information can change these beliefs differently, so dissatisfaction need not imply abandoning the policy.</p>
+<p>Each person holds separate policy value/performance fields and issue attention. A source/episode deduplication memory prevents repeated processing within 64 records. Performance learning uses .04<em>credibility</em>individual learning toward an interpreted episode. Policy-value learning is slower and also reflects public-regarding motives; hidden analyst results never update an audience.</p>
+<p>Decision provenance: D04. Source: <code>hybrid.js:observe</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-agy-01"></a></p>
+<h3 id="akx-agy-01-office-authority-versus-personal-influence">AKX-AGY-01 — Office authority versus personal influence</h3>
+<p>Decision rights attach to the current position. A completed appointment changes the organizational decision maker; personal finances, networks, experience and audience-specific credibility remain with the person.</p>
+<p>Rank is derived as national controller, organizational leader or ordinary member. Appointments change o.leader only after a valid procedure. Current national controller rights continue to use the inherited political review. Losing an organizational position does not erase personal agent fields or transfer their credibility to the successor.</p>
+<p>Decision provenance: D05. Source: <code>hybrid.js:rank</code>, <code>hybrid.js:governance</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-agy-02"></a></p>
+<h3 id="akx-agy-02-supporter-dependence-within-tpb-utility">AKX-AGY-02 — Supporter dependence within TPB–utility</h3>
+<p>Supporter dependence influences perceived consequences, expected approval and feasibility within the existing nine-interest TPB–utility mechanism. It is not a separate political-survival rule that overrides every other motive.</p>
+<p>For relevant organizational/political choice contexts, at most two accessed trusted peers contribute bounded agreement and dependence. Political/self consequences add .15<em>dependence</em>agreement, norms add .08<em>agreement and control .06</em>dependence*agreement. Personal credibility weights these relationships; implementation belief can also modify the public-economic valuation of substantive work.</p>
+<p>Decision provenance: D06. Source: <code>hybrid.js:options</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-gov-01"></a></p>
+<h3 id="akx-gov-01-hierarchy-and-relationship-based-insiders">AKX-GOV-01 — Hierarchy and relationship-based insiders</h3>
+<p>Authority tiers coexist within the four existing roles. Insider position is a relationship to the current controller, can cross organizational categories and is recorded at the event time. Connections are neither a permanent class nor immunity.</p>
+<p>Rank is 3 for the budget controller, 2 for any organizational leader and 1 otherwise. The realized-coverage observer labels a subject connected when directional relationship access exceeds .12. The actual appointment, tax-concession and oversight choices still require authority, independent responses and available resources.</p>
+<p>Decision provenance: D07, D08. Source: <code>hybrid.js:rank</code>, <code>hybrid.js:conduct</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-gov-02"></a></p>
+<h3 id="akx-gov-02-constrained-appointment-and-removal">AKX-GOV-02 — Constrained appointment and removal</h3>
+<p>Leadership replacement is a constrained process rather than a timer or a transfer of every personal characteristic. Candidates are evaluated for competence and relationships; each approver retains an independent decision.</p>
+<p>Public appointments can be initiated through the controller; category-specific internal initiators also exist. Candidate pools contain up to eight matching-primary-role staff. Proposals snapshot the current leader, approval roster and protection. They require at least two months and .03 PM of preparation, all required vote opportunities, a strict majority and satisfied removal protection.</p>
+<p>Decision provenance: D09. Source: <code>hybrid.js:propose</code>, <code>hybrid.js:governance</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-gov-03"></a></p>
+<h3 id="akx-gov-03-safeguard-changes-in-all-organizational-categories">AKX-GOV-03 — Safeguard changes in all organizational categories</h3>
+<p>Public agencies, businesses, parties and civic organizations have executable rules for proposals, approvals, removal protection, oversight and disclosure. A stored safeguard must affect an actual later procedure.</p>
+<p>Oversight can trigger a separately chosen, time-consuming review that blocks diversion in public implementation or private organizational funds. Disclosure weights actual record visibility. Removal protection constrains appointments; the stricter original/current protection applies, preventing a proposal from weakening its own gate. Generic three-member profiles are engineering simplifications, not national corporate or public law.</p>
+<p>Decision provenance: D12, D13. Source: <code>hybrid.js:propose</code>, <code>hybrid.js:governance</code>, <code>hybrid.js:review</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-col-01"></a></p>
+<h3 id="akx-col-01-costly-coalition-formation-and-commitments">AKX-COL-01 — Costly coalition formation and commitments</h3>
+<p>Actors can organize support or opposition using private money and actual time. Recipients choose whether to commit, continue working or withdraw; the coalition is not equivalent to automatic consensus.</p>
+<p>Up to eight civic initiators receive opportunities every three months. An accepted commitment transfers .05 RU into a named escrow account. Performed advocacy costs .005 RU and .015 PM per contribution. Unused contributions are returned on withdrawal or closure. Escrow is included in money conservation and never credits reform allocations.</p>
+<p>Decision provenance: D10. Source: <code>hybrid.js:coalitions</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-att-01"></a></p>
+<h3 id="akx-att-01-attention-distinct-from-support">AKX-ATT-01 — Attention distinct from support</h3>
+<p>Attention can decline while policy support persists. Accessed events and coalition activity can renew engagement without mechanically changing ethical commitments or imposing a national attention stock.</p>
+<p>Issue attention decays with a six-month half-life and is reinforced by accessed episodes. It affects the relative valuation of mobilizing versus declining engagement. Policy value, perceived implementation and attention are distinct stored fields; chart averages are derived from people.</p>
+<p>Decision provenance: D11. Source: <code>hybrid.js:open</code>, <code>hybrid.js:observe</code>, <code>hybrid.js:coalitions</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-str-01"></a></p>
+<h3 id="akx-str-01-combinable-political-responses">AKX-STR-01 — Combinable political responses</h3>
+<p>Different articulated demands can receive substantive, symbolic, reframing or obstructive responses. Claims, funded work and completed institutional changes remain distinct, allowing mixed responses by the same actor.</p>
+<p>A recipient spends personal time evaluating each active delivered coalition demand. A substantive response changes a temporary work-priority input used by staff allocation. Symbolic/reframing communication spends ordinary organizational resources and reaches the actual coalition audience through credibility-filtered learning. Obstruction initiates a governance procedure rather than instantly changing a safeguard.</p>
+<p>Decision provenance: D14. Source: <code>hybrid.js:responses</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-inf-01"></a></p>
+<h3 id="akx-inf-01-audience-specific-evolving-personal-influence">AKX-INF-01 — Audience-specific evolving personal influence</h3>
+<p>Personal influence develops by audience. Someone can become credible to one network and less credible elsewhere; hidden achievements or failures do not change everyone’s beliefs.</p>
+<p>Source-specific credibility is held by the recipient. A processed episode changes it at .04*reliability toward the interpreted performance. The relevant credibility enters later supporter weighting. Ordinary accessed stories, teaching episodes, coalition work and known governance episodes call this pathway; no global charisma or champion bonus exists.</p>
+<p>Decision provenance: D16. Source: <code>hybrid.js:observe</code>, <code>hybrid.js:options</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-cov-01"></a></p>
+<h3 id="akx-cov-01-realized-coverage-only">AKX-COV-01 — Realized coverage only</h3>
+<p>Only realized accountability coverage is displayed. Its eligibility set is created at recorded conduct, before selective case opening or obstruction, and retains rank/group at that time.</p>
+<p>The current proxy reports actors in eligible recorded acts whose case reached investigation or decision within a trailing-year cohort. Counts are stratified by three ranks and connected/other groups. Below 20 observations the UI flags insufficient evidence. This is a synthetic process proxy; it does not establish matched-case impartiality or legal guilt.</p>
+<p>Decision provenance: D15. Source: <code>hybrid.js:conduct</code>, <code>hybrid.js:coverage</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-enc-01"></a></p>
+<h3 id="akx-enc-01-demand-generated-encounters-and-capacity">AKX-ENC-01 — Demand-generated encounters and capacity</h3>
+<p>Role-specific demand can generate multiple contacts in a month, ordered by internal timestamps. Repeated attempts at unfinished service work update that request’s attempt history rather than creating duplicate queued demand.</p>
+<p>Poisson count sampling uses role intensities [.65,.85,.20,.20]. Every completed contact requires .015 PM from both participants. Pending service retries can be abandoned after six months through utility choice. Campaign and business-political opportunities remain. Explicit request IDs and episode keys distinguish repeated contacts.</p>
+<p>Decision provenance: D18. Source: <code>hybrid.js:encounters</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-eco-01"></a></p>
+<h3 id="akx-eco-01-investment-choices-including-political-connections">AKX-ECO-01 — Investment choices including political connections</h3>
+<p>Business receipts support real compensation, eligible owner distributions, reserves and investment. Political connections affect perceived investment opportunities through the existing decision framework; they do not grant productivity automatically.</p>
+<p>Primary-role compensation debits the actual employer account. The legacy 180*g treasury grant and wage withholding are removed. Investment, reserve retention, eligible distribution and attempted diversion are distinct leader choices. Ownership is explicitly initialized to the organizational leader as a provisional prior; ordinary membership creates no dividend right. Diverted entrusted funds face internal review.</p>
+<p>Decision provenance: D22, D28. Source: <code>hybrid.js:accounts</code>, <code>hybrid.js:investment</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-eco-02"></a></p>
+<h3 id="akx-eco-02-business-productive-capacity-stock">AKX-ECO-02 — Business productive-capacity stock</h3>
+<p>Productive capacity belongs to business organizations and differs from organizational capability. Equipment payment, delivery, installation work and usable capacity are separately recorded.</p>
+<p>Capital consumes .08/year converted to a monthly fraction. Funded equipment projects wait one to three months, then require .05+.02<em>paid RU of performed installation PM. A completed project adds paidRU/(12</em>3) outputRU/month once. Missing work prevents completion even after the delivery date. Depreciation is a capacity flow rather than a second cash payment.</p>
+<p>Decision provenance: D23. Source: <code>hybrid.js:investment</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-eco-03"></a></p>
+<h3 id="akx-eco-03-demand-constrained-production-and-allocation">AKX-ECO-03 — Demand-constrained production and allocation</h3>
+<p>Demand, capacity, inputs, work and payment constrain realized production. Private demand and public procurement may distribute opportunities unevenly; rearranging orders alone does not create national output.</p>
+<p>Household purchases split .35 explicit/.65 background. Background purchasing responds to recent receipts and a reserve requirement; foreign reference demand is 60 RU/month. Production is bounded by available capacity, actual funds and private organizational time at 15 outputRU/PM. Imported intermediate inputs cost .20 of delivered output. Unfilled orders expire after six months; the current order list uses deterministic insertion order.</p>
+<p>Decision provenance: D24. Source: <code>hybrid.js:order</code>, <code>hybrid.js:demand</code>, <code>hybrid.js:production</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-eco-04"></a></p>
+<h3 id="akx-eco-04-taxable-activity-compliance-and-public-receipts">AKX-ECO-04 — Taxable activity, compliance and public receipts</h3>
+<p>Potential liability, declared or discovered assessment, compliance, arrears and actual collection remain separate. The simplified mechanism taxes private business value added; additional receipts expand fiscal choices without automatically funding reform.</p>
+<p>Assessment uses .22 of taxable business VA as an uncalibrated rate. Concealment and a requested concession have distinct choices; a concession requires an actual connected collector and their approval. Unpaid assessment persists. Actual collection is cash-limited and capped at .25 of business cash per round. Background private VA uses .85 aggregate compliance. Fines and identified domestic receipts remain transfers, not additional production.</p>
+<p>Decision provenance: D25, D32. Source: <code>hybrid.js:taxation</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-eco-05"></a></p>
+<h3 id="akx-eco-05-economic-boundaries-and-output-index">AKX-ECO-05 — Economic boundaries and output index</h3>
+<p>Explicit domestic actors trade with a separate background domestic component and foreign account, preserving the existing 1,000-person structure. The real-activity index starts at 100 and follows delivered domestic value added.</p>
+<p>VA is explicit business output less imported consumed intermediates, plus background domestic production and performed public nonmarket output. Public output uses actual paid compensation times the performed-work share. The reference is the last reconstructed month’s VA and starts at 100. All prices are fixed normalized RU; no validated GDP-per-capita conversion is supplied. Initial boundary cash is a synthetic finite reserve, split 80% domestic/20% foreign.</p>
+<p>Decision provenance: D21, D29, D30, D31. Source: <code>hybrid.js:initialize</code>, <code>hybrid.js:production</code>, <code>hybrid.js:close</code>, <code>hybrid.js:anchor</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-mea-01"></a></p>
+<h3 id="akx-mea-01-monthly-flow-provenance-and-result-explanations">AKX-MEA-01 — Monthly flow provenance and result explanations</h3>
+<p>The monthly system view reads opening/closing stocks, realized gross flows and actual process records. Policy views emphasize the selected mechanism; education does not headline case files. Replay and historical review are observation-only.</p>
+<p>system-view.js renders three pathway types: selected tool funding/retained influence, economy, and governance/upkeep. Solid bright pipes use recorded amounts; dashed links are structural dependencies without mediation claims or R/B labels. Detailed tables retain the last 35 flow records shown, the saved cash journal the last 1,000 transactions, and monthly diagrams retain the bounded run history. All transaction/flow counters are independent from behavioral IDs.</p>
+<p>Decision provenance: D27. Source: <code>hybrid.js:close</code>, <code>hybrid.js:summary</code>, <code>hybrid.js:recordTransfer</code>, <code>hybrid.js:exposure</code>, <code>hybrid.js:capabilityBuilt</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-cal-01"></a></p>
+<h3 id="akx-cal-01-peru-pilot-and-evidence-register">AKX-CAL-01 — Peru pilot and evidence register</h3>
+<p>Calibration and the empirical Peru pilot are explicitly deferred. Existing country observations remain dated inputs; the new common economic, maintenance and governance coefficients are engineering assumptions exposed in the code and documentation.</p>
+<p>The retained decision register has 16 country/input records and 20 shared-parameter records. No newly fitted macro target, survey prevalence, governance distribution or policy effect is claimed. All ten profiles can execute the new module, but this is not ten-country calibration. Future fitting must reconcile units, coverage, data vintage, parameter identification and sensitivity.</p>
+<p>Decision provenance: D26. Source: <code>hybrid.js:parameters</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<p><a id="akx-val-01"></a></p>
+<h3 id="akx-val-01-coupling-accounting-sensitivity-and-device-validation">AKX-VAL-01 — Coupling, accounting, sensitivity and device validation</h3>
+<p>Engineering verification checks accounting, physical feasibility, deterministic replay and specific causal pathways. Passing these checks does not validate country realism or establish an expected policy effect.</p>
+<p>New controlled tests exercise upkeep versus neglect, bounded repair, work-driven investment, private oversight, protected appointments, attention, accessed reputation, eligible coverage, foreign/escrow cash, tax arrears and observer invariance. Existing checks are retained, with explicitly documented adaptations for replaced wage accounting, new time-opening rules, cache versions and the archived historical engine. Actual Android performance and the Peru empirical pilot remain pending.</p>
+<p>Decision provenance: D26. Source: <code>hybrid.js:assert</code>. See the <a href="SOURCE-INDEX.html">full annotated source</a> and <a href="source/hybrid.test.js.html">controlled checks</a>.</p>
+<h2 id="explicit-operational-limits-and-next-work">Explicit operational limits and next work</h2>
+<p>All 32 accepted decisions are mapped below; presence of a process does not establish calibrated realism. Governance approval rosters and thresholds are generic. Removal-for-cause is represented narrowly through eligibility/sanction status. Ownership is a declared initialization prior, not a census of real firms. Background production is a compact aggregate, not another set of agents. Prices and foreign reference demand are fixed. Initial boundary reserves are finite synthetic balances rather than inferred national wealth. Eligible coverage is a process proxy; no intended-coverage dashboard or automatic champion/trajectory effectiveness multiplier is added.</p>
+<p>The economic index uses realized output minus consumed imported intermediate inputs, plus nonoverlapping background production and performed public output. Tax, wage, dividend, grant and bribe transfers are not added to production. The baseline can grow, contract, accumulate backlogs or become cash-constrained under these assumptions. Those dynamics are not empirical predictions. The current investigation-capability diagnostics still have the limitations listed in the measurement dictionary.</p>
+<p>The diagram's full-month policy cash totals are accumulated before transaction detail is truncated. Solid pipes show recorded gross amounts; dashed influence arrows do not identify a causal contribution. No R/B feedback label is assigned without a sign-and-delay audit. Month-zero records describe the reconstructed month immediately before adoption. Educational mean influence is not an empirical attitude survey; activity counts are not unique learners. Replaying or reviewing a recorded month consumes no behavioral draw. Flow, transaction and behavioral identity counters are separate.</p>
+<p>The saved journal retains the latest 1,000 cash transactions. Monthly detail tables show the last 35 flow records, while diagrams use complete gross-flow totals. Run history is bounded to the 240-month horizon plus reconstruction. These retention limits do not discard economic demand or alter actor decisions.</p>
+<p>Next work is the separately requested Peru calibration and empirical pilot: harmonized source vintage and national coverage; realistic capital/output, fiscal and compensation mappings; plausible baseline dynamics; competing parameter sets; sensitivity and feedback ablation; matched survey definitions; and actual Android runtime/memory. Numerical checks below establish engineering properties only.</p>
+<h2 id="accepted-decisions-d01-d32">Accepted decisions D01–D32</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Accepted requirement</th>
+<th>Executable route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D01</td>
+<td>Organizational capability persists separately from current delivery; funding interruptions and capability erosion have different time scales.</td>
+<td>AKX-CAP-01</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>Maintenance competes for real money/time and is chosen through the shared decision framework.</td>
+<td>AKX-MNT-01</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>Unfinished maintenance persists; maintenance, repair and rebuilding have different completion and recovery processes.</td>
+<td>AKX-MNT-01, AKX-MNT-02</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>Policy-value and implementation-performance beliefs are distinct, learned subjectively.</td>
+<td>AKX-BEL-01</td>
+</tr>
+<tr>
+<td>D05</td>
+<td>Office carries decision rights; personal relationships and credibility remain with the person after office changes.</td>
+<td>AKX-AGY-01</td>
+</tr>
+<tr>
+<td>D06</td>
+<td>Supporter dependence influences consequences, norms and perceived control within TPB–utility.</td>
+<td>AKX-AGY-02</td>
+</tr>
+<tr>
+<td>D07</td>
+<td>Ordinary members, organizational leaders and national authorities are authority tiers where applicable, within four existing classes.</td>
+<td>AKX-GOV-01</td>
+</tr>
+<tr>
+<td>D08</td>
+<td>Insiders can span organizational categories and change with relationships; no automatic immunity.</td>
+<td>AKX-GOV-01</td>
+</tr>
+<tr>
+<td>D09</td>
+<td>Appointment and removal require the relevant authority, procedures and resources; appointees remain autonomous decision makers.</td>
+<td>AKX-GOV-02</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>Agents can build, sustain, alter or oppose coalitions through costly attempts and independently evaluated commitments.</td>
+<td>AKX-COL-01</td>
+</tr>
+<tr>
+<td>D11</td>
+<td>Attention and active engagement can weaken without equivalent loss of policy support.</td>
+<td>AKX-ATT-01</td>
+</tr>
+<tr>
+<td>D12</td>
+<td>Actors can attempt safeguard changes in every organizational category, through an available channel.</td>
+<td>AKX-GOV-03</td>
+</tr>
+<tr>
+<td>D13</td>
+<td>A compact organization-specific governance profile defines initiators, approvers and protections.</td>
+<td>AKX-GOV-03</td>
+</tr>
+<tr>
+<td>D14</td>
+<td>Political responses can be combined across demands or reform components; public claims differ from completed work.</td>
+<td>AKX-STR-01</td>
+</tr>
+<tr>
+<td>D15</td>
+<td>Assess realized accountability coverage only, by relevant rank/group and eligibility.</td>
+<td>AKX-COV-01</td>
+</tr>
+<tr>
+<td>D16</td>
+<td>Personal influence evolves by audience through accessed and interpreted information, not hidden analyst truth.</td>
+<td>AKX-INF-01</td>
+</tr>
+<tr>
+<td>D17</td>
+<td>Month is a reporting/coupling period containing repeated, ordered interactions and appropriate process-specific updates.</td>
+<td>AKX-TIM-01</td>
+</tr>
+<tr>
+<td>D18</td>
+<td>Demand generates attempted encounters; staff/resource constraints limit completion, with explicit retry/delay/abandonment rules.</td>
+<td>AKX-ENC-01</td>
+</tr>
+<tr>
+<td>D19</td>
+<td>Shared stocks have balances; aggregates of agent beliefs are derived summaries, not duplicate autonomous stocks.</td>
+<td>AKX-STA-01</td>
+</tr>
+<tr>
+<td>D20</td>
+<td>Delays follow completed work, interruptions and procedural minima rather than a guaranteed elapsed-time timer.</td>
+<td>AKX-TIM-01</td>
+</tr>
+<tr>
+<td>D21</td>
+<td>Internal conditions can affect the economy, which feeds back into agents and organizations; GDP is not permanently fixed.</td>
+<td>AKX-ECO-05</td>
+</tr>
+<tr>
+<td>D22</td>
+<td>Business investment uses the common choice framework, including political/organizational connections as perceived consequences, norms and feasibility.</td>
+<td>AKX-ECO-01</td>
+</tr>
+<tr>
+<td>D23</td>
+<td>Completed business investment builds organization-held productive capacity, distinct from organizational capability.</td>
+<td>AKX-ECO-02</td>
+</tr>
+<tr>
+<td>D24</td>
+<td>Actual production depends on demand and operating constraints; unused capacity is possible.</td>
+<td>AKX-ECO-03</td>
+</tr>
+<tr>
+<td>D25</td>
+<td>Public revenue responds partly to realized economic activity and compliance; allocation remains a political/administrative choice.</td>
+<td>AKX-ECO-04</td>
+</tr>
+<tr>
+<td>D26</td>
+<td>Use a compact Peru pilot, source-backed anchors, declared synthetic initialization and sensitivity analysis before expanding to ten countries.</td>
+<td>AKX-SCP-01, AKX-CAL-01, AKX-VAL-01</td>
+</tr>
+<tr>
+<td>D27</td>
+<td>Result explanations connect consequential leadership/system events to the relevant output, outcome and impact, without claiming unsupported causality.</td>
+<td>AKX-MEA-01</td>
+</tr>
+<tr>
+<td>D28</td>
+<td>Business-related income uses explicit compensation and eligible distributions from organizational funds, with retention for operations and investment; respect rights, obligations and actual resources.</td>
+<td>AKX-ECO-01</td>
+</tr>
+<tr>
+<td>D29</td>
+<td>Use explicit domestic actors, an aggregate background domestic component for omitted activities, and a foreign component, with traceable transactions and stated adaptive/boundary rules; do not change the 1,000-agent classes.</td>
+<td>AKX-ECO-05</td>
+</tr>
+<tr>
+<td>D30</td>
+<td>Use fixed reference prices for the pilot; leave endogenous inflation and exchange-rate dynamics outside it. No unexplained financing or overlap between explicit and background activities.</td>
+<td>AKX-SCP-01, AKX-ECO-05</td>
+</tr>
+<tr>
+<td>D31</td>
+<td>Calculate an economic-activity index starting at 100 from realized domestic value added across explicit and background components. Starting country calibration is identical across paired runs; a GDP-per-capita equivalent requires validated scaling.</td>
+<td>AKX-ECO-05</td>
+</tr>
+<tr>
+<td>D32</td>
+<td>Use one simplified tax mechanism on taxable business value added, separating assessment, compliance, actual collection and unpaid liabilities. Jointly calibrate parameters to starting receipts and identify other public-receipt flows.</td>
+<td>AKX-ECO-04</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="../HYBRID-DECISIONS.json">machine-readable original decision and calibration register</a> preserves the four resolved questions and all 36 calibration records. Nulls remain unknown, not zero.</p>
+</main><footer>© 2026 Joseph Pozsgai-Alvarez · Creator and project owner. Documentation edition 2.0 · 24 November 2026 · provisional behavior/display 3.0.0. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>
