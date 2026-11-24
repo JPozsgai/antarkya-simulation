@@ -86,57 +86,57 @@
   },
   {
     "file": "adaptation.test.js",
-    "line": 409,
+    "line": 411,
     "name": "a known inactive or suspended reform stops new exposures while memories can wear off"
   },
   {
     "file": "adaptation.test.js",
-    "line": 424,
+    "line": 426,
     "name": "continuous reinforcement over 1,200 months retains partial bounded influence"
   },
   {
     "file": "adaptation.test.js",
-    "line": 442,
+    "line": 444,
     "name": "financial expectations learn from actual total receipts with individual learning rates"
   },
   {
     "file": "adaptation.test.js",
-    "line": 459,
+    "line": 461,
     "name": "a later change in receptiveness can permit modest new learning after repeated rejected messages"
   },
   {
     "file": "adaptation.test.js",
-    "line": 477,
+    "line": 479,
     "name": "conflicting credible experience adjusts the retained target without deleting earlier history"
   },
   {
     "file": "adaptation.test.js",
-    "line": 490,
+    "line": 492,
     "name": "a corrupt staffing proposal prevented by real merit review is not a completed patronage act"
   },
   {
     "file": "adaptation.test.js",
-    "line": 509,
+    "line": 511,
     "name": "formal education adoption cannot manufacture knowledge before anyone learns"
   },
   {
     "file": "adaptation.test.js",
-    "line": 524,
+    "line": 526,
     "name": "knowledge assessment responds continuously to retained learning and subsequent wear-off"
   },
   {
     "file": "adaptation.test.js",
-    "line": 541,
+    "line": 543,
     "name": "agents do not read hidden true protection capacity when deciding whether to report"
   },
   {
     "file": "adaptation.test.js",
-    "line": 572,
+    "line": 574,
     "name": "experienced protection and credible failure change subjective safety in opposite directions"
   },
   {
     "file": "adaptation.test.js",
-    "line": 589,
+    "line": 591,
     "name": "inspection summaries stay numerical and reject malformed imported learning histories"
   },
   {
@@ -216,22 +216,22 @@
   },
   {
     "file": "audit.test.js",
-    "line": 456,
+    "line": 457,
     "name": "recent participation denominators remain bounded and inactivity cannot erase history"
   },
   {
     "file": "audit.test.js",
-    "line": 485,
+    "line": 486,
     "name": "a dense network alone does not produce a capture event; repeated abuse is required"
   },
   {
     "file": "audit.test.js",
-    "line": 511,
+    "line": 512,
     "name": "country mandates change real referrals without merging investigation, prosecution and courts"
   },
   {
     "file": "audit.test.js",
-    "line": 538,
+    "line": 539,
     "name": "out-of-scope audits cannot create false allegations through a false-positive draw"
   },
   {
@@ -297,12 +297,107 @@
   {
     "file": "dynamics.test.js",
     "line": 348,
-    "name": "pay adequacy assesses modeled take-home receipts rather than gross receipts"
+    "name": "pay adequacy assesses actual receipts without legacy wage withholding"
   },
   {
     "file": "dynamics.test.js",
     "line": 362,
     "name": "saved-state verification accepts key order and insignificant floating rounding while rejecting substantive edits"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 31,
+    "name": "new boundary and escrow accounts conserve the complete financial total"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 48,
+    "name": "ordinary accounts replace anonymous treasury inflow and wage withholding"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 59,
+    "name": "production needs an order and distinguishes domestic value added from imported inputs"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 74,
+    "name": "unused productive capacity does not guarantee sales and unaffordable orders stay pending"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 89,
+    "name": "investment cannot complete from calendar time alone or install the same project twice"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 119,
+    "name": "tax assessment can create arrears without manufacturing collected cash"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 131,
+    "name": "maintenance choices alter persistent capability and future unfinished work"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 148,
+    "name": "repair is bounded by documented loss and rebuilding requires actual work"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 166,
+    "name": "overlapping memberships cannot create extra personal time"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 177,
+    "name": "governance changes cannot approve themselves using their proposed weaker protections"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 197,
+    "name": "outsiders lack proposal authority and private oversight has an operative blocking route"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 210,
+    "name": "attention can fade while policy support remains unchanged"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 219,
+    "name": "personal credibility is audience-specific and hidden episodes change nobody"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 231,
+    "name": "realized coverage retains eligible acts even when no case is opened"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 247,
+    "name": "system diagrams read recorded flows without changing state and education does not headline casework"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 259,
+    "name": "passive reporting can be disabled without changing the coupled numerical state"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 269,
+    "name": "transfer and flow logs use a separate ID namespace from behavioral event identities"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 276,
+    "name": "a coupled paired run preserves exact starting society and finite stock bounds"
+  },
+  {
+    "file": "hybrid.test.js",
+    "line": 295,
+    "name": "saved monthly histories roundtrip and reject malformed or nonfinite records"
   },
   {
     "file": "initialization.test.js",
@@ -427,51 +522,51 @@
   {
     "file": "reporting.test.js",
     "line": 97,
-    "name": "same published engine produces identical initialization and conduct with monitoring enabled"
+    "name": "archived published engine retains its verified pre-extension initialization and conduct"
   },
   {
     "file": "reporting.test.js",
-    "line": 123,
+    "line": 124,
     "name": "output uses weighted actual activity over equal historical windows"
   },
   {
     "file": "reporting.test.js",
-    "line": 143,
+    "line": 144,
     "name": "delivered teaching is distinct from accepted influence and duplicate contacts"
   },
   {
     "file": "reporting.test.js",
-    "line": 164,
+    "line": 165,
     "name": "generic activity does not get credited as a staff rotation"
   },
   {
     "file": "reporting.test.js",
-    "line": 179,
+    "line": 180,
     "name": "read-only event references are relevant, dated and distinguish material changes"
   },
   {
     "file": "reporting.test.js",
-    "line": 245,
+    "line": 246,
     "name": "interpretations handle delivery, lag, missing evidence and direction without claiming causation"
   },
   {
     "file": "reporting.test.js",
-    "line": 264,
+    "line": 265,
     "name": "optional monitoring roundtrips without changing initial-state compatibility and rejects malformed records"
   },
   {
     "file": "reporting.test.js",
-    "line": 367,
+    "line": 368,
     "name": "all twelve policy renderings show relevant before/current conditions and stage panels"
   },
   {
     "file": "reporting.test.js",
-    "line": 404,
+    "line": 405,
     "name": "completion updates the final comparison and review slider without changing results"
   },
   {
     "file": "reporting.test.js",
-    "line": 431,
+    "line": 432,
     "name": "older saved results get an honest monitoring-unavailable notice"
   },
   {

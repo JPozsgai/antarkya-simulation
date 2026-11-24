@@ -395,9 +395,11 @@ test('skill learning feeds real subsequent organizational capacity', () => {
   const s = simulation(),
     o = s.services[0],
     person = s.agents[o.members.find((id) => s.agents[id].role === 2)];
+  A.Hybrid.open(s);
   s.monthlyAccounts();
   const before = o.capacity;
   L.work(person, 10);
+  A.Hybrid.open(s);
   s.monthlyAccounts();
   assert.ok(o.capacity > before);
   s.assertInvariants();

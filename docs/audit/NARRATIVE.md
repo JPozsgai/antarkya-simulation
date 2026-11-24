@@ -63,6 +63,32 @@ This describes the model that actually executes, with its design reasoning and b
 - [AK-OPS-01 — Worker scheduling, repetitions and browser operation](#ak-ops-01)
 - [AK-VAL-01 — Engineering verification and audit reproducibility](#ak-val-01)
 - [AK-VAL-02 — Evidence, assumptions, gaps and change control](#ak-val-02)
+- [AKX-SCP-01 — Scope and precedence](#akx-scp-01)
+- [AKX-TIM-01 — Monthly reporting with repeated internal events](#akx-tim-01)
+- [AKX-STA-01 — Single ownership of state and exact balances](#akx-sta-01)
+- [AKX-CAP-01 — Persistent organizational capability](#akx-cap-01)
+- [AKX-MNT-01 — Maintenance and unfinished work](#akx-mnt-01)
+- [AKX-MNT-02 — Repair and rebuilding](#akx-mnt-02)
+- [AKX-BEL-01 — Policy value versus implementation-performance beliefs](#akx-bel-01)
+- [AKX-AGY-01 — Office authority versus personal influence](#akx-agy-01)
+- [AKX-AGY-02 — Supporter dependence within TPB–utility](#akx-agy-02)
+- [AKX-GOV-01 — Hierarchy and relationship-based insiders](#akx-gov-01)
+- [AKX-GOV-02 — Constrained appointment and removal](#akx-gov-02)
+- [AKX-GOV-03 — Safeguard changes in all organizational categories](#akx-gov-03)
+- [AKX-COL-01 — Costly coalition formation and commitments](#akx-col-01)
+- [AKX-ATT-01 — Attention distinct from support](#akx-att-01)
+- [AKX-STR-01 — Combinable political responses](#akx-str-01)
+- [AKX-INF-01 — Audience-specific evolving personal influence](#akx-inf-01)
+- [AKX-COV-01 — Realized coverage only](#akx-cov-01)
+- [AKX-ENC-01 — Demand-generated encounters and capacity](#akx-enc-01)
+- [AKX-ECO-01 — Investment choices including political connections](#akx-eco-01)
+- [AKX-ECO-02 — Business productive-capacity stock](#akx-eco-02)
+- [AKX-ECO-03 — Demand-constrained production and allocation](#akx-eco-03)
+- [AKX-ECO-04 — Taxable activity, compliance and public receipts](#akx-eco-04)
+- [AKX-ECO-05 — Economic boundaries and output index](#akx-eco-05)
+- [AKX-MEA-01 — Monthly flow provenance and result explanations](#akx-mea-01)
+- [AKX-CAL-01 — Peru pilot and evidence register](#akx-cal-01)
+- [AKX-VAL-01 — Coupling, accounting, sensitivity and device validation](#akx-val-01)
 
 </details>
 
@@ -70,17 +96,17 @@ This describes the model that actually executes, with its design reasoning and b
 
 ## AK-OV-01 — Purpose, scope and version identity
 
-Antarkya explores how people, organizations, expectations and anti-corruption reforms interact. It is an experimental society, not a forecasting service or a country ranking. Its 1,000 people are a scaled synthetic population. A month is a model update, not a claim that every activity takes a real month. The user selects a country, estimated starting conditions, reforms, initial resource mobilization and duration. The run compares that reform scenario with a society that retains its existing arrangements but receives no additional selected reform. Reading the result therefore requires both its institutional indicators and its conduct and burden measures.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. Behavioral and display version 3.0.0 introduce the provisional hybrid extension. Duration remains 6–240 months and repetitions {1,5,10,20}. The earlier behavior is archived under /v2.4/. New-model country realism is not validated.
 
 [Numerical operationalization](TECHNICAL.html#ak-ov-01).
 
 <details><summary>Implementation references</summary>
 
-[`model.js:VERSION`](source/model.js.html#L28) · [`model.js:validate`](source/model.js.html#L126) · [`worker.js:summary`](source/worker.js.html#L31) · [`model.js:constructor`](source/model.js.html#L787) · [`app.js:profile`](source/app.js.html#L66) · [`app.js:summaryText`](source/app.js.html#L105).
+[`model.js:VERSION`](source/model.js.html#L28) · [`model.js:validate`](source/model.js.html#L127) · [`worker.js:summary`](source/worker.js.html#L32) · [`model.js:constructor`](source/model.js.html#L791) · [`app.js:profile`](source/app.js.html#L66) · [`app.js:summaryText`](source/app.js.html#L105).
 
 </details>
 
-**Boundary.** Passing implementation checks is not empirical validation. There is no national population expansion weight, endogenous GDP, complete legal system or calibrated policy forecast.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R01, R03, R54; S01, S02, S03.
 
@@ -94,7 +120,7 @@ Every dot is one person. Citizen, Business, Official and Politician describe a p
 
 <details><summary>Implementation references</summary>
 
-[`model.js:createPopulation`](source/model.js.html#L220) · [`config.js:countries`](source/config.js.html#L9).
+[`model.js:createPopulation`](source/model.js.html#L223) · [`config.js:countries`](source/config.js.html#L9).
 
 </details>
 
@@ -112,7 +138,7 @@ People begin with different resources, competencies, knowledge, expectations, af
 
 <details><summary>Implementation references</summary>
 
-[`model.js:createPopulation`](source/model.js.html#L220) · [`adaptation.js:initialize`](source/adaptation.js.html#L175) · [`adaptation.js:recentParticipation`](source/adaptation.js.html#L205) · [`adaptation.js:summary`](source/adaptation.js.html#L521) · [`adaptation.js:valid`](source/adaptation.js.html#L546) · [`adaptation.js:validSummary`](source/adaptation.js.html#L620).
+[`model.js:createPopulation`](source/model.js.html#L223) · [`adaptation.js:initialize`](source/adaptation.js.html#L175) · [`adaptation.js:recentParticipation`](source/adaptation.js.html#L205) · [`adaptation.js:summary`](source/adaptation.js.html#L521) · [`adaptation.js:valid`](source/adaptation.js.html#L546) · [`adaptation.js:validSummary`](source/adaptation.js.html#L620).
 
 </details>
 
@@ -130,7 +156,7 @@ Eight civic organizations and twenty-four business organizations coexist with si
 
 <details><summary>Implementation references</summary>
 
-[`model.js:createPopulation`](source/model.js.html#L220) · [`model.js:org`](source/model.js.html#L2081) · [`model.js:relationship`](source/model.js.html#L1249).
+[`model.js:createPopulation`](source/model.js.html#L223) · [`model.js:org`](source/model.js.html#L2043) · [`model.js:relationship`](source/model.js.html#L1259).
 
 </details>
 
@@ -148,7 +174,7 @@ People can apply to join civic or political organizations, give notice to leave 
 
 <details><summary>Implementation references</summary>
 
-[`model.js:organizations`](source/model.js.html#L3117) · [`model.js:changeEmployment`](source/model.js.html#L3092).
+[`model.js:organizations`](source/model.js.html#L3042) · [`model.js:changeEmployment`](source/model.js.html#L3017).
 
 </details>
 
@@ -166,7 +192,7 @@ Physical proximity affects whom people meet and how difficult access can be. Hom
 
 <details><summary>Implementation references</summary>
 
-[`model.js:createPopulation`](source/model.js.html#L220) · [`model.js:nearest`](source/model.js.html#L1497) · [`model.js:encounters`](source/model.js.html#L2227).
+[`model.js:createPopulation`](source/model.js.html#L223) · [`model.js:nearest`](source/model.js.html#L1507) · [`model.js:encounters`](source/model.js.html#L2189).
 
 </details>
 
@@ -184,7 +210,7 @@ All roles can value social, economic and political consequences for themselves, 
 
 <details><summary>Implementation references</summary>
 
-[`model.js:motives`](source/model.js.html#L95) · [`adaptation.js:advance`](source/adaptation.js.html#L419).
+[`model.js:motives`](source/model.js.html#L96) · [`adaptation.js:advance`](source/adaptation.js.html#L419).
 
 </details>
 
@@ -196,17 +222,17 @@ Design provenance: R08, R09, R10, AM01; S01, S04, S05.
 
 ## AK-DEC-01 — Subjective choice, TPB and random utility
 
-A person evaluates the options they face using perceived consequences, reference expectations and perceived control. Their own interests determine which consequences matter most. The person chooses the highest evaluated option, including occasion-specific uncertainty. A choice is therefore probabilistic across occasions while still maximizing the person’s assessed utility on each occasion. Actual money, counterpart acceptance, legal scope and implementation constraints determine whether that intention can be carried out. A high subjective benefit does not guarantee success.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. The inherited nine-dimensional utility equation retains norm .50, perceived-control .25 and Gumbel scale .20. Actual receipt expectations replace the former .90 net-income adjustment. Bounded supporter and policy-value inputs are documented in AKX-AGY-02; actual constraints remain separate.
 
 [Numerical operationalization](TECHNICAL.html#ak-dec-01).
 
 <details><summary>Implementation references</summary>
 
-[`model.js:choose`](source/model.js.html#L969) · [`adaptation.js:decision`](source/adaptation.js.html#L503) · [`adaptation.js:context`](source/adaptation.js.html#L490).
+[`model.js:choose`](source/model.js.html#L975) · [`adaptation.js:decision`](source/adaptation.js.html#L503) · [`adaptation.js:context`](source/adaptation.js.html#L490).
 
 </details>
 
-**Boundary.** Fixed consequence valuations, utility coefficients and Gumbel scale .20 are uncalibrated. Information uncertainty is not an explicit Bayesian model or a separately observed intention time series.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R11, R12, R13, AM01; S01, S04, S05.
 
@@ -220,7 +246,7 @@ The model uses different choices for bribery, refusal, implementation, reporting
 
 <details><summary>Implementation references</summary>
 
-[`model.js:effects`](source/model.js.html#L976) · [`model.js:encounter`](source/model.js.html#L2078) · [`model.js:budgetReview`](source/model.js.html#L1870) · [`model.js:processCases`](source/model.js.html#L2457).
+[`model.js:effects`](source/model.js.html#L983) · [`model.js:encounter`](source/model.js.html#L2040) · [`model.js:budgetReview`](source/model.js.html#L1832) · [`model.js:processCases`](source/model.js.html#L2381).
 
 </details>
 
@@ -232,17 +258,17 @@ Design provenance: R10, R12, R14, R44; S01, S02.
 
 ## AK-ACT-01 — Encounters, corruption and victimization
 
-A bribe offer, counterpart acceptance, completed exchange and subsequent case are different events. A voluntary exchange normally requires both parties to cooperate and an actual transfer. Extortion is treated separately: the official’s improper demand is recorded, while the victim’s coerced payment does not make the victim a voluntary corrupt participant. This distinction matters for both the map and impact measures. A failed proposal is not credited as a completed exchange or automatically treated as an integrity choice by its proposer.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. Poisson count sampling uses role intensities \[.65,.85,.20,.20\]. Every completed contact requires .015 PM from both participants. Pending service retries can be abandoned after six months through utility choice. Campaign and business-political opportunities remain. Explicit request IDs and episode keys distinguish repeated contacts. Voluntary bilateral completion, extortion demand and coerced payment remain distinct. The historical headline encounter rate still includes extortion demands and excludes newly modeled private diversion and taxable-activity concealment; those enter other conduct counts.
 
 [Numerical operationalization](TECHNICAL.html#ak-act-01).
 
 <details><summary>Implementation references</summary>
 
-[`model.js:encounter`](source/model.js.html#L2078) · [`model.js:encounters`](source/model.js.html#L2227) · [`model.js:completeCorruption`](source/model.js.html#L1141) · [`model.js:act`](source/model.js.html#L1097).
+[`model.js:encounter`](source/model.js.html#L2040) · [`model.js:encounters`](source/model.js.html#L2189) · [`model.js:completeCorruption`](source/model.js.html#L1150) · [`model.js:act`](source/model.js.html#L1106).
 
 </details>
 
-**Boundary.** The headline “completed corrupt encounters” includes extortion demands without successful payment. Administrative encounters themselves do not have a universal per-person or per-official time budget. Some original proactive politician/business and official/protection scenarios are absent.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R14, R44, R45; S01.
 
@@ -256,7 +282,7 @@ Shape reflects recorded conduct in the simulation, not public reputation or a di
 
 <details><summary>Implementation references</summary>
 
-[`model.js:choose`](source/model.js.html#L969) · [`model.js:act`](source/model.js.html#L1097) · [`model.js:recover`](source/model.js.html#L3435) · [`model.js:classActivity`](source/model.js.html#L3477).
+[`model.js:choose`](source/model.js.html#L975) · [`model.js:act`](source/model.js.html#L1106) · [`model.js:recover`](source/model.js.html#L3360) · [`model.js:classActivity`](source/model.js.html#L3416).
 
 </details>
 
@@ -274,7 +300,7 @@ Repeated action is not automatically an institution. The mechanism requires an e
 
 <details><summary>Implementation references</summary>
 
-[`model.js:link`](source/model.js.html#L1423) · [`model.js:practice`](source/model.js.html#L3530) · [`model.js:processServices`](source/model.js.html#L2272).
+[`model.js:link`](source/model.js.html#L1433) · [`model.js:practice`](source/model.js.html#L3469) · [`model.js:processServices`](source/model.js.html#L2196).
 
 </details>
 
@@ -292,7 +318,7 @@ Interventions encounter people with different openness, learning, retention, int
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:initialize`](source/adaptation.js.html#L175) · [`adaptation.js:receptiveness`](source/adaptation.js.html#L213) · [`adaptation.js:feedback`](source/adaptation.js.html#L237) · [`model.js:expose`](source/model.js.html#L1052) · [`adaptation.js:knowledge`](source/adaptation.js.html#L378) · [`adaptation.js:safety`](source/adaptation.js.html#L387).
+[`adaptation.js:initialize`](source/adaptation.js.html#L175) · [`adaptation.js:receptiveness`](source/adaptation.js.html#L213) · [`adaptation.js:feedback`](source/adaptation.js.html#L237) · [`model.js:expose`](source/model.js.html#L1059) · [`adaptation.js:knowledge`](source/adaptation.js.html#L378) · [`adaptation.js:safety`](source/adaptation.js.html#L387).
 
 </details>
 
@@ -346,7 +372,7 @@ Membership, support and trust are different ways of being connected. A repeated 
 
 <details><summary>Implementation references</summary>
 
-[`model.js:relationship`](source/model.js.html#L1249) · [`model.js:related`](source/model.js.html#L1416) · [`model.js:link`](source/model.js.html#L1423) · [`model.js:tie`](source/model.js.html#L1409) · [`model.js:peers`](source/model.js.html#L1363) · [`model.js:index`](source/model.js.html#L830) · [`model.js:recentAmount`](source/model.js.html#L1397).
+[`model.js:relationship`](source/model.js.html#L1259) · [`model.js:related`](source/model.js.html#L1426) · [`model.js:link`](source/model.js.html#L1433) · [`model.js:tie`](source/model.js.html#L1419) · [`model.js:peers`](source/model.js.html#L1373) · [`model.js:index`](source/model.js.html#L836) · [`model.js:recentAmount`](source/model.js.html#L1407).
 
 </details>
 
@@ -364,7 +390,7 @@ Media are functions of existing organizations and people, not a fifth class. Edi
 
 <details><summary>Implementation references</summary>
 
-[`model.js:publish`](source/model.js.html#L2792) · [`model.js:funding`](source/model.js.html#L3003) · [`model.js:fundingDependence`](source/model.js.html#L1389).
+[`model.js:publish`](source/model.js.html#L2716) · [`model.js:funding`](source/model.js.html#L2928) · [`model.js:fundingDependence`](source/model.js.html#L1399).
 
 </details>
 
@@ -382,7 +408,7 @@ Agents act on what they encounter and accept, not on the analyst’s map or the 
 
 <details><summary>Implementation references</summary>
 
-[`model.js:information`](source/model.js.html#L2890) · [`adaptation.js:messageRate`](source/adaptation.js.html#L480) · [`model.js:communicatedDecision`](source/model.js.html#L2732).
+[`model.js:information`](source/model.js.html#L2814) · [`adaptation.js:messageRate`](source/adaptation.js.html#L480) · [`model.js:communicatedDecision`](source/model.js.html#L2656).
 
 </details>
 
@@ -394,17 +420,17 @@ Design provenance: R13, R46, R47, R48; S01, S04, S06.
 
 ## AK-ECO-01 — Money, lawful receipts and living needs
 
-Money persists across encounters and months. Wages, purchases, bribes, fines and reform disbursements move resources between accounts rather than creating an automatic social loss. Agents face living costs and can become cash-constrained. Public pay depends on the employer and public treasury; private activity and the treasury also receive simplified regular inflows from an outside account. These are normalized model resources, not a full national economy.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. VA is explicit business output less imported consumed intermediates, plus background domestic production and performed public nonmarket output. Public output uses actual paid compensation times the performed-work share. The reference is the last reconstructed month’s VA and starts at 100. All prices are fixed normalized RU; no validated GDP-per-capita conversion is supplied. Initial boundary cash is a synthetic finite reserve, split 80% domestic/20% foreign. Primary-role compensation debits the actual employer account. The legacy 180\*g treasury grant and wage withholding are removed. Investment, reserve retention, eligible distribution and attempted diversion are distinct leader choices. Ownership is explicitly initialized to the organizational leader as a provisional prior; ordinary membership creates no dividend right. Diverted entrusted funds face internal review.
 
 [Numerical operationalization](TECHNICAL.html#ak-eco-01).
 
 <details><summary>Implementation references</summary>
 
-[`model.js:totalMoney`](source/model.js.html#L184) · [`model.js:transfer`](source/model.js.html#L197) · [`model.js:monthlyAccounts`](source/model.js.html#L1533) · [`model.js:changeEmployment`](source/model.js.html#L3092).
+[`model.js:totalMoney`](source/model.js.html#L185) · [`model.js:transfer`](source/model.js.html#L199) · [`model.js:monthlyAccounts`](source/model.js.html#L1543) · [`model.js:changeEmployment`](source/model.js.html#L3017).
 
 </details>
 
-**Boundary.** Outside is a large finite balancing account, not empirically modeled trade or taxation. GDP is fixed. Public transfers for a tax advantage are a stylized foregone-revenue mechanism, not a full tax-return model.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R30, R42, R43; S01.
 
@@ -412,17 +438,17 @@ Design provenance: R30, R42, R43; S01.
 
 ## AK-ECO-02 — Shared public staff capacity and priorities
 
-Public agencies cannot use the same staff time twice. Routine services, case work and reform implementation draw on a common capacity. Leaders’ priorities determine how much is reserved for each type of work, so a funded reform can still encounter a staffing bottleneck. Additional policies add competing demands. Competence and performed training affect capacity, while requests and files can remain unfinished.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. Each person starts with 1 PM. Organizational capacity is bounded by matching-primary-role staff time and competence. Existing public task debits are reconciled to individual ledgers between phases. Governance has work and approval minima; investment waits for delivery and actual installation work. The agenda is ordered within the encounter phase; this is not a full continuous-time scheduler. Reference staff count is fixed at initialization. Backlog adds .02 reference WU/month and subtracts completed current upkeep or eligible repair. Public staff allocation includes maintenance as a fourth competing category. Upkeep costs .10 RU per performed PM; costs are charged once even when one action both clears neglected work and repairs damage.
 
 [Numerical operationalization](TECHNICAL.html#ak-eco-02).
 
 <details><summary>Implementation references</summary>
 
-[`model.js:monthlyAccounts`](source/model.js.html#L1533) · [`model.js:scheduleWork`](source/model.js.html#L1591) · [`model.js:priorities`](source/model.js.html#L1295).
+[`model.js:monthlyAccounts`](source/model.js.html#L1543) · [`model.js:scheduleWork`](source/model.js.html#L1550) · [`model.js:priorities`](source/model.js.html#L1305).
 
 </details>
 
-**Boundary.** There is no reusable shared-infrastructure asset deduplication across policy budgets, nor a general private-person time ledger. Reservations do not automatically rebalance unused time within the month.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R33, R35, R39, R40, R41, R43; S01.
 
@@ -436,7 +462,7 @@ Administrative requests remain in queues until the relevant organization has mon
 
 <details><summary>Implementation references</summary>
 
-[`model.js:addService`](source/model.js.html#L2012) · [`model.js:processServices`](source/model.js.html#L2272) · [`model.js:experienced`](source/model.js.html#L1265).
+[`model.js:addService`](source/model.js.html#L1974) · [`model.js:processServices`](source/model.js.html#L2196) · [`model.js:experienced`](source/model.js.html#L1275).
 
 </details>
 
@@ -454,7 +480,7 @@ Ten country profiles provide dated background conditions and simplified inherite
 
 <details><summary>Implementation references</summary>
 
-[`model.js:conditions`](source/model.js.html#L170) · [`baseline.js:conditions`](source/baseline.js.html#L81) · [`baseline.js:organization`](source/baseline.js.html#L100) · [`profiles.js:data`](source/profiles.js.html#L9).
+[`model.js:conditions`](source/model.js.html#L171) · [`baseline.js:conditions`](source/baseline.js.html#L81) · [`baseline.js:organization`](source/baseline.js.html#L100) · [`profiles.js:data`](source/profiles.js.html#L9).
 
 </details>
 
@@ -472,7 +498,7 @@ Country differences are represented partly through which organizations perform p
 
 <details><summary>Implementation references</summary>
 
-[`config.js:countries`](source/config.js.html#L9) · [`model.js:eligibleTool`](source/model.js.html#L1175) · [`model.js:responsible`](source/model.js.html#L2420) · [`model.js:makeCase`](source/model.js.html#L2313).
+[`config.js:countries`](source/config.js.html#L9) · [`model.js:eligibleTool`](source/model.js.html#L1185) · [`model.js:responsible`](source/model.js.html#L2344) · [`model.js:makeCase`](source/model.js.html#L2237).
 
 </details>
 
@@ -490,7 +516,7 @@ The starting society includes a model-generated year of prior activity. This sup
 
 <details><summary>Implementation references</summary>
 
-[`model.js:createInitial`](source/model.js.html#L522) · [`model.js:initialDifference`](source/model.js.html#L589) · [`model.js:validateInitial`](source/model.js.html#L616) · [`reporting.js:remember`](source/reporting.js.html#L215) · [`app.js:signature`](source/app.js.html#L284) · [`app.js:initialFor`](source/app.js.html#L291).
+[`model.js:createInitial`](source/model.js.html#L525) · [`model.js:initialDifference`](source/model.js.html#L593) · [`model.js:validateInitial`](source/model.js.html#L620) · [`reporting.js:remember`](source/reporting.js.html#L219) · [`app.js:signature`](source/app.js.html#L284) · [`app.js:initialFor`](source/app.js.html#L291).
 
 </details>
 
@@ -508,7 +534,7 @@ Probability is implemented through reproducible draws. The same initial state an
 
 <details><summary>Implementation references</summary>
 
-[`model.js:hash`](source/model.js.html#L43) · [`model.js:draw`](source/model.js.html#L56) · [`model.js:rand`](source/model.js.html#L823) · [`model.js:generator`](source/model.js.html#L63) · [`run-seeds.js:newEventSeed`](source/run-seeds.js.html#L15) · [`run-seeds.js:prepareRun`](source/run-seeds.js.html#L30).
+[`model.js:hash`](source/model.js.html#L44) · [`model.js:draw`](source/model.js.html#L57) · [`model.js:rand`](source/model.js.html#L829) · [`model.js:generator`](source/model.js.html#L64) · [`run-seeds.js:newEventSeed`](source/run-seeds.js.html#L15) · [`run-seeds.js:prepareRun`](source/run-seeds.js.html#L30).
 
 </details>
 
@@ -526,7 +552,7 @@ Selecting a reform makes the formal reform active at the start. It does not simu
 
 <details><summary>Implementation references</summary>
 
-[`model.js:adopt`](source/model.js.html#L921) · [`model.js:coverage`](source/model.js.html#L1213) · [`model.js:covered`](source/model.js.html#L1224) · [`model.js:operational`](source/model.js.html#L1240) · [`model.js:cap`](source/model.js.html#L862).
+[`model.js:adopt`](source/model.js.html#L927) · [`model.js:coverage`](source/model.js.html#L1223) · [`model.js:covered`](source/model.js.html#L1234) · [`model.js:operational`](source/model.js.html#L1250) · [`model.js:cap`](source/model.js.html#L868).
 
 </details>
 
@@ -544,7 +570,7 @@ The user’s percentage sets the starting share of estimated additional resource
 
 <details><summary>Implementation references</summary>
 
-[`model.js:requirements`](source/model.js.html#L207) · [`model.js:recipients`](source/model.js.html#L879) · [`model.js:fundPolicies`](source/model.js.html#L1628) · [`config.js:costs`](source/config.js.html#L164).
+[`model.js:requirements`](source/model.js.html#L210) · [`model.js:recipients`](source/model.js.html#L885) · [`model.js:fundPolicies`](source/model.js.html#L1588) · [`config.js:costs`](source/config.js.html#L164).
 
 </details>
 
@@ -562,7 +588,7 @@ An implementing leader can implement, comply selectively, resist or redirect res
 
 <details><summary>Implementation references</summary>
 
-[`model.js:implementPolicies`](source/model.js.html#L1647) · [`model.js:priorities`](source/model.js.html#L1295) · [`model.js:operatingPolicy`](source/model.js.html#L1041).
+[`model.js:implementPolicies`](source/model.js.html#L1607) · [`model.js:priorities`](source/model.js.html#L1305) · [`model.js:operatingPolicy`](source/model.js.html#L1048).
 
 </details>
 
@@ -580,7 +606,7 @@ Initial mobilization is chosen by the user, but later resource decisions belong 
 
 <details><summary>Implementation references</summary>
 
-[`model.js:budgetReview`](source/model.js.html#L1870) · [`model.js:policyFeedback`](source/model.js.html#L1331) · [`model.js:politicalReview`](source/model.js.html#L3317).
+[`model.js:budgetReview`](source/model.js.html#L1832) · [`model.js:policyFeedback`](source/model.js.html#L1341) · [`model.js:politicalReview`](source/model.js.html#L3242).
 
 </details>
 
@@ -598,7 +624,7 @@ A modeled corrupt act need not become a case. A victim or witness must decide to
 
 <details><summary>Implementation references</summary>
 
-[`model.js:report`](source/model.js.html#L2029) · [`model.js:makeCase`](source/model.js.html#L2313) · [`model.js:audit`](source/model.js.html#L2378).
+[`model.js:report`](source/model.js.html#L1991) · [`model.js:makeCase`](source/model.js.html#L2237) · [`model.js:audit`](source/model.js.html#L2302).
 
 </details>
 
@@ -616,7 +642,7 @@ Case work requires a competent organization, staff time, money and elapsed proce
 
 <details><summary>Implementation references</summary>
 
-[`model.js:processCases`](source/model.js.html#L2457) · [`model.js:responsible`](source/model.js.html#L2420).
+[`model.js:processCases`](source/model.js.html#L2381) · [`model.js:responsible`](source/model.js.html#L2344).
 
 </details>
 
@@ -634,7 +660,7 @@ A financial order and actual collection are not the same. A person may owe money
 
 <details><summary>Implementation references</summary>
 
-[`model.js:collectLiabilities`](source/model.js.html#L2754) · [`model.js:communicatedDecision`](source/model.js.html#L2732) · [`adaptation.js:accountability`](source/adaptation.js.html#L396) · [`model.js:processCases`](source/model.js.html#L2457) · [`model.js:riskExperience`](source/model.js.html#L1073).
+[`model.js:collectLiabilities`](source/model.js.html#L2678) · [`model.js:communicatedDecision`](source/model.js.html#L2656) · [`adaptation.js:accountability`](source/adaptation.js.html#L396) · [`model.js:processCases`](source/model.js.html#L2381) · [`model.js:riskExperience`](source/model.js.html#L1082).
 
 </details>
 
@@ -646,17 +672,17 @@ Design provenance: R37, R43, R45, AM06; S01.
 
 ## AK-GOV-01 — Political support, officeholding and authority
 
-Political authority can change without replacing people or erasing their histories. Voters evaluate candidates using perceived conduct and affiliation, not the analyst’s conduct symbols. China uses a personnel-appointment mode rather than a competitive national multiparty election. Campaign opportunities occur before scheduled reviews. The actor controlling budget reviews is only one part of a simplified political system; the model is not an election forecast.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. Public appointments can be initiated through the controller; category-specific internal initiators also exist. Candidate pools contain up to eight matching-primary-role staff. Proposals snapshot the current leader, approval roster and protection. They require at least two months and .03 PM of preparation, all required vote opportunities, a strict majority and satisfied removal protection. Inherited presidential, parliamentary and appointment-mode national review remains as documented in config.js.
 
 [Numerical operationalization](TECHNICAL.html#ak-gov-01).
 
 <details><summary>Implementation references</summary>
 
-[`model.js:politicalReview`](source/model.js.html#L3317) · [`config.js:countries`](source/config.js.html#L9).
+[`model.js:politicalReview`](source/model.js.html#L3242) · [`config.js:countries`](source/config.js.html#L9).
 
 </details>
 
-**Boundary.** All-person voting, simplified coalition formation, multiple office flags and relative calendars are scenario mechanisms rather than complete national electoral law. No legislature, campaign finance market or voter-demographic calibration is modeled.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R51, R52, R53, R31; S01.
 
@@ -664,17 +690,17 @@ Design provenance: R51, R52, R53, R31; S01.
 
 ## AK-MAC-01 — Collective feedback and consequential developments
 
-Collective change arises through stocks, queues, budgets, expectations, information and actor reactions. The model reports consequential developments rather than printing every routine transaction in the default feed. An emerging corrupt network requires repeated linked conduct and leverage, not simply dense social connections. National GDP does not rise because the simulated treasury accumulates cash. Implementation trajectories can be discussed from records, but are not assigned as hidden predetermined outcomes.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. VA is explicit business output less imported consumed intermediates, plus background domestic production and performed public nonmarket output. Public output uses actual paid compensation times the performed-work share. The reference is the last reconstructed month’s VA and starts at 100. All prices are fixed normalized RU; no validated GDP-per-capita conversion is supplied. Initial boundary cash is a synthetic finite reserve, split 80% domestic/20% foreign. Macro events observe economic/institutional development; an event label does not apply another generic effect.
 
 [Numerical operationalization](TECHNICAL.html#ak-mac-01).
 
 <details><summary>Implementation references</summary>
 
-[`model.js:macroDevelopments`](source/model.js.html#L3495) · [`model.js:policyFeedback`](source/model.js.html#L1331) · [`model.js:metrics`](source/model.js.html#L3653).
+[`model.js:macroDevelopments`](source/model.js.html#L3434) · [`model.js:policyFeedback`](source/model.js.html#L1341) · [`model.js:metrics`](source/model.js.html#L3592).
 
 </details>
 
-**Boundary.** There is no separate GDP-growth equation, protest/organized-demand process, complete state-capture model or automatic five-trajectory classifier. Some macro variables are derived observations rather than causal state variables.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R36, R38, R42, R43, R59; S01, S08.
 
@@ -688,7 +714,7 @@ Organizational reform can strengthen screening/inquiry capability and staff skil
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.aca`](source/adaptation.js.html#L43) · [`config.js:costs.aca`](source/config.js.html#L166) · [`reporting.js:definitions.aca`](source/reporting.js.html#L39) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.aca`](source/adaptation.js.html#L43) · [`config.js:costs.aca`](source/config.js.html#L166) · [`reporting.js:definitions.aca`](source/reporting.js.html#L39) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -706,7 +732,7 @@ Merit reform changes actual review and staffing, not an honesty label assigned t
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.merit`](source/adaptation.js.html#L53) · [`config.js:costs.merit`](source/config.js.html#L169) · [`reporting.js:definitions.merit`](source/reporting.js.html#L50) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.merit`](source/adaptation.js.html#L53) · [`config.js:costs.merit`](source/config.js.html#L169) · [`reporting.js:definitions.merit`](source/reporting.js.html#L50) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -724,7 +750,7 @@ Transfers can change who works together and who controls a service function, but
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.rotation`](source/adaptation.js.html#L62) · [`config.js:costs.rotation`](source/config.js.html#L172) · [`reporting.js:definitions.rotation`](source/reporting.js.html#L61) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.rotation`](source/adaptation.js.html#L62) · [`config.js:costs.rotation`](source/config.js.html#L172) · [`reporting.js:definitions.rotation`](source/reporting.js.html#L61) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -742,7 +768,7 @@ Protection must be encountered and delivered in time to matter. A reporter can l
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.protection`](source/adaptation.js.html#L71) · [`config.js:costs.protection`](source/config.js.html#L175) · [`reporting.js:definitions.protection`](source/reporting.js.html#L72) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.protection`](source/adaptation.js.html#L71) · [`config.js:costs.protection`](source/config.js.html#L175) · [`reporting.js:definitions.protection`](source/reporting.js.html#L72) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -760,7 +786,7 @@ The model distinguishes the existence of a declaration obligation, record comple
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.declarations`](source/adaptation.js.html#L80) · [`config.js:costs.declarations`](source/config.js.html#L178) · [`reporting.js:definitions.declarations`](source/reporting.js.html#L83) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.declarations`](source/adaptation.js.html#L80) · [`config.js:costs.declarations`](source/config.js.html#L178) · [`reporting.js:definitions.declarations`](source/reporting.js.html#L83) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -778,7 +804,7 @@ Relationships do not automatically prove an improper conflict. The implemented s
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.conflicts`](source/adaptation.js.html#L89) · [`config.js:costs.conflicts`](source/config.js.html#L181) · [`reporting.js:definitions.conflicts`](source/reporting.js.html#L94) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.conflicts`](source/adaptation.js.html#L89) · [`config.js:costs.conflicts`](source/config.js.html#L181) · [`reporting.js:definitions.conflicts`](source/reporting.js.html#L94) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -796,7 +822,7 @@ Scrutiny depends on actual time, accessible records and competent work. Greater 
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.oversight`](source/adaptation.js.html#L98) · [`config.js:costs.oversight`](source/config.js.html#L184) · [`reporting.js:definitions.oversight`](source/reporting.js.html#L105) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.oversight`](source/adaptation.js.html#L98) · [`config.js:costs.oversight`](source/config.js.html#L184) · [`reporting.js:definitions.oversight`](source/reporting.js.html#L105) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -808,17 +834,17 @@ Design provenance: R22, R45, R57; S01, S03, S09.
 
 ## AK-POL-PAY — Remuneration and incentives
 
-Actual lawful receipts can reduce financial insecurity, but remuneration does not receive a generic honesty bonus. The relevant institutional objective is reliable adequate pay, and impact must still be assessed from conduct and burdens.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. Actual regular and supplemental public receipts are no longer reduced by the superseded 10% wage withholding. Supplements remain conserved transfers from installed pay allocations. Adequacy compares actual receipts with ordinary needs over six observations.
 
 [Numerical operationalization](TECHNICAL.html#ak-pol-pay).
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.pay`](source/adaptation.js.html#L107) · [`config.js:costs.pay`](source/config.js.html#L187) · [`reporting.js:definitions.pay`](source/reporting.js.html#L116) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.pay`](source/adaptation.js.html#L107) · [`config.js:costs.pay`](source/config.js.html#L187) · [`reporting.js:definitions.pay`](source/reporting.js.html#L116) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
-**Boundary.** Career incentives beyond simple role income/recruitment are not a full predictable promotion system.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R22, R43, R57, AM06; S01, S03, S09.
 
@@ -832,7 +858,7 @@ A credible penalty requires an appropriate decision, assessable liability and ac
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.penalties`](source/adaptation.js.html#L116) · [`config.js:costs.penalties`](source/config.js.html#L190) · [`reporting.js:definitions.penalties`](source/reporting.js.html#L127) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.penalties`](source/adaptation.js.html#L116) · [`config.js:costs.penalties`](source/config.js.html#L190) · [`reporting.js:definitions.penalties`](source/reporting.js.html#L127) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -850,7 +876,7 @@ Accessible information can make decisions more scrutinizable and supply journali
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.disclosure`](source/adaptation.js.html#L125) · [`config.js:costs.disclosure`](source/config.js.html#L193) · [`reporting.js:definitions.disclosure`](source/reporting.js.html#L138) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.disclosure`](source/adaptation.js.html#L125) · [`config.js:costs.disclosure`](source/config.js.html#L193) · [`reporting.js:definitions.disclosure`](source/reporting.js.html#L138) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -868,7 +894,7 @@ Access to an accountability channel differs from choosing to use it and from the
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.complaints`](source/adaptation.js.html#L134) · [`config.js:costs.complaints`](source/config.js.html#L196) · [`reporting.js:definitions.complaints`](source/reporting.js.html#L149) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.complaints`](source/adaptation.js.html#L134) · [`config.js:costs.complaints`](source/config.js.html#L196) · [`reporting.js:definitions.complaints`](source/reporting.js.html#L149) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -886,7 +912,7 @@ Education is a delivered experience, not an automatic conversion rate. People ma
 
 <details><summary>Implementation references</summary>
 
-[`adaptation.js:map.education`](source/adaptation.js.html#L143) · [`config.js:costs.education`](source/config.js.html#L199) · [`reporting.js:definitions.education`](source/reporting.js.html#L160) · [`model.js:implementPolicies`](source/model.js.html#L1647).
+[`adaptation.js:map.education`](source/adaptation.js.html#L143) · [`config.js:costs.education`](source/config.js.html#L199) · [`reporting.js:definitions.education`](source/reporting.js.html#L160) · [`model.js:implementPolicies`](source/model.js.html#L1607).
 
 </details>
 
@@ -904,7 +930,7 @@ A policy is assessed against its particular institutional objective. The model k
 
 <details><summary>Implementation references</summary>
 
-[`model.js:diagnostic`](source/model.js.html#L3695) · [`model.js:assessment`](source/model.js.html#L3832) · [`reporting.js:sample`](source/reporting.js.html#L243) · [`reporting.js:outcomeMeta`](source/reporting.js.html#L505).
+[`model.js:diagnostic`](source/model.js.html#L3634) · [`model.js:assessment`](source/model.js.html#L3771) · [`reporting.js:sample`](source/reporting.js.html#L247) · [`reporting.js:outcomeMeta`](source/reporting.js.html#L509).
 
 </details>
 
@@ -922,7 +948,7 @@ Impact asks how actual modeled conduct and consequences differ from the no-new-r
 
 <details><summary>Implementation references</summary>
 
-[`model.js:comparison`](source/model.js.html#L4003) · [`visualization.js:impactWindow`](source/visualization.js.html#L153) · [`visualization.js:impactSeries`](source/visualization.js.html#L181) · [`visualization.js:impactDifference`](source/visualization.js.html#L200) · [`visualization.js:hash`](source/visualization.js.html#L16).
+[`model.js:comparison`](source/model.js.html#L3944) · [`visualization.js:impactWindow`](source/visualization.js.html#L153) · [`visualization.js:impactSeries`](source/visualization.js.html#L181) · [`visualization.js:impactDifference`](source/visualization.js.html#L200) · [`visualization.js:hash`](source/visualization.js.html#L16).
 
 </details>
 
@@ -940,7 +966,7 @@ The audit-facing assessment compares the inherited condition before formal adopt
 
 <details><summary>Implementation references</summary>
 
-[`reporting.js:init`](source/reporting.js.html#L188) · [`reporting.js:activity`](source/reporting.js.html#L181) · [`reporting.js:record`](source/reporting.js.html#L423) · [`reporting.js:windowValue`](source/reporting.js.html#L486) · [`reporting.js:sample`](source/reporting.js.html#L243) · [`model.js:record`](source/model.js.html#L2894) · [`model.js:reporting`](source/model.js.html#L3688) · [`reporting.js:remember`](source/reporting.js.html#L215) · [`reporting.js:counterAt`](source/reporting.js.html#L224) · [`reporting.js:recent`](source/reporting.js.html#L469) · [`reporting.js:view`](source/reporting.js.html#L477).
+[`reporting.js:init`](source/reporting.js.html#L192) · [`reporting.js:activity`](source/reporting.js.html#L181) · [`reporting.js:record`](source/reporting.js.html#L427) · [`reporting.js:windowValue`](source/reporting.js.html#L490) · [`reporting.js:sample`](source/reporting.js.html#L247) · [`model.js:record`](source/model.js.html#L2818) · [`model.js:reporting`](source/model.js.html#L3627) · [`reporting.js:remember`](source/reporting.js.html#L219) · [`reporting.js:counterAt`](source/reporting.js.html#L228) · [`reporting.js:recent`](source/reporting.js.html#L473) · [`reporting.js:view`](source/reporting.js.html#L481).
 
 </details>
 
@@ -958,7 +984,7 @@ Each stage has a short interpretation based on the measured result and, where av
 
 <details><summary>Implementation references</summary>
 
-[`reporting.js:interpret`](source/reporting.js.html#L587) · [`reporting.js:eventsFor`](source/reporting.js.html#L527) · [`app.js:reportMeaning`](source/app.js.html#L802) · [`app.js:showReportEvent`](source/app.js.html#L907).
+[`reporting.js:interpret`](source/reporting.js.html#L591) · [`reporting.js:eventsFor`](source/reporting.js.html#L531) · [`app.js:reportMeaning`](source/app.js.html#L804) · [`app.js:showReportEvent`](source/app.js.html#L909).
 
 </details>
 
@@ -976,7 +1002,7 @@ The map combines an integrity-related radial measure with affinity and cooperati
 
 <details><summary>Implementation references</summary>
 
-[`visualization.js:projection`](source/visualization.js.html#L25) · [`app.js:drawMap`](source/app.js.html#L579).
+[`visualization.js:projection`](source/visualization.js.html#L25) · [`app.js:drawMap`](source/app.js.html#L581).
 
 </details>
 
@@ -994,7 +1020,7 @@ Inspection emphasizes people with network centrality or practical control over o
 
 <details><summary>Implementation references</summary>
 
-[`model.js:influential`](source/model.js.html#L3867) · [`model.js:emit`](source/model.js.html#L842) · [`app.js:inspector`](source/app.js.html#L504) · [`app.js:renderFeed`](source/app.js.html#L540) · [`visualization.js:importantEvents`](source/visualization.js.html#L140) · [`model.js:view`](source/model.js.html#L3866) · [`app.js:learningPanel`](source/app.js.html#L445) · [`app.js:selectActor`](source/app.js.html#L528) · [`app.js:reportEventButtons`](source/app.js.html#L784).
+[`model.js:influential`](source/model.js.html#L3806) · [`model.js:emit`](source/model.js.html#L848) · [`app.js:inspector`](source/app.js.html#L505) · [`app.js:renderFeed`](source/app.js.html#L542) · [`visualization.js:importantEvents`](source/visualization.js.html#L140) · [`model.js:view`](source/model.js.html#L3805) · [`app.js:learningPanel`](source/app.js.html#L446) · [`app.js:selectActor`](source/app.js.html#L529) · [`app.js:reportEventButtons`](source/app.js.html#L786).
 
 </details>
 
@@ -1006,17 +1032,17 @@ Design provenance: R46, R49, R61; S01.
 
 ## AK-VIS-03 — One-page interface, synchronized assessment and review
 
-Setup, simulation and assessment remain on one page. Setup edits prepare a different scenario rather than changing an active run. The assessment presents output, outcome and impact together; on narrow screens its three headlines remain visible and one larger stage chart is selected below. A common month marker connects the charts and condition table. Expanded implementation details remain available without overwhelming the primary results.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. The one-page interface retains its existing map/assessment controls and adds a collapsible stock-and-flow view with a recorded-month slider, Next month, replay and policy/economic/governance selectors. Rendering never advances behavior except the explicit Next month action at the latest paused month.
 
 [Numerical operationalization](TECHNICAL.html#ak-vis-03).
 
 <details><summary>Implementation references</summary>
 
-[`app.js:getConfig`](source/app.js.html#L73) · [`app.js:pending`](source/app.js.html#L132) · [`app.js:renderPolicyAssessment`](source/app.js.html#L959) · [`app.js:renderAssessment`](source/app.js.html#L1265) · [`app.js:render`](source/app.js.html#L1451) · [`app.js:status`](source/app.js.html#L58) · [`app.js:remember`](source/app.js.html#L94) · [`app.js:buildPolicies`](source/app.js.html#L149) · [`app.js:countryFields`](source/app.js.html#L181) · [`app.js:applyConfig`](source/app.js.html#L261) · [`app.js:baseSummary`](source/app.js.html#L303) · [`app.js:preview`](source/app.js.html#L316) · [`app.js:tinyComparison`](source/app.js.html#L759) · [`app.js:reportFormat`](source/app.js.html#L773) · [`app.js:reportChart`](source/app.js.html#L821) · [`app.js:renderReplications`](source/app.js.html#L1359) · [`app.js:selectedImpact`](source/app.js.html#L1412) · [`app.js:drawImpact`](source/app.js.html#L1421).
+[`app.js:getConfig`](source/app.js.html#L73) · [`app.js:pending`](source/app.js.html#L132) · [`app.js:renderPolicyAssessment`](source/app.js.html#L961) · [`app.js:renderAssessment`](source/app.js.html#L1267) · [`app.js:render`](source/app.js.html#L1453) · [`app.js:status`](source/app.js.html#L58) · [`app.js:remember`](source/app.js.html#L94) · [`app.js:buildPolicies`](source/app.js.html#L149) · [`app.js:countryFields`](source/app.js.html#L181) · [`app.js:applyConfig`](source/app.js.html#L261) · [`app.js:baseSummary`](source/app.js.html#L303) · [`app.js:preview`](source/app.js.html#L317) · [`app.js:tinyComparison`](source/app.js.html#L761) · [`app.js:reportFormat`](source/app.js.html#L775) · [`app.js:reportChart`](source/app.js.html#L823) · [`app.js:renderReplications`](source/app.js.html#L1361) · [`app.js:selectedImpact`](source/app.js.html#L1414) · [`app.js:drawImpact`](source/app.js.html#L1423).
 
 </details>
 
-**Boundary.** Automated DOM harnesses are not an actual Android or browser layout/performance benchmark.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R54, R61; S01.
 
@@ -1030,7 +1056,7 @@ A saved scenario retains its setup and exact starting society. Completed results
 
 <details><summary>Implementation references</summary>
 
-[`app.js:payload`](source/app.js.html#L1676) · [`app.js:validatePayload`](source/app.js.html#L1693) · [`app.js:loadPayload`](source/app.js.html#L1792) · [`app.js:storeAction`](source/app.js.html#L1614) · [`app.js:csv`](source/app.js.html#L1834) · [`app.js:openDB`](source/app.js.html#L1594) · [`app.js:refreshSaves`](source/app.js.html#L1660) · [`app.js:download`](source/app.js.html#L1821) · [`app.js:showStorage`](source/app.js.html#L1859).
+[`app.js:payload`](source/app.js.html#L1679) · [`app.js:validatePayload`](source/app.js.html#L1696) · [`app.js:loadPayload`](source/app.js.html#L1798) · [`app.js:storeAction`](source/app.js.html#L1617) · [`app.js:csv`](source/app.js.html#L1840) · [`app.js:openDB`](source/app.js.html#L1597) · [`app.js:refreshSaves`](source/app.js.html#L1663) · [`app.js:download`](source/app.js.html#L1827) · [`app.js:showStorage`](source/app.js.html#L1865).
 
 </details>
 
@@ -1042,17 +1068,17 @@ Design provenance: R55, R62; S01, S10.
 
 ## AK-OPS-01 — Worker scheduling, repetitions and browser operation
 
-The browser runs the simulation in a worker so processing does not have to block interface controls. Each visible reform trajectory has its own paired baseline, and extra repetitions run sequentially while preserving the initial society. Pace changes scheduling and rendering, not the model’s probability rules. Pausing or stepping continues the same event identity; starting another run normally creates a fresh future-event seed.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. Workers import the twelve current runtime modules, including hybrid.js and system-view.js where appropriate. The same v3 engine runs in Node and the browser. First-run trajectories and paired baseline use the identical initialized society; repeats change only subsequent keyed draws.
 
 [Numerical operationalization](TECHNICAL.html#ak-ops-01).
 
 <details><summary>Implementation references</summary>
 
-[`worker.js:makePair`](source/worker.js.html#L44) · [`worker.js:advance`](source/worker.js.html#L151) · [`worker.js:pump`](source/worker.js.html#L162) · [`worker.js:finishPair`](source/worker.js.html#L72) · [`app.js:initializeWorker`](source/app.js.html#L345) · [`app.js:stopWorker`](source/app.js.html#L335) · [`app.js:start`](source/app.js.html#L398) · [`app.js:reset`](source/app.js.html#L426) · [`worker.js:send`](source/worker.js.html#L52).
+[`worker.js:makePair`](source/worker.js.html#L46) · [`worker.js:advance`](source/worker.js.html#L153) · [`worker.js:pump`](source/worker.js.html#L164) · [`worker.js:finishPair`](source/worker.js.html#L74) · [`app.js:initializeWorker`](source/app.js.html#L346) · [`app.js:stopWorker`](source/app.js.html#L336) · [`app.js:start`](source/app.js.html#L399) · [`app.js:reset`](source/app.js.html#L427) · [`worker.js:send`](source/worker.js.html#L54).
 
 </details>
 
-**Boundary.** No installed application, server-side simulation, external API key or live national data feed is required. Actual Android runtime/memory remains unbenchmarked.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R03, R55, R61; S01.
 
@@ -1060,17 +1086,17 @@ Design provenance: R03, R55, R61; S01.
 
 ## AK-VAL-01 — Engineering verification and audit reproducibility
 
-An auditor should be able to trace a statement to a mechanism, a source implementation and an appropriate check. Engineering tests examine consistency, replay, actual observation counts and selected causal pathways. They do not establish the empirical truth of the coefficients. This documentation therefore provides source hashes, function references, complete numeric occurrences, consequence arrays, rule coverage and an explicit gap register alongside the prose.
+The provisional v3 release extends this mechanism through actual stock, resource and actor processes. Runtime invariants add finite productive capacity, maintained/repaired capability, foreign and coalition accounts and a shared 1-PM personal budget. Test catalogues and logs identify executed checks. Semantic fingerprints now pin the explicitly authorized v3 behavioral release, with the v2.4 fingerprints retained separately.
 
 [Numerical operationalization](TECHNICAL.html#ak-val-01).
 
 <details><summary>Implementation references</summary>
 
-[`model.js:assertInvariants`](source/model.js.html#L3966) · [`model.js:snapshot`](source/model.js.html#L3959) · [`reporting.js:valid`](source/reporting.js.html#L632) · [`model.js:finite`](source/model.js.html#L627) · [`model.js:ids`](source/model.js.html#L3744).
+[`model.js:assertInvariants`](source/model.js.html#L3906) · [`model.js:snapshot`](source/model.js.html#L3899) · [`reporting.js:valid`](source/reporting.js.html#L636) · [`model.js:finite`](source/model.js.html#L631) · [`model.js:ids`](source/model.js.html#L3683).
 
 </details>
 
-**Boundary.** No comprehensive sensitivity analysis, out-of-sample calibration, national ranking validation, independent replication or Android performance certification has been completed.
+**Boundary.** All numerical response strengths and newly introduced governance/economic mappings remain uncalibrated. Archived v2.4 formulas are historical; current executable source and AKX mechanisms are authoritative.
 
 Design provenance: R55, R58, R62; S01, S11.
 
@@ -1091,6 +1117,474 @@ Transparency requires showing what is missing as well as what is present. The ag
 **Boundary.** This is documentation for inspection, not a claim of conformance to every original aspiration or certification under ODD/TRACE. Private supplied documents and copyrighted full texts are not redistributed by the audit package.
 
 Design provenance: R21, R23, R25, R58; S01, S02, S11.
+
+<a id="akx-scp-01"></a>
+
+## AKX-SCP-01 — Scope and precedence
+
+The release retains 1,000 people and all ten country profiles. Peru calibration and empirical pilot validation remain pending. The new economic and governance processes run with common, visibly declared engineering assumptions rather than fitted national response parameters.
+
+[Numerical operationalization](TECHNICAL.html#akx-scp-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:initialize`](source/hybrid.js.html#L82).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D26, D30; S09.
+
+<a id="akx-tim-01"></a>
+
+## AKX-TIM-01 — Monthly reporting with repeated internal events
+
+A reporting month contains ordered repeated encounters and progressive work. Available personal time is shared across primary employment, upkeep, contacts, governance and coalition activity; membership creates no additional time.
+
+[Numerical operationalization](TECHNICAL.html#akx-tim-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:open`](source/hybrid.js.html#L253) · [`hybrid.js:personalTime`](source/hybrid.js.html#L351) · [`hybrid.js:synchronizeTime`](source/hybrid.js.html#L379).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D17, D20; S09.
+
+<a id="akx-sta-01"></a>
+
+## AKX-STA-01 — Single ownership of state and exact balances
+
+Every modeled stock has an owner. Personal beliefs remain in individuals, organizational capability and productive capacity remain in organizations, and boundary cash has named counterpart accounts. Diagram means are derived observations.
+
+[Numerical operationalization](TECHNICAL.html#akx-sta-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:initialize`](source/hybrid.js.html#L82) · [`hybrid.js:recordTransfer`](source/hybrid.js.html#L176) · [`hybrid.js:stocks`](source/hybrid.js.html#L1692).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D19; S09.
+
+<a id="akx-cap-01"></a>
+
+## AKX-CAP-01 — Persistent organizational capability
+
+Capability persists through interruptions and is affected by actual upkeep. Current delivery also needs funds, staff time and authority; a capability stock alone cannot make a policy operate.
+
+[Numerical operationalization](TECHNICAL.html#akx-cap-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:care`](source/hybrid.js.html#L492).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D01; S09.
+
+<a id="akx-mnt-01"></a>
+
+## AKX-MNT-01 — Maintenance and unfinished work
+
+Leaders choose maintenance, repair, rebuilding or deferral through the established utility framework. Each performed task consumes actual organizational money and the same finite time used by other activities.
+
+[Numerical operationalization](TECHNICAL.html#akx-mnt-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:maintenanceNeed`](source/hybrid.js.html#L485) · [`hybrid.js:care`](source/hybrid.js.html#L492).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D02, D03; S09.
+
+<a id="akx-mnt-02"></a>
+
+## AKX-MNT-02 — Repair and rebuilding
+
+Repair can restore only recorded recoverable damage. Rebuilding accumulates work toward reconstructing lost capability; resumed funding or elapsed months cannot complete that work by themselves.
+
+[Numerical operationalization](TECHNICAL.html#akx-mnt-02).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:care`](source/hybrid.js.html#L492).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D03; S09.
+
+<a id="akx-bel-01"></a>
+
+## AKX-BEL-01 — Policy value versus implementation-performance beliefs
+
+Agents distinguish the value they attach to a policy from their assessment of its implementation. Experience and accessed information can change these beliefs differently, so dissatisfaction need not imply abandoning the policy.
+
+[Numerical operationalization](TECHNICAL.html#akx-bel-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:observe`](source/hybrid.js.html#L449).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D04; S09.
+
+<a id="akx-agy-01"></a>
+
+## AKX-AGY-01 — Office authority versus personal influence
+
+Decision rights attach to the current position. A completed appointment changes the organizational decision maker; personal finances, networks, experience and audience-specific credibility remain with the person.
+
+[Numerical operationalization](TECHNICAL.html#akx-agy-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:rank`](source/hybrid.js.html#L42) · [`hybrid.js:governance`](source/hybrid.js.html#L1173).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D05; S09.
+
+<a id="akx-agy-02"></a>
+
+## AKX-AGY-02 — Supporter dependence within TPB–utility
+
+Supporter dependence influences perceived consequences, expected approval and feasibility within the existing nine-interest TPB–utility mechanism. It is not a separate political-survival rule that overrides every other motive.
+
+[Numerical operationalization](TECHNICAL.html#akx-agy-02).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:options`](source/hybrid.js.html#L405).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D06; S09.
+
+<a id="akx-gov-01"></a>
+
+## AKX-GOV-01 — Hierarchy and relationship-based insiders
+
+Authority tiers coexist within the four existing roles. Insider position is a relationship to the current controller, can cross organizational categories and is recorded at the event time. Connections are neither a permanent class nor immunity.
+
+[Numerical operationalization](TECHNICAL.html#akx-gov-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:rank`](source/hybrid.js.html#L42) · [`hybrid.js:conduct`](source/hybrid.js.html#L1652).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D07, D08; S09.
+
+<a id="akx-gov-02"></a>
+
+## AKX-GOV-02 — Constrained appointment and removal
+
+Leadership replacement is a constrained process rather than a timer or a transfer of every personal characteristic. Candidates are evaluated for competence and relationships; each approver retains an independent decision.
+
+[Numerical operationalization](TECHNICAL.html#akx-gov-02).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:propose`](source/hybrid.js.html#L1130) · [`hybrid.js:governance`](source/hybrid.js.html#L1173).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D09; S09.
+
+<a id="akx-gov-03"></a>
+
+## AKX-GOV-03 — Safeguard changes in all organizational categories
+
+Public agencies, businesses, parties and civic organizations have executable rules for proposals, approvals, removal protection, oversight and disclosure. A stored safeguard must affect an actual later procedure.
+
+[Numerical operationalization](TECHNICAL.html#akx-gov-03).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:propose`](source/hybrid.js.html#L1130) · [`hybrid.js:governance`](source/hybrid.js.html#L1173) · [`hybrid.js:review`](source/hybrid.js.html#L1097).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D12, D13; S09.
+
+<a id="akx-col-01"></a>
+
+## AKX-COL-01 — Costly coalition formation and commitments
+
+Actors can organize support or opposition using private money and actual time. Recipients choose whether to commit, continue working or withdraw; the coalition is not equivalent to automatic consensus.
+
+[Numerical operationalization](TECHNICAL.html#akx-col-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:coalitions`](source/hybrid.js.html#L1305).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D10; S09.
+
+<a id="akx-att-01"></a>
+
+## AKX-ATT-01 — Attention distinct from support
+
+Attention can decline while policy support persists. Accessed events and coalition activity can renew engagement without mechanically changing ethical commitments or imposing a national attention stock.
+
+[Numerical operationalization](TECHNICAL.html#akx-att-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:open`](source/hybrid.js.html#L253) · [`hybrid.js:observe`](source/hybrid.js.html#L449) · [`hybrid.js:coalitions`](source/hybrid.js.html#L1305).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D11; S09.
+
+<a id="akx-str-01"></a>
+
+## AKX-STR-01 — Combinable political responses
+
+Different articulated demands can receive substantive, symbolic, reframing or obstructive responses. Claims, funded work and completed institutional changes remain distinct, allowing mixed responses by the same actor.
+
+[Numerical operationalization](TECHNICAL.html#akx-str-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:responses`](source/hybrid.js.html#L1486).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D14; S09.
+
+<a id="akx-inf-01"></a>
+
+## AKX-INF-01 — Audience-specific evolving personal influence
+
+Personal influence develops by audience. Someone can become credible to one network and less credible elsewhere; hidden achievements or failures do not change everyone’s beliefs.
+
+[Numerical operationalization](TECHNICAL.html#akx-inf-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:observe`](source/hybrid.js.html#L449) · [`hybrid.js:options`](source/hybrid.js.html#L405).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D16; S09.
+
+<a id="akx-cov-01"></a>
+
+## AKX-COV-01 — Realized coverage only
+
+Only realized accountability coverage is displayed. Its eligibility set is created at recorded conduct, before selective case opening or obstruction, and retains rank/group at that time.
+
+[Numerical operationalization](TECHNICAL.html#akx-cov-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:conduct`](source/hybrid.js.html#L1652) · [`hybrid.js:coverage`](source/hybrid.js.html#L1665).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D15; S09.
+
+<a id="akx-enc-01"></a>
+
+## AKX-ENC-01 — Demand-generated encounters and capacity
+
+Role-specific demand can generate multiple contacts in a month, ordered by internal timestamps. Repeated attempts at unfinished service work update that request’s attempt history rather than creating duplicate queued demand.
+
+[Numerical operationalization](TECHNICAL.html#akx-enc-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:encounters`](source/hybrid.js.html#L1564).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D18; S09.
+
+<a id="akx-eco-01"></a>
+
+## AKX-ECO-01 — Investment choices including political connections
+
+Business receipts support real compensation, eligible owner distributions, reserves and investment. Political connections affect perceived investment opportunities through the existing decision framework; they do not grant productivity automatically.
+
+[Numerical operationalization](TECHNICAL.html#akx-eco-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:accounts`](source/hybrid.js.html#L598) · [`hybrid.js:investment`](source/hybrid.js.html#L832).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D22, D28; S09.
+
+<a id="akx-eco-02"></a>
+
+## AKX-ECO-02 — Business productive-capacity stock
+
+Productive capacity belongs to business organizations and differs from organizational capability. Equipment payment, delivery, installation work and usable capacity are separately recorded.
+
+[Numerical operationalization](TECHNICAL.html#akx-eco-02).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:investment`](source/hybrid.js.html#L832).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D23; S09.
+
+<a id="akx-eco-03"></a>
+
+## AKX-ECO-03 — Demand-constrained production and allocation
+
+Demand, capacity, inputs, work and payment constrain realized production. Private demand and public procurement may distribute opportunities unevenly; rearranging orders alone does not create national output.
+
+[Numerical operationalization](TECHNICAL.html#akx-eco-03).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:order`](source/hybrid.js.html#L660) · [`hybrid.js:demand`](source/hybrid.js.html#L692) · [`hybrid.js:production`](source/hybrid.js.html#L755).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D24; S09.
+
+<a id="akx-eco-04"></a>
+
+## AKX-ECO-04 — Taxable activity, compliance and public receipts
+
+Potential liability, declared or discovered assessment, compliance, arrears and actual collection remain separate. The simplified mechanism taxes private business value added; additional receipts expand fiscal choices without automatically funding reform.
+
+[Numerical operationalization](TECHNICAL.html#akx-eco-04).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:taxation`](source/hybrid.js.html#L977).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D25, D32; S09.
+
+<a id="akx-eco-05"></a>
+
+## AKX-ECO-05 — Economic boundaries and output index
+
+Explicit domestic actors trade with a separate background domestic component and foreign account, preserving the existing 1,000-person structure. The real-activity index starts at 100 and follows delivered domestic value added.
+
+[Numerical operationalization](TECHNICAL.html#akx-eco-05).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:initialize`](source/hybrid.js.html#L82) · [`hybrid.js:production`](source/hybrid.js.html#L755) · [`hybrid.js:close`](source/hybrid.js.html#L1739) · [`hybrid.js:anchor`](source/hybrid.js.html#L1808).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D21, D29, D30, D31; S09.
+
+<a id="akx-mea-01"></a>
+
+## AKX-MEA-01 — Monthly flow provenance and result explanations
+
+The monthly system view reads opening/closing stocks, realized gross flows and actual process records. Policy views emphasize the selected mechanism; education does not headline case files. Replay and historical review are observation-only.
+
+[Numerical operationalization](TECHNICAL.html#akx-mea-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:close`](source/hybrid.js.html#L1739) · [`hybrid.js:summary`](source/hybrid.js.html#L1816) · [`hybrid.js:recordTransfer`](source/hybrid.js.html#L176) · [`hybrid.js:exposure`](source/hybrid.js.html#L304) · [`hybrid.js:capabilityBuilt`](source/hybrid.js.html#L337).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D27; S09.
+
+<a id="akx-cal-01"></a>
+
+## AKX-CAL-01 — Peru pilot and evidence register
+
+Calibration and the empirical Peru pilot are explicitly deferred. Existing country observations remain dated inputs; the new common economic, maintenance and governance coefficients are engineering assumptions exposed in the code and documentation.
+
+[Numerical operationalization](TECHNICAL.html#akx-cal-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:parameters`](source/hybrid.js.html#L14).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D26; S09.
+
+<a id="akx-val-01"></a>
+
+## AKX-VAL-01 — Coupling, accounting, sensitivity and device validation
+
+Engineering verification checks accounting, physical feasibility, deterministic replay and specific causal pathways. Passing these checks does not validate country realism or establish an expected policy effect.
+
+[Numerical operationalization](TECHNICAL.html#akx-val-01).
+
+<details><summary>Implementation references</summary>
+
+[`hybrid.js:assert`](source/hybrid.js.html#L1862).
+
+</details>
+
+**Boundary.** Uncalibrated common engineering parameters; compact generic procedures and recorded proxies are not a complete national system. See the v3 extension status and deferred calibration plan.
+
+Design provenance: D26; S09.
 
 
 ## Reading one mechanism from decision to collective result

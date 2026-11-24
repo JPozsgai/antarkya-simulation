@@ -175,10 +175,9 @@
 | [adaptation.js:472](../source/adaptation.js.html#L472) | 0 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` Math.max(0, received) ` |
 | [adaptation.js:473](../source/adaptation.js.html#L473) | 0.05 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` 0.05 + 0.25 * p.traits.learning ` |
 | [adaptation.js:473](../source/adaptation.js.html#L473) | 0.25 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` 0.25 * p.traits.learning ` |
-| [adaptation.js:474](../source/adaptation.js.html#L474) | 3 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` 3: clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost)) ` |
-| [adaptation.js:474](../source/adaptation.js.html#L474) | 0.9 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` 0.9 * observed ` |
+| [adaptation.js:474](../source/adaptation.js.html#L474) | 3 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` 3: clamp((a.cost - observed) / Math.max(0.1, a.cost)) ` |
 | [adaptation.js:474](../source/adaptation.js.html#L474) | 0.1 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` Math.max(0.1, a.cost) ` |
-| [adaptation.js:474](../source/adaptation.js.html#L474) | 0.8 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` feedback(a, { 3: clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost)) }, 0.8) ` |
+| [adaptation.js:474](../source/adaptation.js.html#L474) | 0.8 | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) | ` feedback(a, { 3: clamp((a.cost - observed) / Math.max(0.1, a.cost)) }, 0.8) ` |
 | [adaptation.js:483](../source/adaptation.js.html#L483) | 0.25 | messageRate · [AK-INF-02](../TECHNICAL.html#ak-inf-02) | ` 0.25 + 0.5 * a.psychology.traits.openness ` |
 | [adaptation.js:483](../source/adaptation.js.html#L483) | 0.5 | messageRate · [AK-INF-02](../TECHNICAL.html#ak-inf-02) | ` 0.5 * a.psychology.traits.openness ` |
 | [adaptation.js:483](../source/adaptation.js.html#L483) | 0.25 | messageRate · [AK-INF-02](../TECHNICAL.html#ak-inf-02) | ` 0.25 * a.psychology.traits.learning ` |

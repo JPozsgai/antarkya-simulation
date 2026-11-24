@@ -471,7 +471,7 @@
     const p = a.psychology,
       observed = Math.max(0, received);
     p.expectedIncome += (0.05 + 0.25 * p.traits.learning) * (observed - p.expectedIncome);
-    feedback(a, { 3: clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost)) }, 0.8);
+    feedback(a, { 3: clamp((a.cost - observed) / Math.max(0.1, a.cost)) }, 0.8);
   }
 
   /** [AK-INF-02] messageRate

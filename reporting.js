@@ -179,6 +179,10 @@
    * Accumulate an actual delivered process hook only; selecting a policy or inspecting a panel cannot create output.
    */
   function activity(sim, id, amount = 1) {
+    if (sim.state.hybrid && finite(amount) && amount > 0) {
+      const counts = sim.state.hybrid.activity ||= {};
+      counts[id] = (counts[id] || 0) + amount;
+    }
     if (sim.monitor && finite(amount) && amount > 0) sim.monitor.counts[id] += amount;
   }
 
@@ -339,7 +343,7 @@
       pay: [
         pay.value,
         pct(officials.map((a) => a.financialPressure || 0)),
-        mean(officials.map((a) => (0.9 * mean(a.receipts)) / Math.max(0.001, a.cost))),
+        mean(officials.map((a) => (mean(a.receipts)) / Math.max(0.001, a.cost))),
       ],
       penalties: [
         sum(sim.agents.flatMap((a) => (a.liabilities || []).map((c) => c.remaining))),

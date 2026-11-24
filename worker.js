@@ -6,12 +6,13 @@
 
 'use strict';
 importScripts(
-  'profiles.js?v=2.4.0',
-  'config.js?v=2.4.0',
-  'baseline.js?v=2.4.0',
-  'adaptation.js?v=2.4.0',
-  'reporting.js?v=2.4.2',
-  'model.js?v=2.4.2',
+  'profiles.js?v=3.0.0',
+  'config.js?v=3.0.0',
+  'baseline.js?v=3.0.0',
+  'adaptation.js?v=3.0.0',
+  'reporting.js?v=3.0.0',
+  'hybrid.js?v=3.0.0',
+  'model.js?v=3.0.0',
 );
 let config,
   initial,
@@ -32,6 +33,7 @@ const summary = (s) => ({
   version: Antarkya.VERSION,
   month: s.month,
   reporting: s.reporting(),
+  hybrid: Antarkya.Hybrid.summary(s),
   metrics: s.metrics(),
   assessment: s.assessment(),
   history: s.state.history,

@@ -21,17 +21,17 @@ The following named tests are extracted from the shipped test files. Their names
 | [adaptation.test.js:344](source/adaptation.test.js.html#L344) | report-channel knowledge and control are specific to reporting contexts |
 | [adaptation.test.js:358](source/adaptation.test.js.html#L358) | identical exposure draws reproduce profiles and independent draws yield different histories |
 | [adaptation.test.js:394](source/adaptation.test.js.html#L394) | skill learning feeds real subsequent organizational capacity |
-| [adaptation.test.js:409](source/adaptation.test.js.html#L409) | a known inactive or suspended reform stops new exposures while memories can wear off |
-| [adaptation.test.js:424](source/adaptation.test.js.html#L424) | continuous reinforcement over 1,200 months retains partial bounded influence |
-| [adaptation.test.js:442](source/adaptation.test.js.html#L442) | financial expectations learn from actual total receipts with individual learning rates |
-| [adaptation.test.js:459](source/adaptation.test.js.html#L459) | a later change in receptiveness can permit modest new learning after repeated rejected messages |
-| [adaptation.test.js:477](source/adaptation.test.js.html#L477) | conflicting credible experience adjusts the retained target without deleting earlier history |
-| [adaptation.test.js:490](source/adaptation.test.js.html#L490) | a corrupt staffing proposal prevented by real merit review is not a completed patronage act |
-| [adaptation.test.js:509](source/adaptation.test.js.html#L509) | formal education adoption cannot manufacture knowledge before anyone learns |
-| [adaptation.test.js:524](source/adaptation.test.js.html#L524) | knowledge assessment responds continuously to retained learning and subsequent wear-off |
-| [adaptation.test.js:541](source/adaptation.test.js.html#L541) | agents do not read hidden true protection capacity when deciding whether to report |
-| [adaptation.test.js:572](source/adaptation.test.js.html#L572) | experienced protection and credible failure change subjective safety in opposite directions |
-| [adaptation.test.js:589](source/adaptation.test.js.html#L589) | inspection summaries stay numerical and reject malformed imported learning histories |
+| [adaptation.test.js:411](source/adaptation.test.js.html#L411) | a known inactive or suspended reform stops new exposures while memories can wear off |
+| [adaptation.test.js:426](source/adaptation.test.js.html#L426) | continuous reinforcement over 1,200 months retains partial bounded influence |
+| [adaptation.test.js:444](source/adaptation.test.js.html#L444) | financial expectations learn from actual total receipts with individual learning rates |
+| [adaptation.test.js:461](source/adaptation.test.js.html#L461) | a later change in receptiveness can permit modest new learning after repeated rejected messages |
+| [adaptation.test.js:479](source/adaptation.test.js.html#L479) | conflicting credible experience adjusts the retained target without deleting earlier history |
+| [adaptation.test.js:492](source/adaptation.test.js.html#L492) | a corrupt staffing proposal prevented by real merit review is not a completed patronage act |
+| [adaptation.test.js:511](source/adaptation.test.js.html#L511) | formal education adoption cannot manufacture knowledge before anyone learns |
+| [adaptation.test.js:526](source/adaptation.test.js.html#L526) | knowledge assessment responds continuously to retained learning and subsequent wear-off |
+| [adaptation.test.js:543](source/adaptation.test.js.html#L543) | agents do not read hidden true protection capacity when deciding whether to report |
+| [adaptation.test.js:574](source/adaptation.test.js.html#L574) | experienced protection and credible failure change subjective safety in opposite directions |
+| [adaptation.test.js:591](source/adaptation.test.js.html#L591) | inspection summaries stay numerical and reject malformed imported learning histories |
 | [audit.test.js:45](source/audit.test.js.html#L45) | country overrides preserve underlying person draws while reconstructed histories can respond |
 | [audit.test.js:79](source/audit.test.js.html#L79) | all nine consequence dimensions can independently affect the utility choice |
 | [audit.test.js:100](source/audit.test.js.html#L100) | implemented encounter consequences distinguish social, economic and political domains |
@@ -47,10 +47,10 @@ The following named tests are extracted from the shipped test files. Their names
 | [audit.test.js:376](source/audit.test.js.html#L376) | resource-review utility responds to experienced stakeholder support |
 | [audit.test.js:405](source/audit.test.js.html#L405) | social sharing uses receiver trust and ignores zero-strength links |
 | [audit.test.js:421](source/audit.test.js.html#L421) | editorial independence and real funding dependence enter publication incentives |
-| [audit.test.js:456](source/audit.test.js.html#L456) | recent participation denominators remain bounded and inactivity cannot erase history |
-| [audit.test.js:485](source/audit.test.js.html#L485) | a dense network alone does not produce a capture event; repeated abuse is required |
-| [audit.test.js:511](source/audit.test.js.html#L511) | country mandates change real referrals without merging investigation, prosecution and courts |
-| [audit.test.js:538](source/audit.test.js.html#L538) | out-of-scope audits cannot create false allegations through a false-positive draw |
+| [audit.test.js:457](source/audit.test.js.html#L457) | recent participation denominators remain bounded and inactivity cannot erase history |
+| [audit.test.js:486](source/audit.test.js.html#L486) | a dense network alone does not produce a capture event; repeated abuse is required |
+| [audit.test.js:512](source/audit.test.js.html#L512) | country mandates change real referrals without merging investigation, prosecution and courts |
+| [audit.test.js:539](source/audit.test.js.html#L539) | out-of-scope audits cannot create false allegations through a false-positive draw |
 | [dynamics.test.js:38](source/dynamics.test.js.html#L38) | a one-option duty and repeated calls without a new choice cannot inflate integrity or recovery |
 | [dynamics.test.js:73](source/dynamics.test.js.html#L73) | failed or deferred intentions do not become completed integrity choices |
 | [dynamics.test.js:87](source/dynamics.test.js.html#L87) | twenty waiting requests have one bounded monthly effect on trust and control |
@@ -63,8 +63,27 @@ The following named tests are extracted from the shipped test files. Their names
 | [dynamics.test.js:292](source/dynamics.test.js.html#L292) | network layout spreads the healthy disc while preserving participation bands, default integrity and physical geography |
 | [dynamics.test.js:313](source/dynamics.test.js.html#L313) | coercive ties cannot attract victims as though they indicated affinity or voluntary cooperation |
 | [dynamics.test.js:324](source/dynamics.test.js.html#L324) | a public decision has one cost-learning pathway and cannot replay an already personally experienced sanction |
-| [dynamics.test.js:348](source/dynamics.test.js.html#L348) | pay adequacy assesses modeled take-home receipts rather than gross receipts |
+| [dynamics.test.js:348](source/dynamics.test.js.html#L348) | pay adequacy assesses actual receipts without legacy wage withholding |
 | [dynamics.test.js:362](source/dynamics.test.js.html#L362) | saved-state verification accepts key order and insignificant floating rounding while rejecting substantive edits |
+| [hybrid.test.js:31](source/hybrid.test.js.html#L31) | new boundary and escrow accounts conserve the complete financial total |
+| [hybrid.test.js:48](source/hybrid.test.js.html#L48) | ordinary accounts replace anonymous treasury inflow and wage withholding |
+| [hybrid.test.js:59](source/hybrid.test.js.html#L59) | production needs an order and distinguishes domestic value added from imported inputs |
+| [hybrid.test.js:74](source/hybrid.test.js.html#L74) | unused productive capacity does not guarantee sales and unaffordable orders stay pending |
+| [hybrid.test.js:89](source/hybrid.test.js.html#L89) | investment cannot complete from calendar time alone or install the same project twice |
+| [hybrid.test.js:119](source/hybrid.test.js.html#L119) | tax assessment can create arrears without manufacturing collected cash |
+| [hybrid.test.js:131](source/hybrid.test.js.html#L131) | maintenance choices alter persistent capability and future unfinished work |
+| [hybrid.test.js:148](source/hybrid.test.js.html#L148) | repair is bounded by documented loss and rebuilding requires actual work |
+| [hybrid.test.js:166](source/hybrid.test.js.html#L166) | overlapping memberships cannot create extra personal time |
+| [hybrid.test.js:177](source/hybrid.test.js.html#L177) | governance changes cannot approve themselves using their proposed weaker protections |
+| [hybrid.test.js:197](source/hybrid.test.js.html#L197) | outsiders lack proposal authority and private oversight has an operative blocking route |
+| [hybrid.test.js:210](source/hybrid.test.js.html#L210) | attention can fade while policy support remains unchanged |
+| [hybrid.test.js:219](source/hybrid.test.js.html#L219) | personal credibility is audience-specific and hidden episodes change nobody |
+| [hybrid.test.js:231](source/hybrid.test.js.html#L231) | realized coverage retains eligible acts even when no case is opened |
+| [hybrid.test.js:247](source/hybrid.test.js.html#L247) | system diagrams read recorded flows without changing state and education does not headline casework |
+| [hybrid.test.js:259](source/hybrid.test.js.html#L259) | passive reporting can be disabled without changing the coupled numerical state |
+| [hybrid.test.js:269](source/hybrid.test.js.html#L269) | transfer and flow logs use a separate ID namespace from behavioral event identities |
+| [hybrid.test.js:276](source/hybrid.test.js.html#L276) | a coupled paired run preserves exact starting society and finite stock bounds |
+| [hybrid.test.js:295](source/hybrid.test.js.html#L295) | saved monthly histories roundtrip and reject malformed or nonfinite records |
 | [initialization.test.js:23](source/initialization.test.js.html#L23) | political defaults use sourced country scores and keep unmeasured culture explicit |
 | [initialization.test.js:46](source/initialization.test.js.html#L46) | instrument-specific observations inform bounded estimates without treating missing criteria as no safeguards |
 | [initialization.test.js:65](source/initialization.test.js.html#L65) | the pre-policy year executes all twelve months, with eligible actors throughout |
@@ -89,16 +108,16 @@ The following named tests are extracted from the shipped test files. Their names
 | [reporting.test.js:39](source/reporting.test.js.html#L39) | all twelve tools have distinct output definitions and relevant starting conditions |
 | [reporting.test.js:61](source/reporting.test.js.html#L61) | policy starting snapshots precede formal adoption and remain fixed during the run |
 | [reporting.test.js:75](source/reporting.test.js.html#L75) | recording and interpretation do not consume RNG or change the simulated society |
-| [reporting.test.js:97](source/reporting.test.js.html#L97) | same published engine produces identical initialization and conduct with monitoring enabled |
-| [reporting.test.js:123](source/reporting.test.js.html#L123) | output uses weighted actual activity over equal historical windows |
-| [reporting.test.js:143](source/reporting.test.js.html#L143) | delivered teaching is distinct from accepted influence and duplicate contacts |
-| [reporting.test.js:164](source/reporting.test.js.html#L164) | generic activity does not get credited as a staff rotation |
-| [reporting.test.js:179](source/reporting.test.js.html#L179) | read-only event references are relevant, dated and distinguish material changes |
-| [reporting.test.js:245](source/reporting.test.js.html#L245) | interpretations handle delivery, lag, missing evidence and direction without claiming causation |
-| [reporting.test.js:264](source/reporting.test.js.html#L264) | optional monitoring roundtrips without changing initial-state compatibility and rejects malformed records |
-| [reporting.test.js:367](source/reporting.test.js.html#L367) | all twelve policy renderings show relevant before/current conditions and stage panels |
-| [reporting.test.js:404](source/reporting.test.js.html#L404) | completion updates the final comparison and review slider without changing results |
-| [reporting.test.js:431](source/reporting.test.js.html#L431) | older saved results get an honest monitoring-unavailable notice |
+| [reporting.test.js:97](source/reporting.test.js.html#L97) | archived published engine retains its verified pre-extension initialization and conduct |
+| [reporting.test.js:124](source/reporting.test.js.html#L124) | output uses weighted actual activity over equal historical windows |
+| [reporting.test.js:144](source/reporting.test.js.html#L144) | delivered teaching is distinct from accepted influence and duplicate contacts |
+| [reporting.test.js:165](source/reporting.test.js.html#L165) | generic activity does not get credited as a staff rotation |
+| [reporting.test.js:180](source/reporting.test.js.html#L180) | read-only event references are relevant, dated and distinguish material changes |
+| [reporting.test.js:246](source/reporting.test.js.html#L246) | interpretations handle delivery, lag, missing evidence and direction without claiming causation |
+| [reporting.test.js:265](source/reporting.test.js.html#L265) | optional monitoring roundtrips without changing initial-state compatibility and rejects malformed records |
+| [reporting.test.js:368](source/reporting.test.js.html#L368) | all twelve policy renderings show relevant before/current conditions and stage panels |
+| [reporting.test.js:405](source/reporting.test.js.html#L405) | completion updates the final comparison and review slider without changing results |
+| [reporting.test.js:432](source/reporting.test.js.html#L432) | older saved results get an honest monitoring-unavailable notice |
 | [run-seeds.test.js:22](source/run-seeds.test.js.html#L22) | new runs get distinct event identities without modifying settings or society |
 | [run-seeds.test.js:48](source/run-seeds.test.js.html#L48) | explicit exact replay consumes no new entropy and reproduces the entire event history |
 | [run-seeds.test.js:62](source/run-seeds.test.js.html#L62) | fresh event seeds retain matching baseline/reform randomness and separate initialization |

@@ -1041,13 +1041,7 @@
 <td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
 <td>3</td>
 <td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
-<td><code>3: clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost))</code></td>
-</tr>
-<tr>
-<td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
-<td>0.9</td>
-<td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
-<td><code>0.9 * observed</code></td>
+<td><code>3: clamp((a.cost - observed) / Math.max(0.1, a.cost))</code></td>
 </tr>
 <tr>
 <td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
@@ -1059,7 +1053,7 @@
 <td><a href="../source/adaptation.js.html#L474">adaptation.js:474</a></td>
 <td>0.8</td>
 <td>incomeExperience · <a href="../TECHNICAL.html#ak-adp-03">AK-ADP-03</a></td>
-<td><code>feedback(a, { 3: clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost)) }, 0.8)</code></td>
+<td><code>feedback(a, { 3: clamp((a.cost - observed) / Math.max(0.1, a.cost)) }, 0.8)</code></td>
 </tr>
 <tr>
 <td><a href="../source/adaptation.js.html#L483">adaptation.js:483</a></td>
@@ -1387,4 +1381,4 @@
 </tr>
 </tbody>
 </table>
-</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>
+</main><footer>© 2026 Joseph Pozsgai-Alvarez · Creator and project owner. Documentation edition 2.0 · 24 November 2026 · provisional behavior/display 3.0.0. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

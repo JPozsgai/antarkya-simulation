@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Measurement dictionary: output, outcome and impact · Antarkya audit</title><link rel="stylesheet" href="audit.css"></head><body><header><a href="index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="NARRATIVE.html">Narrative</a><a href="TECHNICAL.html">Technical rules</a><a href="SOURCE-INDEX.html">Annotated code</a><a href="GAPS.html">Limits</a><a href="../../index.html">Simulation</a></nav></header><main><h1 id="measurement-dictionary-output-outcome-and-impact">Measurement dictionary: output, outcome and impact</h1>
 <p>References: <strong>AK-MEA-01</strong>, <strong>AK-MEA-02</strong>, <strong>AK-MEA-03</strong>, <strong>AK-MEA-04</strong>. Measurements are observation-only. This dictionary distinguishes the current policy-reporting panel from the older <code>assessment()</code> readout still used in compatibility/export paths. The same label must not conceal different denominators or windows.</p>
+<h2 id="v3-measurement-amendment">v3 measurement amendment</h2>
+<p>The <a href="EXTENSION.html">hybrid release specification</a> controls new economic and governance measurements. Public pay now reports actual receipts without the superseded wage withholding. The encounter impact denominator remains administrative/political encounters; newly modeled tax concealment and private diversion enter total conduct and coverage records separately. They are not silently added to the historic encounter-rate estimand.</p>
 <h2 id="common-definitions">Common definitions</h2>
 <p>For reporting output at month <code>t</code>, use cumulative process counter at <code>t</code> minus that at <code>max(earliest recorded month, t−12)</code>. The month-zero window can include reconstructed months -12 to 0. Output is activity in that interval, not a monthly mean or unique-person count. A baseline zero can mean that the model counts only additional reform delivery in that output category; it is not evidence that a country has no inherited activity.</p>
 <p>For fixed diagnostics, assign reference index <code>i</code> to eligible public organization <code>o</code> and current official <code>a</code> in cyclic order. Let <code>q=coverage(tool,o,a)</code>, <code>b=1/(1+(o.backlog+o.caseBacklog)/max(1,o.members.length))</code>, and <code>c=clamp((.5*o.skill+.5*professionalSkill)*(.4+.6*b))</code>. Compare the tool's threshold with <code>draw('Antarkya-fixed-diagnostic',societyDrawKey,tool,i)</code>. The value is <code>100*passed/n</code>; <code>n</code> is current official count, except complaints uses 100. These are fixed-draw capability diagnostics. They can remain unchanged until a threshold crosses a fixed draw; this does not prove that the underlying continuous capability is static. The reported formal scope field and the diagnostic's actual <code>coverage</code> expression must also be distinguished.</p>
@@ -59,7 +61,7 @@
 </tr>
 <tr>
 <td>Remuneration</td>
-<td>Actual regular/supplemental public pay after .10 withholding; RU</td>
+<td>Actual regular/supplemental public pay without legacy withholding; RU</td>
 <td>Share of officials with six receipts whose net receipt covers needs in at least five of those six months</td>
 <td>Eligible officials with six receipts; unavailable if none; higher better</td>
 </tr>
@@ -130,7 +132,7 @@
 </tr>
 <tr>
 <td>Pay</td>
-<td>Six-receipt adequacy ratio; mean official financial pressure ×100; mean per-official ratio of .90×mean gross receipts to needs</td>
+<td>Six-receipt adequacy ratio; mean official financial pressure ×100; mean per-official ratio of mean actual receipts to needs</td>
 </tr>
 <tr>
 <td>Penalties</td>
@@ -160,4 +162,4 @@
 <p>Changes in money, services, public resources, coercion, sanctions and beliefs are separately named consequences. A bribe, wage or fine transfer is not automatically a net welfare loss. The model does not compute a complete social welfare account.</p>
 <h2 id="interpretations-and-event-links">Interpretations and event links</h2>
 <p>Predefined statements distinguish increase/decrease/no display-relevant difference and unavailable measurements. Tolerances are output <code>1e−8</code>, outcome <code>.05</code> indicator units and impact <code>.0005</code> points; these concern display precision, not statistical significance. Estimated diagnostics are identified as estimates. Up to two event references appear inline, with up to eight selected contextual records available. Records must already exist, be no later than the review month and meet the policy/package selection rules. Links describe connected developments; they do not identify causal mediation.</p>
-</main><footer>Documentation edition 1.0 · 23 November 2026 · behavior 2.4.0 / display 2.4.2. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>
+</main><footer>© 2026 Joseph Pozsgai-Alvarez · Creator and project owner. Documentation edition 2.0 · 24 November 2026 · provisional behavior/display 3.0.0. Exploratory, not empirically validated. <a href="manifest.json">Version and file manifest</a></footer></body></html>

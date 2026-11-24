@@ -1,6 +1,6 @@
 {
   "schema": "antarkya.audit.traceability.v1",
-  "baseCommit": "9ceb5ae38510f10d2211366406d150500a364a95",
+  "baseCommit": "44a23edb80485f26ff397f5e7b6b79a426c78b0b",
   "entries": [
     {
       "id": "AK-OV-01",
@@ -22,8 +22,8 @@
         {
           "symbol": "model.js:validate",
           "file": "model.js",
-          "line": 126,
-          "endLine": 165,
+          "line": 127,
+          "endLine": 166,
           "refs": [
             "AK-OV-01"
           ]
@@ -31,8 +31,8 @@
         {
           "symbol": "worker.js:summary",
           "file": "worker.js",
-          "line": 31,
-          "endLine": 39,
+          "line": 32,
+          "endLine": 41,
           "refs": [
             "AK-OV-01"
           ]
@@ -40,8 +40,8 @@
         {
           "symbol": "model.js:constructor",
           "file": "model.js",
-          "line": 787,
-          "endLine": 797,
+          "line": 791,
+          "endLine": 803,
           "refs": [
             "AK-OV-01"
           ]
@@ -87,8 +87,8 @@
         {
           "symbol": "model.js:createPopulation",
           "file": "model.js",
-          "line": 220,
-          "endLine": 513,
+          "line": 223,
+          "endLine": 516,
           "refs": [
             "AK-POP-01",
             "AK-POP-02",
@@ -129,8 +129,8 @@
         {
           "symbol": "model.js:createPopulation",
           "file": "model.js",
-          "line": 220,
-          "endLine": 513,
+          "line": 223,
+          "endLine": 516,
           "refs": [
             "AK-POP-01",
             "AK-POP-02",
@@ -205,8 +205,8 @@
         {
           "symbol": "model.js:createPopulation",
           "file": "model.js",
-          "line": 220,
-          "endLine": 513,
+          "line": 223,
+          "endLine": 516,
           "refs": [
             "AK-POP-01",
             "AK-POP-02",
@@ -217,8 +217,8 @@
         {
           "symbol": "model.js:org",
           "file": "model.js",
-          "line": 2081,
-          "endLine": 2081,
+          "line": 2043,
+          "endLine": 2043,
           "refs": [
             "AK-ORG-01"
           ]
@@ -226,8 +226,8 @@
         {
           "symbol": "model.js:relationship",
           "file": "model.js",
-          "line": 1249,
-          "endLine": 1260,
+          "line": 1259,
+          "endLine": 1270,
           "refs": [
             "AK-ORG-01",
             "AK-NET-01"
@@ -252,8 +252,8 @@
         {
           "symbol": "model.js:organizations",
           "file": "model.js",
-          "line": 3117,
-          "endLine": 3312,
+          "line": 3042,
+          "endLine": 3237,
           "refs": [
             "AK-ORG-02"
           ]
@@ -261,8 +261,8 @@
         {
           "symbol": "model.js:changeEmployment",
           "file": "model.js",
-          "line": 3092,
-          "endLine": 3112,
+          "line": 3017,
+          "endLine": 3037,
           "refs": [
             "AK-ORG-02",
             "AK-ECO-01"
@@ -287,8 +287,8 @@
         {
           "symbol": "model.js:createPopulation",
           "file": "model.js",
-          "line": 220,
-          "endLine": 513,
+          "line": 223,
+          "endLine": 516,
           "refs": [
             "AK-POP-01",
             "AK-POP-02",
@@ -299,8 +299,8 @@
         {
           "symbol": "model.js:nearest",
           "file": "model.js",
-          "line": 1497,
-          "endLine": 1528,
+          "line": 1507,
+          "endLine": 1538,
           "refs": [
             "AK-GEO-01"
           ]
@@ -308,8 +308,8 @@
         {
           "symbol": "model.js:encounters",
           "file": "model.js",
-          "line": 2227,
-          "endLine": 2267,
+          "line": 2189,
+          "endLine": 2191,
           "refs": [
             "AK-GEO-01",
             "AK-ACT-01"
@@ -336,8 +336,8 @@
         {
           "symbol": "model.js:motives",
           "file": "model.js",
-          "line": 95,
-          "endLine": 108,
+          "line": 96,
+          "endLine": 109,
           "refs": [
             "AK-MOT-01"
           ]
@@ -376,8 +376,8 @@
         {
           "symbol": "model.js:choose",
           "file": "model.js",
-          "line": 969,
-          "endLine": 1036,
+          "line": 975,
+          "endLine": 1043,
           "refs": [
             "AK-DEC-01",
             "AK-ACT-02"
@@ -426,8 +426,8 @@
         {
           "symbol": "model.js:effects",
           "file": "model.js",
-          "line": 976,
-          "endLine": 976,
+          "line": 983,
+          "endLine": 983,
           "refs": [
             "AK-DEC-02"
           ]
@@ -435,8 +435,8 @@
         {
           "symbol": "model.js:encounter",
           "file": "model.js",
-          "line": 2078,
-          "endLine": 2222,
+          "line": 2040,
+          "endLine": 2184,
           "refs": [
             "AK-DEC-02",
             "AK-ACT-01"
@@ -445,8 +445,8 @@
         {
           "symbol": "model.js:budgetReview",
           "file": "model.js",
-          "line": 1870,
-          "endLine": 2007,
+          "line": 1832,
+          "endLine": 1969,
           "refs": [
             "AK-DEC-02",
             "AK-REF-04"
@@ -455,8 +455,8 @@
         {
           "symbol": "model.js:processCases",
           "file": "model.js",
-          "line": 2457,
-          "endLine": 2727,
+          "line": 2381,
+          "endLine": 2651,
           "refs": [
             "AK-DEC-02",
             "AK-CAS-02",
@@ -484,8 +484,8 @@
         {
           "symbol": "model.js:encounter",
           "file": "model.js",
-          "line": 2078,
-          "endLine": 2222,
+          "line": 2040,
+          "endLine": 2184,
           "refs": [
             "AK-DEC-02",
             "AK-ACT-01"
@@ -494,8 +494,8 @@
         {
           "symbol": "model.js:encounters",
           "file": "model.js",
-          "line": 2227,
-          "endLine": 2267,
+          "line": 2189,
+          "endLine": 2191,
           "refs": [
             "AK-GEO-01",
             "AK-ACT-01"
@@ -504,8 +504,8 @@
         {
           "symbol": "model.js:completeCorruption",
           "file": "model.js",
-          "line": 1141,
-          "endLine": 1167,
+          "line": 1150,
+          "endLine": 1177,
           "refs": [
             "AK-ACT-01"
           ]
@@ -513,8 +513,8 @@
         {
           "symbol": "model.js:act",
           "file": "model.js",
-          "line": 1097,
-          "endLine": 1136,
+          "line": 1106,
+          "endLine": 1145,
           "refs": [
             "AK-ACT-01",
             "AK-ACT-02"
@@ -540,8 +540,8 @@
         {
           "symbol": "model.js:choose",
           "file": "model.js",
-          "line": 969,
-          "endLine": 1036,
+          "line": 975,
+          "endLine": 1043,
           "refs": [
             "AK-DEC-01",
             "AK-ACT-02"
@@ -550,8 +550,8 @@
         {
           "symbol": "model.js:act",
           "file": "model.js",
-          "line": 1097,
-          "endLine": 1136,
+          "line": 1106,
+          "endLine": 1145,
           "refs": [
             "AK-ACT-01",
             "AK-ACT-02"
@@ -560,8 +560,8 @@
         {
           "symbol": "model.js:recover",
           "file": "model.js",
-          "line": 3435,
-          "endLine": 3444,
+          "line": 3360,
+          "endLine": 3369,
           "refs": [
             "AK-ACT-02"
           ]
@@ -569,8 +569,8 @@
         {
           "symbol": "model.js:classActivity",
           "file": "model.js",
-          "line": 3477,
-          "endLine": 3490,
+          "line": 3416,
+          "endLine": 3429,
           "refs": [
             "AK-ACT-02"
           ]
@@ -596,8 +596,8 @@
         {
           "symbol": "model.js:link",
           "file": "model.js",
-          "line": 1423,
-          "endLine": 1492,
+          "line": 1433,
+          "endLine": 1502,
           "refs": [
             "AK-INS-01",
             "AK-NET-01"
@@ -606,8 +606,8 @@
         {
           "symbol": "model.js:practice",
           "file": "model.js",
-          "line": 3530,
-          "endLine": 3530,
+          "line": 3469,
+          "endLine": 3469,
           "refs": [
             "AK-INS-01"
           ]
@@ -615,8 +615,8 @@
         {
           "symbol": "model.js:processServices",
           "file": "model.js",
-          "line": 2272,
-          "endLine": 2308,
+          "line": 2196,
+          "endLine": 2232,
           "refs": [
             "AK-INS-01",
             "AK-ECO-03"
@@ -671,8 +671,8 @@
         {
           "symbol": "model.js:expose",
           "file": "model.js",
-          "line": 1052,
-          "endLine": 1068,
+          "line": 1059,
+          "endLine": 1077,
           "refs": [
             "AK-ADP-01"
           ]
@@ -828,8 +828,8 @@
         {
           "symbol": "model.js:relationship",
           "file": "model.js",
-          "line": 1249,
-          "endLine": 1260,
+          "line": 1259,
+          "endLine": 1270,
           "refs": [
             "AK-ORG-01",
             "AK-NET-01"
@@ -838,8 +838,8 @@
         {
           "symbol": "model.js:related",
           "file": "model.js",
-          "line": 1416,
-          "endLine": 1418,
+          "line": 1426,
+          "endLine": 1428,
           "refs": [
             "AK-NET-01"
           ]
@@ -847,8 +847,8 @@
         {
           "symbol": "model.js:link",
           "file": "model.js",
-          "line": 1423,
-          "endLine": 1492,
+          "line": 1433,
+          "endLine": 1502,
           "refs": [
             "AK-INS-01",
             "AK-NET-01"
@@ -857,8 +857,8 @@
         {
           "symbol": "model.js:tie",
           "file": "model.js",
-          "line": 1409,
-          "endLine": 1411,
+          "line": 1419,
+          "endLine": 1421,
           "refs": [
             "AK-NET-01"
           ]
@@ -866,8 +866,8 @@
         {
           "symbol": "model.js:peers",
           "file": "model.js",
-          "line": 1363,
-          "endLine": 1384,
+          "line": 1373,
+          "endLine": 1394,
           "refs": [
             "AK-NET-01"
           ]
@@ -875,8 +875,8 @@
         {
           "symbol": "model.js:index",
           "file": "model.js",
-          "line": 830,
-          "endLine": 837,
+          "line": 836,
+          "endLine": 843,
           "refs": [
             "AK-NET-01"
           ]
@@ -884,8 +884,8 @@
         {
           "symbol": "model.js:recentAmount",
           "file": "model.js",
-          "line": 1397,
-          "endLine": 1398,
+          "line": 1407,
+          "endLine": 1408,
           "refs": [
             "AK-NET-01"
           ]
@@ -912,8 +912,8 @@
         {
           "symbol": "model.js:publish",
           "file": "model.js",
-          "line": 2792,
-          "endLine": 2885,
+          "line": 2716,
+          "endLine": 2809,
           "refs": [
             "AK-INF-01"
           ]
@@ -921,8 +921,8 @@
         {
           "symbol": "model.js:funding",
           "file": "model.js",
-          "line": 3003,
-          "endLine": 3087,
+          "line": 2928,
+          "endLine": 3012,
           "refs": [
             "AK-INF-01"
           ]
@@ -930,8 +930,8 @@
         {
           "symbol": "model.js:fundingDependence",
           "file": "model.js",
-          "line": 1389,
-          "endLine": 1404,
+          "line": 1399,
+          "endLine": 1414,
           "refs": [
             "AK-INF-01"
           ]
@@ -959,8 +959,8 @@
         {
           "symbol": "model.js:information",
           "file": "model.js",
-          "line": 2890,
-          "endLine": 2998,
+          "line": 2814,
+          "endLine": 2923,
           "refs": [
             "AK-INF-02"
           ]
@@ -977,8 +977,8 @@
         {
           "symbol": "model.js:communicatedDecision",
           "file": "model.js",
-          "line": 2732,
-          "endLine": 2749,
+          "line": 2656,
+          "endLine": 2673,
           "refs": [
             "AK-INF-02",
             "AK-CAS-03"
@@ -1007,8 +1007,8 @@
         {
           "symbol": "model.js:totalMoney",
           "file": "model.js",
-          "line": 184,
-          "endLine": 192,
+          "line": 185,
+          "endLine": 194,
           "refs": [
             "AK-ECO-01"
           ]
@@ -1016,8 +1016,8 @@
         {
           "symbol": "model.js:transfer",
           "file": "model.js",
-          "line": 197,
-          "endLine": 202,
+          "line": 199,
+          "endLine": 205,
           "refs": [
             "AK-ECO-01"
           ]
@@ -1025,8 +1025,8 @@
         {
           "symbol": "model.js:monthlyAccounts",
           "file": "model.js",
-          "line": 1533,
-          "endLine": 1586,
+          "line": 1543,
+          "endLine": 1545,
           "refs": [
             "AK-ECO-01",
             "AK-ECO-02"
@@ -1035,8 +1035,8 @@
         {
           "symbol": "model.js:changeEmployment",
           "file": "model.js",
-          "line": 3092,
-          "endLine": 3112,
+          "line": 3017,
+          "endLine": 3037,
           "refs": [
             "AK-ORG-02",
             "AK-ECO-01"
@@ -1066,8 +1066,8 @@
         {
           "symbol": "model.js:monthlyAccounts",
           "file": "model.js",
-          "line": 1533,
-          "endLine": 1586,
+          "line": 1543,
+          "endLine": 1545,
           "refs": [
             "AK-ECO-01",
             "AK-ECO-02"
@@ -1076,8 +1076,8 @@
         {
           "symbol": "model.js:scheduleWork",
           "file": "model.js",
-          "line": 1591,
-          "endLine": 1623,
+          "line": 1550,
+          "endLine": 1583,
           "refs": [
             "AK-ECO-02"
           ]
@@ -1085,8 +1085,8 @@
         {
           "symbol": "model.js:priorities",
           "file": "model.js",
-          "line": 1295,
-          "endLine": 1326,
+          "line": 1305,
+          "endLine": 1336,
           "refs": [
             "AK-ECO-02",
             "AK-REF-03"
@@ -1113,8 +1113,8 @@
         {
           "symbol": "model.js:addService",
           "file": "model.js",
-          "line": 2012,
-          "endLine": 2024,
+          "line": 1974,
+          "endLine": 1986,
           "refs": [
             "AK-ECO-03"
           ]
@@ -1122,8 +1122,8 @@
         {
           "symbol": "model.js:processServices",
           "file": "model.js",
-          "line": 2272,
-          "endLine": 2308,
+          "line": 2196,
+          "endLine": 2232,
           "refs": [
             "AK-INS-01",
             "AK-ECO-03"
@@ -1132,8 +1132,8 @@
         {
           "symbol": "model.js:experienced",
           "file": "model.js",
-          "line": 1265,
-          "endLine": 1290,
+          "line": 1275,
+          "endLine": 1300,
           "refs": [
             "AK-ECO-03"
           ]
@@ -1159,8 +1159,8 @@
         {
           "symbol": "model.js:conditions",
           "file": "model.js",
-          "line": 170,
-          "endLine": 179,
+          "line": 171,
+          "endLine": 180,
           "refs": [
             "AK-COU-01"
           ]
@@ -1228,8 +1228,8 @@
         {
           "symbol": "model.js:eligibleTool",
           "file": "model.js",
-          "line": 1175,
-          "endLine": 1208,
+          "line": 1185,
+          "endLine": 1218,
           "refs": [
             "AK-COU-02"
           ]
@@ -1237,8 +1237,8 @@
         {
           "symbol": "model.js:responsible",
           "file": "model.js",
-          "line": 2420,
-          "endLine": 2452,
+          "line": 2344,
+          "endLine": 2376,
           "refs": [
             "AK-COU-02",
             "AK-CAS-02"
@@ -1247,8 +1247,8 @@
         {
           "symbol": "model.js:makeCase",
           "file": "model.js",
-          "line": 2313,
-          "endLine": 2373,
+          "line": 2237,
+          "endLine": 2297,
           "refs": [
             "AK-COU-02",
             "AK-CAS-01"
@@ -1275,8 +1275,8 @@
         {
           "symbol": "model.js:createInitial",
           "file": "model.js",
-          "line": 522,
-          "endLine": 584,
+          "line": 525,
+          "endLine": 588,
           "refs": [
             "AK-INI-01"
           ]
@@ -1284,8 +1284,8 @@
         {
           "symbol": "model.js:initialDifference",
           "file": "model.js",
-          "line": 589,
-          "endLine": 611,
+          "line": 593,
+          "endLine": 615,
           "refs": [
             "AK-INI-01"
           ]
@@ -1293,8 +1293,8 @@
         {
           "symbol": "model.js:validateInitial",
           "file": "model.js",
-          "line": 616,
-          "endLine": 782,
+          "line": 620,
+          "endLine": 786,
           "refs": [
             "AK-INI-01"
           ]
@@ -1302,8 +1302,8 @@
         {
           "symbol": "reporting.js:remember",
           "file": "reporting.js",
-          "line": 215,
-          "endLine": 219,
+          "line": 219,
+          "endLine": 223,
           "refs": [
             "AK-INI-01",
             "AK-MEA-03"
@@ -1347,8 +1347,8 @@
         {
           "symbol": "model.js:hash",
           "file": "model.js",
-          "line": 43,
-          "endLine": 51,
+          "line": 44,
+          "endLine": 52,
           "refs": [
             "AK-RNG-01"
           ]
@@ -1356,8 +1356,8 @@
         {
           "symbol": "model.js:draw",
           "file": "model.js",
-          "line": 56,
-          "endLine": 58,
+          "line": 57,
+          "endLine": 59,
           "refs": [
             "AK-RNG-01"
           ]
@@ -1365,8 +1365,8 @@
         {
           "symbol": "model.js:rand",
           "file": "model.js",
-          "line": 823,
-          "endLine": 825,
+          "line": 829,
+          "endLine": 831,
           "refs": [
             "AK-RNG-01"
           ]
@@ -1374,8 +1374,8 @@
         {
           "symbol": "model.js:generator",
           "file": "model.js",
-          "line": 63,
-          "endLine": 66,
+          "line": 64,
+          "endLine": 67,
           "refs": [
             "AK-RNG-01"
           ]
@@ -1421,8 +1421,8 @@
         {
           "symbol": "model.js:adopt",
           "file": "model.js",
-          "line": 921,
-          "endLine": 954,
+          "line": 927,
+          "endLine": 960,
           "refs": [
             "AK-REF-01"
           ]
@@ -1430,8 +1430,8 @@
         {
           "symbol": "model.js:coverage",
           "file": "model.js",
-          "line": 1213,
-          "endLine": 1219,
+          "line": 1223,
+          "endLine": 1229,
           "refs": [
             "AK-REF-01"
           ]
@@ -1439,8 +1439,8 @@
         {
           "symbol": "model.js:covered",
           "file": "model.js",
-          "line": 1224,
-          "endLine": 1235,
+          "line": 1234,
+          "endLine": 1245,
           "refs": [
             "AK-REF-01"
           ]
@@ -1448,8 +1448,8 @@
         {
           "symbol": "model.js:operational",
           "file": "model.js",
-          "line": 1240,
-          "endLine": 1244,
+          "line": 1250,
+          "endLine": 1254,
           "refs": [
             "AK-REF-01"
           ]
@@ -1457,8 +1457,8 @@
         {
           "symbol": "model.js:cap",
           "file": "model.js",
-          "line": 862,
-          "endLine": 874,
+          "line": 868,
+          "endLine": 880,
           "refs": [
             "AK-REF-01"
           ]
@@ -1489,8 +1489,8 @@
         {
           "symbol": "model.js:requirements",
           "file": "model.js",
-          "line": 207,
-          "endLine": 215,
+          "line": 210,
+          "endLine": 218,
           "refs": [
             "AK-REF-02"
           ]
@@ -1498,8 +1498,8 @@
         {
           "symbol": "model.js:recipients",
           "file": "model.js",
-          "line": 879,
-          "endLine": 916,
+          "line": 885,
+          "endLine": 922,
           "refs": [
             "AK-REF-02"
           ]
@@ -1507,8 +1507,8 @@
         {
           "symbol": "model.js:fundPolicies",
           "file": "model.js",
-          "line": 1628,
-          "endLine": 1642,
+          "line": 1588,
+          "endLine": 1602,
           "refs": [
             "AK-REF-02"
           ]
@@ -1546,8 +1546,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -1567,8 +1567,8 @@
         {
           "symbol": "model.js:priorities",
           "file": "model.js",
-          "line": 1295,
-          "endLine": 1326,
+          "line": 1305,
+          "endLine": 1336,
           "refs": [
             "AK-ECO-02",
             "AK-REF-03"
@@ -1577,8 +1577,8 @@
         {
           "symbol": "model.js:operatingPolicy",
           "file": "model.js",
-          "line": 1041,
-          "endLine": 1047,
+          "line": 1048,
+          "endLine": 1054,
           "refs": [
             "AK-REF-03"
           ]
@@ -1606,8 +1606,8 @@
         {
           "symbol": "model.js:budgetReview",
           "file": "model.js",
-          "line": 1870,
-          "endLine": 2007,
+          "line": 1832,
+          "endLine": 1969,
           "refs": [
             "AK-DEC-02",
             "AK-REF-04"
@@ -1616,8 +1616,8 @@
         {
           "symbol": "model.js:policyFeedback",
           "file": "model.js",
-          "line": 1331,
-          "endLine": 1358,
+          "line": 1341,
+          "endLine": 1368,
           "refs": [
             "AK-REF-04",
             "AK-MAC-01"
@@ -1626,8 +1626,8 @@
         {
           "symbol": "model.js:politicalReview",
           "file": "model.js",
-          "line": 3317,
-          "endLine": 3430,
+          "line": 3242,
+          "endLine": 3355,
           "refs": [
             "AK-REF-04",
             "AK-GOV-01"
@@ -1655,8 +1655,8 @@
         {
           "symbol": "model.js:report",
           "file": "model.js",
-          "line": 2029,
-          "endLine": 2073,
+          "line": 1991,
+          "endLine": 2035,
           "refs": [
             "AK-CAS-01"
           ]
@@ -1664,8 +1664,8 @@
         {
           "symbol": "model.js:makeCase",
           "file": "model.js",
-          "line": 2313,
-          "endLine": 2373,
+          "line": 2237,
+          "endLine": 2297,
           "refs": [
             "AK-COU-02",
             "AK-CAS-01"
@@ -1674,8 +1674,8 @@
         {
           "symbol": "model.js:audit",
           "file": "model.js",
-          "line": 2378,
-          "endLine": 2415,
+          "line": 2302,
+          "endLine": 2339,
           "refs": [
             "AK-CAS-01"
           ]
@@ -1700,8 +1700,8 @@
         {
           "symbol": "model.js:processCases",
           "file": "model.js",
-          "line": 2457,
-          "endLine": 2727,
+          "line": 2381,
+          "endLine": 2651,
           "refs": [
             "AK-DEC-02",
             "AK-CAS-02",
@@ -1711,8 +1711,8 @@
         {
           "symbol": "model.js:responsible",
           "file": "model.js",
-          "line": 2420,
-          "endLine": 2452,
+          "line": 2344,
+          "endLine": 2376,
           "refs": [
             "AK-COU-02",
             "AK-CAS-02"
@@ -1740,8 +1740,8 @@
         {
           "symbol": "model.js:collectLiabilities",
           "file": "model.js",
-          "line": 2754,
-          "endLine": 2787,
+          "line": 2678,
+          "endLine": 2711,
           "refs": [
             "AK-CAS-03"
           ]
@@ -1749,8 +1749,8 @@
         {
           "symbol": "model.js:communicatedDecision",
           "file": "model.js",
-          "line": 2732,
-          "endLine": 2749,
+          "line": 2656,
+          "endLine": 2673,
           "refs": [
             "AK-INF-02",
             "AK-CAS-03"
@@ -1768,8 +1768,8 @@
         {
           "symbol": "model.js:processCases",
           "file": "model.js",
-          "line": 2457,
-          "endLine": 2727,
+          "line": 2381,
+          "endLine": 2651,
           "refs": [
             "AK-DEC-02",
             "AK-CAS-02",
@@ -1779,8 +1779,8 @@
         {
           "symbol": "model.js:riskExperience",
           "file": "model.js",
-          "line": 1073,
-          "endLine": 1085,
+          "line": 1082,
+          "endLine": 1094,
           "refs": [
             "AK-CAS-03"
           ]
@@ -1806,8 +1806,8 @@
         {
           "symbol": "model.js:politicalReview",
           "file": "model.js",
-          "line": 3317,
-          "endLine": 3430,
+          "line": 3242,
+          "endLine": 3355,
           "refs": [
             "AK-REF-04",
             "AK-GOV-01"
@@ -1847,8 +1847,8 @@
         {
           "symbol": "model.js:macroDevelopments",
           "file": "model.js",
-          "line": 3495,
-          "endLine": 3648,
+          "line": 3434,
+          "endLine": 3587,
           "refs": [
             "AK-MAC-01"
           ]
@@ -1856,8 +1856,8 @@
         {
           "symbol": "model.js:policyFeedback",
           "file": "model.js",
-          "line": 1331,
-          "endLine": 1358,
+          "line": 1341,
+          "endLine": 1368,
           "refs": [
             "AK-REF-04",
             "AK-MAC-01"
@@ -1866,8 +1866,8 @@
         {
           "symbol": "model.js:metrics",
           "file": "model.js",
-          "line": 3653,
-          "endLine": 3675,
+          "line": 3592,
+          "endLine": 3614,
           "refs": [
             "AK-MAC-01"
           ]
@@ -1920,8 +1920,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -1987,8 +1987,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2055,8 +2055,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2123,8 +2123,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2190,8 +2190,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2257,8 +2257,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2325,8 +2325,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2394,8 +2394,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2463,8 +2463,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2532,8 +2532,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2600,8 +2600,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2671,8 +2671,8 @@
         {
           "symbol": "model.js:implementPolicies",
           "file": "model.js",
-          "line": 1647,
-          "endLine": 1865,
+          "line": 1607,
+          "endLine": 1827,
           "refs": [
             "AK-REF-03",
             "AK-POL-ACA",
@@ -2712,8 +2712,8 @@
         {
           "symbol": "model.js:diagnostic",
           "file": "model.js",
-          "line": 3695,
-          "endLine": 3827,
+          "line": 3634,
+          "endLine": 3766,
           "refs": [
             "AK-MEA-01"
           ]
@@ -2721,8 +2721,8 @@
         {
           "symbol": "model.js:assessment",
           "file": "model.js",
-          "line": 3832,
-          "endLine": 3834,
+          "line": 3771,
+          "endLine": 3773,
           "refs": [
             "AK-MEA-01"
           ]
@@ -2730,8 +2730,8 @@
         {
           "symbol": "reporting.js:sample",
           "file": "reporting.js",
-          "line": 243,
-          "endLine": 399,
+          "line": 247,
+          "endLine": 403,
           "refs": [
             "AK-MEA-01",
             "AK-MEA-03"
@@ -2740,8 +2740,8 @@
         {
           "symbol": "reporting.js:outcomeMeta",
           "file": "reporting.js",
-          "line": 505,
-          "endLine": 522,
+          "line": 509,
+          "endLine": 526,
           "refs": [
             "AK-MEA-01"
           ]
@@ -2768,8 +2768,8 @@
         {
           "symbol": "model.js:comparison",
           "file": "model.js",
-          "line": 4003,
-          "endLine": 4034,
+          "line": 3944,
+          "endLine": 3975,
           "refs": [
             "AK-MEA-02"
           ]
@@ -2833,8 +2833,8 @@
         {
           "symbol": "reporting.js:init",
           "file": "reporting.js",
-          "line": 188,
-          "endLine": 210,
+          "line": 192,
+          "endLine": 214,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2843,7 +2843,7 @@
           "symbol": "reporting.js:activity",
           "file": "reporting.js",
           "line": 181,
-          "endLine": 183,
+          "endLine": 187,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2851,8 +2851,8 @@
         {
           "symbol": "reporting.js:record",
           "file": "reporting.js",
-          "line": 423,
-          "endLine": 472,
+          "line": 427,
+          "endLine": 476,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2860,8 +2860,8 @@
         {
           "symbol": "reporting.js:windowValue",
           "file": "reporting.js",
-          "line": 486,
-          "endLine": 500,
+          "line": 490,
+          "endLine": 504,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2869,8 +2869,8 @@
         {
           "symbol": "reporting.js:sample",
           "file": "reporting.js",
-          "line": 243,
-          "endLine": 399,
+          "line": 247,
+          "endLine": 403,
           "refs": [
             "AK-MEA-01",
             "AK-MEA-03"
@@ -2879,8 +2879,8 @@
         {
           "symbol": "model.js:record",
           "file": "model.js",
-          "line": 2894,
-          "endLine": 2894,
+          "line": 2818,
+          "endLine": 2818,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2888,8 +2888,8 @@
         {
           "symbol": "model.js:reporting",
           "file": "model.js",
-          "line": 3688,
-          "endLine": 3690,
+          "line": 3627,
+          "endLine": 3629,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2897,8 +2897,8 @@
         {
           "symbol": "reporting.js:remember",
           "file": "reporting.js",
-          "line": 215,
-          "endLine": 219,
+          "line": 219,
+          "endLine": 223,
           "refs": [
             "AK-INI-01",
             "AK-MEA-03"
@@ -2907,8 +2907,8 @@
         {
           "symbol": "reporting.js:counterAt",
           "file": "reporting.js",
-          "line": 224,
-          "endLine": 227,
+          "line": 228,
+          "endLine": 231,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2916,8 +2916,8 @@
         {
           "symbol": "reporting.js:recent",
           "file": "reporting.js",
-          "line": 469,
-          "endLine": 469,
+          "line": 473,
+          "endLine": 473,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2925,8 +2925,8 @@
         {
           "symbol": "reporting.js:view",
           "file": "reporting.js",
-          "line": 477,
-          "endLine": 481,
+          "line": 481,
+          "endLine": 485,
           "refs": [
             "AK-MEA-03"
           ]
@@ -2952,8 +2952,8 @@
         {
           "symbol": "reporting.js:interpret",
           "file": "reporting.js",
-          "line": 587,
-          "endLine": 627,
+          "line": 591,
+          "endLine": 631,
           "refs": [
             "AK-MEA-04"
           ]
@@ -2961,8 +2961,8 @@
         {
           "symbol": "reporting.js:eventsFor",
           "file": "reporting.js",
-          "line": 527,
-          "endLine": 564,
+          "line": 531,
+          "endLine": 568,
           "refs": [
             "AK-MEA-04"
           ]
@@ -2970,8 +2970,8 @@
         {
           "symbol": "app.js:reportMeaning",
           "file": "app.js",
-          "line": 802,
-          "endLine": 816,
+          "line": 804,
+          "endLine": 818,
           "refs": [
             "AK-MEA-04"
           ]
@@ -2979,8 +2979,8 @@
         {
           "symbol": "app.js:showReportEvent",
           "file": "app.js",
-          "line": 907,
-          "endLine": 954,
+          "line": 909,
+          "endLine": 956,
           "refs": [
             "AK-MEA-04"
           ]
@@ -3015,8 +3015,8 @@
         {
           "symbol": "app.js:drawMap",
           "file": "app.js",
-          "line": 579,
-          "endLine": 754,
+          "line": 581,
+          "endLine": 756,
           "refs": [
             "AK-VIS-01"
           ]
@@ -3041,8 +3041,8 @@
         {
           "symbol": "model.js:influential",
           "file": "model.js",
-          "line": 3867,
-          "endLine": 3867,
+          "line": 3806,
+          "endLine": 3806,
           "refs": [
             "AK-VIS-02"
           ]
@@ -3050,8 +3050,8 @@
         {
           "symbol": "model.js:emit",
           "file": "model.js",
-          "line": 842,
-          "endLine": 857,
+          "line": 848,
+          "endLine": 863,
           "refs": [
             "AK-VIS-02"
           ]
@@ -3059,8 +3059,8 @@
         {
           "symbol": "app.js:inspector",
           "file": "app.js",
-          "line": 504,
-          "endLine": 523,
+          "line": 505,
+          "endLine": 524,
           "refs": [
             "AK-VIS-02"
           ]
@@ -3068,8 +3068,8 @@
         {
           "symbol": "app.js:renderFeed",
           "file": "app.js",
-          "line": 540,
-          "endLine": 574,
+          "line": 542,
+          "endLine": 576,
           "refs": [
             "AK-VIS-02"
           ]
@@ -3086,8 +3086,8 @@
         {
           "symbol": "model.js:view",
           "file": "model.js",
-          "line": 3866,
-          "endLine": 3946,
+          "line": 3805,
+          "endLine": 3886,
           "refs": [
             "AK-VIS-02"
           ]
@@ -3095,8 +3095,8 @@
         {
           "symbol": "app.js:learningPanel",
           "file": "app.js",
-          "line": 445,
-          "endLine": 499,
+          "line": 446,
+          "endLine": 500,
           "refs": [
             "AK-VIS-02"
           ]
@@ -3104,8 +3104,8 @@
         {
           "symbol": "app.js:selectActor",
           "file": "app.js",
-          "line": 528,
-          "endLine": 535,
+          "line": 529,
+          "endLine": 537,
           "refs": [
             "AK-VIS-02"
           ]
@@ -3113,8 +3113,8 @@
         {
           "symbol": "app.js:reportEventButtons",
           "file": "app.js",
-          "line": 784,
-          "endLine": 797,
+          "line": 786,
+          "endLine": 799,
           "refs": [
             "AK-VIS-02"
           ]
@@ -3156,8 +3156,8 @@
         {
           "symbol": "app.js:renderPolicyAssessment",
           "file": "app.js",
-          "line": 959,
-          "endLine": 1260,
+          "line": 961,
+          "endLine": 1262,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3165,8 +3165,8 @@
         {
           "symbol": "app.js:renderAssessment",
           "file": "app.js",
-          "line": 1265,
-          "endLine": 1354,
+          "line": 1267,
+          "endLine": 1356,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3174,8 +3174,8 @@
         {
           "symbol": "app.js:render",
           "file": "app.js",
-          "line": 1451,
-          "endLine": 1589,
+          "line": 1453,
+          "endLine": 1592,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3229,7 +3229,7 @@
           "symbol": "app.js:baseSummary",
           "file": "app.js",
           "line": 303,
-          "endLine": 311,
+          "endLine": 312,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3237,8 +3237,8 @@
         {
           "symbol": "app.js:preview",
           "file": "app.js",
-          "line": 316,
-          "endLine": 330,
+          "line": 317,
+          "endLine": 331,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3246,8 +3246,8 @@
         {
           "symbol": "app.js:tinyComparison",
           "file": "app.js",
-          "line": 759,
-          "endLine": 763,
+          "line": 761,
+          "endLine": 765,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3255,8 +3255,8 @@
         {
           "symbol": "app.js:reportFormat",
           "file": "app.js",
-          "line": 773,
-          "endLine": 779,
+          "line": 775,
+          "endLine": 781,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3264,8 +3264,8 @@
         {
           "symbol": "app.js:reportChart",
           "file": "app.js",
-          "line": 821,
-          "endLine": 902,
+          "line": 823,
+          "endLine": 904,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3273,8 +3273,8 @@
         {
           "symbol": "app.js:renderReplications",
           "file": "app.js",
-          "line": 1359,
-          "endLine": 1407,
+          "line": 1361,
+          "endLine": 1409,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3282,8 +3282,8 @@
         {
           "symbol": "app.js:selectedImpact",
           "file": "app.js",
-          "line": 1412,
-          "endLine": 1416,
+          "line": 1414,
+          "endLine": 1418,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3291,8 +3291,8 @@
         {
           "symbol": "app.js:drawImpact",
           "file": "app.js",
-          "line": 1421,
-          "endLine": 1446,
+          "line": 1423,
+          "endLine": 1448,
           "refs": [
             "AK-VIS-03"
           ]
@@ -3316,8 +3316,8 @@
         {
           "symbol": "app.js:payload",
           "file": "app.js",
-          "line": 1676,
-          "endLine": 1688,
+          "line": 1679,
+          "endLine": 1691,
           "refs": [
             "AK-IO-01"
           ]
@@ -3325,8 +3325,8 @@
         {
           "symbol": "app.js:validatePayload",
           "file": "app.js",
-          "line": 1693,
-          "endLine": 1787,
+          "line": 1696,
+          "endLine": 1793,
           "refs": [
             "AK-IO-01"
           ]
@@ -3334,8 +3334,8 @@
         {
           "symbol": "app.js:loadPayload",
           "file": "app.js",
-          "line": 1792,
-          "endLine": 1816,
+          "line": 1798,
+          "endLine": 1822,
           "refs": [
             "AK-IO-01"
           ]
@@ -3343,8 +3343,8 @@
         {
           "symbol": "app.js:storeAction",
           "file": "app.js",
-          "line": 1614,
-          "endLine": 1655,
+          "line": 1617,
+          "endLine": 1658,
           "refs": [
             "AK-IO-01"
           ]
@@ -3352,8 +3352,8 @@
         {
           "symbol": "app.js:csv",
           "file": "app.js",
-          "line": 1834,
-          "endLine": 1854,
+          "line": 1840,
+          "endLine": 1860,
           "refs": [
             "AK-IO-01"
           ]
@@ -3361,8 +3361,8 @@
         {
           "symbol": "app.js:openDB",
           "file": "app.js",
-          "line": 1594,
-          "endLine": 1609,
+          "line": 1597,
+          "endLine": 1612,
           "refs": [
             "AK-IO-01"
           ]
@@ -3370,8 +3370,8 @@
         {
           "symbol": "app.js:refreshSaves",
           "file": "app.js",
-          "line": 1660,
-          "endLine": 1671,
+          "line": 1663,
+          "endLine": 1674,
           "refs": [
             "AK-IO-01"
           ]
@@ -3379,8 +3379,8 @@
         {
           "symbol": "app.js:download",
           "file": "app.js",
-          "line": 1821,
-          "endLine": 1829,
+          "line": 1827,
+          "endLine": 1835,
           "refs": [
             "AK-IO-01"
           ]
@@ -3388,8 +3388,8 @@
         {
           "symbol": "app.js:showStorage",
           "file": "app.js",
-          "line": 1859,
-          "endLine": 1865,
+          "line": 1865,
+          "endLine": 1871,
           "refs": [
             "AK-IO-01"
           ]
@@ -3416,8 +3416,8 @@
         {
           "symbol": "worker.js:makePair",
           "file": "worker.js",
-          "line": 44,
-          "endLine": 47,
+          "line": 46,
+          "endLine": 49,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3425,8 +3425,8 @@
         {
           "symbol": "worker.js:advance",
           "file": "worker.js",
-          "line": 151,
-          "endLine": 157,
+          "line": 153,
+          "endLine": 159,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3434,8 +3434,8 @@
         {
           "symbol": "worker.js:pump",
           "file": "worker.js",
-          "line": 162,
-          "endLine": 175,
+          "line": 164,
+          "endLine": 177,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3443,8 +3443,8 @@
         {
           "symbol": "worker.js:finishPair",
           "file": "worker.js",
-          "line": 72,
-          "endLine": 146,
+          "line": 74,
+          "endLine": 148,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3452,8 +3452,8 @@
         {
           "symbol": "app.js:initializeWorker",
           "file": "app.js",
-          "line": 345,
-          "endLine": 393,
+          "line": 346,
+          "endLine": 394,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3461,8 +3461,8 @@
         {
           "symbol": "app.js:stopWorker",
           "file": "app.js",
-          "line": 335,
-          "endLine": 340,
+          "line": 336,
+          "endLine": 341,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3470,8 +3470,8 @@
         {
           "symbol": "app.js:start",
           "file": "app.js",
-          "line": 398,
-          "endLine": 421,
+          "line": 399,
+          "endLine": 422,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3479,8 +3479,8 @@
         {
           "symbol": "app.js:reset",
           "file": "app.js",
-          "line": 426,
-          "endLine": 440,
+          "line": 427,
+          "endLine": 441,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3488,8 +3488,8 @@
         {
           "symbol": "worker.js:send",
           "file": "worker.js",
-          "line": 52,
-          "endLine": 67,
+          "line": 54,
+          "endLine": 69,
           "refs": [
             "AK-OPS-01"
           ]
@@ -3514,8 +3514,8 @@
         {
           "symbol": "model.js:assertInvariants",
           "file": "model.js",
-          "line": 3966,
-          "endLine": 3997,
+          "line": 3906,
+          "endLine": 3938,
           "refs": [
             "AK-VAL-01"
           ]
@@ -3523,8 +3523,8 @@
         {
           "symbol": "model.js:snapshot",
           "file": "model.js",
-          "line": 3959,
-          "endLine": 3961,
+          "line": 3899,
+          "endLine": 3901,
           "refs": [
             "AK-VAL-01"
           ]
@@ -3532,8 +3532,8 @@
         {
           "symbol": "reporting.js:valid",
           "file": "reporting.js",
-          "line": 632,
-          "endLine": 695,
+          "line": 636,
+          "endLine": 699,
           "refs": [
             "AK-VAL-01"
           ]
@@ -3541,8 +3541,8 @@
         {
           "symbol": "model.js:finite",
           "file": "model.js",
-          "line": 627,
-          "endLine": 628,
+          "line": 631,
+          "endLine": 632,
           "refs": [
             "AK-VAL-01"
           ]
@@ -3550,8 +3550,8 @@
         {
           "symbol": "model.js:ids",
           "file": "model.js",
-          "line": 3744,
-          "endLine": 3744,
+          "line": 3683,
+          "endLine": 3683,
           "refs": [
             "AK-VAL-01"
           ]
@@ -3621,23 +3621,880 @@
         "S02",
         "S11"
       ]
+    },
+    {
+      "id": "AKX-SCP-01",
+      "rules": [
+        "D26",
+        "D30"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:initialize",
+          "file": "hybrid.js",
+          "line": 82,
+          "endLine": 174,
+          "refs": [
+            "AKX-SCP-01",
+            "AKX-STA-01",
+            "AKX-ECO-05"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-TIM-01",
+      "rules": [
+        "D17",
+        "D20"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:open",
+          "file": "hybrid.js",
+          "line": 253,
+          "endLine": 284,
+          "refs": [
+            "AKX-TIM-01",
+            "AKX-ATT-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:personalTime",
+          "file": "hybrid.js",
+          "line": 351,
+          "endLine": 362,
+          "refs": [
+            "AKX-TIM-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:synchronizeTime",
+          "file": "hybrid.js",
+          "line": 379,
+          "endLine": 385,
+          "refs": [
+            "AKX-TIM-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-STA-01",
+      "rules": [
+        "D19"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:initialize",
+          "file": "hybrid.js",
+          "line": 82,
+          "endLine": 174,
+          "refs": [
+            "AKX-SCP-01",
+            "AKX-STA-01",
+            "AKX-ECO-05"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:recordTransfer",
+          "file": "hybrid.js",
+          "line": 176,
+          "endLine": 221,
+          "refs": [
+            "AKX-STA-01",
+            "AKX-MEA-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:stocks",
+          "file": "hybrid.js",
+          "line": 1692,
+          "endLine": 1737,
+          "refs": [
+            "AKX-STA-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-CAP-01",
+      "rules": [
+        "D01"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:care",
+          "file": "hybrid.js",
+          "line": 492,
+          "endLine": 596,
+          "refs": [
+            "AKX-CAP-01",
+            "AKX-MNT-01",
+            "AKX-MNT-02"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-MNT-01",
+      "rules": [
+        "D02",
+        "D03"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:maintenanceNeed",
+          "file": "hybrid.js",
+          "line": 485,
+          "endLine": 490,
+          "refs": [
+            "AKX-MNT-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:care",
+          "file": "hybrid.js",
+          "line": 492,
+          "endLine": 596,
+          "refs": [
+            "AKX-CAP-01",
+            "AKX-MNT-01",
+            "AKX-MNT-02"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-MNT-02",
+      "rules": [
+        "D03"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:care",
+          "file": "hybrid.js",
+          "line": 492,
+          "endLine": 596,
+          "refs": [
+            "AKX-CAP-01",
+            "AKX-MNT-01",
+            "AKX-MNT-02"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-BEL-01",
+      "rules": [
+        "D04"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:observe",
+          "file": "hybrid.js",
+          "line": 449,
+          "endLine": 483,
+          "refs": [
+            "AKX-BEL-01",
+            "AKX-ATT-01",
+            "AKX-INF-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-AGY-01",
+      "rules": [
+        "D05"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:rank",
+          "file": "hybrid.js",
+          "line": 42,
+          "endLine": 48,
+          "refs": [
+            "AKX-AGY-01",
+            "AKX-GOV-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:governance",
+          "file": "hybrid.js",
+          "line": 1173,
+          "endLine": 1303,
+          "refs": [
+            "AKX-AGY-01",
+            "AKX-GOV-02",
+            "AKX-GOV-03"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-AGY-02",
+      "rules": [
+        "D06"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:options",
+          "file": "hybrid.js",
+          "line": 405,
+          "endLine": 447,
+          "refs": [
+            "AKX-AGY-02",
+            "AKX-INF-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-GOV-01",
+      "rules": [
+        "D07",
+        "D08"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:rank",
+          "file": "hybrid.js",
+          "line": 42,
+          "endLine": 48,
+          "refs": [
+            "AKX-AGY-01",
+            "AKX-GOV-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:conduct",
+          "file": "hybrid.js",
+          "line": 1652,
+          "endLine": 1664,
+          "refs": [
+            "AKX-GOV-01",
+            "AKX-COV-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-GOV-02",
+      "rules": [
+        "D09"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:propose",
+          "file": "hybrid.js",
+          "line": 1130,
+          "endLine": 1172,
+          "refs": [
+            "AKX-GOV-02",
+            "AKX-GOV-03"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:governance",
+          "file": "hybrid.js",
+          "line": 1173,
+          "endLine": 1303,
+          "refs": [
+            "AKX-AGY-01",
+            "AKX-GOV-02",
+            "AKX-GOV-03"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-GOV-03",
+      "rules": [
+        "D12",
+        "D13"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:propose",
+          "file": "hybrid.js",
+          "line": 1130,
+          "endLine": 1172,
+          "refs": [
+            "AKX-GOV-02",
+            "AKX-GOV-03"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:governance",
+          "file": "hybrid.js",
+          "line": 1173,
+          "endLine": 1303,
+          "refs": [
+            "AKX-AGY-01",
+            "AKX-GOV-02",
+            "AKX-GOV-03"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:review",
+          "file": "hybrid.js",
+          "line": 1097,
+          "endLine": 1128,
+          "refs": [
+            "AKX-GOV-03"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-COL-01",
+      "rules": [
+        "D10"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:coalitions",
+          "file": "hybrid.js",
+          "line": 1305,
+          "endLine": 1484,
+          "refs": [
+            "AKX-COL-01",
+            "AKX-ATT-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-ATT-01",
+      "rules": [
+        "D11"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:open",
+          "file": "hybrid.js",
+          "line": 253,
+          "endLine": 284,
+          "refs": [
+            "AKX-TIM-01",
+            "AKX-ATT-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:observe",
+          "file": "hybrid.js",
+          "line": 449,
+          "endLine": 483,
+          "refs": [
+            "AKX-BEL-01",
+            "AKX-ATT-01",
+            "AKX-INF-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:coalitions",
+          "file": "hybrid.js",
+          "line": 1305,
+          "endLine": 1484,
+          "refs": [
+            "AKX-COL-01",
+            "AKX-ATT-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-STR-01",
+      "rules": [
+        "D14"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:responses",
+          "file": "hybrid.js",
+          "line": 1486,
+          "endLine": 1562,
+          "refs": [
+            "AKX-STR-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-INF-01",
+      "rules": [
+        "D16"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:observe",
+          "file": "hybrid.js",
+          "line": 449,
+          "endLine": 483,
+          "refs": [
+            "AKX-BEL-01",
+            "AKX-ATT-01",
+            "AKX-INF-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:options",
+          "file": "hybrid.js",
+          "line": 405,
+          "endLine": 447,
+          "refs": [
+            "AKX-AGY-02",
+            "AKX-INF-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-COV-01",
+      "rules": [
+        "D15"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:conduct",
+          "file": "hybrid.js",
+          "line": 1652,
+          "endLine": 1664,
+          "refs": [
+            "AKX-GOV-01",
+            "AKX-COV-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:coverage",
+          "file": "hybrid.js",
+          "line": 1665,
+          "endLine": 1691,
+          "refs": [
+            "AKX-COV-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-ENC-01",
+      "rules": [
+        "D18"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:encounters",
+          "file": "hybrid.js",
+          "line": 1564,
+          "endLine": 1650,
+          "refs": [
+            "AKX-ENC-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-ECO-01",
+      "rules": [
+        "D22",
+        "D28"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:accounts",
+          "file": "hybrid.js",
+          "line": 598,
+          "endLine": 650,
+          "refs": [
+            "AKX-ECO-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:investment",
+          "file": "hybrid.js",
+          "line": 832,
+          "endLine": 975,
+          "refs": [
+            "AKX-ECO-01",
+            "AKX-ECO-02"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-ECO-02",
+      "rules": [
+        "D23"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:investment",
+          "file": "hybrid.js",
+          "line": 832,
+          "endLine": 975,
+          "refs": [
+            "AKX-ECO-01",
+            "AKX-ECO-02"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-ECO-03",
+      "rules": [
+        "D24"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:order",
+          "file": "hybrid.js",
+          "line": 660,
+          "endLine": 675,
+          "refs": [
+            "AKX-ECO-03"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:demand",
+          "file": "hybrid.js",
+          "line": 692,
+          "endLine": 753,
+          "refs": [
+            "AKX-ECO-03"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:production",
+          "file": "hybrid.js",
+          "line": 755,
+          "endLine": 830,
+          "refs": [
+            "AKX-ECO-03",
+            "AKX-ECO-05"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-ECO-04",
+      "rules": [
+        "D25",
+        "D32"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:taxation",
+          "file": "hybrid.js",
+          "line": 977,
+          "endLine": 1095,
+          "refs": [
+            "AKX-ECO-04"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-ECO-05",
+      "rules": [
+        "D21",
+        "D29",
+        "D30",
+        "D31"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:initialize",
+          "file": "hybrid.js",
+          "line": 82,
+          "endLine": 174,
+          "refs": [
+            "AKX-SCP-01",
+            "AKX-STA-01",
+            "AKX-ECO-05"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:production",
+          "file": "hybrid.js",
+          "line": 755,
+          "endLine": 830,
+          "refs": [
+            "AKX-ECO-03",
+            "AKX-ECO-05"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:close",
+          "file": "hybrid.js",
+          "line": 1739,
+          "endLine": 1807,
+          "refs": [
+            "AKX-ECO-05",
+            "AKX-MEA-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:anchor",
+          "file": "hybrid.js",
+          "line": 1808,
+          "endLine": 1815,
+          "refs": [
+            "AKX-ECO-05"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-MEA-01",
+      "rules": [
+        "D27"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:close",
+          "file": "hybrid.js",
+          "line": 1739,
+          "endLine": 1807,
+          "refs": [
+            "AKX-ECO-05",
+            "AKX-MEA-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:summary",
+          "file": "hybrid.js",
+          "line": 1816,
+          "endLine": 1827,
+          "refs": [
+            "AKX-MEA-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:recordTransfer",
+          "file": "hybrid.js",
+          "line": 176,
+          "endLine": 221,
+          "refs": [
+            "AKX-STA-01",
+            "AKX-MEA-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:exposure",
+          "file": "hybrid.js",
+          "line": 304,
+          "endLine": 336,
+          "refs": [
+            "AKX-MEA-01"
+          ]
+        },
+        {
+          "symbol": "hybrid.js:capabilityBuilt",
+          "file": "hybrid.js",
+          "line": 337,
+          "endLine": 349,
+          "refs": [
+            "AKX-MEA-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-CAL-01",
+      "rules": [
+        "D26"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:parameters",
+          "file": "hybrid.js",
+          "line": 14,
+          "endLine": 37,
+          "refs": [
+            "AKX-CAL-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "AKX-VAL-01",
+      "rules": [
+        "D26"
+      ],
+      "symbols": [
+        {
+          "symbol": "hybrid.js:assert",
+          "file": "hybrid.js",
+          "line": 1862,
+          "endLine": 1894,
+          "refs": [
+            "AKX-VAL-01"
+          ]
+        }
+      ],
+      "tests": [
+        "hybrid.test.js"
+      ],
+      "sources": [
+        "S09"
+      ]
     }
   ],
   "units": {
     "model.js": [
       {
         "name": "clamp",
-        "line": 35,
-        "endLine": 35,
-        "parent": null,
-        "refs": [
-          "AK-OV-01",
-          "AK-VAL-01"
-        ],
-        "note": null
-      },
-      {
-        "name": "sum",
         "line": 36,
         "endLine": 36,
         "parent": null,
@@ -3648,7 +4505,7 @@
         "note": null
       },
       {
-        "name": "mean",
+        "name": "sum",
         "line": 37,
         "endLine": 37,
         "parent": null,
@@ -3659,7 +4516,7 @@
         "note": null
       },
       {
-        "name": "clone",
+        "name": "mean",
         "line": 38,
         "endLine": 38,
         "parent": null,
@@ -3670,9 +4527,20 @@
         "note": null
       },
       {
+        "name": "clone",
+        "line": 39,
+        "endLine": 39,
+        "parent": null,
+        "refs": [
+          "AK-OV-01",
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
         "name": "hash",
-        "line": 43,
-        "endLine": 51,
+        "line": 44,
+        "endLine": 52,
         "parent": null,
         "refs": [
           "AK-RNG-01"
@@ -3681,8 +4549,8 @@
       },
       {
         "name": "draw",
-        "line": 56,
-        "endLine": 58,
+        "line": 57,
+        "endLine": 59,
         "parent": null,
         "refs": [
           "AK-RNG-01"
@@ -3691,8 +4559,8 @@
       },
       {
         "name": "generator",
-        "line": 63,
-        "endLine": 66,
+        "line": 64,
+        "endLine": 67,
         "parent": null,
         "refs": [
           "AK-RNG-01"
@@ -3701,8 +4569,8 @@
       },
       {
         "name": "gaussian",
-        "line": 71,
-        "endLine": 73,
+        "line": 72,
+        "endLine": 74,
         "parent": null,
         "refs": [
           "AK-OV-01",
@@ -3712,8 +4580,8 @@
       },
       {
         "name": "gamma",
-        "line": 78,
-        "endLine": 90,
+        "line": 79,
+        "endLine": 91,
         "parent": null,
         "refs": [
           "AK-OV-01",
@@ -3723,8 +4591,8 @@
       },
       {
         "name": "motives",
-        "line": 95,
-        "endLine": 108,
+        "line": 96,
+        "endLine": 109,
         "parent": null,
         "refs": [
           "AK-MOT-01"
@@ -3733,8 +4601,8 @@
       },
       {
         "name": "validate",
-        "line": 126,
-        "endLine": 165,
+        "line": 127,
+        "endLine": 166,
         "parent": null,
         "refs": [
           "AK-OV-01"
@@ -3743,8 +4611,8 @@
       },
       {
         "name": "conditions",
-        "line": 170,
-        "endLine": 179,
+        "line": 171,
+        "endLine": 180,
         "parent": null,
         "refs": [
           "AK-COU-01"
@@ -3753,8 +4621,8 @@
       },
       {
         "name": "totalMoney",
-        "line": 184,
-        "endLine": 192,
+        "line": 185,
+        "endLine": 194,
         "parent": null,
         "refs": [
           "AK-ECO-01"
@@ -3763,8 +4631,8 @@
       },
       {
         "name": "transfer",
-        "line": 197,
-        "endLine": 202,
+        "line": 199,
+        "endLine": 205,
         "parent": null,
         "refs": [
           "AK-ECO-01"
@@ -3773,8 +4641,8 @@
       },
       {
         "name": "requirements",
-        "line": 207,
-        "endLine": 215,
+        "line": 210,
+        "endLine": 218,
         "parent": null,
         "refs": [
           "AK-REF-02"
@@ -3783,8 +4651,8 @@
       },
       {
         "name": "createPopulation",
-        "line": 220,
-        "endLine": 513,
+        "line": 223,
+        "endLine": 516,
         "parent": null,
         "refs": [
           "AK-POP-01",
@@ -3796,8 +4664,8 @@
       },
       {
         "name": "org",
-        "line": 301,
-        "endLine": 348,
+        "line": 304,
+        "endLine": 351,
         "parent": "createPopulation",
         "refs": [
           "AK-ORG-01"
@@ -3806,8 +4674,8 @@
       },
       {
         "name": "createInitial",
-        "line": 522,
-        "endLine": 584,
+        "line": 525,
+        "endLine": 588,
         "parent": null,
         "refs": [
           "AK-INI-01"
@@ -3816,8 +4684,8 @@
       },
       {
         "name": "initialDifference",
-        "line": 589,
-        "endLine": 611,
+        "line": 593,
+        "endLine": 615,
         "parent": null,
         "refs": [
           "AK-INI-01"
@@ -3826,8 +4694,8 @@
       },
       {
         "name": "validateInitial",
-        "line": 616,
-        "endLine": 782,
+        "line": 620,
+        "endLine": 786,
         "parent": null,
         "refs": [
           "AK-INI-01"
@@ -3836,8 +4704,8 @@
       },
       {
         "name": "finite",
-        "line": 627,
-        "endLine": 628,
+        "line": 631,
+        "endLine": 632,
         "parent": "validateInitial",
         "refs": [
           "AK-VAL-01"
@@ -3846,8 +4714,8 @@
       },
       {
         "name": "ids",
-        "line": 629,
-        "endLine": 629,
+        "line": 633,
+        "endLine": 633,
         "parent": "validateInitial",
         "refs": [
           "AK-VAL-01"
@@ -3856,8 +4724,8 @@
       },
       {
         "name": "constructor",
-        "line": 787,
-        "endLine": 797,
+        "line": 791,
+        "endLine": 803,
         "parent": null,
         "refs": [
           "AK-OV-01"
@@ -3866,8 +4734,8 @@
       },
       {
         "name": "get agents",
-        "line": 802,
-        "endLine": 804,
+        "line": 808,
+        "endLine": 810,
         "parent": null,
         "refs": [
           "AK-OV-01",
@@ -3877,8 +4745,8 @@
       },
       {
         "name": "get orgs",
-        "line": 809,
-        "endLine": 811,
+        "line": 815,
+        "endLine": 817,
         "parent": null,
         "refs": [
           "AK-OV-01",
@@ -3888,8 +4756,8 @@
       },
       {
         "name": "get month",
-        "line": 816,
-        "endLine": 818,
+        "line": 822,
+        "endLine": 824,
         "parent": null,
         "refs": [
           "AK-OV-01",
@@ -3899,8 +4767,8 @@
       },
       {
         "name": "rand",
-        "line": 823,
-        "endLine": 825,
+        "line": 829,
+        "endLine": 831,
         "parent": null,
         "refs": [
           "AK-RNG-01"
@@ -3909,8 +4777,8 @@
       },
       {
         "name": "index",
-        "line": 830,
-        "endLine": 837,
+        "line": 836,
+        "endLine": 843,
         "parent": null,
         "refs": [
           "AK-NET-01"
@@ -3919,8 +4787,8 @@
       },
       {
         "name": "emit",
-        "line": 842,
-        "endLine": 857,
+        "line": 848,
+        "endLine": 863,
         "parent": null,
         "refs": [
           "AK-VIS-02"
@@ -3929,8 +4797,8 @@
       },
       {
         "name": "cap",
-        "line": 862,
-        "endLine": 874,
+        "line": 868,
+        "endLine": 880,
         "parent": null,
         "refs": [
           "AK-REF-01"
@@ -3939,8 +4807,8 @@
       },
       {
         "name": "recipients",
-        "line": 879,
-        "endLine": 916,
+        "line": 885,
+        "endLine": 922,
         "parent": null,
         "refs": [
           "AK-REF-02"
@@ -3949,8 +4817,8 @@
       },
       {
         "name": "adopt",
-        "line": 921,
-        "endLine": 954,
+        "line": 927,
+        "endLine": 960,
         "parent": null,
         "refs": [
           "AK-REF-01"
@@ -3959,8 +4827,8 @@
       },
       {
         "name": "effects",
-        "line": 959,
-        "endLine": 964,
+        "line": 965,
+        "endLine": 970,
         "parent": null,
         "refs": [
           "AK-DEC-02"
@@ -3969,8 +4837,8 @@
       },
       {
         "name": "choose",
-        "line": 969,
-        "endLine": 1036,
+        "line": 975,
+        "endLine": 1043,
         "parent": null,
         "refs": [
           "AK-DEC-01",
@@ -3980,8 +4848,8 @@
       },
       {
         "name": "operatingPolicy",
-        "line": 1041,
-        "endLine": 1047,
+        "line": 1048,
+        "endLine": 1054,
         "parent": null,
         "refs": [
           "AK-REF-03"
@@ -3990,8 +4858,8 @@
       },
       {
         "name": "expose",
-        "line": 1052,
-        "endLine": 1068,
+        "line": 1059,
+        "endLine": 1077,
         "parent": null,
         "refs": [
           "AK-ADP-01"
@@ -4000,8 +4868,8 @@
       },
       {
         "name": "riskExperience",
-        "line": 1073,
-        "endLine": 1085,
+        "line": 1082,
+        "endLine": 1094,
         "parent": null,
         "refs": [
           "AK-CAS-03"
@@ -4010,8 +4878,8 @@
       },
       {
         "name": "practice",
-        "line": 1090,
-        "endLine": 1092,
+        "line": 1099,
+        "endLine": 1101,
         "parent": null,
         "refs": [
           "AK-INS-01"
@@ -4020,8 +4888,8 @@
       },
       {
         "name": "act",
-        "line": 1097,
-        "endLine": 1136,
+        "line": 1106,
+        "endLine": 1145,
         "parent": null,
         "refs": [
           "AK-ACT-01",
@@ -4031,8 +4899,8 @@
       },
       {
         "name": "completeCorruption",
-        "line": 1141,
-        "endLine": 1167,
+        "line": 1150,
+        "endLine": 1177,
         "parent": null,
         "refs": [
           "AK-ACT-01"
@@ -4041,8 +4909,8 @@
       },
       {
         "name": "eligibleTool",
-        "line": 1175,
-        "endLine": 1208,
+        "line": 1185,
+        "endLine": 1218,
         "parent": null,
         "refs": [
           "AK-COU-02"
@@ -4051,8 +4919,8 @@
       },
       {
         "name": "coverage",
-        "line": 1213,
-        "endLine": 1219,
+        "line": 1223,
+        "endLine": 1229,
         "parent": null,
         "refs": [
           "AK-REF-01"
@@ -4061,8 +4929,8 @@
       },
       {
         "name": "covered",
-        "line": 1224,
-        "endLine": 1235,
+        "line": 1234,
+        "endLine": 1245,
         "parent": null,
         "refs": [
           "AK-REF-01"
@@ -4071,8 +4939,8 @@
       },
       {
         "name": "operational",
-        "line": 1240,
-        "endLine": 1244,
+        "line": 1250,
+        "endLine": 1254,
         "parent": null,
         "refs": [
           "AK-REF-01"
@@ -4081,8 +4949,8 @@
       },
       {
         "name": "relationship",
-        "line": 1249,
-        "endLine": 1260,
+        "line": 1259,
+        "endLine": 1270,
         "parent": null,
         "refs": [
           "AK-ORG-01",
@@ -4092,8 +4960,8 @@
       },
       {
         "name": "experienced",
-        "line": 1265,
-        "endLine": 1290,
+        "line": 1275,
+        "endLine": 1300,
         "parent": null,
         "refs": [
           "AK-ECO-03"
@@ -4102,8 +4970,8 @@
       },
       {
         "name": "priorities",
-        "line": 1295,
-        "endLine": 1326,
+        "line": 1305,
+        "endLine": 1336,
         "parent": null,
         "refs": [
           "AK-ECO-02",
@@ -4113,8 +4981,8 @@
       },
       {
         "name": "policyFeedback",
-        "line": 1331,
-        "endLine": 1358,
+        "line": 1341,
+        "endLine": 1368,
         "parent": null,
         "refs": [
           "AK-REF-04",
@@ -4124,8 +4992,8 @@
       },
       {
         "name": "peers",
-        "line": 1363,
-        "endLine": 1384,
+        "line": 1373,
+        "endLine": 1394,
         "parent": null,
         "refs": [
           "AK-NET-01"
@@ -4134,8 +5002,8 @@
       },
       {
         "name": "fundingDependence",
-        "line": 1389,
-        "endLine": 1404,
+        "line": 1399,
+        "endLine": 1414,
         "parent": null,
         "refs": [
           "AK-INF-01"
@@ -4144,8 +5012,8 @@
       },
       {
         "name": "recentAmount",
-        "line": 1397,
-        "endLine": 1398,
+        "line": 1407,
+        "endLine": 1408,
         "parent": "fundingDependence",
         "refs": [
           "AK-NET-01"
@@ -4154,8 +5022,8 @@
       },
       {
         "name": "tie",
-        "line": 1409,
-        "endLine": 1411,
+        "line": 1419,
+        "endLine": 1421,
         "parent": null,
         "refs": [
           "AK-NET-01"
@@ -4164,8 +5032,8 @@
       },
       {
         "name": "related",
-        "line": 1416,
-        "endLine": 1418,
+        "line": 1426,
+        "endLine": 1428,
         "parent": null,
         "refs": [
           "AK-NET-01"
@@ -4174,8 +5042,8 @@
       },
       {
         "name": "link",
-        "line": 1423,
-        "endLine": 1492,
+        "line": 1433,
+        "endLine": 1502,
         "parent": null,
         "refs": [
           "AK-INS-01",
@@ -4185,8 +5053,8 @@
       },
       {
         "name": "nearest",
-        "line": 1497,
-        "endLine": 1528,
+        "line": 1507,
+        "endLine": 1538,
         "parent": null,
         "refs": [
           "AK-GEO-01"
@@ -4195,8 +5063,8 @@
       },
       {
         "name": "monthlyAccounts",
-        "line": 1533,
-        "endLine": 1586,
+        "line": 1543,
+        "endLine": 1545,
         "parent": null,
         "refs": [
           "AK-ECO-01",
@@ -4206,8 +5074,8 @@
       },
       {
         "name": "scheduleWork",
-        "line": 1591,
-        "endLine": 1623,
+        "line": 1550,
+        "endLine": 1583,
         "parent": null,
         "refs": [
           "AK-ECO-02"
@@ -4216,8 +5084,8 @@
       },
       {
         "name": "fundPolicies",
-        "line": 1628,
-        "endLine": 1642,
+        "line": 1588,
+        "endLine": 1602,
         "parent": null,
         "refs": [
           "AK-REF-02"
@@ -4226,8 +5094,8 @@
       },
       {
         "name": "implementPolicies",
-        "line": 1647,
-        "endLine": 1865,
+        "line": 1607,
+        "endLine": 1827,
         "parent": null,
         "refs": [
           "AK-REF-03",
@@ -4248,8 +5116,8 @@
       },
       {
         "name": "budgetReview",
-        "line": 1870,
-        "endLine": 2007,
+        "line": 1832,
+        "endLine": 1969,
         "parent": null,
         "refs": [
           "AK-DEC-02",
@@ -4259,8 +5127,8 @@
       },
       {
         "name": "addService",
-        "line": 2012,
-        "endLine": 2024,
+        "line": 1974,
+        "endLine": 1986,
         "parent": null,
         "refs": [
           "AK-ECO-03"
@@ -4269,8 +5137,8 @@
       },
       {
         "name": "report",
-        "line": 2029,
-        "endLine": 2073,
+        "line": 1991,
+        "endLine": 2035,
         "parent": null,
         "refs": [
           "AK-CAS-01"
@@ -4279,8 +5147,8 @@
       },
       {
         "name": "encounter",
-        "line": 2078,
-        "endLine": 2222,
+        "line": 2040,
+        "endLine": 2184,
         "parent": null,
         "refs": [
           "AK-DEC-02",
@@ -4290,8 +5158,8 @@
       },
       {
         "name": "encounters",
-        "line": 2227,
-        "endLine": 2267,
+        "line": 2189,
+        "endLine": 2191,
         "parent": null,
         "refs": [
           "AK-GEO-01",
@@ -4301,8 +5169,8 @@
       },
       {
         "name": "processServices",
-        "line": 2272,
-        "endLine": 2308,
+        "line": 2196,
+        "endLine": 2232,
         "parent": null,
         "refs": [
           "AK-INS-01",
@@ -4312,8 +5180,8 @@
       },
       {
         "name": "makeCase",
-        "line": 2313,
-        "endLine": 2373,
+        "line": 2237,
+        "endLine": 2297,
         "parent": null,
         "refs": [
           "AK-COU-02",
@@ -4323,8 +5191,8 @@
       },
       {
         "name": "audit",
-        "line": 2378,
-        "endLine": 2415,
+        "line": 2302,
+        "endLine": 2339,
         "parent": null,
         "refs": [
           "AK-CAS-01"
@@ -4333,8 +5201,8 @@
       },
       {
         "name": "responsible",
-        "line": 2420,
-        "endLine": 2452,
+        "line": 2344,
+        "endLine": 2376,
         "parent": null,
         "refs": [
           "AK-COU-02",
@@ -4344,8 +5212,8 @@
       },
       {
         "name": "pick",
-        "line": 2425,
-        "endLine": 2425,
+        "line": 2349,
+        "endLine": 2349,
         "parent": "responsible",
         "refs": [
           "AK-COU-02",
@@ -4355,8 +5223,8 @@
       },
       {
         "name": "processCases",
-        "line": 2457,
-        "endLine": 2727,
+        "line": 2381,
+        "endLine": 2651,
         "parent": null,
         "refs": [
           "AK-DEC-02",
@@ -4367,8 +5235,8 @@
       },
       {
         "name": "communicatedDecision",
-        "line": 2732,
-        "endLine": 2749,
+        "line": 2656,
+        "endLine": 2673,
         "parent": null,
         "refs": [
           "AK-INF-02",
@@ -4378,8 +5246,8 @@
       },
       {
         "name": "collectLiabilities",
-        "line": 2754,
-        "endLine": 2787,
+        "line": 2678,
+        "endLine": 2711,
         "parent": null,
         "refs": [
           "AK-CAS-03"
@@ -4388,8 +5256,8 @@
       },
       {
         "name": "publish",
-        "line": 2792,
-        "endLine": 2885,
+        "line": 2716,
+        "endLine": 2809,
         "parent": null,
         "refs": [
           "AK-INF-01"
@@ -4398,8 +5266,8 @@
       },
       {
         "name": "information",
-        "line": 2890,
-        "endLine": 2998,
+        "line": 2814,
+        "endLine": 2923,
         "parent": null,
         "refs": [
           "AK-INF-02"
@@ -4408,8 +5276,8 @@
       },
       {
         "name": "funding",
-        "line": 3003,
-        "endLine": 3087,
+        "line": 2928,
+        "endLine": 3012,
         "parent": null,
         "refs": [
           "AK-INF-01"
@@ -4418,8 +5286,8 @@
       },
       {
         "name": "changeEmployment",
-        "line": 3092,
-        "endLine": 3112,
+        "line": 3017,
+        "endLine": 3037,
         "parent": null,
         "refs": [
           "AK-ORG-02",
@@ -4429,8 +5297,8 @@
       },
       {
         "name": "organizations",
-        "line": 3117,
-        "endLine": 3312,
+        "line": 3042,
+        "endLine": 3237,
         "parent": null,
         "refs": [
           "AK-ORG-02"
@@ -4439,8 +5307,8 @@
       },
       {
         "name": "politicalReview",
-        "line": 3317,
-        "endLine": 3430,
+        "line": 3242,
+        "endLine": 3355,
         "parent": null,
         "refs": [
           "AK-REF-04",
@@ -4450,8 +5318,8 @@
       },
       {
         "name": "recover",
-        "line": 3435,
-        "endLine": 3444,
+        "line": 3360,
+        "endLine": 3369,
         "parent": null,
         "refs": [
           "AK-ACT-02"
@@ -4460,8 +5328,8 @@
       },
       {
         "name": "step",
-        "line": 3449,
-        "endLine": 3472,
+        "line": 3374,
+        "endLine": 3411,
         "parent": null,
         "refs": [
           "AK-OV-01",
@@ -4471,8 +5339,8 @@
       },
       {
         "name": "classActivity",
-        "line": 3477,
-        "endLine": 3490,
+        "line": 3416,
+        "endLine": 3429,
         "parent": null,
         "refs": [
           "AK-ACT-02"
@@ -4481,8 +5349,8 @@
       },
       {
         "name": "macroDevelopments",
-        "line": 3495,
-        "endLine": 3648,
+        "line": 3434,
+        "endLine": 3587,
         "parent": null,
         "refs": [
           "AK-MAC-01"
@@ -4491,8 +5359,8 @@
       },
       {
         "name": "find",
-        "line": 3589,
-        "endLine": 3597,
+        "line": 3528,
+        "endLine": 3536,
         "parent": "macroDevelopments",
         "refs": [
           "AK-MAC-01"
@@ -4501,8 +5369,8 @@
       },
       {
         "name": "metrics",
-        "line": 3653,
-        "endLine": 3675,
+        "line": 3592,
+        "endLine": 3614,
         "parent": null,
         "refs": [
           "AK-MAC-01"
@@ -4511,8 +5379,8 @@
       },
       {
         "name": "record",
-        "line": 3680,
-        "endLine": 3683,
+        "line": 3619,
+        "endLine": 3622,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -4521,8 +5389,8 @@
       },
       {
         "name": "reporting",
-        "line": 3688,
-        "endLine": 3690,
+        "line": 3627,
+        "endLine": 3629,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -4531,8 +5399,8 @@
       },
       {
         "name": "diagnostic",
-        "line": 3695,
-        "endLine": 3827,
+        "line": 3634,
+        "endLine": 3766,
         "parent": null,
         "refs": [
           "AK-MEA-01"
@@ -4541,8 +5409,8 @@
       },
       {
         "name": "assessment",
-        "line": 3832,
-        "endLine": 3834,
+        "line": 3771,
+        "endLine": 3773,
         "parent": null,
         "refs": [
           "AK-MEA-01"
@@ -4551,8 +5419,8 @@
       },
       {
         "name": "influential",
-        "line": 3839,
-        "endLine": 3861,
+        "line": 3778,
+        "endLine": 3800,
         "parent": null,
         "refs": [
           "AK-VIS-02"
@@ -4561,8 +5429,8 @@
       },
       {
         "name": "view",
-        "line": 3866,
-        "endLine": 3946,
+        "line": 3805,
+        "endLine": 3886,
         "parent": null,
         "refs": [
           "AK-VIS-02"
@@ -4571,8 +5439,8 @@
       },
       {
         "name": "run",
-        "line": 3951,
-        "endLine": 3954,
+        "line": 3891,
+        "endLine": 3894,
         "parent": null,
         "refs": [
           "AK-OV-01",
@@ -4582,8 +5450,8 @@
       },
       {
         "name": "snapshot",
-        "line": 3959,
-        "endLine": 3961,
+        "line": 3899,
+        "endLine": 3901,
         "parent": null,
         "refs": [
           "AK-VAL-01"
@@ -4592,8 +5460,8 @@
       },
       {
         "name": "assertInvariants",
-        "line": 3966,
-        "endLine": 3997,
+        "line": 3906,
+        "endLine": 3938,
         "parent": null,
         "refs": [
           "AK-VAL-01"
@@ -4602,8 +5470,8 @@
       },
       {
         "name": "comparison",
-        "line": 4003,
-        "endLine": 4034,
+        "line": 3944,
+        "endLine": 3975,
         "parent": null,
         "refs": [
           "AK-MEA-02"
@@ -4612,8 +5480,8 @@
       },
       {
         "name": "rate",
-        "line": 4009,
-        "endLine": 4012,
+        "line": 3950,
+        "endLine": 3953,
         "parent": "comparison",
         "refs": [
           "AK-MEA-02"
@@ -4897,7 +5765,7 @@
       {
         "name": "activity",
         "line": 181,
-        "endLine": 183,
+        "endLine": 187,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -4906,8 +5774,8 @@
       },
       {
         "name": "init",
-        "line": 188,
-        "endLine": 210,
+        "line": 192,
+        "endLine": 214,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -4916,8 +5784,8 @@
       },
       {
         "name": "remember",
-        "line": 215,
-        "endLine": 219,
+        "line": 219,
+        "endLine": 223,
         "parent": null,
         "refs": [
           "AK-INI-01",
@@ -4927,8 +5795,8 @@
       },
       {
         "name": "counterAt",
-        "line": 224,
-        "endLine": 227,
+        "line": 228,
+        "endLine": 231,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -4937,8 +5805,8 @@
       },
       {
         "name": "recent",
-        "line": 232,
-        "endLine": 238,
+        "line": 236,
+        "endLine": 242,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -4947,8 +5815,8 @@
       },
       {
         "name": "sample",
-        "line": 243,
-        "endLine": 399,
+        "line": 247,
+        "endLine": 403,
         "parent": null,
         "refs": [
           "AK-MEA-01",
@@ -4958,8 +5826,8 @@
       },
       {
         "name": "pool",
-        "line": 253,
-        "endLine": 253,
+        "line": 257,
+        "endLine": 257,
         "parent": "sample",
         "refs": [
           "AK-MEA-01",
@@ -4969,8 +5837,8 @@
       },
       {
         "name": "scope",
-        "line": 258,
-        "endLine": 258,
+        "line": 262,
+        "endLine": 262,
         "parent": "sample",
         "refs": [
           "AK-MEA-01",
@@ -4980,8 +5848,8 @@
       },
       {
         "name": "cap",
-        "line": 263,
-        "endLine": 263,
+        "line": 267,
+        "endLine": 267,
         "parent": "sample",
         "refs": [
           "AK-MEA-01",
@@ -4991,8 +5859,8 @@
       },
       {
         "name": "staff",
-        "line": 268,
-        "endLine": 275,
+        "line": 272,
+        "endLine": 279,
         "parent": "sample",
         "refs": [
           "AK-MEA-01",
@@ -5002,8 +5870,8 @@
       },
       {
         "name": "relevant",
-        "line": 311,
-        "endLine": 318,
+        "line": 315,
+        "endLine": 322,
         "parent": "sample",
         "refs": [
           "AK-MEA-01",
@@ -5013,8 +5881,8 @@
       },
       {
         "name": "related",
-        "line": 404,
-        "endLine": 418,
+        "line": 408,
+        "endLine": 422,
         "parent": null,
         "refs": [
           "AK-MEA-03",
@@ -5024,8 +5892,8 @@
       },
       {
         "name": "record",
-        "line": 423,
-        "endLine": 472,
+        "line": 427,
+        "endLine": 476,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -5034,8 +5902,8 @@
       },
       {
         "name": "view",
-        "line": 477,
-        "endLine": 481,
+        "line": 481,
+        "endLine": 485,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -5044,8 +5912,8 @@
       },
       {
         "name": "windowValue",
-        "line": 486,
-        "endLine": 500,
+        "line": 490,
+        "endLine": 504,
         "parent": null,
         "refs": [
           "AK-MEA-03"
@@ -5054,8 +5922,8 @@
       },
       {
         "name": "outcomeMeta",
-        "line": 505,
-        "endLine": 522,
+        "line": 509,
+        "endLine": 526,
         "parent": null,
         "refs": [
           "AK-MEA-01"
@@ -5064,8 +5932,8 @@
       },
       {
         "name": "eventsFor",
-        "line": 527,
-        "endLine": 564,
+        "line": 531,
+        "endLine": 568,
         "parent": null,
         "refs": [
           "AK-MEA-04"
@@ -5074,8 +5942,8 @@
       },
       {
         "name": "interpret",
-        "line": 587,
-        "endLine": 627,
+        "line": 591,
+        "endLine": 631,
         "parent": null,
         "refs": [
           "AK-MEA-04"
@@ -5084,8 +5952,8 @@
       },
       {
         "name": "valid",
-        "line": 632,
-        "endLine": 695,
+        "line": 636,
+        "endLine": 699,
         "parent": null,
         "refs": [
           "AK-VAL-01"
@@ -5244,8 +6112,8 @@
     "worker.js": [
       {
         "name": "summary",
-        "line": 31,
-        "endLine": 39,
+        "line": 32,
+        "endLine": 41,
         "parent": null,
         "refs": [
           "AK-OV-01"
@@ -5254,8 +6122,8 @@
       },
       {
         "name": "makePair",
-        "line": 44,
-        "endLine": 47,
+        "line": 46,
+        "endLine": 49,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5264,8 +6132,8 @@
       },
       {
         "name": "send",
-        "line": 52,
-        "endLine": 67,
+        "line": 54,
+        "endLine": 69,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5274,8 +6142,8 @@
       },
       {
         "name": "finishPair",
-        "line": 72,
-        "endLine": 146,
+        "line": 74,
+        "endLine": 148,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5284,8 +6152,8 @@
       },
       {
         "name": "advance",
-        "line": 151,
-        "endLine": 157,
+        "line": 153,
+        "endLine": 159,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5294,8 +6162,8 @@
       },
       {
         "name": "pump",
-        "line": 162,
-        "endLine": 175,
+        "line": 164,
+        "endLine": 177,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5450,7 +6318,7 @@
       {
         "name": "baseSummary",
         "line": 303,
-        "endLine": 311,
+        "endLine": 312,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5459,8 +6327,8 @@
       },
       {
         "name": "preview",
-        "line": 316,
-        "endLine": 330,
+        "line": 317,
+        "endLine": 331,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5469,8 +6337,8 @@
       },
       {
         "name": "stopWorker",
-        "line": 335,
-        "endLine": 340,
+        "line": 336,
+        "endLine": 341,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5479,8 +6347,8 @@
       },
       {
         "name": "initializeWorker",
-        "line": 345,
-        "endLine": 393,
+        "line": 346,
+        "endLine": 394,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5489,8 +6357,8 @@
       },
       {
         "name": "start",
-        "line": 398,
-        "endLine": 421,
+        "line": 399,
+        "endLine": 422,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5499,8 +6367,8 @@
       },
       {
         "name": "reset",
-        "line": 426,
-        "endLine": 440,
+        "line": 427,
+        "endLine": 441,
         "parent": null,
         "refs": [
           "AK-OPS-01"
@@ -5509,8 +6377,8 @@
       },
       {
         "name": "learningPanel",
-        "line": 445,
-        "endLine": 499,
+        "line": 446,
+        "endLine": 500,
         "parent": null,
         "refs": [
           "AK-VIS-02"
@@ -5519,8 +6387,8 @@
       },
       {
         "name": "inspector",
-        "line": 504,
-        "endLine": 523,
+        "line": 505,
+        "endLine": 524,
         "parent": null,
         "refs": [
           "AK-VIS-02"
@@ -5529,8 +6397,8 @@
       },
       {
         "name": "selectActor",
-        "line": 528,
-        "endLine": 535,
+        "line": 529,
+        "endLine": 537,
         "parent": null,
         "refs": [
           "AK-VIS-02"
@@ -5539,8 +6407,8 @@
       },
       {
         "name": "renderFeed",
-        "line": 540,
-        "endLine": 574,
+        "line": 542,
+        "endLine": 576,
         "parent": null,
         "refs": [
           "AK-VIS-02"
@@ -5549,8 +6417,8 @@
       },
       {
         "name": "drawMap",
-        "line": 579,
-        "endLine": 754,
+        "line": 581,
+        "endLine": 756,
         "parent": null,
         "refs": [
           "AK-VIS-01"
@@ -5559,8 +6427,8 @@
       },
       {
         "name": "tinyComparison",
-        "line": 759,
-        "endLine": 763,
+        "line": 761,
+        "endLine": 765,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5569,8 +6437,8 @@
       },
       {
         "name": "reportFormat",
-        "line": 773,
-        "endLine": 779,
+        "line": 775,
+        "endLine": 781,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5579,8 +6447,8 @@
       },
       {
         "name": "reportEventButtons",
-        "line": 784,
-        "endLine": 797,
+        "line": 786,
+        "endLine": 799,
         "parent": null,
         "refs": [
           "AK-VIS-02"
@@ -5589,8 +6457,8 @@
       },
       {
         "name": "reportMeaning",
-        "line": 802,
-        "endLine": 816,
+        "line": 804,
+        "endLine": 818,
         "parent": null,
         "refs": [
           "AK-MEA-04"
@@ -5599,8 +6467,8 @@
       },
       {
         "name": "reportChart",
-        "line": 821,
-        "endLine": 902,
+        "line": 823,
+        "endLine": 904,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5609,8 +6477,8 @@
       },
       {
         "name": "x",
-        "line": 836,
-        "endLine": 836,
+        "line": 838,
+        "endLine": 838,
         "parent": "reportChart",
         "refs": [
           "AK-VIS-03"
@@ -5619,8 +6487,8 @@
       },
       {
         "name": "y",
-        "line": 837,
-        "endLine": 837,
+        "line": 839,
+        "endLine": 839,
         "parent": "reportChart",
         "refs": [
           "AK-VIS-03"
@@ -5629,8 +6497,8 @@
       },
       {
         "name": "lines",
-        "line": 842,
-        "endLine": 854,
+        "line": 844,
+        "endLine": 856,
         "parent": "reportChart",
         "refs": [
           "AK-VIS-03"
@@ -5639,8 +6507,8 @@
       },
       {
         "name": "showReportEvent",
-        "line": 907,
-        "endLine": 954,
+        "line": 909,
+        "endLine": 956,
         "parent": null,
         "refs": [
           "AK-MEA-04"
@@ -5649,8 +6517,8 @@
       },
       {
         "name": "renderPolicyAssessment",
-        "line": 959,
-        "endLine": 1260,
+        "line": 961,
+        "endLine": 1262,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5659,8 +6527,8 @@
       },
       {
         "name": "renderAssessment",
-        "line": 1265,
-        "endLine": 1354,
+        "line": 1267,
+        "endLine": 1356,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5669,8 +6537,8 @@
       },
       {
         "name": "renderReplications",
-        "line": 1359,
-        "endLine": 1407,
+        "line": 1361,
+        "endLine": 1409,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5679,8 +6547,8 @@
       },
       {
         "name": "selectedImpact",
-        "line": 1412,
-        "endLine": 1416,
+        "line": 1414,
+        "endLine": 1418,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5689,8 +6557,8 @@
       },
       {
         "name": "drawImpact",
-        "line": 1421,
-        "endLine": 1446,
+        "line": 1423,
+        "endLine": 1448,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5699,8 +6567,8 @@
       },
       {
         "name": "label",
-        "line": 1442,
-        "endLine": 1442,
+        "line": 1444,
+        "endLine": 1444,
         "parent": "drawImpact",
         "refs": [
           "AK-VIS-03"
@@ -5709,8 +6577,8 @@
       },
       {
         "name": "render",
-        "line": 1451,
-        "endLine": 1589,
+        "line": 1453,
+        "endLine": 1592,
         "parent": null,
         "refs": [
           "AK-VIS-03"
@@ -5719,8 +6587,8 @@
       },
       {
         "name": "openDB",
-        "line": 1594,
-        "endLine": 1609,
+        "line": 1597,
+        "endLine": 1612,
         "parent": null,
         "refs": [
           "AK-IO-01"
@@ -5729,8 +6597,8 @@
       },
       {
         "name": "storeAction",
-        "line": 1614,
-        "endLine": 1655,
+        "line": 1617,
+        "endLine": 1658,
         "parent": null,
         "refs": [
           "AK-IO-01"
@@ -5739,8 +6607,8 @@
       },
       {
         "name": "refreshSaves",
-        "line": 1660,
-        "endLine": 1671,
+        "line": 1663,
+        "endLine": 1674,
         "parent": null,
         "refs": [
           "AK-IO-01"
@@ -5749,8 +6617,8 @@
       },
       {
         "name": "payload",
-        "line": 1676,
-        "endLine": 1688,
+        "line": 1679,
+        "endLine": 1691,
         "parent": null,
         "refs": [
           "AK-IO-01"
@@ -5759,8 +6627,8 @@
       },
       {
         "name": "validatePayload",
-        "line": 1693,
-        "endLine": 1787,
+        "line": 1696,
+        "endLine": 1793,
         "parent": null,
         "refs": [
           "AK-IO-01"
@@ -5769,8 +6637,8 @@
       },
       {
         "name": "loadPayload",
-        "line": 1792,
-        "endLine": 1816,
+        "line": 1798,
+        "endLine": 1822,
         "parent": null,
         "refs": [
           "AK-IO-01"
@@ -5779,8 +6647,8 @@
       },
       {
         "name": "download",
-        "line": 1821,
-        "endLine": 1829,
+        "line": 1827,
+        "endLine": 1835,
         "parent": null,
         "refs": [
           "AK-IO-01"
@@ -5789,8 +6657,8 @@
       },
       {
         "name": "csv",
-        "line": 1834,
-        "endLine": 1854,
+        "line": 1840,
+        "endLine": 1860,
         "parent": null,
         "refs": [
           "AK-IO-01"
@@ -5799,11 +6667,663 @@
       },
       {
         "name": "showStorage",
-        "line": 1859,
-        "endLine": 1865,
+        "line": 1865,
+        "endLine": 1871,
         "parent": null,
         "refs": [
           "AK-IO-01"
+        ],
+        "note": null
+      }
+    ],
+    "hybrid.js": [
+      {
+        "name": "clamp",
+        "line": 9,
+        "endLine": 9,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "sum",
+        "line": 10,
+        "endLine": 10,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "mean",
+        "line": 11,
+        "endLine": 11,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "copy",
+        "line": 12,
+        "endLine": 12,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "configure",
+        "line": 38,
+        "endLine": 40,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "rank",
+        "line": 42,
+        "endLine": 48,
+        "parent": null,
+        "refs": [
+          "AKX-AGY-01",
+          "AKX-GOV-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "option",
+        "line": 49,
+        "endLine": 60,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "labelAccounts",
+        "line": 61,
+        "endLine": 80,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "initialize",
+        "line": 82,
+        "endLine": 174,
+        "parent": null,
+        "refs": [
+          "AKX-SCP-01",
+          "AKX-STA-01",
+          "AKX-ECO-05"
+        ],
+        "note": null
+      },
+      {
+        "name": "recordTransfer",
+        "line": 176,
+        "endLine": 221,
+        "parent": null,
+        "refs": [
+          "AKX-STA-01",
+          "AKX-MEA-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "move",
+        "line": 222,
+        "endLine": 227,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "flow",
+        "line": 228,
+        "endLine": 251,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "open",
+        "line": 253,
+        "endLine": 284,
+        "parent": null,
+        "refs": [
+          "AKX-TIM-01",
+          "AKX-ATT-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "phase",
+        "line": 285,
+        "endLine": 288,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "decay",
+        "line": 289,
+        "endLine": 303,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "exposure",
+        "line": 304,
+        "endLine": 336,
+        "parent": null,
+        "refs": [
+          "AKX-MEA-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "capabilityBuilt",
+        "line": 337,
+        "endLine": 349,
+        "parent": null,
+        "refs": [
+          "AKX-MEA-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "personalTime",
+        "line": 351,
+        "endLine": 362,
+        "parent": null,
+        "refs": [
+          "AKX-TIM-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "staff",
+        "line": 363,
+        "endLine": 367,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "debitStaff",
+        "line": 368,
+        "endLine": 378,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "synchronizeTime",
+        "line": 379,
+        "endLine": 385,
+        "parent": null,
+        "refs": [
+          "AKX-TIM-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "work",
+        "line": 386,
+        "endLine": 403,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "options",
+        "line": 405,
+        "endLine": 447,
+        "parent": null,
+        "refs": [
+          "AKX-AGY-02",
+          "AKX-INF-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "observe",
+        "line": 449,
+        "endLine": 483,
+        "parent": null,
+        "refs": [
+          "AKX-BEL-01",
+          "AKX-ATT-01",
+          "AKX-INF-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "maintenanceNeed",
+        "line": 485,
+        "endLine": 490,
+        "parent": null,
+        "refs": [
+          "AKX-MNT-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "care",
+        "line": 492,
+        "endLine": 596,
+        "parent": null,
+        "refs": [
+          "AKX-CAP-01",
+          "AKX-MNT-01",
+          "AKX-MNT-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "accounts",
+        "line": 598,
+        "endLine": 650,
+        "parent": null,
+        "refs": [
+          "AKX-ECO-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "account",
+        "line": 651,
+        "endLine": 658,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "order",
+        "line": 660,
+        "endLine": 675,
+        "parent": null,
+        "refs": [
+          "AKX-ECO-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "supplier",
+        "line": 676,
+        "endLine": 690,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "demand",
+        "line": 692,
+        "endLine": 753,
+        "parent": null,
+        "refs": [
+          "AKX-ECO-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "production",
+        "line": 755,
+        "endLine": 830,
+        "parent": null,
+        "refs": [
+          "AKX-ECO-03",
+          "AKX-ECO-05"
+        ],
+        "note": null
+      },
+      {
+        "name": "investment",
+        "line": 832,
+        "endLine": 975,
+        "parent": null,
+        "refs": [
+          "AKX-ECO-01",
+          "AKX-ECO-02"
+        ],
+        "note": null
+      },
+      {
+        "name": "taxation",
+        "line": 977,
+        "endLine": 1095,
+        "parent": null,
+        "refs": [
+          "AKX-ECO-04"
+        ],
+        "note": null
+      },
+      {
+        "name": "review",
+        "line": 1097,
+        "endLine": 1128,
+        "parent": null,
+        "refs": [
+          "AKX-GOV-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "propose",
+        "line": 1130,
+        "endLine": 1172,
+        "parent": null,
+        "refs": [
+          "AKX-GOV-02",
+          "AKX-GOV-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "governance",
+        "line": 1173,
+        "endLine": 1303,
+        "parent": null,
+        "refs": [
+          "AKX-AGY-01",
+          "AKX-GOV-02",
+          "AKX-GOV-03"
+        ],
+        "note": null
+      },
+      {
+        "name": "coalitions",
+        "line": 1305,
+        "endLine": 1484,
+        "parent": null,
+        "refs": [
+          "AKX-COL-01",
+          "AKX-ATT-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "responses",
+        "line": 1486,
+        "endLine": 1562,
+        "parent": null,
+        "refs": [
+          "AKX-STR-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "encounters",
+        "line": 1564,
+        "endLine": 1650,
+        "parent": null,
+        "refs": [
+          "AKX-ENC-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "conduct",
+        "line": 1652,
+        "endLine": 1664,
+        "parent": null,
+        "refs": [
+          "AKX-GOV-01",
+          "AKX-COV-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "coverage",
+        "line": 1665,
+        "endLine": 1691,
+        "parent": null,
+        "refs": [
+          "AKX-COV-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "stocks",
+        "line": 1692,
+        "endLine": 1737,
+        "parent": null,
+        "refs": [
+          "AKX-STA-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "close",
+        "line": 1739,
+        "endLine": 1807,
+        "parent": null,
+        "refs": [
+          "AKX-ECO-05",
+          "AKX-MEA-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "anchor",
+        "line": 1808,
+        "endLine": 1815,
+        "parent": null,
+        "refs": [
+          "AKX-ECO-05"
+        ],
+        "note": null
+      },
+      {
+        "name": "summary",
+        "line": 1816,
+        "endLine": 1827,
+        "parent": null,
+        "refs": [
+          "AKX-MEA-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "validSummary",
+        "line": 1829,
+        "endLine": 1860,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "finite",
+        "line": 1841,
+        "endLine": 1847,
+        "parent": "validSummary",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "point",
+        "line": 1849,
+        "endLine": 1858,
+        "parent": "validSummary",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "assert",
+        "line": 1862,
+        "endLine": 1894,
+        "parent": null,
+        "refs": [
+          "AKX-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "system-view.js": [
+      {
+        "name": "esc",
+        "line": 4,
+        "endLine": 15,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "n",
+        "line": 16,
+        "endLine": 19,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "total",
+        "line": 20,
+        "endLine": 20,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "change",
+        "line": 21,
+        "endLine": 21,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "point",
+        "line": 26,
+        "endLine": 28,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "pipe",
+        "line": 29,
+        "endLine": 33,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "stock",
+        "line": 34,
+        "endLine": 36,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "cloud",
+        "line": 37,
+        "endLine": 38,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "influence",
+        "line": 39,
+        "endLine": 41,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "diagram",
+        "line": 43,
+        "endLine": 266,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "flows",
+        "line": 48,
+        "endLine": 53,
+        "parent": "diagram",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "render",
+        "line": 267,
+        "endLine": 339,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "bind",
+        "line": 340,
+        "endLine": 369,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
         ],
         "note": null
       }
@@ -6036,7 +7556,7 @@
       {
         "name": "test: skill learning feeds real subsequent organizational capacity",
         "line": 394,
-        "endLine": 404,
+        "endLine": 406,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6044,8 +7564,8 @@
       },
       {
         "name": "test: a known inactive or suspended reform stops new exposures while memories can wear off",
-        "line": 409,
-        "endLine": 419,
+        "line": 411,
+        "endLine": 421,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6053,8 +7573,8 @@
       },
       {
         "name": "test: continuous reinforcement over 1,200 months retains partial bounded influence",
-        "line": 424,
-        "endLine": 437,
+        "line": 426,
+        "endLine": 439,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6062,8 +7582,8 @@
       },
       {
         "name": "test: financial expectations learn from actual total receipts with individual learning rates",
-        "line": 442,
-        "endLine": 454,
+        "line": 444,
+        "endLine": 456,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6071,8 +7591,8 @@
       },
       {
         "name": "test: a later change in receptiveness can permit modest new learning after repeated rejected messages",
-        "line": 459,
-        "endLine": 472,
+        "line": 461,
+        "endLine": 474,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6080,8 +7600,8 @@
       },
       {
         "name": "test: conflicting credible experience adjusts the retained target without deleting earlier history",
-        "line": 477,
-        "endLine": 485,
+        "line": 479,
+        "endLine": 487,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6089,8 +7609,8 @@
       },
       {
         "name": "test: a corrupt staffing proposal prevented by real merit review is not a completed patronage act",
-        "line": 490,
-        "endLine": 504,
+        "line": 492,
+        "endLine": 506,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6098,8 +7618,8 @@
       },
       {
         "name": "test: formal education adoption cannot manufacture knowledge before anyone learns",
-        "line": 509,
-        "endLine": 519,
+        "line": 511,
+        "endLine": 521,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6107,8 +7627,8 @@
       },
       {
         "name": "test: knowledge assessment responds continuously to retained learning and subsequent wear-off",
-        "line": 524,
-        "endLine": 536,
+        "line": 526,
+        "endLine": 538,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6116,8 +7636,8 @@
       },
       {
         "name": "test: agents do not read hidden true protection capacity when deciding whether to report",
-        "line": 541,
-        "endLine": 567,
+        "line": 543,
+        "endLine": 569,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6125,8 +7645,8 @@
       },
       {
         "name": "option",
-        "line": 562,
-        "endLine": 565,
+        "line": 564,
+        "endLine": 567,
         "parent": null,
         "refs": [
           "AK-VAL-01"
@@ -6135,8 +7655,8 @@
       },
       {
         "name": "test: experienced protection and credible failure change subjective safety in opposite directions",
-        "line": 572,
-        "endLine": 584,
+        "line": 574,
+        "endLine": 586,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6144,8 +7664,8 @@
       },
       {
         "name": "test: inspection summaries stay numerical and reject malformed imported learning histories",
-        "line": 589,
-        "endLine": 604,
+        "line": 591,
+        "endLine": 606,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6352,7 +7872,7 @@
       {
         "name": "test: editorial independence and real funding dependence enter publication incentives",
         "line": 421,
-        "endLine": 451,
+        "endLine": 452,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6360,8 +7880,8 @@
       },
       {
         "name": "test: recent participation denominators remain bounded and inactivity cannot erase history",
-        "line": 456,
-        "endLine": 480,
+        "line": 457,
+        "endLine": 481,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6369,8 +7889,8 @@
       },
       {
         "name": "test: a dense network alone does not produce a capture event; repeated abuse is required",
-        "line": 485,
-        "endLine": 506,
+        "line": 486,
+        "endLine": 507,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6378,8 +7898,8 @@
       },
       {
         "name": "test: country mandates change real referrals without merging investigation, prosecution and courts",
-        "line": 511,
-        "endLine": 533,
+        "line": 512,
+        "endLine": 534,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6387,8 +7907,8 @@
       },
       {
         "name": "test: out-of-scope audits cannot create false allegations through a false-positive draw",
-        "line": 538,
-        "endLine": 561,
+        "line": 539,
+        "endLine": 562,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6535,7 +8055,7 @@
         "note": null
       },
       {
-        "name": "test: pay adequacy assesses modeled take-home receipts rather than gross receipts",
+        "name": "test: pay adequacy assesses actual receipts without legacy wage withholding",
         "line": 348,
         "endLine": 357,
         "refs": [
@@ -6547,6 +8067,219 @@
         "name": "test: saved-state verification accepts key order and insignificant floating rounding while rejecting substantive edits",
         "line": 362,
         "endLine": 378,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      }
+    ],
+    "hybrid.test.js": [
+      {
+        "name": "clone",
+        "line": 9,
+        "endLine": 9,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "world",
+        "line": 10,
+        "endLine": 15,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "begin",
+        "line": 16,
+        "endLine": 20,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "force",
+        "line": 21,
+        "endLine": 30,
+        "parent": null,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: new boundary and escrow accounts conserve the complete financial total",
+        "line": 31,
+        "endLine": 47,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: ordinary accounts replace anonymous treasury inflow and wage withholding",
+        "line": 48,
+        "endLine": 58,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: production needs an order and distinguishes domestic value added from imported inputs",
+        "line": 59,
+        "endLine": 73,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: unused productive capacity does not guarantee sales and unaffordable orders stay pending",
+        "line": 74,
+        "endLine": 88,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: investment cannot complete from calendar time alone or install the same project twice",
+        "line": 89,
+        "endLine": 118,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: tax assessment can create arrears without manufacturing collected cash",
+        "line": 119,
+        "endLine": 130,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: maintenance choices alter persistent capability and future unfinished work",
+        "line": 131,
+        "endLine": 147,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: repair is bounded by documented loss and rebuilding requires actual work",
+        "line": 148,
+        "endLine": 165,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: overlapping memberships cannot create extra personal time",
+        "line": 166,
+        "endLine": 176,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: governance changes cannot approve themselves using their proposed weaker protections",
+        "line": 177,
+        "endLine": 196,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: outsiders lack proposal authority and private oversight has an operative blocking route",
+        "line": 197,
+        "endLine": 209,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: attention can fade while policy support remains unchanged",
+        "line": 210,
+        "endLine": 218,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: personal credibility is audience-specific and hidden episodes change nobody",
+        "line": 219,
+        "endLine": 230,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: realized coverage retains eligible acts even when no case is opened",
+        "line": 231,
+        "endLine": 246,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: system diagrams read recorded flows without changing state and education does not headline casework",
+        "line": 247,
+        "endLine": 258,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: passive reporting can be disabled without changing the coupled numerical state",
+        "line": 259,
+        "endLine": 268,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: transfer and flow logs use a separate ID namespace from behavioral event identities",
+        "line": 269,
+        "endLine": 275,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: a coupled paired run preserves exact starting society and finite stock bounds",
+        "line": 276,
+        "endLine": 293,
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
+        "name": "test: saved monthly histories roundtrip and reject malformed or nonfinite records",
+        "line": 295,
+        "endLine": 308,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6815,9 +8548,9 @@
         "note": null
       },
       {
-        "name": "test: same published engine produces identical initialization and conduct with monitoring enabled",
+        "name": "test: archived published engine retains its verified pre-extension initialization and conduct",
         "line": 97,
-        "endLine": 118,
+        "endLine": 119,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6825,8 +8558,8 @@
       },
       {
         "name": "test: output uses weighted actual activity over equal historical windows",
-        "line": 123,
-        "endLine": 138,
+        "line": 124,
+        "endLine": 139,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6834,8 +8567,8 @@
       },
       {
         "name": "test: delivered teaching is distinct from accepted influence and duplicate contacts",
-        "line": 143,
-        "endLine": 159,
+        "line": 144,
+        "endLine": 160,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6843,8 +8576,8 @@
       },
       {
         "name": "test: generic activity does not get credited as a staff rotation",
-        "line": 164,
-        "endLine": 174,
+        "line": 165,
+        "endLine": 175,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6852,8 +8585,8 @@
       },
       {
         "name": "test: read-only event references are relevant, dated and distinguish material changes",
-        "line": 179,
-        "endLine": 240,
+        "line": 180,
+        "endLine": 241,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6861,8 +8594,8 @@
       },
       {
         "name": "test: interpretations handle delivery, lag, missing evidence and direction without claiming causation",
-        "line": 245,
-        "endLine": 259,
+        "line": 246,
+        "endLine": 260,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6870,8 +8603,8 @@
       },
       {
         "name": "test: optional monitoring roundtrips without changing initial-state compatibility and rejects malformed records",
-        "line": 264,
-        "endLine": 287,
+        "line": 265,
+        "endLine": 288,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6879,8 +8612,8 @@
       },
       {
         "name": "harness",
-        "line": 292,
-        "endLine": 362,
+        "line": 293,
+        "endLine": 363,
         "parent": null,
         "refs": [
           "AK-VAL-01"
@@ -6889,8 +8622,8 @@
       },
       {
         "name": "$",
-        "line": 298,
-        "endLine": 320,
+        "line": 299,
+        "endLine": 321,
         "parent": "harness",
         "refs": [
           "AK-VAL-01"
@@ -6899,17 +8632,7 @@
       },
       {
         "name": "esc",
-        "line": 325,
-        "endLine": 329,
-        "parent": "harness",
-        "refs": [
-          "AK-VAL-01"
-        ],
-        "note": null
-      },
-      {
-        "name": "number",
-        "line": 330,
+        "line": 326,
         "endLine": 330,
         "parent": "harness",
         "refs": [
@@ -6918,9 +8641,19 @@
         "note": null
       },
       {
+        "name": "number",
+        "line": 331,
+        "endLine": 331,
+        "parent": "harness",
+        "refs": [
+          "AK-VAL-01"
+        ],
+        "note": null
+      },
+      {
         "name": "test: all twelve policy renderings show relevant before/current conditions and stage panels",
-        "line": 367,
-        "endLine": 399,
+        "line": 368,
+        "endLine": 400,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6928,8 +8661,8 @@
       },
       {
         "name": "test: completion updates the final comparison and review slider without changing results",
-        "line": 404,
-        "endLine": 426,
+        "line": 405,
+        "endLine": 427,
         "refs": [
           "AK-VAL-01"
         ],
@@ -6937,8 +8670,8 @@
       },
       {
         "name": "test: older saved results get an honest monitoring-unavailable notice",
-        "line": 431,
-        "endLine": 443,
+        "line": 432,
+        "endLine": 444,
         "refs": [
           "AK-VAL-01"
         ],
@@ -7355,7 +9088,7 @@
       {
         "name": "build",
         "line": 18,
-        "endLine": 139,
+        "endLine": 140,
         "parent": null,
         "refs": [
           "AK-VAL-01"

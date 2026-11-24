@@ -6,7 +6,7 @@ This specification follows the seven-part ODD reporting structure as an organizi
 
 The model explores the development of corrupt conduct and anti-corruption reforms in a synthetic society. Qualitative targets include heterogeneous choices, imperfect information, organizational resistance, delayed implementation, bounded learning, persistence of routines, resource competition and different policy trajectories. These are design targets, not a fitted list of empirical validation patterns. The model does not estimate a real country's treatment effect. A paired run estimates an effect **inside this model**, under its parameters, initial society and event seed.
 
-Behavioral version is **2.4.0**, observation/display version **2.4.2**. Schema identifiers version country evidence, reconstructed baselines, adaptation, observations and saved payloads separately. Exact expressions are authoritative in source; mechanism descriptions explain them without replacing code.
+Behavioral and display version are **3.0.0**, a provisional extension. The [extension specification](EXTENSION.html) supersedes older fixed-GDP, anonymous-income, wage-withholding, fixed capability-decay and once-per-month encounter descriptions. Schema identifiers version country evidence, reconstructed baselines, adaptation, observations and saved payloads separately. Exact expressions are authoritative in source; mechanism descriptions explain them without replacing code.
 
 ## 2. Entities, state variables and scales
 
@@ -35,18 +35,17 @@ Initialization validates setup → generates country-informed agents/organizatio
 
 Each `Simulation.step()` performs the following **in this exact order**:
 
-1. Stop if the requested horizon is reached; otherwise advance the month.
-2. Advance every person's memory decay and slow adaptation.
-3. Monthly accounts: treasury inflows, earnings, needs, costs and resource constraints.
-4. Fund selected reform allocations from actual available balances.
-5. Schedule finite shared public staff time.
-6. Implement reform work/setup/operation; then update personal receipt-based income expectations.
-7. Generate encounters and decisions, including service and corruption opportunities.
-8. Process service work; audit/select matters; process case stages; collect outstanding liabilities.
-9. Disseminate information; make funding decisions; update organizations/membership/appointments.
-10. Run scheduled political review; run six-month budget/formal reviews and feedback.
-11. Recover integrity status only under its time/meaningful-choice conditions.
-12. Record macro developments; append state metrics and observation-only reporting.
+1. Advance the month and open shared person-time, monetary and stock-flow accounting.
+2. Advance personal adaptation and retained influence decay.
+3. Pay actual employer compensation and ordinary operating costs from named accounts.
+4. Fund reforms; schedule staff, contacts and upkeep; perform maintenance, repair or rebuilding.
+5. Implement reform work and synchronize actual personal time; learn from receipts.
+6. Generate ordered, repeatable contacts; process service work and synchronize time.
+7. Audit/select cases, perform case work and collect liabilities; synchronize time.
+8. Circulate information; make funding, membership and organizational choices; conduct political review.
+9. Process constrained governance proposals, costly coalitions and responses; review budgets.
+10. Deliver demand-constrained production, process investment work and tax liabilities; close the economic and stock-flow record.
+11. Recover integrity only under the existing meaningful-choice conditions; record macro developments, metrics and passive reporting.
 
 The order is causally material: this month's funding affects this month's implementation, which may affect later opportunities and reports. Later communication can affect future choices, not an earlier completed choice. Within methods, loops and keyed draws define ordering. [Source](source/model.js.html) and the action catalogue expose those details. Worker execution advances reform then baseline with shared keyed event namespaces, not one mutable random cursor. Repetitions reconstruct paired branches from the same initial society with a changed replicate key; rendering pace is not a parameter of choice.
 
@@ -54,7 +53,7 @@ The order is causally material: this month's funding affects this month's implem
 
 Decisions combine subjective consequential evaluation using nine motivational attachments, relevant-role expectations, perceived control and random utility; the highest sampled subjective utility wins among feasible supplied options. Mechanical accounting and case-work progress do not themselves choose. World completion probabilities can differ from perceived feasibility. Observation/reporting has access to truth for measurement, but agent information is limited to experience and accessed claims.
 
-Organizations and networks constrain interaction and resources; role expectations and experience can ease familiar practice. Slow feedback changes receptiveness and motives. Aggregate behavior, information, implementation and resource pressure feed into macro developments and political/budget review. These are coupled stocks, flows and delayed feedback inside an agent model, not a separately calibrated system-dynamics model with endogenous GDP, demographic growth or a complete macroeconomic sector.
+Organizations and networks constrain interaction and resources; role expectations and experience can ease familiar practice. Slow feedback changes receptiveness and motives. Aggregate behavior, information, implementation and resource pressure feed into macro developments and political/budget review. These are coupled stocks, flows and delayed feedback inside an agent model, now include an endogenous domestic-value-added index, while national calibration, demographic growth and a complete macroeconomic sector remain outside the verified scope.
 
 Randomness is reproducible and keyed by explicit seed, replicate, month, process and actor/action keys. A probability range still produces one draw per keyed event; reusing all keys repeats that draw. New event seeds vary subsequent events while initial-seed/country/conditions preserve the starting society. Structural interventions can change which opportunities happen, so shared keys reduce noise without guaranteeing identical encounter paths.
 

@@ -8,7 +8,8 @@ const {out,manifest,registry}=await build({write:false}),baseline=JSON.parse(rea
 assert.equal(manifest.coverage.unresolvedSymbols.length,0,JSON.stringify(manifest.coverage.unresolvedSymbols));
 for(const file of runtime){assert.equal(await semanticHash(read(file)),baseline.runtime[file],`Runtime AST drift from audited base: ${file}`);}
 for(const [file,text]of Object.entries(out))assert.equal(read(file),text,`Generated file is stale: ${file}; run npm run docs:build`);
-const ids=new Set(registry.entries.map(e=>e.id));assert.equal(ids.size,57);
+const ids=new Set(registry.entries.map(e=>e.id));assert.equal(ids.size,83);
+for(let i=1;i<=32;i++)assert(registry.entries.some(e=>e.rules.includes('D'+String(i).padStart(2,'0'))));
 for(let i=1;i<=62;i++)assert(registry.entries.some(e=>e.rules.includes('R'+String(i).padStart(2,'0'))));
 for(let i=1;i<=6;i++)assert(registry.entries.some(e=>e.rules.includes('AM0'+i)));
 for(const e of registry.entries){
@@ -28,5 +29,5 @@ for(const [file,content]of Object.entries(out).filter(([f])=>f.endsWith('.html')
   links++;
  }
 }
-console.log(`Audit checks passed: ${manifest.coverage.mechanisms} mechanisms, 62 rules + 6 amendments, ${runtime.length} unchanged runtime ASTs, ${Object.keys(out).length} reproducible generated files, ${links} local links.`);
+console.log(`Audit checks passed: ${manifest.coverage.mechanisms} mechanisms, 62 rules + 6 amendments, ${runtime.length} version-pinned runtime ASTs, ${Object.keys(out).length} reproducible generated files, ${links} local links.`);
 console.log('Test-harness maintenance: reporting.test.js locates its extracted UI block by whitespace-tolerant syntax patterns; visualization.test.js accepts formatting whitespace between duration attributes; test meaning is unchanged.');

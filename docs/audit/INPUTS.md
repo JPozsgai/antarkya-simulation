@@ -2252,6 +2252,34 @@ Cost vectors are `[setup RU, recurring RU, staff PM]` normalized engineering coe
         ]
       ]
     }
+  },
+  "hybridEngineeringParameters": {
+    "status": "Uncalibrated engineering assumptions; Peru calibration and pilot pending",
+    "maintenanceShare": 0.02,
+    "maintenanceCost": 0.1,
+    "damageRate": 0.008,
+    "repairEfficiency": 0.25,
+    "rebuildWork": 2,
+    "rebuildIncrement": 0.1,
+    "attentionHalfLife": 6,
+    "credibilityLearning": 0.04,
+    "annualDepreciation": 0.08,
+    "capitalOutputYears": 3,
+    "taxAssessmentRate": 0.22,
+    "backgroundCompliance": 0.85,
+    "intermediateShare": 0.2,
+    "explicitConsumptionShare": 0.35,
+    "exportDemand": 60,
+    "contactTime": 0.015,
+    "contactIntensity": [
+      0.65,
+      0.85,
+      0.2,
+      0.2
+    ],
+    "orderExpiry": 6,
+    "reserveMonths": 1.5,
+    "transactionRetention": 1000
   }
 }
 ```

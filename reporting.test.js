@@ -94,8 +94,9 @@ test('recording and interpretation do not consume RNG or change the simulated so
 /** [AK-VAL-01] test: same published engine produces identical initialization and conduct with monitoring enabled
  * Verify same published engine produces identical initialization and conduct with monitoring enabled. See the test body for controlled inputs and exact assertions.
  */
-test('same published engine produces identical initialization and conduct with monitoring enabled', () => {
-  const filename = path.join(__dirname, 'published-model.cjs'),
+test('archived published engine retains its verified pre-extension initialization and conduct', () => {
+  const Archived = require('./v2.4/model');
+  const filename = path.join(__dirname, 'v2.4/published-model.cjs'),
     oldSource = execFileSync('git', ['show', '4da71144763978c4967151efe9394ffe0e160dfd:model.js'], {
       encoding: 'utf8',
     }),
@@ -105,10 +106,10 @@ test('same published engine produces identical initialization and conduct with m
   previous._compile(oldSource, filename);
   const old = previous.exports,
     c = config({ policies: A.KEYS.map((id) => ({ id, mobilization: 0.6 })) }),
-    one = A.createInitial(c),
+    one = Archived.createInitial(c),
     two = old.createInitial(c);
   assert.deepEqual(one, two);
-  const a = new A.Simulation(c, one),
+  const a = new Archived.Simulation(c, one),
     b = new old.Simulation(c, two);
   for (let m = 0; m < 6; m++) {
     a.step();

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>State definitions and writes — system-view.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="state-definitions-and-writes-system-view-js">State definitions and writes — system-view.js</h1>
+<p><a href="../STATE.html">Inventory guide</a>. Whole-function source is authoritative for types, branches, bounds and update semantics.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Field / target</th>
+<th>Operation / expression</th>
+<th>Owner / mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/system-view.js.html#L9">system-view.js:9</a></td>
+<td><code>esc.&amp;</code></td>
+<td>object definition · <code>&quot;&amp;amp;&quot;</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L10">system-view.js:10</a></td>
+<td><code>esc.&lt;</code></td>
+<td>object definition · <code>&quot;&amp;lt;&quot;</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L11">system-view.js:11</a></td>
+<td><code>esc.&gt;</code></td>
+<td>object definition · <code>&quot;&amp;gt;&quot;</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L12">system-view.js:12</a></td>
+<td><code>esc.&quot;</code></td>
+<td>object definition · <code>&quot;&amp;quot;&quot;</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L13">system-view.js:13</a></td>
+<td><code>esc.'</code></td>
+<td>object definition · <code>&quot;&amp;#39;&quot;</code></td>
+<td>esc · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L18">system-view.js:18</a></td>
+<td><code>n.maximumFractionDigits</code></td>
+<td>object definition · <code>places</code></td>
+<td>n · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L176">system-view.js:176</a></td>
+<td><code>receipts.in</code></td>
+<td>object definition · <code>0</code></td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L176">system-view.js:176</a></td>
+<td><code>receipts.out</code></td>
+<td>object definition · <code>0</code></td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L273">system-view.js:273</a></td>
+<td><code>host.innerHTML</code></td>
+<td>= · <code>&quot;&lt;p&gt;System records appear when the society is initialized. Older results require a new run.&lt;/p&gt;&quot;</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L286">system-view.js:286</a></td>
+<td><code>select.innerHTML</code></td>
+<td>= · <code>modes .map( (id) =&gt; `&lt;option value=&quot;${esc(id)}&quot;&gt;${esc(root.AntarkyaProfiles?.policies.find((p) =&gt; p.id === id)?.label &amp;#124;&amp;#124; (id === &quot;economy&quot; ? &quot;Economic feedback&quot; : &quot;Governance and upkeep&quot;))}&lt;/option&gt;`, ) …</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L292">system-view.js:292</a></td>
+<td><code>select.value</code></td>
+<td>= · <code>modes.includes(previous) ? previous : modes[0]</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L294">system-view.js:294</a></td>
+<td><code>range.max</code></td>
+<td>= · <code>result.reform.month</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L295">system-view.js:295</a></td>
+<td><code>range.value</code></td>
+<td>= · <code>pinned === null ? result.reform.month : Math.min(pinned, result.reform.month)</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L301">system-view.js:301</a></td>
+<td><code>document.getElementById(&quot;systemMonthLabel&quot;).textContent</code></td>
+<td>= · <code>&quot;Recorded month &quot; + range.value + &quot; / &quot; + result.reform.month</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L304">system-view.js:304</a></td>
+<td><code>host.innerHTML</code></td>
+<td>= · <code>diagram(p, select.value, component)</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L305">system-view.js:305</a></td>
+<td><code>document.getElementById(&quot;systemNext&quot;).textContent</code></td>
+<td>= · <code>Number(range.value) &lt; result.reform.month ? &quot;Next recorded month&quot; : &quot;Next month&quot;</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L309">system-view.js:309</a></td>
+<td><code>document.getElementById(&quot;systemNext&quot;).disabled</code></td>
+<td>= · <code>Number(range.value) &gt;= result.reform.month &amp;&amp; result.type === &quot;complete&quot;</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L311">system-view.js:311</a></td>
+<td><code>document.getElementById(&quot;systemMeaning&quot;).textContent</code></td>
+<td>= · <code>p ? `This month records ${p.transactionCount} cash transfers. Domestic activity index ${n(p.economy.index)}; baseline ${n(b?.economy.index)}. Bright pipes mark recorded flows. Dashed arrows describe a mechanism; they do not establi…</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L314">system-view.js:314</a></td>
+<td><code>document.getElementById(&quot;systemClasses&quot;).innerHTML</code></td>
+<td>= · <code>(p?.classes &amp;#124;&amp;#124; []) .map( (c) =&gt; `&lt;div class=&quot;classcard&quot; style=&quot;border-color:${[&quot;#4585ad&quot;, &quot;#d08b2f&quot;, &quot;#31836b&quot;, &quot;#996296&quot;][c.role]}&quot;&gt;&lt;b&gt;${[&quot;Citizen&quot;, &quot;Business&quot;, &quot;Official&quot;, &quot;Politician&quot;][c.role]}&lt;/b&gt;&lt;span&gt;Knowled…</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L320">system-view.js:320</a></td>
+<td><code>document.getElementById(&quot;systemFlows&quot;).innerHTML</code></td>
+<td>= · <code>'&lt;table class=&quot;compact-table&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Recorded flow&lt;/th&gt;&lt;th&gt;Amount&lt;/th&gt;&lt;th&gt;Rule&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;' + (p?.flows &amp;#124;&amp;#124; []) .slice(-35) .map( (f) =&gt; `&lt;tr&gt;&lt;td&gt;${esc(f.detail)}&lt;/td&gt;&lt;td&gt;${…</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L330">system-view.js:330</a></td>
+<td><code>document.getElementById(&quot;systemCoverage&quot;).innerHTML</code></td>
+<td>= · <code>'&lt;p class=&quot;small&quot;&gt;Accountability coverage proxy: eligible recorded acts whose case reached investigation or decision, in the trailing 12 months. Rank and insider position are recorded at act time. Sparse groups are not evidence of impart…</code></td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L370">system-view.js:370</a></td>
+<td><code>api.render</code></td>
+<td>object definition · <code>render</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L370">system-view.js:370</a></td>
+<td><code>api.diagram</code></td>
+<td>object definition · <code>diagram</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L370">system-view.js:370</a></td>
+<td><code>api.point</code></td>
+<td>object definition · <code>point</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L370">system-view.js:370</a></td>
+<td><code>api.bind</code></td>
+<td>object definition · <code>bind</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L371">system-view.js:371</a></td>
+<td><code>module.exports</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L373">system-view.js:373</a></td>
+<td><code>root.AntarkyaSystemView</code></td>
+<td>= · <code>api</code></td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+</tr>
+</tbody>
+</table>
+</main><footer>© 2026 Joseph Pozsgai-Alvarez · Creator and project owner. Documentation edition 2.0 · 24 November 2026 · provisional behavior/display 3.0.0. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>
