@@ -30,13 +30,13 @@
     "docs/audit/DEVELOPERS.md": "3c0b2e070ffb4fa92c46421dddab85e6a660a28c326d452d593e9ff6e8cf1c40",
     "docs/audit/MEASUREMENT.md": "1b1906f40f191ea175867615aa69e2c367b0dfb1763ad2afb4fe325a0cb92a52",
     "docs/audit/EXTENSION.md": "a7eb9e13562969cce0b72b0e01fc9dd0466d7a5606b6995df2d66e1ee4cbf1ab",
-    "docs/audit/VERIFICATION.md": "c8bddf4a463e11220011fae59709315e3f505375adcbd7f11342fb01bc2c2624",
+    "docs/audit/VERIFICATION.md": "e610da973569be5e23e6caa6c53736aa79a3c1ed99d124d3084da80969d7264d",
     "docs/audit/registry.json": "7f3e7284fd82ac3fa88b328df139f4e55f1d95b2517226bc755464e1815d4591",
     "docs/audit/developer-notes.json": "a096a6b044b42b2e4a4ec1b1c825c56b6ac01f6eb9d48f62b1aeac1253088c45",
     "docs/audit/semantic-baseline.json": "4afdfe7832bd4a2e6a565db947719533686c2a52596464c2b346995768ea5826",
     "docs/audit/frontend-baseline.json": "d61182b7d00a663555f93276468ed6cd650e4ed8093840873de26790050886bb",
     "docs/audit/audit.css": "b032c801b1f939f1d8a19edecfd0f83d0a521eedbf6c5c1a288b152d077bca48",
-    "docs/audit/test-results.txt": "414adc07d4304eae3baf418a5e6c0df9cf604da8ee294dcada33332f78c7974c"
+    "docs/audit/test-results.txt": "81729173cf468b0b635cf8635830f8d03fd0484237b62edad7ae986da144404f"
   },
   "sourceSHA256": {
     "model.js": "a6dd56f005f8a1cd5f894ec5fdc9e157b0029dcabd1117171aad42c9f404782f",
@@ -123,8 +123,8 @@
     "docs/audit/DEVELOPERS.html": "e45c65bb37bed401081e78481364598aa8b8dda76de9e256972d15d6c02a4f11",
     "docs/audit/MEASUREMENT.md": "1b1906f40f191ea175867615aa69e2c367b0dfb1763ad2afb4fe325a0cb92a52",
     "docs/audit/MEASUREMENT.html": "23f1dac5bd27aeca23d5b732e4f0947d8e5f59e063bcda72951344797261b42e",
-    "docs/audit/VERIFICATION.md": "c8bddf4a463e11220011fae59709315e3f505375adcbd7f11342fb01bc2c2624",
-    "docs/audit/VERIFICATION.html": "56d72d0128941501c760c7363bdf57f6d001380e1104d4ab05a642409247ce33",
+    "docs/audit/VERIFICATION.md": "e610da973569be5e23e6caa6c53736aa79a3c1ed99d124d3084da80969d7264d",
+    "docs/audit/VERIFICATION.html": "adbc1fbc91ab5269a38b6815931900891ce37cfe434b7c0f1b50a3cd739c2bfe",
     "docs/audit/EXTENSION.md": "a7eb9e13562969cce0b72b0e01fc9dd0466d7a5606b6995df2d66e1ee4cbf1ab",
     "docs/audit/EXTENSION.html": "da85cc67a5f33a45d64f26a655ec4e489d5ad2e2242c8a95ff23435c637c7e09",
     "docs/audit/NARRATIVE.md": "3a62180fa4fc3e1cc9142c57f278c3187cab360ab62d99526290ed124f585169",

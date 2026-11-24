@@ -4,7 +4,7 @@ This edition publishes provisional behavioral and display release **3.0.0**, fol
 
 ## Executable checks
 
-The full suite exercises accounting conservation, finite resources and person-time, all policy mechanisms, deterministic paired runs, saved results, display behavior and stress conditions across countries. Added hybrid checks cover maintenance and bounded repair, demand-constrained value added, work-dependent investment, tax arrears, protected appointments, costly coalitions, eligibility denominators, audience beliefs, passive monitoring and valid saved monthly histories. The full publication log is supplied in [test-results.txt](test-results.txt).
+The full suite exercises accounting conservation, finite resources and person-time, all policy mechanisms, deterministic paired runs, saved results, display behavior and stress conditions across countries. Added hybrid checks cover maintenance and bounded repair, demand-constrained value added, work-dependent investment, tax arrears, protected appointments, costly coalitions, eligibility denominators, audience beliefs, passive monitoring and valid saved monthly histories. The final full run passed **130 tests, 0 failures, 0 skipped** on 24 November 2026. This includes the maximum 240-month Peru run and all-country extreme-condition checks. The full publication log is supplied in [test-results.txt](test-results.txt).
 
 The archive regression compares the archived v2.4 application against the historical Git engine. Current v3 results are expected to differ. Some controlled tests were updated to isolate their original mechanisms under actual employer income and finite shared time; these are documented behavioral changes rather than claims of unchanged v2.4 outcomes.
 
