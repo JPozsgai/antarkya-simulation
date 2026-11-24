@@ -165,11 +165,11 @@ test('entrypoint loads consistent versions and all UI hooks including arbitrary 
   assert.match(html, /<input\s+type="number"\s+id="duration"\s+min="6"\s+max="240"/);
   assert.match(html, /value="major" selected/);
   assert.ok(!ids.has('casesStat'));
-  for (const file of ['profiles', 'config', 'baseline', 'adaptation', 'run-seeds'])
-    assert.ok(html.includes(file + '.js?v=2.4.0'));
-  assert.ok(html.includes('visualization.js?v=2.4.1'));
-  for (const file of ['reporting', 'model', 'app']) assert.ok(html.includes(file + '.js?v=2.4.2'));
-  assert.ok(app.includes('worker.js?v=2.4.2'));
+  for (const file of ['profiles', 'config', 'baseline', 'adaptation', 'run-seeds', 'hybrid', 'system-view'])
+    assert.ok(html.includes(file + '.js?v=3.0.0'));
+  assert.ok(html.includes('visualization.js?v=3.0.0'));
+  for (const file of ['reporting', 'model', 'app']) assert.ok(html.includes(file + '.js?v=3.0.0'));
+  assert.ok(app.includes('worker.js?v=3.0.0'));
   assert.ok(html.indexOf('reporting.js') < html.indexOf('model.js'));
   assert.ok(html.indexOf('visualization.js') < html.indexOf('app.js'));
 });

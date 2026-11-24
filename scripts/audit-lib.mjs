@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import * as prettier from 'prettier';
-export const runtime=['model.js','adaptation.js','reporting.js','config.js','baseline.js','profiles.js','run-seeds.js','visualization.js','worker.js','app.js'];
+export const runtime=['model.js','adaptation.js','reporting.js','config.js','baseline.js','profiles.js','run-seeds.js','visualization.js','worker.js','app.js','hybrid.js','system-view.js'];
 export const testFiles=()=>fs.readdirSync('.').filter(f=>f.endsWith('.test.js')).sort();
 export const sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 export const read=f=>fs.readFileSync(f,'utf8');

@@ -1,16 +1,19 @@
 {
-  "baseCommit": "9ceb5ae38510f10d2211366406d150500a364a95",
-  "method": "Babel AST through Prettier 3.6.2; positions/comments/raw spellings excluded; static property keys normalized",
+  "baseCommit": "44a23edb80485f26ff397f5e7b6b79a426c78b0b",
+  "release": "3.0.0",
+  "reason": "User authorized publication of both the provisional hybrid behavioral extension and the monthly system view on 24 November 2026; prior v2.4 fingerprints retained separately.",
   "runtime": {
-    "model.js": "f76733f76d50f9dd05334e9314754c376828465064bd3d5f8a26ed0459516549",
-    "adaptation.js": "6a0120c5733a4f4614aeb468d6432e5906120b795c5f794a1835cba2bb56f1f1",
-    "reporting.js": "4b7a98d5886603c1f548c4ce68874d4eb2292674798f8646df0c97877b49c2de",
+    "model.js": "a043a3bde0e58092c91c3bd8cbc9974374a255cdad31ce6fdf26d08478b3bd95",
+    "adaptation.js": "109b22e1de4fe0d44774aa6f07096d55fe07ae8d93421eefe5768722bdae4eb1",
+    "reporting.js": "62c6c29d39714647aae9e9e760cf910bc76b9f6f74d74affae18128a003fbb24",
     "config.js": "98d03ab2315d4997ba5cb9daa71342dcf1501a40e8bc11a9e2ecc6c6752316b4",
     "baseline.js": "5f5b0c598e85bd3a2518501eb9ac67f2c381f91abafe6629c41b4af99e946d15",
     "profiles.js": "156f8519e99a2d1f4a1e923a803f62da4964446e692bc968c43cc3d29ee2c208",
     "run-seeds.js": "448536767442b62d6e70ca17e821b39efb3970bbbd1836127f233299a163275c",
     "visualization.js": "0d79c7a58d34b9bc38a23ba751470a86d71188198b1e041c3d1047f103377472",
-    "worker.js": "5e13ff4543e15d65bf7802948d06233827002edec19228977986818fac3de10d",
-    "app.js": "6f9ddbadf14abeab5e8cb43e416a82f2aee6cb80f9a5df8a877c46c7b4fb1c3a"
+    "worker.js": "a1405a468cd0181f8595ccfae1db3064f719b1f2a2ff17eae2b7ef8ab9509eb5",
+    "app.js": "70cec7e190c0ab44335c6dba19b6eb443e6810b963a39767070da42ec251f6a8",
+    "hybrid.js": "e269e22c871ec2c8e755ec7ded1ea58ad0dbccb9696a7af4060e049767fbba77",
+    "system-view.js": "4ab9c738ed9541d77d20e4807d5aa32a48447278b6b37dd73856e359f944361a"
   }
 }

@@ -1,0 +1,3148 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numeric literals — hybrid.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="numeric-literals-hybrid-js">Numeric literals — hybrid.js</h1>
+<p><a href="../NUMERICS.html">Inventory guide</a>. Exact contexts are accessible in the full source.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Literal</th>
+<th>Unit / mechanism</th>
+<th>Expression context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/hybrid.js.html#L9">hybrid.js:9</a></td>
+<td>0</td>
+<td>clamp · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>clamp = (x, lo = 0, hi = 1) =&gt; Math.max(lo, Math.min(hi, x))</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L9">hybrid.js:9</a></td>
+<td>1</td>
+<td>clamp · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>clamp = (x, lo = 0, hi = 1) =&gt; Math.max(lo, Math.min(hi, x))</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L10">hybrid.js:10</a></td>
+<td>0</td>
+<td>sum · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>xs.reduce((a, b) =&gt; a + b, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L11">hybrid.js:11</a></td>
+<td>0</td>
+<td>mean · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>mean = (xs) =&gt; (xs.length ? sum(xs) / xs.length : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L17">hybrid.js:17</a></td>
+<td>0.02</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>maintenanceShare: 0.02</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L18">hybrid.js:18</a></td>
+<td>0.1</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>maintenanceCost: 0.1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L19">hybrid.js:19</a></td>
+<td>0.008</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>damageRate: 0.008</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L20">hybrid.js:20</a></td>
+<td>0.25</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>repairEfficiency: 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L21">hybrid.js:21</a></td>
+<td>2</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>rebuildWork: 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L22">hybrid.js:22</a></td>
+<td>0.1</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>rebuildIncrement: 0.1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L23">hybrid.js:23</a></td>
+<td>6</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>attentionHalfLife: 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L24">hybrid.js:24</a></td>
+<td>0.04</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>credibilityLearning: 0.04</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L25">hybrid.js:25</a></td>
+<td>0.08</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>annualDepreciation: 0.08</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L26">hybrid.js:26</a></td>
+<td>3</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>capitalOutputYears: 3</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L27">hybrid.js:27</a></td>
+<td>0.22</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>taxAssessmentRate: 0.22</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L28">hybrid.js:28</a></td>
+<td>0.85</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>backgroundCompliance: 0.85</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L29">hybrid.js:29</a></td>
+<td>0.2</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>intermediateShare: 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L30">hybrid.js:30</a></td>
+<td>0.35</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>explicitConsumptionShare: 0.35</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L31">hybrid.js:31</a></td>
+<td>60</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>exportDemand: 60</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L32">hybrid.js:32</a></td>
+<td>0.015</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>contactTime: 0.015</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L33">hybrid.js:33</a></td>
+<td>0.65</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>contactIntensity: [0.65, 0.85, 0.2, 0.2]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L33">hybrid.js:33</a></td>
+<td>0.85</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>contactIntensity: [0.65, 0.85, 0.2, 0.2]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L33">hybrid.js:33</a></td>
+<td>0.2</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>contactIntensity: [0.65, 0.85, 0.2, 0.2]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L33">hybrid.js:33</a></td>
+<td>0.2</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>contactIntensity: [0.65, 0.85, 0.2, 0.2]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L34">hybrid.js:34</a></td>
+<td>6</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>orderExpiry: 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L35">hybrid.js:35</a></td>
+<td>1.5</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>reserveMonths: 1.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L36">hybrid.js:36</a></td>
+<td>1000</td>
+<td>module data · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>transactionRetention: 1000</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L44">hybrid.js:44</a></td>
+<td>3</td>
+<td>rank · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-01">AKX-GOV-01</a></td>
+<td><code>return a.id === sim.state.politics.controller ? 3 : sim.orgs.some((o) =&gt; o.leader === a.id) ? 2 : 1;</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L46">hybrid.js:46</a></td>
+<td>2</td>
+<td>rank · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-01">AKX-GOV-01</a></td>
+<td><code>return a.id === sim.state.politics.controller ? 3 : sim.orgs.some((o) =&gt; o.leader === a.id) ? 2 : 1;</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L47">hybrid.js:47</a></td>
+<td>1</td>
+<td>rank · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-01">AKX-GOV-01</a></td>
+<td><code>return a.id === sim.state.politics.controller ? 3 : sim.orgs.some((o) =&gt; o.leader === a.id) ? 2 : 1;</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L49">hybrid.js:49</a></td>
+<td>0</td>
+<td>option · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>(function (root) { let A, active = null; const clamp = (x, lo = 0, hi = 1) =&gt; Math.max(lo, Math.min(hi, x)); const sum = (xs) =&gt; xs.reduce((a, b) =&gt; a + b, 0); const mean = (xs) =&gt; (xs.length ? sum…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L52">hybrid.js:52</a></td>
+<td>0</td>
+<td>option · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>sim.effects([0, 0, 0.1], economic, [ political, political * 0.5, 0.1, ])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L52">hybrid.js:52</a></td>
+<td>0</td>
+<td>option · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>sim.effects([0, 0, 0.1], economic, [ political, political * 0.5, 0.1, ])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L52">hybrid.js:52</a></td>
+<td>0.1</td>
+<td>option · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>sim.effects([0, 0, 0.1], economic, [ political, political * 0.5, 0.1, ])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L54">hybrid.js:54</a></td>
+<td>0.5</td>
+<td>option · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>political * 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L55">hybrid.js:55</a></td>
+<td>0.1</td>
+<td>option · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>sim.effects([0, 0, 0.1], economic, [ political, political * 0.5, 0.1, ])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L57">hybrid.js:57</a></td>
+<td>0.03</td>
+<td>option · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>effort: 0.03</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L88">hybrid.js:88</a></td>
+<td>0.2</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>s.outside.balance * 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L95">hybrid.js:95</a></td>
+<td>1500</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>capacity: 1500</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L96">hybrid.js:96</a></td>
+<td>1100</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>recentReceipts: 1100</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L97">hybrid.js:97</a></td>
+<td>2000</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>reserve: 2000</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L98">hybrid.js:98</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>output: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L109">hybrid.js:109</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>serial: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L113">hybrid.js:113</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>completedOrders: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L114">hybrid.js:114</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>abandonedOrders: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L115">hybrid.js:115</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>encounters: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L116">hybrid.js:116</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>retries: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L119">hybrid.js:119</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>flowSerial: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L120">hybrid.js:120</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>transactionSerial: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L124">hybrid.js:124</a></td>
+<td>20000</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>s.env.gdp_per_capita_ppp / 20000</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L124">hybrid.js:124</a></td>
+<td>0.6</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>clamp(Math.sqrt(s.env.gdp_per_capita_ppp / 20000), 0.6, 1.8)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L124">hybrid.js:124</a></td>
+<td>1.8</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>clamp(Math.sqrt(s.env.gdp_per_capita_ppp / 20000), 0.6, 1.8)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L129">hybrid.js:129</a></td>
+<td>1</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>time: 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L130">hybrid.js:130</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>used: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L136">hybrid.js:136</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>incomeReceived: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L137">hybrid.js:137</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>consumptionReceived: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L144">hybrid.js:144</a></td>
+<td>1</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>Math.max(1, staff.length)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L145">hybrid.js:145</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>backlog: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L146">hybrid.js:146</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>recoverable: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L147">hybrid.js:147</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>irreversible: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L148">hybrid.js:148</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>rebuild: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L153">hybrid.js:153</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>staff.slice(0, 3)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L153">hybrid.js:153</a></td>
+<td>3</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>staff.slice(0, 3)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L154">hybrid.js:154</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>staff.slice(0, 3)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L154">hybrid.js:154</a></td>
+<td>3</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>staff.slice(0, 3)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L155">hybrid.js:155</a></td>
+<td>0.45</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>removalProtection: 0.45</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L156">hybrid.js:156</a></td>
+<td>0.45</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>oversight: 0.45</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L157">hybrid.js:157</a></td>
+<td>0.45</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>disclosure: 0.45</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L158">hybrid.js:158</a></td>
+<td>2</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>minimumWait: 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L161">hybrid.js:161</a></td>
+<td>1</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>o.category === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L161">hybrid.js:161</a></td>
+<td>12</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>12 + staff.length * 1.4</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L161">hybrid.js:161</a></td>
+<td>1.4</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>staff.length * 1.4</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L161">hybrid.js:161</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>capacity: o.category === 1 ? (12 + staff.length * 1.4) * scale : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L162">hybrid.js:162</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>output: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L163">hybrid.js:163</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>valueAdded: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L164">hybrid.js:164</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>receipts: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L165">hybrid.js:165</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>taxArrears: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L166">hybrid.js:166</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>assessed: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L167">hybrid.js:167</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>collected: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L168">hybrid.js:168</a></td>
+<td>1</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>o.category === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L169">hybrid.js:169</a></td>
+<td>0</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>retained: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L170">hybrid.js:170</a></td>
+<td>12</td>
+<td>initialize · <a href="../TECHNICAL.html#akx-scp-01">AKX-SCP-01</a>, <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>12 * scale</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L199">hybrid.js:199</a></td>
+<td>0</td>
+<td>recordTransfer · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>(h.monthTransfers &amp;#124;&amp;#124; 0) + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L199">hybrid.js:199</a></td>
+<td>1</td>
+<td>recordTransfer · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>(h.monthTransfers &amp;#124;&amp;#124; 0) + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L206">hybrid.js:206</a></td>
+<td>1</td>
+<td>recordTransfer · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>id = key.split(&quot;-&quot;)[1]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L207">hybrid.js:207</a></td>
+<td>0</td>
+<td>recordTransfer · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>in: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L207">hybrid.js:207</a></td>
+<td>0</td>
+<td>recordTransfer · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>out: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L211">hybrid.js:211</a></td>
+<td>0</td>
+<td>recordTransfer · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>(h.backgroundReceipts &amp;#124;&amp;#124; 0) + amount</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L238">hybrid.js:238</a></td>
+<td>1e-12</td>
+<td>flow · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.abs(amount) &lt; 1e-12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L258">hybrid.js:258</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>h.flowSerial = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L259">hybrid.js:259</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>h.transactionSerial = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L261">hybrid.js:261</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>h.monthTransfers = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L262">hybrid.js:262</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>h.backgroundReceipts = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L264">hybrid.js:264</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>imports: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L264">hybrid.js:264</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>exports: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L264">hybrid.js:264</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>investment: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L264">hybrid.js:264</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>taxCollected: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L267">hybrid.js:267</a></td>
+<td>1</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>a.hybrid.time = 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L268">hybrid.js:268</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>a.hybrid.used = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L269">hybrid.js:269</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>a.hybrid.incomeReceived = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L270">hybrid.js:270</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>a.hybrid.consumptionReceived = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L272">hybrid.js:272</a></td>
+<td>2</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>2 ** (-1 / parameters.attentionHalfLife)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L272">hybrid.js:272</a></td>
+<td>-1</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>-1 / parameters.attentionHalfLife</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L275">hybrid.js:275</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>o.hybridCharged = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L276">hybrid.js:276</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>o.contactUsed = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L277">hybrid.js:277</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>o.maintenanceUsed = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L279">hybrid.js:279</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>o.economy.output = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L280">hybrid.js:280</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>o.economy.valueAdded = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L281">hybrid.js:281</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>o.economy.receipts = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L283">hybrid.js:283</a></td>
+<td>0</td>
+<td>open · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>h.background.output = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L299">hybrid.js:299</a></td>
+<td>0</td>
+<td>decay · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.max(0, before[id][element] - after[id][element])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L322">hybrid.js:322</a></td>
+<td>0</td>
+<td>exposure · <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>Math.max(0, value.level - (previous[element] &amp;#124;&amp;#124; 0))</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L322">hybrid.js:322</a></td>
+<td>0</td>
+<td>exposure · <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>value.level - (previous[element] &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L332">hybrid.js:332</a></td>
+<td>0.7</td>
+<td>exposure · <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>observe( sim, recipient, policy, source, observed.changed ? 0.7 : 0.4, observed.trace?.credibility &amp;#124;&amp;#124; 0.5, episode, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L332">hybrid.js:332</a></td>
+<td>0.4</td>
+<td>exposure · <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>observe( sim, recipient, policy, source, observed.changed ? 0.7 : 0.4, observed.trace?.credibility &amp;#124;&amp;#124; 0.5, episode, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L333">hybrid.js:333</a></td>
+<td>0.5</td>
+<td>exposure · <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>observe( sim, recipient, policy, source, observed.changed ? 0.7 : 0.4, observed.trace?.credibility &amp;#124;&amp;#124; 0.5, episode, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L352">hybrid.js:352</a></td>
+<td>1e-10</td>
+<td>personalTime · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a></td>
+<td><code>a.hybrid.time + 1e-10</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L375">hybrid.js:375</a></td>
+<td>1e-10</td>
+<td>debitStaff · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>remaining &lt; 1e-10</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L377">hybrid.js:377</a></td>
+<td>1e-7</td>
+<td>debitStaff · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>remaining &gt; 1e-7</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L381">hybrid.js:381</a></td>
+<td>0</td>
+<td>synchronizeTime · <a href="../TECHNICAL.html#akx-tim-01">AKX-TIM-01</a></td>
+<td><code>Math.max(0, o.capacity - o.time - o.hybridCharged)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L387">hybrid.js:387</a></td>
+<td>0</td>
+<td>work · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>limit = o.limits ? (o.limits[category] ?? 0) : o.time</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L389">hybrid.js:389</a></td>
+<td>0</td>
+<td>work · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.max( 0, Math.min( amount, o.time, limit, sum(staff(sim, o).map((a) =&gt; a.hybrid.time)), ), )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L399">hybrid.js:399</a></td>
+<td>0</td>
+<td>work · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>(o[category + &quot;Used&quot;] &amp;#124;&amp;#124; 0) + actual</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L413">hybrid.js:413</a></td>
+<td>0</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>sim.peers(a, &quot;supporters-&quot; + context).slice(0, 2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L413">hybrid.js:413</a></td>
+<td>2</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>sim.peers(a, &quot;supporters-&quot; + context).slice(0, 2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L416">hybrid.js:416</a></td>
+<td>0.5</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>weight * (a.hybrid.credibility[peer.id] ?? 0.5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L428">hybrid.js:428</a></td>
+<td>6</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>effects[6] += 0.15 * dependence * agreement</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L428">hybrid.js:428</a></td>
+<td>0.15</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>0.15 * dependence</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L429">hybrid.js:429</a></td>
+<td>10</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>context.slice(10)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L432">hybrid.js:432</a></td>
+<td>5</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>effects[5] += 0.15 * (belief.value - 0.5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L432">hybrid.js:432</a></td>
+<td>0.15</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>0.15 * (belief.value - 0.5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L432">hybrid.js:432</a></td>
+<td>0.5</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>belief.value - 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L438">hybrid.js:438</a></td>
+<td>0.08</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>0.08 * agreement</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L439">hybrid.js:439</a></td>
+<td>-1</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>clamp( (x.norm ?? (x.corrupt ? a.normCorrupt : -a.normCorrupt)) + 0.08 * agreement, -1, 1, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L440">hybrid.js:440</a></td>
+<td>1</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>clamp( (x.norm ?? (x.corrupt ? a.normCorrupt : -a.normCorrupt)) + 0.08 * agreement, -1, 1, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L443">hybrid.js:443</a></td>
+<td>0.06</td>
+<td>options · <a href="../TECHNICAL.html#akx-agy-02">AKX-AGY-02</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>0.06 * dependence</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L455">hybrid.js:455</a></td>
+<td>0.5</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>(function (root) { let A, active = null; const clamp = (x, lo = 0, hi = 1) =&gt; Math.max(lo, Math.min(hi, x)); const sum = (xs) =&gt; xs.reduce((a, b) =&gt; a + b, 0); const mean = (xs) =&gt; (xs.length ? sum…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L462">hybrid.js:462</a></td>
+<td>64</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>p.observed.length &gt; 64</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L463">hybrid.js:463</a></td>
+<td>0.5</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>value: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L463">hybrid.js:463</a></td>
+<td>0.5</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>performance: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L465">hybrid.js:465</a></td>
+<td>0.04</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>0.04 * clamp(reliability)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L470">hybrid.js:470</a></td>
+<td>2</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>recipient.motives[2] + recipient.motives[5]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L470">hybrid.js:470</a></td>
+<td>5</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>recipient.motives[2] + recipient.motives[5]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L470">hybrid.js:470</a></td>
+<td>8</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>recipient.motives[2] + recipient.motives[5] + recipient.motives[8]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L472">hybrid.js:472</a></td>
+<td>0.25</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>rate * 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L472">hybrid.js:472</a></td>
+<td>0.3</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>target * 0.3</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L475">hybrid.js:475</a></td>
+<td>0.25</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>(p.attention[policy] &amp;#124;&amp;#124; 0.25) + 0.1 * reliability</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L475">hybrid.js:475</a></td>
+<td>0.1</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>0.1 * reliability</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L478">hybrid.js:478</a></td>
+<td>0.5</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>(p.credibility[source] ?? 0.5) + parameters.credibilityLearning * reliability * (target - (p.credibility[source] ?? 0.5))</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L481">hybrid.js:481</a></td>
+<td>0.5</td>
+<td>observe · <a href="../TECHNICAL.html#akx-bel-01">AKX-BEL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a>, <a href="../TECHNICAL.html#akx-inf-01">AKX-INF-01</a></td>
+<td><code>target - (p.credibility[source] ?? 0.5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L488">hybrid.js:488</a></td>
+<td>0.25</td>
+<td>maintenanceNeed · <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a></td>
+<td><code>o.care.backlog * o.care.referenceStaff * 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L502">hybrid.js:502</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;maintain&quot;, [0, 0.3, 0.5])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L502">hybrid.js:502</a></td>
+<td>0.3</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;maintain&quot;, [0, 0.3, 0.5])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L502">hybrid.js:502</a></td>
+<td>0.5</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;maintain&quot;, [0, 0.3, 0.5])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L503">hybrid.js:503</a></td>
+<td>-0.05</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;repair&quot;, [-0.05, c.backlog, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L503">hybrid.js:503</a></td>
+<td>0.6</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;repair&quot;, [-0.05, c.backlog, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L504">hybrid.js:504</a></td>
+<td>-0.1</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;rebuild&quot;, [-0.1, c.irreversible + 0.2, 0.7])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L504">hybrid.js:504</a></td>
+<td>0.2</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>c.irreversible + 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L504">hybrid.js:504</a></td>
+<td>0.7</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;rebuild&quot;, [-0.1, c.irreversible + 0.2, 0.7])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L505">hybrid.js:505</a></td>
+<td>0.15</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;defer upkeep&quot;, [0.15, 0.1, -0.2])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L505">hybrid.js:505</a></td>
+<td>0.1</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;defer upkeep&quot;, [0.15, 0.1, -0.2])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L505">hybrid.js:505</a></td>
+<td>-0.2</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>option(sim, &quot;defer upkeep&quot;, [0.15, 0.1, -0.2])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L511">hybrid.js:511</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>wanted = choice === &quot;defer upkeep&quot; ? 0 : Math.min(0.05, c.backlog + (choice === &quot;rebuild&quot; ? 0.02 : 0))</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L512">hybrid.js:512</a></td>
+<td>0.05</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>Math.min(0.05, c.backlog + (choice === &quot;rebuild&quot; ? 0.02 : 0))</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L512">hybrid.js:512</a></td>
+<td>0.02</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>c.backlog + (choice === &quot;rebuild&quot; ? 0.02 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L512">hybrid.js:512</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>c.backlog + (choice === &quot;rebuild&quot; ? 0.02 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L529">hybrid.js:529</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>Math.max(0, done - maintained)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L530">hybrid.js:530</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>repair = choice === &quot;repair&quot; ? Math.min(c.backlog - maintained, Math.max(0, done - maintained)) : 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L531">hybrid.js:531</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>Math.max(0, c.backlog - maintained - repair)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L533">hybrid.js:533</a></td>
+<td>1</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>1 - maintained / due</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L538">hybrid.js:538</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>Math.max(0, c.recoverable + loss - restored)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L539">hybrid.js:539</a></td>
+<td>0.02</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>Math.min(0.02, c.backlog * 0.01)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L539">hybrid.js:539</a></td>
+<td>0.01</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>c.backlog * 0.01</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L542">hybrid.js:542</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>rebuilt = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L544">hybrid.js:544</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>Math.max(0, done - maintained)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L545">hybrid.js:545</a></td>
+<td>0</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>c.irreversible &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L561">hybrid.js:561</a></td>
+<td>0.001</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>clamp(o.caps[id] - loss + restored + rebuilt, 0.001, 0.98)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L561">hybrid.js:561</a></td>
+<td>0.98</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>clamp(o.caps[id] - loss + restored + rebuilt, 0.001, 0.98)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L563">hybrid.js:563</a></td>
+<td>1e-10</td>
+<td>care · <a href="../TECHNICAL.html#akx-cap-01">AKX-CAP-01</a>, <a href="../TECHNICAL.html#akx-mnt-01">AKX-MNT-01</a>, <a href="../TECHNICAL.html#akx-mnt-02">AKX-MNT-02</a></td>
+<td><code>due - 1e-10</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L607">hybrid.js:607</a></td>
+<td>0.25</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>0.25 + 0.4 * o.skill</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L607">hybrid.js:607</a></td>
+<td>0.4</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>0.4 * o.skill</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L607">hybrid.js:607</a></td>
+<td>0.35</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>0.35 * o.professionalSkill</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L611">hybrid.js:611</a></td>
+<td>0</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>o.caseUsed = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L613">hybrid.js:613</a></td>
+<td>2</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>o.category === 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L618">hybrid.js:618</a></td>
+<td>2</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>wages + 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L621">hybrid.js:621</a></td>
+<td>1</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>o.category !== 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L626">hybrid.js:626</a></td>
+<td>0.03</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>h.background.recentReceipts * 0.03</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L630">hybrid.js:630</a></td>
+<td>0.999</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>p.honest *= 0.999</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L631">hybrid.js:631</a></td>
+<td>0.999</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>p.corrupt *= 0.999</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L635">hybrid.js:635</a></td>
+<td>0</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>a.role === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L645">hybrid.js:645</a></td>
+<td>6</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>a.receipts.length &gt; 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L646">hybrid.js:646</a></td>
+<td>2</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>a.role === 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L647">hybrid.js:647</a></td>
+<td>0.999</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>a.descriptive * 0.999</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L647">hybrid.js:647</a></td>
+<td>0.0003</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>a.descriptive * 0.999 + 0.0003</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L648">hybrid.js:648</a></td>
+<td>0</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>a.role === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L648">hybrid.js:648</a></td>
+<td>0.55</td>
+<td>accounts · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a></td>
+<td><code>personalTime(sim, a, 0.55, false)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L655">hybrid.js:655</a></td>
+<td>7</td>
+<td>account · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>key.slice(7)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L656">hybrid.js:656</a></td>
+<td>13</td>
+<td>account · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>key.slice(13)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L661">hybrid.js:661</a></td>
+<td>1e-9</td>
+<td>order · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>amount &gt; 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L671">hybrid.js:671</a></td>
+<td>0</td>
+<td>order · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>delivered: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L677">hybrid.js:677</a></td>
+<td>1</td>
+<td>supplier · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>o.category === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L683">hybrid.js:683</a></td>
+<td>0.5</td>
+<td>supplier · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>0.5 + (buyer?.support?.find((x) =&gt; x.org === o.id)?.affinity &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L684">hybrid.js:684</a></td>
+<td>0</td>
+<td>supplier · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>0.5 + (buyer?.support?.find((x) =&gt; x.org === o.id)?.affinity &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L686">hybrid.js:686</a></td>
+<td>2</td>
+<td>supplier · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>sim.relationship(buyer, sim.agents[o.leader]).access * 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L687">hybrid.js:687</a></td>
+<td>0</td>
+<td>supplier · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>0.5 + (buyer?.support?.find((x) =&gt; x.org === o.id)?.affinity &amp;#124;&amp;#124; 0) + (preferConnected &amp;&amp; buyer ? sim.relationship(buyer, sim.agents[o.leader]).access * 2 : 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L689">hybrid.js:689</a></td>
+<td>0</td>
+<td>supplier · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>return firms .map((o) =&gt; ({ o, score: -Math.log(sim.rand(&quot;hybrid-supplier&quot;, key, o.id)) / (0.5 + (buyer?.support?.find((x) =&gt; x.org === o.id)?.affinity &amp;#124;&amp;#124; 0) + (preferConnected &amp;&amp; buyer ? sim.relat…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L707">hybrid.js:707</a></td>
+<td>1</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>1 - parameters.explicitConsumptionShare</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L711">hybrid.js:711</a></td>
+<td>0.25</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>h.background.recentReceipts * 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L712">hybrid.js:712</a></td>
+<td>0</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>Math.max(0, s.outside.balance - h.background.reserve)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L712">hybrid.js:712</a></td>
+<td>0.02</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>Math.max(0, s.outside.balance - h.background.reserve) * 0.02</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L714">hybrid.js:714</a></td>
+<td>1</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>o.category === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L715">hybrid.js:715</a></td>
+<td>24</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>bg / 24</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L716">hybrid.js:716</a></td>
+<td>24</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>parameters.exportDemand / 24</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L723">hybrid.js:723</a></td>
+<td>0</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;open procurement&quot;, [0, 0.1, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L723">hybrid.js:723</a></td>
+<td>0.1</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;open procurement&quot;, [0, 0.1, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L723">hybrid.js:723</a></td>
+<td>0.6</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;open procurement&quot;, [0, 0.1, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L724">hybrid.js:724</a></td>
+<td>0.25</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;connected procurement&quot;, [0.25, 0.5, -0.2], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L724">hybrid.js:724</a></td>
+<td>0.5</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;connected procurement&quot;, [0.25, 0.5, -0.2], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L724">hybrid.js:724</a></td>
+<td>-0.2</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;connected procurement&quot;, [0.25, 0.5, -0.2], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L724">hybrid.js:724</a></td>
+<td>0.2</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;connected procurement&quot;, [0.25, 0.5, -0.2], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L727">hybrid.js:727</a></td>
+<td>0.1</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;defer procurement&quot;, [0.1, 0, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L727">hybrid.js:727</a></td>
+<td>0</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;defer procurement&quot;, [0.1, 0, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L727">hybrid.js:727</a></td>
+<td>-0.1</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>option(sim, &quot;defer procurement&quot;, [0.1, 0, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L733">hybrid.js:733</a></td>
+<td>0.01</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>personalTime(sim, leader, 0.01)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L745">hybrid.js:745</a></td>
+<td>0.02</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>s.treasury.balance * 0.02</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L745">hybrid.js:745</a></td>
+<td>30</td>
+<td>demand · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a></td>
+<td><code>Math.min(s.treasury.balance * 0.02, 30)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L759">hybrid.js:759</a></td>
+<td>1e-9</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>x.remaining &lt;= 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L762">hybrid.js:762</a></td>
+<td>0</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>x.remaining = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L769">hybrid.js:769</a></td>
+<td>0</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>Math.max(0, business.capacity - business.output)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L770">hybrid.js:770</a></td>
+<td>0</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>Math.max(0, h.background.capacity - h.background.output)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L771">hybrid.js:771</a></td>
+<td>0</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>Math.max(0, seller.time)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L771">hybrid.js:771</a></td>
+<td>15</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>Math.max(0, seller.time) * 15</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L778">hybrid.js:778</a></td>
+<td>1e-9</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>quantity &lt;= 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L780">hybrid.js:780</a></td>
+<td>0.4</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>0.4 + 0.4 * seller.skill</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L780">hybrid.js:780</a></td>
+<td>0.4</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>0.4 * seller.skill</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L780">hybrid.js:780</a></td>
+<td>0.2</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>0.2 * seller.care.capability</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L781">hybrid.js:781</a></td>
+<td>1</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>operating = business ? clamp(0.4 + 0.4 * seller.skill + 0.2 * seller.care.capability) : 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L785">hybrid.js:785</a></td>
+<td>1e-9</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>seller.balance + 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L793">hybrid.js:793</a></td>
+<td>15</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>deliver / 15</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L819">hybrid.js:819</a></td>
+<td>0</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>sim.completeCorruption( [actor, counterpart], &quot;procurement preference&quot;, 0, seller.id, false, x.id, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L827">hybrid.js:827</a></td>
+<td>1e-9</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>x.remaining &lt;= 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L829">hybrid.js:829</a></td>
+<td>1e-9</td>
+<td>production · <a href="../TECHNICAL.html#akx-eco-03">AKX-ECO-03</a>, <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>x.remaining &gt; 1e-9</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L835">hybrid.js:835</a></td>
+<td>1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>o.category === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L839">hybrid.js:839</a></td>
+<td>1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>1 - (1 - parameters.annualDepreciation) ** (1 / 12)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L839">hybrid.js:839</a></td>
+<td>1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>1 - parameters.annualDepreciation</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L839">hybrid.js:839</a></td>
+<td>1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>1 / 12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L839">hybrid.js:839</a></td>
+<td>12</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>1 / 12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L840">hybrid.js:840</a></td>
+<td>0</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>Math.max(0, e.capacity - depreciation)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L852">hybrid.js:852</a></td>
+<td>0.12</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>sim.relationship(leader, sim.agents[p.leader]).access &gt; 0.12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L856">hybrid.js:856</a></td>
+<td>0</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>Math.max(0, o.balance - reserve)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L865">hybrid.js:865</a></td>
+<td>0.15</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>0.15 + (expected / Math.max(1, e.capacity)) * 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L865">hybrid.js:865</a></td>
+<td>1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>Math.max(1, e.capacity)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L865">hybrid.js:865</a></td>
+<td>0.2</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>(expected / Math.max(1, e.capacity)) * 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L865">hybrid.js:865</a></td>
+<td>0.4</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option( sim, &quot;invest&quot;, [0.15 + (expected / Math.max(1, e.capacity)) * 0.2, 0.4, 0.3], related ? 0.25 : 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L865">hybrid.js:865</a></td>
+<td>0.3</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option( sim, &quot;invest&quot;, [0.15 + (expected / Math.max(1, e.capacity)) * 0.2, 0.4, 0.3], related ? 0.25 : 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L866">hybrid.js:866</a></td>
+<td>0.25</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option( sim, &quot;invest&quot;, [0.15 + (expected / Math.max(1, e.capacity)) * 0.2, 0.4, 0.3], related ? 0.25 : 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L866">hybrid.js:866</a></td>
+<td>0</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option( sim, &quot;invest&quot;, [0.15 + (expected / Math.max(1, e.capacity)) * 0.2, 0.4, 0.3], related ? 0.25 : 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L868">hybrid.js:868</a></td>
+<td>0.2</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;retain reserves&quot;, [0.2, 0.3, 0.05])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L868">hybrid.js:868</a></td>
+<td>0.3</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;retain reserves&quot;, [0.2, 0.3, 0.05])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L868">hybrid.js:868</a></td>
+<td>0.05</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;retain reserves&quot;, [0.2, 0.3, 0.05])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L869">hybrid.js:869</a></td>
+<td>0.4</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;eligible distribution&quot;, [0.4, 0.05, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L869">hybrid.js:869</a></td>
+<td>0.05</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;eligible distribution&quot;, [0.4, 0.05, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L869">hybrid.js:869</a></td>
+<td>0</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;eligible distribution&quot;, [0.4, 0.05, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L870">hybrid.js:870</a></td>
+<td>0.65</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;divert entrusted funds&quot;, [0.65, -0.3, -0.4], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L870">hybrid.js:870</a></td>
+<td>-0.3</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;divert entrusted funds&quot;, [0.65, -0.3, -0.4], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L870">hybrid.js:870</a></td>
+<td>-0.4</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;divert entrusted funds&quot;, [0.65, -0.3, -0.4], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L870">hybrid.js:870</a></td>
+<td>0.2</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>option(sim, &quot;divert entrusted funds&quot;, [0.65, -0.3, -0.4], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L878">hybrid.js:878</a></td>
+<td>0.1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>cash &gt; 0.1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L879">hybrid.js:879</a></td>
+<td>0.01</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>personalTime(sim, leader, 0.01)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L885">hybrid.js:885</a></td>
+<td>0.1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>cash * 0.1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L885">hybrid.js:885</a></td>
+<td>10</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>Math.min(cash * 0.1, 10)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L892">hybrid.js:892</a></td>
+<td>0</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>work: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L893">hybrid.js:893</a></td>
+<td>0.05</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>0.05 + paid * 0.02</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L893">hybrid.js:893</a></td>
+<td>0.02</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>paid * 0.02</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L896">hybrid.js:896</a></td>
+<td>1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>sim.month + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L897">hybrid.js:897</a></td>
+<td>3</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>sim.rand(&quot;investment-delivery&quot;, o.id) * 3</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L912">hybrid.js:912</a></td>
+<td>0.1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>cash &gt; 0.1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L919">hybrid.js:919</a></td>
+<td>0.08</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>cash * 0.08</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L922">hybrid.js:922</a></td>
+<td>0</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>taken &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L931">hybrid.js:931</a></td>
+<td>0</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>cash &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L939">hybrid.js:939</a></td>
+<td>0.05</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>cash * 0.05</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L939">hybrid.js:939</a></td>
+<td>1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>Math.max(1, owners.length)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L944">hybrid.js:944</a></td>
+<td>0.15</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>0.15 * (e.output - e.expectedDemand)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L952">hybrid.js:952</a></td>
+<td>0.1</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>Math.min(0.1, p.required - p.work)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L955">hybrid.js:955</a></td>
+<td>1e-10</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>p.work + 1e-10</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L956">hybrid.js:956</a></td>
+<td>12</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>12 * parameters.capitalOutputYears</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L973">hybrid.js:973</a></td>
+<td>12</td>
+<td>investment · <a href="../TECHNICAL.html#akx-eco-01">AKX-ECO-01</a>, <a href="../TECHNICAL.html#akx-eco-02">AKX-ECO-02</a></td>
+<td><code>sim.month - 12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L980">hybrid.js:980</a></td>
+<td>1</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>o.category === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L983">hybrid.js:983</a></td>
+<td>0</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>Math.max(0, e.valueAdded)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L988">hybrid.js:988</a></td>
+<td>0.1</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;declare and pay&quot;, [-potential, 0.1, 0.5])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L988">hybrid.js:988</a></td>
+<td>0.5</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;declare and pay&quot;, [-potential, 0.1, 0.5])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L992">hybrid.js:992</a></td>
+<td>0.3</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>potential * 0.3</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L992">hybrid.js:992</a></td>
+<td>0.3</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option( sim, &quot;conceal taxable activity&quot;, [potential * 0.3, 0.3, -0.4], 0.1, { corrupt: true }, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L992">hybrid.js:992</a></td>
+<td>-0.4</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option( sim, &quot;conceal taxable activity&quot;, [potential * 0.3, 0.3, -0.4], 0.1, { corrupt: true }, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L993">hybrid.js:993</a></td>
+<td>0.1</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option( sim, &quot;conceal taxable activity&quot;, [potential * 0.3, 0.3, -0.4], 0.1, { corrupt: true }, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L999">hybrid.js:999</a></td>
+<td>0.15</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>potential * 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L999">hybrid.js:999</a></td>
+<td>0.2</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option( sim, &quot;request favorable treatment&quot;, [potential * 0.15, 0.2, -0.2], 0.2, { corrupt: true }, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L999">hybrid.js:999</a></td>
+<td>-0.2</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option( sim, &quot;request favorable treatment&quot;, [potential * 0.15, 0.2, -0.2], 0.2, { corrupt: true }, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1000">hybrid.js:1000</a></td>
+<td>0.2</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option( sim, &quot;request favorable treatment&quot;, [potential * 0.15, 0.2, -0.2], 0.2, { corrupt: true }, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1008">hybrid.js:1008</a></td>
+<td>0</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>collectorOrg = sim.publicOrgs.find((q) =&gt; q.fn === &quot;service&quot;) &amp;#124;&amp;#124; sim.publicOrgs[0]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1015">hybrid.js:1015</a></td>
+<td>1</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>liability *= detected ? 1 : 0.6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1015">hybrid.js:1015</a></td>
+<td>0.6</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>liability *= detected ? 1 : 0.6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1016">hybrid.js:1016</a></td>
+<td>0</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>potential &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1020">hybrid.js:1020</a></td>
+<td>0</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>sim.completeCorruption( [leader], &quot;tax concealment&quot;, 0, o.id, false, &quot;hybrid-tax-&quot; + o.id, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1028">hybrid.js:1028</a></td>
+<td>0.01</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>personalTime(sim, collector, 0.01)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1034">hybrid.js:1034</a></td>
+<td>0</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;apply assessment rule&quot;, [0, 0.1, 0.4])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1034">hybrid.js:1034</a></td>
+<td>0.1</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;apply assessment rule&quot;, [0, 0.1, 0.4])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1034">hybrid.js:1034</a></td>
+<td>0.4</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;apply assessment rule&quot;, [0, 0.1, 0.4])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1035">hybrid.js:1035</a></td>
+<td>0.3</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;grant improper concession&quot;, [0.3, 0.25, -0.5], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1035">hybrid.js:1035</a></td>
+<td>0.25</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;grant improper concession&quot;, [0.3, 0.25, -0.5], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1035">hybrid.js:1035</a></td>
+<td>-0.5</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;grant improper concession&quot;, [0.3, 0.25, -0.5], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1035">hybrid.js:1035</a></td>
+<td>0.2</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>option(sim, &quot;grant improper concession&quot;, [0.3, 0.25, -0.5], 0.2, { corrupt: true, })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1042">hybrid.js:1042</a></td>
+<td>0.7</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>liability *= 0.7</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1046">hybrid.js:1046</a></td>
+<td>0</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>sim.completeCorruption( [leader, collector], &quot;tax concession&quot;, 0, o.id, false, &quot;hybrid-concession-&quot; + o.id, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1059">hybrid.js:1059</a></td>
+<td>0.25</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>o.balance * 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1062">hybrid.js:1062</a></td>
+<td>0</td>
+<td>taxation · <a href="../TECHNICAL.html#akx-eco-04">AKX-ECO-04</a></td>
+<td><code>Math.max(0, e.taxArrears - received)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1099">hybrid.js:1099</a></td>
+<td>0</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>reviewer = sim.agents[reviewers[0]]</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1103">hybrid.js:1103</a></td>
+<td>0.015</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>personalTime(sim, reviewer, 0.015)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1110">hybrid.js:1110</a></td>
+<td>-0.1</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;block improper action&quot;, [-0.1, 0.2, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1110">hybrid.js:1110</a></td>
+<td>0.2</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;block improper action&quot;, [-0.1, 0.2, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1110">hybrid.js:1110</a></td>
+<td>0.6</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;block improper action&quot;, [-0.1, 0.2, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1111">hybrid.js:1111</a></td>
+<td>0.2</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;permit action&quot;, [0.2, 0.1, -0.3], 0.1, { corrupt: true })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1111">hybrid.js:1111</a></td>
+<td>0.1</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;permit action&quot;, [0.2, 0.1, -0.3], 0.1, { corrupt: true })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1111">hybrid.js:1111</a></td>
+<td>-0.3</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;permit action&quot;, [0.2, 0.1, -0.3], 0.1, { corrupt: true })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1111">hybrid.js:1111</a></td>
+<td>0.1</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;permit action&quot;, [0.2, 0.1, -0.3], 0.1, { corrupt: true })</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1124">hybrid.js:1124</a></td>
+<td>1</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>observe(sim, actor, &quot;governance&quot;, reviewer.id, 1, 0.8, key)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1124">hybrid.js:1124</a></td>
+<td>0.8</td>
+<td>review · <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>observe(sim, actor, &quot;governance&quot;, reviewer.id, 1, 0.8, key)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1133">hybrid.js:1133</a></td>
+<td>2</td>
+<td>propose · <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>o.category === 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1141">hybrid.js:1141</a></td>
+<td>0.02</td>
+<td>propose · <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>personalTime(sim, proposer, 0.02)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1141">hybrid.js:1141</a></td>
+<td>0.05</td>
+<td>propose · <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>o.balance &lt; 0.05</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1142">hybrid.js:1142</a></td>
+<td>0.05</td>
+<td>propose · <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>move(sim, o, sim.state.outside, 0.05, &quot;governance proposal preparation&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1156">hybrid.js:1156</a></td>
+<td>0</td>
+<td>propose · <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>work: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1175">hybrid.js:1175</a></td>
+<td>6</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>sim.month % 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1175">hybrid.js:1175</a></td>
+<td>0</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>sim.month % 6 === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1179">hybrid.js:1179</a></td>
+<td>2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>o.category === 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1185">hybrid.js:1185</a></td>
+<td>0.1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;retain rules&quot;, [0.1, 0.1, 0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1185">hybrid.js:1185</a></td>
+<td>0.1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;retain rules&quot;, [0.1, 0.1, 0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1185">hybrid.js:1185</a></td>
+<td>0.1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;retain rules&quot;, [0.1, 0.1, 0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1186">hybrid.js:1186</a></td>
+<td>-0.1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;strengthen oversight&quot;, [-0.1, 0.2, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1186">hybrid.js:1186</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;strengthen oversight&quot;, [-0.1, 0.2, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1186">hybrid.js:1186</a></td>
+<td>0.6</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;strengthen oversight&quot;, [-0.1, 0.2, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1187">hybrid.js:1187</a></td>
+<td>0.25</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;weaken oversight&quot;, [0.25, 0.3, -0.4], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1187">hybrid.js:1187</a></td>
+<td>0.3</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;weaken oversight&quot;, [0.25, 0.3, -0.4], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1187">hybrid.js:1187</a></td>
+<td>-0.4</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;weaken oversight&quot;, [0.25, 0.3, -0.4], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1187">hybrid.js:1187</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;weaken oversight&quot;, [0.25, 0.3, -0.4], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1188">hybrid.js:1188</a></td>
+<td>-0.1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;leadership protection&quot;, [-0.1, 0.2, 0.4])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1188">hybrid.js:1188</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;leadership protection&quot;, [-0.1, 0.2, 0.4])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1188">hybrid.js:1188</a></td>
+<td>0.4</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;leadership protection&quot;, [-0.1, 0.2, 0.4])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1189">hybrid.js:1189</a></td>
+<td>-0.1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;disclosure rights&quot;, [-0.1, 0.2, 0.5])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1189">hybrid.js:1189</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;disclosure rights&quot;, [-0.1, 0.2, 0.5])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1189">hybrid.js:1189</a></td>
+<td>0.5</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;disclosure rights&quot;, [-0.1, 0.2, 0.5])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1190">hybrid.js:1190</a></td>
+<td>0.1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;appoint leader&quot;, [0.1, 0.3, 0.3], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1190">hybrid.js:1190</a></td>
+<td>0.3</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;appoint leader&quot;, [0.1, 0.3, 0.3], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1190">hybrid.js:1190</a></td>
+<td>0.3</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;appoint leader&quot;, [0.1, 0.3, 0.3], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1190">hybrid.js:1190</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;appoint leader&quot;, [0.1, 0.3, 0.3], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1198">hybrid.js:1198</a></td>
+<td>0</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>staff(sim, o) .filter((a) =&gt; a.id !== o.leader) .slice(0, 8)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1198">hybrid.js:1198</a></td>
+<td>8</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>staff(sim, o) .filter((a) =&gt; a.id !== o.leader) .slice(0, 8)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1207">hybrid.js:1207</a></td>
+<td>0.25</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>sim.relationship(proposer, a).access * 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1207">hybrid.js:1207</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option( sim, String(a.id), [sim.relationship(proposer, a).access * 0.25, 0.2, a.skill], a.skill * 0.2, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1208">hybrid.js:1208</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>a.skill * 0.2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1229">hybrid.js:1229</a></td>
+<td>-0.15</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>o.governance[target] + (choice === &quot;weaken oversight&quot; ? -0.15 : 0.15)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1229">hybrid.js:1229</a></td>
+<td>0.15</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>o.governance[target] + (choice === &quot;weaken oversight&quot; ? -0.15 : 0.15)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1237">hybrid.js:1237</a></td>
+<td>0.015</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>personalTime(sim, worker, 0.015)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1237">hybrid.js:1237</a></td>
+<td>0.015</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>p.work += 0.015</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1241">hybrid.js:1241</a></td>
+<td>0.01</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>personalTime(sim, sim.agents[id], 0.01)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1250">hybrid.js:1250</a></td>
+<td>0.1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;approve&quot;, [ 0.1, affinity, p.kind === &quot;appointment&quot; ? sim.agents[p.target].skill : p.value, ])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1254">hybrid.js:1254</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;oppose&quot;, [0.2, 0.15, 0.2])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1254">hybrid.js:1254</a></td>
+<td>0.15</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;oppose&quot;, [0.2, 0.15, 0.2])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1254">hybrid.js:1254</a></td>
+<td>0.2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>option(sim, &quot;oppose&quot;, [0.2, 0.15, 0.2])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1262">hybrid.js:1262</a></td>
+<td>0.03</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>p.work &lt; 0.03</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1267">hybrid.js:1267</a></td>
+<td>2</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>p.approvers.length / 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1270">hybrid.js:1270</a></td>
+<td>0.7</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>Math.max(p.originalProtection, o.governance.removalProtection) &gt; 0.7</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1282">hybrid.js:1282</a></td>
+<td>0.3</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>observe(sim, sim.agents[old], &quot;governance&quot;, p.proposer, 0.3, 1, p.id)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1282">hybrid.js:1282</a></td>
+<td>1</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>observe(sim, sim.agents[old], &quot;governance&quot;, p.proposer, 0.3, 1, p.id)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1301">hybrid.js:1301</a></td>
+<td>24</td>
+<td>governance · <a href="../TECHNICAL.html#akx-agy-01">AKX-AGY-01</a>, <a href="../TECHNICAL.html#akx-gov-02">AKX-GOV-02</a>, <a href="../TECHNICAL.html#akx-gov-03">AKX-GOV-03</a></td>
+<td><code>sim.month - 24</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1309">hybrid.js:1309</a></td>
+<td>3</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>sim.month % 3</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1309">hybrid.js:1309</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>sim.month % 3 === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1310">hybrid.js:1310</a></td>
+<td>2</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>o.category !== 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1310">hybrid.js:1310</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>sim.orgs.filter((o) =&gt; o.category !== 2).slice(0, 8)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1310">hybrid.js:1310</a></td>
+<td>8</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>sim.orgs.filter((o) =&gt; o.category !== 2).slice(0, 8)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1326">hybrid.js:1326</a></td>
+<td>0.5</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>value: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1327">hybrid.js:1327</a></td>
+<td>0.5</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>performance: 0.5</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1329">hybrid.js:1329</a></td>
+<td>0.25</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>attention = leader.hybrid.attention[issue] ?? 0.25</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1337">hybrid.js:1337</a></td>
+<td>-0.1</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option( sim, &quot;organize support&quot;, [-0.1, beliefs.value, 0.4], attention, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1337">hybrid.js:1337</a></td>
+<td>0.4</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option( sim, &quot;organize support&quot;, [-0.1, beliefs.value, 0.4], attention, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1343">hybrid.js:1343</a></td>
+<td>0.2</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option( sim, &quot;organize opposition&quot;, [0.2, 1 - beliefs.value, -0.1], attention, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1343">hybrid.js:1343</a></td>
+<td>1</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>1 - beliefs.value</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1343">hybrid.js:1343</a></td>
+<td>-0.1</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option( sim, &quot;organize opposition&quot;, [0.2, 1 - beliefs.value, -0.1], attention, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1346">hybrid.js:1346</a></td>
+<td>0.2</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;do not mobilize&quot;, [0.2, 0.1, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1346">hybrid.js:1346</a></td>
+<td>0.1</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;do not mobilize&quot;, [0.2, 0.1, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1346">hybrid.js:1346</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;do not mobilize&quot;, [0.2, 0.1, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1352">hybrid.js:1352</a></td>
+<td>0.02</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>personalTime(sim, leader, 0.02)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1353">hybrid.js:1353</a></td>
+<td>0.05</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>leader.balance &lt; 0.05</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1361">hybrid.js:1361</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>balance: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1365">hybrid.js:1365</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>delivered: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1380">hybrid.js:1380</a></td>
+<td>-0.05</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;commit&quot;, [ -0.05, a.hybrid.beliefs[issue]?.value ?? 0.5, 0.4, ])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1381">hybrid.js:1381</a></td>
+<td>0.5</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;commit&quot;, [ -0.05, a.hybrid.beliefs[issue]?.value ?? 0.5, 0.4, ])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1382">hybrid.js:1382</a></td>
+<td>0.4</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;commit&quot;, [ -0.05, a.hybrid.beliefs[issue]?.value ?? 0.5, 0.4, ])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1384">hybrid.js:1384</a></td>
+<td>0.1</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;decline&quot;, [0.1, 0, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1384">hybrid.js:1384</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;decline&quot;, [0.1, 0, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1384">hybrid.js:1384</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;decline&quot;, [0.1, 0, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1388">hybrid.js:1388</a></td>
+<td>0.05</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>a.balance &gt;= 0.05</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1388">hybrid.js:1388</a></td>
+<td>0.01</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>personalTime(sim, a, 0.01)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1393">hybrid.js:1393</a></td>
+<td>0.05</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>move( sim, a, c, 0.05, &quot;reserved private coalition contribution&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1396">hybrid.js:1396</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>delivered: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1420">hybrid.js:1420</a></td>
+<td>-0.02</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option( sim, &quot;contribute work&quot;, [-0.02, a.hybrid.beliefs[c.issue]?.value ?? 0.5, 0.3], a.hybrid.attention[c.issue] ?? 0.2, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1420">hybrid.js:1420</a></td>
+<td>0.5</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option( sim, &quot;contribute work&quot;, [-0.02, a.hybrid.beliefs[c.issue]?.value ?? 0.5, 0.3], a.hybrid.attention[c.issue] ?? 0.2, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1420">hybrid.js:1420</a></td>
+<td>0.3</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option( sim, &quot;contribute work&quot;, [-0.02, a.hybrid.beliefs[c.issue]?.value ?? 0.5, 0.3], a.hybrid.attention[c.issue] ?? 0.2, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1421">hybrid.js:1421</a></td>
+<td>0.2</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option( sim, &quot;contribute work&quot;, [-0.02, a.hybrid.beliefs[c.issue]?.value ?? 0.5, 0.3], a.hybrid.attention[c.issue] ?? 0.2, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1423">hybrid.js:1423</a></td>
+<td>0.15</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;withdraw backing&quot;, [0.15, 0, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1423">hybrid.js:1423</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;withdraw backing&quot;, [0.15, 0, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1423">hybrid.js:1423</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>option(sim, &quot;withdraw backing&quot;, [0.15, 0, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1435">hybrid.js:1435</a></td>
+<td>0</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>m.reserve = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1438">hybrid.js:1438</a></td>
+<td>0.005</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>m.reserve &gt; 0.005</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1438">hybrid.js:1438</a></td>
+<td>0.015</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>personalTime(sim, a, 0.015)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1443">hybrid.js:1443</a></td>
+<td>0.005</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>move( sim, c, sim.state.outside, 0.005, &quot;performed advocacy and coalition communication&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1449">hybrid.js:1449</a></td>
+<td>0.6</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>observe(sim, a, c.issue, c.leader, 0.6, 0.6, c.id + &quot;-&quot; + sim.month)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1449">hybrid.js:1449</a></td>
+<td>0.6</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>observe(sim, a, c.issue, c.leader, 0.6, 0.6, c.id + &quot;-&quot; + sim.month)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1456">hybrid.js:1456</a></td>
+<td>0.65</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>observe( sim, peer, c.issue, c.leader, c.stance === &quot;organize support&quot; ? 0.65 : 0.35, weight, c.id + &quot;-&quot; + sim.month, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1456">hybrid.js:1456</a></td>
+<td>0.35</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>observe( sim, peer, c.issue, c.leader, c.stance === &quot;organize support&quot; ? 0.65 : 0.35, weight, c.id + &quot;-&quot; + sim.month, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1463">hybrid.js:1463</a></td>
+<td>0.005</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>m.reserve &lt; 0.005</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1464">hybrid.js:1464</a></td>
+<td>24</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>sim.month - c.opened &gt; 24</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1481">hybrid.js:1481</a></td>
+<td>1e-10</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>c.balance &gt; 1e-10</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1482">hybrid.js:1482</a></td>
+<td>12</td>
+<td>coalitions · <a href="../TECHNICAL.html#akx-col-01">AKX-COL-01</a>, <a href="../TECHNICAL.html#akx-att-01">AKX-ATT-01</a></td>
+<td><code>sim.month - 12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1489">hybrid.js:1489</a></td>
+<td>0</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>c.delivered &gt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1498">hybrid.js:1498</a></td>
+<td>0.005</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>personalTime(sim, a, 0.005)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1503">hybrid.js:1503</a></td>
+<td>-0.1</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;substantive response&quot;, [-0.1, 0.3, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1503">hybrid.js:1503</a></td>
+<td>0.3</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;substantive response&quot;, [-0.1, 0.3, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1503">hybrid.js:1503</a></td>
+<td>0.6</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;substantive response&quot;, [-0.1, 0.3, 0.6])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1504">hybrid.js:1504</a></td>
+<td>0.15</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;symbolic commitment&quot;, [0.15, 0.2, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1504">hybrid.js:1504</a></td>
+<td>0.2</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;symbolic commitment&quot;, [0.15, 0.2, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1504">hybrid.js:1504</a></td>
+<td>0</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;symbolic commitment&quot;, [0.15, 0.2, 0])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1505">hybrid.js:1505</a></td>
+<td>0.2</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;reframe demand&quot;, [0.2, 0.25, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1505">hybrid.js:1505</a></td>
+<td>0.25</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;reframe demand&quot;, [0.2, 0.25, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1505">hybrid.js:1505</a></td>
+<td>-0.1</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;reframe demand&quot;, [0.2, 0.25, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1506">hybrid.js:1506</a></td>
+<td>0.2</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;seek obstruction&quot;, [0.2, 0.3, -0.3], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1506">hybrid.js:1506</a></td>
+<td>0.3</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;seek obstruction&quot;, [0.2, 0.3, -0.3], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1506">hybrid.js:1506</a></td>
+<td>-0.3</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;seek obstruction&quot;, [0.2, 0.3, -0.3], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1506">hybrid.js:1506</a></td>
+<td>0.2</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>option(sim, &quot;seek obstruction&quot;, [0.2, 0.3, -0.3], 0.2)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1516">hybrid.js:1516</a></td>
+<td>0.6</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>observe( sim, a, c.issue, c.leader, 0.6, 0.8, c.id + &quot;-demand-&quot; + sim.month, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1517">hybrid.js:1517</a></td>
+<td>0.8</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>observe( sim, a, c.issue, c.leader, 0.6, 0.8, c.id + &quot;-demand-&quot; + sim.month, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1520">hybrid.js:1520</a></td>
+<td>3</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>sim.month + 3</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1528">hybrid.js:1528</a></td>
+<td>0.15</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>org.governance.oversight - 0.15</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1530">hybrid.js:1530</a></td>
+<td>0.01</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>org.balance &gt;= 0.01</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1535">hybrid.js:1535</a></td>
+<td>0.01</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>move( sim, org, sim.state.outside, 0.01, &quot;public communication responding to a demand&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1544">hybrid.js:1544</a></td>
+<td>0.6</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>observe( sim, sim.agents[m.id], c.issue, a.id, d.name === &quot;symbolic commitment&quot; ? 0.6 : 0.35, 0.3, &quot;claim-&quot; + c.id + &quot;-&quot; + sim.month, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1544">hybrid.js:1544</a></td>
+<td>0.35</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>observe( sim, sim.agents[m.id], c.issue, a.id, d.name === &quot;symbolic commitment&quot; ? 0.6 : 0.35, 0.3, &quot;claim-&quot; + c.id + &quot;-&quot; + sim.month, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1545">hybrid.js:1545</a></td>
+<td>0.3</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>observe( sim, sim.agents[m.id], c.issue, a.id, d.name === &quot;symbolic commitment&quot; ? 0.6 : 0.35, 0.3, &quot;claim-&quot; + c.id + &quot;-&quot; + sim.month, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1549">hybrid.js:1549</a></td>
+<td>6</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>sim.month % 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1549">hybrid.js:1549</a></td>
+<td>0</td>
+<td>responses · <a href="../TECHNICAL.html#akx-str-01">AKX-STR-01</a></td>
+<td><code>sim.month % 6 === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1568">hybrid.js:1568</a></td>
+<td>1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>product = 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1569">hybrid.js:1569</a></td>
+<td>-1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>n = -1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1574">hybrid.js:1574</a></td>
+<td>0</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>i = 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1577">hybrid.js:1577</a></td>
+<td>0</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>a.role === 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1579">hybrid.js:1579</a></td>
+<td>6</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.state.politics.nextReview - sim.month &lt;= 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1580">hybrid.js:1580</a></td>
+<td>0.04</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.rand(&quot;hybrid-campaign-contact&quot;, a.id) &lt; 0.04</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1595">hybrid.js:1595</a></td>
+<td>1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>(pending.attempts &amp;#124;&amp;#124; 1) + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1595">hybrid.js:1595</a></td>
+<td>1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>(pending.attempts &amp;#124;&amp;#124; 1) + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1598">hybrid.js:1598</a></td>
+<td>6</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.month - pending.arrival &gt;= 6</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1603">hybrid.js:1603</a></td>
+<td>-0.05</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>option(sim, &quot;continue waiting&quot;, [-0.05, 0.1, 0.3])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1603">hybrid.js:1603</a></td>
+<td>0.1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>option(sim, &quot;continue waiting&quot;, [-0.05, 0.1, 0.3])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1603">hybrid.js:1603</a></td>
+<td>0.3</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>option(sim, &quot;continue waiting&quot;, [-0.05, 0.1, 0.3])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1604">hybrid.js:1604</a></td>
+<td>0.1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>option(sim, &quot;abandon request&quot;, [0.1, 0, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1604">hybrid.js:1604</a></td>
+<td>0</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>option(sim, &quot;abandon request&quot;, [0.1, 0, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1604">hybrid.js:1604</a></td>
+<td>-0.1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>option(sim, &quot;abandon request&quot;, [0.1, 0, -0.1])</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1609">hybrid.js:1609</a></td>
+<td>1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.state.services.splice(sim.state.services.indexOf(pending), 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1611">hybrid.js:1611</a></td>
+<td>0</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>(h.counters.abandonedRequests &amp;#124;&amp;#124; 0) + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1611">hybrid.js:1611</a></td>
+<td>1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>(h.counters.abandonedRequests &amp;#124;&amp;#124; 0) + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1617">hybrid.js:1617</a></td>
+<td>3</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.nearest(a, sim.roles[3], &quot;repeat-campaign&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1620">hybrid.js:1620</a></td>
+<td>1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>a.role === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1621">hybrid.js:1621</a></td>
+<td>0.12</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.rand(&quot;contact-kind&quot;, a.id, event.i) &lt; 0.12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1623">hybrid.js:1623</a></td>
+<td>3</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.nearest(a, sim.roles[3], &quot;repeat-political-&quot; + event.i)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1625">hybrid.js:1625</a></td>
+<td>3</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>a.role === 3</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1626">hybrid.js:1626</a></td>
+<td>2</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.nearest(a, sim.roles[2], &quot;repeat-pressure-&quot; + event.i)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1631">hybrid.js:1631</a></td>
+<td>2</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>sim.roles[2].filter((b) =&gt; sim.orgs[b.org].fn === &quot;service&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1634">hybrid.js:1634</a></td>
+<td>1</td>
+<td>encounters · <a href="../TECHNICAL.html#akx-enc-01">AKX-ENC-01</a></td>
+<td><code>a.role === 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1661">hybrid.js:1661</a></td>
+<td>0.12</td>
+<td>conduct · <a href="../TECHNICAL.html#akx-gov-01">AKX-GOV-01</a>, <a href="../TECHNICAL.html#akx-cov-01">AKX-COV-01</a></td>
+<td><code>sim.relationship(controller, sim.agents[id]).access &gt; 0.12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1669">hybrid.js:1669</a></td>
+<td>1</td>
+<td>coverage · <a href="../TECHNICAL.html#akx-cov-01">AKX-COV-01</a></td>
+<td><code>c.stage &gt;= 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1674">hybrid.js:1674</a></td>
+<td>12</td>
+<td>coverage · <a href="../TECHNICAL.html#akx-cov-01">AKX-COV-01</a></td>
+<td><code>sim.month - 12</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1675">hybrid.js:1675</a></td>
+<td>1</td>
+<td>coverage · <a href="../TECHNICAL.html#akx-cov-01">AKX-COV-01</a></td>
+<td><code>[1, 2, 3].flatMap((level) =&gt; [false, true].map((insider) =&gt; { const rows = h.eligibility.filter( (x) =&gt; x.rank === level &amp;&amp; x.insider === insider, ); return { rank: level, insider, eligible: rows.l…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1675">hybrid.js:1675</a></td>
+<td>2</td>
+<td>coverage · <a href="../TECHNICAL.html#akx-cov-01">AKX-COV-01</a></td>
+<td><code>[1, 2, 3].flatMap((level) =&gt; [false, true].map((insider) =&gt; { const rows = h.eligibility.filter( (x) =&gt; x.rank === level &amp;&amp; x.insider === insider, ); return { rank: level, insider, eligible: rows.l…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1675">hybrid.js:1675</a></td>
+<td>3</td>
+<td>coverage · <a href="../TECHNICAL.html#akx-cov-01">AKX-COV-01</a></td>
+<td><code>[1, 2, 3].flatMap((level) =&gt; [false, true].map((insider) =&gt; { const rows = h.eligibility.filter( (x) =&gt; x.rank === level &amp;&amp; x.insider === insider, ); return { rank: level, insider, eligible: rows.l…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1696">hybrid.js:1696</a></td>
+<td>0</td>
+<td>stocks · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a></td>
+<td><code>sim.orgs.map((o) =&gt; o.economy?.capacity &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1697">hybrid.js:1697</a></td>
+<td>0</td>
+<td>stocks · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a></td>
+<td><code>sim.orgs.map((o) =&gt; o.care?.capability &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1700">hybrid.js:1700</a></td>
+<td>0</td>
+<td>stocks · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a></td>
+<td><code>(o.care?.backlog &amp;#124;&amp;#124; 0) * (o.care?.referenceStaff &amp;#124;&amp;#124; 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1700">hybrid.js:1700</a></td>
+<td>1</td>
+<td>stocks · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a></td>
+<td><code>(o.care?.backlog &amp;#124;&amp;#124; 0) * (o.care?.referenceStaff &amp;#124;&amp;#124; 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1705">hybrid.js:1705</a></td>
+<td>0</td>
+<td>stocks · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a></td>
+<td><code>(o.care?.rebuild &amp;#124;&amp;#124; 0) * (o.care?.referenceStaff &amp;#124;&amp;#124; 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1705">hybrid.js:1705</a></td>
+<td>1</td>
+<td>stocks · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a></td>
+<td><code>(o.care?.rebuild &amp;#124;&amp;#124; 0) * (o.care?.referenceStaff &amp;#124;&amp;#124; 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1726">hybrid.js:1726</a></td>
+<td>0</td>
+<td>stocks · <a href="../TECHNICAL.html#akx-sta-01">AKX-STA-01</a></td>
+<td><code>sim.agents.map( (a) =&gt; a.psychology.memories[id]?.components[element]?.level &amp;#124;&amp;#124; 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1749">hybrid.js:1749</a></td>
+<td>0.9</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>0.9 * a.financialPressure</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1750">hybrid.js:1750</a></td>
+<td>0.1</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>0.1 * (1 - a.hybrid.consumptionReceived / Math.max(0.001, a.cost))</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1750">hybrid.js:1750</a></td>
+<td>1</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>1 - a.hybrid.consumptionReceived / Math.max(0.001, a.cost)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1750">hybrid.js:1750</a></td>
+<td>0.001</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>Math.max(0.001, a.cost)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1753">hybrid.js:1753</a></td>
+<td>0.2</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>0.2 * ((h.backgroundReceipts &amp;#124;&amp;#124; 0) - h.background.recentReceipts)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1753">hybrid.js:1753</a></td>
+<td>0</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>(h.backgroundReceipts &amp;#124;&amp;#124; 0) - h.background.recentReceipts</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1759">hybrid.js:1759</a></td>
+<td>0.01</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>Math.max(0.01, o.capacity)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1775">hybrid.js:1775</a></td>
+<td>100</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>100 * domesticVA</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1778">hybrid.js:1778</a></td>
+<td>0</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>[0, 1, 2, 3].map((role) =&gt; { const people = sim.agents.filter((a) =&gt; a.role === role); return { role, attention: mean( people.map((a) =&gt; mean(Object.values(a.hybrid.attention))), ), knowledge: mean…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1778">hybrid.js:1778</a></td>
+<td>1</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>[0, 1, 2, 3].map((role) =&gt; { const people = sim.agents.filter((a) =&gt; a.role === role); return { role, attention: mean( people.map((a) =&gt; mean(Object.values(a.hybrid.attention))), ), knowledge: mean…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1778">hybrid.js:1778</a></td>
+<td>2</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>[0, 1, 2, 3].map((role) =&gt; { const people = sim.agents.filter((a) =&gt; a.role === role); return { role, attention: mean( people.map((a) =&gt; mean(Object.values(a.hybrid.attention))), ), knowledge: mean…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1778">hybrid.js:1778</a></td>
+<td>3</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>[0, 1, 2, 3].map((role) =&gt; { const people = sim.agents.filter((a) =&gt; a.role === role); return { role, attention: mean( people.map((a) =&gt; mean(Object.values(a.hybrid.attention))), ), knowledge: mean…</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1798">hybrid.js:1798</a></td>
+<td>-60</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>transfers.slice(-60)</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1805">hybrid.js:1805</a></td>
+<td>253</td>
+<td>close · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a>, <a href="../TECHNICAL.html#akx-mea-01">AKX-MEA-01</a></td>
+<td><code>h.history.length &gt; 253</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1810">hybrid.js:1810</a></td>
+<td>1</td>
+<td>anchor · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>h.referenceVA = h.last?.economy.domesticVA &amp;#124;&amp;#124; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1812">hybrid.js:1812</a></td>
+<td>100</td>
+<td>anchor · <a href="../TECHNICAL.html#akx-eco-05">AKX-ECO-05</a></td>
+<td><code>h.last.economy.index = 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1834">hybrid.js:1834</a></td>
+<td>253</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>h.history.length &gt; 253</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1836">hybrid.js:1836</a></td>
+<td>1000</td>
+<td>validSummary · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>h.journal.length &gt; 1000</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1841">hybrid.js:1841</a></td>
+<td>0</td>
+<td>finite · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>finite = (x, depth = 0) =&gt; depth &lt;= 32 &amp;&amp; (typeof x === &quot;number&quot; ? Number.isFinite(x) : !x &amp;#124;&amp;#124; typeof x !== &quot;object&quot; &amp;#124;&amp;#124; Object.values(x).every((v) =&gt; finite(v, depth + 1)))</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1842">hybrid.js:1842</a></td>
+<td>32</td>
+<td>finite · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>depth &lt;= 32</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1847">hybrid.js:1847</a></td>
+<td>1</td>
+<td>finite · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>depth + 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1858">hybrid.js:1858</a></td>
+<td>4</td>
+<td>point · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>p.classes.length === 4</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1865">hybrid.js:1865</a></td>
+<td>-1e-8</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>h.foreign.balance &lt; -1e-8</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1870">hybrid.js:1870</a></td>
+<td>-1e-7</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>a.hybrid.time &lt; -1e-7</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1871">hybrid.js:1871</a></td>
+<td>1</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>1 + 1e-7</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1871">hybrid.js:1871</a></td>
+<td>1e-7</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>1 + 1e-7</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1876">hybrid.js:1876</a></td>
+<td>-1e-8</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>o.care.backlog &lt; -1e-8</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1877">hybrid.js:1877</a></td>
+<td>0</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>o.care.capability &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1878">hybrid.js:1878</a></td>
+<td>1</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>o.care.capability &gt; 1</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1880">hybrid.js:1880</a></td>
+<td>0</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>o.economy.capacity &lt; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1881">hybrid.js:1881</a></td>
+<td>-1e-8</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>o.economy.taxArrears &lt; -1e-8</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1886">hybrid.js:1886</a></td>
+<td>1e-5</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>(o.economy.openCapacity ?? o.economy.capacity) + 1e-5</code></td>
+</tr>
+<tr>
+<td><a href="../source/hybrid.js.html#L1891">hybrid.js:1891</a></td>
+<td>-1e-8</td>
+<td>assert · <a href="../TECHNICAL.html#akx-val-01">AKX-VAL-01</a></td>
+<td><code>c.balance &lt; -1e-8</code></td>
+</tr>
+</tbody>
+</table>
+</main><footer>© 2026 Joseph Pozsgai-Alvarez · Creator and project owner. Documentation edition 2.0 · 24 November 2026 · provisional behavior/display 3.0.0. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

@@ -1,6 +1,10 @@
-# Antarkya v2.4
+# Antarkya v3.0 · provisional hybrid release
 
-**Full audit documentation:** [reader guide](docs/audit/index.html) · [accessible narrative](docs/audit/NARRATIVE.md) · [technical specification](docs/audit/TECHNICAL.md) · [annotated full code](docs/audit/SOURCE-INDEX.md) · [design crosswalk and gaps](docs/audit/RULE-CROSSWALK.md). [Read it on the live site](https://jpozsgai.github.io/antarkya-simulation/docs/audit/). This edition documents actual behavior, provisional assumptions and incomplete design requirements; the runtime rules remain unchanged.
+Created and owned by Joseph Pozsgai-Alvarez. © 2026 Joseph Pozsgai-Alvarez.
+
+**New release:** [hybrid mechanisms, assumptions and pending calibration](docs/audit/EXTENSION.html). The new upkeep, governance, coalition and economic feedback processes are executable with uncalibrated engineering parameters. The month-by-month stock-and-flow view reads recorded activity. [Archived v2.4](v2.4/) remains available; recreate old settings for v3. Peru calibration and empirical pilot validation are pending.
+
+**Full audit documentation:** [reader guide](docs/audit/index.html) · [accessible narrative](docs/audit/NARRATIVE.md) · [technical specification](docs/audit/TECHNICAL.md) · [annotated full code](docs/audit/SOURCE-INDEX.md) · [design crosswalk and gaps](docs/audit/RULE-CROSSWALK.md). [Read it on the live site](https://jpozsgai.github.io/antarkya-simulation/docs/audit/). This edition documents actual behavior, provisional assumptions and incomplete design requirements; v3 intentionally changes the runtime rules and records the changed contracts.
 
 A working, dependency-free browser simulation of 1,000 people, organizations, corruption and anti-corruption reform. Run it at **https://jpozsgai.github.io/antarkya-simulation/**. The earlier v1 remains at `/v1/`.
 
@@ -36,7 +40,7 @@ Output, outcome and package impact appear together, with policy-specific before/
 Serve this directory with any static HTTP server; Web Workers need an HTTP(S) origin. No installation, external runtime, API key or backend is required for the application. With Node.js:
 
 ```sh
-node --test --test-concurrency=1 reporting.test.js dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
+node --test --test-concurrency=1 reporting.test.js dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js hybrid.test.js
 ```
 
 The initial reconstruction is cached for the active setup. Browser runs then execute in a worker, keeping controls responsive. Each new Run/Run again uses a fresh event seed by default while preserving the initialized society. For exact reproduction, enable **Reuse event seed (exact replay)** in Comparisons and reproducibility. Pause/continue and Step preserve the active event seed. The visible seed is recorded in JSON/CSV exports. Repetition batches show individual conduct and policy-outcome results in a collapsible table. Pace changes rendering/scheduling, not model randomness. Hiding the page pauses the run. Save/load preserves the initial society and completed results; live checkpoint/resume is not supported.
@@ -51,7 +55,7 @@ Scenario files stay on the visitor's device unless exported. Complete a run to o
 
 ## v2.4 audit repairs
 
-The numerical rules now connect action-specific nine-dimensional consequences, directional trust and affinity, actual staff competence, legal coverage, verification/collection capability, actor workload priorities and experienced-service/stakeholder feedback. See [the causal audit register](docs/CAUSAL-AUDIT.md) and [validation record](docs/VALIDATION.md). No additional macroeconomic variables were added. Rules 2.2.0 intentionally reject older saved initial states; recreate those scenarios from their settings.
+The numerical rules now connect action-specific nine-dimensional consequences, directional trust and affinity, actual staff competence, legal coverage, verification/collection capability, actor workload priorities and experienced-service/stakeholder feedback. See [the causal audit register](docs/CAUSAL-AUDIT.md) and [validation record](docs/VALIDATION.md). The v3 hybrid release supersedes the earlier fixed-economic-boundary decision; the economic-activity index now follows realized domestic value added. Rules 2.2.0 intentionally reject older saved initial states; recreate those scenarios from their settings.
 
 
 ## Individual adaptation and policy mapping

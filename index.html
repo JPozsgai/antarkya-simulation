@@ -4,19 +4,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="author" content="Joseph Pozsgai-Alvarez" />
     <meta
       name="description"
       content="Antarkya v2: explore corruption, networks and anti-corruption reform in a 1,000-person agent-based society."
     />
-    <title>Antarkya · v2 simulation</title>
-    <link rel="stylesheet" href="style.css?v=2.4.2" />
+    <title>Antarkya · provisional hybrid simulation</title>
+    <link rel="stylesheet" href="style.css?v=3.0.0" />
   </head>
   <body>
     <main>
       <header>
         <div class="topline">
           <span class="eyebrow">An experimental society</span
-          ><span class="badge">Working model · v2.4.0 · assessment 2.4.2</span>
+          ><span class="badge">Provisional hybrid release · v3.0.0</span>
         </div>
         <h1>Antarkya<span>.</span></h1>
         <p class="intro">
@@ -31,6 +32,7 @@
         </p>
         <noscript>This simulation needs JavaScript enabled in your browser.</noscript>
       </header>
+      <p class="snapshotnote">Provisional hybrid release: new governance, upkeep and economic coefficients are uncalibrated. Peru calibration and pilot validation are pending. <a href="docs/audit/EXTENSION.html">New mechanisms and assumptions</a> · <a href="v2.4/">Archived v2.4</a></p>
       <section aria-labelledby="setupHeading">
         <div class="sectionhead">
           <h2 id="setupHeading">Setup</h2>
@@ -213,6 +215,22 @@
         <p id="progressLabel" class="muted">Ready · month 0 / 120</p>
         <p id="runIdentity" class="snapshotnote"></p>
         <p id="repeatStatus" class="small muted repeatstatus"></p>
+        <details id="systemView">
+          <summary>System dynamics · month-by-month stocks and flows</summary>
+          <div class="system-view">
+            <p class="small">Follow actual recorded work, resources and influence. Rectangles aggregate persistent stocks; valves show realized flows. Dashed connectors show possible influence. All extension coefficients remain provisional.</p>
+            <div class="fields">
+              <div class="field"><label for="systemPolicy">System pathway</label><select id="systemPolicy"></select></div>
+              <div class="field"><label for="systemElement">Retained influence component</label><select id="systemElement"><option value="attitude">Attitude</option><option value="norm">Reference expectations</option><option value="control">Lawful action control</option><option value="knowledge">Knowledge</option><option value="risk">Accountability cost</option><option value="reportSafety">Reporting safety</option><option value="corruptControl">Improper action feasibility</option></select></div>
+            </div>
+            <div class="row sd-controls"><button id="systemNext">Next month</button><button id="systemReplay">Replay recorded flows</button><button id="systemLatest">Latest month</button></div>
+            <label id="systemMonthLabel" for="systemMonth">Recorded month 0</label><input type="range" id="systemMonth" min="0" max="0" value="0" />
+            <div id="systemDiagram" class="sd-diagram"></div>
+            <p id="systemMeaning" class="small"></p><div id="systemClasses" class="classsummary"></div>
+            <details><summary>Recorded flow details and reference codes</summary><div id="systemFlows"></div></details>
+            <details><summary>Realized accountability coverage</summary><div id="systemCoverage"></div></details>
+          </div>
+        </details>
         <div class="simgrid">
           <div class="panel">
             <div class="mapheader">
@@ -435,20 +453,23 @@
         </details>
       </section>
       <footer class="foot">
-        Antarkya v2.4.0 · assessment display 2.4.2 · rules updated 23 November 2026 · country
+        © 2026 Joseph Pozsgai-Alvarez · Creator and project owner.<br />
+        Antarkya v3.0.0 · provisional hybrid extension · rules updated 24 November 2026 · country
         evidence updated 23 November 2026<br />Runs locally in your browser. Scenario saves stay on
         this device. <a href="docs/audit/index.html">Audit documentation</a> ·
         <a href="https://github.com/JPozsgai/antarkya-simulation">Source code</a>
       </footer>
     </main>
-    <script src="profiles.js?v=2.4.0"></script>
-    <script src="config.js?v=2.4.0"></script>
-    <script src="baseline.js?v=2.4.0"></script>
-    <script src="adaptation.js?v=2.4.0"></script>
-    <script src="reporting.js?v=2.4.2"></script>
-    <script src="model.js?v=2.4.2"></script>
-    <script src="run-seeds.js?v=2.4.0"></script>
-    <script src="visualization.js?v=2.4.1"></script>
-    <script src="app.js?v=2.4.2"></script>
+    <script src="profiles.js?v=3.0.0"></script>
+    <script src="config.js?v=3.0.0"></script>
+    <script src="baseline.js?v=3.0.0"></script>
+    <script src="adaptation.js?v=3.0.0"></script>
+    <script src="reporting.js?v=3.0.0"></script>
+    <script src="hybrid.js?v=3.0.0"></script>
+    <script src="model.js?v=3.0.0"></script>
+    <script src="run-seeds.js?v=3.0.0"></script>
+    <script src="visualization.js?v=3.0.0"></script>
+    <script src="system-view.js?v=3.0.0"></script>
+    <script src="app.js?v=3.0.0"></script>
   </body>
 </html>

@@ -1,3 +1,5 @@
+> Provisional release 3.0.0: the [hybrid extension](docs/audit/EXTENSION.html) defines the current monthly accounting, governance, economic and maintenance rules. Earlier descriptions below remain historical where superseded. Calibration and the Peru pilot are pending.
+
 > **Current auditor documentation:** See the [accessible narrative](docs/audit/NARRATIVE.md), [full technical specification](docs/audit/TECHNICAL.md), [annotated source](docs/audit/SOURCE-INDEX.md) and [gap register](docs/audit/GAPS.md). This earlier overview is retained as supplemental context. Where its shorthand or earlier proposals differ, the linked audit edition describes current code.
 
 # Antarkya v2.4 — operational model

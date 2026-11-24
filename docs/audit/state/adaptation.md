@@ -207,7 +207,7 @@
 | [adaptation.js:464](../source/adaptation.js.html#L464) | ` work.3 ` | object definition · ` 0.25 ` | work · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) |
 | [adaptation.js:464](../source/adaptation.js.html#L464) | ` work.4 ` | object definition · ` 0.15 ` | work · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) |
 | [adaptation.js:473](../source/adaptation.js.html#L473) | ` p.expectedIncome ` | += · ` (0.05 + 0.25 * p.traits.learning) * (observed - p.expectedIncome) ` | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) |
-| [adaptation.js:474](../source/adaptation.js.html#L474) | ` incomeExperience.3 ` | object definition · ` clamp((a.cost - 0.9 * observed) / Math.max(0.1, a.cost)) ` | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) |
+| [adaptation.js:474](../source/adaptation.js.html#L474) | ` incomeExperience.3 ` | object definition · ` clamp((a.cost - observed) / Math.max(0.1, a.cost)) ` | incomeExperience · [AK-ADP-03](../TECHNICAL.html#ak-adp-03) |
 | [adaptation.js:505](../source/adaptation.js.html#L505) | ` before.attitude ` | object definition · ` attitude ` | decision · [AK-DEC-01](../TECHNICAL.html#ak-dec-01), [AK-ADP-02](../TECHNICAL.html#ak-adp-02) |
 | [adaptation.js:505](../source/adaptation.js.html#L505) | ` before.norm ` | object definition · ` norm ` | decision · [AK-DEC-01](../TECHNICAL.html#ak-dec-01), [AK-ADP-02](../TECHNICAL.html#ak-adp-02) |
 | [adaptation.js:505](../source/adaptation.js.html#L505) | ` before.control ` | object definition · ` control ` | decision · [AK-DEC-01](../TECHNICAL.html#ak-dec-01), [AK-ADP-02](../TECHNICAL.html#ak-adp-02) |

@@ -523,6 +523,28 @@ details details {
   color: var(--muted);
   font-size: 14px;
 }
+.system-view { padding: 16px; }
+.sd-controls { flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.sd-diagram { overflow-x: auto; margin-top: 14px; border: 1px solid var(--line); border-radius: 10px; background: white; }
+.sd-diagram svg { width: 100%; min-width: 650px; display: block; font: 16px system-ui, sans-serif; color: #315967; }
+.sd-stock rect { fill: #edf8f4; stroke: #245b55; stroke-width: 2; }
+.sd-stock text { fill: #203a38; }
+.sd-value { font-size: 20px; font-weight: 650; }
+.sd-small { font-size: 13px; }
+.sd-pipe path { stroke: #8a9a9c; fill: none; stroke-width: 3; }
+.sd-pipe .sd-valve { fill: white; stroke-width: 2; }
+.sd-pipe.operated { color: #167963; }
+.sd-pipe.operated path { stroke: #167963; stroke-width: 4; }
+.sd-pipe text { fill: #274b4b; font-size: 15px; }
+.sd-pipe .sd-number { font-size: 14px; font-weight: 650; }
+.sd-cloud { fill: white; stroke: #748d93; stroke-width: 2; }
+.sd-influence path { fill: none; stroke: #68889d; stroke-width: 1.5; stroke-dasharray: 6 5; }
+.sd-influence text { fill: #486474; font-size: 13px; }
+.sd-aux circle { fill: #e7eff6; stroke: #486474; }
+.sd-aux text { fill: #274b4b; font-size: 15px; }
+.sd-replay .sd-pipe.operated path:first-of-type { stroke-dasharray: 12 5; animation: sd-flow 1.6s linear 2; }
+@keyframes sd-flow { to { stroke-dashoffset: -68; } }
+@media (prefers-reduced-motion: reduce) { .sd-replay .sd-pipe.operated path:first-of-type { animation: none; } }
 .savegrid {
   display: grid;
   grid-template-columns: 1fr 1fr;

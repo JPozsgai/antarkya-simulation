@@ -303,6 +303,7 @@
   function baseSummary(b) {
     return {
       reporting: b.reporting(),
+      hybrid: A.Hybrid.summary(b),
       metrics: b.metrics(),
       assessment: b.assessment(),
       history: b.state.history,
@@ -354,7 +355,7 @@
     initialFor(c);
     if (!window.Worker)
       throw Error('This browser does not support Web Workers. Open the site in a current browser.');
-    worker = new Worker('worker.js?v=2.4.2');
+    worker = new Worker('worker.js?v=3.0.0');
     worker.onmessage = (e) => {
       const m = e.data;
       if (m.type === 'error') {
@@ -530,6 +531,7 @@
     selected = [id];
     selectedEvent = null;
     inspector();
+    window.AntarkyaSystemView?.render(current);
     drawMap();
     renderFeed();
   }
@@ -1450,6 +1452,7 @@
    */
   function render() {
     if (!current) return;
+    window.AntarkyaSystemView?.render(current);
     const r = current.reform,
       duration = activeConfig?.duration || getConfig().duration;
     $('progressFill').style.width = (r.month / duration) * 100 + '%';
@@ -1693,7 +1696,7 @@
   function validatePayload(p) {
     if (!p || p.schema !== 'antarkya.scenario.v2' || p.modelVersion !== A.VERSION)
       throw Error(
-        'This file uses different model rules. Version 2.4 requires a reconstructed starting state; recreate the scenario from its settings.',
+        'This file uses different model rules. Use the archived v2.4 application for earlier files, or recreate the scenario with the current rules.',
       );
     const c = A.validate(p.config);
     A.validateInitial(p.initial, c);
@@ -1760,6 +1763,9 @@
             throw Error('Invalid assessment result.');
         }
       }
+      for (const branch of [result.reform, result.baseline])
+        if (branch.hybrid && !A.Hybrid.validSummary(branch.hybrid))
+          throw Error('Invalid monthly system history.');
       for (const branch of [result.reform, result.baseline])
         if (branch.reporting && !Q.valid(branch.reporting))
           throw Error('Invalid policy monitoring history.');

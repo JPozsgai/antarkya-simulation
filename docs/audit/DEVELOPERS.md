@@ -1,5 +1,8 @@
 # Developer and reproducibility guide
 
+**v3.0 provisional release.** Start with [the hybrid extension](EXTENSION.html). New processes live in hybrid.js; system-view.js is the passive renderer. The v2.4 runtime and matching assets are preserved under /v2.4/. The prior annotation-only semantic baseline is retained as semantic-v2.4.json. Current semantic fingerprints are explicitly refreshed for the authorized behavioral release, not described as unchanged from v2.4. Historical continuity checks execute the archived engine against its pinned historical source. Calibration and the empirical Peru pilot are separate future tasks.
+
+
 The application remains a static, dependency-free browser application. Development tools are pinned in `package-lock.json`; they are not loaded by the simulation. Node 20 or newer is recommended for rebuilding the audit package. Serve the repository root over HTTP(S); Web Workers do not run reliably from `file:` URLs.
 
 ## Read the code
@@ -16,7 +19,7 @@ From a full repository checkout:
 npm ci --ignore-scripts --no-audit --no-fund
 npm run docs:build
 npm run docs:check
-node --test --test-concurrency=1 reporting.test.js dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
+node --test --test-concurrency=1 reporting.test.js dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js hybrid.test.js
 ```
 
 The reporting regression test reads historical commit `4da71144763978c4967151efe9394ffe0e160dfd` through Git. A shallow checkout without that object cannot perform that particular check; fetch full history, as the workflow does. Do not replace it with a dummy model to obtain a pass. Other checks run against the current files.

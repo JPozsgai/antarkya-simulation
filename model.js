@@ -25,9 +25,10 @@
     typeof module !== 'undefined' && module.exports
       ? require('./reporting.js')
       : root.AntarkyaReporting;
-  const VERSION = '2.4.0',
+  const VERSION = '3.0.0',
     TYPES = ['Citizen', 'Business', 'Official', 'Politician'],
     KEYS = Profiles.policies.map((p) => p.id);
+  const Hybrid = typeof module !== 'undefined' && module.exports ? require('./hybrid.js') : root.AntarkyaHybrid;
 
   /** [AK-OV-01] [AK-VAL-01] clamp
    * Implementation unit for Purpose, scope and version identity. Follow the reference IDs for its equations, assumptions and verification limits.
@@ -184,6 +185,7 @@
   function totalMoney(s) {
     return (
       s.outside.balance +
+      (s.hybrid ? s.hybrid.foreign.balance + sum(s.hybrid.coalitions.map((c) => c.balance)) : 0) +
       s.treasury.balance +
       sum(s.agents.map((a) => a.balance)) +
       sum(s.orgs.map((o) => o.balance)) +
@@ -194,10 +196,11 @@
   /** [AK-ECO-01] transfer
    * Execute a clipped conserved transfer without negative cash. Requested and actually paid amounts can differ, and unpaid ordinary costs are not silently created as debt.
    */
-  function transfer(from, to, amount) {
+  function transfer(from, to, amount, purpose = null) {
     const v = Math.max(0, Math.min(Number.isFinite(amount) ? amount : 0, from.balance));
     from.balance -= v;
     to.balance += v;
+    Hybrid.recordTransfer(from, to, v, purpose);
     return v;
   }
 
@@ -541,6 +544,7 @@
     );
     while (historical.month < 0) historical.step();
     historical.assertInvariants();
+    Hybrid.anchor(historical);
     const s = historical.state;
     Reporting.remember(s.initialKey, historical.monitor);
     // Keep inspectable realized traces; discarded pre-policy alternatives no
@@ -791,8 +795,10 @@
       this.replicate = replicate;
       this.seed = this.config.eventSeed + '|' + replicate;
       this.index();
+      Hybrid.initialize(this);
       Reporting.init(this);
       if (!baseline) this.adopt();
+      Hybrid.labelAccounts(this);
       this.record();
     }
 
@@ -967,6 +973,7 @@
      * Score every available option under subjective motives, need, accountability expectations, TPB elements and keyed Gumbel uncertainty; take the maximum. Record meaningful opportunities only when a real alternative to a qualifying improper option exists.
      */
     choose(agent, context, options, key) {
+      options = Hybrid.options(this, agent, context, options);
       let best = null;
       const ctx = Adaptive.context(
         context,
@@ -977,7 +984,7 @@
           need =
             clamp(
               (agent.cost + 0.2) /
-                Math.max(0.2, 0.9 * agent.psychology.expectedIncome + 0.15 * agent.balance),
+                Math.max(0.2, agent.psychology.expectedIncome + 0.15 * agent.balance),
               0.5,
               2,
             ) +
@@ -1054,6 +1061,7 @@
       const knownTrust =
         a.sourceTrust[o.id] ??
         0.25 + 0.5 * (a.support.find((t) => t.org === o.id)?.affinity ?? 0.5);
+      const previous = Object.fromEntries(Object.entries(a.psychology.memories[id]?.components || {}).map(([k, v]) => [k, v.level]));
       const observed = Adaptive.observe(
         a,
         id,
@@ -1062,6 +1070,7 @@
         (process, ...key) => this.rand('learning-' + process, ...key),
         { delivered: true, source: o.id, quality, credibility: knownTrust, ...extra },
       );
+      Hybrid.exposure(this, a, id, event, o.id, observed, previous);
       if (observed.delivered && !observed.duplicate && ['education', 'declarations'].includes(id))
         Reporting.activity(this, id);
       return true;
@@ -1158,11 +1167,12 @@
         org: orgId,
         truth: true,
         visibility: this.orgs[orgId]
-          ? this.orgs[orgId].disclosureQuality *
+          ? this.orgs[orgId].disclosureQuality * (0.4 + 0.6 * this.orgs[orgId].governance.disclosure) *
             (0.4 + 0.6 * this.operational('disclosure', this.orgs[orgId]))
           : 0.25,
       };
       s.conduct.push(rec);
+      Hybrid.conduct(this, rec);
       return rec;
     }
 
@@ -1531,58 +1541,7 @@
      * Move ordinary income, organizational funding, modeled withholding and consumption through conserved accounts. Reset public staff budgets and record actual unmet-needs pressure; there is no endogenous GDP update.
      */
     monthlyAccounts() {
-      const s = this.state;
-      transfer(
-        s.outside,
-        s.treasury,
-        180 * clamp(Math.sqrt(s.env.gdp_per_capita_ppp / 20000), 0.6, 1.8),
-      );
-      for (const o of this.orgs) {
-        const staff = o.members.map((id) => this.agents[id]).filter((a) => a.role === o.category);
-        o.professionalSkill = mean(staff.map((a) => a.skill));
-        o.capacity = staff.length * (0.25 + 0.4 * o.skill + 0.35 * o.professionalSkill);
-        o.time = o.capacity;
-        delete o.limits;
-        o.routineUsed = 0;
-        o.reformUsed = 0;
-        o.caseUsed = 0;
-        if (o.category === 2) {
-          const wages = sum(
-            o.members.map((id) => (this.agents[id].role === 2 ? this.agents[id].income : 0)),
-          );
-          transfer(s.treasury, o, wages + 3);
-        } else
-          transfer(
-            s.outside,
-            o,
-            3 + o.members.length * (o.category === 1 ? 1.25 : o.category === 3 ? 1.8 : 0.35),
-          );
-        transfer(o, s.outside, 1 + 0.04 * o.members.length);
-        for (const k of KEYS) o.caps[k] = clamp(o.caps[k] * 0.998, 0.05, 0.98);
-        for (const p of o.practice) {
-          p.honest *= 0.999;
-          p.corrupt *= 0.999;
-        }
-      }
-      for (const a of this.agents) {
-        const employer = a.role === 0 ? s.outside : this.orgs[a.org],
-          paid = transfer(employer, a, a.income);
-        a.receipts.push(paid);
-        if (a.receipts.length > 6) a.receipts.shift();
-        transfer(a, s.treasury, paid * 0.1);
-        if (a.role === 2) Reporting.activity(this, 'pay', paid * 0.9);
-        const consumed =
-          transfer(a, s.outside, a.cost * 0.72) +
-          transfer(
-            a,
-            this.orgs[8 + Math.floor(this.rand('consumption', a.id) * 24)],
-            a.cost * 0.28,
-          );
-        a.financialPressure = clamp(
-          0.9 * a.financialPressure + 0.1 * (1 - consumed / Math.max(0.001, a.cost)),
-        );
-        a.descriptive = clamp(a.descriptive * 0.999 + 0.0003);
-      }
+      return Hybrid.accounts(this);
     }
 
     /** [AK-ECO-02] scheduleWork
@@ -1602,9 +1561,10 @@
             (p) => p.formal === 'active' && p.allocations.some((x) => x.org === o.id),
           );
         const options = [
-          ['reform', assigned ? 0.6 : 0],
+          ['reform', (assigned ? 0.6 : 0) + (o.demandPriority?.until >= this.month ? 0.25 : 0)],
           ['routine', o.fn === 'service' ? 0.5 + service / Math.max(1, o.members.length) : 0.05],
           ['case', 0.1 + files / Math.max(1, o.members.length)],
+          ['maintenance', Hybrid.maintenanceNeed(this, o) / Math.max(1, o.members.length)],
         ].map(([name, need]) => ({
           name,
           effects: this.effects([0, 0, 0.1], [0, 0, need], [0, 0, need]),
@@ -1716,6 +1676,7 @@
             !this.eligibleTool(p.id, o)
           )
             continue;
+          if (decision.name === 'redirect' && Hybrid.review(this, o, leader, 'implementation-' + p.id)) continue;
           if (decision.name === 'redirect') {
             const taken = transfer(
               allocation,
@@ -1769,8 +1730,7 @@
                 (cost * o.caps.pay) / Math.max(1, eligible.length),
               );
               paidTotal += paid;
-              transfer(this.agents[id], s.treasury, paid * 0.1);
-              Reporting.activity(this, 'pay', paid * 0.9);
+              Reporting.activity(this, 'pay', paid);
               const receipts = this.agents[id].receipts;
               if (receipts.length) receipts[receipts.length - 1] += paid;
             }
@@ -1810,7 +1770,9 @@
             continue;
           }
           allocation.lastDelivered = this.month;
+          const priorCapability = o.caps[p.id];
           o.caps[p.id] = clamp(o.caps[p.id] + (0.98 - o.caps[p.id]) * 0.08 * available);
+          Hybrid.capabilityBuilt(this, o, o.caps[p.id] - priorCapability);
           if (p.id === 'aca') o.skill = clamp(o.skill + 0.008 * available);
           if (p.id === 'declarations')
             for (const id of o.members)
@@ -2011,7 +1973,7 @@
      */
     addService(a, o, priority, kind, officer = null) {
       this.state.services.push({
-        id: this.month + '-' + a.id + '-' + kind,
+        id: this.month + '-' + a.id + '-' + kind + '-' + (++this.state.hybrid.serial),
         agent: a.id,
         org: o.id,
         arrival: this.month,
@@ -2182,7 +2144,7 @@
             s.metrics.diversion += diverted;
             rec.diversion = diverted;
           }
-          if (kind === 'tax') s.metrics.foregoneRevenue += transfer(s.treasury, a, 0.15);
+          // Fiscal concessions are assessed against business value added in hybrid.js.
           if (extortable) this.addService(a, org, true, kind, b.id);
           if (this.rand('witness', key) < 0.12) {
             const observer = this.nearest(a, this.roles[0], key + '-witness');
@@ -2225,45 +2187,7 @@
      * Schedule role-specific opportunities in keyed random order, including campaigns and political pressure. These opportunity frequencies are generic model priors, not national encounter statistics.
      */
     encounters() {
-      const order = this.agents
-        .map((a) => ({ a, key: this.rand('encounter-order', a.id) }))
-        .sort((x, y) => x.key - y.key);
-      for (const { a } of order) {
-        if (a.eligibleUntil > this.month) continue;
-        if (this.rand('service-demand', a.id) < (a.role < 2 ? 0.45 : 0.12)) {
-          const o = this.nearest(a, this.services, 'service-org'),
-            candidates = o.members.filter((id) => this.agents[id].role === 2),
-            b =
-              this.agents[
-                candidates[Math.floor(this.rand('official-partner', a.id) * candidates.length)]
-              ];
-          this.encounter(
-            a,
-            b,
-            a.role === 1 ? 'permit' : this.rand('tax-context', a.id) < 0.25 ? 'tax' : 'service',
-            this.month + '-service-' + a.id,
-          );
-        }
-        if (a.role === 1 && this.rand('political-contact', a.id) < 0.1) {
-          const b = this.nearest(
-            a,
-            this.roles[3].filter((p) => p.office),
-            'business-political',
-          );
-          this.encounter(a, b, 'contract', this.month + '-contract-' + a.id);
-        }
-        if (a.role === 3 && a.office && this.rand('admin-pressure', a.id) < 0.2) {
-          const b = this.nearest(a, this.roles[2], 'administrative');
-          this.encounter(a, b, 'political pressure', this.month + '-pressure-' + a.id);
-        }
-        const campaign =
-          this.state.politics.nextReview - this.month <= 6 &&
-          this.state.politics.mode !== 'appointment';
-        if (a.role === 0 && campaign && this.rand('campaign-contact', a.id) < 0.04) {
-          const b = this.nearest(a, this.roles[3], 'campaign');
-          this.encounter(a, b, 'vote buying', this.month + '-vote-' + a.id);
-        }
-      }
+      return Hybrid.encounters(this);
     }
 
     /** [AK-INS-01] [AK-ECO-03] processServices
@@ -2957,6 +2881,7 @@
               cred,
             );
           }
+          Hybrid.observe(this, a, 'integrity', story.subject, 1 - signal, cred, story.id);
           Adaptive.feedback(a, { 0: 0.1, 2: 0.3 }, cred);
           if (story.kind === 'correction') a.sourceTrust[story.outlet] = clamp(trust + 0.03);
           for (const support of a.support)
@@ -3449,22 +3374,36 @@
     step() {
       if (this.month >= this.config.duration) return false;
       this.state.month++;
+      Hybrid.open(this);
       for (const a of this.agents) Adaptive.advance(a, this.month);
+      Hybrid.decay(this);
       this.monthlyAccounts();
+      Hybrid.phase(this, 'Policy disbursement');
       this.fundPolicies();
       this.scheduleWork();
+      Hybrid.care(this);
+      Hybrid.phase(this, 'Policy implementation');
       this.implementPolicies();
+      Hybrid.synchronizeTime(this);
       for (const a of this.agents) Adaptive.incomeExperience(a, a.receipts.at(-1) ?? 0);
       this.encounters();
+      Hybrid.phase(this, 'Public service delivery');
       this.processServices();
+      Hybrid.synchronizeTime(this);
       this.audit();
+      Hybrid.phase(this, 'Case processing and collection');
       this.processCases();
       this.collectLiabilities();
+      Hybrid.synchronizeTime(this);
       this.information();
       this.funding();
       this.organizations();
       this.politicalReview();
+      Hybrid.governance(this);
+      Hybrid.coalitions(this);
+      Hybrid.responses(this);
       this.budgetReview();
+      Hybrid.close(this);
       this.recover();
       this.macroDevelopments();
       this.record();
@@ -3724,7 +3663,7 @@
       if (id === 'pay') {
         const eligible = officials.filter((a) => a.receipts.length >= 6),
           ok = eligible.filter(
-            (a) => a.receipts.filter((v) => 0.9 * v >= a.cost).length >= 5,
+            (a) => a.receipts.filter((v) => v >= a.cost).length >= 5,
           ).length;
         return {
           value: eligible.length ? (100 * ok) / eligible.length : null,
@@ -3870,6 +3809,7 @@
         version: VERSION,
         month: this.month,
         reporting: this.reporting(),
+        hybrid: Hybrid.summary(this),
         country: this.config.country,
         initialization: this.state.initialization,
         agents: this.agents.map((a) => ({
@@ -3964,6 +3904,7 @@
      * Fail loudly on population, balances, money conservation, staff double spending or invalid bounded profiles/history. These checks establish engineering consistency, not country realism.
      */
     assertInvariants() {
+      Hybrid.assert(this);
       const s = this.state,
         balances = [
           s.treasury,
@@ -3978,7 +3919,7 @@
       if (Math.abs(totalMoney(s) - s.accountingTotal) > 0.001)
         throw Error('Resources were not conserved.');
       for (const o of this.publicOrgs)
-        if (o.reformUsed + o.routineUsed + o.caseUsed > o.capacity + 0.000001 || o.time < -0.000001)
+        if (o.reformUsed + o.routineUsed + o.caseUsed + o.maintenanceUsed + o.contactUsed > o.capacity + 0.000001 || o.time < -0.000001)
           throw Error('Shared staff capacity exceeded.');
       for (const a of s.agents)
         if (
@@ -4034,6 +3975,7 @@
   }
   const api = {
     Reporting,
+    Hybrid,
     Adaptation: Adaptive,
     Baseline,
     VERSION,
@@ -4052,6 +3994,7 @@
     transfer,
     requirements,
   };
+  Hybrid.configure(api);
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.Antarkya = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

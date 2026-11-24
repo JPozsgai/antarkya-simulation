@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Numeric literals — system-view.js · Antarkya audit</title><link rel="stylesheet" href="../audit.css"></head><body><header><a href="../index.html">Antarkya · audit documentation</a><nav aria-label="Audit navigation"><a href="../NARRATIVE.html">Narrative</a><a href="../TECHNICAL.html">Technical rules</a><a href="../SOURCE-INDEX.html">Annotated code</a><a href="../GAPS.html">Limits</a><a href="../../../index.html">Simulation</a></nav></header><main><h1 id="numeric-literals-system-view-js">Numeric literals — system-view.js</h1>
+<p><a href="../NUMERICS.html">Inventory guide</a>. Exact contexts are accessible in the full source.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Literal</th>
+<th>Unit / mechanism</th>
+<th>Expression context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../source/system-view.js.html#L16">system-view.js:16</a></td>
+<td>2</td>
+<td>n · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n = (x, places = 2) =&gt; Number.isFinite(x) ? x.toLocaleString(undefined, { maximumFractionDigits: places }) : &quot;—&quot;</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L20">system-view.js:20</a></td>
+<td>0</td>
+<td>total · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>xs.reduce((a, b) =&gt; a + b, 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L21">system-view.js:21</a></td>
+<td>3</td>
+<td>change · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n(closing - opening, 3)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L30">system-view.js:30</a></td>
+<td>2</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>(x1 + x2) / 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L31">system-view.js:31</a></td>
+<td>2</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>(y1 + y2) / 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>1e-12</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>amount &gt; 1e-12</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>5</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n(amount, 5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>9</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cx - 9</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>8</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cy - 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>9</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cx + 9</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>8</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cy + 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>9</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cx + 9</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>8</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cy - 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>9</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cx - 9</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>8</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cy + 8</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>29</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cy + 29</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>48</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cy + 48</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L32">system-view.js:32</a></td>
+<td>4</td>
+<td>pipe · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n(amount, 4)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L35">system-view.js:35</a></td>
+<td>130</td>
+<td>stock · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>x + 130</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L35">system-view.js:35</a></td>
+<td>27</td>
+<td>stock · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>y + 27</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L35">system-view.js:35</a></td>
+<td>130</td>
+<td>stock · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>x + 130</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L35">system-view.js:35</a></td>
+<td>55</td>
+<td>stock · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>y + 55</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L35">system-view.js:35</a></td>
+<td>4</td>
+<td>stock · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n(value, 4)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L35">system-view.js:35</a></td>
+<td>130</td>
+<td>stock · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>x + 130</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L35">system-view.js:35</a></td>
+<td>79</td>
+<td>stock · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>y + 79</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L35">system-view.js:35</a></td>
+<td>4</td>
+<td>stock · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n(before, 4)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L40">system-view.js:40</a></td>
+<td>65</td>
+<td>influence · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>x1 + 65</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L40">system-view.js:40</a></td>
+<td>10</td>
+<td>influence · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>x1 + 10</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L40">system-view.js:40</a></td>
+<td>2</td>
+<td>influence · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>(y1 + y2) / 2</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L56">system-view.js:56</a></td>
+<td>70</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(70, 55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L56">system-view.js:56</a></td>
+<td>55</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(70, 55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L58">system-view.js:58</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 30, &quot;Productive capacity&quot;, end.capital, &quot;output RU/month&quot;, open.capital, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L59">system-view.js:59</a></td>
+<td>30</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 30, &quot;Productive capacity&quot;, end.capital, &quot;output RU/month&quot;, open.capital, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L65">system-view.js:65</a></td>
+<td>930</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(930, 55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L65">system-view.js:65</a></td>
+<td>55</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(930, 55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L67">system-view.js:67</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, flows(&quot;capital&quot;, &quot;in&quot;), &quot;Completed installation&quot;, &quot;capacity&quot;, &quot;AKX-ECO-02&quot;, &quot;capital-in&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L68">system-view.js:68</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, flows(&quot;capital&quot;, &quot;in&quot;), &quot;Completed installation&quot;, &quot;capacity&quot;, &quot;AKX-ECO-02&quot;, &quot;capital-in&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L69">system-view.js:69</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, flows(&quot;capital&quot;, &quot;in&quot;), &quot;Completed installation&quot;, &quot;capacity&quot;, &quot;AKX-ECO-02&quot;, &quot;capital-in&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L70">system-view.js:70</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, flows(&quot;capital&quot;, &quot;in&quot;), &quot;Completed installation&quot;, &quot;capacity&quot;, &quot;AKX-ECO-02&quot;, &quot;capital-in&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L78">system-view.js:78</a></td>
+<td>630</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, flows(&quot;capital&quot;, &quot;out&quot;), &quot;Capital consumption&quot;, &quot;capacity&quot;, &quot;AKX-ECO-02&quot;, &quot;capital-out&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L79">system-view.js:79</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, flows(&quot;capital&quot;, &quot;out&quot;), &quot;Capital consumption&quot;, &quot;capacity&quot;, &quot;AKX-ECO-02&quot;, &quot;capital-out&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L80">system-view.js:80</a></td>
+<td>900</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, flows(&quot;capital&quot;, &quot;out&quot;), &quot;Capital consumption&quot;, &quot;capacity&quot;, &quot;AKX-ECO-02&quot;, &quot;capital-out&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L81">system-view.js:81</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, flows(&quot;capital&quot;, &quot;out&quot;), &quot;Capital consumption&quot;, &quot;capacity&quot;, &quot;AKX-ECO-02&quot;, &quot;capital-out&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L89">system-view.js:89</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock(370, 265, &quot;Public treasury&quot;, end.treasury, &quot;RU&quot;, open.treasury)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L89">system-view.js:89</a></td>
+<td>265</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock(370, 265, &quot;Public treasury&quot;, end.treasury, &quot;RU&quot;, open.treasury)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L90">system-view.js:90</a></td>
+<td>70</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(70, 290)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L90">system-view.js:90</a></td>
+<td>290</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(70, 290)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L91">system-view.js:91</a></td>
+<td>930</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(930, 290)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L91">system-view.js:91</a></td>
+<td>290</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(930, 290)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L94">system-view.js:94</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, received, &quot;Tax collected&quot;, &quot;RU&quot;, &quot;AKX-ECO-04&quot;, &quot;tax&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L95">system-view.js:95</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, received, &quot;Tax collected&quot;, &quot;RU&quot;, &quot;AKX-ECO-04&quot;, &quot;tax&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L96">system-view.js:96</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, received, &quot;Tax collected&quot;, &quot;RU&quot;, &quot;AKX-ECO-04&quot;, &quot;tax&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L97">system-view.js:97</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, received, &quot;Tax collected&quot;, &quot;RU&quot;, &quot;AKX-ECO-04&quot;, &quot;tax&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L106">system-view.js:106</a></td>
+<td>3</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n(netOther, 3)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L107">system-view.js:107</a></td>
+<td>500</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence(500, 135, 500, 255, &quot;Realized taxable activity&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L107">system-view.js:107</a></td>
+<td>135</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence(500, 135, 500, 255, &quot;Realized taxable activity&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L107">system-view.js:107</a></td>
+<td>500</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence(500, 135, 500, 255, &quot;Realized taxable activity&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L107">system-view.js:107</a></td>
+<td>255</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence(500, 135, 500, 255, &quot;Realized taxable activity&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L111">system-view.js:111</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 30, &quot;Unfinished maintenance&quot;, end.maintenance, &quot;PM&quot;, open.maintenance, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L112">system-view.js:112</a></td>
+<td>30</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 30, &quot;Unfinished maintenance&quot;, end.maintenance, &quot;PM&quot;, open.maintenance, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L119">system-view.js:119</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, Math.max( 0, end.maintenance - open.maintenance + flows(&quot;maintenance&quot;, &quot;out&quot;), ), &quot;New upkeep due&quot;, &quot;PM&quot;, &quot;AKX-MNT-01&quot;, &quot;maintenance-due&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L120">system-view.js:120</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, Math.max( 0, end.maintenance - open.maintenance + flows(&quot;maintenance&quot;, &quot;out&quot;), ), &quot;New upkeep due&quot;, &quot;PM&quot;, &quot;AKX-MNT-01&quot;, &quot;maintenance-due&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L121">system-view.js:121</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, Math.max( 0, end.maintenance - open.maintenance + flows(&quot;maintenance&quot;, &quot;out&quot;), ), &quot;New upkeep due&quot;, &quot;PM&quot;, &quot;AKX-MNT-01&quot;, &quot;maintenance-due&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L122">system-view.js:122</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, Math.max( 0, end.maintenance - open.maintenance + flows(&quot;maintenance&quot;, &quot;out&quot;), ), &quot;New upkeep due&quot;, &quot;PM&quot;, &quot;AKX-MNT-01&quot;, &quot;maintenance-due&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L124">system-view.js:124</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.max( 0, end.maintenance - open.maintenance + flows(&quot;maintenance&quot;, &quot;out&quot;), )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L133">system-view.js:133</a></td>
+<td>630</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, flows(&quot;maintenance&quot;, &quot;out&quot;), &quot;Performed upkeep&quot;, &quot;PM&quot;, &quot;AKX-MNT-02&quot;, &quot;upkeep&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L134">system-view.js:134</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, flows(&quot;maintenance&quot;, &quot;out&quot;), &quot;Performed upkeep&quot;, &quot;PM&quot;, &quot;AKX-MNT-02&quot;, &quot;upkeep&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L135">system-view.js:135</a></td>
+<td>900</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, flows(&quot;maintenance&quot;, &quot;out&quot;), &quot;Performed upkeep&quot;, &quot;PM&quot;, &quot;AKX-MNT-02&quot;, &quot;upkeep&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L136">system-view.js:136</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, flows(&quot;maintenance&quot;, &quot;out&quot;), &quot;Performed upkeep&quot;, &quot;PM&quot;, &quot;AKX-MNT-02&quot;, &quot;upkeep&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L144">system-view.js:144</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 265, &quot;Mean persistent capability&quot;, end.capability, &quot;&quot;, open.capability, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L145">system-view.js:145</a></td>
+<td>265</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 265, &quot;Mean persistent capability&quot;, end.capability, &quot;&quot;, open.capability, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L152">system-view.js:152</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, flows(&quot;capability&quot;, &quot;in&quot;) / Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1), &quot;Repair and rebuilding&quot;, &quot;mean fraction&quot;, &quot;AKX-MNT-02&quot;, &quot;repair&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L153">system-view.js:153</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, flows(&quot;capability&quot;, &quot;in&quot;) / Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1), &quot;Repair and rebuilding&quot;, &quot;mean fraction&quot;, &quot;AKX-MNT-02&quot;, &quot;repair&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L154">system-view.js:154</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, flows(&quot;capability&quot;, &quot;in&quot;) / Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1), &quot;Repair and rebuilding&quot;, &quot;mean fraction&quot;, &quot;AKX-MNT-02&quot;, &quot;repair&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L155">system-view.js:155</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, flows(&quot;capability&quot;, &quot;in&quot;) / Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1), &quot;Repair and rebuilding&quot;, &quot;mean fraction&quot;, &quot;AKX-MNT-02&quot;, &quot;repair&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L156">system-view.js:156</a></td>
+<td>1</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L156">system-view.js:156</a></td>
+<td>1</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L163">system-view.js:163</a></td>
+<td>630</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 313, 900, 313, flows(&quot;capability&quot;, &quot;out&quot;) / Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1), &quot;Neglect damage&quot;, &quot;mean fraction&quot;, &quot;AKX-CAP-01&quot;, &quot;damage&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L164">system-view.js:164</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 313, 900, 313, flows(&quot;capability&quot;, &quot;out&quot;) / Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1), &quot;Neglect damage&quot;, &quot;mean fraction&quot;, &quot;AKX-CAP-01&quot;, &quot;damage&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L165">system-view.js:165</a></td>
+<td>900</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 313, 900, 313, flows(&quot;capability&quot;, &quot;out&quot;) / Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1), &quot;Neglect damage&quot;, &quot;mean fraction&quot;, &quot;AKX-CAP-01&quot;, &quot;damage&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L166">system-view.js:166</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 313, 900, 313, flows(&quot;capability&quot;, &quot;out&quot;) / Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1), &quot;Neglect damage&quot;, &quot;mean fraction&quot;, &quot;AKX-CAP-01&quot;, &quot;damage&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L167">system-view.js:167</a></td>
+<td>1</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L167">system-view.js:167</a></td>
+<td>1</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.max(1, p.organizationCount &amp;#124;&amp;#124; 1)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L173">system-view.js:173</a></td>
+<td>500</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence(500, 135, 500, 255, &quot;Remaining upkeep constrains work&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L173">system-view.js:173</a></td>
+<td>135</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence(500, 135, 500, 255, &quot;Remaining upkeep constrains work&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L173">system-view.js:173</a></td>
+<td>500</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence(500, 135, 500, 255, &quot;Remaining upkeep constrains work&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L173">system-view.js:173</a></td>
+<td>255</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence(500, 135, 500, 255, &quot;Remaining upkeep constrains work&quot;)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L174">system-view.js:174</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>end.attention * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L176">system-view.js:176</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>in: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L176">system-view.js:176</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>out: 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L178">system-view.js:178</a></td>
+<td>70</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(70, 55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L178">system-view.js:178</a></td>
+<td>55</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(70, 55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L180">system-view.js:180</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 30, &quot;Unspent reform allocations&quot;, end.reformFunds[mode] &amp;#124;&amp;#124; 0, &quot;RU&quot;, open.reformFunds[mode] &amp;#124;&amp;#124; 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L181">system-view.js:181</a></td>
+<td>30</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 30, &quot;Unspent reform allocations&quot;, end.reformFunds[mode] &amp;#124;&amp;#124; 0, &quot;RU&quot;, open.reformFunds[mode] &amp;#124;&amp;#124; 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L183">system-view.js:183</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 30, &quot;Unspent reform allocations&quot;, end.reformFunds[mode] &amp;#124;&amp;#124; 0, &quot;RU&quot;, open.reformFunds[mode] &amp;#124;&amp;#124; 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L185">system-view.js:185</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 30, &quot;Unspent reform allocations&quot;, end.reformFunds[mode] &amp;#124;&amp;#124; 0, &quot;RU&quot;, open.reformFunds[mode] &amp;#124;&amp;#124; 0, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L187">system-view.js:187</a></td>
+<td>930</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(930, 55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L187">system-view.js:187</a></td>
+<td>55</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(930, 55)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L189">system-view.js:189</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, receipts.in, &quot;Actual mobilization&quot;, &quot;RU&quot;, &quot;AK-REF-02&quot;, &quot;funding&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L190">system-view.js:190</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, receipts.in, &quot;Actual mobilization&quot;, &quot;RU&quot;, &quot;AK-REF-02&quot;, &quot;funding&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L191">system-view.js:191</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, receipts.in, &quot;Actual mobilization&quot;, &quot;RU&quot;, &quot;AK-REF-02&quot;, &quot;funding&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L192">system-view.js:192</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 78, 370, 78, receipts.in, &quot;Actual mobilization&quot;, &quot;RU&quot;, &quot;AK-REF-02&quot;, &quot;funding&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L200">system-view.js:200</a></td>
+<td>630</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, receipts.out, &quot;Actual expenditure&quot;, &quot;RU&quot;, &quot;AK-REF-03&quot;, &quot;spending&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L201">system-view.js:201</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, receipts.out, &quot;Actual expenditure&quot;, &quot;RU&quot;, &quot;AK-REF-03&quot;, &quot;spending&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L202">system-view.js:202</a></td>
+<td>900</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, receipts.out, &quot;Actual expenditure&quot;, &quot;RU&quot;, &quot;AK-REF-03&quot;, &quot;spending&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L203">system-view.js:203</a></td>
+<td>78</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 78, 900, 78, receipts.out, &quot;Actual expenditure&quot;, &quot;RU&quot;, &quot;AK-REF-03&quot;, &quot;spending&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L210">system-view.js:210</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>level = end.influence?.[mode]?.[component] &amp;#124;&amp;#124; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L211">system-view.js:211</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>before = open.influence?.[mode]?.[component] &amp;#124;&amp;#124; 0</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L213">system-view.js:213</a></td>
+<td>70</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(70, 290)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L213">system-view.js:213</a></td>
+<td>290</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(70, 290)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L215">system-view.js:215</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 265, &quot;Mean retained &quot; + component, level * 100, &quot;% influence&quot;, before * 100, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L216">system-view.js:216</a></td>
+<td>265</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>stock( 370, 265, &quot;Mean retained &quot; + component, level * 100, &quot;% influence&quot;, before * 100, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L218">system-view.js:218</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>level * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L220">system-view.js:220</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>before * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L222">system-view.js:222</a></td>
+<td>930</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(930, 290)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L222">system-view.js:222</a></td>
+<td>290</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>cloud(930, 290)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L224">system-view.js:224</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, flows(mode + &quot;:&quot; + component, &quot;in&quot;) * 100, &quot;Accepted learning&quot;, &quot;mean points&quot;, &quot;AK-ADP-01&quot;, &quot;learning&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L225">system-view.js:225</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, flows(mode + &quot;:&quot; + component, &quot;in&quot;) * 100, &quot;Accepted learning&quot;, &quot;mean points&quot;, &quot;AK-ADP-01&quot;, &quot;learning&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L226">system-view.js:226</a></td>
+<td>370</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, flows(mode + &quot;:&quot; + component, &quot;in&quot;) * 100, &quot;Accepted learning&quot;, &quot;mean points&quot;, &quot;AK-ADP-01&quot;, &quot;learning&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L227">system-view.js:227</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 100, 313, 370, 313, flows(mode + &quot;:&quot; + component, &quot;in&quot;) * 100, &quot;Accepted learning&quot;, &quot;mean points&quot;, &quot;AK-ADP-01&quot;, &quot;learning&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L228">system-view.js:228</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>flows(mode + &quot;:&quot; + component, &quot;in&quot;) * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L235">system-view.js:235</a></td>
+<td>630</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 313, 900, 313, flows(mode + &quot;:&quot; + component, &quot;out&quot;) * 100, &quot;Wear-off&quot;, &quot;mean points&quot;, &quot;AK-ADP-02&quot;, &quot;decay&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L236">system-view.js:236</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 313, 900, 313, flows(mode + &quot;:&quot; + component, &quot;out&quot;) * 100, &quot;Wear-off&quot;, &quot;mean points&quot;, &quot;AK-ADP-02&quot;, &quot;decay&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L237">system-view.js:237</a></td>
+<td>900</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 313, 900, 313, flows(mode + &quot;:&quot; + component, &quot;out&quot;) * 100, &quot;Wear-off&quot;, &quot;mean points&quot;, &quot;AK-ADP-02&quot;, &quot;decay&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L238">system-view.js:238</a></td>
+<td>313</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>pipe( 630, 313, 900, 313, flows(mode + &quot;:&quot; + component, &quot;out&quot;) * 100, &quot;Wear-off&quot;, &quot;mean points&quot;, &quot;AK-ADP-02&quot;, &quot;decay&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L239">system-view.js:239</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>flows(mode + &quot;:&quot; + component, &quot;out&quot;) * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L246">system-view.js:246</a></td>
+<td>630</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence( 630, 130, 220, 265, &quot;Delivered experience, uptake and quality&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L247">system-view.js:247</a></td>
+<td>130</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence( 630, 130, 220, 265, &quot;Delivered experience, uptake and quality&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L248">system-view.js:248</a></td>
+<td>220</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence( 630, 130, 220, 265, &quot;Delivered experience, uptake and quality&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L249">system-view.js:249</a></td>
+<td>265</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>influence( 630, 130, 220, 265, &quot;Delivered experience, uptake and quality&quot;, )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L253">system-view.js:253</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>Math.max( 0, (p.policyActivity?.[mode] &amp;#124;&amp;#124; 0) - (p.previousPolicyActivity?.[mode] &amp;#124;&amp;#124; 0), )</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L254">system-view.js:254</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>(p.policyActivity?.[mode] &amp;#124;&amp;#124; 0) - (p.previousPolicyActivity?.[mode] &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L255">system-view.js:255</a></td>
+<td>0</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>(p.policyActivity?.[mode] &amp;#124;&amp;#124; 0) - (p.previousPolicyActivity?.[mode] &amp;#124;&amp;#124; 0)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L257">system-view.js:257</a></td>
+<td>3</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n(delivery, 3)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L257">system-view.js:257</a></td>
+<td>100</td>
+<td>diagram · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>end.capability * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L292">system-view.js:292</a></td>
+<td>0</td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>select.value = modes.includes(previous) ? previous : modes[0]</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L317">system-view.js:317</a></td>
+<td>100</td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>c.knowledge * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L317">system-view.js:317</a></td>
+<td>100</td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>c.attention * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L317">system-view.js:317</a></td>
+<td>100</td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>c.timeUsed * 100</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L323">system-view.js:323</a></td>
+<td>-35</td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>(p?.flows &amp;#124;&amp;#124; []) .slice(-35)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L326">system-view.js:326</a></td>
+<td>5</td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>n(f.amount, 5)</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L335">system-view.js:335</a></td>
+<td>20</td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>r.eligible &lt; 20</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L335">system-view.js:335</a></td>
+<td>100</td>
+<td>render · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>100 * r.rate</code></td>
+</tr>
+<tr>
+<td><a href="../source/system-view.js.html#L362">system-view.js:362</a></td>
+<td>1</td>
+<td>bind · <a href="../TECHNICAL.html#ak-val-01">AK-VAL-01</a></td>
+<td><code>month + 1</code></td>
+</tr>
+</tbody>
+</table>
+</main><footer>© 2026 Joseph Pozsgai-Alvarez · Creator and project owner. Documentation edition 2.0 · 24 November 2026 · provisional behavior/display 3.0.0. Exploratory, not empirically validated. <a href="../manifest.json">Version and file manifest</a></footer></body></html>

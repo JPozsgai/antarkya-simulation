@@ -1,7 +1,7 @@
 name: Model checks
 on:
   push:
-    branches: [main, codex/causal-audit-v2.1, codex/country-start-v2.3, codex/dynamics-v2.4, codex/impact-display-v2.4.1, codex/policy-report-v2.4.2, codex/auditor-documentation]
+    branches: [main, codex/causal-audit-v2.1, codex/country-start-v2.3, codex/dynamics-v2.4, codex/impact-display-v2.4.1, codex/policy-report-v2.4.2, codex/auditor-documentation, codex/provisional-hybrid-release]
 permissions:
   contents: read
 jobs:
@@ -14,13 +14,13 @@ jobs:
           fetch-depth: 0
       - name: Install pinned documentation tooling
         run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Verify audit documentation, references and unchanged runtime
+      - name: Verify audit documentation, references and version-pinned runtime
         run: npm run docs:check
       - name: Check JavaScript syntax
         run: |
           node --version
-          for file in model.js config.js profiles.js baseline.js adaptation.js reporting.js worker.js run-seeds.js visualization.js app.js; do
+          for file in model.js config.js profiles.js baseline.js adaptation.js reporting.js worker.js run-seeds.js visualization.js app.js hybrid.js system-view.js; do
             node --check "$file"
           done
       - name: Regression, causal, display and stress checks
-        run: node --test --test-concurrency=1 reporting.test.js dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js
+        run: node --test --test-concurrency=1 reporting.test.js dynamics.test.js initialization.test.js model.test.js worker.test.js run-seeds.test.js audit.test.js visualization.test.js adaptation.test.js stress.test.js hybrid.test.js

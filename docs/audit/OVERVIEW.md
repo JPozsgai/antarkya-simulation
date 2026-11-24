@@ -1,6 +1,6 @@
 # How to use this audit documentation
 
-This is a description of the executable Antarkya model at behavioral version **2.4.0**, assessment display **2.4.2**, audited against repository commit **9ceb5ae38510f10d2211366406d150500a364a95**. Documentation edition 1.0, 23 November 2026. The documentation revision formats and annotates source without changing its executable rules. It does not retroactively turn design intentions into implemented behavior.
+This is a description of the executable Antarkya model at provisional behavioral/display version **3.0.0**, audited against repository commit **44a23edb80485f26ff397f5e7b6b79a426c78b0b**. Documentation edition 2.0, 24 November 2026. The named commit is the pre-extension ancestor, not a claim that v3 exists in that commit; current files are identified by manifest hashes. This is an explicitly authorized behavioral release. Read the [hybrid release specification](EXTENSION.html) first: calibration and Peru pilot validation remain pending. Created and owned by Joseph Pozsgai-Alvarez.
 
 Start with the [accessible narrative](NARRATIVE.html). For each mechanism it explains the idea, how the simulation represents it and what that representation leaves out. Follow a reference such as **AK-DEC-01** to the corresponding [technical rule](TECHNICAL.html#ak-dec-01), its source units, parameter records and checks. The [full annotated source](SOURCE-INDEX.html) reproduces all active JavaScript, tests, interface markup, styles and development tooling with line links. The actual executable files in the repository carry the same reference codes.
 
@@ -21,13 +21,13 @@ Start with the [accessible narrative](NARRATIVE.html). For each mechanism it exp
 
 Codes identify mechanisms, rather than line numbers: `AK-DEC-01` is the subjective decision rule; `AK-ADP-01` individual receptiveness; `AK-POL-EDUCATION` the education reform; `AK-MEA-02` the comparative impact estimand. Original accepted decisions retain their `R01`–`R62` codes and later `AM01`–`AM06` amendments. `AM07` is a historical implementation checkpoint. These are distinct from behavioral version numbers, country ISO codes and policy keys such as `education`.
 
-The registry connects **57 mechanisms** to the original decisions, source symbols, explanations, technical statements, limitations, evidence provenance and relevant test files. Symbols and parameter inventories are extracted from the files that ship with this edition. A related test is a route to inspect assertions; it is not proof that every statement in a mechanism has been empirically validated.
+The registry connects **83 mechanisms** to the original decisions, source symbols, explanations, technical statements, limitations, evidence provenance and relevant test files. Symbols and parameter inventories are extracted from the files that ship with this edition. A related test is a route to inspect assertions; it is not proof that every statement in a mechanism has been empirically validated.
 
 **Implemented** means an executable pathway exists. **Provisional** means its numerical parameters or representation are assumptions requiring calibration. **Partial** means the implementation covers only part of an agreed concept. **Not implemented** means an agreed intention or earlier proposal does not currently have the corresponding process. The limitations beside every mechanism and the gap register qualify the broad registry status.
 
 ## What this documentation can establish
 
-It makes the current rule system inspectable and reproducible and distinguishes subjective beliefs, actual world processes and observation-only reporting. A source hash identifies the files included. A normalized syntax-tree fingerprint checks that annotations and formatting did not alter runtime expressions. Controlled tests check invariants, causal pathways and regressions.
+It makes the current rule system inspectable and reproducible and distinguishes subjective beliefs, actual world processes and observation-only reporting. A source hash identifies the files included. A normalized syntax-tree fingerprint pins the declared runtime expressions for this behavioral release. Controlled tests check invariants, causal pathways and regressions.
 
 None of these establishes real national corruption prevalence, a causal estimate of a real reform's effect, comprehensive national legal fidelity or a forecast. Country observations inform a synthetic starting society; resource units, staffing, behavioral coefficients and most policy ranges remain modeling assumptions. Complete behavioral validation and systematic sensitivity analysis remain research work.
 

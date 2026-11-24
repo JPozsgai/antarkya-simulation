@@ -2,6 +2,10 @@
 
 References: **AK-MEA-01**, **AK-MEA-02**, **AK-MEA-03**, **AK-MEA-04**. Measurements are observation-only. This dictionary distinguishes the current policy-reporting panel from the older `assessment()` readout still used in compatibility/export paths. The same label must not conceal different denominators or windows.
 
+## v3 measurement amendment
+
+The [hybrid release specification](EXTENSION.html) controls new economic and governance measurements. Public pay now reports actual receipts without the superseded wage withholding. The encounter impact denominator remains administrative/political encounters; newly modeled tax concealment and private diversion enter total conduct and coverage records separately. They are not silently added to the historic encounter-rate estimand.
+
 ## Common definitions
 
 For reporting output at month `t`, use cumulative process counter at `t` minus that at `max(earliest recorded month, t−12)`. The month-zero window can include reconstructed months -12 to 0. Output is activity in that interval, not a monthly mean or unique-person count. A baseline zero can mean that the model counts only additional reform delivery in that output category; it is not evidence that a country has no inherited activity.
@@ -19,7 +23,7 @@ For fixed diagnostics, assign reference index `i` to eligible public organizatio
 | Declarations | Additional-reform verification contacts; count | Threshold `q*o.caps.declarations*a.disclosure` | Fixed diagnostic; higher better; no itemized financial form reconstruction |
 | Conflicts of interest | Connected exchanges blocked; count | Threshold `q*o.caps.conflicts*o.recordQuality` | Fixed diagnostic; higher better; not an observed recusal success rate |
 | Audits/investigations | Investigation stages completed; count | Threshold `q*o.caps.oversight*c*(.4+.6*o.recordQuality)` | Fixed diagnostic; higher better; correction and high-power independence not fully exercised |
-| Remuneration | Actual regular/supplemental public pay after .10 withholding; RU | Share of officials with six receipts whose net receipt covers needs in at least five of those six months | Eligible officials with six receipts; unavailable if none; higher better |
+| Remuneration | Actual regular/supplemental public pay without legacy withholding; RU | Share of officials with six receipts whose net receipt covers needs in at least five of those six months | Eligible officials with six receipts; unavailable if none; higher better |
 | Financial penalties | Actual liability collected; RU | Sum collected in closed true sanction cases on noncivil routes linked to matured extortion acts, divided by the number of those acts | True extortion cohort `t−18 < act.month <= t−6`; at least 20 acts; RU per violation; higher better; not a percentage |
 | Proactive disclosure | Additional-reform record-delivery implementation work; PM | Threshold `q*o.disclosureQuality*(.4+.6*o.caps.disclosure)` | Fixed diagnostic; higher better; output is not a fabricated document count |
 | Complaints | Actual reports submitted; count | Threshold `q*sim.cap('complaints')*(.5+.5*b)` | Fixed diagnostic with 100 references; higher better; not 100 executed submissions |
@@ -40,7 +44,7 @@ The exact condition labels and units are in the [input tables](INPUTS.html) and 
 | Declarations | Mean official disclosure completeness ×100; mean coverage ×100; mean operative declarations ×100 |
 | Conflicts | Mean eligible-body record quality ×100; mean coverage ×100; mean operative conflicts ×100 |
 | Oversight | Open audit-source files or files in inquiry stage; eligible-body staffing capacity; mean operative oversight ×100 |
-| Pay | Six-receipt adequacy ratio; mean official financial pressure ×100; mean per-official ratio of .90×mean gross receipts to needs |
+| Pay | Six-receipt adequacy ratio; mean official financial pressure ×100; mean per-official ratio of mean actual receipts to needs |
 | Penalties | Sum remaining personal assessed liabilities; mean official expected accountability-cost score ×100; mean operative collection capability ×100 |
 | Disclosure | Mean eligible-body public-record quality ×100; mean coverage ×100; mean operative disclosure ×100 |
 | Complaints | Open complaint-source files; mean usable reporting knowledge ×100; aggregate complaint capability ×100 |

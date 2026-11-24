@@ -84,13 +84,13 @@ Prior decision records attribute mobilization/reaction feedback and selective ac
 
 <a id="s09"></a>
 
-## S09 — Pozsgai-Alvarez — Recalibrating anti-corruption assessment: theories of change in a multi-level approach
+## S09 — Accepted ABM–SD extension decisions D01–D32
 
-**Role:** assessment framework.
+**Role:** user decisions and provisional specification.
 
-The user explicitly selected inputs/outputs/policy-specific institutional outcomes/impact. The available published attachment was a one-page extract, and earlier records refer to an author draft. The model’s indicator formulas are operational proposals, not equations claimed verbatim from the chapter.
+Edition 0.2, 24 November 2026; four structural questions resolved. Publication of both the extension and the monthly system view authorized in the current conversation. The numerical operationalization remains provisional.
 
-[Source / record](https://doi.org/10.4337/9781035337712.00043). DOI: 10.4337/9781035337712.00043.
+[Source / record](../HYBRID-DECISIONS.json).
 
 <a id="s10"></a>
 

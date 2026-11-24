@@ -1,0 +1,4057 @@
+/* AUDIT FILE — model.js
+ * References: AK-OV-01, AK-POP-01, AK-POP-02, AK-ORG-01, AK-ORG-02, AK-GEO-01, AK-MOT-01, AK-DEC-01, AK-DEC-02, AK-ACT-01, AK-ACT-02, AK-INS-01, AK-ADP-01, AK-NET-01, AK-INF-01, AK-INF-02, AK-ECO-01, AK-ECO-02, AK-ECO-03, AK-COU-01, AK-COU-02, AK-INI-01, AK-RNG-01, AK-REF-01, AK-REF-02, AK-REF-03, AK-REF-04, AK-CAS-01, AK-CAS-02, AK-CAS-03, AK-GOV-01, AK-MAC-01, AK-POL-ACA, AK-POL-MERIT, AK-POL-ROTATION, AK-POL-PROTECTION, AK-POL-DECLARATIONS, AK-POL-CONFLICTS, AK-POL-OVERSIGHT, AK-POL-PAY, AK-POL-PENALTIES, AK-POL-DISCLOSURE, AK-POL-COMPLAINTS, AK-POL-EDUCATION, AK-MEA-01, AK-MEA-02, AK-MEA-03, AK-VIS-02, AK-VAL-01
+ * See docs/audit/TECHNICAL.md and the line-linked full source in docs/audit/source/.
+ * Documentation-only revision: execution is checked against the pinned pre-annotation AST.
+ */
+
+'use strict';
+// Browser, worker and Node share this engine. Rendering never consumes its RNG.
+(function (root) {
+  const Profiles =
+    typeof module !== 'undefined' && module.exports
+      ? require('./profiles.js')
+      : root.AntarkyaProfiles;
+  const Settings =
+    typeof module !== 'undefined' && module.exports ? require('./config.js') : root.AntarkyaConfig;
+  const Adaptive =
+    typeof module !== 'undefined' && module.exports
+      ? require('./adaptation.js')
+      : root.AntarkyaAdaptation;
+  const Baseline =
+    typeof module !== 'undefined' && module.exports
+      ? require('./baseline.js')
+      : root.AntarkyaBaseline;
+  const Reporting =
+    typeof module !== 'undefined' && module.exports
+      ? require('./reporting.js')
+      : root.AntarkyaReporting;
+  const VERSION = '2.4.0',
+    TYPES = ['Citizen', 'Business', 'Official', 'Politician'],
+    KEYS = Profiles.policies.map((p) => p.id);
+
+  /** [AK-OV-01] [AK-VAL-01] clamp
+   * Implementation unit for Purpose, scope and version identity. Follow the reference IDs for its equations, assumptions and verification limits.
+   */
+  const clamp = (v, l = 0, h = 1) => Math.max(l, Math.min(h, v)),
+    sum = (a) => a.reduce((x, y) => x + y, 0),
+    mean = (a) => (a.length ? sum(a) / a.length : 0),
+    clone = (x) => JSON.parse(JSON.stringify(x));
+
+  /** [AK-RNG-01] hash
+   * Hash an explicit namespace/key to an unsigned 32-bit integer. This is reproducible simulation randomization, not cryptography; changing mixing or key order changes every downstream experiment.
+   */
+  function hash(s) {
+    let h = 2166136261;
+    for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
+    h ^= h >>> 16;
+    h = Math.imul(h, 0x7feb352d);
+    h ^= h >>> 15;
+    h = Math.imul(h, 0x846ca68b);
+    return (h ^ (h >>> 16)) >>> 0;
+  }
+
+  /** [AK-RNG-01] draw
+   * Return a uniform value strictly inside (0,1) from the keyed hash. Keep this separate from display hashes and never call it to animate or inspect a result.
+   */
+  function draw(seed, ...key) {
+    return (hash(String(seed) + '|' + key.join('|')) + 0.5) / 4294967296;
+  }
+
+  /** [AK-RNG-01] generator
+   * Supply sequential initialization draws within a dedicated namespace. Runtime choices instead use stable semantic keys so policy branches do not shift a shared RNG cursor.
+   */
+  function generator(seed) {
+    let n = 0;
+    return () => draw(seed, n++);
+  }
+
+  /** [AK-OV-01] [AK-VAL-01] gaussian
+   * Box–Muller helper used by initialization gamma draws. It is a numerical sampler, not an empirical behavioral distribution.
+   */
+  function gaussian(r) {
+    return Math.sqrt(-2 * Math.log(r())) * Math.cos(2 * Math.PI * r());
+  }
+
+  /** [AK-OV-01] [AK-VAL-01] gamma
+   * Generate positive gamma variates for nine heterogeneous motive weights. Rejection/shape transforms consume only the initialization generator.
+   */
+  function gamma(a, r) {
+    if (a < 1) return gamma(a + 1, r) * Math.pow(r(), 1 / a);
+    const d = a - 1 / 3,
+      c = 1 / Math.sqrt(9 * d);
+    for (;;) {
+      const x = gaussian(r),
+        v = Math.pow(1 + c * x, 3);
+      if (v <= 0) continue;
+      const u = r();
+      if (u < 1 - 0.0331 * x * x * x * x || Math.log(u) < 0.5 * x * x + d * (1 - v + Math.log(v)))
+        return d * v;
+    }
+  }
+
+  /** [AK-MOT-01] motives
+   * Construct all nine social/economic/political × self/group/public weights and normalize them. Role/domain and beneficiary proportions are provisional priors; a motive is not a conduct classification.
+   */
+  function motives(role, r, env) {
+    const interests = [
+      [0.4, 0.35, 0.25],
+      [0.25, 0.5, 0.25],
+      [0.35, 0.35, 0.3],
+      [0.25, 0.3, 0.45],
+    ][role];
+    const group = 0.3 + (env.kinship - 50) * 0.002,
+      publicShare = 0.3 + (env.public_private_separation - 50) * 0.002,
+      beneficiaries = [1 - group - publicShare, group, publicShare];
+    const w = interests.flatMap((i) => beneficiaries.map((b) => gamma(6 * i * b, r))),
+      total = sum(w);
+    return w.map((v) => v / total);
+  }
+  const NUMERIC = {
+    gdp_per_capita_ppp: [100, 300000],
+    government_effectiveness: [0, 100],
+    rule_of_law: [0, 100],
+    regulatory_quality_proxy: [0, 100],
+    civil_liberties: [0, 100],
+    representation: [0, 100],
+    electoral_integrity: [0, 100],
+    kinship: [0, 100],
+    informality: [0, 100],
+    public_private_separation: [0, 100],
+    central_allocation: [0, 100],
+  };
+
+  /** [AK-OV-01] validate
+   * Normalize and reject unsupported setup values before constructing a world. Defaults, duration/repetition limits, override bounds and distinct policy IDs are part of the experiment contract.
+   */
+  function validate(input = {}) {
+    if (!input || typeof input !== 'object' || Array.isArray(input))
+      throw Error('Invalid scenario.');
+    const c = {
+      country: input.country || 'PER',
+      duration: input.duration ?? 120,
+      repetitions: input.repetitions ?? 1,
+      initialSeed: String(input.initialSeed || 'Antarkya-v2-society').slice(0, 100),
+      eventSeed: String(input.eventSeed || 'Antarkya-v2-events').slice(0, 100),
+      overrides: {},
+      policies: [],
+    };
+    if (!Object.hasOwn(Settings.countries, c.country)) throw Error('Choose a supported country.');
+    if (!Number.isInteger(c.duration) || c.duration < 6 || c.duration > 240)
+      throw Error('Duration must be 6–240 whole months.');
+    if (![1, 5, 10, 20].includes(c.repetitions)) throw Error('Choose 1, 5, 10 or 20 repetitions.');
+    for (const [k, v] of Object.entries(input.overrides || {})) {
+      if (!Object.hasOwn(NUMERIC, k)) throw Error('Unknown override: ' + k);
+      if (v === null || v === '') continue;
+      const [lo, hi] = NUMERIC[k];
+      if (typeof v !== 'number' || !Number.isFinite(v) || v < lo || v > hi)
+        throw Error(k + ' must be between ' + lo + ' and ' + hi + '.');
+      c.overrides[k] = v;
+    }
+    if (!Array.isArray(input.policies ?? [])) throw Error('Policies must be a list.');
+    for (const p of input.policies || []) {
+      if (
+        !KEYS.includes(p.id) ||
+        c.policies.some((q) => q.id === p.id) ||
+        typeof p.mobilization !== 'number' ||
+        !Number.isFinite(p.mobilization) ||
+        p.mobilization < 0 ||
+        p.mobilization > 1
+      )
+        throw Error('Invalid reform or mobilization.');
+      c.policies.push({ id: p.id, mobilization: p.mobilization });
+    }
+    c.policies.sort((a, b) => KEYS.indexOf(a.id) - KEYS.indexOf(b.id));
+    return c;
+  }
+
+  /** [AK-COU-01] conditions
+   * Combine dated stored descriptors, bounded country baseline mappings and explicit user overrides. An override deliberately changes the reconstructed past as well as future conditions.
+   */
+  function conditions(c) {
+    const p = Profiles.profiles.find((p) => p.iso3 === c.country),
+      x = Object.fromEntries(Object.entries(p.indicators).map(([k, v]) => [k, v.value]));
+    return {
+      ...x,
+      ...Baseline.conditions(c.country),
+      central_allocation: Settings.countries[c.country].central * 100,
+      ...c.overrides,
+    };
+  }
+
+  /** [AK-ECO-01] totalMoney
+   * Sum every modeled cash account, including outside and unspent policy allocations. Use this conserved total rather than treating a bribe/fine transfer as newly created or destroyed money.
+   */
+  function totalMoney(s) {
+    return (
+      s.outside.balance +
+      s.treasury.balance +
+      sum(s.agents.map((a) => a.balance)) +
+      sum(s.orgs.map((o) => o.balance)) +
+      sum(s.policies.flatMap((p) => p.allocations.map((a) => a.balance)))
+    );
+  }
+
+  /** [AK-ECO-01] transfer
+   * Execute a clipped conserved transfer without negative cash. Requested and actually paid amounts can differ, and unpaid ordinary costs are not silently created as debt.
+   */
+  function transfer(from, to, amount) {
+    const v = Math.max(0, Math.min(Number.isFinite(amount) ? amount : 0, from.balance));
+    from.balance -= v;
+    to.balance += v;
+    return v;
+  }
+
+  /** [AK-REF-02] requirements
+   * Compute additional policy setup, recurring money and staff-time estimates. Cost tuples and GDP normalization are assumptions; this is not the existing institution’s entire budget.
+   */
+  function requirements(id, n, env) {
+    const [setup, monthly, time] = Settings.costs[id],
+      scale = clamp(Math.sqrt(env.gdp_per_capita_ppp / 20000), 0.6, 1.8);
+    return {
+      setup: (2 + n * setup) * scale,
+      monthly: (1 + n * monthly) * scale,
+      time: 1 + n * time,
+    };
+  }
+
+  /** [AK-POP-01] [AK-POP-02] [AK-ORG-01] [AK-GEO-01] createPopulation
+   * Build the raw fixed 1,000-person society and its organizations, profiles, account structure and initial links. Its parameters mix sourced descriptors with explicit generic distributions; createInitial supplies the experienced starting state.
+   */
+  function createPopulation(input) {
+    const c = validate(input),
+      env = conditions(c),
+      spec = Settings.countries[c.country],
+      initKey = VERSION + '|' + c.initialSeed + '|' + c.country + '|' + JSON.stringify(env),
+      r = generator(c.initialSeed + '|' + c.country + '|society-draws');
+    const s = {
+      version: VERSION,
+      profileVersion: Profiles.schema,
+      initialKey: hash(initKey).toString(16),
+      societyDrawKey: hash(c.initialSeed + '|' + c.country + '|society-draws').toString(16),
+      month: 0,
+      env,
+      country: c.country,
+      agents: [],
+      orgs: [],
+      links: {},
+      funding: [],
+      cases: [],
+      stories: [],
+      events: [],
+      conduct: [],
+      history: [],
+      policies: [],
+      services: [],
+      membershipQueue: [],
+      treasury: { balance: 1800 * clamp(Math.sqrt(env.gdp_per_capita_ppp / 20000), 0.6, 1.8) },
+      outside: { balance: 10000000 },
+      macro: {},
+      metrics: {
+        opportunities: 0,
+        corruptActs: 0,
+        voluntaryExchanges: 0,
+        extortion: 0,
+        coercedPayments: 0,
+        refusals: 0,
+        failedProposals: 0,
+        bribeBurden: 0,
+        diversion: 0,
+        foregoneRevenue: 0,
+        sanctions: 0,
+        unwarrantedSanctions: 0,
+        collected: 0,
+        serviceArrivals: 0,
+        serviceCompleted: 0,
+        serviceWait: 0,
+        meritAppointments: 0,
+        appointments: 0,
+        retaliation: 0,
+        remedied: 0,
+        reports: 0,
+        audits: 0,
+        lawfulChoices: 0,
+      },
+      distribution: Array.from({ length: 4 }, () => ({
+        acts: 0,
+        opportunities: 0,
+        victimBurden: 0,
+        wait: 0,
+      })),
+      counters: { event: 0, case: 0, story: 0, conduct: 0 },
+      politics: {
+        governingParty: null,
+        controller: null,
+        nextReview: spec.firstReview,
+        cycle: spec.cycle,
+        mode: spec.mode,
+      },
+      initialControls: {},
+    };
+    const centers = [
+      [0.18, 0.22],
+      [0.67, 0.22],
+      [0.45, 0.52],
+      [0.22, 0.78],
+      [0.78, 0.75],
+    ];
+
+    /** [AK-ORG-01] org
+     * Create a simplified functional organization with capabilities, legal coverage, role practices and a leader/member roster. fn is one principal function, not a complete legal mandate description.
+     */
+    function org(name, category, fn) {
+      const location = centers[Math.floor(r() * 5)],
+        caps = Object.fromEntries(
+          KEYS.map((k) => [k, Baseline.organization(c.country, env, k, r()).capacity]),
+        );
+      const o = {
+        id: s.orgs.length,
+        name,
+        category,
+        fn,
+        leader: null,
+        members: [],
+        x: clamp(location[0] + (r() - 0.5) * 0.14, 0.03, 0.97),
+        y: clamp(location[1] + (r() - 0.5) * 0.14, 0.03, 0.97),
+        balance: category === 2 ? 20 : 15,
+        skill: clamp(0.3 + (0.45 * env.government_effectiveness) / 100 + (r() - 0.5) * 0.2),
+        caps,
+        legal: Object.fromEntries(
+          KEYS.map((k) => [k, Baseline.organization(c.country, env, k, 0.5).scope]),
+        ),
+        jurisdiction:
+          category === 2 && fn === 'service'
+            ? s.orgs.filter((q) => q.fn === 'service').length
+            : null,
+        mandate: fn,
+        baselineEvidence: Profiles.profiles.find((p) => p.iso3 === c.country).tool_baseline,
+        practice: Array.from({ length: 4 }, () => ({
+          honest: 0.2 + r() * 0.4,
+          corrupt: 0.2 + r() * 0.4,
+        })),
+        time: 0,
+        capacity: 0,
+        routineUsed: 0,
+        reformUsed: 0,
+        caseUsed: 0,
+        backlog: 0,
+        media: category < 2 && r() < 0.25,
+        reach: 0.2 + r() * 0.4,
+        editorialIndependence: clamp(0.1 + (0.6 * env.civil_liberties) / 100 + r() * 0.2),
+        recordQuality: clamp(0.12 + (0.65 * env.rule_of_law) / 100 + (r() - 0.5) * 0.2),
+        disclosureQuality: clamp(
+          0.12 + (0.55 * env.government_effectiveness) / 100 + (r() - 0.5) * 0.2,
+        ),
+        responses: {},
+      };
+      s.orgs.push(o);
+      return o;
+    }
+    for (let i = 0; i < 8; i++)
+      org('Civic organization ' + String.fromCharCode(65 + i), 0, 'civic');
+    for (let i = 0; i < 24; i++)
+      org('Business organization ' + String.fromCharCode(65 + i), 1, 'business');
+    spec.nodes.forEach(([name, fn]) => org(name, 2, fn));
+    for (let i = 0; i < 4; i++) org('Regional public service ' + (i + 1), 2, 'service');
+    const parties = Array.from({ length: spec.mode === 'appointment' ? 3 : 5 }, (_, i) =>
+        org(
+          spec.mode === 'appointment'
+            ? i === 0
+              ? 'CPC-linked leadership'
+              : 'Consultative political organization ' + i
+            : 'Political party ' + String.fromCharCode(65 + i),
+          3,
+          'party',
+        ),
+      ),
+      byRole = TYPES.map((_, role) => s.orgs.filter((o) => o.category === role));
+    for (let role = 0; role < 4; role++)
+      for (let j = 0; j < spec.counts[role]; j++) {
+        const id = s.agents.length,
+          workDraw = r(),
+          work =
+            byRole[role][
+              j < byRole[role].length
+                ? j
+                : Math.min(
+                    byRole[role].length - 1,
+                    Math.floor(Math.pow(workDraw, 1.3) * byRole[role].length),
+                  )
+            ],
+          center = centers[Math.floor(r() * 5)],
+          angle = r() * Math.PI * 2,
+          rad = Math.sqrt(r()) * 0.18,
+          income =
+            (role === 0 ? 0.95 : role === 1 ? 1.2 : role === 2 ? 1.05 : 1.45) * (0.6 + 1.2 * r());
+        const a = {
+          id,
+          role,
+          type: TYPES[role],
+          x: clamp(center[0] + Math.cos(angle) * rad, 0.025, 0.975),
+          y: clamp(center[1] + Math.sin(angle) * rad, 0.025, 0.975),
+          workX: work.x,
+          workY: work.y,
+          org: work.id,
+          memberships: [],
+          support: s.orgs.map((p) => ({ org: p.id, affinity: r() })),
+          motives: motives(
+            role,
+            generator(c.initialSeed + '|' + c.country + '|motives|' + id),
+            env,
+          ),
+          balance: 2 + r() * 5,
+          income,
+          cost: (0.7 + r()) * (role === 1 ? 1 + (50 - env.regulatory_quality_proxy) / 300 : 1),
+          receipts: [],
+          knowledge: 0.2 + r() * 0.55,
+          disclosure: 0.15 + r() * 0.5,
+          control: 0.25 + r() * 0.5,
+          descriptive: 0.1 + r() * 0.4,
+          normCorrupt: clamp(-0.45 + r() * 0.9 + (env.informality - 50) / 180, -1, 1),
+          riskBelief: 0.08 + r() * 0.3,
+          beliefs: {},
+          sourceTrust: {},
+          corruptActions: 0,
+          integrityChoices: 0,
+          lastCorrupt: null,
+          recoveryChoices: 0,
+          state: 'integrity',
+          office: false,
+          eligibleUntil: 0,
+          skill: r(),
+          lastDecision: null,
+          decisions: [],
+          meaningful: [],
+          experience: { service: 0, wait: 0, trust: 0.5 },
+          journalist: false,
+        };
+        a.liabilities = [];
+        a.collectionMonth = null;
+        a.collectionPaid = 0;
+        a.financialPressure = 0;
+        // Living needs share the income scale; some people still face shortfalls.
+        const livingDraw = clamp(
+          a.cost / (role === 1 ? 1 + (50 - env.regulatory_quality_proxy) / 300 : 1) - 0.7,
+        );
+        a.cost = a.income * 0.9 * (0.65 + 0.5 * livingDraw);
+        const resources = clamp(Math.sqrt(env.gdp_per_capita_ppp / 20000), 0.6, 1.8);
+        a.balance *= resources;
+        a.income *= resources;
+        a.cost *= resources;
+        a.control = clamp(a.control + (env.government_effectiveness - 50) / 200);
+        a.knowledge = clamp(a.knowledge + (env.government_effectiveness - 50) / 250);
+        a.riskBelief = clamp(
+          0.1 + (0.65 * env.rule_of_law) / 100 + (a.riskBelief - 0.23) * 0.6,
+          0.05,
+          0.85,
+        );
+        a.experience.trust = clamp(0.15 + (0.65 * env.government_effectiveness) / 100);
+        // Class affinity has a stable person-level component, rather than washing out
+        // into four identical means over independent organization draws.
+        const affinity = TYPES.map((_, role) =>
+          draw(c.initialSeed, c.country, 'class-affinity', id, role),
+        );
+        for (const t of a.support) {
+          const o = s.orgs[t.org];
+          t.affinity = clamp(
+            0.65 * affinity[o.category] + 0.25 * t.affinity + (o.id === work.id ? 0.1 : 0),
+          );
+        }
+        Adaptive.initialize(a, (key) =>
+          draw(c.initialSeed + '|' + c.country + '|psychology', id, key),
+        );
+        if (role !== 0 || j < byRole[role].length || r() < 0.45) {
+          a.memberships.push(work.id);
+          work.members.push(id);
+        }
+        if (role !== 0 && r() < 0.2) {
+          const extra = byRole[0][Math.floor(r() * 8)];
+          a.memberships.push(extra.id);
+          extra.members.push(id);
+        }
+        if (role < 2 && r() < 0.1) {
+          const extra = parties[Math.floor(r() * parties.length)];
+          a.memberships.push(extra.id);
+          extra.members.push(id);
+        }
+        s.agents.push(a);
+      }
+    for (const o of s.orgs) {
+      const eligible = o.members.filter((id) => s.agents[id].role === o.category);
+      o.leader = eligible.length
+        ? eligible[Math.floor(r() * eligible.length)]
+        : (o.members[0] ?? 0);
+      s.initialControls[o.id] = o.leader;
+      if (o.media) s.agents[o.leader].journalist = true;
+    }
+    s.orgs[0].media = true;
+    s.agents[s.orgs[0].leader].journalist = true;
+    for (const o of parties) s.agents[o.leader].office = true;
+    s.politics.governingParty = parties[0].id;
+    s.politics.controller = parties[0].leader;
+    for (const a of s.agents) {
+      const mates = s.orgs[a.org].members;
+      for (let k = 0; k < 2; k++) {
+        const b = s.agents[mates[Math.floor(r() * mates.length)]];
+        if (b && b.id !== a.id) {
+          const key = [a.id, b.id].sort((x, y) => x - y).join(':');
+          s.links[key] = {
+            a: a.id,
+            b: b.id,
+            trustAB: 0.2 + r() * 0.5,
+            trustBA: 0.2 + r() * 0.5,
+            strength: 0.15 + r() * 0.45,
+            count: 1,
+            corruptCount: 0,
+            born: -1,
+            last: 0,
+          };
+        }
+      }
+    }
+    s.accountingTotal = totalMoney(s);
+    return s;
+  }
+  // Reconstruct a pre-policy year using the same behavioral, financial, service,
+  // information and accountability rules. It is model-generated history, not
+  // an observation of the country and not a claim of empirical calibration.
+  const initialCache = new Map();
+
+  /** [AK-INI-01] createInitial
+   * Execute the dedicated twelve-month pre-policy reconstruction and preserve unfinished work/history. Reset intervention counters, not people, finances or cases; cache the identical state for matched comparisons.
+   */
+  function createInitial(input) {
+    const c = validate(input),
+      cacheKey = JSON.stringify([VERSION, c.country, c.initialSeed, conditions(c)]);
+    if (initialCache.has(cacheKey)) return clone(initialCache.get(cacheKey));
+    const raw = createPopulation(c);
+    raw.month = -Baseline.months;
+    for (const a of raw.agents) {
+      a.psychology.lastAdvance = -Baseline.months;
+      a.eligibleUntil = -Baseline.months;
+    }
+    for (const l of Object.values(raw.links)) {
+      l.born = -Baseline.months - 1;
+      l.last = -Baseline.months;
+    }
+    const historical = new Simulation(
+      { ...c, policies: [], eventSeed: c.initialSeed + '|' + c.country + '|pre-policy' },
+      raw,
+      0,
+      true,
+    );
+    while (historical.month < 0) historical.step();
+    historical.assertInvariants();
+    const s = historical.state;
+    Reporting.remember(s.initialKey, historical.monitor);
+    // Keep inspectable realized traces; discarded pre-policy alternatives no
+    // longer enter any decision. This limits snapshot size on mobile browsers.
+    for (const a of s.agents) {
+      a.startingRole = a.role;
+      a.decisions = a.decisions.slice(-3);
+      for (const d of [...a.decisions, a.lastDecision].filter(Boolean)) delete d.alternatives;
+    }
+    s.initialization = {
+      schema: Baseline.schema,
+      months: Baseline.months,
+      method:
+        'Reconstructed pre-policy history; evidence-informed estimates, not measured corruption prevalence',
+      history: clone(s.history),
+      metrics: historical.metrics(),
+    };
+    // Cumulative intervention-period counters begin at adoption. Inherited work,
+    // experiences, choices, beliefs, ties, balances and case files remain live.
+    for (const k of Object.keys(s.metrics)) s.metrics[k] = 0;
+    s.distribution = Array.from({ length: 4 }, () => ({
+      acts: 0,
+      opportunities: 0,
+      victimBurden: 0,
+      wait: 0,
+    }));
+    s.history = [];
+    s.events = [];
+    s.initialControls = Object.fromEntries(s.orgs.map((o) => [o.id, o.leader]));
+    historical.emit(
+      'macro',
+      'Country starting conditions reconstructed',
+      'A model-generated pre-policy year supplies past choices, relationships, service experience and ongoing accountability work. Reforms start now. Sourced descriptors inform this estimate; the starting corruption distribution is not an observed national rate.',
+      [],
+      'INIT-' + s.initialKey,
+      'Starting estimate',
+    );
+    initialCache.set(cacheKey, clone(s));
+    if (initialCache.size > 1) initialCache.delete(initialCache.keys().next().value);
+    return clone(s);
+  }
+
+  /** [AK-INI-01] initialDifference
+   * Compare expected and imported starting states without replacing the imported values. Integers remain exact; only insignificant finite noninteger rounding and object-key order are tolerated.
+   */
+  function initialDifference(actual, expected, path = 'state') {
+    if (actual === expected) return null;
+    if (typeof actual !== typeof expected || actual === null || expected === null) return path;
+    if (typeof expected === 'number') {
+      // Identifiers/counters stay exact. Floating calculations can differ by
+      // insignificant rounding across browser and Node math implementations.
+      if (Number.isInteger(actual) || Number.isInteger(expected)) return path;
+      return Number.isFinite(actual) &&
+        Math.abs(actual - expected) <= 1e-10 * Math.max(1, Math.abs(expected))
+        ? null
+        : path;
+    }
+    if (typeof expected !== 'object' || Array.isArray(actual) !== Array.isArray(expected))
+      return path;
+    const keys = Object.keys(expected).sort(),
+      got = Object.keys(actual).sort();
+    if (keys.length !== got.length || keys.some((k, i) => k !== got[i])) return path;
+    for (const key of keys) {
+      const difference = initialDifference(actual[key], expected[key], path + '.' + key);
+      if (difference) return difference;
+    }
+    return null;
+  }
+
+  /** [AK-INI-01] validateInitial
+   * Enforce initial schema, IDs, role counts, memberships, finances and exact reconstructed provenance. A plausible-looking JSON society is not accepted merely because its total population is correct.
+   */
+  function validateInitial(s, input) {
+    const c = validate(input),
+      env = conditions(c),
+      spec = Settings.countries[c.country],
+      key = hash(
+        VERSION + '|' + c.initialSeed + '|' + c.country + '|' + JSON.stringify(env),
+      ).toString(16);
+
+    /** [AK-VAL-01] finite
+     * Local helper for validateInitial; its inputs and return value are part of the enclosing mechanism. Engineering verification and audit reproducibility.
+     */
+    const finite = (x, lo = -Infinity, hi = Infinity) =>
+        typeof x === 'number' && Number.isFinite(x) && x >= lo && x <= hi,
+      ids = (a, n) => Array.isArray(a) && a.every((x) => Number.isInteger(x) && x >= 0 && x < n);
+    if (
+      !s ||
+      s.societyDrawKey !== hash(c.initialSeed + '|' + c.country + '|society-draws').toString(16) ||
+      s.version !== VERSION ||
+      s.month !== 0 ||
+      s.country !== c.country ||
+      s.initialKey !== key ||
+      JSON.stringify(s.env) !== JSON.stringify(env) ||
+      !Array.isArray(s.agents) ||
+      s.agents.length !== 1000 ||
+      !Array.isArray(s.orgs) ||
+      s.orgs.length < 40 ||
+      s.orgs.length > 60
+    )
+      throw Error('The saved initial society is incompatible with this configuration.');
+    if (
+      !s.initialization ||
+      s.initialization.schema !== Baseline.schema ||
+      s.initialization.months !== Baseline.months
+    )
+      throw Error('Expected a reconstructed pre-policy society.');
+    for (const k of [
+      'policies',
+      'cases',
+      'stories',
+      'events',
+      'conduct',
+      'history',
+      'services',
+      'membershipQueue',
+    ])
+      if (!Array.isArray(s[k])) throw Error('Invalid initial records: ' + k);
+    if (s.policies.length || s.history.length)
+      throw Error('Expected an initial society, not a live checkpoint.');
+    if (
+      !finite(s.treasury?.balance, 0) ||
+      !finite(s.outside?.balance, 0) ||
+      !finite(s.accountingTotal, 0)
+    )
+      throw Error('Invalid initial accounts.');
+    for (let i = 0; i < s.orgs.length; i++) {
+      const o = s.orgs[i];
+      if (
+        o.id !== i ||
+        !Number.isInteger(o.category) ||
+        o.category < 0 ||
+        o.category > 3 ||
+        !finite(o.balance, 0) ||
+        !finite(o.x, 0, 1) ||
+        !finite(o.y, 0, 1) ||
+        !ids(o.members, 1000) ||
+        !Number.isInteger(o.leader) ||
+        o.leader < 0 ||
+        o.leader >= 1000 ||
+        !finite(o.skill, 0, 1) ||
+        !finite(o.recordQuality, 0, 1) ||
+        !finite(o.disclosureQuality, 0, 1) ||
+        !Array.isArray(o.practice) ||
+        o.practice.length !== 4 ||
+        !KEYS.every((k) => finite(o.caps?.[k], 0, 1) && finite(o.legal?.[k], 0, 1))
+      )
+        throw Error('Invalid organization in the initial society.');
+      for (const p of o.practice)
+        if (!finite(p.honest, 0, 1) || !finite(p.corrupt, 0, 1))
+          throw Error('Invalid role expectation.');
+    }
+    const counts = [0, 0, 0, 0];
+    for (let i = 0; i < 1000; i++) {
+      const a = s.agents[i];
+      if (
+        !Adaptive.valid(a) ||
+        a.psychology.lastAdvance !== 0 ||
+        a.id !== i ||
+        !Number.isInteger(a.role) ||
+        a.role < 0 ||
+        a.role > 3 ||
+        !finite(a.x, 0, 1) ||
+        !finite(a.y, 0, 1) ||
+        !finite(a.balance, 0) ||
+        !finite(a.income, 0) ||
+        !finite(a.cost, 0) ||
+        !finite(a.skill, 0, 1) ||
+        !Array.isArray(a.meaningful) ||
+        a.meaningful.length > 24 ||
+        !finite(a.experience?.trust, 0, 1) ||
+        !finite(a.experience?.wait, 0) ||
+        !finite(a.experience?.service, 0) ||
+        !finite(a.control, 0, 1) ||
+        !finite(a.knowledge, 0, 1) ||
+        !finite(a.disclosure, 0, 1) ||
+        !finite(a.descriptive, 0, 1) ||
+        !finite(a.normCorrupt, -1, 1) ||
+        !finite(a.riskBelief, 0, 1) ||
+        !Number.isInteger(a.org) ||
+        !s.orgs[a.org] ||
+        !ids(a.memberships, s.orgs.length) ||
+        new Set(a.memberships).size !== a.memberships.length ||
+        !Array.isArray(a.motives) ||
+        a.motives.length !== 9 ||
+        !a.motives.every((x) => finite(x, 0, 1)) ||
+        Math.abs(sum(a.motives) - 1) > 1e-8 ||
+        !Array.isArray(a.support) ||
+        !a.support.every(
+          (t) => Number.isInteger(t.org) && s.orgs[t.org] && finite(t.affinity, 0, 1),
+        )
+      )
+        throw Error('Invalid person in the initial society.');
+      counts[a.role]++;
+      if (
+        !Array.isArray(a.receipts) ||
+        a.receipts.length > 6 ||
+        !Array.isArray(a.decisions) ||
+        a.decisions.length > 5
+      )
+        throw Error('Invalid initial personal histories.');
+    }
+    if (counts.some((n, i) => n !== spec.counts[i]))
+      throw Error('Initial role counts do not match this profile.');
+    for (const o of s.orgs)
+      for (const id of o.members)
+        if (!s.agents[id].memberships.includes(o.id))
+          throw Error('Membership references do not match.');
+    for (const a of s.agents)
+      for (const id of a.memberships)
+        if (!s.orgs[id].members.includes(a.id)) throw Error('Membership references do not match.');
+    if (!s.links || typeof s.links !== 'object' || Array.isArray(s.links))
+      throw Error('Invalid network.');
+    for (const l of Object.values(s.links))
+      if (
+        !Number.isInteger(l.a) ||
+        !Number.isInteger(l.b) ||
+        l.a < 0 ||
+        l.a >= 1000 ||
+        l.b < 0 ||
+        l.b >= 1000 ||
+        !finite(l.strength, 0, 1)
+      )
+        throw Error('Invalid network reference.');
+    if (
+      !Number.isInteger(s.politics?.controller) ||
+      !s.agents[s.politics.controller] ||
+      !finite(s.politics.nextReview, 1) ||
+      !finite(s.politics.cycle, 1) ||
+      Math.abs(totalMoney(s) - s.accountingTotal) > 0.001
+    )
+      throw Error('Initial authority or accounts are inconsistent.');
+    const difference = initialDifference(s, createInitial(c));
+    if (difference)
+      throw Error(
+        'The saved starting society differs from these initialization rules at ' + difference + '.',
+      );
+    return true;
+  }
+  class Simulation {
+    /** [AK-OV-01] constructor
+     * Clone the supplied initial world, set the future-event stream/replicate, and create an observation sidecar before formal adoption. Only the reform branch adopts selected policies; baseline retains inherited arrangements.
+     */
+    constructor(input = {}, initial = null, replicate = 0, baseline = false) {
+      this.config = validate(input);
+      this.state = clone(initial || createInitial(this.config));
+      this.baseline = baseline;
+      this.replicate = replicate;
+      this.seed = this.config.eventSeed + '|' + replicate;
+      this.index();
+      Reporting.init(this);
+      if (!baseline) this.adopt();
+      this.record();
+    }
+
+    /** [AK-OV-01] [AK-VAL-01] get agents
+     * Implementation unit for Purpose, scope and version identity. Follow the reference IDs for its equations, assumptions and verification limits.
+     */
+    get agents() {
+      return this.state.agents;
+    }
+
+    /** [AK-OV-01] [AK-VAL-01] get orgs
+     * Implementation unit for Purpose, scope and version identity. Follow the reference IDs for its equations, assumptions and verification limits.
+     */
+    get orgs() {
+      return this.state.orgs;
+    }
+
+    /** [AK-OV-01] [AK-VAL-01] get month
+     * Implementation unit for Purpose, scope and version identity. Follow the reference IDs for its equations, assumptions and verification limits.
+     */
+    get month() {
+      return this.state.month;
+    }
+
+    /** [AK-RNG-01] rand
+     * Implementation unit for Keyed probability, paired worlds and exact replay. Follow the reference IDs for its equations, assumptions and verification limits.
+     */
+    rand(process, ...key) {
+      return draw(this.seed, this.month, process, ...key);
+    }
+
+    /** [AK-NET-01] index
+     * Rebuild role/function/case lookup indexes after relevant transitions. These indexes accelerate access but do not create additional people or organizations.
+     */
+    index() {
+      this.roles = TYPES.map((_, r) => this.agents.filter((a) => a.role === r));
+      this.publicOrgs = this.orgs.filter((o) => o.category === 2);
+      this.services = this.publicOrgs.filter((o) => o.fn === 'service');
+      this.parties = this.orgs.filter((o) => o.category === 3);
+      this.media = this.orgs.filter((o) => o.media);
+      this.caseIndex = new Map(this.state.cases.map((c) => [c.id, c]));
+    }
+
+    /** [AK-VIS-02] emit
+     * Append a tracked event/update without consuming world randomness. A tracking family can span case stages, resource reviews or a developing relationship.
+     */
+    emit(kind, title, text, actors = [], tracking = null, status = null) {
+      const s = this.state,
+        id = tracking || 'E-' + String(++s.counters.event).padStart(5, '0'),
+        update = 1 + s.events.filter((e) => e.id === id).length;
+      s.events.push({
+        id,
+        update,
+        month: this.month,
+        kind,
+        title,
+        text,
+        actors: [...new Set(actors)],
+        status,
+        salient: kind === 'macro' || kind === 'politics',
+      });
+    }
+
+    /** [AK-REF-01] cap
+     * Aggregate operative capability among the relevant public functions, or inspect one organization. Capability is a bounded scenario quantity, not an empirical success probability.
+     */
+    cap(id, org = null) {
+      if (org) return this.operational(id, org);
+      const relevant = this.publicOrgs.filter((o) =>
+        id === 'oversight'
+          ? ['audit', 'investigation', 'decision'].includes(o.fn)
+          : id === 'complaints'
+            ? ['integrity', 'prevention', 'service'].includes(o.fn)
+            : true,
+      );
+      return mean(
+        relevant.filter((o) => this.eligibleTool(id, o)).map((o) => this.operational(id, o)),
+      );
+    }
+
+    /** [AK-REF-02] recipients
+     * Choose legally/functionally competent recipients and split reform funds using configured central/local shares. The shares are provisional country assumptions rather than measured budget allocations.
+     */
+    recipients(id) {
+      let target =
+        id === 'aca'
+          ? this.publicOrgs.filter((o) =>
+              ['prevention', 'investigation', 'integrity'].includes(o.fn),
+            )
+          : id === 'oversight'
+            ? this.publicOrgs.filter((o) =>
+                ['audit', 'investigation', 'prosecution', 'decision', 'civil'].includes(o.fn),
+              )
+            : id === 'penalties'
+              ? this.publicOrgs.filter((o) =>
+                  ['decision', 'civil', 'integrity', 'service'].includes(o.fn),
+                )
+              : this.publicOrgs.filter((o) => o.fn !== 'budget');
+      target = target.filter((o) => this.eligibleTool(id, o));
+      if (!target.length) throw Error('No competent recipient for ' + id);
+      const central = target.filter((o) => o.fn !== 'service'),
+        local = target.filter((o) => o.fn === 'service'),
+        share = this.state.env.central_allocation / 100;
+      return target.map((o) => ({
+        org: o.id,
+        share:
+          central.length && local.length
+            ? o.fn === 'service'
+              ? (1 - share) / local.length
+              : share / central.length
+            : 1 / target.length,
+        balance: 0,
+        setupWork: 0,
+        setupSpent: 0,
+        spent: 0,
+        work: 0,
+        delay: 3,
+        installed: false,
+        outputs: 0,
+      }));
+    }
+
+    /** [AK-REF-01] adopt
+     * Enact the user-selected formal reform and its common intended scope immediately. This does not install implementation capacity, deliver teaching or bypass practical funding/work constraints.
+     */
+    adopt() {
+      const s = this.state,
+        n = this.roles[2].length + this.roles[3].length;
+      for (const selected of this.config.policies) {
+        const p = {
+          ...selected,
+          initialRate: selected.mobilization,
+          rate: selected.mobilization,
+          scope: 0.85,
+          originalScope: 0.85,
+          formal: 'active',
+          requirements: requirements(selected.id, n, s.env),
+          allocations: this.recipients(selected.id),
+          mobilized: 0,
+          deployed: 0,
+          diverted: 0,
+          requested: 0,
+          reviews: [],
+        };
+        s.policies.push(p);
+        for (const a of p.allocations) this.orgs[a.org].legal[p.id] = p.scope;
+        this.emit(
+          'resources',
+          'Reform formally adopted',
+          Profiles.policies.find((x) => x.id === p.id).label +
+            ' starts at ' +
+            Math.round(p.rate * 100) +
+            '% of estimated additional requirements. Formal adoption is separate from implementation.',
+          [s.politics.controller],
+          'P-' + p.id,
+          'Adopted',
+        );
+      }
+    }
+
+    /** [AK-DEC-02] effects
+     * Keep all nine consequence slots explicit and finite. The returned vector is an assessed valuation used by utility, not a physical resource transfer.
+     */
+    effects(social, economic, political) {
+      const v = [...social, ...economic, ...political];
+      if (v.length !== 9 || v.some((x) => !Number.isFinite(x)))
+        throw Error('Expected nine explicit consequences.');
+      return v;
+    }
+
+    /** [AK-DEC-01] [AK-ACT-02] choose
+     * Score every available option under subjective motives, need, accountability expectations, TPB elements and keyed Gumbel uncertainty; take the maximum. Record meaningful opportunities only when a real alternative to a qualifying improper option exists.
+     */
+    choose(agent, context, options, key) {
+      let best = null;
+      const ctx = Adaptive.context(
+        context,
+        options.some((o) => o.corrupt),
+      );
+      const scored = options.map((o) => {
+        const effects = [...o.effects],
+          need =
+            clamp(
+              (agent.cost + 0.2) /
+                Math.max(0.2, 0.9 * agent.psychology.expectedIncome + 0.15 * agent.balance),
+              0.5,
+              2,
+            ) +
+            0.5 * (agent.financialPressure || 0);
+        effects[3] *= need;
+        if (o.corrupt) {
+          effects[3] -= agent.riskBelief;
+          effects[0] -= 0.3 * agent.riskBelief;
+          effects[6] -= (agent.office ? 0.6 : 0.15) * agent.riskBelief;
+        }
+        const rawAttitude = sum(agent.motives.map((w, i) => w * effects[i])) - (o.effort || 0),
+          rawNorm = o.norm ?? (o.corrupt ? agent.normCorrupt : -agent.normCorrupt),
+          rawControl = o.control ?? agent.control;
+        const adjusted = Adaptive.decision(agent, ctx, o, rawAttitude, rawNorm, rawControl),
+          { attitude, norm, control } = adjusted;
+        const uncertainty = -0.2 * Math.log(-Math.log(this.rand('choice', key, agent.id, o.name))),
+          utility = attitude + 0.5 * norm + 0.25 * (2 * control - 1) + uncertainty,
+          item = {
+            name: o.name,
+            effects,
+            attitude,
+            norm,
+            control,
+            uncertainty,
+            utility,
+            adaptation: { context: ctx, before: adjusted.before, influence: adjusted.influence },
+          };
+        if (!best || utility > best.score) best = { option: o, score: utility, item };
+        return item;
+      });
+      const d = {
+        month: this.month,
+        context,
+        choice: best.option.name,
+        perceived: best.item,
+        alternatives: scored,
+        completed: null,
+      };
+      if (options.length > 1 && options.some((o) => o.corrupt)) {
+        d.meaningfulKey = this.month + '|' + context + '|' + key + '|' + agent.id;
+        agent.meaningful.push({
+          key: d.meaningfulKey,
+          month: this.month,
+          role: agent.role,
+          corrupt: false,
+          completed: false,
+          attempted: !!best.option.corrupt,
+        });
+        this.state.distribution[agent.role].opportunities++;
+        if (agent.meaningful.length > 24) agent.meaningful.shift();
+      }
+      agent.lastDecision = d;
+      agent.decisions.push(d);
+      if (agent.decisions.length > 5) agent.decisions.shift();
+      return best.option;
+    }
+
+    /** [AK-REF-03] operatingPolicy
+     * Require active formal status, completed setup and recent delivery at the specific recipient. The check gates new personal exposure without erasing older memories or baseline capability.
+     */
+    operatingPolicy(id, o) {
+      const p = this.state.policies.find((p) => p.id === id && p.formal === 'active');
+      const allocation = p?.allocations.find(
+        (a) => a.org === o?.id && a.installed && a.lastDelivered >= this.month - 1,
+      );
+      return allocation ? { p, allocation } : null;
+    }
+
+    /** [AK-ADP-01] expose
+     * Deliver a real encountered policy episode with known source credibility and actual dose. Count additional teaching/verification contacts only when delivery is substantive and not a duplicate; uptake may still fail.
+     */
+    expose(a, id, event, o, quality = 1, extra = {}) {
+      if (!this.operatingPolicy(id, o)) return false;
+      const knownTrust =
+        a.sourceTrust[o.id] ??
+        0.25 + 0.5 * (a.support.find((t) => t.org === o.id)?.affinity ?? 0.5);
+      const observed = Adaptive.observe(
+        a,
+        id,
+        event,
+        this.month,
+        (process, ...key) => this.rand('learning-' + process, ...key),
+        { delivered: true, source: o.id, quality, credibility: knownTrust, ...extra },
+      );
+      if (observed.delivered && !observed.duplicate && ['education', 'declarations'].includes(id))
+        Reporting.activity(this, id);
+      return true;
+    }
+
+    /** [AK-CAS-03] riskExperience
+     * Attribute communicated procedure-specific cost information to one operative tool, falling back to ordinary experience. Avoid stacking the same event as generic risk and several policy bonuses.
+     */
+    riskExperience(a, event, o, target, quality = 1) {
+      const extra = { elements: ['risk'], targets: { risk: clamp(target) } };
+      for (const id of ['penalties', 'oversight', 'aca', 'declarations'])
+        if (this.expose(a, id, event, o, quality, extra)) return;
+      Adaptive.observe(
+        a,
+        'experience',
+        event,
+        this.month,
+        (process, ...key) => this.rand('learning-' + process, ...key),
+        { delivered: true, source: o.id, quality, credibility: 1, ...extra },
+      );
+    }
+
+    /** [AK-INS-01] practice
+     * Read organization-and-role-specific honest/corrupt familiarity. This scalar affects particular effort/work expressions; its existence does not make repeated conduct an institution without reference reactions.
+     */
+    practice(a, action) {
+      return this.orgs[a.org].practice[a.role][action];
+    }
+
+    /** [AK-ACT-01] [AK-ACT-02] act
+     * Complete the current meaningful choice or record an actual corrupt act, preserving the last-24 history. A one-option duty or repeated call cannot manufacture lawful recovery credits.
+     */
+    act(a, corrupt) {
+      let entry = a.meaningful.find((x) => x.key === a.lastDecision?.meaningfulKey);
+      if (!corrupt && (!entry || entry.completed || entry.month !== this.month)) return false;
+      if (!entry || entry.completed) {
+        entry = {
+          key:
+            'completed-' + this.month + '-' + a.id + '-' + (a.corruptActions + a.integrityChoices),
+          month: this.month,
+          role: a.role,
+          corrupt: false,
+          completed: false,
+        };
+        a.meaningful.push(entry);
+        this.state.distribution[a.role].opportunities++;
+        if (a.meaningful.length > 24) a.meaningful.shift();
+      }
+      entry.corrupt = corrupt;
+      entry.completed = true;
+      if (a.lastDecision?.perceived?.effects)
+        Adaptive.feedback(
+          a,
+          Object.fromEntries(
+            a.lastDecision.perceived.effects.map((v, i) => [i, Math.min(1, Math.abs(v))]),
+          ),
+          0.35,
+        );
+      if (corrupt) {
+        a.corruptActions++;
+        a.lastCorrupt = this.month;
+        a.recoveryChoices = 0;
+        a.state = 'corrupt';
+        this.state.distribution[a.role].acts++;
+      } else {
+        a.integrityChoices++;
+        a.recoveryChoices++;
+        this.state.metrics.lawfulChoices++;
+      }
+      if (a.lastDecision) a.lastDecision.completed = true;
+      return true;
+    }
+
+    /** [AK-ACT-01] completeCorruption
+     * Record one qualifying act and its participants, roles, amount, source organization and visibility. Victim payments are accounted separately; records can exist before any case or public allegation.
+     */
+    completeCorruption(actors, kind, amount, orgId, coerced = false, eventKey = null) {
+      const s = this.state;
+      for (const a of actors) this.act(a, true);
+      s.metrics.corruptActs++;
+      if (coerced) s.metrics.extortion++;
+      else s.metrics.voluntaryExchanges++;
+      const rec = {
+        id:
+          'A-' +
+          this.month +
+          '-' +
+          hash(eventKey || kind + '|' + actors.map((a) => a.id).join('|')).toString(16),
+        month: this.month,
+        kind,
+        actors: actors.map((a) => a.id),
+        roles: actors.map((a) => a.role),
+        amount,
+        org: orgId,
+        truth: true,
+        visibility: this.orgs[orgId]
+          ? this.orgs[orgId].disclosureQuality *
+            (0.4 + 0.6 * this.operational('disclosure', this.orgs[orgId]))
+          : 0.25,
+      };
+      s.conduct.push(rec);
+      return rec;
+    }
+
+    // Scope is a common provisional coverage prior within a function-specific mandate.
+    // Evidence status is retained separately and is never converted to effectiveness.
+
+    /** [AK-COU-02] eligibleTool
+     * Apply principal-function and covered-role gates. These are simplified modeled mandates and should not be presented as a comprehensive legal jurisdiction map.
+     */
+    eligibleTool(id, o, person = null) {
+      if (!o || o.category !== 2) return false;
+      const f = o.fn;
+      const allowed =
+        id === 'aca'
+          ? ['prevention', 'integrity', 'investigation']
+          : id === 'oversight'
+            ? ['audit', 'investigation', 'prosecution', 'decision', 'civil', 'service', 'integrity']
+            : id === 'penalties'
+              ? ['decision', 'civil', 'integrity', 'service']
+              : id === 'protection' || id === 'complaints'
+                ? ['integrity', 'prevention', 'service']
+                : id === 'disclosure'
+                  ? ['prevention', 'integrity', 'service', 'audit', 'decision', 'civil']
+                  : [
+                      'prevention',
+                      'integrity',
+                      'service',
+                      'investigation',
+                      'prosecution',
+                      'audit',
+                      'decision',
+                      'civil',
+                    ];
+      if (!allowed.includes(f)) return false;
+      if (
+        person &&
+        ['pay', 'merit', 'rotation', 'declarations', 'conflicts'].includes(id) &&
+        person.role !== 2 &&
+        person.role !== 3
+      )
+        return false;
+      return true;
+    }
+
+    /** [AK-REF-01] coverage
+     * Return current formal scope, with any endogenous narrowing applied. Formal scope can change before new delivery, so scope-sensitive diagnostics are capability estimates rather than proof of implementation.
+     */
+    coverage(id, o, person = null) {
+      if (!this.eligibleTool(id, o, person)) return 0;
+      const base = clamp(o.legal[id] ?? 0.55),
+        policy = this.state.policies.find((p) => p.id === id);
+      const scope = policy ? Math.min(base, policy.scope) : base;
+      return scope;
+    }
+
+    /** [AK-REF-01] covered
+     * Use a fixed society/body/tool/person draw to keep legal coverage consistent over repeated encounters. Do not replace this with a fresh monthly compliance lottery.
+     */
+    covered(id, o, person) {
+      return (
+        this.coverage(id, o, person) >
+        draw(
+          'Antarkya-legal-coverage',
+          this.state.societyDrawKey,
+          id,
+          o.id,
+          person?.id ?? 'institution',
+        )
+      );
+    }
+
+    /** [AK-REF-01] operational
+     * Combine legal coverage with actual organization capability, using a deterministic coverage gate for a specified person. This differs from the extra installed-delivery gate required for persuasive exposure.
+     */
+    operational(id, o, person = null) {
+      return (
+        (person ? (this.covered(id, o, person) ? 1 : 0) : this.coverage(id, o)) * (o.caps[id] ?? 0)
+      );
+    }
+
+    /** [AK-ORG-01] [AK-NET-01] relationship
+     * Separate directional trust, shared membership, support affinity and effective access. Access can affect opportunity and insider incentives without providing automatic immunity.
+     */
+    relationship(a, b) {
+      const l = this.tie(a.id, b.id),
+        trust = l ? (l.a === a.id ? l.trustAB : l.trustBA) : 0;
+      const shared = a.memberships.some((x) => b.memberships.includes(x)) ? 0.15 : 0;
+      const affinity = a.support.find((t) => t.org === b.org)?.affinity ?? 0.5;
+      return {
+        trust,
+        strength: l?.strength ?? 0,
+        affinity,
+        access: clamp(shared + (l?.strength ?? 0) * trust),
+      };
+    }
+
+    /** [AK-ECO-03] experienced
+     * Aggregate all service experiences into at most one bounded opinion/control update per person/month. Waiting files can increase actual burden without multiplying the learning rate indefinitely.
+     */
+    experienced(a, observations) {
+      // One bounded behavioral update per person/month, not per waiting file.
+      const e = a.experience;
+      if (e.feedbackMonth === this.month || !observations.length) return;
+      e.feedbackMonth = this.month;
+      const satisfaction = mean(observations.map((x) => x.satisfaction));
+      e.trust = clamp(e.trust + 0.08 * (satisfaction - e.trust));
+      a.control = clamp(a.control + 0.025 * (0.2 + 0.7 * satisfaction - a.control));
+      Adaptive.feedback(a, { 0: satisfaction, 3: 1 - satisfaction, 5: satisfaction }, 0.7);
+      const byOrg = new Map();
+      for (const x of observations) {
+        const prev = byOrg.get(x.org) || [];
+        prev.push(x.satisfaction);
+        byOrg.set(x.org, prev);
+      }
+      for (const [org, values] of byOrg) {
+        const support = a.support.find((t) => t.org === org);
+        if (support)
+          support.affinity = clamp(
+            support.affinity +
+              ((0.04 * values.length) / observations.length) * (mean(values) - support.affinity),
+          );
+      }
+      const party = a.support.find((t) => t.org === this.state.politics.governingParty);
+      if (party) party.affinity = clamp(party.affinity + 0.02 * (satisfaction - party.affinity));
+    }
+
+    /** [AK-ECO-02] [AK-REF-03] priorities
+     * Rank work/funding requests by the actor’s evaluated priority-versus-defer utility difference. Ranking does not create additional money or time, and the later feasibility checks still bind.
+     */
+    priorities(policies, actor, org, key) {
+      return policies
+        .map((p) => {
+          const target = org || this.publicOrgs.find((o) => o.fn === 'budget');
+          const perf = this.policyFeedback(p),
+            opts = [
+              {
+                name: 'prioritize',
+                effects: this.effects(
+                  [0, 0.05, 0.15],
+                  [0, 0.05, 0.3 * (1 - perf.delivery)],
+                  [0, 0.1, 0.4 * perf.support],
+                ),
+                effort: 0.03 + (target.backlog / Math.max(1, target.members.length)) * 0.01,
+              },
+              {
+                name: 'defer',
+                effects: this.effects([0, 0, 0], [0.04, 0, 0], [0, 0, 0]),
+                effort: 0,
+              },
+            ];
+          this.choose(actor, 'Work priority ' + p.id, opts, key + '-' + p.id + '-' + target.id);
+          return {
+            p,
+            score:
+              actor.lastDecision.alternatives.find((o) => o.name === 'prioritize').utility -
+              actor.lastDecision.alternatives.find((o) => o.name === 'defer').utility,
+          };
+        })
+        .sort((a, b) => b.score - a.score || a.p.id.localeCompare(b.p.id))
+        .map((x) => x.p);
+    }
+
+    /** [AK-REF-04] [AK-MAC-01] policyFeedback
+     * Compute observed delivery, governing support, resistance and waiting used in actor reviews. This is derived feedback, not a separately invented political-will coefficient.
+     */
+    policyFeedback(p) {
+      this.feedbackCache ??= {};
+      const cached = this.feedbackCache[p.id];
+      if (cached?.month === this.month) return cached.value;
+      const allocations = p.allocations,
+        delivery = clamp(
+          sum(allocations.map((a) => a.work)) /
+            Math.max(0.01, p.requirements.time * Math.max(1, this.month)),
+        ),
+        opinions = this.agents.map((a) => ({
+          a,
+          aff: a.support.find((t) => t.org === this.state.politics.governingParty)?.affinity ?? 0.5,
+        }));
+      const support = mean(opinions.map((x) => 0.6 * x.aff + 0.4 * x.a.experience.trust));
+      const resistance = mean(
+        allocations.map((a) =>
+          ['resist', 'redirect'].includes(this.orgs[a.org].responses[p.id]) ? 1 : 0,
+        ),
+      );
+      const value = {
+        delivery,
+        support,
+        resistance,
+        wait: mean(this.agents.map((a) => a.experience.wait / Math.max(1, a.experience.service))),
+      };
+      this.feedbackCache[p.id] = { month: this.month, value };
+      return value;
+    }
+
+    /** [AK-NET-01] peers
+     * Select at most two accessible peers using directional relationship strength/trust. Sharing is selective and cannot broadcast omniscient world truth to the entire society.
+     */
+    peers(a, key) {
+      return (
+        this.informationLinks?.get(a.id) ||
+        Object.values(this.state.links).filter((l) => l.a === a.id || l.b === a.id)
+      )
+        .filter((l) => l.strength > 0.05)
+        .map((l) => {
+          const id = l.a === a.id ? l.b : l.a,
+            peer = this.agents[id],
+            r = this.relationship(peer, a);
+          return {
+            peer,
+            weight: r.strength * r.trust,
+            score:
+              -Math.log(this.rand('peer-route', key, a.id, id)) /
+              Math.max(0.000001, r.strength * r.trust),
+          };
+        })
+        .filter((p) => p.weight > 0.01)
+        .sort((x, y) => x.score - y.score)
+        .slice(0, 2);
+    }
+
+    /** [AK-INF-01] fundingDependence
+     * Measure recent active funder leverage relevant to the story subject using actual private flows. These private payments never replenish the public reform implementation pool.
+     */
+    fundingDependence(outlet, subject) {
+      const recent = this.state.funding.filter(
+        (f) => f.active && f.to === outlet.id && this.month - f.last <= 12,
+      );
+
+      /** [AK-NET-01] recentAmount
+       * Local helper for fundingDependence; its inputs and return value are part of the enclosing mechanism. Directional trust and useful relationships.
+       */
+      const recentAmount = (f) =>
+        sum((f.payments || []).filter((x) => this.month - x.month < 12).map((x) => x.amount));
+      const total = sum(recent.map(recentAmount));
+      const subjectOrg = this.agents[subject]?.org;
+      const tied = sum(recent.filter((f) => f.from === subjectOrg).map(recentAmount));
+      const income = 12 * (3 + outlet.members.length * (outlet.category === 1 ? 1.25 : 0.35));
+      return clamp(tied / Math.max(0.01, income + total));
+    }
+
+    /** [AK-NET-01] tie
+     * Look up a single undirected link record whose two trust fields remain directional. An absent record is not the same as absent organizational affinity.
+     */
+    tie(a, b) {
+      return this.state.links[[a, b].sort((x, y) => x - y).join(':')];
+    }
+
+    /** [AK-NET-01] related
+     * Translate the modeled relationship-access threshold into a connected/outsider gate. This is an operational threshold, not a permanent class characteristic or legal finding.
+     */
+    related(a, b) {
+      return this.relationship(a, b).access > 0.12;
+    }
+
+    /** [AK-INS-01] [AK-NET-01] link
+     * Update useful/coercive ties and transmit a relevant reference’s approval/disapproval. Corrupt cooperation and coerced payment are distinct relationship kinds; neither repetition alone nor category membership establishes an institution.
+     */
+    link(a, b, positive, corrupt = false) {
+      const key = [a.id, b.id].sort((x, y) => x - y).join(':'),
+        s = this.state;
+      const support = a.support.find((t) => t.org === b.org);
+      if (support) support.affinity = clamp(support.affinity + (positive ? 0.015 : -0.04));
+      let l = s.links[key];
+      if (!l && positive && this.rand('tie', a.id, b.id) < 0.1)
+        l = s.links[key] = {
+          a: a.id,
+          b: b.id,
+          trustAB: 0.25,
+          trustBA: 0.25,
+          strength: 0.1,
+          count: 0,
+          corruptCount: 0,
+          born: this.month,
+          last: this.month,
+        };
+      if (l) {
+        l.lastKind = positive ? (corrupt ? 'corrupt cooperation' : 'cooperation') : 'coercion';
+        l.count++;
+        l.last = this.month;
+        l.strength = clamp(l.strength + (positive ? 0.03 : -0.06));
+        const forward = l.a === a.id ? 'trustAB' : 'trustBA',
+          reverse = l.a === a.id ? 'trustBA' : 'trustAB';
+        l[forward] = clamp(l[forward] + (positive ? 0.025 : -0.08));
+        l[reverse] = clamp(l[reverse] + (positive ? 0.02 : -0.04));
+        if (corrupt && positive) l.corruptCount++;
+        if (
+          l.born === this.month &&
+          (corrupt || this.orgs[a.org].leader === a.id || this.orgs[b.org].leader === b.id)
+        )
+          this.emit(
+            'information',
+            'A useful relationship forms',
+            'An informal tie connects ' +
+              TYPES[a.role] +
+              ' #' +
+              a.id +
+              ' and ' +
+              TYPES[b.role] +
+              ' #' +
+              b.id +
+              '. Membership and trust remain separate.',
+            [a.id, b.id],
+            'N-' + key,
+            'New tie',
+          );
+      }
+      // A relevant reference's reaction transmits an expectation; action counts alone do not.
+      Adaptive.feedback(
+        a,
+        positive ? { 1: 0.6, 4: corrupt ? 0.5 : 0.2 } : { 0: 0.7, 3: 0.6 },
+        this.relationship(a, b).trust,
+      );
+      if (this.orgs[b.org].leader === b.id || this.relationship(a, b).trust > 0.45) {
+        const relevant = positive || corrupt;
+        if (relevant) {
+          const approves =
+            this.rand('reference-reaction', a.id, b.id, l?.count ?? 0) <
+            clamp(0.5 + 0.4 * (corrupt ? b.normCorrupt : -b.normCorrupt));
+          const signal = (corrupt ? 1 : -1) * (approves ? 1 : -1);
+          a.normCorrupt = clamp(a.normCorrupt + 0.04 * (signal - a.normCorrupt), -1, 1);
+          const p = this.orgs[a.org].practice[a.role],
+            k = corrupt ? 'corrupt' : 'honest';
+          p[k] = clamp(p[k] + 0.015 * (Number(approves) - p[k]));
+        }
+      }
+      return l;
+    }
+
+    /** [AK-GEO-01] nearest
+     * Sample a small weighted candidate set using proximity, affinity and access, with possible remote contact. Despite the name it is stochastic weighted contact selection, not simply Euclidean nearest neighbor.
+     */
+    nearest(a, options, key) {
+      if (!options.length) return null;
+      const candidates = [
+        ...new Set(
+          Array.from(
+            { length: 6 },
+            (_, j) => options[Math.floor(this.rand('partner', key, a.id, j) * options.length)],
+          ),
+        ),
+      ];
+      const remote = this.rand('remote', key, a.id) < 0.15;
+      return candidates
+        .map((b) => {
+          const workplace = key === 'administrative' || key === 'business-political',
+            x = workplace ? a.workX : a.x,
+            y = workplace ? a.workY : a.y,
+            r = b.memberships
+              ? this.relationship(a, b)
+              : { access: 0, affinity: a.support.find((t) => t.org === b.id)?.affinity ?? 0.5 },
+            distance = Math.hypot(
+              x - (workplace ? (b.workX ?? b.x) : b.x),
+              y - (workplace ? (b.workY ?? b.y) : b.y),
+            ),
+            weight = (remote ? 1 : Math.exp(-4 * distance)) * (0.4 + r.affinity + 0.8 * r.access);
+          return {
+            b,
+            score:
+              -Math.log(this.rand('contact-weight', key, a.id, b.id)) / Math.max(0.00001, weight),
+          };
+        })
+        .sort((x, y) => x.score - y.score)[0].b;
+    }
+
+    /** [AK-ECO-01] [AK-ECO-02] monthlyAccounts
+     * Move ordinary income, organizational funding, modeled withholding and consumption through conserved accounts. Reset public staff budgets and record actual unmet-needs pressure; there is no endogenous GDP update.
+     */
+    monthlyAccounts() {
+      const s = this.state;
+      transfer(
+        s.outside,
+        s.treasury,
+        180 * clamp(Math.sqrt(s.env.gdp_per_capita_ppp / 20000), 0.6, 1.8),
+      );
+      for (const o of this.orgs) {
+        const staff = o.members.map((id) => this.agents[id]).filter((a) => a.role === o.category);
+        o.professionalSkill = mean(staff.map((a) => a.skill));
+        o.capacity = staff.length * (0.25 + 0.4 * o.skill + 0.35 * o.professionalSkill);
+        o.time = o.capacity;
+        delete o.limits;
+        o.routineUsed = 0;
+        o.reformUsed = 0;
+        o.caseUsed = 0;
+        if (o.category === 2) {
+          const wages = sum(
+            o.members.map((id) => (this.agents[id].role === 2 ? this.agents[id].income : 0)),
+          );
+          transfer(s.treasury, o, wages + 3);
+        } else
+          transfer(
+            s.outside,
+            o,
+            3 + o.members.length * (o.category === 1 ? 1.25 : o.category === 3 ? 1.8 : 0.35),
+          );
+        transfer(o, s.outside, 1 + 0.04 * o.members.length);
+        for (const k of KEYS) o.caps[k] = clamp(o.caps[k] * 0.998, 0.05, 0.98);
+        for (const p of o.practice) {
+          p.honest *= 0.999;
+          p.corrupt *= 0.999;
+        }
+      }
+      for (const a of this.agents) {
+        const employer = a.role === 0 ? s.outside : this.orgs[a.org],
+          paid = transfer(employer, a, a.income);
+        a.receipts.push(paid);
+        if (a.receipts.length > 6) a.receipts.shift();
+        transfer(a, s.treasury, paid * 0.1);
+        if (a.role === 2) Reporting.activity(this, 'pay', paid * 0.9);
+        const consumed =
+          transfer(a, s.outside, a.cost * 0.72) +
+          transfer(
+            a,
+            this.orgs[8 + Math.floor(this.rand('consumption', a.id) * 24)],
+            a.cost * 0.28,
+          );
+        a.financialPressure = clamp(
+          0.9 * a.financialPressure + 0.1 * (1 - consumed / Math.max(0.001, a.cost)),
+        );
+        a.descriptive = clamp(a.descriptive * 0.999 + 0.0003);
+      }
+    }
+
+    /** [AK-ECO-02] scheduleWork
+     * Reserve one finite public time budget across routine, reform and case categories using assessed priorities. Later operations debit both the relevant reservation and common remaining capacity.
+     */
+    scheduleWork() {
+      for (const o of this.publicOrgs) {
+        const a = this.agents[o.leader],
+          service = this.state.services.filter((t) => t.org === o.id).length,
+          files = this.state.cases.filter(
+            (c) =>
+              c.status !== 'closed' &&
+              (this.responsible(c.stage, c.route, c).id === o.id ||
+                (!c.intakeDone && c.jurisdiction === o.jurisdiction)),
+          ).length,
+          assigned = this.state.policies.some(
+            (p) => p.formal === 'active' && p.allocations.some((x) => x.org === o.id),
+          );
+        const options = [
+          ['reform', assigned ? 0.6 : 0],
+          ['routine', o.fn === 'service' ? 0.5 + service / Math.max(1, o.members.length) : 0.05],
+          ['case', 0.1 + files / Math.max(1, o.members.length)],
+        ].map(([name, need]) => ({
+          name,
+          effects: this.effects([0, 0, 0.1], [0, 0, need], [0, 0, need]),
+          effort: 0,
+        }));
+        this.choose(a, 'Allocate staff time', options, 'staff-time-' + o.id);
+        const scores = a.lastDecision.alternatives.map((x) =>
+            Math.exp(clamp(x.utility, -3, 3) * 2),
+          ),
+          total = sum(scores);
+        o.caseBacklog = files;
+        o.limits = Object.fromEntries(
+          options.map((x, i) => [x.name, (o.time * scores[i]) / total]),
+        );
+      }
+    }
+
+    /** [AK-REF-02] fundPolicies
+     * Disburse actually available treasury resources against each policy’s starting/current rate and setup/recurring requirement. Requested amounts can exceed mobilized funds, and policy order matters under scarcity.
+     */
+    fundPolicies() {
+      const s = this.state;
+      for (const p of this.priorities(
+        s.policies,
+        this.agents[s.politics.controller],
+        null,
+        'budget-priority',
+      )) {
+        if (p.formal !== 'active') continue;
+        const setup = p.allocations.some((a) => !a.installed) ? p.requirements.setup / 3 : 0,
+          request = p.rate * (p.requirements.monthly + setup);
+        p.requested += request;
+        for (const a of p.allocations) p.mobilized += transfer(s.treasury, a, request * a.share);
+      }
+    }
+
+    /** [AK-REF-03] [AK-POL-ACA] [AK-POL-MERIT] [AK-POL-ROTATION] [AK-POL-PROTECTION] [AK-POL-DECLARATIONS] [AK-POL-CONFLICTS] [AK-POL-OVERSIGHT] [AK-POL-PAY] [AK-POL-PENALTIES] [AK-POL-DISCLOSURE] [AK-POL-COMPLAINTS] [AK-POL-EDUCATION] implementPolicies
+     * Execute actor-selected implementation/resistance/selectivity/diversion, shared-time/cash constraints and progressive setup. Apply only the operating tool’s named structural/learning hooks; full funding does not guarantee completion or integrity.
+     */
+    implementPolicies() {
+      const s = this.state,
+        ranks = new Map();
+      for (const o of this.publicOrgs) {
+        const ordered = this.priorities(
+          s.policies.filter((p) => p.allocations.some((a) => a.org === o.id)),
+          this.agents[o.leader],
+          o,
+          'implementation-priority',
+        );
+        ranks.set(o.id, new Map(ordered.map((p, i) => [p.id, i])));
+      }
+      const work = s.policies
+        .flatMap((p) => p.allocations.map((allocation) => ({ p, allocation })))
+        .sort(
+          (x, y) =>
+            ranks.get(x.allocation.org).get(x.p.id) - ranks.get(y.allocation.org).get(y.p.id) ||
+            x.allocation.org - y.allocation.org ||
+            x.p.id.localeCompare(y.p.id),
+        );
+      for (const { p, allocation } of work) {
+        if (p.formal !== 'active') continue;
+        {
+          const o = this.orgs[allocation.org],
+            leader = this.agents[o.leader],
+            reqWork = p.requirements.time * allocation.share,
+            reqMoney = p.requirements.monthly * allocation.share,
+            expectation = mean(o.members.slice(0, 6).map((id) => -this.agents[id].normCorrupt));
+          if (allocation.balance <= 0 || Math.min(o.time, o.limits?.reform ?? o.time) < 0.05) {
+            o.responses[p.id] = 'awaiting resources';
+            continue;
+          }
+          const decision = this.choose(
+            leader,
+            'Implement ' + p.id,
+            [
+              {
+                name: 'implement',
+                effects: this.effects([0.1, 0.15, 0.45], [0.05, 0.35, 0.9], [0.05, 0.1, 0.65]),
+                norm: expectation,
+                effort: 0.08,
+              },
+              {
+                name: 'selective',
+                effects: this.effects([0.1, 0.4, 0.05], [0.15, 0.6, 0.3], [0.15, 0.35, -0.1]),
+                norm: 0.15,
+                effort: 0.02,
+              },
+              {
+                name: 'resist',
+                effects: this.effects([0.1, 0.2, -0.2], [0.1, 0.2, -0.4], [0.05, 0.3, -0.35]),
+                norm: leader.normCorrupt,
+                effort: 0,
+              },
+              {
+                name: 'redirect',
+                effects: this.effects([-0.2, 0.1, -0.5], [0.8, 0.35, -0.8], [0.2, 0.15, -0.7]),
+                corrupt: true,
+                effort: 0.08,
+              },
+            ],
+            'policy-' + p.id + '-' + o.id,
+          );
+          s.metrics.opportunities++;
+          o.responses[p.id] = decision.name;
+          if (
+            decision.name === 'resist' ||
+            o.time <= 0 ||
+            allocation.balance <= 0 ||
+            !this.eligibleTool(p.id, o)
+          )
+            continue;
+          if (decision.name === 'redirect') {
+            const taken = transfer(
+              allocation,
+              leader,
+              Math.min(allocation.balance, reqMoney * 0.45),
+            );
+            if (taken > 0) {
+              o.time -= 0.05;
+              if (o.limits) o.limits.reform -= 0.05;
+              o.reformUsed += 0.05;
+              p.diverted += taken;
+              s.metrics.diversion += taken;
+              const rec = this.completeCorruption(
+                [leader],
+                'implementation diversion',
+                taken,
+                o.id,
+                false,
+                'policy-' + p.id + '-' + o.id,
+              );
+              if (this.rand('diversion-signal', p.id, o.id) < o.disclosureQuality * 0.2)
+                this.makeCase(rec, leader.id, 'audit');
+            }
+            continue;
+          }
+          const fidelity =
+              ((decision.name === 'selective' ? 0.45 : 1) * this.coverage(p.id, o)) /
+              p.originalScope,
+            available =
+              Math.min(
+                1,
+                Math.min(o.time, o.limits?.reform ?? o.time) / Math.max(reqWork, 0.01),
+                allocation.balance / Math.max(reqMoney, 0.01),
+              ) * fidelity,
+            used = reqWork * available,
+            cost = reqMoney * available;
+          o.time -= used;
+          if (o.limits) o.limits.reform -= used;
+          o.reformUsed += used;
+          if (used > 0) this.act(leader, false);
+          allocation.work += used;
+          if (p.id === 'pay' && allocation.installed) {
+            const eligible = o.members.filter(
+              (id) => this.agents[id].role === 2 && this.covered('pay', o, this.agents[id]),
+            );
+            let paidTotal = 0;
+            for (const id of eligible) {
+              const paid = transfer(
+                allocation,
+                this.agents[id],
+                (cost * o.caps.pay) / Math.max(1, eligible.length),
+              );
+              paidTotal += paid;
+              transfer(this.agents[id], s.treasury, paid * 0.1);
+              Reporting.activity(this, 'pay', paid * 0.9);
+              const receipts = this.agents[id].receipts;
+              if (receipts.length) receipts[receipts.length - 1] += paid;
+            }
+            transfer(allocation, s.outside, cost - paidTotal);
+          } else transfer(allocation, s.outside, cost);
+          allocation.spent += cost;
+          p.deployed += cost;
+          allocation.outputs += used;
+          if (!allocation.installed) {
+            const setupCost = Math.min(
+              allocation.balance,
+              ((p.requirements.setup * allocation.share) / 3) * available,
+            );
+            transfer(allocation, s.outside, setupCost);
+            allocation.setupSpent += setupCost;
+            p.deployed += setupCost;
+            allocation.setupWork += available / 3;
+            allocation.delay--;
+            if (
+              allocation.delay <= 0 &&
+              allocation.setupWork >= 1 &&
+              allocation.setupSpent + 1e-6 >= p.requirements.setup * allocation.share * 0.85
+            ) {
+              allocation.installed = true;
+              this.emit(
+                'resources',
+                'Implementation capacity comes online',
+                Profiles.policies.find((x) => x.id === p.id).label +
+                  ' completes setup in ' +
+                  o.name +
+                  '. Capacity still competes with routine and case work.',
+                [o.leader],
+                'P-' + p.id,
+                'Operating',
+              );
+            }
+            continue;
+          }
+          allocation.lastDelivered = this.month;
+          o.caps[p.id] = clamp(o.caps[p.id] + (0.98 - o.caps[p.id]) * 0.08 * available);
+          if (p.id === 'aca') o.skill = clamp(o.skill + 0.008 * available);
+          if (p.id === 'declarations')
+            for (const id of o.members)
+              if (this.covered('declarations', o, this.agents[id])) {
+                const person = this.agents[id];
+                person.disclosure = clamp(
+                  person.disclosure + 0.04 * available * (1 - person.disclosure),
+                );
+                if (this.month % 6 === 0)
+                  this.expose(
+                    person,
+                    'declarations',
+                    'verification-' + this.month + '-' + id,
+                    o,
+                    available,
+                    {
+                      targets: {
+                        risk: clamp(
+                          person.riskBelief + 0.1 * person.disclosure * (1 - person.riskBelief),
+                        ),
+                      },
+                    },
+                  );
+              }
+          if (p.id === 'disclosure') {
+            o.disclosureQuality = clamp(
+              o.disclosureQuality + 0.04 * available * (1 - o.disclosureQuality),
+            );
+            Reporting.activity(this, 'disclosure', used);
+          }
+          if (p.id === 'conflicts')
+            o.recordQuality = clamp(o.recordQuality + 0.03 * available * (1 - o.recordQuality));
+          if (p.id === 'aca')
+            for (const id of o.members)
+              if (this.agents[id].role === 2)
+                Adaptive.work(this.agents[id], used / Math.max(1, o.members.length));
+          if (p.id === 'education')
+            for (const a of s.agents)
+              if (
+                this.rand('education-coverage', o.id, a.id) <
+                0.06 * available * this.operational('education', o)
+              )
+                this.expose(
+                  a,
+                  'education',
+                  'education-' + this.month + '-' + o.id + '-' + a.id,
+                  o,
+                  available,
+                );
+        }
+      }
+    }
+
+    /** [AK-DEC-02] [AK-REF-04] budgetReview
+     * Run six-month utility/authorization decisions that can change rates, narrow scope or suspend a reform. Exceptional reviews, full repeal and reinstatement are not implemented by this routine.
+     */
+    budgetReview() {
+      const s = this.state;
+      if (!s.policies.length || this.month % 6 !== 0) return;
+      this.feedbackCache = {};
+      const budget = this.publicOrgs.find((o) => o.fn === 'budget'),
+        controller = this.agents[s.politics.controller],
+        approver = this.agents[budget.leader];
+      for (const p of s.policies) {
+        if (p.formal === 'repealed') continue;
+        const feedback = this.policyFeedback(p);
+        const burden =
+          sum(this.publicOrgs.map((o) => o.backlog)) / Math.max(1, this.roles[2].length);
+        const option = this.choose(
+          controller,
+          'Resource review ' + p.id,
+          [
+            {
+              name: 'increase',
+              effects: this.effects(
+                [0.1, 0.1, 0.4],
+                [-0.1, 0.2, 0.25 + 0.65 * feedback.delivery],
+                [0.2 * (2 * feedback.support - 1), 0.25, 0.6 - 0.03 * feedback.wait],
+              ),
+              norm:
+                (s.env.representation / 100) *
+                mean(this.agents.slice(0, 50).map((a) => -a.normCorrupt)),
+              effort: 0.1 + burden * 0.02,
+            },
+            {
+              name: 'hold',
+              effects: this.effects([0, 0.15, 0.1], [0.1, 0.3, 0.25], [0.1, 0.2, 0.1]),
+              effort: 0,
+            },
+            {
+              name: 'decrease',
+              effects: this.effects(
+                [0, 0.1, -0.2],
+                [0.25, 0.5, -0.35 - 0.3 * feedback.delivery],
+                [0.2 * (1 - feedback.support), 0.3, -0.3],
+              ),
+              effort: 0.03,
+            },
+            {
+              name: 'narrow',
+              effects: this.effects(
+                [-0.1, 0.2, -0.4],
+                [0.4, 0.6, -0.6],
+                [0.3 * (1 - feedback.support), 0.45 + 0.2 * feedback.resistance, -0.6],
+              ),
+              effort: 0.18,
+            },
+          ],
+          'review-' + p.id,
+        );
+        let consent = this.choose(
+          approver,
+          'Budget authorization',
+          [
+            {
+              name: 'approve',
+              effects: this.effects([0.1, 0.15, 0.2], [0.05, 0.2, 0.6], [0.1, 0.1, 0.4]),
+              effort: 0.05,
+            },
+            {
+              name: 'withhold',
+              effects: this.effects([0, 0.1, -0.15], [0.2, 0.2, -0.3], [0.05, 0.2, -0.3]),
+              effort: 0,
+            },
+          ],
+          'authorize-' + p.id,
+        );
+        if (s.politics.mode === 'parliamentary' && (s.politics.coalition || []).length > 1) {
+          const partner = this.agents[this.orgs[s.politics.coalition[1]].leader];
+          const vote = this.choose(
+            partner,
+            'Coalition budget consent',
+            [
+              {
+                name: 'approve',
+                effects: this.effects([0.05, 0.25, 0.2], [0.05, 0.4, 0.5], [0.1, 0.5, 0.3]),
+                effort: 0.05,
+              },
+              {
+                name: 'withhold',
+                effects: this.effects([0, 0.15, -0.15], [0.15, 0.3, -0.2], [0.15, 0.3, -0.2]),
+                effort: 0,
+              },
+            ],
+            'coalition-' + p.id,
+          );
+          if (vote.name === 'withhold') consent = vote;
+        }
+        const before = p.rate;
+        if (consent.name === 'approve') {
+          if (option.name === 'increase' && s.treasury.balance > p.requirements.monthly * 3)
+            p.rate = clamp(p.rate + 0.1);
+          if (option.name === 'decrease') p.rate = clamp(p.rate - 0.1);
+          if (
+            option.name === 'narrow' &&
+            p.reviews.filter((r) => r.choice === 'narrow' && r.passed).length >= 1
+          ) {
+            p.scope = clamp(p.scope - 0.1, 0.2, p.originalScope);
+            if (p.scope <= 0.25 && this.rand('rollback', p.id) < 0.25) p.formal = 'suspended';
+          }
+        }
+        for (const allocation of p.allocations)
+          this.orgs[allocation.org].legal[p.id] = Math.min(
+            p.scope,
+            this.orgs[allocation.org].legal[p.id],
+          );
+        p.reviews.push({
+          feedback,
+          month: this.month,
+          choice: option.name,
+          passed: consent.name === 'approve',
+          from: before,
+          to: p.rate,
+          scope: p.scope,
+        });
+        this.emit(
+          'resources',
+          'Reform resource review',
+          Profiles.policies.find((x) => x.id === p.id).label +
+            ': ' +
+            option.name +
+            ' proposed; ' +
+            (consent.name === 'approve' ? 'authorized' : 'authorization withheld') +
+            '. Mobilization ' +
+            Math.round(p.rate * 100) +
+            '%; current scope ' +
+            Math.round(p.scope * 100) +
+            '%.',
+          [controller.id, approver.id],
+          'P-' + p.id,
+          p.formal === 'active' ? 'Review' : 'Formal suspension',
+        );
+      }
+    }
+
+    /** [AK-ECO-03] addService
+     * Create one persistent administrative request and count a contact once at arrival. Pending work is not silently counted as a newly arriving contact every month.
+     */
+    addService(a, o, priority, kind, officer = null) {
+      this.state.services.push({
+        id: this.month + '-' + a.id + '-' + kind,
+        agent: a.id,
+        org: o.id,
+        arrival: this.month,
+        priority,
+        kind,
+        officer,
+      });
+      a.experience.service++;
+      this.state.metrics.serviceArrivals++;
+    }
+
+    /** [AK-CAS-01] report
+     * Let a witness/victim choose whether to report under subjective knowledge/safety and real costs. A submitted signal is not proof and can fail the affordability/viability threshold.
+     */
+    report(record, witness) {
+      const s = this.state,
+        access = this.cap('complaints'),
+        cost =
+          0.18 * (1 - access) +
+          Math.hypot(witness.x - this.orgs[record.org].x, witness.y - this.orgs[record.org].y) *
+            0.03;
+      for (const o of this.publicOrgs.filter((o) =>
+        ['service', 'prevention', 'integrity'].includes(o.fn),
+      ))
+        if (this.operatingPolicy('complaints', o)) {
+          this.expose(
+            witness,
+            'complaints',
+            'instructions-' + record.id,
+            o,
+            this.operational('complaints', o),
+          );
+          break;
+        }
+      const perceivedSafety = Adaptive.safety(witness);
+      const choice = this.choose(
+        witness,
+        'Report observed conduct',
+        [
+          {
+            name: 'report',
+            effects: this.effects([-0.1, 0, 0.65], [-0.1, 0, 0.7], [0, -0.05, 0.6]),
+            control: witness.control * (0.4 + 0.6 * Adaptive.knowledge(witness, 'report')),
+            effort: cost + (1 - perceivedSafety) * 0.15,
+          },
+          {
+            name: 'stay silent',
+            effects: this.effects([0.1, 0.1, -0.15], [0.05, 0.1, -0.2], [0, 0.1, -0.3]),
+            effort: 0,
+          },
+        ],
+        'report-' + record.id,
+      );
+      if (choice.name === 'report' && cost <= 0.16 && witness.balance >= cost) {
+        transfer(witness, s.outside, cost);
+        s.metrics.reports++;
+        this.makeCase(record, witness.id, 'complaint');
+      }
+    }
+
+    /** [AK-DEC-02] [AK-ACT-01] encounter
+     * Separate proposer choice, counterpart response, extortion/refusal, prevention and physical completion. Only actual completed voluntary exchanges enter that category; extortion demands and victim payments have separate records.
+     */
+    encounter(a, b, kind, key) {
+      if (!b || a.id === b.id) return;
+      const s = this.state,
+        org = this.orgs[b.org];
+      s.metrics.opportunities++;
+      s.metrics.encounterOpportunities = (s.metrics.encounterOpportunities || 0) + 1;
+      const gain = kind === 'contract' ? 1.2 : kind === 'political pressure' ? 0.75 : 0.6,
+        bribe = kind === 'contract' ? 0.25 : 0.1 + 0.15 * this.rand('amount', key);
+      const options = [
+        {
+          name: 'lawful',
+          effects: this.effects([0.15, 0.1, 0.35], [0.12, 0.1, 0.65], [0.05, 0.02, 0.2]),
+          norm: -a.normCorrupt,
+          effort: 0.08 * (1 - 0.4 * this.practice(a, 'honest')),
+        },
+        {
+          name: 'offer improper advantage',
+          effects: this.effects(
+            [-0.2, 0.15, -0.4],
+            [gain, 0.35, -0.85],
+            [kind === 'political pressure' || kind === 'vote buying' ? 0.7 : 0.05, 0.25, -0.65],
+          ),
+          corrupt: true,
+          control: clamp(a.control + (this.related(a, b) ? 0.15 : -0.15)),
+          effort: 0.12 * (1 - 0.4 * this.practice(a, 'corrupt')),
+        },
+      ];
+      if (kind === 'service' || kind === 'permit')
+        options.push({
+          name: 'decline / defer',
+          effects: this.effects([0, 0, -0.1], [-0.15, 0, -0.05], [0, 0, -0.1]),
+          effort: 0,
+        });
+      const da = this.choose(a, kind, options, key + '-first'),
+        extortable = kind === 'service' || kind === 'permit';
+      const bOptions = [
+        {
+          name: 'perform duty',
+          effects: this.effects([0.15, 0.1, 0.5], [0.1, 0.1, 0.6], [0.05, 0.05, 0.35]),
+          norm: -b.normCorrupt,
+          effort: 0.05 * (1 - 0.4 * this.practice(b, 'honest')),
+        },
+      ];
+      if (da.name === 'offer improper advantage')
+        bOptions.push({
+          name: 'accept',
+          effects: this.effects([-0.2, 0.1, -0.45], [0.6, 0.3, -0.8], [0.1, 0.2, -0.5]),
+          corrupt: true,
+          control: clamp(b.control + (this.related(a, b) ? 0.15 : -0.15)),
+          effort: 0.08 * (1 - 0.4 * this.practice(b, 'corrupt')),
+        });
+      if (extortable)
+        bOptions.push({
+          name: 'demand payment',
+          effects: this.effects([-0.35, 0, -0.6], [0.8, 0.2, -0.9], [0.2, 0.1, -0.7]),
+          corrupt: true,
+          effort: 0.12,
+        });
+      const db = this.choose(b, kind, bOptions, key + '-second');
+      if (db.name === 'demand payment') {
+        const pay = this.choose(
+            a,
+            'Respond to extortion',
+            [
+              {
+                name: 'pay under coercion',
+                effects: this.effects([-0.2, 0.05, -0.1], [-bribe, 0.05, -0.1], [0, 0, 0]),
+                effort: 0.02,
+              },
+              {
+                name: 'refuse coercion',
+                effects: this.effects([0.1, 0, 0.3], [-0.45, 0, 0.35], [-0.1, 0, 0.3]),
+                effort: 0.04,
+              },
+            ],
+            key + '-victim',
+          ),
+          amount = pay.name === 'pay under coercion' ? transfer(a, b, bribe) : 0;
+        if (amount > 0) {
+          a.coercedPayments = (a.coercedPayments || 0) + 1;
+          s.metrics.coercedPayments++;
+          s.metrics.bribeBurden += amount;
+          s.distribution[a.role].victimBurden += amount;
+        }
+        const rec = this.completeCorruption([b], 'extortion', amount, b.org, true, key);
+        s.metrics.encounterCorruptActs = (s.metrics.encounterCorruptActs || 0) + 1;
+        this.link(a, b, false, true);
+        this.report(rec, a);
+        this.addService(a, org, amount > 0, kind, b.id);
+        if (a.lastDecision) a.lastDecision.completed = amount > 0;
+        return;
+      }
+      if (da.name === 'offer improper advantage' && db.name === 'accept') {
+        const prevented =
+            this.related(a, b) &&
+            this.rand('coi-review', key) <
+              org.recordQuality * this.operational('conflicts', org, b) * 0.35,
+          money = kind === 'political pressure' ? 0 : prevented ? 0 : transfer(a, b, bribe);
+        if (!prevented && (kind === 'political pressure' || money > 0)) {
+          const rec = this.completeCorruption([a, b], kind, money, b.org, false, key);
+          s.metrics.encounterCorruptActs = (s.metrics.encounterCorruptActs || 0) + 1;
+          this.link(a, b, true, true);
+          if (kind === 'contract') {
+            const diverted = transfer(s.treasury, this.orgs[a.org], 0.8);
+            s.metrics.diversion += diverted;
+            rec.diversion = diverted;
+          }
+          if (kind === 'tax') s.metrics.foregoneRevenue += transfer(s.treasury, a, 0.15);
+          if (extortable) this.addService(a, org, true, kind, b.id);
+          if (this.rand('witness', key) < 0.12) {
+            const observer = this.nearest(a, this.roles[0], key + '-witness');
+            if (observer) this.report(rec, observer);
+          }
+          return;
+        }
+        if (prevented) {
+          Reporting.activity(this, 'conflicts');
+          this.expose(a, 'conflicts', 'conflict-' + key, org, org.recordQuality);
+          this.expose(b, 'conflicts', 'conflict-' + key, org, org.recordQuality);
+        }
+        s.metrics.failedProposals++;
+        a.lastDecision.completed = false;
+        b.lastDecision.completed = false;
+      } else {
+        if (da.name === 'offer improper advantage') {
+          s.metrics.failedProposals++;
+          s.metrics.refusals++;
+        } else if (da.name === 'lawful') this.act(a, false);
+        if (db.name === 'perform duty') this.act(b, false);
+        if (da.name !== 'decline / defer') this.link(a, b, true, false);
+      }
+      if ((extortable || kind === 'tax') && da.name !== 'decline / defer')
+        this.addService(a, org, false, kind, b.id);
+      if (this.rand('lawful-audit-record', key) < 0.035)
+        s.conduct.push({
+          id: 'L-' + this.month + '-' + hash(key).toString(16),
+          month: this.month,
+          kind,
+          actors: [a.id, b.id],
+          org: b.org,
+          amount: 0,
+          truth: false,
+          visibility: org.disclosureQuality * (0.4 + 0.6 * this.operational('disclosure', org)),
+        });
+    }
+
+    /** [AK-GEO-01] [AK-ACT-01] encounters
+     * Schedule role-specific opportunities in keyed random order, including campaigns and political pressure. These opportunity frequencies are generic model priors, not national encounter statistics.
+     */
+    encounters() {
+      const order = this.agents
+        .map((a) => ({ a, key: this.rand('encounter-order', a.id) }))
+        .sort((x, y) => x.key - y.key);
+      for (const { a } of order) {
+        if (a.eligibleUntil > this.month) continue;
+        if (this.rand('service-demand', a.id) < (a.role < 2 ? 0.45 : 0.12)) {
+          const o = this.nearest(a, this.services, 'service-org'),
+            candidates = o.members.filter((id) => this.agents[id].role === 2),
+            b =
+              this.agents[
+                candidates[Math.floor(this.rand('official-partner', a.id) * candidates.length)]
+              ];
+          this.encounter(
+            a,
+            b,
+            a.role === 1 ? 'permit' : this.rand('tax-context', a.id) < 0.25 ? 'tax' : 'service',
+            this.month + '-service-' + a.id,
+          );
+        }
+        if (a.role === 1 && this.rand('political-contact', a.id) < 0.1) {
+          const b = this.nearest(
+            a,
+            this.roles[3].filter((p) => p.office),
+            'business-political',
+          );
+          this.encounter(a, b, 'contract', this.month + '-contract-' + a.id);
+        }
+        if (a.role === 3 && a.office && this.rand('admin-pressure', a.id) < 0.2) {
+          const b = this.nearest(a, this.roles[2], 'administrative');
+          this.encounter(a, b, 'political pressure', this.month + '-pressure-' + a.id);
+        }
+        const campaign =
+          this.state.politics.nextReview - this.month <= 6 &&
+          this.state.politics.mode !== 'appointment';
+        if (a.role === 0 && campaign && this.rand('campaign-contact', a.id) < 0.04) {
+          const b = this.nearest(a, this.roles[3], 'campaign');
+          this.encounter(a, b, 'vote buying', this.month + '-vote-' + a.id);
+        }
+      }
+    }
+
+    /** [AK-INS-01] [AK-ECO-03] processServices
+     * Process prioritized requests with actual public staff/cash, preserving unresolved queues. Aggregate per-person experience once; completed waiting and unfinished waiting are distinct metrics.
+     */
+    processServices() {
+      const s = this.state,
+        pending = s.services.sort(
+          (a, b) =>
+            Number(b.priority) - Number(a.priority) || a.arrival - b.arrival || a.agent - b.agent,
+        ),
+        left = [],
+        feedback = new Map();
+      for (const task of pending) {
+        const o = this.orgs[task.org],
+          a = this.agents[task.agent],
+          unit = task.kind === 'permit' ? 0.04 : task.kind === 'tax' ? 0.02 : 0.025,
+          cost = unit * (1 - 0.4 * o.practice[2].honest);
+        let satisfaction = 0;
+        if (Math.min(o.time, o.limits?.routine ?? o.time) >= cost && o.balance > 0.015) {
+          o.time -= cost;
+          if (o.limits) o.limits.routine -= cost;
+          o.routineUsed += cost;
+          transfer(o, s.outside, 0.015);
+          s.metrics.serviceCompleted++;
+          const delay = this.month - task.arrival;
+          s.metrics.serviceWait += delay;
+          s.distribution[a.role].wait += delay;
+          satisfaction = clamp(1 - delay / 6);
+          const officer = this.agents[task.officer ?? o.leader];
+          if (officer?.org === o.id) Adaptive.work(officer, cost);
+        } else {
+          left.push(task);
+          a.experience.wait++;
+        }
+        if (!feedback.has(a.id)) feedback.set(a.id, []);
+        feedback.get(a.id).push({ org: o.id, satisfaction });
+      }
+      for (const [id, observations] of feedback) this.experienced(this.agents[id], observations);
+      s.services = left;
+      for (const o of this.publicOrgs) o.backlog = left.filter((t) => t.org === o.id).length;
+    }
+
+    /** [AK-COU-02] [AK-CAS-01] makeCase
+     * De-duplicate an underlying signal and assign its route, jurisdiction, evidence and next-stage date. A new file is not a guilty verdict or a newly created corrupt act.
+     */
+    makeCase(record, reporter, source) {
+      const s = this.state;
+      if (s.cases.some((c) => c.recordId === record.id)) return null;
+      const route =
+          source === 'civil' ||
+          (['contract', 'implementation diversion'].includes(record.kind) &&
+            this.publicOrgs.some((o) => o.fn === 'civil'))
+            ? 'civil'
+            : record.kind === 'implementation diversion' ||
+                (s.country === 'ITA' && record.kind === 'political pressure')
+              ? 'administrative'
+              : 'criminal',
+        id = 'C-' + record.id.slice(2),
+        c = {
+          id,
+          recordId: record.id,
+          actors: record.actors,
+          reporter,
+          route,
+          source,
+          org: record.org,
+          stage: 0,
+          status: 'screening',
+          opened: this.month,
+          next: this.month + 1,
+          evidence: clamp(
+            0.25 + record.visibility * 0.35 + (this.rand('initial-evidence', id) - 0.5) * 0.3,
+          ),
+          truth: record.truth,
+          kind: record.kind,
+          obstructed: 0,
+          work: 0,
+          decision: null,
+          retaliationChecked: false,
+        };
+      c.jurisdiction = this.orgs[record.org].jurisdiction;
+      c.mandate = this.orgs[record.org].mandate;
+      const screening = this.responsible(0, route, c),
+        subject = this.agents[record.actors[record.actors.length - 1]];
+      c.specialist = this.covered('aca', screening, subject);
+      if (!c.specialist) {
+        c.next++;
+        c.referral = true;
+        c.referralReason = 'Outside simplified body mandate: competent general route required';
+      }
+      s.cases.push(c);
+      this.caseIndex.set(c.id, c);
+      if (s.cases.length <= 8 || s.cases.length % 15 === 0)
+        this.emit(
+          'case',
+          'A signal enters screening',
+          source +
+            ' signal concerning ' +
+            record.kind +
+            '. Screening, investigation and decision have separate workloads; this is not a finding.',
+          record.actors.concat(reporter === null ? [] : [reporter]),
+          id,
+          'Screening',
+        );
+      return c;
+    }
+
+    /** [AK-CAS-01] audit
+     * Spend finite scrutiny time on recent conduct records, with detection depending on actual covered capabilities and records. Include a lawful-control false-signal pathway and communicate notices separately from hidden detection truth.
+     */
+    audit() {
+      const s = this.state,
+        records = s.conduct.filter((r) => r.month >= this.month - 6);
+      for (const o of this.publicOrgs.filter((o) => o.fn === 'audit')) {
+        const n = Math.min(12, Math.floor(Math.min(o.time, o.limits?.case ?? o.time) / 0.25));
+        for (let j = 0; j < n; j++) {
+          if (!records.length) break;
+          const rec = records[Math.floor(this.rand('audit-record', o.id, j) * records.length)];
+          o.time -= 0.25;
+          if (o.limits) o.limits.case -= 0.25;
+          o.caseUsed += 0.25;
+          s.metrics.audits++;
+          const subject = this.agents[rec.actors[rec.actors.length - 1]];
+          if (!this.covered('oversight', o, subject)) continue;
+          if (this.rand('audit-notice', o.id, rec.id) < 0.25)
+            this.expose(subject, 'oversight', 'audit-notice-' + rec.id, o, 0.6, {
+              elements: ['risk'],
+              targets: { risk: clamp(subject.riskBelief + 0.1 * (1 - subject.riskBelief)) },
+            });
+          const target = this.orgs[rec.org],
+            verified = mean(
+              rec.actors.map((id) => {
+                const a = this.agents[id],
+                  employer = this.orgs[a.org];
+                return this.covered('declarations', employer, a)
+                  ? this.operational('declarations', employer, a) * a.disclosure
+                  : 0;
+              }),
+            ),
+            detect = clamp(
+              this.operational('oversight', o, subject) *
+                (0.35 + 0.4 * verified + 0.25 * target.disclosureQuality),
+            );
+          if (this.rand('audit-signal', o.id, j) < (rec.truth ? detect : 0.025))
+            this.makeCase(rec, null, 'audit');
+        }
+      }
+    }
+
+    /** [AK-COU-02] [AK-CAS-02] responsible
+     * Route a case stage to a configured competent function with explicit country exceptions. Fall-throughs and simplified mandates are intentional abstractions documented as limits.
+     */
+    responsible(stage, route, caseFile = null) {
+      /** [AK-COU-02] [AK-CAS-02] pick
+       * Local helper for responsible; its inputs and return value are part of the enclosing mechanism. Functional architecture and jurisdiction.
+       */
+      const country = this.state.country,
+        pick = (fn) => this.publicOrgs.find((o) => o.fn === fn);
+      if (route === 'civil' && stage < 2 && pick('civil')) return pick('civil');
+      if (route === 'administrative' && stage >= 2 && country === 'CHN') return pick('prevention');
+      if (route === 'administrative' && stage !== 1 && caseFile) {
+        const employer = this.orgs[caseFile.org];
+        if (employer?.fn === 'service') return employer;
+      }
+      if (
+        stage === 0 &&
+        caseFile &&
+        ((country === 'IND' && caseFile.source === 'complaint') ||
+          (country === 'PER' && caseFile.kind === 'vote buying'))
+      )
+        return pick('integrity') || pick('prevention');
+      if (stage === 1 && caseFile?.specialist && ['NGA', 'IDN', 'CHN'].includes(country))
+        return pick('prevention');
+      if (route === 'criminal' && stage === 2)
+        return pick('prosecution') || this.responsible(1, route, caseFile);
+      return (
+        this.publicOrgs.find((o) =>
+          stage === 0
+            ? ['prevention', 'integrity'].includes(o.fn)
+            : stage === 1
+              ? o.fn === 'investigation'
+              : o.fn === 'decision',
+        ) || this.publicOrgs[0]
+      );
+    }
+
+    /** [AK-DEC-02] [AK-CAS-02] [AK-CAS-03] processCases
+     * Apply stage readiness, actual staff/money, controller choices and evidence thresholds before advancing or closing a case. Separate administrative/civil/criminal labels, proven findings, actual collections and unlawful adverse actions.
+     */
+    processCases() {
+      const s = this.state;
+      for (const c of [...s.cases].sort(
+        (a, b) => a.next - b.next || a.opened - b.opened || a.id.localeCompare(b.id),
+      )) {
+        if (c.status === 'closed' || c.next > this.month) continue;
+        if (c.jurisdiction !== null && !c.intakeDone) {
+          const intake = this.services.find((o) => o.jurisdiction === c.jurisdiction);
+          if (intake) {
+            if (
+              Math.min(intake.time, intake.limits?.case ?? intake.time) < 0.12 ||
+              intake.balance < 0.01
+            )
+              continue;
+            intake.time -= 0.12;
+            if (intake.limits) intake.limits.case -= 0.12;
+            intake.caseUsed += 0.12;
+            transfer(intake, s.outside, 0.01);
+            c.work += 0.12;
+            c.intakeDone = true;
+            c.next = this.month + 1;
+            continue;
+          }
+        }
+        const o = this.responsible(c.stage, c.route, c),
+          controller = this.agents[o.leader],
+          subject = this.agents[c.actors[c.actors.length - 1]],
+          cost = c.stage === 1 ? 0.55 : 0.25;
+        if (Math.min(o.time, o.limits?.case ?? o.time) < cost || o.balance < 0.04) continue;
+        const insider = this.related(controller, subject);
+        s.metrics.opportunities++;
+        const decision = this.choose(
+          controller,
+          'Case ' + c.stage,
+          [
+            {
+              name: 'process',
+              effects: this.effects([0.1, 0.1, 0.5], [0.1, 0.1, 0.8], [0.1, 0, 0.65]),
+              effort: 0.08,
+            },
+            {
+              name: 'delay',
+              effects: this.effects(
+                [0, 0.2, -0.2],
+                [insider ? 0.65 : 0.1, insider ? 0.5 : 0.1, -0.4],
+                [0.1, 0.35, -0.45],
+              ),
+              corrupt: insider,
+              effort: 0,
+            },
+            {
+              name: 'dismiss',
+              effects: this.effects(
+                [-0.05, 0.1, -0.3],
+                [insider ? 0.5 : 0.05, 0.1, -0.3],
+                [0.1, 0.2, -0.3],
+              ),
+              norm: insider ? controller.normCorrupt : -0.2,
+              effort: 0.02,
+            },
+          ],
+          c.id + '-' + c.stage,
+        );
+        o.time -= cost;
+        if (o.limits) o.limits.case -= cost;
+        o.caseUsed += cost;
+        transfer(o, s.outside, 0.04);
+        c.work += cost;
+        c.lastBody = o.id;
+        Adaptive.work(controller, cost);
+        if (c.stage === 0) {
+          this.expose(subject, 'aca', 'screening-' + c.id, o, 0.6, {
+            elements: ['risk'],
+            targets: { risk: clamp(subject.riskBelief + 0.1 * (1 - subject.riskBelief)) },
+          });
+          if (c.reporter !== null)
+            this.expose(this.agents[c.reporter], 'aca', 'intake-' + c.id, o, 0.6, {
+              elements: ['control'],
+            });
+        }
+        if (decision.name === 'process') this.act(controller, false);
+        if (decision.name === 'delay') {
+          c.obstructed++;
+          c.next = this.month + 2;
+          if (insider && c.truth && c.obstructed === 1)
+            this.completeCorruption([controller], 'case obstruction', 0, o.id, false, c.id);
+          continue;
+        }
+        if (decision.name === 'dismiss') {
+          if (insider && c.truth && c.evidence > 0.65)
+            this.completeCorruption(
+              [controller],
+              'case obstruction',
+              0,
+              o.id,
+              false,
+              c.id + '-dismiss',
+            );
+          c.status = 'closed';
+          c.decision = 'dismissed';
+          c.closed = this.month;
+          if (c.obstructed || c.evidence > 0.65)
+            this.emit(
+              'case',
+              'A case is dismissed',
+              'The ' +
+                c.route +
+                ' case closes. Dismissal does not establish that the original claim was false.',
+              c.actors,
+              c.id,
+              'Dismissed',
+            );
+          continue;
+        }
+        if (c.stage === 0) {
+          Reporting.activity(this, 'aca');
+          c.evidence = clamp(c.evidence + 0.08 * this.operational('aca', o, subject));
+          if (c.evidence < 0.32) {
+            c.status = 'closed';
+            c.decision = 'screened out';
+            c.closed = this.month;
+            continue;
+          }
+          c.stage = 1;
+          c.status = 'investigation';
+          c.next = this.month + 2;
+        } else if (c.stage === 1) {
+          Reporting.activity(this, 'oversight');
+          const quality =
+              Math.max(this.operational('oversight', o), this.operational('aca', o)) *
+              (0.5 + 0.25 * o.skill + 0.25 * (o.professionalSkill ?? o.skill)),
+            signal = c.truth
+              ? 0.55 + quality * 0.4
+              : 0.12 + this.rand('misleading-evidence', c.id) * 0.4;
+          c.evidence = clamp(0.45 * c.evidence + 0.55 * signal);
+          c.stage = 2;
+          c.status = c.route === 'criminal' ? 'prosecution' : 'decision';
+          c.next = this.month + 2;
+          if (c.evidence > 0.55)
+            this.publish(c.actors[0], 'case development', c.evidence, c.id, c.truth);
+        } else if (c.stage === 2 && c.route === 'criminal') {
+          if (c.evidence < 0.4) {
+            c.status = 'closed';
+            c.closed = this.month;
+            c.decision = 'not prosecuted';
+          } else {
+            c.stage = 3;
+            c.status = 'decision';
+            c.next = this.month + 1;
+          }
+        } else {
+          const proven = c.evidence > 0.55 + (1 - o.skill) * 0.08,
+            amount = s.policies.some((p) => p.id === 'penalties' && p.formal === 'active') ? 3 : 2;
+          c.status = 'closed';
+          c.closed = this.month;
+          c.decision = proven
+            ? c.route === 'civil'
+              ? 'civil recovery'
+              : c.route === 'administrative'
+                ? 'administrative remedy'
+                : 'sanction'
+            : 'not established';
+          if (proven)
+            for (const id of c.actors) {
+              const a = this.agents[id],
+                assessed = amount * this.operational('penalties', o, a),
+                paid = transfer(a, s.treasury, Math.min(assessed, a.balance * 0.65));
+              c.assessed = (c.assessed || 0) + assessed;
+              if (assessed - paid > 1e-8)
+                a.liabilities.push({ caseId: c.id, remaining: assessed - paid, body: o.id });
+              s.metrics.collected += paid;
+              c.collected = (c.collected || 0) + paid;
+              s.metrics.sanctions++;
+              if (!c.truth) s.metrics.unwarrantedSanctions++;
+              Adaptive.accountability(a, c.id, this.month, 1, true, 1);
+              Adaptive.feedback(a, { 3: 1 }, 1);
+              if (a.office && c.route !== 'civil') {
+                a.office = false;
+                a.eligibleUntil = this.month + 6;
+              }
+            }
+          if (proven) this.publish(c.actors[0], 'case decision', c.evidence, c.id, null);
+          if (proven || s.cases.indexOf(c) < 8)
+            this.emit(
+              'case',
+              'A case reaches a decision',
+              c.route +
+                ' route: ' +
+                c.decision +
+                '. ' +
+                (proven
+                  ? 'Liability and actual collection are recorded separately.'
+                  : 'An unproven allegation is not automatically false.'),
+              c.actors,
+              c.id,
+              c.decision,
+            );
+        }
+        if (c.reporter !== null && !c.retaliationChecked && c.stage >= 1) {
+          c.retaliationChecked = true;
+          const reporter = this.agents[c.reporter],
+            perp = this.agents[c.actors[c.actors.length - 1]];
+          s.metrics.opportunities++;
+          const d = this.choose(
+            perp,
+            'Response to reporting',
+            [
+              {
+                name: 'leave reporter alone',
+                effects: this.effects([0.1, 0, 0.3], [0.1, 0, 0.2], [0, 0, 0.25]),
+                effort: 0,
+              },
+              {
+                name: 'retaliate',
+                effects: this.effects([-0.3, 0.1, -0.5], [0.3, 0.4, -0.6], [0.2, 0.3, -0.6]),
+                corrupt: true,
+                effort: 0.15,
+              },
+            ],
+            c.id + '-retaliate',
+          );
+          if (d.name === 'retaliate' && perp.balance > 0.15) {
+            s.metrics.retaliation++;
+            transfer(perp, s.outside, 0.15);
+            const body = this.responsible(0, 'administrative'),
+              protectedNow =
+                Math.min(body.time, body.limits?.case ?? body.time) > 0.25 &&
+                this.rand('protection', c.id) < this.operational('protection', body, reporter);
+            if (protectedNow) {
+              body.time -= 0.25;
+              if (body.limits) body.limits.case -= 0.25;
+              body.caseUsed += 0.25;
+              s.metrics.remedied++;
+            }
+            if (
+              !this.expose(reporter, 'protection', 'protection-' + c.id, body, 0.8, {
+                targets: { reportSafety: protectedNow ? 1 : 0 },
+                elements: protectedNow ? ['control', 'reportSafety'] : ['reportSafety'],
+              })
+            )
+              Adaptive.observe(
+                reporter,
+                'experience',
+                'protection-' + c.id,
+                this.month,
+                (process, ...key) => this.rand('learning-' + process, ...key),
+                {
+                  delivered: true,
+                  quality: 0.8,
+                  credibility: 1,
+                  source: body.id,
+                  elements: ['reportSafety'],
+                  targets: { reportSafety: protectedNow ? 1 : 0 },
+                },
+              );
+            if (!protectedNow) transfer(reporter, s.outside, Math.min(0.3, reporter.balance));
+            this.completeCorruption([perp], 'retaliation', 0.15, perp.org, false, c.id);
+            this.emit(
+              'case',
+              'A reporter faces retaliation',
+              protectedNow
+                ? 'A protection response prevents an unremedied threat.'
+                : 'The threat is not remedied in time; the reporter bears a cost.',
+              [perp.id, reporter.id],
+              c.id,
+              protectedNow ? 'Protected' : 'Unremedied threat',
+            );
+          }
+        }
+      }
+    }
+
+    /** [AK-INF-02] [AK-CAS-03] communicatedDecision
+     * Update an accessed final decision once, using either one attributable operative policy or ordinary baseline-belief learning. A personally experienced decision cannot add a second public cost increment.
+     */
+    communicatedDecision(a, event, body, credibility) {
+      const p = a.psychology,
+        key = 'public:' + event;
+      if (p.accountabilityEvents.includes('self:' + event) || p.accountabilityEvents.includes(key))
+        return false;
+      for (const id of ['penalties', 'oversight', 'aca', 'declarations'])
+        if (
+          this.expose(a, id, 'decision-' + event, body, credibility, {
+            elements: ['risk'],
+            targets: { risk: clamp(p.riskPrior + 0.15, 0.03, 0.95) },
+          })
+        ) {
+          p.accountabilityEvents.push(key);
+          if (p.accountabilityEvents.length > 64) p.accountabilityEvents.shift();
+          return true;
+        }
+      return Adaptive.accountability(a, event, this.month, 1, false, credibility);
+    }
+
+    /** [AK-CAS-03] collectLiabilities
+     * Collect only an existing assessed claim under cash, needs-buffer, per-month receipt cap and enforcement-resource constraints. Installments reduce debt and transfer money but do not create fresh sanction counts.
+     */
+    collectLiabilities() {
+      const s = this.state;
+      for (const a of this.agents) {
+        if (a.collectionMonth !== this.month) {
+          a.collectionMonth = this.month;
+          a.collectionPaid = 0;
+        }
+        for (const claim of a.liabilities) {
+          if (claim.remaining <= 1e-8) continue;
+          const o = this.orgs[claim.body],
+            file = this.caseIndex.get(claim.caseId),
+            time = 0.01;
+          if (!file || Math.min(o.time, o.limits?.case ?? o.time) < time || o.balance < 0.005)
+            continue;
+          // Existing financial orders: preserve half a month's living-needs buffer.
+          const amount = Math.min(
+            claim.remaining,
+            Math.max(0, a.balance - 0.5 * a.cost),
+            Math.max(0, 0.15 * (a.receipts.at(-1) || 0) - a.collectionPaid),
+          );
+          if (amount <= 0) continue;
+          const paid = transfer(a, s.treasury, amount);
+          claim.remaining -= paid;
+          a.collectionPaid += paid;
+          file.collected = (file.collected || 0) + paid;
+          s.metrics.collected += paid;
+          o.time -= time;
+          if (o.limits) o.limits.case -= time;
+          o.caseUsed += time;
+          transfer(o, s.outside, 0.005);
+        }
+      }
+      for (const a of this.agents) a.liabilities = a.liabilities.filter((x) => x.remaining > 1e-8);
+    }
+
+    /** [AK-INF-01] publish
+     * Make an editor’s publish/withhold choice before spending publication funds and creating a claim/decision/correction record. Publication and announced decisions remain distinct from hidden model guilt.
+     */
+    publish(subject, kind, evidence, linked = null, truth = null) {
+      const s = this.state,
+        outlet =
+          this.media[
+            Math.floor(this.rand('outlet', subject, kind, linked || 'none') * this.media.length)
+          ],
+        editor = this.agents[outlet.leader];
+      if (outlet.balance < 0.06) return null;
+      const dependence = this.fundingDependence(outlet, subject),
+        independence = outlet.editorialIndependence;
+      const choice = this.choose(
+        editor,
+        'Publish public information',
+        [
+          {
+            name: 'publish',
+            effects: this.effects(
+              [0.25, 0.2, 0.7],
+              [0.2 - dependence, 0.3, 0.65],
+              [0.05, 0.1 * independence, 0.65],
+            ),
+            effort: 0.12,
+          },
+          {
+            name: 'withhold',
+            effects: this.effects(
+              [-0.15, 0.2, -0.4],
+              [0.1 + dependence, this.related(editor, this.agents[subject]) ? 0.6 : 0.1, -0.2],
+              [0.1, 0.2 + dependence - independence * 0.3, -0.45],
+            ),
+            effort: 0,
+          },
+        ],
+        'story-' + subject + '-' + kind + '-' + (linked || 'none'),
+      );
+      if (choice.name !== 'publish') return null;
+      transfer(outlet, s.outside, 0.06);
+      const id =
+          'S-' +
+          this.month +
+          '-' +
+          hash(subject + '|' + kind + '|' + (linked || 'none')).toString(16),
+        story = {
+          id,
+          month: this.month,
+          subject,
+          kind,
+          evidence,
+          linked,
+          truth,
+          outlet: outlet.id,
+          reach: 0,
+          status: kind === 'correction' ? 'correction' : 'claim',
+        };
+      const announced = this.caseIndex.get(linked);
+      story.procedureOrg = announced?.lastBody ?? null;
+      if (kind === 'case decision' && announced)
+        story.announcedDecision = {
+          caseId: announced.id,
+          decision: announced.decision,
+          collected: announced.collected || 0,
+        };
+      s.stories.push(story);
+      Adaptive.work(editor, 0.06);
+      if (
+        !['case development', 'case decision'].includes(kind) &&
+        truth !== null &&
+        this.rand('publication-referral', id) < 0.2
+      ) {
+        const record = s.conduct.find((r) => r.id === linked) || {
+          id: story.id,
+          kind: 'public allegation',
+          actors: [subject],
+          org: this.agents[subject].org,
+          truth: truth === true,
+          visibility: evidence,
+        };
+        const caseFile = this.makeCase(record, editor.id, 'publication');
+        if (caseFile) story.linked = caseFile.id;
+      }
+      if (s.stories.length <= 6 || linked)
+        this.emit(
+          'information',
+          kind === 'correction' ? 'A correction circulates' : 'Public information circulates',
+          outlet.name +
+            ' publishes ' +
+            kind +
+            '. Publication is not proof; attention and trust determine who encounters and accepts it.',
+          [editor.id, subject],
+          story.linked || id,
+          story.status,
+        );
+      return story;
+    }
+
+    /** [AK-INF-02] information
+     * Apply bounded attention, local/media exposure, credibility-weighted beliefs and selective social sharing. Descriptive conduct beliefs, reference expectations and objective truth are not interchangeable fields.
+     */
+    information() {
+      const s = this.state,
+        recent = s.conduct.filter((r) => r.month === this.month);
+      if (recent.length && this.rand('journalism-opportunity') < 0.7) {
+        const record = recent[Math.floor(this.rand('scoop') * recent.length)];
+        if (this.rand('scoop-access') < record.visibility + 0.15)
+          this.publish(
+            record.actors[record.actors.length - 1],
+            'an allegation',
+            0.4 + 0.3 * this.rand('claim-evidence'),
+            record.id,
+            record.truth,
+          );
+      }
+      if (this.month % 9 === 0)
+        this.publish(
+          Math.floor(this.rand('strategic-subject') * 1000),
+          'a contested claim',
+          0.3,
+          null,
+          null,
+        );
+      const stories = s.stories.filter((x) => x.month >= this.month - 3).slice(-12);
+      const adjacency = new Map();
+      for (const l of Object.values(s.links)) {
+        if (!adjacency.has(l.a)) adjacency.set(l.a, []);
+        if (!adjacency.has(l.b)) adjacency.set(l.b, []);
+        adjacency.get(l.a).push(l);
+        adjacency.get(l.b).push(l);
+      }
+      this.informationLinks = adjacency;
+      for (const a of this.agents) {
+        let attention = 0;
+        for (const story of stories) {
+          if (attention >= 3) break;
+          const outlet = this.orgs[story.outlet],
+            local = 1 - Math.min(1, Math.hypot(a.x - outlet.x, a.y - outlet.y)),
+            prob = clamp(
+              (0.03 + 0.15 * outlet.reach + 0.08 * local) * (0.5 + s.env.civil_liberties / 100),
+            );
+          if (this.rand('exposure', a.id, story.id) > prob) continue;
+          attention++;
+          story.audience ??= [];
+          if (!story.audience.includes(a.id)) {
+            story.audience.push(a.id);
+            story.reach = story.audience.length;
+          }
+          const trust = a.sourceTrust[story.outlet] ?? 0.55,
+            cred = Adaptive.messageRate(a, trust * story.evidence),
+            old = a.beliefs[story.subject] ?? a.descriptive,
+            signal = story.kind === 'correction' ? 0.15 : 0.7;
+          a.beliefs[story.subject] = clamp(old + 0.15 * cred * (signal - old));
+          a.descriptive = clamp(a.descriptive + 0.04 * cred * (signal - a.descriptive));
+          if (story.kind === 'case decision' && story.announcedDecision)
+            this.communicatedDecision(
+              a,
+              story.announcedDecision.caseId,
+              this.orgs[story.procedureOrg] || outlet,
+              cred,
+            );
+          if (story.kind === 'case development') {
+            const body = this.orgs[story.procedureOrg] || outlet;
+            this.riskExperience(
+              a,
+              'story-' + story.id + '-' + this.month,
+              body,
+              clamp(a.riskBelief + 0.1 * cred * (story.evidence - a.riskBelief)),
+              cred,
+            );
+          }
+          Adaptive.feedback(a, { 0: 0.1, 2: 0.3 }, cred);
+          if (story.kind === 'correction') a.sourceTrust[story.outlet] = clamp(trust + 0.03);
+          for (const support of a.support)
+            if (this.agents[story.subject].memberships.includes(support.org))
+              support.affinity = clamp(
+                support.affinity + (story.kind === 'correction' ? 0.02 : -0.025) * cred,
+              );
+          const share = this.choose(
+            a,
+            'Share public information',
+            [
+              {
+                name: 'share',
+                effects: this.effects([0.15, 0.1, 0.4], [0.1, 0.25, 0.35], [0, 0.05, 0.25]),
+                effort: 0.07,
+              },
+              {
+                name: 'do not share',
+                effects: this.effects([0, 0, 0], [0.05, 0.05, 0], [0, 0, 0]),
+                effort: 0,
+              },
+            ],
+            story.id + '-share',
+          );
+          if (share.name === 'share')
+            for (const { peer, weight } of this.peers(a, story.id)) {
+              const prior = peer.beliefs[story.subject] ?? peer.descriptive;
+              peer.beliefs[story.subject] = clamp(prior + 0.08 * weight * cred * (signal - prior));
+            }
+        }
+      }
+      if (this.month % 12 === 0) {
+        const old = s.stories.find(
+          (st) => st.truth === false && st.kind !== 'correction' && this.month - st.month > 2,
+        );
+        if (old && !s.stories.some((st) => st.kind === 'correction' && st.subject === old.subject))
+          this.publish(old.subject, 'correction', 0.85, old.linked, false);
+      }
+    }
+
+    /** [AK-INF-01] funding
+     * Execute bilateral business-to-civic funding or withdrawal choices with actual private money. Dependence can change editorial conditions without mechanically buying compliance or funding public implementation.
+     */
+    funding() {
+      const s = this.state;
+      if (this.month % 6 !== 0) return;
+      const businesses = this.orgs.filter((o) => o.category === 1),
+        civics = this.orgs.filter((o) => o.category === 0);
+      for (let j = 0; j < 3; j++) {
+        const donor = businesses[Math.floor(this.rand('funder', j) * businesses.length)],
+          target = civics[Math.floor(this.rand('fund-target', j) * civics.length)],
+          leader = this.agents[donor.leader],
+          recipient = this.agents[target.leader],
+          existing = s.funding.find((f) => f.from === donor.id && f.to === target.id);
+        const d = this.choose(
+          leader,
+          'Funding and influence',
+          [
+            {
+              name: 'fund',
+              effects: this.effects([0.1, 0.4, 0.05], [-0.2, 0.8, 0.1], [0.1, 0.45, 0.05]),
+              effort: 0.05,
+            },
+            {
+              name: 'withdraw / do not fund',
+              effects: this.effects([0, -0.1, 0], [0.15, 0.1, -0.1], [0, -0.15, 0]),
+              effort: 0,
+            },
+          ],
+          'fund-' + j,
+        );
+        if (d.name === 'fund') {
+          const response = this.choose(
+            recipient,
+            'Funding conditions',
+            [
+              {
+                name: 'accept',
+                effects: this.effects([0.1, 0.3, 0], [0.1, 0.7, 0.2], [0.1, 0.15, -0.1]),
+                effort: (1 - target.editorialIndependence) * 0.1,
+              },
+              {
+                name: 'refuse',
+                effects: this.effects([0.05, 0.1, 0.3], [0, 0.1, 0.45], [0, 0, 0.2]),
+                effort: 0.04,
+              },
+            ],
+            'accept-fund-' + j,
+          );
+          if (response.name === 'accept') {
+            const amount = transfer(donor, target, 0.8);
+            if (amount) {
+              const f = existing || { from: donor.id, to: target.id, total: 0, active: true };
+              f.total += amount;
+              f.payments = (f.payments || []).filter((x) => this.month - x.month < 12);
+              f.payments.push({ month: this.month, amount });
+              f.last = this.month;
+              f.active = true;
+              if (!existing) s.funding.push(f);
+              target.editorialIndependence = clamp(target.editorialIndependence - 0.015);
+              this.link(leader, recipient, true);
+              if (!existing)
+                this.emit(
+                  'information',
+                  'A funding relationship develops',
+                  donor.name +
+                    ' funds ' +
+                    target.name +
+                    '. Private funding can create leverage but does not enter the reform implementation pool.',
+                  [leader.id, recipient.id],
+                  'F-' + donor.id + '-' + target.id,
+                  'Funding',
+                );
+            }
+          }
+        } else if (existing) {
+          existing.active = false;
+          this.emit(
+            'information',
+            'Funding is withdrawn',
+            'The receiving organization must adapt within its own resources.',
+            [leader.id, recipient.id],
+            'F-' + donor.id + '-' + target.id,
+            'Withdrawn',
+          );
+        }
+      }
+    }
+
+    /** [AK-ORG-02] [AK-ECO-01] changeEmployment
+     * Move a person’s primary role/workplace membership while preserving identity, home, resources, history and ties. Count rotation only for an actual official-to-official organizational transfer.
+     */
+    changeEmployment(a, role, orgId) {
+      const oldRole = a.role,
+        old = this.orgs[a.org];
+      if (oldRole === 2 && role === 2 && old.id !== orgId) Reporting.activity(this, 'rotation');
+      old.members = old.members.filter((id) => id !== a.id);
+      a.memberships = a.memberships.filter((id) => id !== old.id);
+      if (old.leader === a.id)
+        old.leader =
+          old.members.find((id) => this.agents[id].role === old.category) ?? old.members[0] ?? a.id;
+      const next = this.orgs[orgId];
+      a.role = role;
+      a.type = TYPES[role];
+      a.org = orgId;
+      a.workX = next.x;
+      a.workY = next.y;
+      a.income *= (role === 2 ? 1.05 : 0.95) / (oldRole === 2 ? 1.05 : 0.95);
+      if (!a.memberships.includes(orgId)) {
+        a.memberships.push(orgId);
+        next.members.push(a.id);
+      } /* home, resources, memories and ties persist */
+    }
+
+    /** [AK-ORG-02] organizations
+     * Process constrained affiliation requests and periodic staffing/rotation. Requests with due=next month are still processed only at six-month organizational reviews, a documented effective delay.
+     */
+    organizations() {
+      const s = this.state;
+      if (this.month % 6 !== 0) return;
+      for (const request of s.membershipQueue.filter((r) => r.due <= this.month)) {
+        const a = this.agents[request.agent],
+          o = this.orgs[request.org];
+        if (request.action === 'leave') {
+          if (o.id !== a.org && o.leader !== a.id && a.balance >= 0.03) {
+            transfer(a, o, 0.03);
+            a.memberships = a.memberships.filter((id) => id !== o.id);
+            o.members = o.members.filter((id) => id !== a.id);
+          }
+          continue;
+        }
+        if (!a.memberships.includes(o.id) && a.balance >= 0.05 && o.category !== 2) {
+          const d = this.choose(
+            this.agents[o.leader],
+            'Membership admission',
+            [
+              {
+                name: 'admit',
+                effects: this.effects([0.1, 0.45, 0.1], [0.05, 0.5, 0.2], [0.05, 0.2, 0.1]),
+                effort: 0.03,
+              },
+              {
+                name: 'decline',
+                effects: this.effects([0, 0.05, 0], [0.05, 0.1, 0], [0, 0, 0]),
+                effort: 0,
+              },
+            ],
+            'admit-' + a.id,
+          );
+          if (d.name === 'admit') {
+            transfer(a, o, 0.05);
+            a.memberships.push(o.id);
+            o.members.push(a.id);
+          }
+        }
+      }
+      s.membershipQueue = s.membershipQueue.filter((r) => r.due > this.month);
+      for (const a of this.agents) {
+        if (this.rand('membership-review', a.id) > 0.04) continue;
+        const secondary = a.memberships.find(
+          (id) =>
+            id !== a.org &&
+            this.orgs[id].leader !== a.id &&
+            (a.support.find((t) => t.org === id)?.affinity ?? 0.5) < 0.3,
+        );
+        if (secondary !== undefined) {
+          const exit = this.choose(
+            a,
+            'Membership exit',
+            [
+              {
+                name: 'give notice',
+                effects: this.effects([0.2, -0.2, 0.05], [0.2, -0.1, 0.15], [0.05, -0.1, 0]),
+                effort: 0.03,
+              },
+              {
+                name: 'stay',
+                effects: this.effects([0.1, 0.2, 0], [0.05, 0.2, 0.05], [0, 0.1, 0]),
+                effort: 0,
+              },
+            ],
+            'exit-' + a.id,
+          );
+          if (exit.name === 'give notice')
+            s.membershipQueue.push({
+              agent: a.id,
+              org: secondary,
+              action: 'leave',
+              due: this.month + 1,
+            });
+        }
+        const candidates = a.support.filter(
+            (t) => !a.memberships.includes(t.org) && [0, 3].includes(this.orgs[t.org].category),
+          ),
+          target = candidates.sort((x, y) => y.affinity - x.affinity)[0];
+        if (target && a.role !== 2) {
+          const d = this.choose(
+            a,
+            'Join an organization',
+            [
+              {
+                name: 'apply',
+                effects: this.effects(
+                  [0.2, 0.6, 0.1],
+                  [0.1, 0.5 * target.affinity, 0.2],
+                  [0, 0.3, 0.1],
+                ),
+                effort: 0.06,
+              },
+              {
+                name: 'remain unaffiliated',
+                effects: this.effects([0, 0, 0], [0.05, 0.05, 0], [0, 0, 0]),
+                effort: 0,
+              },
+            ],
+            'join-' + a.id,
+          );
+          if (d.name === 'apply')
+            s.membershipQueue.push({ agent: a.id, org: target.org, due: this.month + 1 });
+        }
+      }
+      for (const o of this.services) {
+        const active = o.members.filter((id) => this.agents[id].role === 2);
+        if (!active.length) continue;
+        const old = this.agents[active[Math.floor(this.rand('vacancy', o.id) * active.length)]],
+          leader = this.agents[o.leader],
+          candidates = this.roles[0]
+            .filter((a) => a.role === 0 && a.eligibleUntil <= this.month)
+            .map((a) => ({ a, key: this.rand('applicant-pool', o.id, a.id) }))
+            .sort((x, y) => x.key - y.key)
+            .slice(0, 24)
+            .map((x) => x.a);
+        if (!candidates.length) continue;
+        const ranked = candidates.sort((a, b) => b.skill - a.skill),
+          best = ranked[0],
+          connected =
+            candidates.find((a) => this.related(a, leader)) ||
+            ranked[Math.floor(this.rand('patronage-candidate', o.id) * ranked.length)];
+        s.metrics.opportunities++;
+        const d = this.choose(
+            leader,
+            'Recruitment / promotion',
+            [
+              {
+                name: 'merit',
+                effects: this.effects([0.2, 0, 0.5], [0.1, 0.2, 0.8], [0.05, 0, 0.45]),
+                effort: 0.08,
+              },
+              {
+                name: 'connection override',
+                effects: this.effects([-0.2, 0.35, -0.4], [0.4, 0.7, -0.6], [0.2, 0.5, -0.5]),
+                corrupt: true,
+                effort: 0.06,
+              },
+            ],
+            'staffing-' + o.id,
+          ),
+          enforced =
+            this.rand('merit-review', o.id) < this.operational('merit', o) * o.recordQuality,
+          merit = d.name === 'merit' || enforced,
+          next = merit ? best : connected;
+        s.metrics.appointments++;
+        this.expose(leader, 'merit', 'appointment-' + this.month + '-' + o.id, o, o.recordQuality);
+        if (merit) s.metrics.meritAppointments++;
+        if (d.name === 'merit') this.act(leader, false);
+        else if (!merit)
+          this.completeCorruption(
+            [leader],
+            'patronage appointment',
+            0,
+            o.id,
+            false,
+            'staffing-' + o.id,
+          );
+        this.changeEmployment(old, 0, this.orgs.find((x) => x.category === 0).id);
+        this.changeEmployment(next, 2, o.id);
+        this.expose(next, 'merit', 'appointment-' + this.month + '-' + o.id, o, o.recordQuality);
+        if (!o.members.includes(o.leader) || this.agents[o.leader].role !== 2) o.leader = next.id;
+      }
+      if (this.month % 12 === 0)
+        for (let i = 0; i < this.services.length; i++) {
+          const o = this.services[i],
+            target = this.services[(i + 1) % this.services.length];
+          if (this.rand('rotation', o.id) > this.operational('rotation', o)) continue;
+          const a =
+            this.agents[o.members.find((id) => id !== o.leader && this.agents[id].role === 2)];
+          if (a && a.balance > 0.05) {
+            const d = this.choose(
+              this.agents[o.leader],
+              'Staff rotation',
+              [
+                {
+                  name: 'rotate',
+                  effects: this.effects([0.05, 0, 0.2], [0.05, 0.1, 0.6], [0, -0.1, 0.4]),
+                  effort: 0.08,
+                },
+                {
+                  name: 'retain',
+                  effects: this.effects([0.1, 0.3, 0], [0.15, 0.3, 0], [0.05, 0.2, -0.1]),
+                  effort: 0,
+                },
+              ],
+              'rotate-' + o.id,
+            );
+            if (d.name === 'rotate') {
+              transfer(a, s.outside, 0.05);
+              this.changeEmployment(a, 2, target.id);
+              this.expose(a, 'rotation', 'rotation-' + this.month + '-' + a.id, o, 0.6);
+            }
+          }
+        }
+      this.index();
+    }
+
+    /** [AK-REF-04] [AK-GOV-01] politicalReview
+     * Aggregate perceived conduct and affinity through the configured simplified election/appointment procedure. Update authority while retaining identity and history; this is not a national electoral forecast.
+     */
+    politicalReview() {
+      const s = this.state;
+      if (this.month < s.politics.nextReview) return;
+      const incumbent = this.agents[s.politics.controller];
+      let winner;
+      if (s.politics.mode === 'appointment') {
+        const eligible = this.roles[3].filter(
+            (a) => a.eligibleUntil <= this.month && a.memberships.includes(this.parties[0].id),
+          ),
+          choices = eligible.slice(0, 8).map((a) => ({
+            name: String(a.id),
+            effects: this.effects(
+              [0.15, 0.3, 0.1],
+              [this.related(incumbent, a) ? 0.4 : 0.1, 0.4, a.skill * 0.7],
+              [a.skill * 0.2, 0.5, a.skill * 0.4],
+            ),
+            effort: 0.04,
+          }));
+        if (choices.length)
+          winner =
+            this.agents[
+              Number(
+                this.choose(incumbent, 'Personnel leadership review', choices, 'leadership').name,
+              )
+            ];
+      } else {
+        const votes = new Map(this.parties.map((p) => [p.id, 0]));
+        for (const voter of this.agents) {
+          const options = this.parties
+            .filter((p) => this.agents[p.leader].eligibleUntil <= this.month)
+            .map((p) => {
+              const candidate = this.agents[p.leader],
+                rep = voter.beliefs[candidate.id] ?? voter.descriptive,
+                affinity = voter.support.find((x) => x.org === p.id)?.affinity ?? 0.5;
+              return {
+                name: String(p.id),
+                effects: this.effects(
+                  [0.1, 0.25, 0.2],
+                  [
+                    0.15 * (1 - rep),
+                    affinity * 0.7,
+                    0.8 * (1 - rep) * (0.5 + s.env.representation / 100),
+                  ],
+                  [
+                    0.25 * (1 - rep),
+                    affinity * 0.85,
+                    0.7 * (1 - rep) * (0.5 + s.env.representation / 100),
+                  ],
+                ),
+                effort: 0.03,
+                norm: 2 * affinity - 1,
+                control: 0.2 + (0.6 * s.env.electoral_integrity) / 100,
+              };
+            });
+          if (options.length) {
+            options.push({
+              name: 'abstain',
+              effects: this.effects([0, 0, 0], [0.05, 0, 0], [0, 0, -0.05]),
+              effort: 0,
+              norm: 0,
+              control: 0.8,
+            });
+            const selection = this.choose(
+              voter,
+              'Political support / vote',
+              options,
+              'ballot',
+            ).name;
+            if (selection !== 'abstain') {
+              const vote = Number(selection);
+              votes.set(vote, (votes.get(vote) || 0) + 1);
+            }
+          }
+        }
+        const ranked = [...votes].sort((a, b) => b[1] - a[1]);
+        if (ranked.length) {
+          const party = this.orgs[ranked[0][0]];
+          winner = this.agents[party.leader];
+          s.politics.governingParty = party.id;
+          s.politics.votes = Object.fromEntries(votes);
+          s.politics.coalition = [];
+          let coalitionVotes = 0;
+          for (const [id, count] of ranked) {
+            s.politics.coalition.push(id);
+            coalitionVotes += count;
+            if (
+              s.politics.mode !== 'parliamentary' ||
+              coalitionVotes > sum([...votes.values()]) * 0.5
+            )
+              break;
+          }
+        }
+      }
+      if (winner) {
+        incumbent.office = false;
+        winner.office = true;
+        s.politics.controller = winner.id;
+        this.emit(
+          'politics',
+          s.politics.mode === 'appointment'
+            ? 'Leadership appointment reviewed'
+            : 'Political support changes authority',
+          'The simplified ' +
+            s.politics.mode +
+            ' procedure gives actor #' +
+            winner.id +
+            ' budget-review authority. Histories, resources and ties persist across turnover.',
+          [incumbent.id, winner.id],
+          'GOV-' + this.month,
+          'Authority updated',
+        );
+      }
+      s.politics.nextReview += s.politics.cycle;
+    }
+
+    /** [AK-ACT-02] recover
+     * Change the display state only after both the six-month no-new-act interval and three genuine completed integrity choices. The underlying conduct record and other agents’ reputations persist.
+     */
+    recover() {
+      for (const a of this.agents)
+        if (
+          a.state === 'corrupt' &&
+          a.lastCorrupt !== null &&
+          this.month - a.lastCorrupt >= 6 &&
+          a.recoveryChoices >= 3
+        )
+          a.state = 'integrity';
+    }
+
+    /** [AK-OV-01] [AK-VAL-01] step
+     * Execute the authoritative monthly order. Moving a call here can alter both causal timing and random-key identity even if each submodel remains individually correct.
+     */
+    step() {
+      if (this.month >= this.config.duration) return false;
+      this.state.month++;
+      for (const a of this.agents) Adaptive.advance(a, this.month);
+      this.monthlyAccounts();
+      this.fundPolicies();
+      this.scheduleWork();
+      this.implementPolicies();
+      for (const a of this.agents) Adaptive.incomeExperience(a, a.receipts.at(-1) ?? 0);
+      this.encounters();
+      this.processServices();
+      this.audit();
+      this.processCases();
+      this.collectLiabilities();
+      this.information();
+      this.funding();
+      this.organizations();
+      this.politicalReview();
+      this.budgetReview();
+      this.recover();
+      this.macroDevelopments();
+      this.record();
+      return true;
+    }
+
+    /** [AK-ACT-02] classActivity
+     * Summarize current-role agents’ last-24 meaningful opportunities. The denominator includes recorded attempted/uncompleted opportunities and is distinct from the common-encounter impact denominator.
+     */
+    classActivity() {
+      return TYPES.map((type, role) => {
+        const agents = this.agents.filter((a) => a.role === role),
+          opportunities = sum(agents.map((a) => a.meaningful.length)),
+          corrupt = sum(agents.map((a) => a.meaningful.filter((x) => x.corrupt).length));
+        return {
+          type,
+          agents: agents.length,
+          opportunities,
+          corrupt,
+          rate: opportunities ? (100 * corrupt) / opportunities : null,
+        };
+      });
+    }
+
+    /** [AK-MAC-01] macroDevelopments
+     * Observe consequential treasury/service/pay, institution, public-disclosure and repeated-abuse developments. Notification thresholds do not themselves impose an extra behavioral corruption coefficient.
+     */
+    macroDevelopments() {
+      const s = this.state,
+        m = s.macro;
+      if (this.month % 6 === 0) {
+        const now = {
+          cash: s.treasury.balance,
+          backlog: s.services.length,
+          pay: mean(this.roles[2].map((a) => mean(a.receipts) / Math.max(0.1, a.cost))),
+        };
+        if (m.fiscal) {
+          const change = (now.cash - m.fiscal.cash) / Math.max(1, m.fiscal.cash),
+            queue = now.backlog - m.fiscal.backlog;
+          if (
+            Math.abs(change) > 0.25 ||
+            Math.abs(queue) > 50 ||
+            Math.abs(now.pay - m.fiscal.pay) > 0.2
+          )
+            this.emit(
+              'macro',
+              'Public delivery conditions change',
+              'Over six months, treasury resources ' +
+                (change >= 0 ? 'rose' : 'fell') +
+                ' ' +
+                Math.round(Math.abs(change) * 100) +
+                '%; the service queue changed by ' +
+                queue +
+                '. These conditions affect actual affordability, access expectations and support, without changing national GDP.',
+              [],
+              'SYS-delivery',
+              'System conditions',
+            );
+        }
+        m.fiscal = now;
+      }
+      for (const o of this.publicOrgs) {
+        const practice = o.practice[2];
+        for (const kind of ['honest', 'corrupt']) {
+          const key = 'institution-' + o.id + '-' + kind,
+            high = practice[kind] >= 0.65,
+            prior = m[key] ?? false;
+          if (high !== prior) {
+            this.emit(
+              'macro',
+              high ? 'Role expectations consolidate' : 'Role expectations weaken',
+              o.name +
+                ': ' +
+                kind +
+                ' expectations ' +
+                (high
+                  ? 'have become strongly established'
+                  : 'have fallen below the strong-expectation threshold') +
+                '. Encountered reference reactions change the ease of following the routine.',
+              [o.leader],
+              key,
+              high ? 'Consolidation' : 'Erosion',
+            );
+            m[key] = high;
+          }
+        }
+      }
+      for (const story of s.stories)
+        if (
+          story.reach >= (story.kind === 'case decision' ? 150 : 300) &&
+          !story.macroReported &&
+          ['case decision', 'case development', 'an allegation'].includes(story.kind) &&
+          story.evidence >= 0.6 &&
+          (this.agents[story.subject].office ||
+            this.orgs[this.agents[story.subject].org].leader === story.subject) &&
+          this.month - (m.lastPublicNotice ?? -100) >= 3
+        ) {
+          m.lastPublicNotice = this.month;
+          story.macroReported = true;
+          this.emit(
+            'macro',
+            'A disclosure reaches a broad audience',
+            this.orgs[story.outlet].name +
+              ' has reached ' +
+              story.reach +
+              ' distinct people with ' +
+              story.kind +
+              '. Beliefs and support respond through accessed information; this is not proof of the underlying allegation.',
+            [story.subject, this.orgs[story.outlet].leader],
+            'PUB-' + story.id,
+            'Public perceptions',
+          );
+        }
+      const edges = Object.values(s.links).filter(
+          (l) => l.corruptCount >= 3 && l.strength > 0.25 && this.month - l.last <= 12,
+        ),
+        parent = new Map();
+
+      /** [AK-MAC-01] find
+       * Local helper for macroDevelopments; its inputs and return value are part of the enclosing mechanism. Collective feedback and consequential developments.
+       */
+      const find = (x) => {
+        if (!parent.has(x)) parent.set(x, x);
+        let p = parent.get(x);
+        if (p !== x) {
+          p = find(p);
+          parent.set(x, p);
+        }
+        return p;
+      };
+      for (const l of edges) parent.set(find(l.a), find(l.b));
+      const groups = new Map();
+      for (const id of parent.keys()) {
+        const root = find(id);
+        if (!groups.has(root)) groups.set(root, []);
+        groups.get(root).push(id);
+      }
+      for (const ids of groups.values()) {
+        if (ids.length < 3 || new Set(ids.map((id) => this.agents[id].role)).size < 2) continue;
+        const set = new Set(ids),
+          records = s.conduct.filter(
+            (r) =>
+              r.truth &&
+              r.month >= this.month - 12 &&
+              r.actors.filter((id) => set.has(id)).length >= 2 &&
+              [
+                'contract',
+                'political pressure',
+                'implementation diversion',
+                'patronage appointment',
+                'case obstruction',
+              ].includes(r.kind),
+          );
+        if (
+          records.length < 3 ||
+          !ids.some((id) => this.agents[id].role === 2 || this.agents[id].office)
+        )
+          continue;
+        const key =
+            'SCHEME-' +
+            ids
+              .slice()
+              .sort((a, b) => a - b)
+              .slice(0, 3)
+              .join('-'),
+          last = m[key] ?? -100;
+        if (this.month - last < 12) continue;
+        m[key] = this.month;
+        this.emit(
+          'macro',
+          'Coordinated abuse gains leverage',
+          ids.length +
+            ' linked participants across classes have completed ' +
+            records.length +
+            ' abuses of public decisions in twelve months. This is an emerging capture risk supported by conduct; network density alone is not classified as capture.',
+          ids,
+          key,
+          'Coordinated scheme',
+        );
+      }
+    }
+
+    /** [AK-MAC-01] metrics
+     * Read cumulative process counters and current collective states. A transfer, backlog stock, completed waiting total and true-conduct rate have different interpretations and must not be added as one welfare score.
+     */
+    metrics() {
+      const s = this.state;
+      return {
+        ...s.metrics,
+        month: this.month,
+        corruptState: s.agents.filter((a) => a.state === 'corrupt').length,
+        informalTies: Object.values(s.links).filter((l) => l.strength > 0.35).length,
+        backlog: s.services.length,
+        caseBacklog: s.cases.filter((c) => c.status !== 'closed').length,
+        cash: s.treasury.balance,
+        capacity: sum(this.publicOrgs.map((o) => o.capacity)),
+        reformTime: sum(this.publicOrgs.map((o) => o.reformUsed)),
+        routineTime: sum(this.publicOrgs.map((o) => o.routineUsed)),
+        caseTime: sum(this.publicOrgs.map((o) => o.caseUsed)),
+        meanTrust: mean(s.agents.map((a) => a.experience.trust)),
+        meanControl: mean(s.agents.map((a) => a.control)),
+        meanRisk: mean(s.agents.map((a) => a.riskBelief)),
+        meanNorm: mean(s.agents.map((a) => a.normCorrupt)),
+        cashConstrained: s.agents.filter((a) => a.balance < 0.001).length,
+        meanFinancialPressure: mean(s.agents.map((a) => a.financialPressure)),
+        outstandingLiability: sum(s.agents.flatMap((a) => a.liabilities.map((c) => c.remaining))),
+      };
+    }
+
+    /** [AK-MEA-03] record
+     * Append ordinary metrics and an observation-sidecar snapshot after all monthly processes. Recording is passive; do not let reporting consume RNG or alter actors/accounts.
+     */
+    record() {
+      this.state.history.push(this.metrics());
+      Reporting.record(this);
+    }
+
+    /** [AK-MEA-03] reporting
+     * Expose the observation-only sidecar separately from the complaint report() method and simulation state. Initial-state/save compatibility remains governed by behavioral schema2.4.
+     */
+    reporting() {
+      return Reporting.view(this);
+    }
+
+    /** [AK-MEA-01] diagnostic
+     * Calculate explicitly labeled fixed-reference capability proxies or special realized indicators. This does not run independent empirical tests of institutions or consume simulation randomness.
+     */
+    diagnostic(id) {
+      const s = this.state,
+        officials = this.agents.filter((a) => a.role === 2),
+        bodies = this.publicOrgs.filter((o) => this.eligibleTool(id, o)),
+        n =
+          id === 'education' || id === 'complaints'
+            ? 100
+            : id === 'rotation'
+              ? this.services.length
+              : Math.max(1, officials.length),
+        scope = s.policies.find((p) => p.id === id)?.scope ?? 0.55;
+      let numerator = 0,
+        value = null;
+      const unit = '%',
+        definition = Profiles.policies.find((p) => p.id === id).indicator;
+      if (id === 'education') {
+        const expected = sum(this.agents.map((a) => Adaptive.knowledge(a, 'integrity')));
+        return {
+          value: (100 * expected) / this.agents.length,
+          numerator: expected,
+          denominator: this.agents.length,
+          unit,
+          lowerBetter: false,
+          definition,
+          method:
+            'Read-only expected knowledge diagnostic; all 1,000 agents, independent of formal adoption',
+          scope,
+        };
+      }
+      if (id === 'pay') {
+        const eligible = officials.filter((a) => a.receipts.length >= 6),
+          ok = eligible.filter(
+            (a) => a.receipts.filter((v) => 0.9 * v >= a.cost).length >= 5,
+          ).length;
+        return {
+          value: eligible.length ? (100 * ok) / eligible.length : null,
+          numerator: ok,
+          denominator: eligible.length,
+          unit,
+          lowerBetter: false,
+          definition,
+          method: 'Actual six-month lawful net pay receipts after modeled withholding',
+          scope,
+        };
+      }
+      if (id === 'penalties') {
+        const violations = s.conduct.filter(
+            (r) => r.truth && r.kind === 'extortion' && r.month <= this.month - 6,
+          ),
+          ids = new Set(violations.map((r) => r.id)),
+          decided = s.cases.filter(
+            (c) =>
+              ids.has(c.recordId) &&
+              c.route !== 'civil' &&
+              c.status === 'closed' &&
+              c.truth &&
+              c.decision === 'sanction',
+          ),
+          collected = sum(decided.map((c) => c.collected || 0));
+        return {
+          value: violations.length >= 20 ? collected / violations.length : null,
+          numerator: decided.length,
+          denominator: violations.length,
+          unit: 'RU',
+          lowerBetter: false,
+          definition,
+          method:
+            'Realized collectible liability per recorded extortion violation, with a six-month observation lag; descriptive estimate',
+          scope,
+        };
+      }
+      if (id === 'merit' && s.metrics.appointments >= 20)
+        return {
+          value: (100 * s.metrics.meritAppointments) / s.metrics.appointments,
+          numerator: s.metrics.meritAppointments,
+          denominator: s.metrics.appointments,
+          unit,
+          lowerBetter: false,
+          definition,
+          method: 'Realized covered appointments',
+          scope,
+        };
+      if (id === 'rotation') {
+        numerator = sum(
+          this.services.map((o) => {
+            const original = s.initialControls[o.id],
+              current = o.leader;
+            return original === current ||
+              this.tie(original, current)?.strength > 0.3 ||
+              o.members.some((id) => this.tie(id, original)?.strength > 0.5)
+              ? 1
+              : 0;
+          }),
+        );
+        value = (100 * numerator) / n;
+      } else
+        for (let i = 0; i < n; i++) {
+          const o = bodies[i % bodies.length],
+            a = officials[i % Math.max(1, officials.length)] || this.agents[i],
+            backlogFactor =
+              1 / (1 + (o.backlog + (o.caseBacklog || 0)) / Math.max(1, o.members.length)),
+            capacity = clamp(
+              (0.5 * o.skill + 0.5 * (o.professionalSkill ?? o.skill)) *
+                (0.4 + 0.6 * backlogFactor),
+            ),
+            threshold =
+              this.coverage(id, o, a) *
+              ({
+                aca: o.caps.aca * capacity * (0.4 + 0.6 * o.recordQuality),
+                merit: o.caps.merit * o.recordQuality,
+                protection: o.caps.protection * capacity,
+                declarations: o.caps.declarations * a.disclosure,
+                conflicts: o.caps.conflicts * o.recordQuality,
+                oversight: o.caps.oversight * capacity * (0.4 + 0.6 * o.recordQuality),
+                disclosure: o.disclosureQuality * (0.4 + 0.6 * o.caps.disclosure),
+                complaints: this.cap('complaints') * (0.5 + 0.5 * backlogFactor),
+                education: this.agents[(i * 10) % 1000].knowledge,
+              }[id] ?? 0);
+          numerator +=
+            draw('Antarkya-fixed-diagnostic', s.societyDrawKey, id, i) < threshold ? 1 : 0;
+        }
+      if (value === null) value = (100 * numerator) / n;
+      return {
+        value,
+        numerator,
+        denominator: n,
+        unit,
+        lowerBetter: id === 'rotation',
+        definition,
+        method: 'Fixed read-only capability diagnostic; not an observed success rate',
+        scope,
+      };
+    }
+
+    /** [AK-MEA-01] assessment
+     * Collect the twelve legacy diagnostic definitions. New reporting overrides for rolling merit/protection/penalty cohorts are a distinct documented readout path.
+     */
+    assessment() {
+      return Object.fromEntries(KEYS.map((k) => [k, this.diagnostic(k)]));
+    }
+
+    /** [AK-VIS-02] influential
+     * Rank weighted network degree plus control/leadership leverage and retain eight people for detailed inspection. This is a heuristic power/centrality proxy, not all-pairs centrality.
+     */
+    influential() {
+      const degree = new Map();
+      for (const l of Object.values(this.state.links)) {
+        degree.set(l.a, (degree.get(l.a) || 0) + l.strength);
+        degree.set(l.b, (degree.get(l.b) || 0) + l.strength);
+      }
+      return this.agents
+        .map((a) => ({
+          id: a.id,
+          score:
+            (degree.get(a.id) || 0) +
+            (a.id === this.state.politics.controller ? 12 : 0) +
+            (this.orgs[a.org].leader === a.id ? 3 : 0),
+          reason:
+            a.id === this.state.politics.controller
+              ? 'Current authority over reform resource reviews'
+              : this.orgs[a.org].leader === a.id
+                ? 'Organizational leadership and network access'
+                : 'High weighted network degree',
+        }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 8);
+    }
+
+    /** [AK-VIS-02] view
+     * Prepare a display payload with all people but detailed traits/traces only for highlighted actors. Keep display transformations separate from state; completion exports fuller records.
+     */
+    view() {
+      const influential = this.influential(),
+        salient = new Set(influential.map((a) => a.id));
+      return {
+        version: VERSION,
+        month: this.month,
+        reporting: this.reporting(),
+        country: this.config.country,
+        initialization: this.state.initialization,
+        agents: this.agents.map((a) => ({
+          id: a.id,
+          role: a.role,
+          type: a.type,
+          x: a.x,
+          y: a.y,
+          org: a.org,
+          memberships: a.memberships,
+          state: a.state,
+          startingRole: a.startingRole,
+          financialPressure: a.financialPressure,
+          riskBelief: a.riskBelief,
+          control: a.control,
+          balance: a.balance,
+          corruptActions: a.corruptActions,
+          lastCorrupt: a.lastCorrupt,
+          recoveryChoices: a.recoveryChoices,
+          knowledge: a.knowledge,
+          psychology: salient.has(a.id) ? Adaptive.summary(a) : undefined,
+          recentOpportunities: a.meaningful.length,
+          recentCorrupt: a.meaningful.filter((x) => x.corrupt).length,
+          supports: a.support
+            .filter((t) => t.affinity >= 0.65)
+            .sort((a, b) => b.affinity - a.affinity)
+            .slice(0, 3),
+          affinityByRole: TYPES.map((_, role) =>
+            mean(
+              a.support.filter((t) => this.orgs[t.org].category === role).map((t) => t.affinity),
+            ),
+          ),
+          motives: salient.has(a.id) ? a.motives : undefined,
+          decisions: salient.has(a.id) ? a.decisions : undefined,
+          office: a.office,
+        })),
+        organizations: this.orgs.map((o) => ({
+          id: o.id,
+          name: o.name,
+          category: o.category,
+          leader: o.leader,
+          x: o.x,
+          y: o.y,
+          members: o.members,
+          balance: o.balance,
+          backlog: o.backlog,
+          capacity: o.capacity,
+          reformUsed: o.reformUsed,
+          routineUsed: o.routineUsed,
+          caseUsed: o.caseUsed,
+          responses: o.responses,
+          caps: o.caps,
+        })),
+        links: Object.values(this.state.links)
+          .sort(
+            (a, b) =>
+              b.strength +
+              0.15 * (b.last >= this.month - 6) +
+              0.15 * (b.corruptCount > 0) -
+              (a.strength + 0.15 * (a.last >= this.month - 6) + 0.15 * (a.corruptCount > 0)),
+          )
+          .slice(0, 2400),
+        funding: this.state.funding,
+        events: this.state.events.slice(-200),
+        eventCount: this.state.events.length,
+        history: this.state.history,
+        metrics: this.metrics(),
+        assessment: this.assessment(),
+        policies: this.state.policies.map((p) => ({ ...p })),
+        influential,
+        distribution: this.state.distribution,
+        classActivity: this.classActivity(),
+      };
+    }
+
+    /** [AK-OV-01] [AK-VAL-01] run
+     * Advance until the configured duration using the same step() implementation. No alternative batch behavior or stochastic shortcut is introduced.
+     */
+    run() {
+      while (this.step());
+      return this;
+    }
+
+    /** [AK-VAL-01] snapshot
+     * Serialize simulation state, excluding observation and UI sidecars. Used to verify exact replay, import identity and documentation-only non-mutation.
+     */
+    snapshot() {
+      return clone(this.state);
+    }
+
+    /** [AK-VAL-01] assertInvariants
+     * Fail loudly on population, balances, money conservation, staff double spending or invalid bounded profiles/history. These checks establish engineering consistency, not country realism.
+     */
+    assertInvariants() {
+      const s = this.state,
+        balances = [
+          s.treasury,
+          s.outside,
+          ...s.agents,
+          ...s.orgs,
+          ...s.policies.flatMap((p) => p.allocations),
+        ].map((x) => x.balance);
+      if (balances.some((x) => !Number.isFinite(x) || x < -0.000001))
+        throw Error('Invalid balance.');
+      if (s.agents.length !== 1000) throw Error('Population changed.');
+      if (Math.abs(totalMoney(s) - s.accountingTotal) > 0.001)
+        throw Error('Resources were not conserved.');
+      for (const o of this.publicOrgs)
+        if (o.reformUsed + o.routineUsed + o.caseUsed > o.capacity + 0.000001 || o.time < -0.000001)
+          throw Error('Shared staff capacity exceeded.');
+      for (const a of s.agents)
+        if (
+          !Adaptive.valid(a) ||
+          !Number.isFinite(a.financialPressure) ||
+          a.financialPressure < 0 ||
+          a.financialPressure > 1 ||
+          a.liabilities.some((c) => !Number.isFinite(c.remaining) || c.remaining < 0) ||
+          a.meaningful.length > 24 ||
+          a.meaningful.filter((x) => x.corrupt).length > a.meaningful.length ||
+          Math.abs(sum(a.motives) - 1) > 0.000001 ||
+          a.motives.some((x) => x <= 0)
+        )
+          throw Error('Invalid motive weights.');
+      return true;
+    }
+  }
+
+  /** [AK-MEA-02] comparison
+   * Compare reform and baseline rate/quantity indicators with their own denominators. A null denominator remains unavailable; package impacts do not imply individual tool attribution.
+   */
+  function comparison(reform, baseline) {
+    /** [AK-MEA-02] rate
+     * Local helper for comparison; its inputs and return value are part of the enclosing mechanism. Package impact and paired comparison.
+     */
+    const r = reform.metrics,
+      b = baseline.metrics,
+      rate = (m) =>
+        m.encounterOpportunities
+          ? (100 * (m.encounterCorruptActs || 0)) / m.encounterOpportunities
+          : null;
+    return {
+      reformRate: rate(r),
+      baselineRate: rate(b),
+      difference: rate(r) !== null && rate(b) !== null ? rate(r) - rate(b) : null,
+      burdenDifference: r.bribeBurden - b.bribeBurden,
+      diversionDifference: r.diversion - b.diversion,
+      serviceWaitDifference: r.serviceWait - b.serviceWait,
+      assessment: Object.fromEntries(
+        KEYS.map((k) => [
+          k,
+          {
+            reform: reform.assessment[k],
+            baseline: baseline.assessment[k],
+            difference:
+              reform.assessment[k].value === null || baseline.assessment[k].value === null
+                ? null
+                : reform.assessment[k].value - baseline.assessment[k].value,
+          },
+        ]),
+      ),
+    };
+  }
+  const api = {
+    Reporting,
+    Adaptation: Adaptive,
+    Baseline,
+    VERSION,
+    TYPES,
+    KEYS,
+    NUMERIC,
+    validate,
+    validateInitial,
+    conditions,
+    createInitial,
+    Simulation,
+    comparison,
+    draw,
+    hash,
+    totalMoney,
+    transfer,
+    requirements,
+  };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.Antarkya = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);

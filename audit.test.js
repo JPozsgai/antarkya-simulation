@@ -437,6 +437,7 @@ test('editorial independence and real funding dependence enter publication incen
     donor = s.orgs.find((o) => o.category === 1),
     subject = s.agents[donor.leader];
   assert.equal(s.fundingDependence(outlet, subject.id), 0);
+  A.transfer(s.state.outside, donor, 2); // Isolate funding leverage from the new production-linked cash constraint.
   const amount = A.transfer(donor, outlet, 1);
   s.state.funding.push({
     from: donor.id,

@@ -342,13 +342,13 @@ test('a public decision has one cost-learning pathway and cannot replay an alrea
   assert.equal(JSON.stringify(a.psychology), self);
 });
 
-/** [AK-VAL-01] test: pay adequacy assesses modeled take-home receipts rather than gross receipts
- * Verify pay adequacy assesses modeled take-home receipts rather than gross receipts. See the test body for controlled inputs and exact assertions.
+/** [AK-VAL-01] test: pay adequacy assesses actual receipts without legacy wage withholding
+ * Verify pay adequacy assesses actual receipts without legacy wage withholding. See the test body for controlled inputs and exact assertions.
  */
-test('pay adequacy assesses modeled take-home receipts rather than gross receipts', () => {
+test('pay adequacy assesses actual receipts without legacy wage withholding', () => {
   const s = sim();
   for (const a of s.roles[2]) {
-    a.cost = 0.95;
+    a.cost = 1.05;
     a.receipts = Array(6).fill(1);
   }
   assert.equal(s.diagnostic('pay').value, 0);
