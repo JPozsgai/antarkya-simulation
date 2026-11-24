@@ -1,0 +1,47 @@
+{
+  "schema": "antarkya.peru-pilot.protocol.v1",
+  "sourceCommit": "f90540ffe1d1bee659d43d1c46ab72874447b3fe",
+  "created": "2026-11-24",
+  "scope": "Conditional fiscal calibration plus structural screening and paired exploratory policy pilot; not full national validation",
+  "preliminaryDiagnosticAlreadyObserved": true,
+  "population": 1000,
+  "country": "PER",
+  "trainingSeeds": ["PER-fit-01", "PER-fit-02"],
+  "holdoutSeeds": [
+    "PER-holdout-01",
+    "PER-holdout-02",
+    "PER-holdout-03",
+    "PER-holdout-04",
+    "PER-holdout-05"
+  ],
+  "initialSeed": "Antarkya-v2-society",
+  "trainingMonths": 12,
+  "pilotMonths": 24,
+  "longRunMonths": 120,
+  "fiscalTarget": 0.148,
+  "selection": "Minimum absolute difference between 12-month sum of realized tax and sum of domestic value added and 0.148, averaged over training seeds. Growth, investment and policy results are not optimized.",
+  "acceptance": "Fitting one lumped fiscal ratio alone does not establish empirical validity. Do not promote a candidate to public defaults if coverage/measurement or baseline-dynamics checks fail.",
+  "grid": {
+    "taxAssessmentRate": [0.16, 0.19, 0.22],
+    "backgroundCompliance": [0.65, 0.85, 1]
+  },
+  "policies": {
+    "baseline": [],
+    "education": [{ "id": "education", "mobilization": 0.7 }],
+    "aca": [{ "id": "aca", "mobilization": 0.7 }],
+    "combined": [
+      { "id": "education", "mobilization": 0.7 },
+      { "id": "aca", "mobilization": 0.7 }
+    ]
+  },
+  "sensitivity": {
+    "annualDepreciation": [0.03, 0.12],
+    "capitalOutputYears": [2, 5],
+    "maintenanceShare": [0.01, 0.05],
+    "damageRate": [0, 0.02],
+    "exportDemand": [30, 120]
+  },
+  "uncertainty": "Five event-seed holdouts conditional on one initial society. Report paired seed ranges and sample SD; no population confidence intervals, identification claims or policy rankings.",
+  "units": "Fiscal shares use sums of same-period fixed-price normalized amounts. Real GDP growth is a loose plausibility screen. National investment and firm survey estimates lack exact model scope and are not fitted.",
+  "android": "No Android certification; record Node runtime and memory only."
+}
